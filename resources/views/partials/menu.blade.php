@@ -72,7 +72,7 @@
                     </li>
                 @endcan
                 @can('content_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/content-categories*") ? "menu-open" : "" }} {{ request()->is("admin/content-tags*") ? "menu-open" : "" }} {{ request()->is("admin/content-pages*") ? "menu-open" : "" }} {{ request()->is("admin/event-details*") ? "menu-open" : "" }} {{ request()->is("admin/news*") ? "menu-open" : "" }} {{ request()->is("admin/reciprocal-clubs*") ? "menu-open" : "" }} {{ request()->is("admin/sportsmen*") ? "menu-open" : "" }} {{ request()->is("admin/past-presidents*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/content-categories*") ? "menu-open" : "" }} {{ request()->is("admin/content-tags*") ? "menu-open" : "" }} {{ request()->is("admin/content-pages*") ? "menu-open" : "" }} {{ request()->is("admin/event-details*") ? "menu-open" : "" }} {{ request()->is("admin/news*") ? "menu-open" : "" }} {{ request()->is("admin/reciprocal-clubs*") ? "menu-open" : "" }} {{ request()->is("admin/sportsmen*") ? "menu-open" : "" }} {{ request()->is("admin/past-presidents*") ? "menu-open" : "" }} {{ request()->is("admin/trophies*") ? "menu-open" : "" }} {{ request()->is("admin/amenities-services*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-book">
 
@@ -122,7 +122,7 @@
                             @can('event_detail_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.event-details.index") }}" class="nav-link {{ request()->is("admin/event-details") || request()->is("admin/event-details/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
+                                        <i class="fa-fw nav-icon fas fa-calendar-alt">
 
                                         </i>
                                         <p>
@@ -134,7 +134,7 @@
                             @can('news_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.news.index") }}" class="nav-link {{ request()->is("admin/news") || request()->is("admin/news/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
+                                        <i class="fa-fw nav-icon far fa-newspaper">
 
                                         </i>
                                         <p>
@@ -179,13 +179,37 @@
                                     </a>
                                 </li>
                             @endcan
+                            @can('trophy_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.trophies.index") }}" class="nav-link {{ request()->is("admin/trophies") || request()->is("admin/trophies/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.trophy.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('amenities_service_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.amenities-services.index") }}" class="nav-link {{ request()->is("admin/amenities-services") || request()->is("admin/amenities-services/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.amenitiesService.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                 @endcan
                 @can('committee_management_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/committee-names*") ? "menu-open" : "" }} {{ request()->is("admin/committee-member-mappings*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon fas fa-users">
 
                             </i>
                             <p>
@@ -214,6 +238,69 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.committeeMemberMapping.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+                @can('gallery_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.galleries.index") }}" class="nav-link {{ request()->is("admin/galleries") || request()->is("admin/galleries/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-images">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.gallery.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('sports_management_access')
+                    <li class="nav-item has-treeview {{ request()->is("admin/sportstypes*") ? "menu-open" : "" }} {{ request()->is("admin/titles*") ? "menu-open" : "" }} {{ request()->is("admin/members*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw nav-icon fas fa-gamepad">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.sportsManagement.title') }}
+                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('sportstype_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.sportstypes.index") }}" class="nav-link {{ request()->is("admin/sportstypes") || request()->is("admin/sportstypes/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.sportstype.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('title_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.titles.index") }}" class="nav-link {{ request()->is("admin/titles") || request()->is("admin/titles/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.title.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('member_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.members.index") }}" class="nav-link {{ request()->is("admin/members") || request()->is("admin/members/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.member.title') }}
                                         </p>
                                     </a>
                                 </li>

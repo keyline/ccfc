@@ -284,6 +284,130 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 69,
+                'title' => 'trophy_create',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'trophy_edit',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'trophy_show',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'trophy_delete',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'trophy_access',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'amenities_service_create',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'amenities_service_edit',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'amenities_service_show',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'amenities_service_delete',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'amenities_service_access',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'gallery_create',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'gallery_edit',
+            ],
+            [
+                'id'    => 81,
+                'title' => 'gallery_show',
+            ],
+            [
+                'id'    => 82,
+                'title' => 'gallery_delete',
+            ],
+            [
+                'id'    => 83,
+                'title' => 'gallery_access',
+            ],
+            [
+                'id'    => 84,
+                'title' => 'sports_management_access',
+            ],
+            [
+                'id'    => 85,
+                'title' => 'sportstype_create',
+            ],
+            [
+                'id'    => 86,
+                'title' => 'sportstype_edit',
+            ],
+            [
+                'id'    => 87,
+                'title' => 'sportstype_show',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'sportstype_delete',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'sportstype_access',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'title_create',
+            ],
+            [
+                'id'    => 91,
+                'title' => 'title_edit',
+            ],
+            [
+                'id'    => 92,
+                'title' => 'title_show',
+            ],
+            [
+                'id'    => 93,
+                'title' => 'title_delete',
+            ],
+            [
+                'id'    => 94,
+                'title' => 'title_access',
+            ],
+            [
+                'id'    => 95,
+                'title' => 'member_create',
+            ],
+            [
+                'id'    => 96,
+                'title' => 'member_edit',
+            ],
+            [
+                'id'    => 97,
+                'title' => 'member_show',
+            ],
+            [
+                'id'    => 98,
+                'title' => 'member_delete',
+            ],
+            [
+                'id'    => 99,
+                'title' => 'member_access',
+            ],
+            [
+                'id'    => 100,
                 'title' => 'profile_password_edit',
             ],
         ];
