@@ -35,6 +35,26 @@
                 <span class="help-block">{{ trans('cruds.eventDetail.fields.event_image_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="event_date">{{ trans('cruds.eventDetail.fields.event_date') }}</label>
+                <input class="form-control date {{ $errors->has('event_date') ? 'is-invalid' : '' }}" type="text" name="event_date" id="event_date" value="{{ old('event_date') }}" required>
+                @if($errors->has('event_date'))
+                    <span class="text-danger">{{ $errors->first('event_date') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.eventDetail.fields.event_date_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="gallery_id">{{ trans('cruds.eventDetail.fields.gallery') }}</label>
+                <select class="form-control select2 {{ $errors->has('gallery') ? 'is-invalid' : '' }}" name="gallery_id" id="gallery_id">
+                    @foreach($galleries as $id => $entry)
+                        <option value="{{ $id }}" {{ old('gallery_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('gallery'))
+                    <span class="text-danger">{{ $errors->first('gallery') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.eventDetail.fields.gallery_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -113,11 +133,11 @@
 </script>
 
 <script>
-    var uploadedEventImageMap = {}
-Dropzone.options.eventImageDropzone = {
+    Dropzone.options.eventImageDropzone = {
     url: '{{ route('admin.event-details.storeMedia') }}',
     maxFilesize: 2, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -128,48 +148,42 @@ Dropzone.options.eventImageDropzone = {
       height: 1600
     },
     success: function (file, response) {
-      $('form').append('<input type="hidden" name="event_image[]" value="' + response.name + '">')
-      uploadedEventImageMap[file.name] = response.name
+      $('form').find('input[name="event_image"]').remove()
+      $('form').append('<input type="hidden" name="event_image" value="' + response.name + '">')
     },
     removedfile: function (file) {
-      console.log(file)
       file.previewElement.remove()
-      var name = ''
-      if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
-      } else {
-        name = uploadedEventImageMap[file.name]
+      if (file.status !== 'error') {
+        $('form').find('input[name="event_image"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
       }
-      $('form').find('input[name="event_image[]"][value="' + name + '"]').remove()
     },
     init: function () {
 @if(isset($eventDetail) && $eventDetail->event_image)
-      var files = {!! json_encode($eventDetail->event_image) !!}
-          for (var i in files) {
-          var file = files[i]
+      var file = {!! json_encode($eventDetail->event_image) !!}
           this.options.addedfile.call(this, file)
-          this.options.thumbnail.call(this, file, file.preview)
-          file.previewElement.classList.add('dz-complete')
-          $('form').append('<input type="hidden" name="event_image[]" value="' + file.file_name + '">')
-        }
+      this.options.thumbnail.call(this, file, file.preview)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="event_image" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
-     error: function (file, response) {
-         if ($.type(response) === 'string') {
-             var message = response //dropzone sends it's own error messages in string
-         } else {
-             var message = response.errors.file
-         }
-         file.previewElement.classList.add('dz-error')
-         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-         _results = []
-         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-             node = _ref[_i]
-             _results.push(node.textContent = message)
-         }
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
 
-         return _results
-     }
+        return _results
+    }
 }
 </script>
 @endsection
