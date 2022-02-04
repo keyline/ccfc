@@ -73,7 +73,41 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Past President
     Route::delete('past-presidents/destroy', 'PastPresidentController@massDestroy')->name('past-presidents.massDestroy');
+    Route::post('past-presidents/media', 'PastPresidentController@storeMedia')->name('past-presidents.storeMedia');
+    Route::post('past-presidents/ckmedia', 'PastPresidentController@storeCKEditorImages')->name('past-presidents.storeCKEditorImages');
     Route::resource('past-presidents', 'PastPresidentController');
+
+    // Trophies
+    Route::delete('trophies/destroy', 'TrophiesController@massDestroy')->name('trophies.massDestroy');
+    Route::post('trophies/media', 'TrophiesController@storeMedia')->name('trophies.storeMedia');
+    Route::post('trophies/ckmedia', 'TrophiesController@storeCKEditorImages')->name('trophies.storeCKEditorImages');
+    Route::resource('trophies', 'TrophiesController');
+
+    // Amenities Services
+    Route::delete('amenities-services/destroy', 'AmenitiesServicesController@massDestroy')->name('amenities-services.massDestroy');
+    Route::post('amenities-services/media', 'AmenitiesServicesController@storeMedia')->name('amenities-services.storeMedia');
+    Route::post('amenities-services/ckmedia', 'AmenitiesServicesController@storeCKEditorImages')->name('amenities-services.storeCKEditorImages');
+    Route::resource('amenities-services', 'AmenitiesServicesController');
+
+    // Gallery
+    Route::delete('galleries/destroy', 'GalleryController@massDestroy')->name('galleries.massDestroy');
+    Route::post('galleries/media', 'GalleryController@storeMedia')->name('galleries.storeMedia');
+    Route::post('galleries/ckmedia', 'GalleryController@storeCKEditorImages')->name('galleries.storeCKEditorImages');
+    Route::resource('galleries', 'GalleryController');
+
+    // Sportstype
+    Route::delete('sportstypes/destroy', 'SportstypeController@massDestroy')->name('sportstypes.massDestroy');
+    Route::post('sportstypes/media', 'SportstypeController@storeMedia')->name('sportstypes.storeMedia');
+    Route::post('sportstypes/ckmedia', 'SportstypeController@storeCKEditorImages')->name('sportstypes.storeCKEditorImages');
+    Route::resource('sportstypes', 'SportstypeController');
+
+    // Titles
+    Route::delete('titles/destroy', 'TitlesController@massDestroy')->name('titles.massDestroy');
+    Route::resource('titles', 'TitlesController');
+
+    // Members
+    Route::delete('members/destroy', 'MembersController@massDestroy')->name('members.massDestroy');
+    Route::resource('members', 'MembersController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

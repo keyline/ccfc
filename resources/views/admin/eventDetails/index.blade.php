@@ -32,6 +32,15 @@
                             {{ trans('cruds.eventDetail.fields.event_image') }}
                         </th>
                         <th>
+                            {{ trans('cruds.eventDetail.fields.event_date') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.eventDetail.fields.gallery') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.gallery.fields.gallery_type') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -49,11 +58,22 @@
                                 {{ $eventDetail->event_title ?? '' }}
                             </td>
                             <td>
-                                @foreach($eventDetail->event_image as $key => $media)
-                                    <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $media->getUrl('thumb') }}">
+                                @if($eventDetail->event_image)
+                                    <a href="{{ $eventDetail->event_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $eventDetail->event_image->getUrl('thumb') }}">
                                     </a>
-                                @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                {{ $eventDetail->event_date ?? '' }}
+                            </td>
+                            <td>
+                                {{ $eventDetail->gallery->gallery_name ?? '' }}
+                            </td>
+                            <td>
+                                @if($eventDetail->gallery)
+                                    {{ $eventDetail->gallery::GALLERY_TYPE_SELECT[$eventDetail->gallery->gallery_type] ?? '' }}
+                                @endif
                             </td>
                             <td>
                                 @can('event_detail_show')
