@@ -1,4 +1,6 @@
+
 <?php
+// use App\http\Controllers\FrontendController;
 
 Route::redirect('/', '/login');
 Route::get('/home', function () {
@@ -92,4 +94,13 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
         Route::post('two-factor', 'TwoFactorController@check')->name('twoFactor.check');
         Route::get('two-factor/resend', 'TwoFactorController@resend')->name('twoFactor.resend');
     }
+});
+
+// Route::get('/frontpage',[FrontendController::class,'show']);
+// Route::get('/frontpage', 'FrontendController@show')->name('frontpage');
+
+// Route::get('frontpage','App\Http\Controllers\FrontendController@show');
+
+Route::get('/', function () {
+    return view('welcome');
 });
