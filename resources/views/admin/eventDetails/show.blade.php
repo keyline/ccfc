@@ -44,11 +44,27 @@
                             {{ trans('cruds.eventDetail.fields.event_image') }}
                         </th>
                         <td>
-                            @foreach($eventDetail->event_image as $key => $media)
-                                <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $media->getUrl('thumb') }}">
+                            @if($eventDetail->event_image)
+                                <a href="{{ $eventDetail->event_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $eventDetail->event_image->getUrl('thumb') }}">
                                 </a>
-                            @endforeach
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.eventDetail.fields.event_date') }}
+                        </th>
+                        <td>
+                            {{ $eventDetail->event_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.eventDetail.fields.gallery') }}
+                        </th>
+                        <td>
+                            {{ $eventDetail->gallery->gallery_name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

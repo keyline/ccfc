@@ -79,6 +79,18 @@
                             {!! $reciprocalClub->details !!}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.reciprocalClub.fields.club_image') }}
+                        </th>
+                        <td>
+                            @if($reciprocalClub->club_image)
+                                <a href="{{ $reciprocalClub->club_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $reciprocalClub->club_image->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

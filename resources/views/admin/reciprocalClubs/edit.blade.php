@@ -67,6 +67,15 @@
                 <span class="help-block">{{ trans('cruds.reciprocalClub.fields.details_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="club_image">{{ trans('cruds.reciprocalClub.fields.club_image') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('club_image') ? 'is-invalid' : '' }}" id="club_image-dropzone">
+                </div>
+                @if($errors->has('club_image'))
+                    <span class="text-danger">{{ $errors->first('club_image') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.reciprocalClub.fields.club_image_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -144,4 +153,58 @@
 });
 </script>
 
+<script>
+    Dropzone.options.clubImageDropzone = {
+    url: '{{ route('admin.reciprocal-clubs.storeMedia') }}',
+    maxFilesize: 1, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 1,
+      width: 4096,
+      height: 4096
+    },
+    success: function (file, response) {
+      $('form').find('input[name="club_image"]').remove()
+      $('form').append('<input type="hidden" name="club_image" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="club_image"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($reciprocalClub) && $reciprocalClub->club_image)
+      var file = {!! json_encode($reciprocalClub->club_image) !!}
+          this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, file.preview)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="club_image" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
+
+        return _results
+    }
+}
+</script>
 @endsection
