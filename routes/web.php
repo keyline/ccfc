@@ -73,6 +73,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Past President
     Route::delete('past-presidents/destroy', 'PastPresidentController@massDestroy')->name('past-presidents.massDestroy');
+    Route::post('past-presidents/media', 'PastPresidentController@storeMedia')->name('past-presidents.storeMedia');
+    Route::post('past-presidents/ckmedia', 'PastPresidentController@storeCKEditorImages')->name('past-presidents.storeCKEditorImages');
     Route::resource('past-presidents', 'PastPresidentController');
 
     // Trophies
@@ -106,6 +108,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Members
     Route::delete('members/destroy', 'MembersController@massDestroy')->name('members.massDestroy');
     Route::resource('members', 'MembersController');
+
+    // Payments
+    Route::delete('payments/destroy', 'PaymentsController@massDestroy')->name('payments.massDestroy');
+    Route::resource('payments', 'PaymentsController');
+
+    // Test
+    Route::delete('tests/destroy', 'TestController@massDestroy')->name('tests.massDestroy');
+    Route::resource('tests', 'TestController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
