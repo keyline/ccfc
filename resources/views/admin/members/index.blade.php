@@ -35,9 +35,12 @@
                             {{ trans('cruds.member.fields.select_title') }}
                         </th>
                         <th>
+<<<<<<< HEAD
                             {{ trans('cruds.member.fields.select_sport') }}
                         </th>
                         <th>
+=======
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
                             &nbsp;
                         </th>
                     </tr>
@@ -61,9 +64,12 @@
                                 {{ $member->select_title->titles ?? '' }}
                             </td>
                             <td>
+<<<<<<< HEAD
                                 {{ $member->select_sport->sport_name ?? '' }}
                             </td>
                             <td>
+=======
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
                                 @can('member_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.members.show', $member->id) }}">
                                         {{ trans('global.view') }}

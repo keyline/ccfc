@@ -34,6 +34,7 @@
                 <span class="help-block">{{ trans('cruds.member.fields.select_title_helper') }}</span>
             </div>
             <div class="form-group">
+<<<<<<< HEAD
                 <label class="required" for="select_sport_id">{{ trans('cruds.member.fields.select_sport') }}</label>
                 <select class="form-control select2 {{ $errors->has('select_sport') ? 'is-invalid' : '' }}" name="select_sport_id" id="select_sport_id" required>
                     @foreach($select_sports as $id => $entry)
@@ -46,6 +47,8 @@
                 <span class="help-block">{{ trans('cruds.member.fields.select_sport_helper') }}</span>
             </div>
             <div class="form-group">
+=======
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

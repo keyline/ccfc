@@ -39,6 +39,7 @@
                             {{ $member->select_title->titles ?? '' }}
                         </td>
                     </tr>
+<<<<<<< HEAD
                     <tr>
                         <th>
                             {{ trans('cruds.member.fields.select_sport') }}
@@ -47,6 +48,8 @@
                             {{ $member->select_sport->sport_name ?? '' }}
                         </td>
                     </tr>
+=======
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
                 </tbody>
             </table>
             <div class="form-group">

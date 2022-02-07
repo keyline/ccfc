@@ -25,10 +25,13 @@ class UpdateMemberRequest extends FormRequest
                 'required',
                 'integer',
             ],
+<<<<<<< HEAD
             'select_sport_id' => [
                 'required',
                 'integer',
             ],
+=======
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
         ];
     }
 }

@@ -23,7 +23,10 @@ class Member extends Model
     protected $fillable = [
         'select_member_id',
         'select_title_id',
+<<<<<<< HEAD
         'select_sport_id',
+=======
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
         'created_at',
         'updated_at',
         'deleted_at',
@@ -39,11 +42,14 @@ class Member extends Model
         return $this->belongsTo(Title::class, 'select_title_id');
     }
 
+<<<<<<< HEAD
     public function select_sport()
     {
         return $this->belongsTo(Sportstype::class, 'select_sport_id');
     }
 
+=======
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

@@ -7,7 +7,10 @@ use App\Http\Requests\MassDestroyMemberRequest;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
 use App\Models\Member;
+<<<<<<< HEAD
 use App\Models\Sportstype;
+=======
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
 use App\Models\Title;
 use App\Models\User;
 use Gate;
@@ -20,7 +23,11 @@ class MembersController extends Controller
     {
         abort_if(Gate::denies('member_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+<<<<<<< HEAD
         $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
+=======
+        $members = Member::with(['select_member', 'select_title'])->get();
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
 
         return view('admin.members.index', compact('members'));
     }
@@ -33,9 +40,13 @@ class MembersController extends Controller
 
         $select_titles = Title::pluck('titles', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+<<<<<<< HEAD
         $select_sports = Sportstype::pluck('sport_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.members.create', compact('select_members', 'select_sports', 'select_titles'));
+=======
+        return view('admin.members.create', compact('select_members', 'select_titles'));
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
     }
 
     public function store(StoreMemberRequest $request)
@@ -53,11 +64,17 @@ class MembersController extends Controller
 
         $select_titles = Title::pluck('titles', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+<<<<<<< HEAD
         $select_sports = Sportstype::pluck('sport_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $member->load('select_member', 'select_title', 'select_sport');
 
         return view('admin.members.edit', compact('member', 'select_members', 'select_sports', 'select_titles'));
+=======
+        $member->load('select_member', 'select_title');
+
+        return view('admin.members.edit', compact('member', 'select_members', 'select_titles'));
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
     }
 
     public function update(UpdateMemberRequest $request, Member $member)
@@ -71,7 +88,11 @@ class MembersController extends Controller
     {
         abort_if(Gate::denies('member_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+<<<<<<< HEAD
         $member->load('select_member', 'select_title', 'select_sport');
+=======
+        $member->load('select_member', 'select_title');
+>>>>>>> origin/quickadminpanel_2022_02_04_04_54_33
 
         return view('admin.members.show', compact('member'));
     }
