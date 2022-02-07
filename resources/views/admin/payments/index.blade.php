@@ -1,44 +1,41 @@
 @extends('layouts.admin')
 @section('content')
-@can('event_detail_create')
+@can('payment_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.event-details.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.eventDetail.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.payments.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.payment.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.eventDetail.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.payment.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-EventDetail">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Payment">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.id') }}
+                            {{ trans('cruds.payment.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.event_title') }}
+                            {{ trans('cruds.payment.fields.member') }}
                         </th>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.event_image') }}
+                            {{ trans('cruds.payment.fields.amount_paid') }}
                         </th>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.event_date') }}
+                            {{ trans('cruds.payment.fields.gateway_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.gallery') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.gallery.fields.gallery_type') }}
+                            {{ trans('cruds.payment.fields.comment') }}
                         </th>
                         <th>
                             &nbsp;
@@ -46,50 +43,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($eventDetails as $key => $eventDetail)
-                        <tr data-entry-id="{{ $eventDetail->id }}">
+                    @foreach($payments as $key => $payment)
+                        <tr data-entry-id="{{ $payment->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $eventDetail->id ?? '' }}
+                                {{ $payment->id ?? '' }}
                             </td>
                             <td>
-                                {{ $eventDetail->event_title ?? '' }}
+                                {{ $payment->member->name ?? '' }}
                             </td>
                             <td>
-                                @if($eventDetail->event_image)
-                                    <a href="{{ $eventDetail->event_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $eventDetail->event_image->getUrl('thumb') }}">
-                                    </a>
-                                @endif
+                                {{ $payment->amount_paid ?? '' }}
                             </td>
                             <td>
-                                {{ $eventDetail->event_date ?? '' }}
+                                {{ $payment->gateway_name ?? '' }}
                             </td>
                             <td>
-                                {{ $eventDetail->gallery->gallery_name ?? '' }}
+                                {{ $payment->comment ?? '' }}
                             </td>
                             <td>
-                                @if($eventDetail->gallery)
-                                    {{ $eventDetail->gallery::GALLERY_TYPE_SELECT[$eventDetail->gallery->gallery_type] ?? '' }}
-                                @endif
-                            </td>
-                            <td>
-                                @can('event_detail_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.event-details.show', $eventDetail->id) }}">
+                                @can('payment_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.payments.show', $payment->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('event_detail_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.event-details.edit', $eventDetail->id) }}">
+                                @can('payment_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.payments.edit', $payment->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('event_detail_delete')
-                                    <form action="{{ route('admin.event-details.destroy', $eventDetail->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('payment_delete')
+                                    <form action="{{ route('admin.payments.destroy', $payment->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -114,11 +102,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('event_detail_delete')
+@can('payment_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.event-details.massDestroy') }}",
+    url: "{{ route('admin.payments.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -149,7 +137,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-EventDetail:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Payment:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

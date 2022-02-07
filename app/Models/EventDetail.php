@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use \DateTimeInterface;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,6 +24,7 @@ class EventDetail extends Model implements HasMedia
     ];
 
     protected $dates = [
+        'event_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -31,6 +33,8 @@ class EventDetail extends Model implements HasMedia
     protected $fillable = [
         'event_title',
         'event_details',
+        'event_date',
+        'gallery_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -44,14 +48,29 @@ class EventDetail extends Model implements HasMedia
 
     public function getEventImageAttribute()
     {
-        $files = $this->getMedia('event_image');
-        $files->each(function ($item) {
-            $item->url = $item->getUrl();
-            $item->thumbnail = $item->getUrl('thumb');
-            $item->preview = $item->getUrl('preview');
-        });
+        $file = $this->getMedia('event_image')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
 
-        return $files;
+        return $file;
+    }
+
+    public function getEventDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setEventDateAttribute($value)
+    {
+        $this->attributes['event_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function gallery()
+    {
+        return $this->belongsTo(Gallery::class, 'gallery_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)
