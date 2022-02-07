@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.member.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.payment.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.members.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.payments.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,40 +17,48 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.member.fields.id') }}
+                            {{ trans('cruds.payment.fields.id') }}
                         </th>
                         <td>
-                            {{ $member->id }}
+                            {{ $payment->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.member.fields.select_member') }}
+                            {{ trans('cruds.payment.fields.member') }}
                         </th>
                         <td>
-                            {{ $member->select_member->name ?? '' }}
+                            {{ $payment->member->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.member.fields.select_title') }}
+                            {{ trans('cruds.payment.fields.amount_paid') }}
                         </th>
                         <td>
-                            {{ $member->select_title->titles ?? '' }}
+                            {{ $payment->amount_paid }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.member.fields.select_sport') }}
+                            {{ trans('cruds.payment.fields.gateway_name') }}
                         </th>
                         <td>
-                            {{ $member->select_sport->sport_name ?? '' }}
+                            {{ $payment->gateway_name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.payment.fields.comment') }}
+                        </th>
+                        <td>
+                            {{ $payment->comment }}
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.members.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.payments.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

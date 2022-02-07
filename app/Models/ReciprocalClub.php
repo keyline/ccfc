@@ -18,6 +18,10 @@ class ReciprocalClub extends Model implements HasMedia
 
     public $table = 'reciprocal_clubs';
 
+    protected $appends = [
+        'club_image',
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -41,6 +45,18 @@ class ReciprocalClub extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
+    }
+
+    public function getClubImageAttribute()
+    {
+        $file = $this->getMedia('club_image')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
     }
 
     protected function serializeDate(DateTimeInterface $date)

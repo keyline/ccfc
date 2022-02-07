@@ -35,6 +35,18 @@
                 <span class="help-block">{{ trans('cruds.member.fields.select_title_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="select_sport_id">{{ trans('cruds.member.fields.select_sport') }}</label>
+                <select class="form-control select2 {{ $errors->has('select_sport') ? 'is-invalid' : '' }}" name="select_sport_id" id="select_sport_id" required>
+                    @foreach($select_sports as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('select_sport_id') ? old('select_sport_id') : $member->select_sport->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('select_sport'))
+                    <span class="text-danger">{{ $errors->first('select_sport') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.member.fields.select_sport_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

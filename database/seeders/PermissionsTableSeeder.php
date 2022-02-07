@@ -408,6 +408,54 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 100,
+                'title' => 'billing_access',
+            ],
+            [
+                'id'    => 101,
+                'title' => 'payment_create',
+            ],
+            [
+                'id'    => 102,
+                'title' => 'payment_edit',
+            ],
+            [
+                'id'    => 103,
+                'title' => 'payment_show',
+            ],
+            [
+                'id'    => 104,
+                'title' => 'payment_delete',
+            ],
+            [
+                'id'    => 105,
+                'title' => 'payment_access',
+            ],
+            [
+                'id'    => 106,
+                'title' => 'test_create',
+            ],
+            [
+                'id'    => 107,
+                'title' => 'test_edit',
+            ],
+            [
+                'id'    => 108,
+                'title' => 'test_show',
+            ],
+            [
+                'id'    => 109,
+                'title' => 'test_delete',
+            ],
+            [
+                'id'    => 110,
+                'title' => 'test_access',
+            ],
+            [
+                'id'    => 111,
+                'title' => 'static_page_management_access',
+            ],
+            [
+                'id'    => 112,
                 'title' => 'profile_password_edit',
             ],
         ];

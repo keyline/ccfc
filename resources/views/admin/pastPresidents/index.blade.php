@@ -35,6 +35,9 @@
                             {{ trans('cruds.pastPresident.fields.short_order') }}
                         </th>
                         <th>
+                            {{ trans('cruds.pastPresident.fields.image') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -56,6 +59,13 @@
                             </td>
                             <td>
                                 {{ $pastPresident->short_order ?? '' }}
+                            </td>
+                            <td>
+                                @if($pastPresident->image)
+                                    <a href="{{ $pastPresident->image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $pastPresident->image->getUrl('thumb') }}">
+                                    </a>
+                                @endif
                             </td>
                             <td>
                                 @can('past_president_show')

@@ -21,8 +21,9 @@ class UpdateEventDetailRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'event_image' => [
-                'array',
+            'event_date' => [
+                'required',
+                'date_format:' . config('panel.date_format'),
             ],
         ];
     }
