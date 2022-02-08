@@ -1,53 +1,44 @@
 @extends('layouts.admin')
 @section('content')
-@can('reciprocal_club_create')
+@can('payment_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.reciprocal-clubs.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.reciprocalClub.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.payments.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.payment.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.reciprocalClub.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.payment.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-ReciprocalClub">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Payment">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.reciprocalClub.fields.id') }}
+                            {{ trans('cruds.payment.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.reciprocalClub.fields.reciprocal_club_name') }}
+                            {{ trans('cruds.payment.fields.member') }}
                         </th>
                         <th>
-                            {{ trans('cruds.reciprocalClub.fields.address_1') }}
+                            {{ trans('cruds.payment.fields.amount_paid') }}
                         </th>
                         <th>
-                            {{ trans('cruds.reciprocalClub.fields.address_2') }}
+                            {{ trans('cruds.payment.fields.gateway_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.reciprocalClub.fields.phone') }}
+                            {{ trans('cruds.payment.fields.comment') }}
                         </th>
                         <th>
-                            {{ trans('cruds.reciprocalClub.fields.email') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.reciprocalClub.fields.website') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.reciprocalClub.fields.club_image') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.reciprocalClub.fields.cub_type') }}
+                            {{ trans('cruds.payment.fields.status') }}
                         </th>
                         <th>
                             &nbsp;
@@ -55,57 +46,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($reciprocalClubs as $key => $reciprocalClub)
-                        <tr data-entry-id="{{ $reciprocalClub->id }}">
+                    @foreach($payments as $key => $payment)
+                        <tr data-entry-id="{{ $payment->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $reciprocalClub->id ?? '' }}
+                                {{ $payment->id ?? '' }}
                             </td>
                             <td>
-                                {{ $reciprocalClub->reciprocal_club_name ?? '' }}
+                                {{ $payment->member->name ?? '' }}
                             </td>
                             <td>
-                                {{ $reciprocalClub->address_1 ?? '' }}
+                                {{ $payment->amount_paid ?? '' }}
                             </td>
                             <td>
-                                {{ $reciprocalClub->address_2 ?? '' }}
+                                {{ $payment->gateway_name ?? '' }}
                             </td>
                             <td>
-                                {{ $reciprocalClub->phone ?? '' }}
+                                {{ $payment->comment ?? '' }}
                             </td>
                             <td>
-                                {{ $reciprocalClub->email ?? '' }}
+                                <span style="display:none">{{ $payment->status ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $payment->status ? 'checked' : '' }}>
                             </td>
                             <td>
-                                {{ $reciprocalClub->website ?? '' }}
-                            </td>
-                            <td>
-                                @if($reciprocalClub->club_image)
-                                    <a href="{{ $reciprocalClub->club_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $reciprocalClub->club_image->getUrl('thumb') }}">
-                                    </a>
-                                @endif
-                            </td>
-                            <td>
-                                {{ App\Models\ReciprocalClub::CUB_TYPE_RADIO[$reciprocalClub->cub_type] ?? '' }}
-                            </td>
-                            <td>
-                                @can('reciprocal_club_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.reciprocal-clubs.show', $reciprocalClub->id) }}">
+                                @can('payment_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.payments.show', $payment->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('reciprocal_club_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.reciprocal-clubs.edit', $reciprocalClub->id) }}">
+                                @can('payment_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.payments.edit', $payment->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('reciprocal_club_delete')
-                                    <form action="{{ route('admin.reciprocal-clubs.destroy', $reciprocalClub->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('payment_delete')
+                                    <form action="{{ route('admin.payments.destroy', $payment->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -130,11 +109,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('reciprocal_club_delete')
+@can('payment_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.reciprocal-clubs.massDestroy') }}",
+    url: "{{ route('admin.payments.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -165,7 +144,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-ReciprocalClub:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Payment:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

@@ -12,6 +12,7 @@ class CreateEventDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->string('event_title');
             $table->longText('event_details')->nullable();
+            $table->date('event_date');
             $table->timestamps();
             $table->softDeletes();
         });

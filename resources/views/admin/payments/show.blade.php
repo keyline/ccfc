@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.eventDetail.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.payment.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.event-details.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.payments.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,60 +17,56 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.id') }}
+                            {{ trans('cruds.payment.fields.id') }}
                         </th>
                         <td>
-                            {{ $eventDetail->id }}
+                            {{ $payment->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.event_title') }}
+                            {{ trans('cruds.payment.fields.member') }}
                         </th>
                         <td>
-                            {{ $eventDetail->event_title }}
+                            {{ $payment->member->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.event_details') }}
+                            {{ trans('cruds.payment.fields.amount_paid') }}
                         </th>
                         <td>
-                            {!! $eventDetail->event_details !!}
+                            {{ $payment->amount_paid }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.event_image') }}
+                            {{ trans('cruds.payment.fields.gateway_name') }}
                         </th>
                         <td>
-                            @if($eventDetail->event_image)
-                                <a href="{{ $eventDetail->event_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $eventDetail->event_image->getUrl('thumb') }}">
-                                </a>
-                            @endif
+                            {{ $payment->gateway_name }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.event_date') }}
+                            {{ trans('cruds.payment.fields.comment') }}
                         </th>
                         <td>
-                            {{ $eventDetail->event_date }}
+                            {{ $payment->comment }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.eventDetail.fields.gallery') }}
+                            {{ trans('cruds.payment.fields.status') }}
                         </th>
                         <td>
-                            {{ $eventDetail->gallery->gallery_name ?? '' }}
+                            <input type="checkbox" disabled="disabled" {{ $payment->status ? 'checked' : '' }}>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.event-details.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.payments.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

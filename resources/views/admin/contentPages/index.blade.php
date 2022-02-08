@@ -41,6 +41,9 @@
                             {{ trans('cruds.contentPage.fields.featured_image') }}
                         </th>
                         <th>
+                            {{ trans('cruds.contentPage.fields.gallery') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -76,6 +79,9 @@
                                         <img src="{{ $contentPage->featured_image->getUrl('thumb') }}">
                                     </a>
                                 @endif
+                            </td>
+                            <td>
+                                {{ $contentPage->gallery->gallery_name ?? '' }}
                             </td>
                             <td>
                                 @can('content_page_show')

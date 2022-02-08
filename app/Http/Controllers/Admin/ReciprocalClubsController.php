@@ -21,7 +21,7 @@ class ReciprocalClubsController extends Controller
     {
         abort_if(Gate::denies('reciprocal_club_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $reciprocalClubs = ReciprocalClub::all();
+        $reciprocalClubs = ReciprocalClub::with(['media'])->get();
 
         return view('admin.reciprocalClubs.index', compact('reciprocalClubs'));
     }
@@ -36,6 +36,10 @@ class ReciprocalClubsController extends Controller
     public function store(StoreReciprocalClubRequest $request)
     {
         $reciprocalClub = ReciprocalClub::create($request->all());
+
+        if ($request->input('club_image', false)) {
+            $reciprocalClub->addMedia(storage_path('tmp/uploads/' . basename($request->input('club_image'))))->toMediaCollection('club_image');
+        }
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $reciprocalClub->id]);
@@ -54,6 +58,17 @@ class ReciprocalClubsController extends Controller
     public function update(UpdateReciprocalClubRequest $request, ReciprocalClub $reciprocalClub)
     {
         $reciprocalClub->update($request->all());
+
+        if ($request->input('club_image', false)) {
+            if (!$reciprocalClub->club_image || $request->input('club_image') !== $reciprocalClub->club_image->file_name) {
+                if ($reciprocalClub->club_image) {
+                    $reciprocalClub->club_image->delete();
+                }
+                $reciprocalClub->addMedia(storage_path('tmp/uploads/' . basename($request->input('club_image'))))->toMediaCollection('club_image');
+            }
+        } elseif ($reciprocalClub->club_image) {
+            $reciprocalClub->club_image->delete();
+        }
 
         return redirect()->route('admin.reciprocal-clubs.index');
     }
