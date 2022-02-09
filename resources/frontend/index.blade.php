@@ -465,20 +465,26 @@
                                                         Reciprocal Club
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="club-inner">
+                                                   
                                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Indian</a>
+                                                            <a class="nav-link active" id="indian-tab" data-toggle="tab" href="#indian" role="tab" aria-controls="indian" aria-selected="true">Indian</a>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Overseas</a>
+                                                            <a class="nav-link" id="overseas-tab" data-toggle="tab" href="#overseas" role="tab" aria-controls="overseas" aria-selected="false">Overseas</a>
                                                         </li>
                                                     </ul>
                                                     <div class="tab-content" id="myTabContent">
-                                                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                                        <div class="tab-pane fade show active" id="indian" role="tabpanel" aria-labelledby="indian-tab">
                                                             <div class="club-info">
                                                                 <div id=owldemo5 class="owl-carousel owl-theme">
-                                                                @foreach($reciprocalClubs as $key => $reciprocalClub)
+                                                                     
+                                                               
+
+                                                                    @foreach($reciprocalClubs->where("cub_type","indian") as $key => $reciprocalClub)
+
                                                                     <div class="item">
                                                                     
                                                                         <div class="club-body">
@@ -498,73 +504,19 @@
                                                                        
                                                                     </div>
                                                                     @endforeach
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-2.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Madras Boat Club
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-3.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Bombay Gymkhana Ltd.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-4.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                The Coonoor Club
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-5.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Cochin Club
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-6.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Wellington Gymkhana Club
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-7.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Bombay Gymkhana Ltd.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
+
+
+
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                                        <div class="tab-pane fade" id="overseas" role="tabpanel" aria-labelledby="overseas-tab">
                                                             <div class="club-info">
                                                                 <div id=owldemo6 class="owl-carousel owl-theme">
-                                                                @foreach($reciprocalClubs as $key => $reciprocalClub)
+                                                                
+
+                                                                @foreach($reciprocalClubs->where("cub_type","overseas") as $key => $reciprocalClub)
 
                                                                 <div class="item">
                                                                     
@@ -588,77 +540,8 @@
 
 
 
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Madras Cricket Club
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-2.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Madras Boat Club
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-3.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Bombay Gymkhana Ltd.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-4.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                The Coonoor Club
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-5.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Cochin Club
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-6.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Wellington Gymkhana Club
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
-                                                                    <!-- <div class="item">
-                                                                        <div class="club-body">
-                                                                            <div class="club-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/club-7.png') }}" alt="">
-                                                                            </div>
-                                                                            <div class="club-title">
-                                                                                Bombay Gymkhana Ltd.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
+                                                                    
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
