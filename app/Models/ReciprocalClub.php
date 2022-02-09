@@ -37,6 +37,7 @@ class ReciprocalClub extends Model implements HasMedia
         'reciprocal_club_name',
         'address_1',
         'address_2',
+        'image',
         'phone',
         'email',
         'website',

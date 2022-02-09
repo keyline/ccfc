@@ -37,6 +37,8 @@ class ReciprocalClubsController extends Controller
     {
         $reciprocalClub = ReciprocalClub::create($request->all());
 
+        // $reciprocalClub -> addMediaFromRequest('club_image')->toMediaCollection('ck-media');
+
         if ($request->input('club_image', false)) {
             $reciprocalClub->addMedia(storage_path('tmp/uploads/' . basename($request->input('club_image'))))->toMediaCollection('club_image');
         }

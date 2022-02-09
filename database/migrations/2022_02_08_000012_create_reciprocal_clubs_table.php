@@ -11,6 +11,7 @@ class CreateReciprocalClubsTable extends Migration
         Schema::create('reciprocal_clubs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('reciprocal_club_name');
+            $table->string('image')->nullable();
             $table->string('address_1')->nullable();
             $table->string('address_2')->nullable();
             $table->string('phone')->nullable();
