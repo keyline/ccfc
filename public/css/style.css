@@ -110,6 +110,7 @@ span {
 .ccfc-body .header{
     position: sticky;
     top: 0px;
+    z-index: 999;
 }
 .ccfc-body .header .top-header .brand {
     padding: 18px 0px;
