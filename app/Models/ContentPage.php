@@ -32,6 +32,7 @@ class ContentPage extends Model implements HasMedia
         'title',
         'page_text',
         'excerpt',
+        'gallery_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -63,6 +64,11 @@ class ContentPage extends Model implements HasMedia
         }
 
         return $file;
+    }
+
+    public function gallery()
+    {
+        return $this->belongsTo(Gallery::class, 'gallery_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

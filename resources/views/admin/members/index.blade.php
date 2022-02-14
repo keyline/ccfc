@@ -35,6 +35,9 @@
                             {{ trans('cruds.member.fields.select_title') }}
                         </th>
                         <th>
+                            {{ trans('cruds.member.fields.select_sport') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -56,6 +59,9 @@
                             </td>
                             <td>
                                 {{ $member->select_title->titles ?? '' }}
+                            </td>
+                            <td>
+                                {{ $member->select_sport->sport_name ?? '' }}
                             </td>
                             <td>
                                 @can('member_show')

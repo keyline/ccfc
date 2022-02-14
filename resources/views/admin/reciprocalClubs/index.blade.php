@@ -44,6 +44,12 @@
                             {{ trans('cruds.reciprocalClub.fields.website') }}
                         </th>
                         <th>
+                            {{ trans('cruds.reciprocalClub.fields.club_image') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.reciprocalClub.fields.cub_type') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -74,6 +80,16 @@
                             </td>
                             <td>
                                 {{ $reciprocalClub->website ?? '' }}
+                            </td>
+                            <td>
+                                @if($reciprocalClub->club_image)
+                                    <a href="{{ $reciprocalClub->club_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $reciprocalClub->club_image->getUrl('thumb') }}">
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                {{ App\Models\ReciprocalClub::CUB_TYPE_RADIO[$reciprocalClub->cub_type] ?? '' }}
                             </td>
                             <td>
                                 @can('reciprocal_club_show')

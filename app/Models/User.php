@@ -42,6 +42,7 @@ class User extends Authenticatable
         'two_factor_code',
         'remember_token',
         'created_at',
+        'user_code',
         'updated_at',
         'deleted_at',
         'two_factor_expires_at',

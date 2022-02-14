@@ -27,6 +27,10 @@ class ReciprocalClubsApiController extends Controller
     {
         $reciprocalClub = ReciprocalClub::create($request->all());
 
+        if ($request->input('club_image', false)) {
+            $reciprocalClub->addMedia(storage_path('tmp/uploads/' . basename($request->input('club_image'))))->toMediaCollection('club_image');
+        }
+
         return (new ReciprocalClubResource($reciprocalClub))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
@@ -42,6 +46,17 @@ class ReciprocalClubsApiController extends Controller
     public function update(UpdateReciprocalClubRequest $request, ReciprocalClub $reciprocalClub)
     {
         $reciprocalClub->update($request->all());
+
+        if ($request->input('club_image', false)) {
+            if (!$reciprocalClub->club_image || $request->input('club_image') !== $reciprocalClub->club_image->file_name) {
+                if ($reciprocalClub->club_image) {
+                    $reciprocalClub->club_image->delete();
+                }
+                $reciprocalClub->addMedia(storage_path('tmp/uploads/' . basename($request->input('club_image'))))->toMediaCollection('club_image');
+            }
+        } elseif ($reciprocalClub->club_image) {
+            $reciprocalClub->club_image->delete();
+        }
 
         return (new ReciprocalClubResource($reciprocalClub))
             ->response()
