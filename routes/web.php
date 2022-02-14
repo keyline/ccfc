@@ -150,3 +150,6 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
 });
 
 Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
+Route::get('/history', function () {
+    return view('history');
+});
