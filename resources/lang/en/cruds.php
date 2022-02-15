@@ -417,7 +417,6 @@ return [
             'deleted_at_helper'    => ' ',
             'select_sport'         => 'Select Sport',
             'select_sport_helper'  => ' ',
-<<<<<<< HEAD
         ],
     ],
     'billing' => [
@@ -466,40 +465,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
-=======
->>>>>>> quickadminpanel_2022_02_08_01_14_55
         ],
     ],
-    'billing' => [
-        'title'          => 'Billing',
-        'title_singular' => 'Billing',
-    ],
-    'payment' => [
-        'title'          => 'Payment details',
-        'title_singular' => 'Payment detail',
-        'fields'         => [
-            'id'                  => 'ID',
-            'id_helper'           => ' ',
-            'member'              => 'Member',
-            'member_helper'       => ' ',
-            'amount_paid'         => 'Amount Paid',
-            'amount_paid_helper'  => ' ',
-            'gateway_name'        => 'Gateway Name',
-            'gateway_name_helper' => ' ',
-            'comment'             => 'Comment',
-            'comment_helper'      => ' ',
-            'created_at'          => 'Created at',
-            'created_at_helper'   => ' ',
-            'updated_at'          => 'Updated at',
-            'updated_at_helper'   => ' ',
-            'deleted_at'          => 'Deleted at',
-            'deleted_at_helper'   => ' ',
-            'status'              => 'Status update',
-            'status_helper'       => ' ',
-        ],
-    ],
-    'staticPageManagement' => [
-        'title'          => 'Static Page Management',
-        'title_singular' => 'Static Page Management',
-    ],
+    
+    
 ];
