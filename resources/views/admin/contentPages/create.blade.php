@@ -75,6 +75,18 @@
                 <span class="help-block">{{ trans('cruds.contentPage.fields.featured_image_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="gallery_id">{{ trans('cruds.contentPage.fields.gallery') }}</label>
+                <select class="form-control select2 {{ $errors->has('gallery') ? 'is-invalid' : '' }}" name="gallery_id" id="gallery_id">
+                    @foreach($galleries as $id => $entry)
+                        <option value="{{ $id }}" {{ old('gallery_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('gallery'))
+                    <span class="text-danger">{{ $errors->first('gallery') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.contentPage.fields.gallery_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

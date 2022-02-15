@@ -25,6 +25,10 @@ class StoreMemberRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'select_sport_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

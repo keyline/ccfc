@@ -41,6 +41,9 @@ class UpdateReciprocalClubRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'cub_type' => [
+                'required',
+            ],
         ];
     }
 }

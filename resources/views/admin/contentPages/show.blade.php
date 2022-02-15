@@ -79,6 +79,14 @@
                             @endif
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.contentPage.fields.gallery') }}
+                        </th>
+                        <td>
+                            {{ $contentPage->gallery->gallery_name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

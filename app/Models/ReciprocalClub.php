@@ -16,7 +16,16 @@ class ReciprocalClub extends Model implements HasMedia
     use InteractsWithMedia;
     use HasFactory;
 
+    public const CUB_TYPE_RADIO = [
+        'indian'   => 'Indian',
+        'overseas' => 'Overseas',
+    ];
+
     public $table = 'reciprocal_clubs';
+
+    protected $appends = [
+        'club_image',
+    ];
 
     protected $dates = [
         'created_at',
@@ -32,6 +41,7 @@ class ReciprocalClub extends Model implements HasMedia
         'email',
         'website',
         'details',
+        'cub_type',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -41,6 +51,18 @@ class ReciprocalClub extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
+    }
+
+    public function getClubImageAttribute()
+    {
+        $file = $this->getMedia('club_image')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
     }
 
     protected function serializeDate(DateTimeInterface $date)

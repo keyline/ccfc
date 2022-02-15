@@ -41,6 +41,10 @@ class SportstypeController extends Controller
             $sportstype->addMedia(storage_path('tmp/uploads/' . basename($request->input('icon'))))->toMediaCollection('icon');
         }
 
+        if ($request->input('featured_image', false)) {
+            $sportstype->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+        }
+
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $sportstype->id]);
         }
@@ -68,6 +72,17 @@ class SportstypeController extends Controller
             }
         } elseif ($sportstype->icon) {
             $sportstype->icon->delete();
+        }
+
+        if ($request->input('featured_image', false)) {
+            if (!$sportstype->featured_image || $request->input('featured_image') !== $sportstype->featured_image->file_name) {
+                if ($sportstype->featured_image) {
+                    $sportstype->featured_image->delete();
+                }
+                $sportstype->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+            }
+        } elseif ($sportstype->featured_image) {
+            $sportstype->featured_image->delete();
         }
 
         return redirect()->route('admin.sportstypes.index');

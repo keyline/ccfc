@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateContentPageRequest;
 use App\Models\ContentCategory;
 use App\Models\ContentPage;
 use App\Models\ContentTag;
+use App\Models\Gallery;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -23,7 +24,7 @@ class ContentPageController extends Controller
     {
         abort_if(Gate::denies('content_page_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentPages = ContentPage::with(['categories', 'tags', 'media'])->get();
+        $contentPages = ContentPage::with(['categories', 'tags', 'gallery', 'media'])->get();
 
         return view('admin.contentPages.index', compact('contentPages'));
     }
@@ -36,7 +37,9 @@ class ContentPageController extends Controller
 
         $tags = ContentTag::pluck('name', 'id');
 
-        return view('admin.contentPages.create', compact('categories', 'tags'));
+        $galleries = Gallery::pluck('gallery_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.contentPages.create', compact('categories', 'galleries', 'tags'));
     }
 
     public function store(StoreContentPageRequest $request)
@@ -63,9 +66,11 @@ class ContentPageController extends Controller
 
         $tags = ContentTag::pluck('name', 'id');
 
-        $contentPage->load('categories', 'tags');
+        $galleries = Gallery::pluck('gallery_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.contentPages.edit', compact('categories', 'contentPage', 'tags'));
+        $contentPage->load('categories', 'tags', 'gallery');
+
+        return view('admin.contentPages.edit', compact('categories', 'contentPage', 'galleries', 'tags'));
     }
 
     public function update(UpdateContentPageRequest $request, ContentPage $contentPage)
@@ -91,7 +96,7 @@ class ContentPageController extends Controller
     {
         abort_if(Gate::denies('content_page_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentPage->load('categories', 'tags');
+        $contentPage->load('categories', 'tags', 'gallery');
 
         return view('admin.contentPages.show', compact('contentPage'));
     }

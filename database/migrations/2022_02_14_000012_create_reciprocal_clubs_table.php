@@ -17,6 +17,7 @@ class CreateReciprocalClubsTable extends Migration
             $table->string('email')->nullable();
             $table->string('website')->nullable();
             $table->longText('details')->nullable();
+            $table->string('cub_type');
             $table->timestamps();
             $table->softDeletes();
         });

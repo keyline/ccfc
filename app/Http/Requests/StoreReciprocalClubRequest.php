@@ -41,6 +41,9 @@ class StoreReciprocalClubRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'cub_type' => [
+                'required',
+            ],
         ];
     }
 }

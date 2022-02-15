@@ -39,6 +39,14 @@
                             {{ $member->select_title->titles ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.member.fields.select_sport') }}
+                        </th>
+                        <td>
+                            {{ $member->select_sport->sport_name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
