@@ -4,14 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNewssTable extends Migration
+class CreateContentPagesTable extends Migration
 {
     public function up()
     {
-        Schema::create('newss', function (Blueprint $table) {
+        Schema::create('content_pages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('news_title');
-            $table->longText('news_details')->nullable();
+            $table->string('title')->nullable();
+            $table->longText('page_text')->nullable();
+            $table->longText('excerpt')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

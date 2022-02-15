@@ -436,6 +436,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 107,
+                'title' => 'user_detail_create',
+            ],
+            [
+                'id'    => 108,
+                'title' => 'user_detail_edit',
+            ],
+            [
+                'id'    => 109,
+                'title' => 'user_detail_show',
+            ],
+            [
+                'id'    => 110,
+                'title' => 'user_detail_delete',
+            ],
+            [
+                'id'    => 111,
+                'title' => 'user_detail_access',
+            ],
+            [
+                'id'    => 112,
                 'title' => 'profile_password_edit',
             ],
         ];

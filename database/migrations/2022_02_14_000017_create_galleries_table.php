@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNewssTable extends Migration
+class CreateGalleriesTable extends Migration
 {
     public function up()
     {
-        Schema::create('newss', function (Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('news_title');
-            $table->longText('news_details')->nullable();
+            $table->string('gallery_name');
+            $table->string('gallery_type');
             $table->timestamps();
             $table->softDeletes();
         });

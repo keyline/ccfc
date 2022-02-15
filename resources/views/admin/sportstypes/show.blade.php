@@ -43,6 +43,18 @@
                             @endif
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.sportstype.fields.featured_image') }}
+                        </th>
+                        <td>
+                            @if($sportstype->featured_image)
+                                <a href="{{ $sportstype->featured_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $sportstype->featured_image->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
