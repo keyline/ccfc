@@ -48,7 +48,7 @@
                     </li>
                 @endcan
                 @can('content_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/event-details*") ? "menu-open" : "" }} {{ request()->is("admin/news*") ? "menu-open" : "" }} {{ request()->is("admin/reciprocal-clubs*") ? "menu-open" : "" }} {{ request()->is("admin/sportsmen*") ? "menu-open" : "" }} {{ request()->is("admin/past-presidents*") ? "menu-open" : "" }} {{ request()->is("admin/trophies*") ? "menu-open" : "" }} {{ request()->is("admin/amenities-services*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/event-details*") ? "menu-open" : "" }} {{ request()->is("admin/newss*") ? "menu-open" : "" }} {{ request()->is("admin/reciprocal-clubs*") ? "menu-open" : "" }} {{ request()->is("admin/sportsmen*") ? "menu-open" : "" }} {{ request()->is("admin/past-presidents*") ? "menu-open" : "" }} {{ request()->is("admin/trophies*") ? "menu-open" : "" }} {{ request()->is("admin/amenities-services*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-book">
 
@@ -73,7 +73,7 @@
                             @endcan
                             @can('news_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.news.index") }}" class="nav-link {{ request()->is("admin/news") || request()->is("admin/news/*") ? "active" : "" }}">
+                                    <a href="{{ route("admin.newss.index") }}" class="nav-link {{ request()->is("admin/newss") || request()->is("admin/newss/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon far fa-newspaper">
 
                                         </i>
@@ -347,7 +347,6 @@
                                     </a>
                                 </li>
                             @endcan
-<<<<<<< HEAD
                             @can('user_detail_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.user-details.index") }}" class="nav-link {{ request()->is("admin/user-details") || request()->is("admin/user-details/*") ? "active" : "" }}">
@@ -360,8 +359,6 @@
                                     </a>
                                 </li>
                             @endcan
-=======
->>>>>>> quickadminpanel_2022_02_08_01_14_55
                         </ul>
                     </li>
                 @endcan
