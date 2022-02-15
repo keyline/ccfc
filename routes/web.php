@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ContactController; 
+use App\Http\Controllers\ContactController;
 
 use App\Models\ReciprocalClub;
 
@@ -10,22 +10,16 @@ use App\Models\Gallery;
 
 use App\Models\Sportstype;
 
-
-
-
-
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
-
     $reciprocalClubs = ReciprocalClub::all();
     $contentPages = ContentPage::all();
     // $galleries = Gallery::all();
     $sportstypes = Sportstype::all();
     $galleries = Gallery::with(['media'])->get();
 
-    return view('index',compact('reciprocalClubs','contentPages','galleries','sportstypes'));
-    
+    return view('index', compact('reciprocalClubs', 'contentPages', 'galleries', 'sportstypes'));
 });
 
 
@@ -150,6 +144,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Payments
     Route::delete('payments/destroy', 'PaymentsController@massDestroy')->name('payments.massDestroy');
     Route::resource('payments', 'PaymentsController');
+
+    // User Details
+    Route::delete('user-details/destroy', 'UserDetailsController@massDestroy')->name('user-details.massDestroy');
+    Route::resource('user-details', 'UserDetailsController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
@@ -170,6 +168,12 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
     }
 });
 
+Route::get('/past-president', function () {
+    return view('past-president');
+});
+Route::get('/activities', function () {
+    return view('activities');
+});
 
 
 // Route::get('/', 'PagesController@index')->name('pages');
@@ -181,6 +185,6 @@ Route::get('pages/{sport_name}', 'PagesController@show');
 
 Route::get('demo', 'FrontendhtmlController@pastpresident');
 
-Route::get('/footer',[ContactController::class,'contact']);
+Route::get('/footer', [ContactController::class,'contact']);
 
-Route::post('/send-message',[ContactController::class,'sendEmail'])->name('contact.send');
+Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');

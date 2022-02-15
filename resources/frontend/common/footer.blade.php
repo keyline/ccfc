@@ -1,14 +1,65 @@
-<section class="contact-sec">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-6 pl-0">
-                        <div class="contact-left">
-                            <div class="map">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3685.2201366718136!2d88.363747!3d22.533425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1c410a073b08b94!2sCalcutta%20Cricket%20and%20Football%20Club!5e0!3m2!1sen!2sin!4v1643977564770!5m2!1sen!2sin"
-                                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+   <!-- ********|| FOOTER START ||******** -->
+                                <section class="footer_top">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4 p-0">
+                                                <div class="foot_copyright">  
+                                                    <div class="copyright">Copyright © 2022 The CC&FC Club at Kolkata All Rights Reserved.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 p-0">
+                                                <div class="foot_social">  
+                                                    <div class="footer_social_inner">
+                                                        <ul>
+                                                            <li class="social_follow">Follow Us on:</li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-facebook"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-twitter"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-instagram"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-pinterest"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-linkedin"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-youtube-play"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 p-0 foot_webcomp">
+                                                <div class="foot_copyright">  
+                                                    <div class="foot_webcompany">
+                                                        Design & Developed by<a href="#" class="keyline"> KEYLINE</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="footer-img">
+                                    <img class="img-fluid" src="{{ asset('img/footer-ban.png') }}" alt="">
+                                </section>
+                                <!-- ********|| FOOTER END ||******** -->
                             </div>
                             <div class="map-location">
                                 <div class="map-content">
@@ -345,7 +396,214 @@ $("#owldemo7").owlCarousel({
 <script type="text/javascript">
 $(document).ready(function() {
 
-    var url = window.location;
+    </script>
+    <script>
+        $("#innerpage-banner").owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1,
+                    dots: true,
+                    nav: false,
+                },
+                600: {
+                    items: 1,
+                    dots: true,
+                    nav: false,
+                },
+                1000: {
+                    items: 1,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                }
+            }
+        });
+
+    </script>
+    <script>
+        $("#owldemo2").owlCarousel({
+            loop: true,
+            margin: 10,
+            //            autoplay: true,
+            //            autoplayTimeout: 4000,
+            //            autoplayHoverPause: true,
+            navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 2,
+                    dots: true,
+                    nav: false,
+                },
+                600: {
+                    items: 3,
+                    dots: true,
+                    nav: false,
+                },
+                1000: {
+                    items: 5,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                }
+            }
+        });
+
+    </script>
+    <script>
+        $("#owldemo3").owlCarousel({
+            loop: true,
+            margin: 10,
+            //            autoplay: true,
+            //            autoplayTimeout: 4000,
+            //            autoplayHoverPause: true,
+            navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1,
+                    dots: true,
+                    nav: false,
+                },
+                600: {
+                    items: 2,
+                    dots: true,
+                    nav: false,
+                },
+                1000: {
+                    items: 4,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                }
+            }
+        });
+
+    </script>
+    <script>
+        $("#owldemo4").owlCarousel({
+            loop: true,
+            margin: 10,
+            //            autoplay: true,
+            //            autoplayTimeout: 4000,
+            //            autoplayHoverPause: true,
+            navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1,
+                    dots: true,
+                    nav: false,
+                },
+                600: {
+                    items: 3,
+                    dots: true,
+                    nav: false,
+                },
+                1000: {
+                    items: 5,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                }
+            }
+        });
+
+    </script>
+    <script>
+        $("#owldemo5").owlCarousel({
+            loop: true,
+            margin: 10,
+            //            autoplay: true,
+            //            autoplayTimeout: 4000,
+            //            autoplayHoverPause: true,
+            navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 3,
+                    dots: true,
+                    nav: false,
+                },
+                600: {
+                    items: 5,
+                    dots: true,
+                    nav: false,
+                },
+                1000: {
+                    items: 7,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                }
+            }
+        });
+
+    </script>
+    <script>
+        $("#owldemo6").owlCarousel({
+            loop: true,
+            margin: 10,
+            //            autoplay: true,
+            //            autoplayTimeout: 4000,
+            //            autoplayHoverPause: true,
+            navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 3,
+                    dots: true,
+                    nav: false,
+                },
+                600: {
+                    items: 5,
+                    dots: true,
+                    nav: false,
+                },
+                1000: {
+                    items: 7,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                }
+            }
+        });
+
+    </script>
+    <script>
+        $("#owldemo7").owlCarousel({
+            loop: true,
+            margin: 10,
+            //            autoplay: true,
+            //            autoplayTimeout: 4000,
+            //            autoplayHoverPause: true,
+            navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1,
+                    dots: true,
+                    nav: false,
+                },
+                600: {
+                    items: 1,
+                    dots: true,
+                    nav: false,
+                },
+                1000: {
+                    items: 1,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                }
+            }
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var url = window.location;
 
 
 

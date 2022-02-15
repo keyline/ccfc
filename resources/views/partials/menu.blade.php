@@ -302,7 +302,7 @@
                     </li>
                 @endcan
                 @can('user_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/users*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/users*") ? "menu-open" : "" }} {{ request()->is("admin/user-details*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-users">
 
@@ -349,6 +349,21 @@
                                     </a>
                                 </li>
                             @endcan
+<<<<<<< HEAD
+                            @can('user_detail_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.user-details.index") }}" class="nav-link {{ request()->is("admin/user-details") || request()->is("admin/user-details/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.userDetail.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+=======
+>>>>>>> quickadminpanel_2022_02_08_01_14_55
                         </ul>
                     </li>
                 @endcan

@@ -44,7 +44,7 @@
                             <header class="header">
                                 <div class="top-header">
                                     <div class="brand">
-                                        <a href="{{ asset('dev/ccfc-html/') }}" class="logo">
+                                        <a href="{{ asset('/') }}" class="logo">
                                             <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" title="Home">
                                         </a>
                                     </div>
@@ -176,7 +176,7 @@
                                     </div>
                                 </div>
                                 <div class="ccfc-location">
-                                    <div class="ccfc-location-inner">
+                                    <!--<div class="ccfc-location-inner">
                                         <ul>
                                             <li>
                                                 <i class="zmdi zmdi-phone-in-talk"></i>
@@ -189,8 +189,8 @@
                                                 <a href="#" class="ccfc-icon">ccfcsecretary@ccfc1792.com</a>
                                             </li>
                                         </ul>
-                                    </div>
-                                    <div class="ccfc-social">
+                                    </div>-->
+                                    <!--<div class="ccfc-social">
                                         <ul>
                                             <li>
                                                 <a href="#" class="social-icon">
@@ -223,15 +223,15 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
-                                    <div class="copy-part">
+                                    </div>-->
+                                    <!--<div class="copy-part">
                                         <div class="copy-title">
                                             Copyright © 2022 The CC&FC Club at Kolkata All Rights Reserved.
                                         </div>
                                         <div class="copy-content">
                                             Design & Developed by<a href="#" class="keyline"> KEYLINE</a>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </header>
                         </div>
@@ -240,4 +240,21 @@
       
       
       
-      
+<div class="site_righticon">
+    <ul>
+        <li>
+            <i class="zmdi zmdi-phone-in-talk"></i>
+            <div class="slider">
+                <p><a href="tell:033 24615060" class="ccfc-icon">033 24615060</a>
+                <span>/</span>
+                <a href="tell:033 24615059" class="ccfc-icon">24615059</a></p>
+          </div>
+        </li>
+        <li>
+            <i class="zmdi zmdi-email mail"></i>
+            <div class="slider">
+                <p><a href="mailto:ccfcsecretary@ccfc1792.com" class="ccfc-icon">ccfcsecretary@ccfc1792.com</a></p>
+            </div>
+        </li>
+    </ul>
+</div>

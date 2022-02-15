@@ -15,10 +15,19 @@
 
     
 }
+@media (min-width: 992px) and (max-width: 1300px) {
+.photoFrame{width: 100%;}
+}
 
 /*TAB VERSION*/
 @media screen and (max-width: 991px){
-
+    section.footer_top .col-md-4 {
+        max-width: 50%;
+        flex: none;
+    }
+    section.footer_top .col-md-4.foot_webcomp {
+        max-width: 100%;
+    }
     
 }
 
@@ -36,7 +45,15 @@
 
 /*LARGE MOBILE VERSION*/
 @media screen and (max-width: 575px){
-   
+    section.footer_top .col-md-4 {
+        max-width: 100%;
+    }
+    .activities_menulist_section .activities_list_item{
+        grid-template-columns: 100%;
+    }
+    .activities_list_item_right_white:after{
+        border: none;
+    }
 }
     
 
