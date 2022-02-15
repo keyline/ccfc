@@ -1,0 +1,495 @@
+/***********GOOGLE FONT***********/
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/***********CUSTOM CSS STARTS***********/
+html {
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span {
+    font-family: 'Lato', sans-serif;
+}
+
+.font-ibm {
+    font-family: 'IBM Plex Serif', serif;
+}
+
+.title-sec .title {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--secondaryColor);
+    letter-spacing: 0.5px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.flex-v-cen {
+    display: flex;
+    align-items: center;
+}
+
+.flex-cen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/***********CUSTOM CSS ENDS***********/
+
+
+/***********BOOTSTRAP FIX STARTS***********/
+
+@media (min-width: 576px) {
+    .container {
+        max-width: none;
+    }
+
+    .modal-dialo {
+        max-width: 700px;
+    }
+
+    .modal-sm {
+        max-width: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1900px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+/***********BOOTSTRAP FIX ENDS***********/
+
+
+
+
+
+
+/* ********|| HEADER STARTS ||******** */
+.ccfc-body .header{
+    position: sticky;
+    top: 0px;
+}
+.ccfc-body .header .top-header .brand {
+    padding: 30px 0px;
+}
+
+.ccfc-body .header .top-header .brand .logo img {
+    display: block;
+    margin: 0 auto;
+}
+
+.ccfc-body .header .top-header .member-login {
+    background: var(--primaryColor);
+    text-align: center;
+    padding: 15px 30px;
+}
+
+.ccfc-body .header .top-header .member-login .member-title {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 0.5px;
+    padding-bottom: 10px;
+}
+
+.ccfc-body .header .top-header .member-login .form-group .form-control {
+    background-color: #951014!important;
+    border-radius: 50px;
+    border: none;
+}
+
+.ccfc-body .header .top-header .member-login .form-group .form-control::placeholder {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff1f1;
+    letter-spacing: 0.5px;
+}
+
+.ccfc-body .header .top-header .member-login .form-group .login-btn {
+    background-color: #fff;
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--secondaryColor);
+    border-radius: 50px;
+    border: none;
+    padding: 6px 24px;
+    text-transform: uppercase;
+}
+
+.ccfc-body .header .top-header .member-login .form-group .forgot {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    color: #fff1f1;
+    letter-spacing: 0.5px;
+    text-decoration: underline;
+}
+
+/* ********|| HEADER ENDS ||******** */
+
+/* ********|| NAV BAR STARTS ||******** */
+/* ============================================================================= */
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu a::after {
+    transform: rotate(-90deg) translate(0, -50%);
+    position: absolute;
+    right: 6px;
+    top: 50%;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem;
+}
+
+.dropdown:hover .dropdown-menu {
+    padding: 12px;
+}
+
+.dropdown-menu li a.dropdown-item {
+    padding: 10px 15px;
+    white-space: normal;
+    position: relative;
+    color: #fff;
+}
+
+.dropdown-menu li a.dropdown-item:hover {
+    background-color: #951014;
+}
+
+.dropdown-menu {
+    background: var(--primaryColor);
+    width: 260px;
+
+}
+
+@media (min-width: 992px) {
+
+    .dropdown > .dropdown-menu,
+    ul.dropdown-menu > li.dropdown-submenu > .dropdown-menu {
+        transition: all 0.5s;
+        transform-origin: top center;
+        transform: scale(1, 0);
+        opacity: 0;
+        display: block;
+        position: absolute;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    ul.dropdown-menu > li:hover > .dropdown-menu {
+        transform: scale(1);
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {}
+
+nav.navbar .navbar-nav > li > .dropdown-menu > li.active > a.active {
+    color: var(--secondaryColor);
+}
+
+nav.navbar .navbar-nav > li.active > a.nav-link {
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+
+.topPanel .navbar-light .navbar-nav .active > .nav-link,
+.topPanel .navbar-light .navbar-nav .nav-link.active,
+.topPanel .navbar-light .navbar-nav .nav-link.show,
+.topPanel .navbar-light .navbar-nav .show > .nav-link {
+    color: var(--secondaryColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.topPanel .navbar-light .navbar-nav .nav-link {
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    border-bottom: 1px solid #c5c5c5;
+}
+
+.topPanel .navbar-light .navbar-nav .nav-link:last-child {
+    border: none;
+}
+
+.topPanel .navbar {
+    display: block;
+    padding: 20px 30px;
+}
+
+.topPanel .dropdown-toggle::after {
+    position: absolute;
+    right: 0;
+}
+
+/* ============================================================================= */
+
+
+/* ********|| NAV BAR ENDS ||******** */
+
+/* ********|| CCFC LOCATION START ||******** */
+.ccfc-location {
+    padding: 0px 30px;
+}
+
+.ccfc-location .ccfc-location-inner ul {
+    padding: 10px 0px;
+    margin: 0;
+    list-style: none;
+    border: 1px solid #c5c5c5;
+    border-width: 1px 0px;
+}
+
+.ccfc-location .ccfc-location-inner ul li {
+    display: flex;
+    align-items: center;
+}
+
+.ccfc-location .ccfc-location-inner ul li i {
+    color: var(--secondaryColor);
+    font-size: 24px;
+    padding-right: 8px;
+}
+
+.ccfc-location .ccfc-location-inner ul li .mail {
+    transform: rotate(45deg);
+    padding-top: 8px;
+}
+
+.ccfc-location .ccfc-location-inner ul li .ccfc-icon {
+    text-decoration: none;
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: ease 0.3s;
+}
+
+.ccfc-location .ccfc-location-inner ul li .ccfc-icon:hover {
+    color: var(--secondaryColor);
+}
+
+.ccfc-location .ccfc-social ul {
+    padding: 10px 0px;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ccfc-location .ccfc-social ul li .social-icon i {
+    color: var(--textColor);
+    font-size: 20px;
+    transition: ease 0.3s;
+}
+
+.ccfc-location .ccfc-social ul li .social-icon i:hover {
+    color: var(--secondaryColor);
+}
+
+.ccfc-location .copy-part .copy-title {
+    border: 1px solid #c5c5c5;
+    border-width: 1px 0px;
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 6px;
+}
+
+.ccfc-location .copy-part .copy-content {
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 6px;
+}
+
+.ccfc-location .copy-part .copy-content .keyline {
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* ********|| CCFC LOCATION END ||******** */
+
+
+/* ********|| BANNER START ||******** */
+
+.banner .owl-theme .owl-dots .owl-dot.active span,
+.banner .owl-theme .owl-dots .owl-dot:hover span {
+    background-color: var(--primaryColor);
+}
+
+.banner .owl-theme .owl-dots .owl-dot span {
+    background-color: #fff;
+    height: 10px;
+    width: 10px;
+    display: block;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+.banner .owl-theme .owl-dots {
+    position: absolute;
+    bottom: 0;
+    right: 95px;
+}
+
+/* ********|| BANNER END ||******** */
+
+/* ********|| ADVISE START ||******** */
+.advise {
+    padding: 20px 60px;
+}
+
+/* ********|| ADVISE END ||******** */
+
+/* ********|| HISTORY START ||******** */
+.history-sec {
+    background-color: #f6f6f6;
+}
+
+.history-sec .history-inner {
+    padding: 40px;
+}
+
+.history-sec .history-inner .history-content {
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.history-sec .history-inner .history-action .read-btn {
+    color: var(--secondaryColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    margin: 0 auto;
+}
+.history-sec .history-img{
+    padding-bottom: 40px;
+}
+.history-sec .project-item .hvr{
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.67);
+
+    top: 0;
+
+    color: #fff;
+
+    font-size: 50px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    opacity: 0;
+
+    transition: ease 0.10s;
+
+}
+
+.history-sec .project-item .hvr i{
+
+/*    background-color: var(--primaryColor);*/
+
+    height: 60px;
+
+    width: 60px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: ease 0.10s;
+
+}
+
+.history-sec .project-item:hover .hvr{
+
+    opacity: 1;
+
+}
+
+/* ********|| HISTORY END ||******** */
