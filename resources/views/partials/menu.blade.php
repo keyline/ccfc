@@ -48,11 +48,7 @@
                     </li>
                 @endcan
                 @can('content_management_access')
-<<<<<<< HEAD
-                    <li class="nav-item has-treeview {{ request()->is("admin/event-details*") ? "menu-open" : "" }} {{ request()->is("admin/newss*") ? "menu-open" : "" }} {{ request()->is("admin/reciprocal-clubs*") ? "menu-open" : "" }} {{ request()->is("admin/sportsmen*") ? "menu-open" : "" }} {{ request()->is("admin/past-presidents*") ? "menu-open" : "" }} {{ request()->is("admin/trophies*") ? "menu-open" : "" }} {{ request()->is("admin/amenities-services*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }}">
-=======
                     <li class="nav-item has-treeview {{ request()->is("admin/event-details*") ? "menu-open" : "" }} {{ request()->is("admin/news*") ? "menu-open" : "" }} {{ request()->is("admin/reciprocal-clubs*") ? "menu-open" : "" }} {{ request()->is("admin/sportsmen*") ? "menu-open" : "" }} {{ request()->is("admin/past-presidents*") ? "menu-open" : "" }} {{ request()->is("admin/trophies*") ? "menu-open" : "" }} {{ request()->is("admin/amenities-services*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }}">
->>>>>>> quickadminpanel_2022_02_08_01_14_55
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-book">
 
@@ -77,11 +73,7 @@
                             @endcan
                             @can('news_access')
                                 <li class="nav-item">
-<<<<<<< HEAD
-                                    <a href="{{ route("admin.newss.index") }}" class="nav-link {{ request()->is("admin/newss") || request()->is("admin/newss/*") ? "active" : "" }}">
-=======
                                     <a href="{{ route("admin.news.index") }}" class="nav-link {{ request()->is("admin/news") || request()->is("admin/news/*") ? "active" : "" }}">
->>>>>>> quickadminpanel_2022_02_08_01_14_55
                                         <i class="fa-fw nav-icon far fa-newspaper">
 
                                         </i>
