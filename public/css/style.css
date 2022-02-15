@@ -113,33 +113,35 @@ span {
     z-index: 999;
 }
 .ccfc-body .header .top-header .brand {
-    padding: 18px 0px;
+    padding: 10px 0px;
 }
 
 .ccfc-body .header .top-header .brand .logo img {
     display: block;
     margin: 0 auto;
+    max-width: 120px;
 }
 
 .ccfc-body .header .top-header .member-login {
     background: var(--primaryColor);
     text-align: center;
-    padding: 15px 50px;
+    padding: 10px 50px;
 }
 
 .ccfc-body .header .top-header .member-login .member-title {
     font-family: 'IBM Plex Serif', serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     color: #fff;
     letter-spacing: 0.5px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .ccfc-body .header .top-header .member-login .form-group .form-control {
     background-color: #951014!important;
     border-radius: 50px;
     border: none;
+    font-size: 14px;
 }
 
 .ccfc-body .header .top-header .member-login .form-group .form-control::placeholder {
@@ -158,7 +160,7 @@ span {
     color: var(--secondaryColor);
     border-radius: 50px;
     border: none;
-    padding: 6px 16px;
+    padding: 4px 16px;
     text-transform: uppercase;
 }
 
@@ -271,7 +273,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 .topPanel .navbar-light .navbar-nav .nav-link {
     color: var(--textColor);
     font-family: 'IBM Plex Serif', serif;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 0.5px;
     font-weight: 600;
 /*    border-bottom: 1px solid #c5c5c5;*/
@@ -294,6 +296,8 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     position: absolute;
     right: 28px;
     top: 42%;
+    transform: rotate(315deg);
+    -webkit-transform: rotate(315deg);
 }
 .arrow-dropdown{
     position: relative;
@@ -302,7 +306,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     position: absolute;
     content: '';
     background: var(--primaryColor);
-      height: 8px;
+    height: 8px;
     width: 8px;
     transform: rotate(45deg); 
     left: -5px;
@@ -313,10 +317,72 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     height: 8px;
     border-width: 0px 2px 2px 0px;
     width: 8px;
-    transform: rotate(
-45deg
-);
+    transform: rotate(45deg);
 }
+.site_righticon ul {
+    list-style: none;
+  } 
+.site_righticon ul li {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    background: var(--primaryColor);
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.site_righticon ul li .zmdi  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 26px;
+    color: #fff;
+    z-index: 9;
+}
+.site_righticon .slider {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 6px;
+    width: 0px;
+    height: 50px;
+    background: var(--primaryColor);
+    border-radius: 32px;
+    transition: all 0.5s 0.3s ease;
+} 
+.site_righticon .slider p {
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    padding-right: 35px;
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+.site_righticon .slider a{
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+}
+.site_righticon ul li:hover .slider {
+    width: 260px;
+    transition: all 0.5s ease;
+} 
+.site_righticon ul li:hover .slider p {
+    opacity: 1;
+    transition: all 1s 0.2s ease;
+}
+.site_righticon {
+    position: fixed;
+    right: 0;
+    z-index: 999;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
 
 /* ============================================================================= */
 
@@ -945,10 +1011,229 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 */
 /* ********|| CONTACT END ||******** */
 
+/* ********|| Past President Start ||******** */
+.pastpresdit_inner {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    padding: 15px 10px 25px;
+    margin-bottom: 30px;
+}
+.passtpredi_name {
+    text-align: center;
+    margin-top: 20px;
+}
+.pastprdi_img {
+    text-align: center;
+}
+.photoFrame {
+    position: relative;
+    width: 180px;
+    height: 205px;
+    padding: 12px 0 0 0;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.photoFrame::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/past-president/frameOuter.png);
+    z-index: 999;
+    background-size: 100% 100%;
+}
+.photoFrame img {
+    width: auto;
+    z-index: 9;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    right: 0;
+    transform: translateX(-50%);
+}
+.passtpredi_name h2 {
+    color: #be1f24;
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+.passtpredi_name p {
+    margin-bottom: 0;
+    font-size: 12px;
+    font-family: 'IBM Plex Serif', serif;
+}
+/* ********|| Past President END ||******** */
+
+/* ********|| Activities Start ||******** */
+.activites_rightside {
+    padding: 20px;
+    margin-top: 60px;
+    text-align: center;
+}
+.active_rightimg {
+    margin-bottom: 15px;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+#activities-clubkitchen .modal-dialog {
+    max-width: 850px;
+}
+#activities-dinning .modal-content, #activities-clubkitchen .modal-content {
+    padding: 15px;
+}
+#activities-dinning .modal-content .modal-header, #activities-clubkitchen .modal-content .modal-header{
+    padding: 0;
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    border: none;
+    background: var(--primaryColor);
+    opacity: 1;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    border-radius: 50px;
+    z-index: 999;
+}
+#activities-dinning .modal-content .modal-header button.close,  #activities-clubkitchen .modal-content .modal-header button.close{
+    margin: 0;
+    padding: 0 0 0 7px;
+    display: block;
+    float: none;
+    opacity: 1;
+    color: #fff;
+}
+.carousel-control-next, .carousel-control-prev {
+    width: auto;
+    opacity: 1;
+}
+.carousel-control-next i, .carousel-control-prev i {
+    background: var(--primaryColor);
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 34px;
+}
+.activities_menulist_section .activities_list_item {
+    background: #be1f24;
+    margin-bottom: 25px;
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 60% 40%;
+}
+.activities_list_item_left {
+    padding: 20px;
+}
+.activities_list_item_leftinfo h3{
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+    color: #fff;
+}
+.activities_list_item_left ul {
+    padding-left: 20px;
+    color: #fff;
+    margin-bottom: 0;
+}
+.activities_list_item_right{
+    position: relative;
+}
+.activities_list_item_right::before{
+    position:absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #9e161a;
+}
+.activities_list_item_right {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.activities_list_item_right .activities_list_item_right_white {
+    background: #fff;
+    border-radius: 20px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+.activities_list_item_right_white button:focus{
+    box-shadow: none;
+}
+.activities_list_item_right_white button{
+    color: var(--primaryColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+    font-size: 22px;
+}
+.activities_list_item_right_white:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    z-index: 1;
+    transform: translateY(-50%);
+    border-left: 10px solid var(--primaryColor);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+/* ********|| Activities END ||******** */
+
+
 /* ********|| FOOTER START ||******** */
 .footer-img{
-    position: absolute;
-    bottom: 0;
+    /*position: absolute;*/
+    display: flex;
+}
+.foot_copyright {
+    background: #dedede;
+    text-align: center;
+    font-family: 'IBM Plex Serif', serif;
+    display: grid;
+    align-items: center;
+    padding: 10px;
+}
+.foot_copyright a{
+    color: #212529;
+    font-family: 'IBM Plex Serif', serif;
+}
+.foot_social{
+    background: #f2f2f2;
+    text-align: center;
+    font-family: 'IBM Plex Serif', serif;
+    display: grid;
+    align-items: center;
+    padding: 10px;
+}
+.footer_social_inner ul {
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+section.footer_top .col-md-4 {
+    display: grid;
+    flex-direction: row;
+    align-items: stretch;
+}
+.footer_social_inner a.social-icon {
+    color: #515151;
+    font-size: 18px;
+}
+.footer_social_inner a.social-icon:hover {
+    color: var(--primaryColor);
 }
 /* ********|| FOOTER END ||******** */
 

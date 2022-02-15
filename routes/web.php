@@ -150,3 +150,9 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
 });
 
 Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
+Route::get('/past-president', function () {
+    return view('past-president');
+});
+Route::get('/activities', function () {
+    return view('activities');
+});
