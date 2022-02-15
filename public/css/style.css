@@ -952,6 +952,25 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 /* ********|| FOOTER END ||******** */
 
 
+.cricket-banner{
+    position: relative;
+}
+
+.cricket-banner .cricket-title{
+        position: absolute;
+    top: 45%;
+    color: #fff;
+    font-size: 40px;
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
 
 
 
