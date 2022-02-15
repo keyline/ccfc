@@ -48,4 +48,10 @@ class Member extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+
+    // public function select_sport_type()
+    // {
+    //     return $this->belongsTo(Sportstype::class, 'select_sport_id');
+    // }
 }

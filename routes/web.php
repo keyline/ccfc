@@ -1,14 +1,30 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+
 use App\Models\ReciprocalClub;
+
+use App\Models\ContentPage;
+
+use App\Models\Gallery;
+
+use App\Models\Sportstype;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
     $reciprocalClubs = ReciprocalClub::all();
+    $contentPages = ContentPage::all();
+    // $galleries = Gallery::all();
+    $sportstypes = Sportstype::all();
+    $galleries = Gallery::with(['media'])->get();
 
-    return view('index', compact('reciprocalClubs'));
+    return view('index', compact('reciprocalClubs', 'contentPages', 'galleries', 'sportstypes'));
 });
+
+
+
+
 
 // Route::redirect('/', '/login');
 
@@ -23,9 +39,9 @@ Route::get('/home', function () {
 Auth::routes(['register' => false]);
 
 
-Auth::routes(['login' => false]);
+// Auth::routes(['login' => false]);
 
-Route::get('/ccfc_admin', 'Auth\LoginController@show_admin_login')->name('AdminLogin');
+// Route::get('/ccfc_admin', 'Auth\LoginController@show_admin_login')->name('AdminLogin');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -158,3 +174,17 @@ Route::get('/past-president', function () {
 Route::get('/activities', function () {
     return view('activities');
 });
+
+
+// Route::get('/', 'PagesController@index')->name('pages');
+// Route::resource('pages', 'PagesController');
+
+// require __DIR__.'/auth.php';
+
+Route::get('pages/{sport_name}', 'PagesController@show');
+
+Route::get('demo', 'FrontendhtmlController@pastpresident');
+
+Route::get('/footer', [ContactController::class,'contact']);
+
+Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
