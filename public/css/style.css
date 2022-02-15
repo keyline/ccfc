@@ -531,6 +531,18 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     opacity: 1;
 
 }
+.history-sec .owl-nav {
+    font-size: 40px;
+    text-align: center;
+}
+.history-sec .owl-nav .owl-prev i {
+    color: #b8b8b8;
+    padding-right: 8px;
+}
+.history-sec .owl-nav .owl-next i {
+    color: var(--secondaryColor);
+    padding-left: 8px;
+}
 
 /* ********|| HISTORY END ||******** */
 
@@ -540,6 +552,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 }
 .services-sec .services-inner .services-info{
     position: relative;
+    margin: 0px 16px;
 }
 .services-sec .services-inner{
     padding-top: 30px;
@@ -625,10 +638,15 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     font-size: 14px;
     font-weight: 400;
     color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+            top: 56%;
     letter-spacing: 0.5px;
-    padding-bottom: 30px;
+    margin: 0 10px;
+/*    padding-bottom: 30px;*/
     line-height: 18px;
-    height: 110px;
+/*    height: 110px;*/
 }
 .services-sec .services-inner .services-info .services-box .services-body .services-action .read-btn{
     background-color: var(--secondaryColor);
@@ -652,6 +670,31 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     font-size: 14px;
     font-weight: 500;
     color: var(--secondaryColor); 
+}
+.services-sec .services-inner .services-info .services-box .services-body .services-action{
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+}
+.services-sec .services-inner .services-info .services-img img{
+        height: 400px;
+}
+.services-sec .owl-nav {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    /* bottom: 52px; */
+    top: 42%;
+    /* right: 60px; */
+    font-size: 40px;
+}
+.services-sec .owl-nav .owl-next i {
+    color: var(--secondaryColor);
+}
+.services-sec .owl-nav .owl-prev i {
+    color: #b8b8b8;
 }
 /*
 .services-sec .services-inner .services-info .services-box:hover .top-img .trangle-img{
@@ -719,8 +762,23 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 .sports-sec .sports-inner .sports-info .sports-box .sports-action{
     padding-bottom: 20px;
 }
-
-
+.sports-sec .owl-nav {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    /* bottom: 52px; */
+        top: 12%;
+    /* right: 60px; */
+    font-size: 40px;
+    color: #fff;
+}
+.sports-sec .owl-nav .owl-next i {
+    color: #fff;
+}
+.sports-sec .owl-nav .owl-prev i {
+    color: #8b8b8b;
+}
 
 
 
@@ -801,51 +859,178 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     background-color: #f6f6f6;
     padding: 60px 0px;
 }
-/*
-.testimonial-sec .left-img{
-    
+.testimonial-sec .testimonial-body .testimonial-img{
+              border-radius: 50%;
+    border: 9px solid #fff;
+    overflow: hidden;
+    width: 146px;
+    display: block;
+    margin: 33px 0px 0px 216px;
 }
+.testimonial-sec .testimonial-carousel{
+    background-image: url(../img/testimonial-part1.png);
+/*    background-size: cover;*/
+    background-repeat: no-repeat;
+/*    padding: 60px 0px;*/
+/*
+        height: 600px;
+    width: 600px;
 */
-.testimonial-sec .testimonial-inner .testimonial-text-box .left-img{
-    width: 430px;
-    position: relative;
+    background-size: 80%;
 }
-/*
-.testimonial-sec .testimonial-inner .testimonial-text-box .img-box{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 340px;
-}
-*/
-
-/*
-.testimonial-sec .testimonial-inner .testimonial-body .testimonial-info-box .img-box{
-    position: absolute;
-}
-
-
-
-
-.testimonial-sec .testimonial-inner .testimonial-text-box .img-box-2{
-    position: relative;
-}
-.testimonial-sec .testimonial-inner .testimonial-body .testimonial-info{
-   position: absolute; 
-}
-*/
-/*
-.testimonial-sec .testimonial-inner .testimonial-info-box{
-    position: relative;
-}
-.testimonial-sec .testimonial-inner .testimonial-info-box:after{
-    position: absolute;
+.testimonial-sec .testimonial-inner .testimonial-profession:after{
+   position: absolute;
     content: '';
-    background-image: url(../img/testimonial-img-box.png);
-    height: 100%;
+    background-image: url(../img/testimonial-arrow.png);
+    width: 60px;
+    height: 60px;
+    top: 76px;
+    right: 100px;
+}
+.testimonial-sec .testimonial-inner .testimonial-info{
+        margin: 0 0 0 auto;      
+    width: 250px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: -1px 20px 24px -6px #0e0e0e45;
+}
+.testimonial-sec .testimonial-inner .quote-icon{
+    font-size: 40px;
+    color: #fff;
+    background-color: var(--secondaryColor);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+.testimonial-sec .testimonial-inner .quote-icon i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+    transform: rotate(180deg);
+}
+.testimonial-sec .testimonial-inner .testimonial-content{
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px 0px;
+    line-height: 18px;
+}
+.testimonial-sec .testimonial-inner .testimonial-profession{
+    position: relative;
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+.testimonial-sec .testimonial-inner .testimonial-name{
+    color: var(--secondaryColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+}
+.testimonial-sec .testimonial-right .title-sec .title{
+    text-align: left;
+    padding: 24px 0px 20px 0px;
+}
+.testimonial-sec .testimonial-right .testimonial-content{
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+    padding-bottom: 90px;
+}
+.testimonial-sec .testimonial-right .testimonial-action .read-btn{
+/*        background-color: var(--secondaryColor);*/
+    border: 1px solid var(--secondaryColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--textColor);
+    border-radius: 50px;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: ease 0.3s;
+}
+.testimonial-sec .testimonial-inner .testimonial-info .testimonial-action .read-btn{
+/*    border: 1px solid var(--secondaryColor);*/
+    background-color: var(--secondaryColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    border-radius: 50px;
+    padding: 6px 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: ease 0.3s;
+}
+.testimonial-sec .testimonial-inner .testimonial-info .testimonial-action{
+    text-align: center;
+    margin-top: 12px;
+}
+.testimonial-sec .owl-nav{
+        display: flex;
+    justify-content: flex-end;
+    position: absolute;
     width: 100%;
+    bottom: 52px;
+    right: 60px;
+    font-size: 40px;
+}
+.testimonial-sec .owl-nav .owl-next i{
+    color: var(--secondaryColor);
+    padding-left: 20px;
+}
+.testimonial-sec .owl-nav .owl-prev i{
+    color: #b8b8b8;
+}
+
+/*
+.testimonial-sec .testimonial-inner .testimonial-info{
+          position: absolute;
+    top: 0;
+    width: 300px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: -1px 20px 24px -6px #0e0e0e45;
+}
+
+
+.testimonial-sec .testimonial-inner .testimonial-text-box{
+    position: relative;
+}
+.testimonial-sec .left-img{
+    width: 500px;
+}
+
+
+
+.testimonial-sec .testimonial-right .title-sec .title{
+    text-align: left;
+}
+.testimonial-sec .testimonial-right .testimonial-content{
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
 }
 */
+
 /* ********|| TESTIMONIAL END ||******** */
 
 /* ********|| CONTACT START ||******** */
@@ -948,6 +1133,27 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 .footer-img{
     position: absolute;
     bottom: 0;
+}
+/* ********|| FOOTER END ||******** */
+
+/* ********|| FOOTER END ||******** */
+.history-page{
+    padding: 60px;
+}
+.history-page .title-sec .title{
+    text-align: left;
+}
+.history-page .history-inner .history-content{
+    text-decoration: none;
+    color: var(--textColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 8px;
+    line-height: 18px;
+}
+.history-page .history-img{
+    padding-bottom: 30px;
 }
 /* ********|| FOOTER END ||******** */
 

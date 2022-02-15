@@ -16,7 +16,7 @@
                             <div class="right-body">
                                 <!-- ********|| BANNER PART START ||******** -->
                                 <section class="history-banner">
-                                    <img class="img-fluid" src="{{ asset('img/history-banner.jpg') }}" alt="" />
+                                    <img class="img-fluid" src="{{ asset('img/history/history-banner.jpg') }}" alt="" />
                                 </section>
                                 <!-- ********|| BANNER PART END ||******** -->
 
@@ -24,19 +24,23 @@
                                 <section class="history-page">
                                     <div class="container">
                                         <div class="row">
-
-                                            <div class="col-lg-9">
-                                                <div class="history-inner">
-                                                    <div class="title-sec">
+                                            <div class="col-lg-12">
+                                                <div class="title-sec">
                                                         <div class="title">
                                                             HISTORY
                                                         </div>
+                                                    </div> 
+                                            </div>
+                                        </div>
+                                                <div class="row">
+                                                   <div class="col-lg-9">
+                                                <div class="history-inner">
+                                                   
+                                                    <div class="history-content">
+                                                        In the city of Calcutta, then just over a hundred years old and growing fast both in commercial and political significance, the British Raj was busy setting its roots. And sports were definitely a part of the social lore.
                                                     </div>
                                                     <div class="history-content">
-                                                        n the city of Calcutta, then just over a hundred years old and growing fast both in commercial and political significance, the British Raj was busy setting its roots. And sports were definitely a part of the social lore.
-                                                    </div>
-                                                    <div class="history-content">
-                                                        ndeed, sports events were reckoned to be important enough for sub-continental reporters. Fortunately, a copy of the Madras Courier dated 23rd. February, 1792 has survived. The paper reported cricket fixtures between the Calcutta Cricket Club and Barrackpore and the Calcutta Cricket Club and Dum Dum. Clearly, the Calcutta Cricket Club was already in existence in 1792.
+                                                        Indeed, sports events were reckoned to be important enough for sub-continental reporters. Fortunately, a copy of the Madras Courier dated 23rd. February, 1792 has survived. The paper reported cricket fixtures between the Calcutta Cricket Club and Barrackpore and the Calcutta Cricket Club and Dum Dum. Clearly, the Calcutta Cricket Club was already in existence in 1792.
                                                     </div>
                                                     <div class="history-content">
                                                         The story of how CC&FC traced its origins is interesting and is preserved in its archives thanks to Past President H.J. Moorhouse. It began in 1955 with a letter to The Times, London from Alan R. Tait, Honorary Secretary of Oporto Cricket Club in Portugal. The Club was celebrating its centenary that year, and Tait claimed that it 'must be one of the oldest cricket club outside Great Britain'.
@@ -52,7 +56,6 @@
                                                     </div>
                                                     <div class="history-content">
                                                         The Club's 'prayer' to the Governor General was rejected and it had to partially relocate to the ground on the eastern end of Eden Gardens, the current location of the test venue. The Club made several representations asking for permission to 'erect a suitable pavilion in the place of the wretched hut now in use'. Finally on 19 April the long awaited approval arrived. A handsome and well built pavilion measuring 125 ft by 25 ft was promptly constructed out of the finest teak brought from Burma. It even had a 'Long Room' on the lines of the MCC pavilion at Lords. The pavilion no longer exists. It was pulled in the mid 1970s for the construction of the Cricket Association of Bengal's modern B.C. Roy Clubhouse.
-
                                                     </div>
                                                     <div class="history-content">
                                                         The origin of the Ballgunge Cricket Club is a matter of some speculation. Possibly the uncertainties regarding playing cricket at Eden Gardens in the 1850s and early 1860s led the players to form a separate Club in what was then a southern, civilian suburb of the city in 1864.
@@ -94,27 +97,31 @@
                                                         In the initial years of the IFA Shield, CFC had a very creditable record. In 1950 CFC was relegated. Declining membership also took its toll. On 14 May, 1963 CFC partially relinquished its exclusive rights on the Maidan tent and playing field in favour of Mohun Bagan Club and like Calcutta Cricket Club moved to Ballygunge.
                                                     </div>
                                                     <div class="history-content">
-                                                        n 1965, it merged with the Calcutta Cricket Club already established there and the Calcutta Cricket and Football Club came into being.
+                                                        In 1965, it merged with the Calcutta Cricket Club already established there and the Calcutta Cricket and Football Club came into being.
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3">
-                                                <div class="advise-img">
-                                                    <img class="img-fluid" src="{{ asset('img/advise-2.jpg') }}" alt="" />
+                                                          <div class="col-lg-3">
+                                                <div class="history-img">
+                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-1.jpg') }}" alt="" />
                                                 </div>
-                                                <div class="advise-img">
-                                                    <img class="img-fluid" src="{{ asset('img/advise-2.jpg') }}" alt="" />
+                                                <div class="history-img">
+                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-2.jpg') }}" alt="" />
                                                 </div>
-                                                <div class="advise-img">
-                                                    <img class="img-fluid" src="{{ asset('img/advise-2.jpg') }}" alt="" />
+                                                <div class="history-img">
+                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-3.jpg') }}" alt="" />
                                                 </div>
-                                                <div class="advise-img">
-                                                    <img class="img-fluid" src="{{ asset('img/advise-2.jpg') }}" alt="" />
+                                                <div class="history-img">
+                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-4.jpg') }}" alt="" />
                                                 </div>
-                                                <div class="advise-img">
-                                                    <img class="img-fluid" src="{{ asset('img/advise-2.jpg') }}" alt="" />
+                                                <div class="history-img">
+                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-5.jpg') }}" alt="" />
                                                 </div>
                                             </div>
+<!--
+                                                </div>
+                                            </div>
+-->
                                         </div>
                                     </div>
                                 </section>

@@ -55,8 +55,6 @@
     <script defer="defer" type="text/javascript" src="assets/fancybox/jquery.fancybox.min.js"></script>
 
     <script src="assets/owl/owl-min.js"></script>
-
-
     <script>
         $("#owldemo1").owlCarousel({
             loop: true,
@@ -130,16 +128,22 @@
                     nav: false,
                 },
                 600: {
-                    items: 2,
+                    items: 3,
                     dots: true,
                     nav: false,
                 },
                 1000: {
+                    items: 3,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                },
+                 1400: {
                     items: 4,
                     margin: 20,
                     nav: false,
                     dots: true,
-                }
+                },
             }
         });
 
@@ -234,10 +238,13 @@
     <script>
         $("#owldemo7").owlCarousel({
             loop: true,
+            animateOut: 'fadeOut',
             margin: 10,
-            //            autoplay: true,
-            //            autoplayTimeout: 4000,
-            //            autoplayHoverPause: true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn',
             navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
             responsive: {
                 0: {
@@ -260,6 +267,22 @@
         });
 
     </script>
+<!--
+<script>
+    $(document).ready(function() {
+ 
+  $("#owl-demo").owlCarousel({
+    navigation : true,
+    items : 1, 
+    loop:true,
+       nav:true,
+    animateOut: 'fadeOut',
+       animateIn: 'fadeIn',
+  });
+ 
+});
+</script>
+-->
     <script type="text/javascript">
         $(document).ready(function() {
 

@@ -97,19 +97,19 @@
             responsive: {
                 0: {
                     items: 2,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 600: {
                     items: 3,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 1000: {
                     items: 5,
                     margin: 20,
-                    nav: false,
-                    dots: true,
+                    nav: true,
+                    dots: false,
                 }
             }
         });
@@ -119,27 +119,33 @@
         $("#owldemo3").owlCarousel({
             loop: true,
             margin: 10,
-            //            autoplay: true,
-            //            autoplayTimeout: 4000,
-            //            autoplayHoverPause: true,
+                        autoplay: true,
+                        autoplayTimeout: 4000,
+                        autoplayHoverPause: true,
             navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
             responsive: {
                 0: {
                     items: 1,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 600: {
                     items: 2,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 1000: {
+                    items: 3,
+                    margin: 20,
+                    nav: true,
+                    dots: false,
+                },
+                 1400: {
                     items: 4,
                     margin: 20,
-                    nav: false,
-                    dots: true,
-                }
+                    nav: true,
+                    dots: false,
+                },
             }
         });
 
@@ -155,19 +161,25 @@
             responsive: {
                 0: {
                     items: 1,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 600: {
-                    items: 3,
-                    dots: true,
-                    nav: false,
+                    items: 2,
+                    dots: false,
+                    nav: true,
                 },
                 1000: {
+                    items: 3,
+                    margin: 20,
+                    nav: true,
+                    dots: false,
+                },
+                1400: {
                     items: 5,
                     margin: 20,
-                    nav: false,
-                    dots: true,
+                    nav: true,
+                    dots: false,
                 }
             }
         });
@@ -184,19 +196,19 @@
             responsive: {
                 0: {
                     items: 3,
-                    dots: true,
+                    dots: false,
                     nav: false,
                 },
                 600: {
                     items: 5,
-                    dots: true,
+                    dots: false,
                     nav: false,
                 },
                 1000: {
                     items: 7,
                     margin: 20,
                     nav: false,
-                    dots: true,
+                    dots: false,
                 }
             }
         });
@@ -213,48 +225,50 @@
             responsive: {
                 0: {
                     items: 3,
-                    dots: true,
+                    dots: false,
                     nav: false,
                 },
                 600: {
                     items: 5,
-                    dots: true,
+                    dots: false,
                     nav: false,
                 },
                 1000: {
                     items: 7,
                     margin: 20,
                     nav: false,
-                    dots: true,
+                    dots: false,
                 }
             }
         });
 
     </script>
-    <script>
+                       <script>
         $("#owldemo7").owlCarousel({
             loop: true,
             margin: 10,
-            //            autoplay: true,
-            //            autoplayTimeout: 4000,
-            //            autoplayHoverPause: true,
+//            autoplay: true,
+//            autoplayTimeout: 4000,
+//            autoplayHoverPause: true,
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn',
             navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
             responsive: {
                 0: {
                     items: 1,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 600: {
                     items: 1,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true
                 },
                 1000: {
                     items: 1,
                     margin: 20,
-                    nav: false,
-                    dots: true,
+                    nav: true,
+                    dots: false,
                 }
             }
         });
