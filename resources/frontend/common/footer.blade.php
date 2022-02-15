@@ -1,4 +1,61 @@
    <!-- ********|| FOOTER START ||******** -->
+                                <section class="footer_top">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4 p-0">
+                                                <div class="foot_copyright">  
+                                                    <div class="copyright">Copyright © 2022 The CC&FC Club at Kolkata All Rights Reserved.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 p-0">
+                                                <div class="foot_social">  
+                                                    <div class="footer_social_inner">
+                                                        <ul>
+                                                            <li class="social_follow">Follow Us on:</li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-facebook"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-twitter"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-instagram"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-pinterest"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-linkedin"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="social-icon">
+                                                                    <i class="zmdi zmdi-youtube-play"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 p-0 foot_webcomp">
+                                                <div class="foot_copyright">  
+                                                    <div class="foot_webcompany">
+                                                        Design & Developed by<a href="#" class="keyline"> KEYLINE</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
                                 <section class="footer-img">
                                     <img class="img-fluid" src="{{ asset('img/footer-ban.png') }}" alt="">
                                 </section>
@@ -59,6 +116,35 @@
 
     <script>
         $("#owldemo1").owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1,
+                    dots: true,
+                    nav: false,
+                },
+                600: {
+                    items: 1,
+                    dots: true,
+                    nav: false,
+                },
+                1000: {
+                    items: 1,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                }
+            }
+        });
+
+    </script>
+    <script>
+        $("#innerpage-banner").owlCarousel({
             loop: true,
             margin: 10,
             autoplay: true,
