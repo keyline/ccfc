@@ -1,33 +1,6 @@
 <?php
 
-use App\Http\Controllers\ContactController;
-
-use App\Models\ReciprocalClub;
-
-use App\Models\ContentPage;
-
-use App\Models\Gallery;
-
-use App\Models\Sportstype;
-
-// Route::get('/', 'FrontendHome@index')->name('index');
-
-Route::get('/', function () {
-    $reciprocalClubs = ReciprocalClub::all();
-    $contentPages = ContentPage::all();
-    // $galleries = Gallery::all();
-    $sportstypes = Sportstype::all();
-    $galleries = Gallery::with(['media'])->get();
-
-    return view('index', compact('reciprocalClubs', 'contentPages', 'galleries', 'sportstypes'));
-});
-
-
-
-
-
-// Route::redirect('/', '/login');
-
+Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -37,11 +10,6 @@ Route::get('/home', function () {
 });
 
 Auth::routes(['register' => false]);
-
-
-// Auth::routes(['login' => false]);
-
-// Route::get('/ccfc_admin', 'Auth\LoginController@show_admin_login')->name('AdminLogin');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -166,32 +134,4 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
         Route::post('two-factor', 'TwoFactorController@check')->name('twoFactor.check');
         Route::get('two-factor/resend', 'TwoFactorController@resend')->name('twoFactor.resend');
     }
-});
-
-Route::get('/past-president', function () {
-    return view('past-president');
-});
-Route::get('/activities', function () {
-    return view('activities');
-});
-
-
-// Route::get('/', 'PagesController@index')->name('pages');
-// Route::resource('pages', 'PagesController');
-
-// require __DIR__.'/auth.php';
-
-Route::get('pages/{sport_name}', 'PagesController@show');
-
-Route::get('demo', 'FrontendhtmlController@pastpresident');
-
-Route::get('/footer', [ContactController::class,'contact']);
-
-Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
-Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
-Route::get('/history', function () {
-    return view('history');
-});
-Route::get('/namrata', function () {
-    return view('namrata');
 });
