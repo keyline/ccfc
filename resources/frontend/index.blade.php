@@ -12,14 +12,14 @@
 @include('common.home_header')
                         <!-- ********|| RIGHT PART START ||******** -->
 
-                        <div class="col-lg-9 col-md-9 p-0">
+                        <div class="col-lg-9 col-md-7 p-0">
                             <div class="right-body">
                                 <!-- ********|| BANNER PART START ||******** -->
                                 <section class="banner">
 
                                     <div class="banner-box">
 
-                                        <div id=owldemo1 class="owl-carousel owl-theme">
+                                        <div id="home_banner" class="owl-carousel owl-theme">
 
                                             <div class="item">
 
@@ -97,7 +97,7 @@
 
                                                 </div>
                                                 <div class="history-img">
-                                                    <div id=owldemo2 class="owl-carousel owl-theme">
+                                                    <div id="home_history" class="owl-carousel owl-theme">
                                                           <!-- dynamic part starts   -->
                                                           @foreach($galleries as $key => $gallery)
 
@@ -144,7 +144,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="services-inner">
-                                                    <div id=owldemo3 class="owl-carousel owl-theme">
+                                                    <div id="amenities-services" class="owl-carousel owl-theme">
                                                         <div class="item">
                                                             <div class="services-info">
                                                                 <div class="services-img">
@@ -258,6 +258,34 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="item">
+                                                            <div class="services-info">
+                                                                <div class="services-img">
+                                                                    <img class="img-fluid" src="{{ asset('img/services-3.jpg') }}" alt="">
+                                                                </div>
+                                                                <div class="services-box">
+                                                                    <div class="top-img">
+                                                                        <div class="trangle-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                                        </div>
+                                                                        <div class="img-box gym-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/swim-01.svg') }}" alt="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="services-body">
+                                                                        <div class="services-title">
+                                                                            SWIMMING POOL
+                                                                        </div>
+                                                                        <div class="services-content">
+                                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed euismod tincidunt ut sad asdlaoreet dolore...
+                                                                        </div>
+                                                                        <div class="services-action">
+                                                                            <a href="#" class="read-btn">+ Read More</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -278,7 +306,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="sports-inner">
-                                                    <div id=owldemo4 class="owl-carousel owl-theme">
+                                                    <div id="home_sports" class="owl-carousel owl-theme">
                                                         <!-- dynamic part starts -->
                                                         @foreach($sportstypes as $sportstype)
 
@@ -346,7 +374,7 @@
                                                     <div class="tab-content" id="myTabContent">
                                                         <div class="tab-pane fade show active" id="indian" role="tabpanel" aria-labelledby="indian-tab">
                                                             <div class="club-info">
-                                                                <div id=owldemo5 class="owl-carousel owl-theme">
+                                                                <div id="home_reciprocal_indian" class="owl-carousel owl-theme">
                                                                      
                                                                
 
@@ -380,7 +408,7 @@
                                                         </div>
                                                         <div class="tab-pane fade" id="overseas" role="tabpanel" aria-labelledby="overseas-tab">
                                                             <div class="club-info">
-                                                                <div id=owldemo6 class="owl-carousel owl-theme">
+                                                                <div id="home_reciprocal_overseas" class="owl-carousel owl-theme">
                                                                 
 
                                                                 @foreach($reciprocalClubs->where("cub_type","overseas") as $key => $reciprocalClub)
@@ -429,7 +457,7 @@
                                                     <div class="col-lg-8"> 
                                                         
                                                            <div class="testimonial-carousel">
-                                                                <div id=owldemo7 class="owl-carousel owl-theme">
+                                                                <div id="home_testimonial" class="owl-carousel owl-theme">
                                                                     <div class="item">
 
                                                                         <div class="testimonial-body">
