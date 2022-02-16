@@ -628,56 +628,7 @@
                                                  
                                                             </div>
                                                         </div>
-<!--
-                                                                       <div class="testimonial-carousel">
-                                                                <div id="owldemo7" class="owl-carousel owl-theme owl-loaded owl-drag">
-                                                                    
-                                                            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1104px, 0px, 0px); transition: all 0s ease 0s; width: 2761px;">
 
-                                                                <div class="owl-item cloned" style="width: 532.078px; margin-right: 20px;">
-                                                                    <div class="item">
-                                                                        
-                                                                         <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid" src="{{ asset('img/testimonial-part1.png') }}" alt="">
-                                                                </div>
-                                                              
-                                                            </div>
-                                                                        <div class="testimonial-body">
-                                                                            <div class="testimonial-inner">
-                                                                            <div class="testimonial-info-box">
-                                                                                  <div class="testimonial-info">
-                                                                                <div class="quote-icon">
-                                                                                    <i class="zmdi zmdi-quote"></i>
-                                                                                </div>
-                                                                                <div class="testimonial-content">
-                                                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                                                                                </div>
-                                                                                <div class="testimonial-name">
-                                                                                    Sourav Ganguly
-                                                                                </div>
-                                                                                <div class="testimonial-profession">
-                                                                                    bcci president
-                                                                                </div>
-                                                                            </div>
-                                                                            </div>
-                                                                          </div>
-                                                                            <div class="testimonial-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/testimonial-1.jpg') }}" alt="">
-                                                                            </div>
-                                                                        
-                                                                    </div>
-                                                                        
-                                                                </div>
-                                                                </div>
-                                                                </div>
-                                                                    </div>
-                                                                    <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i class="zmdi zmdi-chevron-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="zmdi zmdi-chevron-right"></i></button></div><div class="owl-dots disabled"><button role="button" class="owl-dot active"><span></span></button></div></div>
-                                                        </div> 
--->
-                                                            
-                                                            
-                                                            
                                                         </div>
                                                               <div class="col-lg-4">
                                                         <div class="testimonial-right">
@@ -780,11 +731,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--
-                                    <div class="footer-ban">
-                                        <img class="img-fluid" src="assets/img/footer-ban.png" alt="">
-                                    </div>
--->
                                 </section>
                                 <!-- ********|| CONTACT END ||******** -->
                                 @include('common.footer')

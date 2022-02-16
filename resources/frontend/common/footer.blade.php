@@ -90,9 +90,9 @@
         $("#owldemo2").owlCarousel({
             loop: true,
             margin: 10,
-            //            autoplay: true,
-            //            autoplayTimeout: 4000,
-            //            autoplayHoverPause: true,
+                        autoplay: true,
+                        autoplayTimeout: 4000,
+                        autoplayHoverPause: true,
             navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
             responsive: {
                 0: {
@@ -154,9 +154,9 @@
         $("#owldemo4").owlCarousel({
             loop: true,
             margin: 10,
-            //            autoplay: true,
-            //            autoplayTimeout: 4000,
-            //            autoplayHoverPause: true,
+                        autoplay: true,
+                        autoplayTimeout: 4000,
+                        autoplayHoverPause: true,
             navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
             responsive: {
                 0: {
@@ -189,9 +189,9 @@
         $("#owldemo5").owlCarousel({
             loop: true,
             margin: 10,
-            //            autoplay: true,
-            //            autoplayTimeout: 4000,
-            //            autoplayHoverPause: true,
+                        autoplay: true,
+                        autoplayTimeout: 4000,
+                        autoplayHoverPause: true,
             navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
             responsive: {
                 0: {
@@ -218,9 +218,9 @@
         $("#owldemo6").owlCarousel({
             loop: true,
             margin: 10,
-            //            autoplay: true,
-            //            autoplayTimeout: 4000,
-            //            autoplayHoverPause: true,
+                        autoplay: true,
+                        autoplayTimeout: 4000,
+                        autoplayHoverPause: true,
             navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
             responsive: {
                 0: {
@@ -247,9 +247,7 @@
         $("#owldemo7").owlCarousel({
             loop: true,
             margin: 10,
-//            autoplay: true,
-//            autoplayTimeout: 4000,
-//            autoplayHoverPause: true,
+
             animateOut: 'fadeOut',
             animateIn: 'fadeIn',
             navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],

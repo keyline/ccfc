@@ -118,10 +118,7 @@
                                                     <img class="img-fluid" src="{{ asset('img/history/history-sub-5.jpg') }}" alt="" />
                                                 </div>
                                             </div>
-<!--
-                                                </div>
-                                            </div>
--->
+
                                         </div>
                                     </div>
                                 </section>
