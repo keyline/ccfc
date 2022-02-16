@@ -577,340 +577,110 @@
             </section>
             <!-- ********|| CLUB END ||******** -->
 
-            <!-- ********|| TESTIMONIAL START ||******** -->
-            <!-- <section class="testimonial-sec">
+                                <!-- ********|| TESTIMONIAL START ||******** -->
+                                <section class="testimonial-sec">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-10 offset-lg-1">
                                                 <div class="row">
-                                                    <div class="col-lg-7">
+                                                    <div class="col-lg-8"> 
                                                         
-                                                           
-                                                            <div class="testimonial-carousel">
+                                                           <div class="testimonial-carousel">
                                                                 <div id=owldemo7 class="owl-carousel owl-theme">
                                                                     <div class="item">
-                                                                        
-                                                                         <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid" src="{{ asset('img/testimonial-part1.png') }}" alt="">
-                                                                </div>
-                                                              
-                                                            </div>
+
                                                                         <div class="testimonial-body">
                                                                             <div class="testimonial-inner">
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="{{ asset('img/testimonial-img-box.png') }}" alt="">
-                                                                    
-                                                                    </div>
-                                                                </div>
-                                                                            <div class="testimonial-info-box">
+                                                                            
                                                                                   <div class="testimonial-info">
                                                                                 <div class="quote-icon">
                                                                                     <i class="zmdi zmdi-quote"></i>
                                                                                 </div>
                                                                                 <div class="testimonial-content">
-                                                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim....
                                                                                 </div>
                                                                                 <div class="testimonial-name">
                                                                                     Sourav Ganguly
                                                                                 </div>
                                                                                 <div class="testimonial-profession">
-                                                                                    bcci president
+                                                                                    BCCI President
                                                                                 </div>
+                                                                        <div class="testimonial-action">
+                                                                <a href="#" class="read-btn">+ Read more</a>
+                                                            </div>
                                                                             </div>
-                                                                            </div>
+                                                                            <div class="testimonial-info-box"></div>
                                                                           </div>
                                                                             <div class="testimonial-img">
                                                                                 <img class="img-fluid" src="{{ asset('img/testimonial-1.jpg') }}" alt="">
                                                                             </div>
-                                                                        
+                                                                            <div class="testimonial-profession">
+                                                                                bcci president
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                         
                                                                 </div>
+                                                                         <div class="item">
+
+                                                                        <div class="testimonial-body">
+                                                                            <div class="testimonial-inner">
+                                                                            
+                                                                                  <div class="testimonial-info">
+                                                                                <div class="quote-icon">
+                                                                                    <i class="zmdi zmdi-quote"></i>
+                                                                                </div>
+                                                                                <div class="testimonial-content">
+                                                                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim....
+                                                                                </div>
+                                                                                <div class="testimonial-name">
+                                                                                    Sachin Tendulkar
+                                                                                </div>
+                                                                                <div class="testimonial-profession">
+                                                                                    BCCI President
+                                                                                </div>
+                                                                                      <div class="testimonial-action">
+                                                                <a href="#" class="read-btn">+ Read more</a>
+                                                            </div>
+                                                                            </div>
+                                                                            <div class="testimonial-info-box"></div>
+                                                                          </div>
+                                                                            <div class="testimonial-img">
+                                                                                <img class="img-fluid" src="{{ asset('img/testimonial-2.jpg') }}" alt="">
+                                                                            </div>
+                                                                            <div class="testimonial-profession">
+                                                                                bcci president
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                        
+                                                                </div>
+                                                 
                                                             </div>
                                                         </div>
+
+                                                        </div>
+                                                              <div class="col-lg-4">
+                                                        <div class="testimonial-right">
+                                                            <div class="testimonial-logo">
+                                                                <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" />
+                                                            </div>
+                                                            <div class="title-sec">
+                                                    <div class="title">
+                                                        Testimonials
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section> -->
-
-
-            <section class="testimonial-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 offset-lg-1">
-                            <div class="row">
-                                <div class="col-lg-8">
-
-                                    <div class="testimonial-carousel">
-                                        <div id="owldemo7" class="owl-carousel owl-theme owl-loaded owl-drag">
-
-                                            <div class="owl-stage-outer">
-                                                <div class="owl-stage"
-                                                    style="transform: translate3d(-1104px, 0px, 0px); transition: all 0s ease 0s; width: 2761px;">
-                                                    <div class="owl-item cloned"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
+                                                            <div class="testimonial-content">
+                                                                Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer adipiscing elitconsectetuer adipiscing elit...
                                                             </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
+                                                            <div class="testimonial-action">
+                                                                <a href="#" class="read-btn">+ Read all</a>
                                                             </div>
-
                                                         </div>
                                                     </div>
-                                                    <div class="owl-item cloned"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
+                                        
                                                     </div>
-                                                    <div class="owl-item active"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
+                                             
                                                 </div>
                                             </div>
                                             <div class="owl-nav disabled"><button type="button" role="presentation"
@@ -921,17 +691,12 @@
                                             <div class="owl-dots disabled"><button role="button"
                                                     class="owl-dot active"><span></span></button></div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ********|| TESTIMONIAL END ||******** -->
-
-            <!-- ********|| CONTACT START ||******** -->
-            <!-- <section class="contact-sec">
+                                    
+                                </section>
+                                <!-- ********|| TESTIMONIAL END ||******** -->
+                                
+                                <!-- ********|| CONTACT START ||******** -->
+                                <section class="contact-sec">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -1003,13 +768,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                </section> -->
-            <!-- ********|| CONTACT END ||******** -->
-            @include('common.footer')
-            <!-- ?php include 'assets/inc/footer.php';?> -->
-
-
-            </body>
+                                </section>
+                                <!-- ********|| CONTACT END ||******** -->
+                                @include('common.footer')
+                                <!-- ?php include 'assets/inc/footer.php';?> -->
+             
+                                
+                             
+</body>
 
 </html>

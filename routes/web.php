@@ -188,3 +188,10 @@ Route::get('demo', 'FrontendhtmlController@pastpresident');
 Route::get('/footer', [ContactController::class,'contact']);
 
 Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
+Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
+Route::get('/history', function () {
+    return view('history');
+});
+Route::get('/namrata', function () {
+    return view('namrata');
+});
