@@ -425,6 +425,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 }
 .site_righticon ul {
     list-style: none;
+    padding: 0;
   } 
 .site_righticon ul li {
     width: 50px;
@@ -861,6 +862,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     top: 42%;
     /* right: 60px; */
     font-size: 40px;
+    z-index: 9;
 }
 .services-sec .owl-nav .owl-prev {
     margin-left: -20px;
