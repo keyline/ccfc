@@ -1041,15 +1041,16 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../img/past-president/frameOuter.png);
-    z-index: 999;
+    background-image: url(../img/past-president/outer-frame.png);
+    z-index: 9;
     background-size: 100% 100%;
 }
 .photoFrame img {
     width: auto;
     z-index: 9;
-    height: 100%;
+    /*height: 100%;*/
     position: absolute;
+    max-width: 176px;
     left: 50%;
     right: 0;
     transform: translateX(-50%);
