@@ -11,7 +11,6 @@ class CreateContentPagesTable extends Migration
         Schema::create('content_pages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title')->nullable();
-            $table->string('slug')->nullable();
             $table->longText('page_text')->nullable();
             $table->longText('excerpt')->nullable();
             $table->timestamps();
