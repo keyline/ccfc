@@ -77,7 +77,7 @@
                                                                 </div>
                                                                 <div class="col-md-6 col-lg-3">
                                                                     <div class="pastpresdit_inner teamMember">
-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/p2.jpg') }}" alt=""></div>
+                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/2a.jpg') }}" alt=""></div>
                                                                         <div class="passtpredi_name">
                                                                             <h2>Mr. R. B. Lagden</h2>
                                                                             <p>Mr. R. B. Lagden</p>
@@ -95,7 +95,7 @@
                                                                 </div>
                                                                 <div class="col-md-6 col-lg-3">
                                                                     <div class="pastpresdit_inner teamMember">
-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/p1.jpg') }}" alt=""></div>
+                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/4.jpg') }}" alt=""></div>
                                                                         <div class="passtpredi_name">
                                                                             <h2>Mr. R. B. Lagden</h2>
                                                                             <p>Mr. R. B. Lagden</p>
@@ -105,7 +105,7 @@
                                                                 <div class="col-md-6 col-lg-3">
                                                                     <div class="pastpresdit_inner teamMember">
                                                                         <div class="photoFrame">
-                                                                        <img src="{{ asset('img/past-president/frame.jpg') }}" alt=""></div>
+                                                                        <img src="{{ asset('img/past-president/5.jpg') }}" alt=""></div>
                                                                         <div class="passtpredi_name">
                                                                             <h2>Mr. R. B. Lagden</h2>
                                                                             <p>Mr. R. B. Lagden</p>
@@ -114,7 +114,7 @@
                                                                 </div>
                                                                 <div class="col-md-6 col-lg-3">
                                                                     <div class="pastpresdit_inner teamMember">
-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/p2.jpg') }}" alt=""></div>
+                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/6.jpg') }}" alt=""></div>
                                                                         <div class="passtpredi_name">
                                                                             <h2>Mr. R. B. Lagden</h2>
                                                                             <p>Mr. R. B. Lagden</p>

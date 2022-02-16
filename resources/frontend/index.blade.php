@@ -6,80 +6,81 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- ?php include 'assets/inc/header.php';?> -->
+<!-- ?php include 'assets/inc/header.php';?> -->
 
-    <!-- header -->
-    @include('common.home_header')
-    <!-- ********|| RIGHT PART START ||******** -->
+<!-- header -->
+@include('common.home_header')
+                        <!-- ********|| RIGHT PART START ||******** -->
 
-    <div class="col-lg-9 col-md-9 p-0">
-        <div class="right-body">
-            <!-- ********|| BANNER PART START ||******** -->
-            <section class="banner">
+                        <div class="col-lg-9 col-md-9 p-0">
+                            <div class="right-body">
+                                <!-- ********|| BANNER PART START ||******** -->
+                                <section class="banner">
 
-                <div class="banner-box">
+                                    <div class="banner-box">
 
-                    <div id=owldemo1 class="owl-carousel owl-theme">
+                                        <div id=owldemo1 class="owl-carousel owl-theme">
 
-                        <div class="item">
+                                            <div class="item">
 
-                            <div class="about-img">
+                                                <div class="about-img">
 
-                                <img class="img-fluid" src="{{ asset('img/banner-1.jpg') }}" alt="" />
+                                                    <img class="img-fluid" src="{{ asset('img/banner-1.jpg') }}" alt="" />
 
-                            </div>
+                                                </div>
 
-                        </div>
+                                            </div>
 
-                        <div class="item">
+                                            <div class="item">
 
-                            <div class="about-img">
+                                                <div class="about-img">
 
-                                <img class="img-fluid" src="{{ asset('img/banner-2.jpg') }}" alt="" />
+                                                    <img class="img-fluid" src="{{ asset('img/banner-2.jpg') }}" alt="" />
 
-                            </div>
+                                                </div>
 
-                        </div>
+                                            </div>
 
-                    </div>
+                                        </div>
 
-                </div>
-
-            </section>
-            <!-- ********|| BANNER PART END ||******** -->
-
-            <!-- ********|| ADVISE START ||******** -->
-            <section class="advise">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6">
-                            <div class="advise-img">
-                                <img class="img-fluid" src="{{ asset('img/advise-1.jpg') }}" alt="" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="advise-img">
-                                <img class="img-fluid" src="{{ asset('img/advise-2.jpg') }}" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ********|| ADVISE END ||******** -->
-
-            <!-- ********|| HISTORY START ||******** -->
-            <section class="history-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 offset-lg-1">
-                            <div class="history-inner">
-                                <div class="title-sec">
-                                    <div class="title">
-                                        HISTORY
                                     </div>
-                                </div>
-                                @foreach($contentPages as $contentPage)
+
+                                </section>
+                                <!-- ********|| BANNER PART END ||******** -->
+
+                                <!-- ********|| ADVISE START ||******** -->
+                                <section class="advise">
+                                    <div class="container">
+                                        <div class="row">
+
+                                            <div class="col-lg-6">
+                                                <div class="advise-img">
+                                                    <img class="img-fluid" src="{{ asset('img/advise-1.jpg') }}" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="advise-img">
+                                                    <img class="img-fluid" src="{{ asset('img/advise-2.jpg') }}" alt="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- ********|| ADVISE END ||******** -->
+
+                                <!-- ********|| HISTORY START ||******** -->
+                                <section class="history-sec">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-10 offset-lg-1">
+                                                <div class="history-inner">
+                                                    <div class="title-sec">
+                                                        <div class="title">
+                                                            HISTORY
+                                                        </div>
+                                                    </div>
+                                                    <!-- dynamic part starts -->
+                                                    @foreach($contentPages as $contentPage)
                                 <div class="history-content">
                                     {{$contentPage->excerpt}}
                                 </div>
@@ -90,27 +91,18 @@
                                     <!-- Indeed, sports events were reckoned to be important enough for sub-continental reporters. Fortunately, a copy of the Madras Courier dated 23rd. February, 1792 has survived. The paper reported cricket fixtures between the Calcutta Cricket Club and Barrackpore and the Calcutta Cricket Club and Dum Dum. Clearly, the Calcutta Cricket Club was already in existence in 1792. -->
                                 </div>
                                 @endforeach
-                                <div class="history-action">
-                                    <a href="#" class="read-btn">+ Read More</a>
-                                </div>
+                                                    <div class="history-action">
+                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                    </div>
 
-                            </div>
-                            <div class="history-img">
-                                <div id=owldemo2 class="owl-carousel owl-theme">
-
-
-
-
-                                    @foreach($galleries as $key => $gallery)
+                                                </div>
+                                                <div class="history-img">
+                                                    <div id=owldemo2 class="owl-carousel owl-theme">
+                                                          <!-- dynamic part starts   -->
+                                                          @foreach($galleries as $key => $gallery)
 
                                     @foreach($gallery->images as $key => $media)
                                     <div class="item">
-                                        <!--<div class="gallery">
-                                                        <img class="img-fluid" src="assets/img/history-1.jpg">
-                                                        <div class="hvr">
-                                                            <i class="zmdi zmdi-search"></i>
-                                                        </div>
-                                                        </div>-->
                                         <div class="project-item">
                                             <div class="gallery">
 
@@ -130,232 +122,165 @@
                                     </div>
                                     @endforeach
                                     @endforeach
-                                    <!-- <div class="item">
                                                             
-                                                            <div class="project-item">
-                                                                <div class="gallery">
-                                                                    <a href="{{ asset('img/history-2.jpg') }}" class="item-inner" data-fancybox="image">
-                                                                        <div class="item-img">
-                                                                            <img class="img-fluid" src="{{ asset('img/history-2.jpg') }}" alt="">
-                                                                            <div class="hvr">
-                                                                                <i class="zmdi zmdi-search"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                    <!-- <div class="item">
-                                                            <div class="project-item">
-                                                                <div class="gallery">
-                                                                    <a href="{{ asset('img/history-3.jpg') }}" class="item-inner" data-fancybox="image">
-                                                                        <div class="item-img">
-                                                                            <img class="img-fluid" src="{{ asset('img/history-3.jpg') }}" alt="">
-                                                                            <div class="hvr">
-                                                                                <i class="zmdi zmdi-search"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                    <!-- <div class="item">
-                                                            
-                                                            <div class="project-item">
-                                                                <div class="gallery">
-                                                                    <a href="{{ asset('img/history-4.jpg') }}" class="item-inner" data-fancybox="image">
-                                                                        <div class="item-img">
-                                                                            <img class="img-fluid" src="{{ asset('img/history-4.jpg') }}" alt="">
-                                                                            <div class="hvr">
-                                                                                <i class="zmdi zmdi-search"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                    <!-- <div class="item">
-                                                            <div class="project-item">
-                                                                <div class="gallery">
-                                                                    <a href="{{ asset('img/history-5.jpg') }}" class="item-inner" data-fancybox="image">
-                                                                        <div class="item-img">
-                                                                            <img class="img-fluid" src="{{ asset('img/history-5.jpg') }}" alt="">
-                                                                            <div class="hvr">
-                                                                                <i class="zmdi zmdi-search"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-            <!-- ********|| HISTORY END ||******** -->
-
-            <!-- ********|| SERVICES START ||******** -->
-            <section class="services-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 offset-lg-1">
-                            <div class="title-sec">
-                                <div class="title">
-                                    Amenities & Services
-                                </div>
-                            </div>
-                            <div class="services-inner">
-                                <div id=owldemo3 class="owl-carousel owl-theme">
-                                    <div class="item">
-                                        <div class="services-info">
-                                            <div class="services-img">
-                                                <img class="img-fluid" src="{{ asset('img/services-1.jpg') }}" alt="">
-                                            </div>
-                                            <div class="services-box">
-                                                <div class="top-img">
-                                                    <div class="trangle-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
-                                                    </div>
-                                                    <div class="img-box">
-                                                        <img class="img-fluid" src="{{ asset('img/food-01.svg') }}"
-                                                            alt="">
+                                                        
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="services-body">
-                                                    <div class="services-title">
-                                                        FOOD & BEVERAGES
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- ********|| HISTORY END ||******** -->
+
+                                <!-- ********|| SERVICES START ||******** -->
+                                <section class="services-sec">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-10 offset-lg-1">
+                                                <div class="title-sec">
+                                                    <div class="title">
+                                                        Amenities & Services
                                                     </div>
-                                                    <div class="services-content">
-                                                        The Club offers a wide range of delicious food in its dining
-                                                        hall along with varieties of snacks...
-                                                    </div>
-                                                    <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                </div>
+                                                <div class="services-inner">
+                                                    <div id=owldemo3 class="owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <div class="services-info">
+                                                                <div class="services-img">
+                                                                    <img class="img-fluid" src="{{ asset('img/services-1.jpg') }}" alt="">
+                                                                </div>
+                                                                <div class="services-box">
+                                                                    <div class="top-img">
+                                                                        <div class="trangle-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                                        </div>
+                                                                        <div class="img-box">
+                                                                            <img class="img-fluid" src="{{ asset('img/food-01.svg') }}" alt="">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="services-body">
+                                                                        <div class="services-title">
+                                                                            FOOD & BEVERAGES
+                                                                        </div>
+                                                                        <div class="services-content">
+                                                                            The Club offers a wide range of delicious food in its dining hall along with varieties of snacks...
+                                                                        </div>
+                                                                        <div class="services-action">
+                                                                            <a href="#" class="read-btn">+ Read More</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="services-info">
+                                                                <div class="services-img">
+                                                                    <img class="img-fluid" src="{{ asset('img/services-2.jpg') }}" alt="">
+                                                                </div>
+                                                                <div class="services-box">
+                                                                    <div class="top-img">
+                                                                        <div class="trangle-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                                        </div>
+                                                                        <div class="img-box gym-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/gym-01.svg') }}" alt="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="services-body">
+                                                                        <div class="services-title">
+                                                                            GYMMING REJUVENATED
+                                                                        </div>
+                                                                        <div class="services-content">
+                                                                            The Club gym went through refurbishment and up gradation this February bringing a whole new face of health and fitness...
+                                                                        </div>
+                                                                        <div class="services-action">
+                                                                            <a href="#" class="read-btn">+ Read More</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="services-info">
+                                                                <div class="services-img">
+                                                                    <img class="img-fluid" src="{{ asset('img/services-3.jpg') }}" alt="">
+                                                                </div>
+                                                                <div class="services-box">
+                                                                    <div class="top-img">
+                                                                        <div class="trangle-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                                        </div>
+                                                                        <div class="img-box gym-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/swim-01.svg') }}" alt="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="services-body">
+                                                                        <div class="services-title">
+                                                                            SWIMMING POOL
+                                                                        </div>
+                                                                        <div class="services-content">
+                                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed euismod tincidunt ut sad asdlaoreet dolore...
+                                                                        </div>
+                                                                        <div class="services-action">
+                                                                            <a href="#" class="read-btn">+ Read More</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="services-info">
+                                                                <div class="services-img">
+                                                                    <img class="img-fluid" src="{{ asset('img/services-4.jpg') }}" alt="">
+                                                                </div>
+                                                                <div class="services-box">
+                                                                    <div class="top-img">
+                                                                        <div class="trangle-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                                        </div>
+                                                                        <div class="img-box gym-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/bar-01.svg') }}" alt="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="services-body">
+                                                                        <div class="services-title">
+                                                                            CLUB BAR
+                                                                        </div>
+                                                                        <div class="services-content">
+                                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed euismod tincidunt ut sad asdlaoreet dolore...
+                                                                        </div>
+                                                                        <div class="services-action">
+                                                                            <a href="#" class="read-btn">+ Read More</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="item">
-                                        <div class="services-info">
-                                            <div class="services-img">
-                                                <img class="img-fluid" src="{{ asset('img/services-2.jpg') }}" alt="">
-                                            </div>
-                                            <div class="services-box">
-                                                <div class="top-img">
-                                                    <div class="trangle-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
-                                                    </div>
-                                                    <div class="img-box gym-img">
-                                                        <img class="img-fluid" src="{{ asset('img/gym-01.svg') }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="services-body">
-                                                    <div class="services-title">
-                                                        GYMMING REJUVENATED
-                                                    </div>
-                                                    <div class="services-content">
-                                                        The Club gym went through refurbishment and up gradation this
-                                                        February bringing a whole new face of health and fitness...
-                                                    </div>
-                                                    <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="services-info">
-                                            <div class="services-img">
-                                                <img class="img-fluid" src="{{ asset('img/services-3.jpg') }}" alt="">
-                                            </div>
-                                            <div class="services-box">
-                                                <div class="top-img">
-                                                    <div class="trangle-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
-                                                    </div>
-                                                    <div class="img-box gym-img">
-                                                        <img class="img-fluid" src="{{ asset('img/swim-01.svg') }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="services-body">
-                                                    <div class="services-title">
-                                                        SWIMMING POOL
-                                                    </div>
-                                                    <div class="services-content">
-                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                        euismod tincidunt ut sad asdlaoreet dolore...
-                                                    </div>
-                                                    <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="services-info">
-                                            <div class="services-img">
-                                                <img class="img-fluid" src="{{ asset('img/services-4.jpg') }}" alt="">
-                                            </div>
-                                            <div class="services-box">
-                                                <div class="top-img">
-                                                    <div class="trangle-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
-                                                    </div>
-                                                    <div class="img-box gym-img">
-                                                        <img class="img-fluid" src="{{ asset('img/bar-01.svg') }}"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="services-body">
-                                                    <div class="services-title">
-                                                        CLUB BAR
-                                                    </div>
-                                                    <div class="services-content">
-                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                        euismod tincidunt ut sad asdlaoreet dolore...
-                                                    </div>
-                                                    <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ********|| SERVICES END ||******** -->
+                                </section>
+                                <!-- ********|| SERVICES END ||******** -->
 
-            <!-- ********|| SPORTS START ||******** -->
-            <!-- ********|| SERVICES START ||******** -->
-            <section class="sports-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 offset-lg-1">
-                            <div class="title-sec">
-                                <div class="title">
-                                    Sports
-                                </div>
-                            </div>
-                            <div class="sports-inner">
-                                <div id=owldemo4 class="owl-carousel owl-theme">
-                                    @foreach($sportstypes as $sportstype)
+                                <!-- ********|| SPORTS START ||******** -->
+                                <!-- ********|| SERVICES START ||******** -->
+                                <section class="sports-sec">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-10 offset-lg-1">
+                                                <div class="title-sec">
+                                                    <div class="title">
+                                                        Sports
+                                                    </div>
+                                                </div>
+                                                <div class="sports-inner">
+                                                    <div id=owldemo4 class="owl-carousel owl-theme">
+                                                        <!-- dynamic part starts -->
+                                                        @foreach($sportstypes as $sportstype)
 
                                     <!-- @php
                                                             var_dump($sportstypes)
@@ -389,237 +314,145 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    <!-- <div class="item">
-                                                            <div class="sports-info">
-                                                                <div class="sports-img">
-                                                                    <img class="img-fluid" src="{{ asset('img/sports-2-01-01.svg') }}" alt="">
-                                                                </div>
-                                                                <div class="sports-box">
-                                                                    <div class="sports-title">
-                                                                        football
-                                                                    </div>
-                                                                    <div class="sports-content">
-                                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit...
-                                                                    </div>
-                                                                    <div class="sports-action">
-                                                                        <a href="#" class="read-btn">+ Read More</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                    <!-- <div class="item">
-                                                            <div class="sports-info">
-                                                                <div class="sports-img">
-                                                                    <img class="img-fluid" src="{{ asset('img/sports-2-02.svg') }}" alt="">
-                                                                </div>
-                                                                <div class="sports-box">
-                                                                    <div class="sports-title">
-                                                                        rugby
-                                                                    </div>
-                                                                    <div class="sports-content">
-                                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit...
-                                                                    </div>
-                                                                    <div class="sports-action">
-                                                                        <a href="#" class="read-btn">+ Read More</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                    <!-- <div class="item">
-                                                            <div class="sports-info">
-                                                                <div class="sports-img">
-                                                                    <img class="img-fluid" src="{{ asset('img/sports-4-01.svg') }}" alt="">
-                                                                </div>
-                                                                <div class="sports-box">
-                                                                    <div class="sports-title">
-                                                                        hockey
-                                                                    </div>
-                                                                    <div class="sports-content">
-                                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit...
-                                                                    </div>
-                                                                    <div class="sports-action">
-                                                                        <a href="#" class="read-btn">+ Read More</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                    <!-- <div class="item">
-                                                            <div class="sports-info">
-                                                                <div class="sports-img">
-                                                                    <img class="img-fluid" src="{{ asset('img/sports-5-01.svg') }}" alt="">
-                                                                </div>
-                                                                <div class="sports-box">
-                                                                    <div class="sports-title">
-                                                                        tennis
-                                                                    </div>
-                                                                    <div class="sports-content">
-                                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit...
-                                                                    </div>
-                                                                    <div class="sports-action">
-                                                                        <a href="#" class="read-btn">+ Read More</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ********|| SPORTS END ||******** -->
-
-            <!-- ********|| CLUB START ||******** -->
-            <section class="club-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 offset-lg-1">
-                            <div class="title-sec">
-                                <div class="title">
-                                    Reciprocal Club
-                                </div>
-                            </div>
-
-                            <div class="club-inner">
-
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="indian-tab" data-toggle="tab" href="#indian"
-                                            role="tab" aria-controls="indian" aria-selected="true">Indian</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="overseas-tab" data-toggle="tab" href="#overseas"
-                                            role="tab" aria-controls="overseas" aria-selected="false">Overseas</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="indian" role="tabpanel"
-                                        aria-labelledby="indian-tab">
-                                        <div class="club-info">
-                                            <div id=owldemo5 class="owl-carousel owl-theme">
-
-                                                <!-- @php
-                                                                    var_dump($reciprocalClubs->where("cub_type","indian"))
-                                                                @endphp -->
-
-                                                @foreach($reciprocalClubs->where("cub_type","indian") as $key =>
-                                                $reciprocalClub)
-
-                                                <div class="item">
-
-                                                    <div class="club-body">
-
-                                                        <div class="club-img">
-                                                            <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
-                                                            <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
-                                                                height="75" width="75" alt="" />
-                                                        </div>
-                                                        <div class="club-title">
-
-                                                            {{$reciprocalClub->reciprocal_club_name}}
-                                                            <!-- Madras Cricket Club -->
-
-                                                        </div>
-
                                                     </div>
-
                                                 </div>
-                                                @endforeach
-
-
-
-
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="overseas" role="tabpanel"
-                                        aria-labelledby="overseas-tab">
-                                        <div class="club-info">
-                                            <div id=owldemo6 class="owl-carousel owl-theme">
+                                </section>
+                                <!-- ********|| SPORTS END ||******** -->
 
-
-                                                @foreach($reciprocalClubs->where("cub_type","overseas") as $key =>
-                                                $reciprocalClub)
-
-                                                <div class="item">
-
-                                                    <div class="club-body">
-
-                                                        <div class="club-img">
-                                                            <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
-                                                            <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
-                                                                height="75" width="75" alt="" />
-                                                        </div>
-                                                        <div class="club-title">
-
-                                                            {{$reciprocalClub->reciprocal_club_name}}
-                                                            <!-- Madras Cricket Club -->
-
-                                                        </div>
-
+                                <!-- ********|| CLUB START ||******** -->
+                                <section class="club-sec">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-10 offset-lg-1">
+                                                <div class="title-sec">
+                                                    <div class="title">
+                                                        Reciprocal Club
                                                     </div>
-
                                                 </div>
-                                                @endforeach
+                                                
+                                                <div class="club-inner">
+                                                   
+                                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                        <li class="nav-item" role="presentation">
+                                                            <a class="nav-link active" id="indian-tab" data-toggle="tab" href="#indian" role="tab" aria-controls="indian" aria-selected="true">Indian</a>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <a class="nav-link" id="overseas-tab" data-toggle="tab" href="#overseas" role="tab" aria-controls="overseas" aria-selected="false">Overseas</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content" id="myTabContent">
+                                                        <div class="tab-pane fade show active" id="indian" role="tabpanel" aria-labelledby="indian-tab">
+                                                            <div class="club-info">
+                                                                <div id=owldemo5 class="owl-carousel owl-theme">
+                                                                     
+                                                               
+
+                                                                    @foreach($reciprocalClubs->where("cub_type","indian") as $key => $reciprocalClub)
+
+                                                                    <div class="item">
+                                                                    
+                                                                        <div class="club-body">
+                                                                       
+                                                                            <div class="club-img">
+                                                                                <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
+                                                                                <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}" height="75" width="75" alt="" />
+                                                                            </div>
+                                                                            <div class="club-title">
+                                                                            
+                                                                                {{$reciprocalClub->reciprocal_club_name}}
+                                                                                <!-- Madras Cricket Club -->
+                                                                            
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                       
+                                                                    </div>
+                                                                    @endforeach
 
 
 
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="overseas" role="tabpanel" aria-labelledby="overseas-tab">
+                                                            <div class="club-info">
+                                                                <div id=owldemo6 class="owl-carousel owl-theme">
+                                                                
+
+                                                                @foreach($reciprocalClubs->where("cub_type","overseas") as $key => $reciprocalClub)
+
+                                                                <div class="item">
+                                                                    
+                                                                        <div class="club-body">
+                                                                       
+                                                                            <div class="club-img">
+                                                                                <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
+                                                                                <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}" height="75" width="75" alt="" />
+                                                                            </div>
+                                                                            <div class="club-title">
+                                                                            
+                                                                                {{$reciprocalClub->reciprocal_club_name}}
+                                                                                <!-- Madras Cricket Club -->
+                                                                            
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                       
+                                                                    </div>
+                                                                    @endforeach
 
 
+
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ********|| CLUB END ||******** -->
+                                </section>
+                                <!-- ********|| CLUB END ||******** -->
 
-            <!-- ********|| TESTIMONIAL START ||******** -->
-            <!-- <section class="testimonial-sec">
+                                        <!-- ********|| TESTIMONIAL START ||******** -->
+                                <section class="testimonial-sec">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-10 offset-lg-1">
                                                 <div class="row">
-                                                    <div class="col-lg-7">
+                                                    <div class="col-lg-8"> 
                                                         
-                                                           
-                                                            <div class="testimonial-carousel">
+                                                           <div class="testimonial-carousel">
                                                                 <div id=owldemo7 class="owl-carousel owl-theme">
                                                                     <div class="item">
-                                                                        
-                                                                         <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid" src="{{ asset('img/testimonial-part1.png') }}" alt="">
-                                                                </div>
-                                                              
-                                                            </div>
+
                                                                         <div class="testimonial-body">
                                                                             <div class="testimonial-inner">
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="{{ asset('img/testimonial-img-box.png') }}" alt="">
-                                                                    
-                                                                    </div>
-                                                                </div>
-                                                                            <div class="testimonial-info-box">
+                                                                            
                                                                                   <div class="testimonial-info">
                                                                                 <div class="quote-icon">
                                                                                     <i class="zmdi zmdi-quote"></i>
                                                                                 </div>
                                                                                 <div class="testimonial-content">
-                                                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim....
                                                                                 </div>
                                                                                 <div class="testimonial-name">
                                                                                     Sourav Ganguly
                                                                                 </div>
                                                                                 <div class="testimonial-profession">
-                                                                                    bcci president
+                                                                                    BCCI President
                                                                                 </div>
+                                                                        <div class="testimonial-action">
+                                                                <a href="#" class="read-btn">+ Read more</a>
+                                                            </div>
                                                                             </div>
-                                                                            </div>
+                                                                            <div class="testimonial-info-box"></div>
                                                                           </div>
                                                                             <div class="testimonial-img">
                                                                                 <img class="img-fluid" src="{{ asset('img/testimonial-1.jpg') }}" alt="">
@@ -628,310 +461,69 @@
                                                                     </div>
                                                                         
                                                                 </div>
+                                                                         <div class="item">
+
+                                                                        <div class="testimonial-body">
+                                                                            <div class="testimonial-inner">
+                                                                            
+                                                                                  <div class="testimonial-info">
+                                                                                <div class="quote-icon">
+                                                                                    <i class="zmdi zmdi-quote"></i>
+                                                                                </div>
+                                                                                <div class="testimonial-content">
+                                                                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim....
+                                                                                </div>
+                                                                                <div class="testimonial-name">
+                                                                                    Sachin Tendulkar
+                                                                                </div>
+                                                                                <div class="testimonial-profession">
+                                                                                    BCCI President
+                                                                                </div>
+                                                                                      <div class="testimonial-action">
+                                                                <a href="#" class="read-btn">+ Read more</a>
+                                                            </div>
+                                                                            </div>
+                                                                            <div class="testimonial-info-box"></div>
+                                                                          </div>
+                                                                            <div class="testimonial-img">
+                                                                                <img class="img-fluid" src="{{ asset('img/testimonial-2.jpg') }}" alt="">
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        </div>
+                                                              <div class="col-lg-4">
+                                                        <div class="testimonial-right">
+                                                            <div class="testimonial-logo">
+                                                                <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" />
+                                                            </div>
+                                                            <div class="title-sec">
+                                                    <div class="title">
+                                                        Testimonials
+                                                    </div>
+                                                </div>
+                                                            <div class="testimonial-content">
+                                                                Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer adipiscing elitconsectetuer adipiscing elit...
+                                                            </div>
+                                                            <div class="testimonial-action">
+                                                                <a href="#" class="read-btn">+ Read all</a>
                                                             </div>
                                                         </div>
                                                     </div>
+                                        
+                                                    </div>
+                                             
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </section> -->
+                                </section>
+                                <!-- ********|| TESTIMONIAL END ||******** -->
+                                <!-- ********|| TESTIMONIAL END ||******** -->
 
-
-            <section class="testimonial-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 offset-lg-1">
-                            <div class="row">
-                                <div class="col-lg-8">
-
-                                    <div class="testimonial-carousel">
-                                        <div id="owldemo7" class="owl-carousel owl-theme owl-loaded owl-drag">
-
-                                            <div class="owl-stage-outer">
-                                                <div class="owl-stage"
-                                                    style="transform: translate3d(-1104px, 0px, 0px); transition: all 0s ease 0s; width: 2761px;">
-                                                    <div class="owl-item cloned"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item active"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned"
-                                                        style="width: 532.078px; margin-right: 20px;">
-                                                        <div class="item">
-
-                                                            <div class="testimonial-text-box">
-                                                                <div class="left-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-part1.png') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="testimonial-body">
-                                                                <div class="testimonial-inner">
-                                                                    <!--
-                                                                                         <div class="img-box">
-                                                                    <div class="img-box-2">
-                                                                    <img class="img-fluid" src="assets/img/testimonial-img-box.png" alt="">
-                                                                    </div>
-                                                                </div>
--->
-                                                                    <div class="testimonial-info-box">
-                                                                        <div class="testimonial-info">
-                                                                            <div class="quote-icon">
-                                                                                <i class="zmdi zmdi-quote"></i>
-                                                                            </div>
-                                                                            <div class="testimonial-content">
-                                                                                Lorem ipsum dolor sit amet, consectetuer
-                                                                                adipiscing elit, sed diam nonummy nibh
-                                                                                euismod tincidunt ut laoreet dolore
-                                                                                magna aliquam erat volutpat. Ut wisi
-                                                                                enim
-                                                                            </div>
-                                                                            <div class="testimonial-name">
-                                                                                Sourav Ganguly
-                                                                            </div>
-                                                                            <div class="testimonial-profession">
-                                                                                bcci president
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="testimonial-img">
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('img/testimonial-1.jpg') }}"
-                                                                        alt="">
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="owl-nav disabled"><button type="button" role="presentation"
-                                                    class="owl-prev"><i
-                                                        class="zmdi zmdi-chevron-left"></i></button><button
-                                                    type="button" role="presentation" class="owl-next"><i
-                                                        class="zmdi zmdi-chevron-right"></i></button></div>
-                                            <div class="owl-dots disabled"><button role="button"
-                                                    class="owl-dot active"><span></span></button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ********|| TESTIMONIAL END ||******** -->
-
-            <!-- ********|| CONTACT START ||******** -->
-            <!-- <section class="contact-sec">
+                                <!-- ********|| CONTACT START ||******** -->
+                                <section class="contact-sec">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -981,7 +573,7 @@
                                                                 We’d love to hear from you.
                                                             </div>
                                                             <div class="contact-form">
-                                                                <form>
+                                                                <form method="POST" action="{{route('contact.send')}}" enctype="multipart/form-data">
                                                                     <div class="form-group">
                                                                         <input type="text" class="form-control" placeholder="Your Name*">
                                                                     </div>
@@ -1003,13 +595,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                </section> -->
-            <!-- ********|| CONTACT END ||******** -->
-            @include('common.footer')
-            <!-- ?php include 'assets/inc/footer.php';?> -->
-
-
-            </body>
+                                    <!--
+                                    <div class="footer-ban">
+                                        <img class="img-fluid" src="assets/img/footer-ban.png" alt="">
+                                    </div>
+-->
+                                </section>
+                                <!-- ********|| CONTACT END ||******** -->
+                                @include('common.footer')
+                                <!-- ?php include 'assets/inc/footer.php';?> -->
+                                
+                             
+</body>
 
 </html>
