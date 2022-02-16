@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `amenities_services`;
 CREATE TABLE `amenities_services` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `amenity_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `amenity_details` longtext COLLATE utf8mb4_unicode_ci,
+  `amenity_details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -92,8 +92,9 @@ DROP TABLE IF EXISTS `content_pages`;
 CREATE TABLE `content_pages` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `page_text` longtext COLLATE utf8mb4_unicode_ci,
-  `excerpt` longtext COLLATE utf8mb4_unicode_ci,
+  `slug` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `page_text` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `excerpt` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -122,7 +123,7 @@ DROP TABLE IF EXISTS `event_details`;
 CREATE TABLE `event_details` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `event_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `event_details` longtext COLLATE utf8mb4_unicode_ci,
+  `event_details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `event_date` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -161,9 +162,9 @@ CREATE TABLE `media` (
   `disk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `conversions_disk` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `size` bigint(20) unsigned NOT NULL,
-  `manipulations` json NOT NULL,
-  `custom_properties` json NOT NULL,
-  `responsive_images` json NOT NULL,
+  `manipulations` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`manipulations`)),
+  `custom_properties` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`custom_properties`)),
+  `responsive_images` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`responsive_images`)),
   `order_column` int(10) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -191,6 +192,22 @@ CREATE TABLE `members` (
   CONSTRAINT `select_title_fk_5922688` FOREIGN KEY (`select_title_id`) REFERENCES `titles` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `memberslogins`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `memberslogins` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `memberslogins_email_unique` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -207,7 +224,7 @@ DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `news_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `news_details` longtext COLLATE utf8mb4_unicode_ci,
+  `news_details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -245,8 +262,8 @@ CREATE TABLE `payments` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `amount_paid` decimal(15,2) DEFAULT NULL,
   `gateway_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `comment` longtext COLLATE utf8mb4_unicode_ci,
-  `status` tinyint(1) DEFAULT '0',
+  `comment` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -289,7 +306,7 @@ CREATE TABLE `personal_access_tokens` (
   `tokenable_id` bigint(20) unsigned NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -304,13 +321,13 @@ DROP TABLE IF EXISTS `reciprocal_clubs`;
 CREATE TABLE `reciprocal_clubs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `reciprocal_club_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci,
+  `details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cub_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -348,7 +365,7 @@ DROP TABLE IF EXISTS `sportsmen`;
 CREATE TABLE `sportsmen` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci,
+  `details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -385,7 +402,7 @@ DROP TABLE IF EXISTS `trophies`;
 CREATE TABLE `trophies` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `trophy` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `trophy_description` longtext COLLATE utf8mb4_unicode_ci,
+  `trophy_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `year_of_award` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -402,7 +419,7 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` datetime DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `two_factor` tinyint(1) DEFAULT '0',
+  `two_factor` tinyint(1) DEFAULT 0,
   `two_factor_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_expires_at` datetime DEFAULT NULL,
@@ -453,3 +470,4 @@ INSERT INTO `migrations` VALUES (30,'2022_02_08_000028_add_relationship_fields_t
 INSERT INTO `migrations` VALUES (31,'2022_02_08_000029_add_relationship_fields_to_amenities_services_table',1);
 INSERT INTO `migrations` VALUES (32,'2022_02_08_000030_add_relationship_fields_to_members_table',1);
 INSERT INTO `migrations` VALUES (33,'2022_02_08_000031_add_relationship_fields_to_payments_table',1);
+INSERT INTO `migrations` VALUES (34,'2022_02_10_113403_create_memberslogins_table',2);
