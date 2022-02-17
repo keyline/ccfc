@@ -39,6 +39,10 @@ class StoreUserRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'phone_number_1' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

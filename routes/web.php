@@ -86,10 +86,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('event-details', 'EventDetailsController');
 
     // News
-    Route::delete('news/destroy', 'NewsController@massDestroy')->name('news.massDestroy');
-    Route::post('news/media', 'NewsController@storeMedia')->name('news.storeMedia');
-    Route::post('news/ckmedia', 'NewsController@storeCKEditorImages')->name('news.storeCKEditorImages');
-    Route::resource('news', 'NewsController');
+    Route::delete('newss/destroy', 'NewsController@massDestroy')->name('newss.massDestroy');
+    Route::post('newss/media', 'NewsController@storeMedia')->name('newss.storeMedia');
+    Route::post('newss/ckmedia', 'NewsController@storeCKEditorImages')->name('newss.storeCKEditorImages');
+    Route::resource('newss', 'NewsController');
 
     // Reciprocal Clubs
     Route::delete('reciprocal-clubs/destroy', 'ReciprocalClubsController@massDestroy')->name('reciprocal-clubs.massDestroy');

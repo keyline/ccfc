@@ -44,6 +44,9 @@
                             {{ trans('cruds.user.fields.user_code') }}
                         </th>
                         <th>
+                            {{ trans('cruds.user.fields.phone_number_1') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -77,6 +80,9 @@
                             </td>
                             <td>
                                 {{ $user->user_code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->phone_number_1 ?? '' }}
                             </td>
                             <td>
                                 @can('user_show')

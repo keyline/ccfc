@@ -71,6 +71,8 @@ return [
             'two_factor_expires_at_helper' => ' ',
             'user_code'                    => 'User Code',
             'user_code_helper'             => ' ',
+            'phone_number_1'               => 'Phone Number 1',
+            'phone_number_1_helper'        => ' ',
         ],
     ],
     'contentManagement' => [
@@ -471,6 +473,4 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    
-    
 ];
