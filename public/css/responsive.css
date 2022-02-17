@@ -322,6 +322,15 @@
         margin: 0 auto;
         width: 100%;
     }
+    .services-sec .owl-nav .owl-prev {
+        margin-left: 0;
+    }
+    .services-sec .owl-nav .owl-next {
+        margin-right: 0;
+    }
+    .topPanel .navbar-light .navbar-nav .show .dropdown-menu {
+        width: 100%;
+    }
 }
 
 /*LARGE MOBILE VERSION*/

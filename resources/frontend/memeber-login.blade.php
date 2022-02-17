@@ -9,31 +9,60 @@
 <!-- ?php include 'assets/inc/header.php';?> -->
 
 <!-- header -->
-@include('common.home_header')
+@include('common.header_aftelogin')
                         <!-- ********|| RIGHT PART START ||******** -->
 
                         <div class="col-lg-9 col-md-7 p-0">
                             <div class="right-body">
                                 <!-- ********|| BANNER PART START ||******** -->
-                                <section class="history-banner">
-                                    <img class="img-fluid" src="{{ asset('img/history/history-banner.jpg') }}" alt="" />
+                                <section class="banner">
+
+                                    <div class="banner-box">
+
+                                        <div id="innerpage-banner" class="owl-carousel owl-theme">
+
+                                            <div class="item">
+
+                                                <div class="about-img">
+
+                                                    <img class="img-fluid" src="{{ asset('img/past-president/banner1.jpg') }}" alt="" />
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="item">
+
+                                                <div class="about-img">
+
+                                                    <img class="img-fluid" src="{{ asset('img/past-president/banner2.jpg') }}" alt="" />
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
                                 </section>
                                 <!-- ********|| BANNER PART END ||******** -->
 
-                                <!-- ********|| ADVISE START ||******** -->
+
+
                                 <section class="history-page">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="title-sec">
                                                         <div class="title">
-                                                            HISTORY
+                                                            Member After Login
                                                         </div>
                                                     </div> 
                                             </div>
                                         </div>
                                                 <div class="row">
-                                                   <div class="col-lg-9">
+                                                   <div class="col-lg-12">
                                                 <div class="history-inner">
                                                    
                                                     <div class="history-content">
@@ -60,30 +89,7 @@
                                                     <div class="history-content">
                                                         The origin of the Ballgunge Cricket Club is a matter of some speculation. Possibly the uncertainties regarding playing cricket at Eden Gardens in the 1850s and early 1860s led the players to form a separate Club in what was then a southern, civilian suburb of the city in 1864.
                                                     </div>
-                                                    <div class="history-content">
-                                                        Ballygunge Cricket Club had some illustrious members. J.D. Guise (1872-1953) played for India and MCC. Around the turn of the twentieth century, E.C. Cowdery and A.S. Cowdrey played for the Club regularly. EC was the grandfather of Sir Colin Cowdrey, England Captain and batsman, who was born in Bangalore.
-                                                    </div>
-                                                    <div class="history-content">
-                                                        In the 1901-02 season there is interesting mention the unusual sport of Bicycle Polo a game now known as Cycle Polo, that is still played at CC&FC.
-                                                    </div>
-                                                    <div class="history-content">
-                                                        India found a place on the 'international' cricket map for the first time in 1889-90 when, at the invitation of the Calcutta Cricket Club, the first ever tour of an English Cricket team, led by G.F. Vernon of Middlesex and composed entirely of amateurs took place. The first official MCC tour of India was on, thanks entirely to the initiative of the Calcutta Cricket Club. Moreover, MCC was to be skippered by Arthur Gilligan, the Sussex and England Captain, who was then at the height of his fame.
-                                                    </div>
-                                                    <div class="history-content">
-                                                        These tours were also directly responsible for the formation of the Board of Control of Cricket in India and paved the way for India to gain Test status. Subsequently the Cricket Association of Bengal had also been formed. Dr. B.C. Roy, elected of Chief Minister of West Bengal in 1948 felt that in independent India Eden Gardens ought to be the 'rightful' home of the State's cricket headquarters.
-                                                    </div>
-                                                    <div class="history-content">
-                                                        On Independence Day in 1950, T.C. Longfield, President, Calcutta Cricket Club handed over Eden Gardens to the newly formed National Cricket Club. T.C. Longfield had led Bengal when they won the Ranji Trophy for the first time in 1939.
-                                                    </div>
-                                                    <div class="history-content">
-                                                        In another fine gesture, Ballygunge Cricket Club, in deference to Calcutta Cricket Club, being an older Club, agreed to dissolve itself, after having transferred its lease on the Ballygunge ground to Calcutta Cricket Club. Ballygunge Cricket Club ceased to exist but its traditions remained.
-                                                    </div>
-                                                    <div class="history-content">
-                                                        The Calcutta Football Club, founded in 1872, is the oldest surviving rugby club in the world outside the United Kingdom. Why "football"? At that time, in Britain, rugby and football was synonymous. Interestingly, the Scottish Football Union, formed in 1873, did not alter its name to become the Scottish Rugby Union until 1924.
-                                                    </div>
-                                                    <div class="history-content">
-                                                        By January 1873 as many as 137 members had enrolled. Probably the attraction of a bar that was free to members had something to do with its popularity! Rugby, however, suffered because of the departure of some of the regiments that had kept the game going. By 1877, because of the lack of players the remaining members decided to wind up the Club. Under the stewardship of Captain, Honorary Secretary and Treasurer, G A James Rothney, the Committee decided to donate a trophy made of ornate Indian workmanship to the Rugby Football Union from the available Club funds amounting to pounds 60 sterling. The offer was accepted and even today, every year, England and Scotland play an international rugby match for the "Calcutta Cup".
-                                                    </div>
+                                                    
                                                     <div class="history-content">
                                                         In May 1884, G A James Rothney called a meeting and decided to restart the club because of the arrival of "excellent football material" which had come along with a few regiments. Rugby began in all earnestness and in 1890 the Calcutta Rugby Union Challenge Cup Tournament was inaugurated. A fine silver cup, promptly christened "Calcutta Cup" - was presented by past C F C Presidents. The tournament is played even today on the CCFC ground.
                                                     </div>
@@ -101,30 +107,15 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                                          <div class="col-lg-3">
-                                                <div class="history-img">
-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-1.jpg') }}" alt="" />
-                                                </div>
-                                                <div class="history-img">
-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-2.jpg') }}" alt="" />
-                                                </div>
-                                                <div class="history-img">
-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-3.jpg') }}" alt="" />
-                                                </div>
-                                                <div class="history-img">
-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-4.jpg') }}" alt="" />
-                                                </div>
-                                                <div class="history-img">
-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-5.jpg') }}" alt="" />
-                                                </div>
-                                            </div>
+                                        
 
                                         </div>
                                     </div>
                                 </section>
-                                <!-- ********|| ADVISE END ||******** -->
 
+                            
                                 
+
                                 
                                 @include('common.footer')
                                 <!-- ?php include 'assets/inc/footer.php';?> -->
