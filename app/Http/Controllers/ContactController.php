@@ -12,7 +12,7 @@ class ContactController extends Controller
 {
     public function contact(){
         
-        return view('footer');
+        return view('index');
     }
 
 
