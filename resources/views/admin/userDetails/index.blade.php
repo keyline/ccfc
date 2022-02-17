@@ -32,6 +32,156 @@
                             {{ trans('cruds.user.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.userDetail.fields.member_type_code') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.member_type') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.date_of_birth') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.member_since') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.sex') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.address_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.address_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.address_3') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.city') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.state') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.pin') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.phone_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.phone_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.mobile_no') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.email') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.current_status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.represented_club_in') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.hobbies_interest') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_profession') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.category') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_address_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_address_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_address_3') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_city') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_state') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_pin') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_phone_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_phone_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.business_email') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_dob') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_sex') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_phone_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_phone_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_mobile_no') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_email') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.anniversary_date') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_profession') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_category') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_address_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_address_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_address_3') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_city') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_state') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_pin') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_phone_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_phone_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_business_email') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.member_image') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userDetail.fields.spouse_image') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -50,6 +200,164 @@
                             </td>
                             <td>
                                 {{ $userDetail->user_code->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->member_type_code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->member_type ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->date_of_birth ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->member_since ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\UserDetail::SEX_RADIO[$userDetail->sex] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->address_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->address_2 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->address_3 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->city ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->state ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->pin ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->phone_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->phone_2 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->mobile_no ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->email ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->current_status ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->represented_club_in ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->hobbies_interest ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_profession ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->category ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_address_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_address_2 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_address_3 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_city ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_state ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_pin ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_phone_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_phone_2 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->business_email ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_dob ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\UserDetail::SPOUSE_SEX_RADIO[$userDetail->spouse_sex] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_phone_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_phone_2 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_mobile_no ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_email ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->anniversary_date ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_profession ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_category ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_address_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_address_2 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_address_3 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_city ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_state ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_pin ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_phone_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_phone_2 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userDetail->spouse_business_email ?? '' }}
+                            </td>
+                            <td>
+                                @if($userDetail->member_image)
+                                    <a href="{{ $userDetail->member_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $userDetail->member_image->getUrl('thumb') }}">
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                @if($userDetail->spouse_image)
+                                    <a href="{{ $userDetail->spouse_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $userDetail->spouse_image->getUrl('thumb') }}">
+                                    </a>
+                                @endif
                             </td>
                             <td>
                                 @can('user_detail_show')
