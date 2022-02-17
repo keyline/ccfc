@@ -115,7 +115,7 @@
 
 
     <script>
-        $("#owldemo1").owlCarousel({
+        $("#home_banner").owlCarousel({
             loop: true,
             margin: 10,
             autoplay: true,
@@ -142,8 +142,8 @@
             }
         });
 
-    </script>
-    <script>
+        // ============== 
+
         $("#innerpage-banner").owlCarousel({
             loop: true,
             margin: 10,
@@ -170,10 +170,9 @@
                 }
             }
         });
-
-    </script>
-    <script>
-        $("#owldemo2").owlCarousel({
+        
+        // =============== home history 
+        $("#home_history").owlCarousel({
             loop: true,
             margin: 10,
             //            autoplay: true,
@@ -199,10 +198,9 @@
                 }
             }
         });
-
-    </script>
-    <script>
-        $("#owldemo3").owlCarousel({
+        
+        // ================ home amenities services
+        $("#amenities-services").owlCarousel({
             loop: true,
             margin: 10,
             //            autoplay: true,
@@ -213,25 +211,30 @@
                 0: {
                     items: 1,
                     dots: true,
-                    nav: false,
+                    nav: true,
                 },
                 600: {
                     items: 2,
                     dots: true,
-                    nav: false,
+                    nav: true,
                 },
                 1000: {
+                    items: 3,
+                    margin: 20,
+                    nav: true,
+                    dots: true,
+                },
+                1600: {
                     items: 4,
                     margin: 20,
-                    nav: false,
+                    nav: true,
                     dots: true,
                 }
             }
         });
 
-    </script>
-    <script>
-        $("#owldemo4").owlCarousel({
+        // ==================== Home Sports
+        $("#home_sports").owlCarousel({
             loop: true,
             margin: 10,
             //            autoplay: true,
@@ -258,9 +261,8 @@
             }
         });
 
-    </script>
-    <script>
-        $("#owldemo5").owlCarousel({
+        // ==================== Home Reciprocal Indian
+        $("#home_reciprocal_indian").owlCarousel({
             loop: true,
             margin: 10,
             //            autoplay: true,
@@ -287,9 +289,8 @@
             }
         });
 
-    </script>
-    <script>
-        $("#owldemo6").owlCarousel({
+        // ================= Home Reciprocal Overseas
+        $("#home_reciprocal_overseas").owlCarousel({
             loop: true,
             margin: 10,
             //            autoplay: true,
@@ -316,9 +317,9 @@
             }
         });
 
-    </script>
-    <script>
-        $("#owldemo7").owlCarousel({
+
+        // ================ Home Testimonial
+        $("#home_testimonial").owlCarousel({
             loop: true,
             margin: 10,
             autoplay: true,
@@ -341,64 +342,60 @@
                 1000: {
                     items: 1,
                     margin: 20,
-                    nav: false,
+                    nav: true,
                     dots: true,
                 }
             }
         });
 
     </script>
+    
     <script type="text/javascript">
         $(document).ready(function() {
-
-            var url = window.location;
-
-
-
-
-
-
-
-
-
+           var url = window.location;
             var str1 = url;
-
             var str2 = 'searchResult.php';
-
             //                    if(url.indexOf(str2)){
-
             //                       alert("found"); 
-
             //                    }
-
-
-
-
-
             // Will only work if string in href matches with location
-
-
-
             $('ul#nav a[href="' + url + '"]').parent().addClass('active');
-
-
-
             // Will also work for relative and absolute hrefs
-
-
-
-            $('ul#nav a').filter(function() {
-
-
-
+           $('ul#nav a').filter(function() {
                 return this.href == url;
-
-
-
             }).parent().addClass('active');
-
-
-
+            
         });
 
     </script>
+    <script type="text/javascript">
+        window.addEventListener("resize", function() {
+            "use strict"; window.location.reload(); 
+        });
+    
+        document.addEventListener("DOMContentLoaded", function(){
+             // make it as accordion for smaller screens
+            if (window.innerWidth < 992) {
+                document.querySelectorAll('.topPanel .nav-link').forEach(function(element){             
+                    element.addEventListener('click', function (e) {
+                          let nextEl = element.nextElementSibling;
+                          let parentEl  = element.parentElement;
+                          let allSubmenus_array =	parentEl.querySelectorAll('.submenu');
+                          if(nextEl && nextEl.classList.contains('submenu')) {	
+                              e.preventDefault();	
+                              if(nextEl.style.display == 'block'){
+                                  nextEl.style.display = 'none';  
+                              } else {
+                                  nextEl.style.display = 'block';
+                              }
+    
+                          }
+                    });
+                })
+            }
+            // end if innerWidth
+    
+        }); 
+        // DOMContentLoaded  end
+    </script>
+    

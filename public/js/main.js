@@ -68,13 +68,4 @@ $(document).ready(function () {
       $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
     }, 350);
   })
-
-  //=============  activities popup Next previous ===================//
-  
-  $('.carousel').each(function(){
-    $(this).carousel({
-      pause: true,
-      interval: false,
-    });
-  });
 })

@@ -43,6 +43,7 @@ class User extends Authenticatable
         'remember_token',
         'created_at',
         'user_code',
+        'phone_number_1',
         'updated_at',
         'deleted_at',
         'two_factor_expires_at',

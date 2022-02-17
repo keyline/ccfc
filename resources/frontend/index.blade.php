@@ -12,14 +12,14 @@
     @include('common.home_header')
     <!-- ********|| RIGHT PART START ||******** -->
 
-    <div class="col-lg-9 col-md-9 p-0">
+    <div class="col-lg-9 col-md-7 p-0">
         <div class="right-body">
             <!-- ********|| BANNER PART START ||******** -->
             <section class="banner">
 
                 <div class="banner-box">
 
-                    <div id=owldemo1 class="owl-carousel owl-theme">
+                    <div id="home_banner" class="owl-carousel owl-theme">
 
                         <div class="item">
 
@@ -80,19 +80,9 @@
                                     </div>
                                 </div>
                                 <!-- dynamic part starts -->
-                                <!-- @foreach($contentPages as $contentPage) -->
+                                @foreach($contentPages as $contentPage)
                                 <div class="history-content">
-                                    <!-- {{$contentPage->excerpt}} -->
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet,
-                                        nulla et dictum interdum, nisi lorem egestas vitae scel<span
-                                            id="dots">...</span><span id="more">erisque enim ligula venenatis dolor.
-                                            Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce
-                                            luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed
-                                            ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet
-                                            sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer
-                                            fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor
-                                            porta.</span></p>
+                                    {{$contentPage->excerpt}}
                                 </div>
 
 
@@ -100,16 +90,14 @@
                                     <!-- {{$contentPage->excerpt}} -->
                                     <!-- Indeed, sports events were reckoned to be important enough for sub-continental reporters. Fortunately, a copy of the Madras Courier dated 23rd. February, 1792 has survived. The paper reported cricket fixtures between the Calcutta Cricket Club and Barrackpore and the Calcutta Cricket Club and Dum Dum. Clearly, the Calcutta Cricket Club was already in existence in 1792. -->
                                 </div>
-                                <!-- @endforeach -->
+                                @endforeach
                                 <div class="history-action">
-                                    <!-- <button onclick="myFunction()" id="myBtn">Read more</button> -->
-                                    <!-- <a href="#" class="read-btn">+ Read More</a> -->
-                                    <a href="#" onclick="myFunction()" id="myBtn" class="read-btn">+ Read More</a>
+                                    <a href="#" class="read-btn">+ Read More</a>
                                 </div>
 
                             </div>
                             <div class="history-img">
-                                <div id=owldemo2 class="owl-carousel owl-theme">
+                                <div id="home_history" class="owl-carousel owl-theme">
                                     <!-- dynamic part starts   -->
                                     @foreach($galleries as $key => $gallery)
 
@@ -156,7 +144,7 @@
                                 </div>
                             </div>
                             <div class="services-inner">
-                                <div id=owldemo3 class="owl-carousel owl-theme">
+                                <div id="amenities-services" class="owl-carousel owl-theme">
                                     <div class="item">
                                         <div class="services-info">
                                             <div class="services-img">
@@ -282,6 +270,37 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="item">
+                                        <div class="services-info">
+                                            <div class="services-img">
+                                                <img class="img-fluid" src="{{ asset('img/services-3.jpg') }}" alt="">
+                                            </div>
+                                            <div class="services-box">
+                                                <div class="top-img">
+                                                    <div class="trangle-img">
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                    </div>
+                                                    <div class="img-box gym-img">
+                                                        <img class="img-fluid" src="{{ asset('img/swim-01.svg') }}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="services-body">
+                                                    <div class="services-title">
+                                                        SWIMMING POOL
+                                                    </div>
+                                                    <div class="services-content">
+                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                                                        euismod tincidunt ut sad asdlaoreet dolore...
+                                                    </div>
+                                                    <div class="services-action">
+                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -302,7 +321,7 @@
                                 </div>
                             </div>
                             <div class="sports-inner">
-                                <div id=owldemo4 class="owl-carousel owl-theme">
+                                <div id="home_sports" class="owl-carousel owl-theme">
                                     <!-- dynamic part starts -->
                                     @foreach($sportstypes as $sportstype)
 
@@ -373,7 +392,7 @@
                                     <div class="tab-pane fade show active" id="indian" role="tabpanel"
                                         aria-labelledby="indian-tab">
                                         <div class="club-info">
-                                            <div id=owldemo5 class="owl-carousel owl-theme">
+                                            <div id="home_reciprocal_indian" class="owl-carousel owl-theme">
 
 
 
@@ -410,7 +429,7 @@
                                     <div class="tab-pane fade" id="overseas" role="tabpanel"
                                         aria-labelledby="overseas-tab">
                                         <div class="club-info">
-                                            <div id=owldemo6 class="owl-carousel owl-theme">
+                                            <div id="home_reciprocal_overseas" class="owl-carousel owl-theme">
 
 
                                                 @foreach($reciprocalClubs->where("cub_type","overseas") as $key =>
@@ -461,7 +480,7 @@
                                 <div class="col-lg-8">
 
                                     <div class="testimonial-carousel">
-                                        <div id=owldemo7 class="owl-carousel owl-theme">
+                                        <div id="home_testimonial" class="owl-carousel owl-theme">
                                             <div class="item">
 
                                                 <div class="testimonial-body">
@@ -616,21 +635,18 @@
                                         <div class="contact-form">
                                             <form method="POST" action="{{route('contact.send')}}"
                                                 enctype="multipart/form-data">
-                                                @csrf
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="name"
-                                                        placeholder="Your Name*">
+                                                    <input type="text" class="form-control" placeholder="Your Name*">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="email" class="form-control" name="email"
-                                                        placeholder="Your Email*">
+                                                    <input type="email" class="form-control" placeholder="Your Email*">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="phone"
+                                                    <input type="text" class="form-control"
                                                         placeholder="Your Mobile No*">
                                                 </div>
                                                 <div class="form-group">
-                                                    <textarea class="form-control" name="msg" placeholder="Your Message"
+                                                    <textarea class="form-control" placeholder="Your Message"
                                                         rows="3"></textarea>
                                                 </div>
                                                 <button type="submit" class="send-btn">Send Message</button>
@@ -648,26 +664,6 @@
                                     </div>
 -->
             </section>
-
-
-
-            <script>
-            function myFunction() {
-                var dots = document.getElementById("dots");
-                var moreText = document.getElementById("more");
-                var btnText = document.getElementById("myBtn");
-
-                if (dots.style.display === "none") {
-                    dots.style.display = "inline";
-                    btnText.innerHTML = "Read more";
-                    moreText.style.display = "none";
-                } else {
-                    dots.style.display = "none";
-                    btnText.innerHTML = "Read less";
-                    moreText.style.display = "inline";
-                }
-            }
-            </script>
             <!-- ********|| CONTACT END ||******** -->
             @include('common.footer')
             <!-- ?php include 'assets/inc/footer.php';?> -->

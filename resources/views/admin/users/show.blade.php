@@ -73,6 +73,14 @@
                             {{ $user->user_code }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.phone_number_1') }}
+                        </th>
+                        <td>
+                            {{ $user->phone_number_1 }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

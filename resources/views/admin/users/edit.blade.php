@@ -59,6 +59,14 @@
                 <span class="help-block">{{ trans('cruds.user.fields.user_code_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="phone_number_1">{{ trans('cruds.user.fields.phone_number_1') }}</label>
+                <input class="form-control {{ $errors->has('phone_number_1') ? 'is-invalid' : '' }}" type="text" name="phone_number_1" id="phone_number_1" value="{{ old('phone_number_1', $user->phone_number_1) }}">
+                @if($errors->has('phone_number_1'))
+                    <span class="text-danger">{{ $errors->first('phone_number_1') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.phone_number_1_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
