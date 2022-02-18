@@ -10,6 +10,8 @@ use App\Models\Gallery;
 
 use App\Models\Sportstype;
 
+use App\Models\PastPresident;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -20,6 +22,14 @@ Route::get('/', function () {
     $galleries = Gallery::with(['media'])->get();
 
     return view('index', compact('reciprocalClubs', 'contentPages', 'galleries', 'sportstypes'));
+});
+
+
+Route::get('/past-president', function () {
+    $pastPresidents = PastPresident::with(['media'])->get();
+    // $data='Data';
+    return view('past-president', compact(['pastPresidents']));
+    
 });
 
 
@@ -168,11 +178,11 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
     }
 });
 
-Route::get('/past-president', function () {
-    return view('past-president');
-});
-Route::get('/activities', function () {
-    return view('activities');
+// Route::get('/past-president', function () {
+//     return view('past-president');
+// });
+Route::get('/food_beverages', function () {
+    return view('food_beverages');
 });
 
 

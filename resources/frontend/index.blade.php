@@ -6,6 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <style>
+    #more {
+        display: none;
+    }
+    </style>
     <!-- ?php include 'assets/inc/header.php';?> -->
 
     <!-- header -->
@@ -79,20 +87,25 @@
                                         HISTORY
                                     </div>
                                 </div>
-                                <!-- dynamic part starts -->
-                                @foreach($contentPages as $contentPage)
-                                <div class="history-content">
-                                    {{$contentPage->excerpt}}
-                                </div>
 
 
-                                <div class="history-content">
-                                    <!-- {{$contentPage->excerpt}} -->
-                                    <!-- Indeed, sports events were reckoned to be important enough for sub-continental reporters. Fortunately, a copy of the Madras Courier dated 23rd. February, 1792 has survived. The paper reported cricket fixtures between the Calcutta Cricket Club and Barrackpore and the Calcutta Cricket Club and Dum Dum. Clearly, the Calcutta Cricket Club was already in existence in 1792. -->
-                                </div>
-                                @endforeach
                                 <div class="history-action">
-                                    <a href="#" class="read-btn">+ Read More</a>
+                                    <div class="history-content">
+
+                                        @foreach($contentPages as $contentPage)
+
+                                        <p class="ArticleBody">
+                                            {!! \Illuminate\Support\Str::limit(($contentPage->excerpt), 300, '') !!}
+                                            @if (strlen($contentPage->excerpt) > 300)
+                                            <span id="dots">...</span>
+                                            <span id="more"
+                                                style="display:none;">{{ substr($contentPage->excerpt, 300) }}</span>
+                                            <a class="read-btn" onclick="myFunction()" id="myBtn">+ Read More</a>
+                                            @endif
+
+                                            @endforeach
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -171,7 +184,8 @@
                                                         hall along with varieties of snacks...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('food_beverages') }}" class="read-btn">+ Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -664,6 +678,24 @@
                                     </div>
 -->
             </section>
+
+            <script>
+            function myFunction() {
+                var dots = document.getElementById("dots");
+                var moreText = document.getElementById("more");
+                var btnText = document.getElementById("myBtn");
+
+                if (dots.style.display === "none") {
+                    dots.style.display = "inline";
+                    btnText.innerHTML = "+ Read more";
+                    moreText.style.display = "none";
+                } else {
+                    dots.style.display = "none";
+                    btnText.innerHTML = "- Read less";
+                    moreText.style.display = "inline";
+                }
+            }
+            </script>
             <!-- ********|| CONTACT END ||******** -->
             @include('common.footer')
             <!-- ?php include 'assets/inc/footer.php';?> -->
