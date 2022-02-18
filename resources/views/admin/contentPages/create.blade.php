@@ -136,8 +136,7 @@ $(document).ready(function() {
                             return new Promise(function(resolve, reject) {
                                 // Init request
                                 var xhr = new XMLHttpRequest();
-                                xhr.open('POST', '{{ route('
-                                    admin.content - pages.storeCKEditorImages ') }}',
+                                xhr.open('POST', '{{ route('admin.content-pages.storeCKEditorImages') }}',
                                     true);
                                 xhr.setRequestHeader('x-csrf-token', window._token);
                                 xhr.setRequestHeader('Accept', 'application/json');
@@ -205,8 +204,7 @@ $(document).ready(function() {
 
 <script>
 Dropzone.options.featuredImageDropzone = {
-    url: '{{ route('
-    admin.content - pages.storeMedia ') }}',
+    url: '{{ route('admin.content-pages.storeMedia') }}',
     maxFilesize: 2, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     maxFiles: 1,

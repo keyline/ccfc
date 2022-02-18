@@ -123,6 +123,8 @@ return [
             'id_helper'             => ' ',
             'title'                 => 'Title',
             'title_helper'          => ' ',
+            'slug'                  => 'Slug',
+            'slug_helper'           => ' ',
             'category'              => 'Categories',
             'category_helper'       => ' ',
             'tag'                   => 'Tags',
