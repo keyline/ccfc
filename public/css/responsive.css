@@ -48,6 +48,9 @@
         .services-action {
         bottom: 18px;
     }
+    .testimonial-sec .testimonial-carousel {
+        padding-bottom: 40px;
+    }
 }
 
 /*LARGE PC VERSION*/
@@ -103,6 +106,27 @@
         .services-body
         .services-action {
         bottom: 12px;
+    }
+    .services-sec .services-inner .services-info .services-box .services-body .services-action {
+        bottom: 54px!important;
+    }
+        .services-sec .services-inner .services-info .services-box .services-body .services-content {
+        top: 56%;
+    }
+        .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
+        width: 140px!important;
+    }
+        .services-sec .services-inner .services-info .services-box .services-body .services-title {
+         padding-top: 15px; 
+    }
+        .testimonial-sec .testimonial-carousel{
+            padding: 0;
+        }
+        .testimonial-sec .testimonial-body .testimonial-img{
+        margin: 33px 0px 0px 216px;
+    }
+    .services-sec .services-inner .services-info .services-box .services-body .services-title{
+        padding-top: 30px;
     }
 }
 
@@ -170,6 +194,9 @@
     .testimonial-sec .testimonial-body .testimonial-img {
         width: 128px;
         margin: 33px 0px 0px 100px;
+    }
+    .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
+        width: 90px!important;
     }
 }
 @media (min-width: 992px) and (max-width: 1300px) {
@@ -260,6 +287,7 @@
     }
     .contact-sec .contact-inner {
         padding-top: 30px;
+        padding-bottom: 30px;
     }
     .contact-sec .contact-inner .title {
         text-align: center;
@@ -281,11 +309,43 @@
     .history-page .history-inner {
         padding-bottom: 30px;
     }
+    .sport-tablist ul.nav-tabs a.nav-link {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    .services-sec .services-inner .services-info .services-box .top-img .trangle-img{
+        width: 120px!important;
+    }
+    .services-sec .services-inner .services-info .services-box .services-body .services-action {
+        bottom: 52px;
+    }
+    .services-sec .services-inner .services-info .services-box .services-body .services-title {
+        padding-top: 14px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .mobile_menu, .topPanel a.closebtn {
+        display: none;
+    }
+    .mobile_bottom_icon{display: none;}
 }
 /*MOBILE VERSION*/
 @media screen and (max-width: 767px) {
+    .site_righticon{
+        display: none !important;
+    }
+    .ccfc-body .header .top-header .brand {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .topPanel .navbar-light .nav-item span.submenu_arrow {
+        transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+    }
     .testimonial-sec .testimonial-inner .testimonial-info {
-        width: 268px;
+        width: 100%;
         margin: 0 auto;
     }
     .testimonial-sec .testimonial-body .testimonial-img {
@@ -331,6 +391,101 @@
     .topPanel .navbar-light .navbar-nav .show .dropdown-menu {
         width: 100%;
     }
+    .topPanel .navbar{
+        padding: 20px 0;
+    }
+    .topPanel .navbar-light .navbar-nav .nav-link{
+        font-size: 15px;
+        padding: 8px 0px;
+    }
+    .topPanel .navbar-light .navbar-nav .submenu a{
+        padding: 8px 12px;
+    }
+    .topPanel .navbar-light .navbar-nav .nav-item a {
+        padding-left: 20px;
+    }
+    .topPanel .navbar-light ul ul li a {
+        padding-left: 40px !important;
+    }
+    .topPanel .navbar-light ul ul ul li a {
+        padding-left: 50px !important;
+    }
+    .topPanel .navbar-light ul ul li span.submenu_arrow {
+        margin-right: 0 !important;
+    }
+    .footer-img{
+        margin-bottom: 40px;
+    }
+    .mobile_bottom_icon{
+        position:fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 999999;
+        width: 100%;
+    }
+    .mobile_bottom_icon .mb_writeuscall {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    .mobile_bottom_icon .mb_writeuscall .mb_write_left {
+        background: #000;
+        text-align: center;
+        padding: 6px;
+    }
+    .mobile_bottom_icon .mb_writeuscall .mb_call_right {
+        background: var(--primaryColor);
+        text-align: center;
+        padding: 6px;
+        color: #fff;
+    }
+    .mobile_bottom_icon .mb_writeuscall a {
+        color: #fff;
+        text-transform: uppercase;
+        font-family: 'IBM Plex Serif', serif;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .mobile_bottom_icon .mb_writeuscall i {
+        background: #fff;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        color: #000;
+        line-height: 30px;
+    }
+    .testimonial-sec .testimonial-right .testimonial-logo{
+        display: none;
+    }
+    .testimonial-sec .testimonial-right .testimonial-action{
+        display: none;
+    }
+    .testimonial-sec .testimonial-action-mobile{
+        display: block!important;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .or-2 {
+        order: 2;
+    }
+    .or-1 {
+    order: 1;
+    }
+    .services-sec .services-inner .services-info .services-img {
+    height: 400px;
+}
+    .services-sec .services-inner .services-info .services-img img {
+    object-fit: cover;
+}
+    .services-sec .services-inner .services-info .services-box .services-body .services-title {
+    padding-top: 15px;
+}
+    .services-sec .services-inner .services-info .services-box .services-body .services-content {
+    top: 58%;
+}
+    .services-sec .services-inner .services-info .services-box .services-body .services-action {
+    bottom: 60px;
+}
 }
 
 /*LARGE MOBILE VERSION*/
@@ -379,8 +534,15 @@
         img {
         width: 95px;
     }
+    .services-sec .services-inner .services-info .services-box .img-box img {
+        width: 86px;
+    }
+        .services-sec .services-inner .services-info .services-box .img-box.gym-img img {
+        width: 70px;
+    }
 }
 
 /*SMALL MOBILE VERSION*/
 @media screen and (max-width: 480px) {
+    .mobile_bottom_icon .mb_writeuscall a{font-size: 16px;}
 }

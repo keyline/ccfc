@@ -202,6 +202,9 @@ Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
 Route::get('/history', function () {
     return view('history');
 });
-Route::get('/memeber-login', function () {
-    return view('memeber-login');
+Route::get('/member-login', function () {
+    return view('member-login');
+});
+Route::get('/sports', function () {
+    return view('sports');
 });

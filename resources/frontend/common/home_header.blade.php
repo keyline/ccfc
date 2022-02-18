@@ -43,15 +43,22 @@
 
                             <!-- ********|| LEFT PART START ||******** -->
 
-                            <div class="col-lg-3 col-md-5 p-0">
+                            <div class="col-lg-3 col-md-5 p-0 siteleft_panel">
                                 <header class="header">
                                     <div class="top-header">
                                         <div class="brand">
-                                            <a href="{{ asset('/') }}" class="logo">
-                                                <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt=""
-                                                    title="Home">
-                                            </a>
+                                            <div class="brand_logo">
+                                                <a href="{{ asset('/') }}" class="logo">
+                                                    <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt=""
+                                                        title="Home">
+                                                </a>
+                                            </div>
+                                            <div class="mobile_menu">
+                                                <span style="font-size:30px;cursor:pointer"
+                                                    onclick="openNav()">&#9776;</span>
+                                            </div>
                                         </div>
+
                                         <div class="member-login">
                                             <div class="member-title">
                                                 Member Login
@@ -101,8 +108,8 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="topPanel">
-
+                                    <div class="topPanel" id="topmenupanel">
+                                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                         <div class="nav-inner">
                                             <div class="nav-info">
                                                 <nav class="navbar navbar-light">
@@ -157,7 +164,8 @@
                                                                 <li><a class="nav-link"
                                                                         href="{{ asset('food_beverages') }}">Amenities &
                                                                         Services</a></li>
-                                                                <li><a class="nav-link" href="#">Sports</a></li>
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('sports') }}">Sports</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="nav-item">
@@ -166,8 +174,9 @@
                                                                         class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
                                                             <ul class="submenu dropdown-menu">
-                                                                <li><a class="nav-link" href="#">Member dashboard</a>
-                                                                </li>
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('member-login') }}">Member
+                                                                        dashboard</a></li>
                                                                 <li><a class="nav-link" href="#">Events (Members
                                                                         only)</a></li>
                                                                 <li><a class="nav-link" href="#">News(Members only) </a>
@@ -252,27 +261,3 @@
                                 </header>
                             </div>
                             <!-- ********|| LEFT PART END ||******** -->
-
-
-
-
-                            <div class="site_righticon">
-                                <ul>
-                                    <li>
-                                        <i class="zmdi zmdi-phone-in-talk"></i>
-                                        <div class="slider">
-                                            <p><a href="tell:033 24615060" class="ccfc-icon">033 24615060</a>
-                                                <span>/</span>
-                                                <a href="tell:033 24615059" class="ccfc-icon">24615059</a>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <i class="zmdi zmdi-email mail"></i>
-                                        <div class="slider">
-                                            <p><a href="mailto:ccfcsecretary@ccfc1792.com"
-                                                    class="ccfc-icon">ccfcsecretary@ccfc1792.com</a></p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>

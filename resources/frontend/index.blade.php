@@ -6,14 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
-
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <style>
-    #more {
-        display: none;
-    }
-    </style>
     <!-- ?php include 'assets/inc/header.php';?> -->
 
     <!-- header -->
@@ -87,8 +79,7 @@
                                         HISTORY
                                     </div>
                                 </div>
-
-
+                                <!-- dynamic part starts -->
                                 <div class="history-action">
                                     <div class="history-content">
 
@@ -106,7 +97,10 @@
                                             @endforeach
                                     </div>
 
+
                                 </div>
+
+
 
                             </div>
                             <div class="history-img">
@@ -485,13 +479,13 @@
             </section>
             <!-- ********|| CLUB END ||******** -->
 
-            <!-- ********|| TESTIMONIAL START ||******** -->
+            <!-- ***|| TESTIMONIAL START ||*** -->
             <section class="testimonial-sec">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 offset-lg-1">
                             <div class="row">
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 or-2">
 
                                     <div class="testimonial-carousel">
                                         <div id="home_testimonial" class="owl-carousel owl-theme">
@@ -562,22 +556,27 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="testimonial-action-mobile">
+                                            <a href="#" class="read-btn">+ Read all</a>
+                                        </div>
                                     </div>
 
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 or-1">
                                     <div class="testimonial-right">
                                         <div class="testimonial-logo">
                                             <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" />
                                         </div>
-                                        <div class="title-sec">
-                                            <div class="title">
-                                                Testimonials
+                                        <div class="testimonial-order-part">
+                                            <div class="title-sec">
+                                                <div class="title">
+                                                    Testimonials
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="testimonial-content">
-                                            Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer adipiscing
-                                            elitconsectetuer adipiscing elit...
+                                            <div class="testimonial-content">
+                                                Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer
+                                                adipiscing elitconsectetuer adipiscing elit...
+                                            </div>
                                         </div>
                                         <div class="testimonial-action">
                                             <a href="#" class="read-btn">+ Read all</a>
@@ -591,8 +590,8 @@
                     </div>
                 </div>
             </section>
-            <!-- ********|| TESTIMONIAL END ||******** -->
-            <!-- ********|| TESTIMONIAL END ||******** -->
+            <!-- ***|| TESTIMONIAL END ||*** -->
+
 
             <!-- ********|| CONTACT START ||******** -->
             <section class="contact-sec">
@@ -678,6 +677,7 @@
                                     </div>
 -->
             </section>
+
 
             <script>
             function myFunction() {

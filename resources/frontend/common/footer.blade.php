@@ -1,65 +1,67 @@
    <!-- ********|| FOOTER START ||******** -->
-                                <section class="footer_top">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-4 p-0">
-                                                <div class="foot_copyright">  
-                                                    <div class="copyright">Copyright © 2022 The CC&FC Club at Kolkata All Rights Reserved.</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 p-0">
-                                                <div class="foot_social">  
-                                                    <div class="footer_social_inner">
-                                                        <ul>
-                                                            <li class="social_follow">Follow Us on:</li>
-                                                            <li>
-                                                                <a href="#" class="social-icon">
-                                                                    <i class="zmdi zmdi-facebook"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="social-icon">
-                                                                    <i class="zmdi zmdi-twitter"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="social-icon">
-                                                                    <i class="zmdi zmdi-instagram"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="social-icon">
-                                                                    <i class="zmdi zmdi-pinterest"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="social-icon">
-                                                                    <i class="zmdi zmdi-linkedin"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="social-icon">
-                                                                    <i class="zmdi zmdi-youtube-play"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 p-0 foot_webcomp">
-                                                <div class="foot_copyright">  
-                                                    <div class="foot_webcompany">
-                                                        Design & Developed by<a href="#" class="keyline"> KEYLINE</a>
-                                                    </div>
-                                                </div>
+                    <footer class="all-footer" id="footer">
+                        <section class="footer_top">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4 p-0">
+                                        <div class="foot_copyright">  
+                                            <div class="copyright">Copyright © 2022 The CC&FC Club at Kolkata All Rights Reserved.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 p-0">
+                                        <div class="foot_social">  
+                                            <div class="footer_social_inner">
+                                                <ul>
+                                                    <li class="social_follow">Follow Us on:</li>
+                                                    <li>
+                                                        <a href="#" class="social-icon">
+                                                            <i class="zmdi zmdi-facebook"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="social-icon">
+                                                            <i class="zmdi zmdi-twitter"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="social-icon">
+                                                            <i class="zmdi zmdi-instagram"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="social-icon">
+                                                            <i class="zmdi zmdi-pinterest"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="social-icon">
+                                                            <i class="zmdi zmdi-linkedin"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="social-icon">
+                                                            <i class="zmdi zmdi-youtube-play"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </section>
-                                <section class="footer-img">
-                                    <img class="img-fluid" src="{{ asset('img/footer-ban.png') }}" alt="">
-                                </section>
-                                <!-- ********|| FOOTER END ||******** -->
+                                    <div class="col-md-4 p-0 foot_webcomp">
+                                        <div class="foot_copyright">  
+                                            <div class="foot_webcompany">
+                                                Design & Developed by<a href="#" class="keyline"> KEYLINE</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="footer-img">
+                            <img class="img-fluid" src="{{ asset('img/footer-ban.png') }}" alt="">
+                        </section>
+                    </footer>
+                        <!-- ********|| FOOTER END ||******** -->
                             </div>
 
                             <!-- ********|| RIGHT PART END ||******** -->
@@ -73,8 +75,38 @@
         </div>
     </section>
     <!-- ********|| BODY PART END ||******** -->
+    
+    
+    <div class="site_righticon">
+        <ul>
+            <li class="zmd-phone">
+                <i class="zmdi zmdi-phone-in-talk"></i>
+                <div class="slider">
+                    <p><a href="tel:033 24615060" class="ccfc-icon">033 24615060</a>
+                    <span>/</span>
+                    <a href="tel:033 24615059" class="ccfc-icon">24615059</a></p>
+              </div>
+            </li>
+            <li class="zmd-email">
+                <i class="zmdi zmdi-email mail"></i>
+                <div class="slider">
+                    <p><a href="mailto:ccfcsecretary@ccfc1792.com" class="ccfc-icon">ccfcsecretary@ccfc1792.com</a></p>
+                </div>
+            </li>
+        </ul>
+    </div>
 
-
+    <div class="mobile_bottom_icon">
+        <div class="mb_writeuscall">
+            <div class="mb_write_left">
+                <a href="mailto:ccfcsecretary@ccfc1792.com" class="ccfc-icon"> <i class="zmdi zmdi-email"></i> Write us</a>
+            </div>
+            <div class="mb_call_right">
+                <a href="tel:033 24615060"><i class="zmdi zmdi-phone-ring"></i></a> <a href="tel:033 24615060">24615060</a> /  <a href="tel:033 24615059" class="ccfc-icon">59</a>
+            </div>
+        </div>
+    </div>
+    
     <!--  *************************************************    -->
 
     <!-- ********|| RIGHT PART START ||******** -->
@@ -112,6 +144,16 @@
     <script defer="defer" type="text/javascript" src="{{ asset('fancybox/jquery.fancybox.min.js') }}"></script>
 
     <script src="{{ asset('owl/owl-min.js') }}"></script>
+
+    {{-- <script>
+        $(window).scroll(function() {    
+            var scroll = $(window).scrollTop();
+            if (scroll >= 50) {
+                $(".site_righticon").addClass("darkHeader");
+            }
+        }); 
+ 
+    </script> --}}
 
 
     <script>
@@ -183,12 +225,12 @@
                 0: {
                     items: 2,
                     dots: true,
-                    nav: false,
+                    nav: true,
                 },
                 600: {
                     items: 3,
                     dots: true,
-                    nav: false,
+                    nav: true,
                 },
                 1000: {
                     items: 5,
@@ -210,25 +252,25 @@
             responsive: {
                 0: {
                     items: 1,
-                    dots: true,
+                    dots: false,
                     nav: true,
                 },
                 600: {
                     items: 2,
-                    dots: true,
+                    dots: false,
                     nav: true,
                 },
                 1000: {
                     items: 3,
                     margin: 20,
                     nav: true,
-                    dots: true,
+                    dots: false,
                 },
                 1600: {
                     items: 4,
                     margin: 20,
                     nav: true,
-                    dots: true,
+                    dots: false,
                 }
             }
         });
@@ -244,19 +286,19 @@
             responsive: {
                 0: {
                     items: 1,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 600: {
                     items: 3,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 1000: {
                     items: 5,
                     margin: 20,
-                    nav: false,
-                    dots: true,
+                    nav: true,
+                    dots: false,
                 }
             }
         });
@@ -272,19 +314,19 @@
             responsive: {
                 0: {
                     items: 3,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 600: {
                     items: 5,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 1000: {
                     items: 7,
                     margin: 20,
-                    nav: false,
-                    dots: true,
+                    nav: true,
+                    dots: false,
                 }
             }
         });
@@ -300,19 +342,19 @@
             responsive: {
                 0: {
                     items: 3,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 600: {
                     items: 5,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 1000: {
                     items: 7,
                     margin: 20,
-                    nav: false,
-                    dots: true,
+                    nav: true,
+                    dots: false,
                 }
             }
         });
@@ -331,19 +373,19 @@
             responsive: {
                 0: {
                     items: 1,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 600: {
                     items: 1,
-                    dots: true,
-                    nav: false,
+                    dots: false,
+                    nav: true,
                 },
                 1000: {
                     items: 1,
                     margin: 20,
                     nav: true,
-                    dots: true,
+                    dots: false,
                 }
             }
         });
@@ -370,7 +412,7 @@
     </script>
     <script type="text/javascript">
         window.addEventListener("resize", function() {
-            "use strict"; window.location.reload(); 
+            //"use strict"; window.location.reload(); 
         });
     
         document.addEventListener("DOMContentLoaded", function(){
@@ -397,5 +439,29 @@
     
         }); 
         // DOMContentLoaded  end
+
+        // $(document).on('click', function(){
+        //     $('.submenu').hide();
+        // });
+        // $('.submenu, .nav-item').on('click', function(e){
+        //     e.stopPropagation();
+        // });
+
+        if (window.innerWidth < 767) {
+            document.getElementById('topmenupanel').className += '  sidenav';
+        }
     </script>
+    <script>
+        function openNav() {
+          document.getElementById("topmenupanel").style.width = "300px";
+        }
+        
+        function closeNav() {
+          document.getElementById("topmenupanel").style.width = "0";
+        }
+    </script>
+
+    
+
+
     
