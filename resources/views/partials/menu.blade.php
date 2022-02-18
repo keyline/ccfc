@@ -144,7 +144,7 @@
                                 </li>
                             @endcan
                             @can('static_page_management_access')
-                                <li class="nav-item has-treeview {{ request()->is("admin/content-categories*") ? "menu-open" : "" }} {{ request()->is("admin/content-tags*") ? "menu-open" : "" }} {{ request()->is("admin/content-pages*") ? "menu-open" : "" }}">
+                                <li class="nav-item has-treeview {{ request()->is("admin/content-categories*") ? "menu-open" : "" }} {{ request()->is("admin/content-tags*") ? "menu-open" : "" }} {{ request()->is("admin/content-pages*") ? "menu-open" : "" }} {{ request()->is("admin/content-blocks*") ? "menu-open" : "" }}">
                                     <a class="nav-link nav-dropdown-toggle" href="#">
                                         <i class="fa-fw nav-icon fas fa-cogs">
 
@@ -187,6 +187,18 @@
                                                     </i>
                                                     <p>
                                                         {{ trans('cruds.contentPage.title') }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('content_block_access')
+                                            <li class="nav-item">
+                                                <a href="{{ route("admin.content-blocks.index") }}" class="nav-link {{ request()->is("admin/content-blocks") || request()->is("admin/content-blocks/*") ? "active" : "" }}">
+                                                    <i class="fa-fw nav-icon far fa-edit">
+
+                                                    </i>
+                                                    <p>
+                                                        {{ trans('cruds.contentBlock.title') }}
                                                     </p>
                                                 </a>
                                             </li>
@@ -350,7 +362,7 @@
                             @can('user_detail_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.user-details.index") }}" class="nav-link {{ request()->is("admin/user-details") || request()->is("admin/user-details/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
+                                        <i class="fa-fw nav-icon fas fa-info">
 
                                         </i>
                                         <p>

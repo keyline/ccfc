@@ -165,6 +165,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('user-details/media', 'UserDetailsController@storeMedia')->name('user-details.storeMedia');
     Route::post('user-details/ckmedia', 'UserDetailsController@storeCKEditorImages')->name('user-details.storeCKEditorImages');
     Route::resource('user-details', 'UserDetailsController');
+
+    // Content Block
+    Route::delete('content-blocks/destroy', 'ContentBlockController@massDestroy')->name('content-blocks.massDestroy');
+    Route::post('content-blocks/media', 'ContentBlockController@storeMedia')->name('content-blocks.storeMedia');
+    Route::post('content-blocks/ckmedia', 'ContentBlockController@storeCKEditorImages')->name('content-blocks.storeCKEditorImages');
+    Route::resource('content-blocks', 'ContentBlockController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
