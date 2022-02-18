@@ -224,12 +224,12 @@
             responsive: {
                 0: {
                     items: 2,
-                    dots: true,
+                    dots: false,
                     nav: true,
                 },
                 600: {
                     items: 3,
-                    dots: true,
+                    dots: false,
                     nav: true,
                 },
                 1000: {
@@ -412,7 +412,7 @@
     </script>
     <script type="text/javascript">
         window.addEventListener("resize", function() {
-            //"use strict"; window.location.reload(); 
+            "use strict"; window.location.reload(); 
         });
     
         document.addEventListener("DOMContentLoaded", function(){
