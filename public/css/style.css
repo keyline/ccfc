@@ -989,7 +989,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     padding-bottom: 40px;
 }
 .sports-sec .sports-inner .sports-info .sports-img{
-    width: 150px;
+    width: 144px;
     display: block;
     margin: 0 auto;
 }
@@ -1333,6 +1333,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 .contact-sec .contact-left .map-location{
     background: var(--primaryColor);
     padding: 30px 40px;
+    margin-top: -6px;
 }
 .contact-inner {
     padding-top: 50px;
@@ -1736,6 +1737,15 @@ section.sports-page {
 }
 .sport_tab_content_section {
     padding-top: 40px;
+}
+.sports-sec .owl-carousel .owl-nav.disabled {
+    display: flex;
+}
+.sports-sec .owl-nav button.owl-prev {
+    margin-left: -20px;
+}
+.sports-sec .owl-nav button.owl-next {
+    margin-right: -20px;
 }
 
 
