@@ -37,9 +37,6 @@ class SportstypeController extends Controller
     {
         $sportstype = Sportstype::create($request->all());
 
-        // echo $request->file->getClientMimeType();
-        // return;
-
         if ($request->input('icon', false)) {
             $sportstype->addMedia(storage_path('tmp/uploads/' . basename($request->input('icon'))))->toMediaCollection('icon');
         }
