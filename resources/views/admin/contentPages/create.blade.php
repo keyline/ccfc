@@ -70,8 +70,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.tag_helper') }}</span>
             </div>
-
-
             <div class="form-group">
                 <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}"
@@ -233,9 +231,9 @@ Dropzone.options.featuredImageDropzone = {
         }
     },
     init: function() {
-        @if(isset($contentPage) && $contentPage - > featured_image)
+        @if(isset($contentPage) && $contentPage->featured_image)
         var file = {
-            !!json_encode($contentPage - > featured_image) !!
+            !!json_encode($contentPage->featured_image) !!
         }
         this.options.addedfile.call(this, file)
         this.options.thumbnail.call(this, file, file.preview)

@@ -1,9 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <!-- <span class="brand-text font-weight-light">{{ trans('panel.site_title') }}</span> -->
-        <span class="brand-text font-weight-light">{{ Auth::user()->name }}</span>
-
+        <span class="brand-text font-weight-light">{{ trans('panel.site_title') }}</span>
     </a>
 
     <!-- Sidebar -->

@@ -1,0 +1,92 @@
+From 8fe4343ebca1478a882fbef276aed0e2f1958932 Mon Sep 17 00:00:00 2001
+From: html_debojyti <debojyti@keylines.net>
+Date: Fri, 18 Feb 2022 14:54:57 +0530
+Subject: [PATCH 4/5] update homepage
+
+---
+ public/css/responsive.css                  |  2 +-
+ public/css/style.css                       | 12 +++++++++++-
+ resources/frontend/common/footer.blade.php |  6 +++---
+ 3 files changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/public/css/responsive.css b/public/css/responsive.css
+index 42ad72c..6ba3967 100644
+--- a/public/css/responsive.css
++++ b/public/css/responsive.css
+@@ -414,7 +414,7 @@
+         margin-right: 0 !important;
+     }
+     .footer-img{
+-        margin-bottom: 40px;
++        margin-bottom: 42px;
+     }
+     .mobile_bottom_icon{
+         position:fixed;
+diff --git a/public/css/style.css b/public/css/style.css
+index 2ec9699..69242ce 100644
+--- a/public/css/style.css
++++ b/public/css/style.css
+@@ -989,7 +989,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
+     padding-bottom: 40px;
+ }
+ .sports-sec .sports-inner .sports-info .sports-img{
+-    width: 150px;
++    width: 144px;
+     display: block;
+     margin: 0 auto;
+ }
+@@ -1333,6 +1333,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
+ .contact-sec .contact-left .map-location{
+     background: var(--primaryColor);
+     padding: 30px 40px;
++    margin-top: -6px;
+ }
+ .contact-inner {
+     padding-top: 50px;
+@@ -1737,6 +1738,15 @@ section.sports-page {
+ .sport_tab_content_section {
+     padding-top: 40px;
+ }
++.sports-sec .owl-carousel .owl-nav.disabled {
++    display: flex;
++}
++.sports-sec .owl-nav button.owl-prev {
++    margin-left: -20px;
++}
++.sports-sec .owl-nav button.owl-next {
++    margin-right: -20px;
++}
+ 
+ 
+ /* ********|| Sports END ||******** */
+diff --git a/resources/frontend/common/footer.blade.php b/resources/frontend/common/footer.blade.php
+index 0e20d94..63b2ea5 100644
+--- a/resources/frontend/common/footer.blade.php
++++ b/resources/frontend/common/footer.blade.php
+@@ -224,12 +224,12 @@
+             responsive: {
+                 0: {
+                     items: 2,
+-                    dots: true,
++                    dots: false,
+                     nav: true,
+                 },
+                 600: {
+                     items: 3,
+-                    dots: true,
++                    dots: false,
+                     nav: true,
+                 },
+                 1000: {
+@@ -412,7 +412,7 @@
+     </script>
+     <script type="text/javascript">
+         window.addEventListener("resize", function() {
+-            //"use strict"; window.location.reload(); 
++            "use strict"; window.location.reload(); 
+         });
+     
+         document.addEventListener("DOMContentLoaded", function(){
+-- 
+2.35.1.windows.2
+

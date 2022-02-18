@@ -58,11 +58,6 @@ Route::get('/home', function () {
 
 Auth::routes(['register' => false]);
 
-
-// Auth::routes(['login' => false]);
-
-// Route::get('/ccfc_admin', 'Auth\LoginController@show_admin_login')->name('AdminLogin');
-
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
@@ -167,6 +162,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // User Details
     Route::delete('user-details/destroy', 'UserDetailsController@massDestroy')->name('user-details.massDestroy');
+    Route::post('user-details/media', 'UserDetailsController@storeMedia')->name('user-details.storeMedia');
+    Route::post('user-details/ckmedia', 'UserDetailsController@storeCKEditorImages')->name('user-details.storeCKEditorImages');
     Route::resource('user-details', 'UserDetailsController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
