@@ -143,7 +143,7 @@
                                                         Amenities & Services
                                                     </div>
                                                 </div>
-                                                <div class="services-inner">
+                                                <div class="services-inner">     
                                                     <div id="amenities-services" class="owl-carousel owl-theme">
                                                         <div class="item">
                                                             <div class="services-info">
@@ -448,107 +448,112 @@
                                 </section>
                                 <!-- ********|| CLUB END ||******** -->
 
-                                        <!-- ********|| TESTIMONIAL START ||******** -->
-                                <section class="testimonial-sec">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-10 offset-lg-1">
-                                                <div class="row">
-                                                    <div class="col-lg-8"> 
-                                                        
-                                                           <div class="testimonial-carousel">
-                                                                <div id="home_testimonial" class="owl-carousel owl-theme">
-                                                                    <div class="item">
+                            <!-- ***|| TESTIMONIAL START ||*** -->
+                            <section class="testimonial-sec">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-10 offset-lg-1">
+                                            <div class="row">
+                                                <div class="col-lg-8 or-2"> 
+                                                    
+                                                       <div class="testimonial-carousel">
+                                                            <div id="home_testimonial" class="owl-carousel owl-theme">
+                                                                <div class="item">
 
-                                                                        <div class="testimonial-body">
-                                                                            <div class="testimonial-inner">
-                                                                            
-                                                                                  <div class="testimonial-info">
-                                                                                <div class="quote-icon">
-                                                                                    <i class="zmdi zmdi-quote"></i>
-                                                                                </div>
-                                                                                <div class="testimonial-content">
-                                                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim....
-                                                                                </div>
-                                                                                <div class="testimonial-name">
-                                                                                    Sourav Ganguly
-                                                                                </div>
-                                                                                <div class="testimonial-profession">
-                                                                                    BCCI President
-                                                                                </div>
-                                                                        <div class="testimonial-action">
-                                                                <a href="#" class="read-btn">+ Read more</a>
-                                                            </div>
-                                                                            </div>
-                                                                            <div class="testimonial-info-box"></div>
-                                                                          </div>
-                                                                            <div class="testimonial-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/testimonial-1.jpg') }}" alt="">
-                                                                            </div>
+                                                                    <div class="testimonial-body">
+                                                                        <div class="testimonial-inner">
                                                                         
-                                                                    </div>
-                                                                        
+                                                                              <div class="testimonial-info">
+                                                                            <div class="quote-icon">
+                                                                                <i class="zmdi zmdi-quote"></i>
+                                                                            </div>
+                                                                            <div class="testimonial-content">
+                                                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim....
+                                                                            </div>
+                                                                            <div class="testimonial-name">
+                                                                                Sourav Ganguly
+                                                                            </div>
+                                                                            <div class="testimonial-profession">
+                                                                                BCCI President
+                                                                            </div>
+                                                                    <div class="testimonial-action">
+                                                            <a href="#" class="read-btn">+ Read more</a>
+                                                        </div>
+                                                                        </div>
+                                                                        <div class="testimonial-info-box"></div>
+                                                                      </div>
+                                                                        <div class="testimonial-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/testimonial-1.jpg') }}" alt="">
+                                                                        </div>
+                                                                    
                                                                 </div>
-                                                                         <div class="item">
-
-                                                                        <div class="testimonial-body">
-                                                                            <div class="testimonial-inner">
-                                                                            
-                                                                                  <div class="testimonial-info">
-                                                                                <div class="quote-icon">
-                                                                                    <i class="zmdi zmdi-quote"></i>
-                                                                                </div>
-                                                                                <div class="testimonial-content">
-                                                                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim....
-                                                                                </div>
-                                                                                <div class="testimonial-name">
-                                                                                    Sachin Tendulkar
-                                                                                </div>
-                                                                                <div class="testimonial-profession">
-                                                                                    BCCI President
-                                                                                </div>
-                                                                                      <div class="testimonial-action">
-                                                                <a href="#" class="read-btn">+ Read more</a>
+                                                                    
                                                             </div>
+                                                                     <div class="item">
+
+                                                                    <div class="testimonial-body">
+                                                                        <div class="testimonial-inner">
+                                                                        
+                                                                              <div class="testimonial-info">
+                                                                            <div class="quote-icon">
+                                                                                <i class="zmdi zmdi-quote"></i>
                                                                             </div>
-                                                                            <div class="testimonial-info-box"></div>
-                                                                          </div>
-                                                                            <div class="testimonial-img">
-                                                                                <img class="img-fluid" src="{{ asset('img/testimonial-2.jpg') }}" alt="">
+                                                                            <div class="testimonial-content">
+                                                                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim....
                                                                             </div>
-                                                                    </div>
+                                                                            <div class="testimonial-name">
+                                                                                Sachin Tendulkar
+                                                                            </div>
+                                                                            <div class="testimonial-profession">
+                                                                                BCCI President
+                                                                            </div>
+                                                                                  <div class="testimonial-action">
+                                                            <a href="#" class="read-btn">+ Read more</a>
+                                                        </div>
+                                                                        </div>
+                                                                        <div class="testimonial-info-box"></div>
+                                                                      </div>
+                                                                        <div class="testimonial-img">
+                                                                            <img class="img-fluid" src="{{ asset('img/testimonial-2.jpg') }}" alt="">
+                                                                        </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
+                                                           <div class="testimonial-action-mobile">
+                                                            <a href="#" class="read-btn">+ Read all</a>
                                                         </div>
-                                                              <div class="col-lg-4">
-                                                        <div class="testimonial-right">
-                                                            <div class="testimonial-logo">
-                                                                <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" />
-                                                            </div>
+                                                    </div>
+
+                                                    </div>
+                                                          <div class="col-lg-4 or-1">
+                                                    <div class="testimonial-right">
+                                                        <div class="testimonial-logo">
+                                                            <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" />
+                                                        </div>
+                                                        <div class="testimonial-order-part">
                                                             <div class="title-sec">
-                                                    <div class="title">
-                                                        Testimonials
-                                                    </div>
-                                                </div>
-                                                            <div class="testimonial-content">
-                                                                Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer adipiscing elitconsectetuer adipiscing elit...
-                                                            </div>
-                                                            <div class="testimonial-action">
-                                                                <a href="#" class="read-btn">+ Read all</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                        
-                                                    </div>
-                                             
+                                                <div class="title">
+                                                    Testimonials
                                                 </div>
                                             </div>
+                                                            <div class="testimonial-content">
+                                                            Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer adipiscing elitconsectetuer adipiscing elit...
+                                                        </div>
+                                                        </div>
+                                                        <div class="testimonial-action">
+                                                            <a href="#" class="read-btn">+ Read all</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                </div>
+                                         
+                                            </div>
                                         </div>
-                                </section>
-                                <!-- ********|| TESTIMONIAL END ||******** -->
-                                <!-- ********|| TESTIMONIAL END ||******** -->
+                                    </div>
+                            </section>
+                            <!-- ***|| TESTIMONIAL END ||*** -->
+                            
 
                                 <!-- ********|| CONTACT START ||******** -->
                                 <section class="contact-sec">

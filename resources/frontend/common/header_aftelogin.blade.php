@@ -40,7 +40,7 @@
 
                         <!-- ********|| LEFT PART START ||******** -->
 
-                        <div class="col-lg-3 col-md-5 p-0">
+                        <div class="col-lg-3 col-md-5 p-0 siteleft_panel">
                             <header class="header">
                                 <div class="top-header">
                                     <div class="brand">
@@ -118,7 +118,7 @@
                                                         </a>
                                                         <ul class="submenu dropdown-menu">
                                                             <li><a class="nav-link" href="{{ asset('activities') }}">Amenities & Services</a></li>
-                                                            <li><a class="nav-link" href="#">Sports</a></li>
+                                                            <li><a class="nav-link" href="{{ asset('sports') }}">Sports</a></li>
                                                         </ul>
                                                     </li>
                                                     <li class="nav-item">
@@ -126,7 +126,7 @@
                                                             Members area <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
                                                         </a>
                                                         <ul class="submenu dropdown-menu">
-                                                            <li><a class="nav-link" href="#">Member dashboard</a></li>
+                                                            <li><a class="nav-link" href="{{ asset('member-login') }}">Member dashboard</a></li>
                                                             <li><a class="nav-link" href="#">Events (Members only)</a></li>
                                                             <li><a class="nav-link" href="#">News(Members only) </a></li>
                                                             <li><a class="nav-link" href="#">Rules & Regulations (Members only)</a></li>
