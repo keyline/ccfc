@@ -34,6 +34,16 @@ Route::get('/past-president', function () {
 
 
 
+Route::get('/history', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    // $data='Data';
+    return view('history', compact(['contentPages', 'galleries']));
+    
+});
+
+
+
 
 
 // Route::redirect('/', '/login');
@@ -199,9 +209,11 @@ Route::get('/footer', [ContactController::class,'contact']);
 
 Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
 Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
-Route::get('/history', function () {
-    return view('history');
-});
+
+
+// Route::get('/history', function () {
+//     return view('history');
+// });
 Route::get('/member-login', function () {
     return view('member-login');
 });
