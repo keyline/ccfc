@@ -1,16 +1,16 @@
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
     <title>CCFC</title>
 
     <style>
-        :root {
-            --primaryColor: #be1f24;
-            --secondaryColor: #c23233;
-            --trirdColor: #000;
-            --textColor: #2f2f2f;
-        }
-
+:root {
+    --primaryColor: #be1f24;
+    --secondaryColor: #c23233;
+    --trirdColor: #000;
+    --textColor: #2f2f2f;
+}
     </style>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -19,136 +19,172 @@
     <!------------GOOGLE FONT------------>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 
     <!------------ZMDI ICON------------>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <!------------OWL------------>
     <link rel="stylesheet" href="{{ asset('owl/owl3.css') }}">
     <!------------FANCYBOX------------>
     <link href="{{ asset('fancybox/jquery.fancybox.min.css') }}" rel="stylesheet" type="text/css">
 
-</head>
+    </head>
 
-<body>
-    <!-- ********|| BODY PART START ||******** -->
-    <section class="ccfc-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
+    <body>
+        <!-- ********|| BODY PART START ||******** -->
+        <section class="ccfc-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
 
-                        <!-- ********|| LEFT PART START ||******** -->
+                            <!-- ********|| LEFT PART START ||******** -->
 
-                        <div class="col-lg-3 col-md-5 p-0 siteleft_panel">
-                            <header class="header">
-                                <div class="top-header">
-                                    <div class="brand">
-                                        <a href="{{ asset('/') }}" class="logo">
-                                            <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" title="Home">
-                                        </a>
-                                    </div>
-                                    <div class="member-login member_afterlogin">
-                                        <div class="member-title">
-                                            Welcome </br>
-                                            MR. DEBOJIT GHOSH 
+                            <div class="col-lg-3 col-md-5 p-0 siteleft_panel">
+                                <header class="header">
+                                    <div class="top-header">
+                                        <div class="brand">
+                                            <a href="{{ asset('/') }}" class="logo">
+                                                <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt=""
+                                                    title="Home">
+                                            </a>
                                         </div>
+                                        <div class="member-login member_afterlogin">
+                                            <div class="member-title">
+                                                Welcome </br>
+                                                MR. DEBOJIT GHOSH
+                                            </div>
 
-                                        <div class="member_aftelogin_btn">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">Member Dashboard</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Invoices & Payment</a>
-                                                </li>
-                                                <li class="mem-aftlogin_signout">
-                                                    <a href="#">Sign out</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="topPanel">
-
-                                    <div class="nav-inner">
-                                        <div class="nav-info">
-                                            <nav class="navbar navbar-light">
-                                                <ul class="navbar-nav text-uppercase h-md-100">
-                                                    <li class="nav-item"><a class="nav-link" href="{{ asset('/') }}">Home</a></li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="javascript:void(0)">
-                                                            About us <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
-                                                        </a>
-                                                        <ul class="submenu dropdown-menu">
-                                                            <li><a href="{{ asset('history') }}">History</a></li>
-                                                            <li><a href="{{ asset('past-president') }}">Past Presidents</a></li>
-                                                            <li><a href="#">Trophies</a></li>
-                                                            <li><a href="#">Famous Sportsmen</a></li>
-                                                            <li><a href="#">Reciprocal Clubs</a></li>
-                                                        </ul>
+                                            <div class="member_aftelogin_btn">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">Member Dashboard</a>
                                                     </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="javascript:void(0)">
-                                                            MANAGEMENT <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
-                                                        </a>
-                                                        <ul class="submenu dropdown-menu">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="javascript:void(0)">
-                                                                    Committees <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
-                                                                </a>
-                                                                <ul class="submenu dropdown-menu">
-                                                                    <li><a href="#">General Committee</a></li>
-                                                                    <li><a href="#">Balloting Committee</a></li>
-                                                                    <li><a href="#">Sub-Committees</a></li>
-                                                                </ul>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="#">President's Corner</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="#">Annual report </a>
-                                                            </li>
-                                                        </ul>
+                                                    <li>
+                                                        <a href="#">Invoices & Payment</a>
                                                     </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="javascript:void(0)">
-                                                            ACTIVITIES <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
-                                                        </a>
-                                                        <ul class="submenu dropdown-menu">
-                                                            <li><a class="nav-link" href="{{ asset('activities') }}">Amenities & Services</a></li>
-                                                            <li><a class="nav-link" href="{{ asset('sports') }}">Sports</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="javascript:void(0)">
-                                                            Members area <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
-                                                        </a>
-                                                        <ul class="submenu dropdown-menu">
-                                                            <li><a class="nav-link" href="{{ asset('member-login') }}">Member dashboard</a></li>
-                                                            <li><a class="nav-link" href="#">Events (Members only)</a></li>
-                                                            <li><a class="nav-link" href="#">News(Members only) </a></li>
-                                                            <li><a class="nav-link" href="#">Rules & Regulations (Members only)</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="javascript:void(0)">Gallery</a>
-                                                    </li>
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="javascript:void(0)">Contact Us</a>
+                                                    <li class="mem-aftlogin_signout">
+                                                        <a href="#">Sign out</a>
                                                     </li>
                                                 </ul>
-
-                                                <!--                                                    </div>-->
-                                            </nav>
+                                            </div>
 
                                         </div>
                                     </div>
-                                </div>
-                                <div class="ccfc-location">
-                                    <!--<div class="ccfc-location-inner">
+                                    <div class="topPanel">
+
+                                        <div class="nav-inner">
+                                            <div class="nav-info">
+                                                <nav class="navbar navbar-light">
+                                                    <ul class="navbar-nav text-uppercase h-md-100">
+                                                        <li class="nav-item"><a class="nav-link"
+                                                                href="{{ asset('/') }}">Home</a></li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="javascript:void(0)">
+                                                                About us <span class="submenu_arrow"><i
+                                                                        class="zmdi zmdi-chevron-right"></i></span>
+                                                            </a>
+                                                            <ul class="submenu dropdown-menu">
+                                                                <li><a href="{{ asset('history') }}">History</a></li>
+                                                                <li><a href="{{ asset('past-president') }}">Past
+                                                                        Presidents</a></li>
+                                                                <li><a href="{{ asset('trophies') }}">Trophies</a></li>
+                                                                <li><a href="{{ asset('famous_sportsmen') }}">Famous
+                                                                        Sportsmen</a></li>
+                                                                <li><a href="{{ asset('reciprocal_clubs') }}">Reciprocal
+                                                                        Clubs</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="javascript:void(0)">
+                                                                MANAGEMENT <span class="submenu_arrow"><i
+                                                                        class="zmdi zmdi-chevron-right"></i></span>
+                                                            </a>
+                                                            <ul class="submenu dropdown-menu">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" href="javascript:void(0)">
+                                                                        Committees <span class="submenu_arrow"><i
+                                                                                class="zmdi zmdi-chevron-right"></i></span>
+                                                                    </a>
+                                                                    <ul class="submenu dropdown-menu">
+                                                                        <li><a href="{{ asset('general_committee') }}">General
+                                                                                Committee</a></li>
+                                                                        <li><a
+                                                                                href="{{ asset('balloting_committee') }}">Balloting
+                                                                                Committee</a></li>
+                                                                        <li><a
+                                                                                href="{{ asset('sub_committees') }}">Sub-Committees</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link"
+                                                                        href="{{ asset('president_corner') }}">President's
+                                                                        Corner</a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link"
+                                                                        href="{{ asset('annual_report') }}">Annual
+                                                                        report </a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="javascript:void(0)">
+                                                                ACTIVITIES <span class="submenu_arrow"><i
+                                                                        class="zmdi zmdi-chevron-right"></i></span>
+                                                            </a>
+                                                            <ul class="submenu dropdown-menu">
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('activities') }}">Amenities &
+                                                                        Services</a></li>
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('sports') }}">Sports</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="javascript:void(0)">
+                                                                Members area <span class="submenu_arrow"><i
+                                                                        class="zmdi zmdi-chevron-right"></i></span>
+                                                            </a>
+                                                            <ul class="submenu dropdown-menu">
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('member-login') }}">Member
+                                                                        dashboard</a></li>
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('events_members_only') }}">Events
+                                                                        (Members
+                                                                        only)</a></li>
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('new_member') }}">News(Members
+                                                                        only) </a>
+                                                                </li>
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('rules_regulation') }}">Rules &
+                                                                        Regulations
+                                                                        (Members only)</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="javascript:void(0)">Gallery</a>
+                                                        </li>
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="javascript:void(0)">Contact Us</a>
+                                                        </li>
+                                                    </ul>
+
+                                                    <!--                                                    </div>-->
+                                                </nav>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ccfc-location">
+                                        <!--<div class="ccfc-location-inner">
                                         <ul>
                                             <li>
                                                 <i class="zmdi zmdi-phone-in-talk"></i>
@@ -162,7 +198,7 @@
                                             </li>
                                         </ul>
                                     </div>-->
-                                    <!--<div class="ccfc-social">
+                                        <!--<div class="ccfc-social">
                                         <ul>
                                             <li>
                                                 <a href="#" class="social-icon">
@@ -196,7 +232,7 @@
                                             </li>
                                         </ul>
                                     </div>-->
-                                    <!--<div class="copy-part">
+                                        <!--<div class="copy-part">
                                         <div class="copy-title">
                                             Copyright © 2022 The CC&FC Club at Kolkata All Rights Reserved.
                                         </div>
@@ -204,29 +240,31 @@
                                             Design & Developed by<a href="#" class="keyline"> KEYLINE</a>
                                         </div>
                                     </div>-->
-                                </div>
-                            </header>
-                        </div>
-                        <!-- ********|| LEFT PART END ||******** -->
-      
-      
-      
-      
-<div class="site_righticon">
-    <ul>
-        <li>
-            <i class="zmdi zmdi-phone-in-talk"></i>
-            <div class="slider">
-                <p><a href="tell:033 24615060" class="ccfc-icon">033 24615060</a>
-                <span>/</span>
-                <a href="tell:033 24615059" class="ccfc-icon">24615059</a></p>
-          </div>
-        </li>
-        <li>
-            <i class="zmdi zmdi-email mail"></i>
-            <div class="slider">
-                <p><a href="mailto:ccfcsecretary@ccfc1792.com" class="ccfc-icon">ccfcsecretary@ccfc1792.com</a></p>
-            </div>
-        </li>
-    </ul>
-</div>
+                                    </div>
+                                </header>
+                            </div>
+                            <!-- ********|| LEFT PART END ||******** -->
+
+
+
+
+                            <div class="site_righticon">
+                                <ul>
+                                    <li>
+                                        <i class="zmdi zmdi-phone-in-talk"></i>
+                                        <div class="slider">
+                                            <p><a href="tell:033 24615060" class="ccfc-icon">033 24615060</a>
+                                                <span>/</span>
+                                                <a href="tell:033 24615059" class="ccfc-icon">24615059</a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="zmdi zmdi-email mail"></i>
+                                        <div class="slider">
+                                            <p><a href="mailto:ccfcsecretary@ccfc1792.com"
+                                                    class="ccfc-icon">ccfcsecretary@ccfc1792.com</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>

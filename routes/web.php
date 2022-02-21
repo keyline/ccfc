@@ -211,9 +211,51 @@ Route::post('/send-message', [ContactController::class,'sendEmail'])->name('cont
 Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
 
 
-// Route::get('/history', function () {
-//     return view('history');
-// });
+Route::get('/trophies', function () {
+    return view('trophies');
+});
+
+Route::get('/famous_sportsmen', function () {
+    return view('famous_sportsmen');
+});
+
+Route::get('/reciprocal_clubs', function () {
+    return view('reciprocal_clubs');
+});
+Route::get('/general_committee', function () {
+    return view('general_committee');
+});
+
+Route::get('/balloting_committee', function () {
+    return view('balloting_committee');
+});
+
+Route::get('/sub_committees', function () {
+    return view('sub_committees');
+});
+
+Route::get('/president_corner', function () {
+    return view('president_corner');
+});
+
+Route::get('/annual_report', function () {
+    return view('annual_report');
+});
+
+Route::get('/events_members_only', function () {
+    return view('events_members_only');
+});
+
+Route::get('/new_member', function () {
+    return view('new_member');
+});
+
+Route::get('/rules_regulation', function () {
+    return view('rules_regulation');
+});
+
+
+
 Route::get('/member-login', function () {
     return view('member-login');
 });
