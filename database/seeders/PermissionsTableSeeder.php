@@ -456,6 +456,46 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 112,
+                'title' => 'content_block_create',
+            ],
+            [
+                'id'    => 113,
+                'title' => 'content_block_edit',
+            ],
+            [
+                'id'    => 114,
+                'title' => 'content_block_show',
+            ],
+            [
+                'id'    => 115,
+                'title' => 'content_block_delete',
+            ],
+            [
+                'id'    => 116,
+                'title' => 'content_block_access',
+            ],
+            [
+                'id'    => 117,
+                'title' => 'sub_committee_member_create',
+            ],
+            [
+                'id'    => 118,
+                'title' => 'sub_committee_member_edit',
+            ],
+            [
+                'id'    => 119,
+                'title' => 'sub_committee_member_show',
+            ],
+            [
+                'id'    => 120,
+                'title' => 'sub_committee_member_delete',
+            ],
+            [
+                'id'    => 121,
+                'title' => 'sub_committee_member_access',
+            ],
+            [
+                'id'    => 122,
                 'title' => 'profile_password_edit',
             ],
         ];
