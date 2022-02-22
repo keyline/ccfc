@@ -1747,10 +1747,228 @@ section.sports-page {
 .sports-sec .owl-nav button.owl-next {
     margin-right: -20px;
 }
-
-
 /* ********|| Sports END ||******** */
 
+/* ********|| Famous Sportsmen Start ||******** */
+.inner_belowbanner {
+    padding: 40px 20px;
+    background: #f8f8f8;
+}
+.famoussport-details {
+    padding: 40px 30px;
+}
+.famoussport_item {
+    display: grid;
+    grid-template-columns: 150px auto;
+    transition: all .5s ease-in-out;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    background: #f8f8f8;
+    height: 100%;
+}
+.famoussport_item:hover{
+    border: 2px solid var(--primaryColor);
+}
+.famoussport_item .famoussport_img {
+    overflow: hidden;
+    height: 140px;
+    width: 140px;
+    border: 6px solid var(--primaryColor);
+    border-radius: 50%;
+}
+.famoussport_item .famoussport_img img {
+    width: 100%;
+    height: 100%;
+    transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+}
+.famoussport_item .famoussport_img img:hover{
+    -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+}
+.famoussport_info {
+    padding-left: 10px;
+}
+.famoussport_item .famoussport_info h3 {
+    font-family: 'IBM Plex Serif', serif;
+    text-align: left;
+    color: var(--primaryColor);
+}
+.famoussport_item .famoussport_info p {
+    font-family: 'IBM Plex Serif', serif;
+    text-align: justify;
+    font-size: 14px;
+}
+/* ********|| Famous Sportsmen END ||******** */
+
+/* ********|| Trophies Start ||******** */
+
+.trophies_tabsection {
+    padding: 40px;
+}
+.trophies-tablist {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+.trophies-tablist ul.nav-tabs {
+    display: flex;
+    border: none;
+    justify-content: center;
+}
+.trophies-tablist .nav-tabs .nav-link .tab_icontext img {
+    filter: grayscale(1);
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.trophies-tablist .nav-tabs .nav-link.active .tab_icontext img, .trophies-tablist .nav-tabs .nav-link:hover .tab_icontext img {
+    filter: none;
+    /* -webkit-filter: grayscale(0);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1); */
+}
+.trophies-tablist ul.nav-tabs a.nav-link.active {
+    position: relative;
+}
+.trophies-tablist ul.nav-tabs a.nav-link.active::after {
+    position: absolute;
+    content: "";
+    background: var(--primaryColor);
+    width: 80%;
+    height: 2px;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 0);
+}
+.trophies-tablist ul.nav-tabs a.nav-link {
+    border: none;
+    /* padding-left: 2em;
+    padding-right: 2em; */
+}
+.trophies-tablist .nav-tabs .nav-link .tab_icontext {
+    text-align: center;
+}
+.trophies-tablist .nav-tabs .nav-link .tab_icontext h3 {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'IBM Plex Serif', serif;
+    color: #444;
+    margin-top: 6px;
+}
+.trophies-tablist .nav-tabs .nav-link.active .tab_icontext h3 {
+    color: var(--primaryColor);
+}
+.trophies_tab_content_section {
+    padding-top: 40px;
+}
+.trophies_tab_content_section .row {
+    justify-content: center;
+}
+.trophies-tablist .owl-nav .owl-prev span , .trophies-tablist .owl-nav .owl-next span{
+    font-size: 34px;
+    line-height: 20px;
+} 
+.trophies-tablist .owl-nav .owl-prev {
+    position: absolute;
+    top: 0;
+    left: -30px;
+    background: var(--primaryColor) !important;
+    color: #fff !important;
+    width: 30px;
+    height: 100%;
+}
+.trophies-tablist .owl-nav .owl-next {
+    position: absolute;
+    top: 0;
+    right: -30px;
+    background: var(--primaryColor) !important;
+    color: #fff !important;
+    width: 30px;
+    height: 100%;
+}
+.trophy_tabcontent_inner {
+    text-align: center;
+    margin: auto;
+    background: #898989;
+    padding: 25px 15px;
+    transition: all .5s ease-in-out;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+.trophies_tab_content_section .trophy_tab_ceibity-img {
+    overflow: hidden;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    display: inline-block;
+}
+.trophies_tab_content_section img {
+    width: 100%;
+    transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    object-fit: cover;
+    height: 100%;
+}
+.trophy_tabcontent_inner:hover {
+    background: var(--primaryColor);
+}
+.trophy_player {
+    padding-top: 35px;
+}
+.trophy_player h3 {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 22px;
+}
+.trophy_player h4 {
+    color: #fff;
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 18px;
+}
+
+
+.trophy_section .trophy_year {
+    position: relative;
+    border-bottom: 1px solid var(--primaryColor);
+    margin-bottom: 25px;
+}
+.trophy_section .trophy_year h3 {
+    font-family: 'IBM Plex Serif', serif;
+    color: var(--primaryColor);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.trophy_item_list {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    background: #ddd;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.trophy_img {
+    height: 155px;
+}
+.trophy_img img.img-fluid {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.trophy_champion_year {
+    padding: 15px 0 0;
+    font-size: 18px;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* ********|| Trophies END ||******** */
 
 /* ********|| FOOTER START ||******** */
 .footer-img{
