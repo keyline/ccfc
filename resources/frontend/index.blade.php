@@ -20,18 +20,32 @@
                 <div class="banner-box">
 
                     <div id="home_banner" class="owl-carousel owl-theme">
+                        @foreach($galleries->where("gallery_name","Home Page Header banner") as $key => $gallery)
 
+                        @foreach($gallery->images as $key => $media)
                         <div class="item">
+
+
 
                             <div class="about-img">
 
-                                <img class="img-fluid" src="{{ asset('img/banner-1.jpg') }}" alt="" />
+                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
 
                             </div>
 
+                            <!-- <div class="about-img">
+
+                                <img class="img-fluid" src="{{ asset('img/banner-1.jpg') }}" alt="" />
+
+                            </div> -->
+
                         </div>
 
-                        <div class="item">
+
+
+                        @endforeach
+                        @endforeach
+                        <!-- <div class="item">
 
                             <div class="about-img">
 
@@ -39,7 +53,7 @@
 
                             </div>
 
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -52,8 +66,18 @@
             <section class="advise">
                 <div class="container">
                     <div class="row">
+                        @foreach($galleries->where("id","5") as $key => $gallery)
+
+                        @foreach($gallery->images as $key => $media)
 
                         <div class="col-lg-6">
+                            <div class="advise-img">
+                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
+                            </div>
+                        </div>
+                        @endforeach
+                        @endforeach
+                        <!-- <div class="col-lg-6">
                             <div class="advise-img">
                                 <img class="img-fluid" src="{{ asset('img/advise-1.jpg') }}" alt="" />
                             </div>
@@ -62,7 +86,7 @@
                             <div class="advise-img">
                                 <img class="img-fluid" src="{{ asset('img/advise-2.jpg') }}" alt="" />
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>
@@ -105,16 +129,21 @@
                             </div>
                             <div class="history-img">
                                 <div id="home_history" class="owl-carousel owl-theme">
+                                    <!-- <div id="history" class="owl-carousel owl-theme"> -->
+
                                     <!-- dynamic part starts   -->
-                                    @foreach($galleries as $key => $gallery)
+
+                                    <!-- @php
+                                    var_dump($galleries);
+                                    @endphp -->
+
+
+                                    @foreach($galleries->where("id","1") as $key => $gallery)
 
                                     @foreach($gallery->images as $key => $media)
                                     <div class="item">
                                         <div class="project-item">
                                             <div class="gallery">
-
-
-
                                                 <a href="{{$media->getUrl()}}" class="item-inner" data-fancybox="image">
                                                     <div class="item-img">
                                                         <img class="img-fluid" src="{{$media->getUrl('')}}" alt="">

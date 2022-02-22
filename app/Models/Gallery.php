@@ -16,10 +16,16 @@ class Gallery extends Model implements HasMedia
     use InteractsWithMedia;
     use HasFactory;
 
+    // public const GALLERY_TYPE_SELECT = [
+    //     'gallery type 1' => 'History',
+    //     'gallery type 2' => 'Banner',
+    // ];
+
     public const GALLERY_TYPE_SELECT = [
-        'gallery type 1' => 'Type 1',
-        'gallery type 2' => 'Type 2',
+        'History' => 'Active',
+        'Banner' => 'Inactive',
     ];
+    
 
     public $table = 'galleries';
 

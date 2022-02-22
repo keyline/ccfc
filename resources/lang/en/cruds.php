@@ -350,7 +350,7 @@ return [
             'gallery_name'        => 'Gallery Name',
             'gallery_name_helper' => ' ',
             'gallery_type'        => 'Gallery Type',
-            'gallery_type_helper' => ' ',
+            'gallery_type_helper' => '',
             'images'              => 'Images',
             'images_helper'       => ' ',
             'created_at'          => 'Created at',
