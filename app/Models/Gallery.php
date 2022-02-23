@@ -16,10 +16,16 @@ class Gallery extends Model implements HasMedia
     use InteractsWithMedia;
     use HasFactory;
 
+    // public const GALLERY_TYPE_SELECT = [
+    //     'gallery type 1' => 'History',
+    //     'gallery type 2' => 'Banner',
+    // ];
+
     public const GALLERY_TYPE_SELECT = [
-        'gallery type 1' => 'Type 1',
-        'gallery type 2' => 'Type 2',
+        'History' => 'Active',
+        'Banner' => 'Inactive',
     ];
+    
 
     public $table = 'galleries';
 
@@ -45,6 +51,7 @@ class Gallery extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
+        
     }
 
     public function getImagesAttribute()
