@@ -174,10 +174,18 @@
                                                                 ACTIVITIES <span class="submenu_arrow"><i
                                                                         class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
-                                                            <ul class="submenu dropdown-menu">
+                                                            <!-- <ul class="submenu dropdown-menu">
                                                                 <li><a class="nav-link"
                                                                         href="{{ asset('food_beverages') }}">Amenities &
                                                                         Services</a></li>
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('sports') }}">Sports</a></li>
+                                                            </ul> -->
+
+                                                            <ul class="submenu dropdown-menu">
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('amenities_services') }}">Amenities
+                                                                        & Services</a></li>
                                                                 <li><a class="nav-link"
                                                                         href="{{ asset('sports') }}">Sports</a></li>
                                                             </ul>

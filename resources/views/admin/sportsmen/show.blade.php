@@ -45,9 +45,9 @@
                         </th>
                         <td>
                             @if($sportsman->image)
-                                <a href="{{ $sportsman->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $sportsman->image->getUrl('thumb') }}">
-                                </a>
+                            <a href="{{ $sportsman->image->getUrl() }}" target="_blank" style="display: inline-block">
+                                <img src="{{ $sportsman->image->getUrl('thumb') }}">
+                            </a>
                             @endif
                         </td>
                     </tr>

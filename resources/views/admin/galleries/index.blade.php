@@ -74,7 +74,7 @@
                             </a>
                             @endcan
 
-                            @can('gallery_delete')
+                            <!-- @can('gallery_delete')
                             <form action="{{ route('admin.galleries.destroy', $gallery->id) }}" method="POST"
                                 onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
                                 style="display: inline-block;">
@@ -82,7 +82,7 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                             </form>
-                            @endcan
+                            @endcan -->
 
                         </td>
 

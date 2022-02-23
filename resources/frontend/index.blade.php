@@ -20,7 +20,7 @@
                 <div class="banner-box">
 
                     <div id="home_banner" class="owl-carousel owl-theme">
-                        @foreach($galleries->where("gallery_name","Home Page Header banner") as $key => $gallery)
+                        @foreach($galleries->where("id","1") as $key => $gallery)
 
                         @foreach($gallery->images as $key => $media)
                         <div class="item">
@@ -66,7 +66,7 @@
             <section class="advise">
                 <div class="container">
                     <div class="row">
-                        @foreach($galleries->where("id","5") as $key => $gallery)
+                        @foreach($galleries->where("id","2") as $key => $gallery)
 
                         @foreach($gallery->images as $key => $media)
 
@@ -107,7 +107,7 @@
                                 <div class="history-action">
                                     <div class="history-content">
 
-                                        @foreach($contentPages as $contentPage)
+                                        @foreach($contentPages->where("id","1") as $contentPage)
 
                                         <p class="ArticleBody">
                                             {!! \Illuminate\Support\Str::limit(($contentPage->excerpt), 300, '') !!}
@@ -138,7 +138,7 @@
                                     @endphp -->
 
 
-                                    @foreach($galleries->where("id","1") as $key => $gallery)
+                                    @foreach($galleries->where("id","3") as $key => $gallery)
 
                                     @foreach($gallery->images as $key => $media)
                                     <div class="item">

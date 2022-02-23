@@ -12,6 +12,12 @@ use App\Models\Sportstype;
 
 use App\Models\PastPresident;
 
+use App\Models\ContentBlock;
+
+use App\Models\Trophy;
+
+use App\Models\Sportsman;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -45,7 +51,32 @@ Route::get('/history', function () {
     
 });
 
+Route::get('/food_beverages', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    // $data='Data';
+    return view('food_beverages', compact(['contentPages', 'galleries', 'contentBlocks']));
+    
+});
 
+
+Route::get('/trophies', function () {
+    
+    $trophies = Trophy::with(['media'])->get();
+    // $data='Data';
+    return view('trophies', compact(['trophies']));
+    
+});
+
+
+Route::get('/famous_sportsmen', function () {
+    
+    $sportsmen = Sportsman::with(['media'])->get();
+    // $data='Data';
+    return view('famous_sportsmen', compact(['sportsmen']));
+    
+});
 
 
 
@@ -196,11 +227,15 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
         Route::post('two-factor', 'TwoFactorController@check')->name('twoFactor.check');
         Route::get('two-factor/resend', 'TwoFactorController@resend')->name('twoFactor.resend');
     }
-});// Route::get('/past-president', function () {
+});
+
+// Route::get('/past-president', function () {
     //     return view('past-president');
     // });
-    Route::get('/food_beverages', function () {
-        return view('food_beverages');
+
+    
+    Route::get('/amenities_services', function () {
+        return view('amenities_services');
     });
     
     
@@ -219,13 +254,13 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
     Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
     
     
-    Route::get('/trophies', function () {
-        return view('trophies');
-    });
+    // Route::get('/trophies', function () {
+    //     return view('trophies');
+    // });
     
-    Route::get('/famous_sportsmen', function () {
-        return view('famous_sportsmen');
-    });
+    // Route::get('/famous_sportsmen', function () {
+    //     return view('famous_sportsmen');
+    // });
     
     Route::get('/reciprocal_clubs', function () {
         return view('reciprocal_clubs');
