@@ -190,7 +190,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            @foreach($galleries as $key => $gallery)
+                            @foreach($galleries->where("id","3") as $key => $gallery)
 
                             @foreach($gallery->images as $key => $media)
                             <div class="history-img">

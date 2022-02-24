@@ -210,7 +210,7 @@
                     </li>
                 @endcan
                 @can('committee_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/committee-names*") ? "menu-open" : "" }} {{ request()->is("admin/committee-member-mappings*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/committee-names*") ? "menu-open" : "" }} {{ request()->is("admin/committee-member-mappings*") ? "menu-open" : "" }} {{ request()->is("admin/sub-committee-members*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-users">
 
@@ -241,6 +241,18 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.committeeMemberMapping.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('sub_committee_member_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.sub-committee-members.index") }}" class="nav-link {{ request()->is("admin/sub-committee-members") || request()->is("admin/sub-committee-members/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon far fa-handshake">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.subCommitteeMember.title') }}
                                         </p>
                                     </a>
                                 </li>

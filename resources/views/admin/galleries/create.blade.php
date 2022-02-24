@@ -60,8 +60,7 @@
 <script>
 var uploadedImagesMap = {}
 Dropzone.options.imagesDropzone = {
-    url: '{{ route('
-    admin.galleries.storeMedia ') }}',
+    url: '{{route('admin.galleries.storeMedia')}}',
     maxFilesize: 2, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     addRemoveLinks: true,
@@ -89,9 +88,9 @@ Dropzone.options.imagesDropzone = {
         $('form').find('input[name="images[]"][value="' + name + '"]').remove()
     },
     init: function() {
-        @if(isset($gallery) && $gallery - > images)
+        @if(isset($gallery) && $gallery->images)
         var files = {
-            !!json_encode($gallery - > images) !!
+            !!json_encode($gallery->images) !!
         }
         for (var i in files) {
             var file = files[i]

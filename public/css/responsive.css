@@ -178,10 +178,10 @@
         bottom: 26px;
     }
     /*
-.testimonial-sec .testimonial-carousel {
+    .testimonial-sec .testimonial-carousel {
     background-size: 100%;
-}
-*/
+    }
+    */
     testimonial-sec .testimonial-inner .quote-icon {
         font-size: 30px;
         height: 40px;
@@ -197,6 +197,13 @@
     }
     .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
         width: 90px!important;
+    }
+    .famoussport_item{
+        display: block;
+        grid-template-columns: auto;
+    }
+    .famoussport_item .famoussport_img{
+        margin: 0 auto 15px;
     }
 }
 @media (min-width: 992px) and (max-width: 1300px) {

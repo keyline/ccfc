@@ -125,9 +125,12 @@
                                                                 <li><a href="{{ asset('history') }}">History</a></li>
                                                                 <li><a href="{{ asset('past-president') }}">Past
                                                                         Presidents</a></li>
-                                                                <li><a href="#">Trophies</a></li>
-                                                                <li><a href="#">Famous Sportsmen</a></li>
-                                                                <li><a href="#">Reciprocal Clubs</a></li>
+                                                                <li><a href="{{ asset('trophies') }}">Trophies</a>
+                                                                </li>
+                                                                <li><a href="{{ asset('famous_sportsmen') }}">Famous
+                                                                        Sportsmen</a></li>
+                                                                <li><a href="{{ asset('reciprocal_clubs') }}">Reciprocal
+                                                                        Clubs</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="nav-item">
@@ -142,16 +145,27 @@
                                                                                 class="zmdi zmdi-chevron-right"></i></span>
                                                                     </a>
                                                                     <ul class="submenu dropdown-menu">
-                                                                        <li><a href="#">General Committee</a></li>
-                                                                        <li><a href="#">Balloting Committee</a></li>
-                                                                        <li><a href="#">Sub-Committees</a></li>
+                                                                        <li><a href="{{ asset('general_committee') }}">General
+                                                                                Committee</a></li>
+                                                                        <li>
+                                                                            <a
+                                                                                href="{{ asset('balloting_committee') }}">Balloting
+                                                                                Committee</a>
+                                                                        </li>
+                                                                        <li><a
+                                                                                href="{{ asset('sub_committees') }}">Sub-Committees</a>
+                                                                        </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a class="nav-link" href="#">President's Corner</a>
+                                                                    <a class="nav-link"
+                                                                        href="{{ asset('president_corner') }}">President's
+                                                                        Corner</a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a class="nav-link" href="#">Annual report </a>
+                                                                    <a class="nav-link"
+                                                                        href="{{ asset('annual_report') }}">Annual
+                                                                        report </a>
                                                                 </li>
                                                             </ul>
                                                         </li>
@@ -160,10 +174,18 @@
                                                                 ACTIVITIES <span class="submenu_arrow"><i
                                                                         class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
-                                                            <ul class="submenu dropdown-menu">
+                                                            <!-- <ul class="submenu dropdown-menu">
                                                                 <li><a class="nav-link"
                                                                         href="{{ asset('food_beverages') }}">Amenities &
                                                                         Services</a></li>
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('sports') }}">Sports</a></li>
+                                                            </ul> -->
+
+                                                            <ul class="submenu dropdown-menu">
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('amenities_services') }}">Amenities
+                                                                        & Services</a></li>
                                                                 <li><a class="nav-link"
                                                                         href="{{ asset('sports') }}">Sports</a></li>
                                                             </ul>
@@ -177,11 +199,17 @@
                                                                 <li><a class="nav-link"
                                                                         href="{{ asset('member-login') }}">Member
                                                                         dashboard</a></li>
-                                                                <li><a class="nav-link" href="#">Events (Members
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('events_members_only') }}">Events
+                                                                        (Members
                                                                         only)</a></li>
-                                                                <li><a class="nav-link" href="#">News(Members only) </a>
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('new_member') }}">News(Members
+                                                                        only) </a>
                                                                 </li>
-                                                                <li><a class="nav-link" href="#">Rules & Regulations
+                                                                <li><a class="nav-link"
+                                                                        href="{{ asset('rules_regulation') }}">Rules &
+                                                                        Regulations
                                                                         (Members only)</a></li>
                                                             </ul>
                                                         </li>

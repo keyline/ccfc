@@ -12,14 +12,23 @@ use App\Models\Sportstype;
 
 use App\Models\PastPresident;
 
+use App\Models\ContentBlock;
+
+use App\Models\Trophy;
+
+use App\Models\Sportsman;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
     $reciprocalClubs = ReciprocalClub::all();
     $contentPages = ContentPage::all();
-    // $galleries = Gallery::all();
     $sportstypes = Sportstype::all();
+
     $galleries = Gallery::with(['media'])->get();
+    
+    // $galleries = Gallery::all();
+    
 
     return view('index', compact('reciprocalClubs', 'contentPages', 'galleries', 'sportstypes'));
 });
@@ -29,7 +38,6 @@ Route::get('/past-president', function () {
     $pastPresidents = PastPresident::with(['media'])->get();
     // $data='Data';
     return view('past-president', compact(['pastPresidents']));
-    
 });
 
 
@@ -39,10 +47,29 @@ Route::get('/history', function () {
     $galleries = Gallery::with(['media'])->get();
     // $data='Data';
     return view('history', compact(['contentPages', 'galleries']));
-    
+});
+
+Route::get('/food_beverages', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    // $data='Data';
+    return view('food_beverages', compact(['contentPages', 'galleries', 'contentBlocks']));
 });
 
 
+Route::get('/trophies', function () {
+    $trophies = Trophy::with(['media'])->get();
+    // $data='Data';
+    return view('trophies', compact(['trophies']));
+});
+
+
+Route::get('/famous_sportsmen', function () {
+    $sportsmen = Sportsman::with(['media'])->get();
+    // $data='Data';
+    return view('famous_sportsmen', compact(['sportsmen']));
+});
 
 
 
@@ -171,6 +198,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('content-blocks/media', 'ContentBlockController@storeMedia')->name('content-blocks.storeMedia');
     Route::post('content-blocks/ckmedia', 'ContentBlockController@storeCKEditorImages')->name('content-blocks.storeCKEditorImages');
     Route::resource('content-blocks', 'ContentBlockController');
+
+    // Sub Committee Members
+    Route::delete('sub-committee-members/destroy', 'SubCommitteeMembersController@massDestroy')->name('sub-committee-members.massDestroy');
+    Route::resource('sub-committee-members', 'SubCommitteeMembersController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
@@ -192,11 +223,8 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
 });
 
 // Route::get('/past-president', function () {
-//     return view('past-president');
-// });
-Route::get('/food_beverages', function () {
-    return view('food_beverages');
-});
+    //     return view('past-president');
+    // });
 
 
 // Route::get('/', 'PagesController@index')->name('pages');
@@ -223,3 +251,50 @@ Route::get('/member-login', function () {
 Route::get('/sports', function () {
     return view('sports');
 });
+    
+    Route::get('/amenities_services', function () {
+        return view('amenities_services');
+    });
+    
+    // Route::get('/trophies', function () {
+    //     return view('trophies');
+    // });
+    
+    // Route::get('/famous_sportsmen', function () {
+    //     return view('famous_sportsmen');
+    // });
+    
+    Route::get('/reciprocal_clubs', function () {
+        return view('reciprocal_clubs');
+    });
+    Route::get('/general_committee', function () {
+        return view('general_committee');
+    });
+    
+    Route::get('/balloting_committee', function () {
+        return view('balloting_committee');
+    });
+    
+    Route::get('/sub_committees', function () {
+        return view('sub_committees');
+    });
+    
+    Route::get('/president_corner', function () {
+        return view('president_corner');
+    });
+    
+    Route::get('/annual_report', function () {
+        return view('annual_report');
+    });
+    
+    Route::get('/events_members_only', function () {
+        return view('events_members_only');
+    });
+    
+    Route::get('/new_member', function () {
+        return view('new_member');
+    });
+    
+    Route::get('/rules_regulation', function () {
+        return view('rules_regulation');
+    });
