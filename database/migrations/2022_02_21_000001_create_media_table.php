@@ -29,20 +29,4 @@ class CreateMediaTable extends Migration
             $table->nullableTimestamps();
         });
     }
-<<<<<<<< HEAD:database/migrations/2022_02_18_000001_create_media_table.php
 }
-|||||||| 135ffd0:database/migrations/2022_02_15_000001_qlc0001_create_media_table.php
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('media');
-    }
-}
-========
-}
->>>>>>>> 4a15c389e429dee1015c6ea9591579fe7dada072:database/migrations/2022_02_21_000001_create_media_table.php
