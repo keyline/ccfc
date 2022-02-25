@@ -262,3 +262,24 @@ Route::get('/member-login', function () {
 Route::get('/sports', function () {
     return view('sports');
 });
+Route::get('/gymming-rejuvenated', function () {
+        return view('gymming-rejuvenated');
+    });
+Route::get('/swimming-pool', function () {
+        return view('swimming-pool');
+    });
+Route::get('/club-bar', function () {
+        return view('club-bar');
+    });
+Route::get('/pool-pub', function () {
+        return view('pool-pub');
+    });
+Route::get('/contact-us', function () {
+        return view('contact-us');
+    });
+Route::get('/notice-circulars', function () {
+        return view('notice-circulars');
+    });
+Route::get('/amenities_services', function () {
+    return view('amenities_services');
+});
