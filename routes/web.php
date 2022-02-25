@@ -233,7 +233,6 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
     //     return view('past-president');
     // });
 
-<<<<<<< HEAD
 Route::get('/famous_sportsmen', function () {
     return view('famous_sportsmen');
 });
@@ -302,7 +301,6 @@ Route::get('/notice-circulars', function () {
 Route::get('/amenities_services', function () {
     return view('amenities_services');
 });
-=======
     
     Route::get('/amenities_services', function () {
         return view('amenities_services');
@@ -375,4 +373,3 @@ Route::get('/amenities_services', function () {
     Route::get('/sports', function () {
         return view('sports');
     });
->>>>>>> 4a15c389e429dee1015c6ea9591579fe7dada072
