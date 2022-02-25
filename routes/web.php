@@ -252,6 +252,74 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
     //     return view('past-president');
     // });
 
+// Route::get('/famous_sportsmen', function () {
+//     return view('famous_sportsmen');
+// });
+
+Route::get('/reciprocal_clubs', function () {
+    return view('reciprocal_clubs');
+});
+Route::get('/general_committee', function () {
+    return view('general_committee');
+});
+
+Route::get('/balloting_committee', function () {
+    return view('balloting_committee');
+});
+
+Route::get('/sub_committees', function () {
+    return view('sub_committees');
+});
+
+Route::get('/president_corner', function () {
+    return view('president_corner');
+});
+
+Route::get('/annual_report', function () {
+    return view('annual_report');
+});
+
+Route::get('/events_members_only', function () {
+    return view('events_members_only');
+});
+
+Route::get('/new_member', function () {
+    return view('new_member');
+});
+
+Route::get('/rules_regulation', function () {
+    return view('rules_regulation');
+});
+
+
+
+Route::get('/member-login', function () {
+    return view('member-login');
+});
+// Route::get('/sports', function () {
+//     return view('sports');
+// });
+Route::get('/gymming-rejuvenated', function () {
+        return view('gymming-rejuvenated');
+    });
+Route::get('/swimming-pool', function () {
+        return view('swimming-pool');
+    });
+Route::get('/club-bar', function () {
+        return view('club-bar');
+    });
+Route::get('/pool-pub', function () {
+        return view('pool-pub');
+    });
+Route::get('/contact-us', function () {
+        return view('contact-us');
+    });
+Route::get('/notice-circulars', function () {
+        return view('notice-circulars');
+    });
+Route::get('/amenities_services', function () {
+    return view('amenities_services');
+});
     
     Route::get('/amenities_services', function () {
         return view('amenities_services');
@@ -321,9 +389,6 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
     Route::get('/member-login', function () {
         return view('member-login');
     });
-    
     // Route::get('/sports', function () {
     //     return view('sports');
     // });
-
-    

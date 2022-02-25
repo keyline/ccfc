@@ -140,6 +140,8 @@ span {
 }
 .siteleft_panel{
     box-shadow: 2px 1px 4px #ddd;
+    position: relative;
+    z-index: 9;
 }
 .ccfc-body .header .top-header .brand {
     padding: 10px 0px;
@@ -217,11 +219,12 @@ span {
     display: block;
     line-height: 27px;
     color: #fff;
-    background: #951014;
+    background: var(--primaryColor);
     margin-bottom: 10px;
     padding: 3px 20px;
     border-radius: 20px;
     font-family: 'IBM Plex Serif', serif;
+    border: 2px solid #fff;
 }
 .member_aftelogin_btn ul li.mem-aftlogin_signout a{
     background: #fff;
@@ -440,7 +443,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     padding: 4px 0px;
 }
 .topPanel .navbar-light .navbar-nav .nav-item{
-   border-bottom: 1px solid #c5c5c5; 
+   border-bottom: 1px solid #e2e2e2; 
 }
 .topPanel .navbar-light .navbar-nav .nav-item.dropdown-menu-item-sub{
     border-bottom: none; 
@@ -703,6 +706,9 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 
 /* ********|| BANNER END ||******** */
 .content_inner p{
+    font-family: 'IBM Plex Serif', serif;
+}
+.content_inner h3, .content_inner h4{
     font-family: 'IBM Plex Serif', serif;
 }
 /* ********|| ADVISE START ||******** */
@@ -1970,6 +1976,216 @@ section.sports-page {
 
 /* ********|| Trophies END ||******** */
 
+
+/* ********|| Reciprocal Start ||******** */
+.reciprocal_tabsection {
+    padding: 40px;
+}
+.reciprocal-tablist {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+.reciprocal-tablist ul.nav-tabs {
+    display: flex;
+    border: none;
+    justify-content: center;
+}
+.reciprocal-tablist ul.nav-tabs a.nav-link {
+    border: none;
+}
+.reciprocal-tablist .nav-tabs .nav-link .tab_icontext {
+    text-align: center;
+}
+.reciprocal-tablist .nav-tabs .nav-link .tab_icontext img {
+    filter: grayscale(1);
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    max-width: 60px;
+}
+.reciprocal-tablist .nav-tabs .nav-link.active .tab_icontext img, 
+.reciprocal-tablist .nav-tabs .nav-link:hover .tab_icontext img {
+    filter: none;
+}
+.reciprocal-tablist .nav-tabs .nav-link .tab_icontext h3 {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'IBM Plex Serif', serif;
+    color: #444;
+    margin-top: 6px;
+}
+.reciprocal-tablist .nav-tabs .nav-link.active .tab_icontext h3 {
+    color: var(--primaryColor);
+}
+.reciprocal-tablist ul.nav-tabs a.nav-link.active {
+    position: relative;
+}
+.reciprocal-tablist ul.nav-tabs a.nav-link.active::after {
+    position: absolute;
+    content: "";
+    background: var(--primaryColor);
+    width: 80%;
+    height: 2px;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 0);
+}
+.multiuse_tab_content_section {
+    padding-top: 40px;
+}
+.multiuse_tab_content_section .row {
+    justify-content: center;
+}
+.multiuse_tabcontent_inner {
+    text-align: center;
+    margin: auto;
+    background: #898989;
+    padding: 25px 15px;
+    transition: all .5s ease-in-out;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 25px;
+    height: 100%;
+}
+.reciprocal-tablist .multiuse_tabcontent_inner {
+    height: 100%;
+}
+.multiuse_tabcontent_inner:hover {
+    background: var(--primaryColor);
+}
+.multiuse_tab_content_section .multiuse_tab_ceibity-img {
+    overflow: hidden;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    display: inline-block;
+    background: #fff;
+}
+.multiuse_tab_content_section img {
+    width: 100%;
+    transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    object-fit: cover;
+    height: 100%;
+}
+.multiuse_tabcontent_inner:hover .multiuse_tab_ceibity-img img{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+}
+.multiuse_tab_content_section .multiuse_bottom_info h3{
+    font-family: 'IBM Plex Serif', serif;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px
+}
+.multiuse_tab_content_section .clubdetails_info{
+    font-family: 'IBM Plex Serif', serif;
+    margin-bottom: 0;
+    color: #fff;
+    font-size: 14px;
+}
+.multiuse_tab_content_section .clubdetails_info a {
+    color: #fff;
+    font-family: 'IBM Plex Serif', serif;
+}
+/* ********|| Reciprocal END ||******** */
+
+/* ********|| General Committee Start ||******** */
+.inner_belowbox_wrapper{
+    padding: 40px;
+}
+.multiuse_tabcontent_inner .multiuse_bottom_general h3 {
+    color: #fff;
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 18px;
+    margin-bottom: 24px;
+    padding-top: 25px;
+}
+.multiuse_tabcontent_inner .multiuse_bottom_general h4 {
+    color: #fff;
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.greneral_infolist .multiuse_tabcontent_inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.greneral_infolist .multiuse_tab_content_section .multiuse_tab_ceibity-img{
+    height: 180px;
+    width: 180px;
+}
+
+/* ********|| General Committee END ||******** */
+
+
+/* ********|| BALLOTING Committee start ||******** */
+
+.balloting_infolist .multiuse_tab_content_section .multiuse_tab_ceibity-img{
+    height: 180px;
+    width: 180px;
+}
+.balloting_infolist .multiuse_tabcontent_inner .multiuse_bottom_general h3{
+    font-size: 18px;
+}
+
+/* ********|| BALLOTING Committee END ||******** */
+
+/* ********|| Sub Committee start ||******** */
+.subcomminttees_tabsection {
+    padding: 40px;
+}
+.subcomminttees-tablist {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+.subcomminttees-tablist ul.nav-tabs {
+    display: flex;
+    border: none;
+    justify-content: center;
+}
+.subcomminttees-tablist ul.nav-tabs a.nav-link.active {
+    position: relative;
+}
+.subcomminttees-tablist ul.nav-tabs a.nav-link {
+    border: none;
+}
+.subcomminttees-tablist .nav-tabs .nav-link .tab_icontext {
+    text-align: center;
+}
+.subcomminttees-tablist ul.nav-tabs a.nav-link.active::after {
+    position: absolute;
+    content: "";
+    background: var(--primaryColor);
+    width: 80%;
+    height: 2px;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 0);
+}
+.subcomminttees-tablist .nav-tabs .nav-link .tab_icontext h3 {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: 'IBM Plex Serif', serif;
+    color: #444;
+    margin-top: 6px;
+}
+.subcomminttees-tablist .nav-tabs .nav-link.active .tab_icontext h3 {
+    color: var(--primaryColor);
+}
+
+/* ********|| Sub Committee END ||******** */
+
+
+
+
+
+
 /* ********|| FOOTER START ||******** */
 .footer-img{
     /*position: absolute;*/
@@ -2064,7 +2280,10 @@ section.footer_top .col-md-4 {
 
 .history-content #more {
         display: none;
-    }
+}
+
+
+
 
 
 

@@ -50,56 +50,42 @@
 
 
 
-            <!-- ********|| HISTORY START ||******** -->
-            <section class="history-sec">
-                <div class="container">
-                    <div class="row">
+        <!-- ********|| President Corner START ||******** -->
+        <section class="inner_belowbanner">
+            <div class="container">
+                <div class="row">
                         <div class="col-lg-12">
-                            <div class="history-inner">
-                                <div class="title-sec">
-                                    <div class="title text-left">
-                                        President Corner
-                                    </div>
+                            <div class="title-sec">
+                                <div class="title text-left">
+                                    President's Corner
                                 </div>
-
-                                <div class="pastpresident_imagebox">
-                                    <div class="pastpresident_item">
-                                        <div class="row">
-
-
-
-
-
-
-
-                                            <!-- <div class="col-md-6 col-lg-3">
-                                                <div class="pastpresdit_inner teamMember">
-                                                    <div class="photoFrame"><img
-                                                            src="{{ asset('img/past-president/2a.jpg') }}" alt=""></div>
-                                                    <div class="passtpredi_name">
-                                                        <h2>Mr. R. B. Lagden</h2>
-                                                        <p>Mr. R. B. Lagden</p>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-
-
-
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-
                             </div>
-
                         </div>
-
-                    </div>
+                        <div class="col-lg-4 order-md-1">
+                            <div class="activites_rightside mt-0 p-0">
+                                <div class="active_rightimg">
+                                    <img class="img-fluid" src="{{ asset('img/deepankar-nandi.jpg') }}"
+                                        alt="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="content_inner">
+                                <h4>Mr. Deepankar Nandi</h4>
+                                <p>02.11.2021.</p>
+                                <p>Dear Member,</p>
+                                <p>HAPPY DIWALI.</p>
+                                <p>On behalf of the General Committee, I would like to wish you and your families good health, happiness and prosperity.</p>
+                                <p>COVID has ravaged the entire world. We remember with extreme sadness the passing away of so many Club members and our near ones. They will always be missed. It has been a tragedy of such immense proportion.</p>
+                                <p>Over the last few months, we had slowly started the sporting activities in the Club. While we had a truncated Football and Rugby Season, members continue to enjoy Tennis, Gym, Swimming and Darts. Quite a number of members have shown interest in Basketball – hence the old shamiana site has been earmarked for their practice. Our Darts Section has organised an Inter Club Darts competition at our Club between 20th November and 5th December.</p>
+                                <p>The ground is being prepared for the Cricket Season. Extensive work is being done there, including preparation of the pitches, deweeding, putting soil and fresh grass in patches and levelling. We hope that this exercise will be completed by this month end and Cricket Season will commence in early December. We are hopeful of a full season including the popular T10 and Corporate Tournaments. We are also in talks with CAB to host a few Ranji Trophy matches here.</p>
+                            </div>
+                        </div>
                 </div>
-            </section>
-            <!-- ********|| HISTORY END ||******** -->
+            </div>
+        </section>
+            
+        <!-- ********|| President Corner END ||******** -->
 
 
 
