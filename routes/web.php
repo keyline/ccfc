@@ -18,6 +18,14 @@ use App\Models\Trophy;
 
 use App\Models\Sportsman;
 
+use App\Models\Member;
+
+// use App\Models\Title;
+
+use App\Models\User;
+
+use App\Models\UserDetail;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -75,6 +83,17 @@ Route::get('/famous_sportsmen', function () {
     $sportsmen = Sportsman::with(['media'])->get();
     // $data='Data';
     return view('famous_sportsmen', compact(['sportsmen']));
+    
+});
+
+
+
+Route::get('/sports', function () {
+    
+    $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
+    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    
+    return view('sports', compact(['members','userDetails']));
     
 });
 
@@ -302,6 +321,9 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
     Route::get('/member-login', function () {
         return view('member-login');
     });
-    Route::get('/sports', function () {
-        return view('sports');
-    });
+    
+    // Route::get('/sports', function () {
+    //     return view('sports');
+    // });
+
+    

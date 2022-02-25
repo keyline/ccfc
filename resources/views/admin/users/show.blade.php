@@ -61,7 +61,7 @@
                         </th>
                         <td>
                             @foreach($user->roles as $key => $roles)
-                                <span class="label label-info">{{ $roles->title }}</span>
+                            <span class="label label-info">{{ $roles->title }}</span>
                             @endforeach
                         </td>
                     </tr>

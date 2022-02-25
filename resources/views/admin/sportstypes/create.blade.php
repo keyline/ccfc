@@ -55,7 +55,7 @@
 Dropzone.options.iconDropzone = {
     url: '{{route('admin.sportstypes.storeMedia')}}',
     maxFilesize: 2, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg',
+    acceptedFiles:'.jpeg,.jpg,.png,.gif,.svg',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
@@ -111,7 +111,7 @@ Dropzone.options.iconDropzone = {
 Dropzone.options.featuredImageDropzone = {
     url: '{{route('admin.sportstypes.storeMedia')}}',
     maxFilesize: 2, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg',
+    acceptedFiles:'.jpeg,.jpg,.png,.gif,.svg',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
