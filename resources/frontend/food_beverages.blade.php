@@ -20,8 +20,23 @@
                 <div class="banner-box">
 
                     <div id="innerpage-banner" class="owl-carousel owl-theme">
+                        @foreach($galleries->where("id","4") as $key => $gallery)
+
+                        @foreach($gallery->images as $key => $media)
 
                         <div class="item">
+
+                            <div class="about-img">
+
+                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
+
+                            </div>
+
+                        </div>
+                        @endforeach
+                        @endforeach
+
+                        <!-- <div class="item">
 
                             <div class="about-img">
 
@@ -39,7 +54,7 @@
 
                             </div>
 
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -62,7 +77,11 @@
                                     </div>
                                 </div>
                                 <div class="history-content text-left">
-                                    <p>The Club offers a wide range of delicious food in its dining hall along with
+
+                                    @foreach($contentPages as $contentPage)
+                                    <p>{{$contentPage->excerpt}}</p>
+                                    @endforeach
+                                    <!-- <p>The Club offers a wide range of delicious food in its dining hall along with
                                         varieties of snacks in its well-stocked bars, pavilion and sit-out areas.</p>
                                     <p>The club also offers food from its different counters like charcoal-grilled
                                         kebabs, quick bites of wraps, burgers, pastas etc. There is also a pastry shop
@@ -74,7 +93,7 @@
                                     <p>The club also offers excellent banquet facility to the members at the pool pub.
                                         It can comfortably accommodate about 60 persons for buffet lunch / dinner, 70
                                         persons for cocktails and about 30 persons for a theatre style meeting. For all
-                                        catering queries please email catering@ccfc1792.com</p>
+                                        catering queries please email catering@ccfc1792.com</p> -->
                                 </div>
 
 
@@ -89,14 +108,21 @@
                                             <div class="activities_list_item">
                                                 <div class="activities_list_item_left">
                                                     <div class="activities_list_item_leftinfo">
-                                                        <h3>Dining Room Timings</h3>
+
+                                                        @foreach($contentBlocks->where("id","1") as $contentBlock)
+                                                        <h3>{{$contentBlock->name_of_the_block}}</h3>
+
+                                                        {!! $contentBlock->body !!}
+
+                                                        @endforeach
+                                                        <!-- <h3>Dining Room Timings</h3>
                                                         <ul>
                                                             <li>Tuesday to Friday & Sunday 12.30 hrs to 22.45 hrs.</li>
                                                             <li>Saturday 12 Noon to 23.30 hrs.</li>
                                                             <li>Monday Closed.</li>
                                                             <li><strong>Last order will be taken 15 minutes before
                                                                     close.</strong></li>
-                                                        </ul>
+                                                        </ul> -->
                                                     </div>
                                                 </div>
                                                 <div class="activities_list_item_right">
@@ -117,7 +143,14 @@
                                             <div class="activities_list_item">
                                                 <div class="activities_list_item_left">
                                                     <div class="activities_list_item_leftinfo">
-                                                        <h3>Club Kitchen Timings</h3>
+                                                        @foreach($contentBlocks->where("id","2") as $contentBlock)
+                                                        <h3>{{$contentBlock->name_of_the_block}}</h3>
+                                                        {!! $contentBlock->body !!}
+
+                                                        @endforeach
+
+
+                                                        <!--<h3>Club Kitchen Timings</h3>
                                                         <ul>
                                                             <li>Tuesday, Thursday & Friday 3.30 pm to 11.00 pm</li>
                                                             <li>Wednesday : 3.30 pm to 11.30 pm</li>
@@ -125,7 +158,7 @@
                                                             <li>Sunday : 11.00 am to 11.00 pm</li>
                                                             <li><strong>Last order will be taken 30 minutes before
                                                                     close.</strong></li>
-                                                        </ul>
+                                                        </ul> -->
                                                     </div>
                                                 </div>
                                                 <div class="activities_list_item_right">
@@ -146,7 +179,14 @@
                                             <div class="activities_list_item">
                                                 <div class="activities_list_item_left">
                                                     <div class="activities_list_item_leftinfo">
-                                                        <h3>Counter Timings</h3>
+                                                        @foreach($contentBlocks->where("id","3") as $contentBlock)
+
+                                                        <h3>{{$contentBlock->name_of_the_block}}</h3>
+                                                        {!! $contentBlock->body !!}
+
+                                                        @endforeach
+
+                                                        <!-- <h3>Counter Timings</h3>
                                                         <ul>
                                                             <li>Operational on all days i.e.<br>
                                                                 Tuesday to Sunday<br>
@@ -154,7 +194,7 @@
                                                             <li>Between :<br>
                                                                 6.30 am to 8.30 am and 2.30 pm to 8.30 pm
                                                             </li>
-                                                        </ul>
+                                                        </ul> -->
                                                     </div>
                                                 </div>
                                                 <div class="activities_list_item_right">
@@ -165,7 +205,7 @@
                                                                 alt="" /></div>
                                                         <button type="button" class="btn" data-toggle="modal"
                                                             data-target="#activities-counter">
-                                                            View Menu
+                                                            Wine Menu
                                                         </button>
                                                     </div>
                                                 </div>
@@ -181,7 +221,17 @@
 
                         <div class="col-lg-4">
                             <div class="activites_rightside">
+
+                                @foreach($galleries->where("id","5") as $key => $gallery)
+
+                                @foreach($gallery->images as $key => $media)
                                 <div class="active_rightimg">
+                                    <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
+                                </div>
+                                @endforeach
+                                @endforeach
+
+                                <!-- <div class="active_rightimg">
                                     <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_1.jpg') }}"
                                         alt="" />
                                 </div>
@@ -200,7 +250,7 @@
                                 <div class="active_rightimg">
                                     <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_4.jpg') }}"
                                         alt="" />
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -227,11 +277,24 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
 
+                        <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
+                            @foreach($galleries->where("id","6") as $key => $gallery)
+                            @foreach($gallery->images as $key => $media)
                             <!-- The slideshow -->
                             <div class="carousel-inner">
+
+
                                 <div class="carousel-item active">
+
+                                    <img src="{{$media->getUrl('')}}" alt="Menu">
+                                </div>
+                                <div class="carousel-item">
+
+                                </div>
+
+
+                                <!-- <div class="carousel-item active">
                                     <img src="{{ asset('img/activities/dining-menu-1.jpeg') }}" alt="Menu">
                                 </div>
                                 <div class="carousel-item">
@@ -248,7 +311,8 @@
                                 </div>
                                 <div class="carousel-item">
                                     <img src="{{ asset('img/activities/dining-menu-6.jpeg') }}" alt="Menu">
-                                </div>
+                                </div> -->
+
                             </div>
 
                             <!-- Left and right controls -->
@@ -258,8 +322,12 @@
                             <a class="carousel-control-next" href="#demo" data-slide="next">
                                 <i class="zmdi zmdi-chevron-right"></i>
                             </a>
+                            @endforeach
+                            @endforeach
                         </div>
+
                     </div>
+
                 </div>
             </div>
 
@@ -274,10 +342,16 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
-
+                            @foreach($galleries->where("id","7") as $key => $gallery)
+                            @foreach($gallery->images as $key => $media)
                             <!-- The slideshow -->
                             <div class="carousel-inner">
+
                                 <div class="carousel-item active">
+
+                                    <img src="{{$media->getUrl('')}}" alt="Menu">
+                                </div>
+                                <!-- <div class="carousel-item active">
                                     <img src="{{ asset('img/activities/club-kitchen-banner1.jpg') }}" alt="Menu">
                                 </div>
                                 <div class="carousel-item">
@@ -327,7 +401,7 @@
                                 </div>
                                 <div class="carousel-item">
                                     <img src="{{ asset('img/activities/club-kitchen-banner17.jpg') }}" alt="Menu">
-                                </div>
+                                </div> -->
                             </div>
 
                             <!-- Left and right controls -->
@@ -339,6 +413,48 @@
                                 <!--<span class="carousel-control-next-icon"></span>-->
                                 <i class="zmdi zmdi-chevron-right"></i>
                             </a>
+                            @endforeach
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="modal fade" id="activities-counter" tabindex="-1" role="dialog"
+                aria-labelledby="ModalCarouselLabel">
+                <div class="modal-dialog" role="document">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
+                            @foreach($galleries->where("id","8") as $key => $gallery)
+                            @foreach($gallery->images as $key => $media)
+                            <!-- The slideshow -->
+                            <div class="carousel-inner">
+
+                                <div class="carousel-item active">
+
+                                    <img src="{{$media->getUrl('')}}" alt="Menu">
+                                </div>
+
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="carousel-control-prev" href="#demo-clubkitchen" data-slide="prev">
+                                <!--<span class="carousel-control-prev-icon"></span>-->
+                                <i class="zmdi zmdi-chevron-left"></i>
+                            </a>
+                            <a class="carousel-control-next" href="#demo-clubkitchen" data-slide="next">
+                                <!--<span class="carousel-control-next-icon"></span>-->
+                                <i class="zmdi zmdi-chevron-right"></i>
+                            </a>
+                            @endforeach
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -360,7 +476,8 @@
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                 <!-- Indicators -->
                                 <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
+                                    </li>
                                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                                 </ol>

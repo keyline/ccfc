@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyUserDetailRequest;
 use App\Http\Requests\StoreUserDetailRequest;
 use App\Http\Requests\UpdateUserDetailRequest;
@@ -10,15 +11,18 @@ use App\Models\User;
 use App\Models\UserDetail;
 use Gate;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserDetailsController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index()
     {
         abort_if(Gate::denies('user_detail_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $userDetails = UserDetail::with(['user_code'])->get();
+        $userDetails = UserDetail::with(['user_code', 'media'])->get();
 
         return view('admin.userDetails.index', compact('userDetails'));
     }
@@ -35,6 +39,18 @@ class UserDetailsController extends Controller
     public function store(StoreUserDetailRequest $request)
     {
         $userDetail = UserDetail::create($request->all());
+
+        if ($request->input('member_image', false)) {
+            $userDetail->addMedia(storage_path('tmp/uploads/' . basename($request->input('member_image'))))->toMediaCollection('member_image');
+        }
+
+        if ($request->input('spouse_image', false)) {
+            $userDetail->addMedia(storage_path('tmp/uploads/' . basename($request->input('spouse_image'))))->toMediaCollection('spouse_image');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $userDetail->id]);
+        }
 
         return redirect()->route('admin.user-details.index');
     }
@@ -53,6 +69,28 @@ class UserDetailsController extends Controller
     public function update(UpdateUserDetailRequest $request, UserDetail $userDetail)
     {
         $userDetail->update($request->all());
+
+        if ($request->input('member_image', false)) {
+            if (!$userDetail->member_image || $request->input('member_image') !== $userDetail->member_image->file_name) {
+                if ($userDetail->member_image) {
+                    $userDetail->member_image->delete();
+                }
+                $userDetail->addMedia(storage_path('tmp/uploads/' . basename($request->input('member_image'))))->toMediaCollection('member_image');
+            }
+        } elseif ($userDetail->member_image) {
+            $userDetail->member_image->delete();
+        }
+
+        if ($request->input('spouse_image', false)) {
+            if (!$userDetail->spouse_image || $request->input('spouse_image') !== $userDetail->spouse_image->file_name) {
+                if ($userDetail->spouse_image) {
+                    $userDetail->spouse_image->delete();
+                }
+                $userDetail->addMedia(storage_path('tmp/uploads/' . basename($request->input('spouse_image'))))->toMediaCollection('spouse_image');
+            }
+        } elseif ($userDetail->spouse_image) {
+            $userDetail->spouse_image->delete();
+        }
 
         return redirect()->route('admin.user-details.index');
     }
@@ -80,5 +118,17 @@ class UserDetailsController extends Controller
         UserDetail::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function storeCKEditorImages(Request $request)
+    {
+        abort_if(Gate::denies('user_detail_create') && Gate::denies('user_detail_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $model         = new UserDetail();
+        $model->id     = $request->input('crud_id', 0);
+        $model->exists = true;
+        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+
+        return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
 }

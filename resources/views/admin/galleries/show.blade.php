@@ -45,9 +45,9 @@
                         </th>
                         <td>
                             @foreach($gallery->images as $key => $media)
-                                <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $media->getUrl('thumb') }}">
-                                </a>
+                            <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                <img src="{{ $media->getUrl('thumb') }}">
+                            </a>
                             @endforeach
                         </td>
                     </tr>
