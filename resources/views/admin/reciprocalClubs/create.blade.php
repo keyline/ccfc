@@ -193,7 +193,7 @@ $(document).ready(function() {
 Dropzone.options.clubImageDropzone = {
     url: '{{ route('admin.reciprocal-clubs.storeMedia') }}',
     maxFilesize: 1, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
