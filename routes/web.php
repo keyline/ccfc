@@ -292,12 +292,6 @@ Route::get('/rules_regulation', function () {
     return view('rules_regulation');
 });
 
-
-
-Route::get('/member-login', function () {
-    return view('member-login');
-});
-
 Route::get('/gymming-rejuvenated', function () {
     return view('gymming-rejuvenated');
 });
