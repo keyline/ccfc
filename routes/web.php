@@ -18,6 +18,8 @@ use App\Models\Trophy;
 
 use App\Models\Sportsman;
 
+use App\Http\Controllers\Member\HomeController;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -85,7 +87,7 @@ Route::get('/home', function () {
 
 Auth::routes(['register' => false]);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -221,6 +223,22 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
         Route::get('two-factor/resend', 'TwoFactorController@resend')->name('twoFactor.resend');
     }
 });
+
+Route::post('/member/check', [HomeController::class, 'checkMember'])->name('member.check');
+Route::get('/member/logout', [HomeController::class, 'logout'])->name('member.logout');
+
+
+
+Route::group([
+    'prefix' => 'member',
+    'as' => 'member.',
+    'namespace' => 'Member',
+    'middleware' => ['member']
+], function () {
+    Route::get('/login', [HomeController::class, 'memberLogin'])->name('login');
+    Route::get('/dashboard', [HomeController::class, 'dashboard']);
+});
+
 
 // Route::get('/past-president', function () {
     //     return view('past-president');

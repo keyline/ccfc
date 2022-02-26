@@ -64,11 +64,18 @@
                                                 Member Login
                                             </div>
                                             <!-- <form> -->
-                                            <form action="{{ route('login') }}" method="POST">
+                                            <form action="{{ route('member.check') }}" method="POST">
+                                                @if(Session::get('fail'))
+                                                <div class="alert alert-danger">
+                                                    {{ Session::get('fail') }}
+                                                </div>
+                                                @endif
+
                                                 @csrf
+                                                
                                                 <div class="form-group">
                                                     <!-- <input type="text" class="form-control" placeholder="User Name" autocomplete="off"> -->
-                                                    <input id="email" type="email"
+                                                    <input id="email"
                                                         class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                                         required autocomplete="email" autofocus
                                                         placeholder="{{ trans('global.login_email') }}" name="email"
