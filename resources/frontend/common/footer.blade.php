@@ -449,6 +449,7 @@
 
         if (window.innerWidth < 767) {
             document.getElementById('topmenupanel').className += '  sidenav';
+            document.getElementById('collapsemember-login').className += '  collapse';
         }
     </script>
     <script>

@@ -421,9 +421,10 @@
                         </th>
                         <td>
                             @if($userDetail->member_image)
-                                <a href="{{ $userDetail->member_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $userDetail->member_image->getUrl('thumb') }}">
-                                </a>
+                            <a href="{{ $userDetail->member_image->getUrl() }}" target="_blank"
+                                style="display: inline-block">
+                                <img src="{{ $userDetail->member_image->getUrl('thumb') }}">
+                            </a>
                             @endif
                         </td>
                     </tr>
@@ -433,9 +434,10 @@
                         </th>
                         <td>
                             @if($userDetail->spouse_image)
-                                <a href="{{ $userDetail->spouse_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $userDetail->spouse_image->getUrl('thumb') }}">
-                                </a>
+                            <a href="{{ $userDetail->spouse_image->getUrl() }}" target="_blank"
+                                style="display: inline-block">
+                                <img src="{{ $userDetail->spouse_image->getUrl('thumb') }}">
+                            </a>
                             @endif
                         </td>
                     </tr>

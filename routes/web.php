@@ -20,6 +20,14 @@ use App\Models\Sportsman;
 
 use App\Http\Controllers\Member\HomeController;
 
+use App\Models\Member;
+
+// use App\Models\Title;
+
+use App\Models\User;
+
+use App\Models\UserDetail;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -71,6 +79,15 @@ Route::get('/famous_sportsmen', function () {
     $sportsmen = Sportsman::with(['media'])->get();
     // $data='Data';
     return view('famous_sportsmen', compact(['sportsmen']));
+});
+
+
+
+Route::get('/sports', function () {
+    $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
+    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    
+    return view('sports', compact(['members','userDetails']));
 });
 
 
@@ -240,47 +257,72 @@ Route::group([
 });
 
 
-// Route::get('/past-president', function () {
-    //     return view('past-president');
-    // });
+Route::get('/reciprocal_clubs', function () {
+    return view('reciprocal_clubs');
+});
+Route::get('/general_committee', function () {
+    return view('general_committee');
+});
+
+Route::get('/balloting_committee', function () {
+    return view('balloting_committee');
+});
+
+Route::get('/sub_committees', function () {
+    return view('sub_committees');
+});
+
+Route::get('/president_corner', function () {
+    return view('president_corner');
+});
+
+Route::get('/annual_report', function () {
+    return view('annual_report');
+});
+
+Route::get('/events_members_only', function () {
+    return view('events_members_only');
+});
+
+Route::get('/new_member', function () {
+    return view('new_member');
+});
+
+Route::get('/rules_regulation', function () {
+    return view('rules_regulation');
+});
 
 
-// Route::get('/', 'PagesController@index')->name('pages');
-// Route::resource('pages', 'PagesController');
 
-// require __DIR__.'/auth.php';
-
-Route::get('pages/{sport_name}', 'PagesController@show');
-
-Route::get('demo', 'FrontendhtmlController@pastpresident');
-
-Route::get('/footer', [ContactController::class,'contact']);
-
-Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
-Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
-
-
-// Route::get('/history', function () {
-//     return view('history');
-// });
 Route::get('/member-login', function () {
     return view('member-login');
 });
-Route::get('/sports', function () {
-    return view('sports');
+
+Route::get('/gymming-rejuvenated', function () {
+    return view('gymming-rejuvenated');
+});
+Route::get('/swimming-pool', function () {
+    return view('swimming-pool');
+});
+Route::get('/club-bar', function () {
+    return view('club-bar');
+});
+Route::get('/pool-pub', function () {
+    return view('pool-pub');
+});
+Route::get('/contact-us', function () {
+    return view('contact-us');
+});
+Route::get('/notice-circulars', function () {
+    return view('notice-circulars');
+});
+Route::get('/amenities_services', function () {
+    return view('amenities_services');
 });
     
     Route::get('/amenities_services', function () {
         return view('amenities_services');
     });
-    
-    // Route::get('/trophies', function () {
-    //     return view('trophies');
-    // });
-    
-    // Route::get('/famous_sportsmen', function () {
-    //     return view('famous_sportsmen');
-    // });
     
     Route::get('/reciprocal_clubs', function () {
         return view('reciprocal_clubs');
@@ -296,6 +338,8 @@ Route::get('/sports', function () {
     Route::get('/sub_committees', function () {
         return view('sub_committees');
     });
+    Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
+
     
     Route::get('/president_corner', function () {
         return view('president_corner');
@@ -315,4 +359,9 @@ Route::get('/sports', function () {
     
     Route::get('/rules_regulation', function () {
         return view('rules_regulation');
+    });
+     
+    
+    Route::get('/member-login', function () {
+        return view('member-login');
     });

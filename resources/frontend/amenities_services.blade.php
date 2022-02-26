@@ -50,7 +50,7 @@
 
 
 
-            <section class="services-sec">
+            <section class="services-sec services-sec-main">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 offset-lg-1">
@@ -119,7 +119,7 @@
                                                         February bringing a whole new face of health and fitness...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('gymming-rejuvenated') }}" class="read-btn">+ Read More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,14 +143,14 @@
                                                 </div>
                                                 <div class="services-body">
                                                     <div class="services-title">
-                                                        SWIMMING POOL
+                                                        POOL PUB
                                                     </div>
                                                     <div class="services-content">
                                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('pool-pub') }}" class="read-btn">+ Read More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,7 +181,7 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('club-bar') }}" class="read-btn">+ Read More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,7 +212,7 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('swimming-pool') }}" class="read-btn">+ Read More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -231,6 +231,25 @@
 
             @include('common.footer')
             <!-- ?php include 'assets/inc/footer.php';?> -->
+            
+            <style>
+                .services-sec.services-sec-main .services-inner .services-info .services-img img{
+                    height: 420px;
+        width: 100%;
+    object-fit: cover;
+                }
+                .services-sec.services-sec-main .services-inner{
+                    padding-top: 0px;
+                }
+                .services-sec.services-sec-main .services-inner .services-info{
+                    margin-top: 30px;
+                }
+                @media screen and (max-width: 767px) {
+                    .services-sec.services-sec-main .services-inner .services-info .services-img img{
+                        height: 100%;
+                    }
+                }
+            </style>
 
 
             </body>
