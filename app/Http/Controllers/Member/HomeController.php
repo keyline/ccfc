@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -28,14 +28,13 @@ class HomeController extends Controller
             'email'     => 'required',
             'password'  => 'required',
         ]);
-
         $userInfo= User::where('user_code', '=', $request->email)->first();
 
         if (!$userInfo) {
-            return back()->with('fail', 'Please contact to admin');
+            return back()->withErrors(['email' => ['Member code not found! please contact admin']]);
         }
         if (! Hash::check($request->password, $userInfo->password)) {
-            return back()->with('fail', 'password is incorrect');
+            return back()->withErrors(['password' => ['Password is incorrect']]);
         }
         $request->session()->put('LoggedMember', $userInfo->id);
         return redirect('member/dashboard');
@@ -51,7 +50,21 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $data= ['LoggedMemberInfo' => User::where('id', '=', session('LoggedMember'))->first()];
+        $user = User::where('id', '=', session('LoggedMember'))->first();
+        $data= ['LoggedMemberInfo' => $user];
+        //get member profile
+        $url= "https://ccfcmemberdata.in/Api/MEBBER_PROFILE/";
+        $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+        $fields= [
+            'MCODE' => $user->user_code
+        ];
+        $profile = Http::withoutVerifying()
+        ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '*/*',
+      'Content-Type' => 'application/json',])
+        ->withOptions(["verify"=>false])
+        ->post($url, $fields);
+
+        dd($profile);
         return view('member.dashboard', $data);
     }
 }
