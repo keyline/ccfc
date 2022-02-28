@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\apiController;
 
 use App\Http\Controllers\ContactController;
 
@@ -412,3 +413,7 @@ Route::get('/amenities_services', function () {
     // Route::get('/sports', function () {
     //     return view('sports');
     // });
+
+    Route::get('/memberprofile',[apiController::class,'dashboard']      
+    );
+    
