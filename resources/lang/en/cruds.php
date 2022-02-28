@@ -173,6 +173,8 @@ return [
             'committee_helper'  => ' ',
             'member'            => 'Select Member Name',
             'member_helper'     => ' ',
+            'designation'            => 'Designation',
+            'designation_helper'     => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
             'updated_at'        => 'Updated at',

@@ -26,6 +26,8 @@ use App\Models\User;
 
 use App\Models\UserDetail;
 
+use App\Models\CommitteeMemberMapping;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -92,8 +94,26 @@ Route::get('/sports', function () {
     
     $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
-    
+    // $users = User::with(['roles'])->get();
     return view('sports', compact(['members','userDetails']));
+    // return view('sports', compact(['members','users']));
+});
+
+
+
+Route::get('/reciprocal_clubs', function () {
+    
+    $reciprocal = ReciprocalClub::with(['media'])->get();
+    
+    return view('reciprocal_clubs', compact(['reciprocal']));
+    
+});
+
+Route::get('/general_committee', function () {
+    $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
+    $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
+    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    return view('general_committee', compact(['members','committeeMemberMappings','userDetails']));
     
 });
 
@@ -256,12 +276,12 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
 //     return view('famous_sportsmen');
 // });
 
-Route::get('/reciprocal_clubs', function () {
-    return view('reciprocal_clubs');
-});
-Route::get('/general_committee', function () {
-    return view('general_committee');
-});
+// Route::get('/reciprocal_clubs', function () {
+//     return view('reciprocal_clubs');
+// });
+// Route::get('/general_committee', function () {
+//     return view('general_committee');
+// });
 
 Route::get('/balloting_committee', function () {
     return view('balloting_committee');
@@ -349,12 +369,12 @@ Route::get('/amenities_services', function () {
     //     return view('famous_sportsmen');
     // });
     
-    Route::get('/reciprocal_clubs', function () {
-        return view('reciprocal_clubs');
-    });
-    Route::get('/general_committee', function () {
-        return view('general_committee');
-    });
+    // Route::get('/reciprocal_clubs', function () {
+    //     return view('reciprocal_clubs');
+    // });
+    // Route::get('/general_committee', function () {
+    //     return view('general_committee');
+    // });
     
     Route::get('/balloting_committee', function () {
         return view('balloting_committee');

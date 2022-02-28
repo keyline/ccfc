@@ -23,6 +23,7 @@ class CommitteeMemberMapping extends Model
     protected $fillable = [
         'committee_id',
         'member_id',
+        'designation',
         'created_at',
         'updated_at',
         'deleted_at',

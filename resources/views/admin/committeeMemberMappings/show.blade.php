@@ -39,6 +39,15 @@
                             {{ $committeeMemberMapping->member->name ?? '' }}
                         </td>
                     </tr>
+
+                    <tr>
+                        <th>
+                            {{ trans('cruds.committeeMemberMapping.fields.designation') }}
+                        </th>
+                        <td>
+                            {{ $committeeMemberMapping->designation ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

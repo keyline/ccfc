@@ -431,8 +431,6 @@
                                         <div class="club-info">
                                             <div id="home_reciprocal_indian" class="owl-carousel owl-theme">
 
-
-
                                                 @foreach($reciprocalClubs->where("cub_type","indian") as $key =>
                                                 $reciprocalClub)
 

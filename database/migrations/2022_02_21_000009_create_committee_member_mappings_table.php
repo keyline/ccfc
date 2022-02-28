@@ -10,6 +10,7 @@ class CreateCommitteeMemberMappingsTable extends Migration
     {
         Schema::create('committee_member_mappings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('designation')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
