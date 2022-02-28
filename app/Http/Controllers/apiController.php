@@ -27,26 +27,31 @@ class apiController extends Controller
       'Content-Type' => 'application/json',];
       
 
-        $client  = new \GuzzleHttp\Client(['verify' =>false]); //ssl verifyication
+      $profile = Http::withoutVerifying()
+      ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+    'Content-Type' => 'application/json',])
+      ->withOptions(["verify"=>false])
+      ->post($url)->json();
 
-        $request = new \GuzzleHttp\Psr7\Request('POST', $url, [
-            'headers' => ['Authorization' => 'Bearer ' . $token,
-                         'Cache-Control' => 'no-cache',
-                         
-                         'Content-Type' => 'application/json',
-        ],
-       
-        ]);
-        // dd($request);
+    //   dd($profile);
 
-        $promise = $client->sendAsync($request)->then(function ($response) {
-            $sd=$response->getBody()->getContents();
-            $datas=json_decode($sd);
-            //return response()->json($datas);
-            return view('memberprofile', compact('datas'));
-        });
+        
+    return response()->json(['html'=>$profile]);
+        
+        // dd($response);
 
-        return $promise->wait();
+
+        
+        
+
+        // $promise = $client->sendAsync($request)->then(function ($response) {
+        //     $sd=$response->getBody()->getContents();
+        //     $datas=json_decode($sd);
+        //     //return response()->json($datas);
+        //     return view('memberprofile', compact('datas'));
+        // });
+
+        // return $promise->wait();
 
         
         
