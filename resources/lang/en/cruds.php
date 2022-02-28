@@ -163,6 +163,7 @@ return [
             'deleted_at_helper'            => ' ',
         ],
     ],
+
     'committeeMemberMapping' => [
         'title'          => 'Manage Committee Member',
         'title_singular' => 'Manage Committee Member',
@@ -605,6 +606,8 @@ return [
             'comittee_name_helper'         => ' ',
             'member'                       => 'Member',
             'member_helper'                => ' ',
+            'designation'                  => 'Designation',
+            'designation_helper'           => ' ',
             'created_at'                   => 'Created at',
             'created_at_helper'            => ' ',
             'updated_at'                   => 'Updated at',

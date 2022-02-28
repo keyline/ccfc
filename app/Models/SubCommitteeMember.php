@@ -24,6 +24,7 @@ class SubCommitteeMember extends Model
         'comittee_name_id',
         'member_id',
         'head_of_the_committee',
+        'designation',
         'created_at',
         'updated_at',
         'deleted_at',

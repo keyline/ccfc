@@ -110,10 +110,29 @@ Route::get('/reciprocal_clubs', function () {
 });
 
 Route::get('/general_committee', function () {
-    $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
+    // $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
+    $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
+    // $committeeNames = CommitteeName::all();
+    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    return view('general_committee', compact(['committeeMemberMappings','userDetails']));
+    
+});
+
+
+
+Route::get('/balloting_committee', function () {
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
-    return view('general_committee', compact(['members','committeeMemberMappings','userDetails']));
+    return view('balloting_committee', compact(['committeeMemberMappings','userDetails']));
+    
+});
+
+
+
+Route::get('/sub_committees', function () {
+    $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
+    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    return view('sub_committees', compact(['committeeMemberMappings','userDetails']));
     
 });
 
@@ -283,13 +302,13 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
 //     return view('general_committee');
 // });
 
-Route::get('/balloting_committee', function () {
-    return view('balloting_committee');
-});
+// Route::get('/balloting_committee', function () {
+//     return view('balloting_committee');
+// });
 
-Route::get('/sub_committees', function () {
-    return view('sub_committees');
-});
+// Route::get('/sub_committees', function () {
+//     return view('sub_committees');
+// });
 
 Route::get('/president_corner', function () {
     return view('president_corner');
@@ -376,13 +395,13 @@ Route::get('/amenities_services', function () {
     //     return view('general_committee');
     // });
     
-    Route::get('/balloting_committee', function () {
-        return view('balloting_committee');
-    });
+    // Route::get('/balloting_committee', function () {
+    //     return view('balloting_committee');
+    // });
     
-    Route::get('/sub_committees', function () {
-        return view('sub_committees');
-    });
+    // Route::get('/sub_committees', function () {
+    //     return view('sub_committees');
+    // });
     
     Route::get('/president_corner', function () {
         return view('president_corner');
