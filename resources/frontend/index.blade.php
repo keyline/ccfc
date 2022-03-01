@@ -379,7 +379,8 @@
                                                     {{$sportstype->sport_name}}
                                                 </div>
                                                 <div class="sports-content">
-                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit...
+                                                    <!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit... -->
+                                                    {{$sportstype->sport_details}}
                                                 </div>
                                                 <div class="sports-action">
                                                     <!-- <a href="{{ url('/pages', $sportstype->id) }}" class="read-btn">+ Read More</a> -->

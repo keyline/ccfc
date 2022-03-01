@@ -104,49 +104,49 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#overseas">
+                                    <a class="nav-link" data-toggle="tab" href="#health-wellness">
                                         <div class="tab_icontext">
                                             <h3>Health And Wellness</h3>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#overseas">
+                                    <a class="nav-link" data-toggle="tab" href="#ccfc-women-wing">
                                         <div class="tab_icontext">
                                             <h3>The Cc&fc Women's Wing</h3>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#overseas">
+                                    <a class="nav-link" data-toggle="tab" href="#ccfc-kid-club">
                                         <div class="tab_icontext">
                                             <h3>The Cc&fc Kids Club</h3>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#overseas">
+                                    <a class="nav-link" data-toggle="tab" href="#children">
                                         <div class="tab_icontext">
                                             <h3>Childrens Broadway Musical</h3>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#overseas">
+                                    <a class="nav-link" data-toggle="tab" href="#sports-Co-ordinator">
                                         <div class="tab_icontext">
                                             <h3>Sports Co-ordinator</h3>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#overseas">
+                                    <a class="nav-link" data-toggle="tab" href="#sponsorships">
                                         <div class="tab_icontext">
                                             <h3>Sponsorship</h3>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#overseas">
+                                    <a class="nav-link" data-toggle="tab" href="#finance">
                                         <div class="tab_icontext">
                                             <h3>Finance</h3>
                                         </div>
@@ -298,6 +298,222 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tab-pane fade" id="health-wellness" role="tabpanel">
+                                    <div class="multiuse_tab_content_section">
+                                        <div class="row">
+
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","6") as
+                                            $committeeMember)
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            $key =>$userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ $userDetail->member_image->getUrl('') }}"
+                                                                alt="" /></a>
+                                                    </div>
+                                                    <div class="multiuse_bottom_general">
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane fade" id="ccfc-women-wing" role="tabpanel">
+                                    <div class="multiuse_tab_content_section">
+                                        <div class="row">
+
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","7") as
+                                            $committeeMember)
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            $key =>$userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ $userDetail->member_image->getUrl('') }}"
+                                                                alt="" /></a>
+                                                    </div>
+                                                    <div class="multiuse_bottom_general">
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="tab-pane fade" id="ccfc-kid-club" role="tabpanel">
+                                    <div class="multiuse_tab_content_section">
+                                        <div class="row">
+
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","8") as
+                                            $committeeMember)
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            $key =>$userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ $userDetail->member_image->getUrl('') }}"
+                                                                alt="" /></a>
+                                                    </div>
+                                                    <div class="multiuse_bottom_general">
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane fade" id="children" role="tabpanel">
+                                    <div class="multiuse_tab_content_section">
+                                        <div class="row">
+
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","9") as
+                                            $committeeMember)
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            $key =>$userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ $userDetail->member_image->getUrl('') }}"
+                                                                alt="" /></a>
+                                                    </div>
+                                                    <div class="multiuse_bottom_general">
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="tab-pane fade" id="sports-Co-ordinator" role="tabpanel">
+                                    <div class="multiuse_tab_content_section">
+                                        <div class="row">
+
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","10") as
+                                            $committeeMember)
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            $key =>$userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ $userDetail->member_image->getUrl('') }}"
+                                                                alt="" /></a>
+                                                    </div>
+                                                    <div class="multiuse_bottom_general">
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="tab-pane fade" id="sponsorships" role="tabpanel">
+                                    <div class="multiuse_tab_content_section">
+                                        <div class="row">
+
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","11") as
+                                            $committeeMember)
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            $key =>$userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ $userDetail->member_image->getUrl('') }}"
+                                                                alt="" /></a>
+                                                    </div>
+                                                    <div class="multiuse_bottom_general">
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="tab-pane fade" id="finance" role="tabpanel">
+                                    <div class="multiuse_tab_content_section">
+                                        <div class="row">
+
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","12") as
+                                            $committeeMember)
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            $key =>$userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ $userDetail->member_image->getUrl('') }}"
+                                                                alt="" /></a>
+                                                    </div>
+                                                    <div class="multiuse_bottom_general">
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                         </div>
                     </div>
