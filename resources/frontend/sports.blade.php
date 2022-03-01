@@ -144,12 +144,21 @@
                                     aria-labelledby="indian-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
+                                            <!-- @php
+                                            var_dump($userDetails)
+                                            @endphp -->
+
                                             @foreach($members->where("select_sport_id","1") as $member)
+
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="" alt="" />
+
+                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
+
                                                     </div>
                                                     <div class=" sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
@@ -169,7 +178,7 @@
                                                 </div>
                                             </div>
                                             @endforeach
-
+                                            @endforeach
                                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
@@ -231,11 +240,12 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
                                             @foreach($members->where("select_sport_id","2") as $member)
-
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="" alt="" />
+                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
                                                     </div>
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
@@ -253,7 +263,7 @@
                                                 </div>
                                             </div>
                                             @endforeach
-
+                                            @endforeach
                                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
@@ -279,10 +289,12 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
                                             @foreach($members->where("select_sport_id","3") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="" alt="" />
+                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
                                                     </div>
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
@@ -300,7 +312,7 @@
                                                 </div>
                                             </div>
                                             @endforeach
-
+                                            @endforeach
                                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
@@ -396,11 +408,12 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
                                             @foreach($members->where("select_sport_id","4") as $member)
-
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="" alt="" />
+                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
                                                     </div>
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
@@ -417,6 +430,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endforeach
                                             @endforeach
                                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
@@ -477,10 +491,12 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
                                             @foreach($members->where("select_sport_id","5") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="" alt="" />
+                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
                                                     </div>
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
@@ -497,6 +513,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endforeach
                                             @endforeach
                                         </div>
                                     </div>
@@ -506,10 +523,12 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
                                             @foreach($members->where("select_sport_id","6") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="" alt="" />
+                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
                                                     </div>
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
@@ -527,6 +546,7 @@
                                                 </div>
                                             </div>
                                             @endforeach
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -534,23 +554,31 @@
                                 <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
+                                            @foreach($members->where("select_sport_id","7") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo4.png') }}" alt="" />
+                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
                                                     </div>
                                                     <div class="sport_player">
-                                                        <h3>SECRETARY</h3>
+                                                        <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">
-                                                            <h4>Mr. Aadit Osatwal</h4>
-                                                            <p><a href="tel:+91 98302 22255">+91 98302 22255</a></p>
+                                                            <h4>{{ $member->select_member->name ?? '' }}</h4>
                                                             <p><a
-                                                                    href="mailto:aadit@angesbags.com">aadit@angesbags.com</a>
+                                                                    href="tel:+91 {{ $member->select_member->phone_number_1 ?? '' }}">+91
+                                                                    {{ $member->select_member->phone_number_1 ?? '' }}</a>
+                                                            </p>
+                                                            <p><a
+                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endforeach
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

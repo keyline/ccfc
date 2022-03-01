@@ -32,7 +32,7 @@
                             {{ trans('cruds.sportstype.fields.icon') }}
                         </th>
                         <th>
-                            {{ trans('cruds.sportstype.fields.featured_image') }}
+                            {{ trans('cruds.sportstype.fields.excerpt') }}
                         </th>
                         <th>
                             &nbsp;
@@ -59,12 +59,15 @@
                             @endif
                         </td>
                         <td>
-                            @if($sportstype->featured_image)
+                            <!-- @if($sportstype->featured_image)
                             <a href="{{ $sportstype->featured_image->getUrl() }}" target="_blank"
                                 style="display: inline-block">
                                 <img src="{{ $sportstype->featured_image->getUrl('thumb') }}">
                             </a>
-                            @endif
+                            @endif -->
+
+                            {{ $sportstype->sport_details ?? '' }}
+
                         </td>
                         <td>
                             @can('sportstype_show')

@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\apiController;
 
 use App\Http\Controllers\ContactController;
 
@@ -27,6 +28,10 @@ use App\Models\Member;
 use App\Models\User;
 
 use App\Models\UserDetail;
+
+use App\Models\CommitteeMemberMapping;
+
+use App\Models\SubCommitteeMember;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
 
@@ -89,8 +94,41 @@ Route::get('/famous_sportsmen', function () {
 Route::get('/sports', function () {
     $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
-    
+    // $users = User::with(['roles'])->get();
     return view('sports', compact(['members','userDetails']));
+    // return view('sports', compact(['members','users']));
+});
+
+
+
+Route::get('/reciprocal_clubs', function () {
+    $reciprocal = ReciprocalClub::with(['media'])->get();
+    
+    return view('reciprocal_clubs', compact(['reciprocal']));
+});
+
+Route::get('/general_committee', function () {
+    // $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
+    $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
+    // $committeeNames = CommitteeName::all();
+    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    return view('general_committee', compact(['committeeMemberMappings','userDetails']));
+});
+
+
+
+Route::get('/balloting_committee', function () {
+    $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
+    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    return view('balloting_committee', compact(['committeeMemberMappings','userDetails']));
+});
+
+
+
+Route::get('/sub_committees', function () {
+    $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
+    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    return view('sub_committees', compact(['subCommitteeMembers','userDetails']));
 });
 
 
@@ -260,20 +298,20 @@ Route::group([
 });
 
 
-Route::get('/reciprocal_clubs', function () {
-    return view('reciprocal_clubs');
-});
-Route::get('/general_committee', function () {
-    return view('general_committee');
-});
+// Route::get('/reciprocal_clubs', function () {
+//     return view('reciprocal_clubs');
+// });
+// Route::get('/general_committee', function () {
+//     return view('general_committee');
+// });
 
-Route::get('/balloting_committee', function () {
-    return view('balloting_committee');
-});
+// Route::get('/balloting_committee', function () {
+//     return view('balloting_committee');
+// });
 
-Route::get('/sub_committees', function () {
-    return view('sub_committees');
-});
+// Route::get('/sub_committees', function () {
+//     return view('sub_committees');
+// });
 
 Route::get('/president_corner', function () {
     return view('president_corner');
@@ -321,22 +359,44 @@ Route::get('/amenities_services', function () {
         return view('amenities_services');
     });
     
-    Route::get('/reciprocal_clubs', function () {
-        return view('reciprocal_clubs');
-    });
-    Route::get('/general_committee', function () {
-        return view('general_committee');
-    });
     
-    Route::get('/balloting_committee', function () {
-        return view('balloting_committee');
-    });
+    // Route::get('/', 'PagesController@index')->name('pages');
+    // Route::resource('pages', 'PagesController');
     
-    Route::get('/sub_committees', function () {
-        return view('sub_committees');
-    });
+    // require _DIR_.'/auth.php';
+    
+    Route::get('pages/{sport_name}', 'PagesController@show');
+    
+    Route::get('demo', 'FrontendhtmlController@pastpresident');
+    
+    Route::get('/footer', [ContactController::class,'contact']);
+    
     Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
-
+    Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
+    
+    
+    // Route::get('/trophies', function () {
+    //     return view('trophies');
+    // });
+    
+    // Route::get('/famous_sportsmen', function () {
+    //     return view('famous_sportsmen');
+    // });
+    
+    // Route::get('/reciprocal_clubs', function () {
+    //     return view('reciprocal_clubs');
+    // });
+    // Route::get('/general_committee', function () {
+    //     return view('general_committee');
+    // });
+    
+    // Route::get('/balloting_committee', function () {
+    //     return view('balloting_committee');
+    // });
+    
+    // Route::get('/sub_committees', function () {
+    //     return view('sub_committees');
+    // });
     
     Route::get('/president_corner', function () {
         return view('president_corner');
@@ -361,4 +421,13 @@ Route::get('/amenities_services', function () {
     
     Route::get('/member-login', function () {
         return view('member-login');
+    });
+    // Route::get('/sports', function () {
+    //     return view('sports');
+    // });
+    Route::get('/1792-newsletter', function () {
+        return view('1792-newsletter');
+    });
+    Route::get('/gallery', function () {
+        return view('gallery');
     });

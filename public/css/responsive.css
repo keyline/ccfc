@@ -129,7 +129,15 @@
         padding-top: 30px;
     }
 }
-
+@media screen and (min-width: 1201px) {
+    /* .all-footer {
+        position: absolute;
+        bottom: 0;
+        height: 70px;
+        padding-top: 50px;
+        width: 100%;
+    } */
+}
 /*PC VERSION*/
 @media screen and (max-width: 1200px) {
     .services-sec
@@ -205,11 +213,26 @@
     .famoussport_item .famoussport_img{
         margin: 0 auto 15px;
     }
+    .newsletter_left img {
+        max-width: 50px;
+    }
 }
 @media (min-width: 992px) and (max-width: 1300px) {
     .photoFrame {
         width: 100%;
     }
+}
+@media screen and (min-width: 992px) {
+    .right_side_panel .right-body {
+        height: 100%;
+    }
+    /* .all-footer {
+        position: absolute;
+        bottom: 0;
+        height: 70px;
+        padding-top: 70px;
+        width: 100%;
+    } */
 }
 
 /*TAB VERSION*/
@@ -226,7 +249,7 @@
         padding-bottom: 20px;
     }
     .advise {
-        padding: 20px 60px 0px 60px;
+        padding: 20px 10px 0px 10px;
     }
     .services-sec
         .services-inner
@@ -515,6 +538,13 @@
         bottom: 60px;
     }
     .title-sec .title{text-align: center !important;}
+    .services-sec.services-sec-main .services-inner .services-info .services-img img{
+        height: 100%;
+    }
+    .gym-general-sec {
+        padding: 40px 0px;
+    }
+    
 }
 
 /*LARGE MOBILE VERSION*/
@@ -568,6 +598,9 @@
     }
     .services-sec .services-inner .services-info .services-box .img-box.gym-img img {
         width: 70px;
+    }
+    .inner_belowbox_wrapper {
+        padding: 20px;
     }
 }
 

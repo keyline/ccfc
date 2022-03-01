@@ -11,6 +11,7 @@ class CreateSportstypesTable extends Migration
         Schema::create('sportstypes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('sport_name');
+            $table->string('sport_details')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

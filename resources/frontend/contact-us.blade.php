@@ -45,17 +45,17 @@
                                             </div>
                                             <div class="contact-location">
                                                 E:
-                                                <a href="#" class="contact-btn">
+                                                <a href="mailto:ccfcsecretary@ccfc1792.com" class="contact-btn">
                                                     ccfcsecretary@ccfc1792.com
                                                 </a>
                                             </div>
                                             <div class="contact-location">
                                                 P:
-                                                <a href="#" class="contact-btn">
+                                                <a href="tel:033 24615060" class="contact-btn">
                                                     033 24615060
                                                 </a>
                                                 <span>/</span>
-                                                <a href="#" class="contact-btn">
+                                                <a href="tel:033 24615059" class="contact-btn">
                                                     033 24615059
                                                 </a>
                                             </div>

@@ -31,6 +31,7 @@ class Sportstype extends Model implements HasMedia
 
     protected $fillable = [
         'sport_name',
+        'sport_details',
         'created_at',
         'updated_at',
         'deleted_at',

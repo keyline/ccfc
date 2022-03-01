@@ -43,7 +43,7 @@
 
                             <!-- ********|| LEFT PART START ||******** -->
 
-                            <div class="col-lg-3 col-md-5 p-0 siteleft_panel">
+                            <div class="col-lg-3 col-md-5 p-0 siteleft_panel" id="sidebar">
                                 <header class="header">
                                     <div class="top-header">
                                         <div class="brand">
@@ -84,20 +84,15 @@
                                                             </a>
                                                             <ul class="submenu dropdown-menu">
                                                                 <li><a href="{{ asset('history') }}">History</a></li>
-                                                                <li><a href="{{ asset('past-president') }}">Past
-                                                                        Presidents</a></li>
-                                                                <li><a href="{{ asset('trophies') }}">Trophies</a>
-                                                                </li>
-                                                                <li><a href="{{ asset('famous_sportsmen') }}">Famous
-                                                                        Sportsmen</a></li>
-                                                                <li><a href="{{ asset('reciprocal_clubs') }}">Reciprocal
-                                                                        Clubs</a></li>
+                                                                <li><a href="{{ asset('past-president') }}">Past Presidents</a></li>
+                                                                <li><a href="{{ asset('trophies') }}">Trophies</a></li>
+                                                                <li><a href="{{ asset('famous_sportsmen') }}">Famous Sportsmen</a></li>
+                                                                <li><a href="{{ asset('reciprocal_clubs') }}">Reciprocal Clubs</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="javascript:void(0)">
-                                                                MANAGEMENT <span class="submenu_arrow"><i
-                                                                        class="zmdi zmdi-chevron-right"></i></span>
+                                                            <a class="nav-link" href="javascript:void(0)"> MANAGEMENT <span class="submenu_arrow">
+                                                                <i class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
                                                             <ul class="submenu dropdown-menu">
                                                                 <li class="nav-item">
@@ -106,27 +101,16 @@
                                                                                 class="zmdi zmdi-chevron-right"></i></span>
                                                                     </a>
                                                                     <ul class="submenu dropdown-menu">
-                                                                        <li><a href="{{ asset('general_committee') }}">General
-                                                                                Committee</a></li>
-                                                                        <li>
-                                                                            <a
-                                                                                href="{{ asset('balloting_committee') }}">Balloting
-                                                                                Committee</a>
-                                                                        </li>
-                                                                        <li><a
-                                                                                href="{{ asset('sub_committees') }}">Sub-Committees</a>
-                                                                        </li>
+                                                                        <li><a href="{{ asset('general_committee') }}">General Committee</a></li>
+                                                                        <li><a href="{{ asset('balloting_committee') }}">Balloting Committee</a></li>
+                                                                        <li><a href="{{ asset('sub_committees') }}">Sub-Committees</a></li>
                                                                     </ul>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a class="nav-link"
-                                                                        href="{{ asset('president_corner') }}">President's
-                                                                        Corner</a>
+                                                                    <a class="nav-link" href="{{ asset('president_corner') }}">President's Corner</a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a class="nav-link"
-                                                                        href="{{ asset('annual_report') }}">Annual
-                                                                        report </a>
+                                                                    <a class="nav-link" href="{{ asset('annual_report') }}">Annual report </a>
                                                                 </li>
                                                             </ul>
                                                         </li>
@@ -144,11 +128,8 @@
                                                             </ul> -->
 
                                                             <ul class="submenu dropdown-menu">
-                                                                <li><a class="nav-link"
-                                                                        href="{{ asset('amenities_services') }}">Amenities
-                                                                        & Services</a></li>
-                                                                <li><a class="nav-link"
-                                                                        href="{{ asset('sports') }}">Sports</a></li>
+                                                                <li><a class="nav-link" href="{{ asset('amenities_services') }}">Amenities & Services</a></li>
+                                                                <li><a class="nav-link"  href="{{ asset('sports') }}">Sports</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="nav-item">
@@ -157,29 +138,23 @@
                                                                         class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
                                                             <ul class="submenu dropdown-menu">
-                                                                <li><a class="nav-link"
-                                                                        href="{{ asset('member-login') }}">Member
-                                                                        dashboard</a></li>
-                                                                <li><a class="nav-link"
-                                                                        href="{{ asset('events_members_only') }}">Events
-                                                                        (Members
-                                                                        only)</a></li>
-                                                                <li><a class="nav-link"
-                                                                        href="{{ asset('new_member') }}">News(Members
-                                                                        only) </a>
+                                                                <li><a class="nav-link"href="{{ asset('member-login') }}">Member  dashboard</a></li>
+                                                                <li><a class="nav-link" href="{{ asset('events_members_only') }}">Events</a></li>
+                                                                <li><a class="nav-link"href="#/">News</a>
+                                                                    <ul class="submenu dropdown-menu">
+                                                                        <li><a href="{{ asset('1792-newsletter') }}">1792</a></li>
+                                                                        <li><a href="{{ asset('notice-circulars') }}">Notice & Circulars</a></li>
+                                                                    </ul>
                                                                 </li>
-                                                                <li><a class="nav-link"
-                                                                        href="{{ asset('rules_regulation') }}">Rules &
-                                                                        Regulations
-                                                                        (Members only)</a></li>
+                                                                <li><a class="nav-link" href="{{ asset('rules_regulation') }}">Rules & Regulations</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="javascript:void(0)">Gallery</a>
+                                                            <a class="nav-link" href="{{ asset('gallery') }}">Gallery</a>
                                                         </li>
 
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="javascript:void(0)">Contact Us</a>
+                                                            <a class="nav-link" href="{{ asset('contact-us') }}">Contact Us</a>
                                                         </li>
                                                     </ul>
 

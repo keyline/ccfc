@@ -10,6 +10,7 @@ class CreateSubCommitteeMembersTable extends Migration
     {
         Schema::create('sub_committee_members', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('designation')->nullable();
             $table->boolean('head_of_the_committee')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();

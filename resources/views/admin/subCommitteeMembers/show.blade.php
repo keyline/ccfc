@@ -31,6 +31,8 @@
                             {{ $subCommitteeMember->comittee_name->committee_name_master ?? '' }}
                         </td>
                     </tr>
+
+
                     <tr>
                         <th>
                             {{ trans('cruds.subCommitteeMember.fields.member') }}
@@ -39,12 +41,23 @@
                             {{ $subCommitteeMember->member->name ?? '' }}
                         </td>
                     </tr>
+
+                    <tr>
+                        <th>
+                            {{ trans('cruds.subCommitteeMember.fields.designation') }}
+                        </th>
+                        <td>
+                            {{ $subCommitteeMember->designation ?? '' }}
+                        </td>
+                    </tr>
+
                     <tr>
                         <th>
                             {{ trans('cruds.subCommitteeMember.fields.head_of_the_committee') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $subCommitteeMember->head_of_the_committee ? 'checked' : '' }}>
+                            <input type="checkbox" disabled="disabled"
+                                {{ $subCommitteeMember->head_of_the_committee ? 'checked' : '' }}>
                         </td>
                     </tr>
                 </tbody>

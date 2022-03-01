@@ -232,24 +232,6 @@
             @include('common.footer')
             <!-- ?php include 'assets/inc/footer.php';?> -->
             
-            <style>
-                .services-sec.services-sec-main .services-inner .services-info .services-img img{
-                    height: 420px;
-        width: 100%;
-    object-fit: cover;
-                }
-                .services-sec.services-sec-main .services-inner{
-                    padding-top: 0px;
-                }
-                .services-sec.services-sec-main .services-inner .services-info{
-                    margin-top: 30px;
-                }
-                @media screen and (max-width: 767px) {
-                    .services-sec.services-sec-main .services-inner .services-info .services-img img{
-                        height: 100%;
-                    }
-                }
-            </style>
 
 
             </body>
