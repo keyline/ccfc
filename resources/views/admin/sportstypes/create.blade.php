@@ -28,6 +28,15 @@
                 <span class="help-block">{{ trans('cruds.sportstype.fields.icon_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="excerpt">{{ trans('cruds.sportstype.fields.excerpt') }}</label>
+                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt"
+                    id="excerpt">{{ old('excerpt') }}</textarea>
+                @if($errors->has('excerpt'))
+                <span class="text-danger">{{ $errors->first('excerpt') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.sportstype.fields.excerpt_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="featured_image">{{ trans('cruds.sportstype.fields.featured_image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}"
                     id="featured_image-dropzone">
@@ -55,7 +64,7 @@
 Dropzone.options.iconDropzone = {
     url: '{{route('admin.sportstypes.storeMedia')}}',
     maxFilesize: 2, // MB
-    acceptedFiles:'.jpeg,.jpg,.png,.gif,.svg',
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
@@ -111,7 +120,7 @@ Dropzone.options.iconDropzone = {
 Dropzone.options.featuredImageDropzone = {
     url: '{{route('admin.sportstypes.storeMedia')}}',
     maxFilesize: 2, // MB
-    acceptedFiles:'.jpeg,.jpg,.png,.gif,.svg',
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
@@ -134,9 +143,9 @@ Dropzone.options.featuredImageDropzone = {
         }
     },
     init: function() {
-        @if(isset($sportstype) && $sportstype->featured_image)
+        @if(isset($sportstype) && $sportstype-> featured_image)
         var file = {
-            !!json_encode($sportstype->featured_image) !!
+            !!json_encode($sportstype-> featured_image) !!
         }
         this.options.addedfile.call(this, file)
         this.options.thumbnail.call(this, file, file.preview)

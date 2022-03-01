@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 @section('content')
 @can('sub_committee_member_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.sub-committee-members.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.subCommitteeMember.title_singular') }}
-            </a>
-        </div>
+<div style="margin-bottom: 10px;" class="row">
+    <div class="col-lg-12">
+        <a class="btn btn-success" href="{{ route('admin.sub-committee-members.create') }}">
+            {{ trans('global.add') }} {{ trans('cruds.subCommitteeMember.title_singular') }}
+        </a>
     </div>
+</div>
 @endcan
 <div class="card">
     <div class="card-header">
@@ -35,8 +35,14 @@
                             {{ trans('cruds.user.fields.user_code') }}
                         </th>
                         <th>
+                            {{ trans('cruds.subCommitteeMember.fields.designation') }}
+                        </th>
+
+                        <th>
                             {{ trans('cruds.subCommitteeMember.fields.head_of_the_committee') }}
                         </th>
+
+
                         <th>
                             &nbsp;
                         </th>
@@ -44,50 +50,60 @@
                 </thead>
                 <tbody>
                     @foreach($subCommitteeMembers as $key => $subCommitteeMember)
-                        <tr data-entry-id="{{ $subCommitteeMember->id }}">
-                            <td>
+                    <tr data-entry-id="{{ $subCommitteeMember->id }}">
+                        <td>
 
-                            </td>
-                            <td>
-                                {{ $subCommitteeMember->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $subCommitteeMember->comittee_name->committee_name_master ?? '' }}
-                            </td>
-                            <td>
-                                {{ $subCommitteeMember->member->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $subCommitteeMember->member->user_code ?? '' }}
-                            </td>
-                            <td>
-                                <span style="display:none">{{ $subCommitteeMember->head_of_the_committee ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $subCommitteeMember->head_of_the_committee ? 'checked' : '' }}>
-                            </td>
-                            <td>
-                                @can('sub_committee_member_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.sub-committee-members.show', $subCommitteeMember->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
+                        </td>
+                        <td>
+                            {{ $subCommitteeMember->id ?? '' }}
+                        </td>
+                        <td>
+                            {{ $subCommitteeMember->comittee_name->committee_name_master ?? '' }}
+                        </td>
+                        <td>
+                            {{ $subCommitteeMember->member->name ?? '' }}
+                        </td>
+                        <td>
+                            {{ $subCommitteeMember->member->user_code ?? '' }}
+                        </td>
+                        <th>
+                            {{ $subCommitteeMember->designation ?? '' }}
+                        </th>
 
-                                @can('sub_committee_member_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.sub-committee-members.edit', $subCommitteeMember->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                @endcan
+                        <td>
+                            <span style="display:none">{{ $subCommitteeMember->head_of_the_committee ?? '' }}</span>
+                            <input type="checkbox" disabled="disabled"
+                                {{ $subCommitteeMember->head_of_the_committee ? 'checked' : '' }}>
+                        </td>
 
-                                @can('sub_committee_member_delete')
-                                    <form action="{{ route('admin.sub-committee-members.destroy', $subCommitteeMember->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                                @endcan
+                        <td>
+                            @can('sub_committee_member_show')
+                            <a class="btn btn-xs btn-primary"
+                                href="{{ route('admin.sub-committee-members.show', $subCommitteeMember->id) }}">
+                                {{ trans('global.view') }}
+                            </a>
+                            @endcan
 
-                            </td>
+                            @can('sub_committee_member_edit')
+                            <a class="btn btn-xs btn-info"
+                                href="{{ route('admin.sub-committee-members.edit', $subCommitteeMember->id) }}">
+                                {{ trans('global.edit') }}
+                            </a>
+                            @endcan
 
-                        </tr>
+                            @can('sub_committee_member_delete')
+                            <form action="{{ route('admin.sub-committee-members.destroy', $subCommitteeMember->id) }}"
+                                method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
+                                style="display: inline-block;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                            </form>
+                            @endcan
+
+                        </td>
+
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -101,50 +117,66 @@
 @section('scripts')
 @parent
 <script>
-    $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('sub_committee_member_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
-  let deleteButton = {
-    text: deleteButtonTrans,
-    url: "{{ route('admin.sub-committee-members.massDestroy') }}",
-    className: 'btn-danger',
-    action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
-          return $(entry).data('entry-id')
-      });
+$(function() {
+    let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+    @can('sub_committee_member_delete')
+    let deleteButtonTrans = '{{ trans('
+    global.datatables.delete ') }}'
+    let deleteButton = {
+        text: deleteButtonTrans,
+        url: "{{ route('admin.sub-committee-members.massDestroy') }}",
+        className: 'btn-danger',
+        action: function(e, dt, node, config) {
+            var ids = $.map(dt.rows({
+                selected: true
+            }).nodes(), function(entry) {
+                return $(entry).data('entry-id')
+            });
 
-      if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+            if (ids.length === 0) {
+                alert('{{ trans('
+                    global.datatables.zero_selected ') }}')
 
-        return
-      }
+                return
+            }
 
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
-          headers: {'x-csrf-token': _token},
-          method: 'POST',
-          url: config.url,
-          data: { ids: ids, _method: 'DELETE' }})
-          .done(function () { location.reload() })
-      }
+            if (confirm('{{ trans('
+                    global.areYouSure ') }}')) {
+                $.ajax({
+                        headers: {
+                            'x-csrf-token': _token
+                        },
+                        method: 'POST',
+                        url: config.url,
+                        data: {
+                            ids: ids,
+                            _method: 'DELETE'
+                        }
+                    })
+                    .done(function() {
+                        location.reload()
+                    })
+            }
+        }
     }
-  }
-  dtButtons.push(deleteButton)
-@endcan
+    dtButtons.push(deleteButton)
+    @endcan
 
-  $.extend(true, $.fn.dataTable.defaults, {
-    orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
-    pageLength: 100,
-  });
-  let table = $('.datatable-SubCommitteeMember:not(.ajaxTable)').DataTable({ buttons: dtButtons })
-  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
-      $($.fn.dataTable.tables(true)).DataTable()
-          .columns.adjust();
-  });
-  
+    $.extend(true, $.fn.dataTable.defaults, {
+        orderCellsTop: true,
+        order: [
+            [1, 'desc']
+        ],
+        pageLength: 100,
+    });
+    let table = $('.datatable-SubCommitteeMember:not(.ajaxTable)').DataTable({
+        buttons: dtButtons
+    })
+    $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e) {
+        $($.fn.dataTable.tables(true)).DataTable()
+            .columns.adjust();
+    });
+
 })
-
 </script>
 @endsection
