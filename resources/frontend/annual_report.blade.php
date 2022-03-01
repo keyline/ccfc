@@ -51,52 +51,25 @@
 
 
             <!-- ********|| HISTORY START ||******** -->
-            <section class="history-sec">
+            <section class="inner_belowbanner">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="history-inner">
-                                <div class="title-sec">
-                                    <div class="title text-left">
-                                        Annual Report
-                                    </div>
+                            <div class="title-sec">
+                                <div class="title text-left">
+                                    Annual Report
                                 </div>
-
-                                <div class="pastpresident_imagebox">
-                                    <div class="pastpresident_item">
-                                        <div class="row">
-
-
-
-
-
-
-
-                                            <!-- <div class="col-md-6 col-lg-3">
-                                                <div class="pastpresdit_inner teamMember">
-                                                    <div class="photoFrame"><img
-                                                            src="{{ asset('img/past-president/2a.jpg') }}" alt=""></div>
-                                                    <div class="passtpredi_name">
-                                                        <h2>Mr. R. B. Lagden</h2>
-                                                        <p>Mr. R. B. Lagden</p>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-
-
-
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-
                             </div>
-
                         </div>
-
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="content_inner">
+                                <p>In the city of Calcutta, then just over a hundred years old and growing fast both in commercial and political significance, the British Raj was busy setting its roots. And sports were definitely a part of the social lore.</p>
+                                <p>The club also offers food from its different counters like charcoal-grilled kebabs, quick bites of wraps, burgers, pastas etc. There is also a pastry shop and specialized tea & coffee counters serving wide varieties of tea and coffee.</p>
+                            </div>
+                        </div>
+                    </div>      
                 </div>
             </section>
             <!-- ********|| HISTORY END ||******** -->

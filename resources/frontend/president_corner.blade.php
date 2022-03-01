@@ -80,6 +80,14 @@
                                 <p>Over the last few months, we had slowly started the sporting activities in the Club. While we had a truncated Football and Rugby Season, members continue to enjoy Tennis, Gym, Swimming and Darts. Quite a number of members have shown interest in Basketball – hence the old shamiana site has been earmarked for their practice. Our Darts Section has organised an Inter Club Darts competition at our Club between 20th November and 5th December.</p>
                                 <p>The ground is being prepared for the Cricket Season. Extensive work is being done there, including preparation of the pitches, deweeding, putting soil and fresh grass in patches and levelling. We hope that this exercise will be completed by this month end and Cricket Season will commence in early December. We are hopeful of a full season including the popular T10 and Corporate Tournaments. We are also in talks with CAB to host a few Ranji Trophy matches here.</p>
                             </div>
+                            <div class="newsletter_pdfdownload president_corner">
+                                <div class="newsletter_left">
+                                    <a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
+                                </div>
+                                <div class="newsletter_right">
+                                    <h3><a href="#" target="_blank">President's Letter</a></h3>
+                                </div>
+                            </div>
                         </div>
                 </div>
             </div>
