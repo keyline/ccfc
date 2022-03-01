@@ -392,3 +392,9 @@ Route::get('/amenities_services', function () {
     // Route::get('/sports', function () {
     //     return view('sports');
     // });
+    Route::get('/1792-newsletter', function () {
+        return view('1792-newsletter');
+    });
+    Route::get('/gallery', function () {
+        return view('gallery');
+    });

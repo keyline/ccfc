@@ -12,7 +12,7 @@
     @include('common.home_header')
     <!-- ********|| RIGHT PART START ||******** -->
 
-    <div class="col-lg-9 col-md-7 p-0">
+    <div class="col-lg-9 col-md-7 p-0 right_side_panel">
         <div class="right-body">
             <!-- ********|| BANNER PART START ||******** -->
             <section class="banner">

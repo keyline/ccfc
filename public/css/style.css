@@ -5,6 +5,19 @@
 html {
     scroll-behavior: smooth;
 }
+html, body{
+    height:100%;
+}
+section.ccfc-body {
+    height: 100%;
+    
+}
+.siteleft_panel {
+
+}
+.right_side_panel {
+  
+  }
 ::-moz-selection { /* Code for Firefox */
     color: var(--white);
     background: var(--primaryColor);
@@ -1462,12 +1475,12 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     width: 100%;
     height: 100%;
     background-image: url(../img/past-president/outer-frame.png);
-    z-index: 9;
+    z-index: 5;
     background-size: 100% 100%;
 }
 .photoFrame img {
     width: auto;
-    z-index: 9;
+    z-index: 1;
     /*height: 100%;*/
     position: absolute;
     max-width: 176px;
@@ -2182,8 +2195,156 @@ section.sports-page {
 /* ********|| Sub Committee END ||******** */
 
 
+/* ********|| AMENITIES Start ||******** */
+.services-sec.services-sec-main .services-inner .services-info .services-img img{
+    height: 420px;
+    width: 100%;
+    object-fit: cover;
+}
+.services-sec.services-sec-main .services-inner{
+    padding-top: 0px;
+}
+.services-sec.services-sec-main .services-inner .services-info{
+    margin-top: 30px;
+}
+
+/* ********|| AMENITIES  END ||******** */
 
 
+/* ********|| CLUB BAR  Start ||******** */
+
+.gym-general-sec .project-item .item-img{
+    position: relative;
+}
+.gym-general-sec .project-item .item-img .hvr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.51);
+    color: #fff;
+    font-size: 40px;
+    opacity: 0;
+}
+.gym-general-sec .project-item .item-img:hover .hvr{
+    opacity: 1;
+}
+.gym-general-sec{
+    padding: 40px;
+}
+.gym-general-sec .project-item{
+    padding-bottom: 20px;
+}
+.gym-general-sec .project-item:last-child{
+    padding-bottom: 0px;
+}
+.gym-general-sec .gym-inner{
+    border-bottom: 1px solid var(--secondaryColor);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.gym-general-sec .gym-inner:last-child{
+    border-bottom: none;
+    padding: 0;
+    margin: 0;
+}
+.gym-general-sec .project-item:first-child{
+    padding-top: 15px;
+}
+.gym-general-sec .gym-inner ul li, .pool li{
+    font-family: 'IBM Plex Serif', serif;
+    padding-bottom: 4px;
+    color: var(--textColor);
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+.gym-general-sec .gym-inner ul{
+    padding-left: 16px;
+}
+/*pool*/
+.history-sec .history-inner .pool li{
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 10px;
+    color: var(--textColor);
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+.history-sec .history-inner .pool{
+    padding-left: 16px;
+}
+.gym-general-sec .gym-inner .pool-part{
+    margin-bottom: 0;
+}
+
+/* ********|| CLUB BAR  END ||******** */
+
+/* ********|| 1792 NEWS LETTER  END ||******** */
+
+.newsletter_pdfdownload {
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background: #f8f8f8;
+    margin-bottom: 25px;
+}
+.newsletter_pdfdownload::before{
+    position: absolute;
+    content: "";
+    width: 0.5px;
+    height: 80%;
+    left: 35%;
+    background: #949494;
+    transform: translate(-35%,0);
+}
+.newsletter_pdfdownload:hover{
+    border: 1px solid var(--primaryColor);
+}
+.newsletter_right h3, .newsletter_right h3 a {
+    font-size: 22px;
+    font-family: 'IBM Plex Serif', serif;
+    margin-bottom: 0;
+}
+.newsletter_right p a, .newsletter_right p {
+    color: #484848;
+    font-family: 'IBM Plex Serif', serif;
+}
+.newsletter_right p a {
+    color: #484848;
+}
+.newsletter_right h3 a{
+    color: var(--primaryColor);
+}
+.newsletter_left img {
+    max-width: 70px;
+}
+.newsletter_right a:hover{text-decoration: none;}
+.newsletter_left {
+    width: 40%;
+    text-align: center;
+}
+.newsletter_right {
+    width: 60%;
+}
+
+.president_corner.newsletter_pdfdownload{
+    background: #fff;
+    max-width: 300px;
+}
+
+/* ********|| 1792 NEWS LETTER END ||******** */
+
+/* ********|| Gallery Start ||******** */
+
+
+/* ********|| Gallery END ||******** */
 
 
 /* ********|| FOOTER START ||******** */
