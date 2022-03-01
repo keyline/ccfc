@@ -1,1 +1,3 @@
-@extends('common.home_header')
+@include('common.home_header')
+@yield('content')
+@include('common.footer')
