@@ -453,6 +453,16 @@
         }
     </script>
     <script>
+        // $(document).ready(function() {
+        //     if (window.innerWidth > 1199) {
+        //         $(window).resize(function() {
+        //             var bodyheight = $(this).height();
+        //             $("#sidebar").height(bodyheight);
+        //         }).resize();
+        //     }
+        // });
+        </script>
+    <script>
         function openNav() {
           document.getElementById("topmenupanel").style.width = "300px";
         }
