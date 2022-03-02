@@ -9,53 +9,80 @@
     @include('common.home_header')
     <!-- ********|| RIGHT PART START ||******** -->
 
-    <div class="col-lg-9 col-md-9 p-0">
+    <div class="col-lg-9 col-md-7 p-0">
         <div class="right-body">
             <!-- ********|| BANNER PART START ||******** -->
-            <section class="cricket-banner">
-                <div class="img-box">
-                    <img class="img-fluid" src="{{ asset('img/sports-banner.jpg') }}" alt="" />
+
+            <section class="banner">
+                <div class="banner-box">
+                    <div id="innerpage-banner" class="owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="about-img"> <img class="img-fluid" src="{{ asset('img/sports-banner.jpg') }}"
+                                    alt="" /> </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="cricket-title">
-
-                    <?php
-echo "Sports name is :" . $sport_name;
-echo "<br>";
-?>
-
+            </section>
+            <section class="inner_belowbanner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="title-sec">
+                                <div class="title text-left">
+                                    <?php echo "Sports name is :" . $sport_name;
+                                    //echo "<br>";
+                                    ?> </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
 
-            @foreach($members as $key => $member)
 
-            @if ($member->select_sport->sport_name == $sport_name)
-            <div class="card" style="border: 4px solid #c03437;border-radius: 10px;min-height: 175px;">
-                <div class="card-body">
-                    <div class="container-fluid text-center" style="padding: 5%;">
-                        <div><span
-                                style="color: #222831; font-weight: bold;">{{ $member->select_title->titles ?? '' }}</span>
+
+            <section class="sports_tabsection">
+                <div class="sport_tab_content_section">
+                    <div class="row">
+
+                        @foreach($members as $key => $member)
+
+                        @if ($member->select_sport->sport_name == $sport_name)
+                        @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                        $key =>$userDetail)
+
+                        <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                            <div class="sports_tabcontent_inner">
+                                <div class="sport_tab_ceibity-img"> <img
+                                        src="{{ $userDetail->member_image->getUrl('') }}" alt="">
+                                </div>
+                                <div class=" sport_player">
+                                    <h3>{{ $member->select_title->titles ?? '' }}</h3>
+                                    <div class="sport_player_detail">
+                                        <h4>{{ $member->select_member->name ?? '' }}</h4>
+                                        <!-- <p><a href="tel:+91 4242420202">+91
+                                                4242420202</a> </p> -->
+                                        <p><a
+                                                href="mailto:{{ $member->select_member->email ?? '' }}">{{ $member->select_member->email ?? '' }}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div><span
-                                style="color: #222831; font-weight: bold;">{{ $member->select_member->name ?? '' }}</span>
-                        </div>
-                        <!-- <div><span style=""><a href="tel:+91 7044066268">+91 7044066268</a></span></div> -->
-                        <div><span style=""><a
-                                    href="mail:mainak8717@gmail.com">{{ $member->select_member->email ?? '' }}</a></span>
-                        </div>
-                        <div></div>
+
+                        @endforeach
+
+
+                        @else
+
+                        @endif
+
+
+
+                        @endforeach
                     </div>
                 </div>
-            </div>
-            @else
-
-            @endif
-
-
-
-            @endforeach
-
+            </section>
             <!-- ********|| BANNER PART END ||******** -->
 
 

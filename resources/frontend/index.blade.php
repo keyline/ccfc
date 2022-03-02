@@ -239,7 +239,9 @@
                                                         February bringing a whole new face of health and fitness...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('gymming-rejuvenated') }}" class="read-btn">+
+                                                            Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -270,7 +272,8 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('pool-pub') }}" class="read-btn">+
+                                                            Read More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -301,7 +304,8 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('club-bar') }}" class="read-btn">+ Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -332,7 +336,8 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('swimming-pool') }}" class="read-btn">+ Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>

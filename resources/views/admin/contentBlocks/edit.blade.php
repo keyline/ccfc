@@ -34,6 +34,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentBlock.fields.body_helper') }}</span>
             </div>
+			
+			
+				
             <div class="form-group">
                 <label>{{ trans('cruds.contentBlock.fields.status') }}</label>
                 @foreach(App\Models\ContentBlock::STATUS_RADIO as $key => $label)
@@ -136,5 +139,6 @@
   }
 });
 </script>
+
 
 @endsection

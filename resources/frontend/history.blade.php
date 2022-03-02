@@ -38,20 +38,19 @@
                                 @foreach($contentPages->where("title","History") as $contentPage)
                                 <div class="history-content">
 
-                                    {{$contentPage->excerpt}}
+                                    <!-- {!! $contentPage->excerpt !!} -->
                                     <!-- In the city of Calcutta, then just over a hundred years old and growing fast both in
                                     commercial and political significance, the British Raj was busy setting its roots.
                                     And sports were definitely a part of the social lore. -->
                                 </div>
 
+
+                                <div class="history-content">
+
+                                    {!! $contentPage->page_text !!}
+                                </div>
+
                                 @endforeach
-                                <!-- <div class="history-content">
-                                    Indeed, sports events were reckoned to be important enough for sub-continental
-                                    reporters. Fortunately, a copy of the Madras Courier dated 23rd. February, 1792 has
-                                    survived. The paper reported cricket fixtures between the Calcutta Cricket Club and
-                                    Barrackpore and the Calcutta Cricket Club and Dum Dum. Clearly, the Calcutta Cricket
-                                    Club was already in existence in 1792.
-                                </div> -->
                                 <!-- <div class="history-content">
                                     The story of how CC&FC traced its origins is interesting and is preserved in its
                                     archives thanks to Past President H.J. Moorhouse. It began in 1955 with a letter to

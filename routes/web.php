@@ -140,6 +140,42 @@ Route::get('/sub_committees', function () {
 });
 
 
+Route::get('/gymming-rejuvenated', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('gymming-rejuvenated', compact(['contentPages', 'galleries', 'contentBlocks']));
+    
+});
+
+
+Route::get('/pool-pub', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('pool-pub', compact(['contentPages', 'galleries', 'contentBlocks']));
+    
+});
+
+
+Route::get('/club-bar', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('club-bar', compact(['contentPages', 'galleries', 'contentBlocks']));
+    
+});
+
+
+Route::get('/swimming-pool', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('swimming-pool', compact(['contentPages', 'galleries', 'contentBlocks']));
+    
+});
+
+
 
 // Route::redirect('/', '/login');
 
@@ -341,18 +377,18 @@ Route::get('/member-login', function () {
 // Route::get('/sports', function () {
 //     return view('sports');
 // });
-Route::get('/gymming-rejuvenated', function () {
-        return view('gymming-rejuvenated');
-    });
-Route::get('/swimming-pool', function () {
-        return view('swimming-pool');
-    });
-Route::get('/club-bar', function () {
-        return view('club-bar');
-    });
-Route::get('/pool-pub', function () {
-        return view('pool-pub');
-    });
+// Route::get('/gymming-rejuvenated', function () {
+//         return view('gymming-rejuvenated');
+//     });
+// Route::get('/swimming-pool', function () {
+//         return view('swimming-pool');
+//     });
+// Route::get('/club-bar', function () {
+//         return view('club-bar');
+//     });
+// Route::get('/pool-pub', function () {
+//         return view('pool-pub');
+//     });
 Route::get('/contact-us', function () {
         return view('contact-us');
     });
@@ -440,3 +476,6 @@ Route::get('/amenities_services', function () {
     Route::get('/gallery', function () {
         return view('gallery');
     });
+
+
+    
