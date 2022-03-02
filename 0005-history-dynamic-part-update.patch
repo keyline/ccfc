@@ -1,0 +1,664 @@
+From 1e9efcf5304e0f30e60ea50f2195330b3127d455 Mon Sep 17 00:00:00 2001
+From: pranoy <pranoy@keyline.net>
+Date: Fri, 18 Feb 2022 16:16:57 +0530
+Subject: [PATCH 5/5] history dynamic part update
+
+---
+ .../Admin/ContentPageController.php           |   2 +-
+ resources/frontend/history.blade.php          | 335 +++++++++++-------
+ routes/web.php                                |  18 +-
+ .../tmp/uploads/620f655419b04_46010315.jpg    | Bin 0 -> 13010 bytes
+ 4 files changed, 230 insertions(+), 125 deletions(-)
+ create mode 100644 storage/tmp/uploads/620f655419b04_46010315.jpg
+
+diff --git a/app/Http/Controllers/Admin/ContentPageController.php b/app/Http/Controllers/Admin/ContentPageController.php
+index 1f14a88..c9bde2b 100644
+--- a/app/Http/Controllers/Admin/ContentPageController.php
++++ b/app/Http/Controllers/Admin/ContentPageController.php
+@@ -128,4 +128,4 @@ class ContentPageController extends Controller
+ 
+         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
+     }
+-}
++}
+\ No newline at end of file
+diff --git a/resources/frontend/history.blade.php b/resources/frontend/history.blade.php
+index 88bd23a..566922c 100644
+--- a/resources/frontend/history.blade.php
++++ b/resources/frontend/history.blade.php
+@@ -6,130 +6,223 @@
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+-<!-- ?php include 'assets/inc/header.php';?> -->
++    <!-- ?php include 'assets/inc/header.php';?> -->
+ 
+-<!-- header -->
+-@include('common.home_header')
+-                        <!-- ********|| RIGHT PART START ||******** -->
++    <!-- header -->
++    @include('common.home_header')
++    <!-- ********|| RIGHT PART START ||******** -->
+ 
+-                        <div class="col-lg-9 col-md-7 p-0">
+-                            <div class="right-body">
+-                                <!-- ********|| BANNER PART START ||******** -->
+-                                <section class="history-banner">
+-                                    <img class="img-fluid" src="{{ asset('img/history/history-banner.jpg') }}" alt="" />
+-                                </section>
+-                                <!-- ********|| BANNER PART END ||******** -->
++    <div class="col-lg-9 col-md-7 p-0">
++        <div class="right-body">
++            <!-- ********|| BANNER PART START ||******** -->
++            <section class="history-banner">
++                <img class="img-fluid" src="{{ asset('img/history/history-banner.jpg') }}" alt="" />
++            </section>
++            <!-- ********|| BANNER PART END ||******** -->
+ 
+-                                <!-- ********|| ADVISE START ||******** -->
+-                                <section class="history-page">
+-                                    <div class="container">
+-                                        <div class="row">
+-                                            <div class="col-lg-12">
+-                                                <div class="title-sec">
+-                                                        <div class="title">
+-                                                            HISTORY
+-                                                        </div>
+-                                                    </div> 
+-                                            </div>
+-                                        </div>
+-                                                <div class="row">
+-                                                   <div class="col-lg-9">
+-                                                <div class="history-inner">
+-                                                   
+-                                                    <div class="history-content">
+-                                                        In the city of Calcutta, then just over a hundred years old and growing fast both in commercial and political significance, the British Raj was busy setting its roots. And sports were definitely a part of the social lore.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        Indeed, sports events were reckoned to be important enough for sub-continental reporters. Fortunately, a copy of the Madras Courier dated 23rd. February, 1792 has survived. The paper reported cricket fixtures between the Calcutta Cricket Club and Barrackpore and the Calcutta Cricket Club and Dum Dum. Clearly, the Calcutta Cricket Club was already in existence in 1792.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        The story of how CC&FC traced its origins is interesting and is preserved in its archives thanks to Past President H.J. Moorhouse. It began in 1955 with a letter to The Times, London from Alan R. Tait, Honorary Secretary of Oporto Cricket Club in Portugal. The Club was celebrating its centenary that year, and Tait claimed that it 'must be one of the oldest cricket club outside Great Britain'.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        This letter drew a good deal of response from several quarters. Several clubs were identified as being older than Oporto. To use a cricketing metaphor, the ball swung in Calcutta's favour when one Irwing Rosenwater wrote to the Times about the news item in the Madras Courier dated 23rd. February, 1792, mentioned above.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        In the absence of a permanent venue, the Calcutta Cricket Club played its games on the esplanade, parallel with the river Hooghly, between Fort William and Government House. By the 1820s, the members felt the need for a permanent ground. In 1825, the Calcutta Cricket Club managed to obtain the use of a plot of land on the Maidan as shown in the accompanying reproduction of the 'Sketch of the Maidan'. In 1841 the Club was allowed to enclose the ground by putting a fence around it. The Army, garrisoned at Fort William, however saw the Club as an encroacher and was extremely suspicious of its alleged motives! They complained to the Chief Magistrate and as a result the Club was relocated to the eastern boundary of the Auckland Circus Gardens.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        Good times were not to last. In 1862, the Brigadier General Commanding Presidency Division wrote to the Quarter Master General that 'open space is preserved, as a general rule around forts as a Military precaution. And in 1864 the Club members found that a new road was being constructed which would 'cut directly through the ground and pass within a few yards of that portion of it on which the match wickets are invariably pitched'
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        The Club's 'prayer' to the Governor General was rejected and it had to partially relocate to the ground on the eastern end of Eden Gardens, the current location of the test venue. The Club made several representations asking for permission to 'erect a suitable pavilion in the place of the wretched hut now in use'. Finally on 19 April the long awaited approval arrived. A handsome and well built pavilion measuring 125 ft by 25 ft was promptly constructed out of the finest teak brought from Burma. It even had a 'Long Room' on the lines of the MCC pavilion at Lords. The pavilion no longer exists. It was pulled in the mid 1970s for the construction of the Cricket Association of Bengal's modern B.C. Roy Clubhouse.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        The origin of the Ballgunge Cricket Club is a matter of some speculation. Possibly the uncertainties regarding playing cricket at Eden Gardens in the 1850s and early 1860s led the players to form a separate Club in what was then a southern, civilian suburb of the city in 1864.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        Ballygunge Cricket Club had some illustrious members. J.D. Guise (1872-1953) played for India and MCC. Around the turn of the twentieth century, E.C. Cowdery and A.S. Cowdrey played for the Club regularly. EC was the grandfather of Sir Colin Cowdrey, England Captain and batsman, who was born in Bangalore.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        In the 1901-02 season there is interesting mention the unusual sport of Bicycle Polo a game now known as Cycle Polo, that is still played at CC&FC.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        India found a place on the 'international' cricket map for the first time in 1889-90 when, at the invitation of the Calcutta Cricket Club, the first ever tour of an English Cricket team, led by G.F. Vernon of Middlesex and composed entirely of amateurs took place. The first official MCC tour of India was on, thanks entirely to the initiative of the Calcutta Cricket Club. Moreover, MCC was to be skippered by Arthur Gilligan, the Sussex and England Captain, who was then at the height of his fame.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        These tours were also directly responsible for the formation of the Board of Control of Cricket in India and paved the way for India to gain Test status. Subsequently the Cricket Association of Bengal had also been formed. Dr. B.C. Roy, elected of Chief Minister of West Bengal in 1948 felt that in independent India Eden Gardens ought to be the 'rightful' home of the State's cricket headquarters.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        On Independence Day in 1950, T.C. Longfield, President, Calcutta Cricket Club handed over Eden Gardens to the newly formed National Cricket Club. T.C. Longfield had led Bengal when they won the Ranji Trophy for the first time in 1939.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        In another fine gesture, Ballygunge Cricket Club, in deference to Calcutta Cricket Club, being an older Club, agreed to dissolve itself, after having transferred its lease on the Ballygunge ground to Calcutta Cricket Club. Ballygunge Cricket Club ceased to exist but its traditions remained.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        The Calcutta Football Club, founded in 1872, is the oldest surviving rugby club in the world outside the United Kingdom. Why "football"? At that time, in Britain, rugby and football was synonymous. Interestingly, the Scottish Football Union, formed in 1873, did not alter its name to become the Scottish Rugby Union until 1924.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        By January 1873 as many as 137 members had enrolled. Probably the attraction of a bar that was free to members had something to do with its popularity! Rugby, however, suffered because of the departure of some of the regiments that had kept the game going. By 1877, because of the lack of players the remaining members decided to wind up the Club. Under the stewardship of Captain, Honorary Secretary and Treasurer, G A James Rothney, the Committee decided to donate a trophy made of ornate Indian workmanship to the Rugby Football Union from the available Club funds amounting to pounds 60 sterling. The offer was accepted and even today, every year, England and Scotland play an international rugby match for the "Calcutta Cup".
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        In May 1884, G A James Rothney called a meeting and decided to restart the club because of the arrival of "excellent football material" which had come along with a few regiments. Rugby began in all earnestness and in 1890 the Calcutta Rugby Union Challenge Cup Tournament was inaugurated. A fine silver cup, promptly christened "Calcutta Cup" - was presented by past C F C Presidents. The tournament is played even today on the CCFC ground.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        The revival of the Calcutta Football Club in 1884 coincided with a renewed enthusiasm for soccer amongst Calcutta's expatriates. Three more European football clubs were formed between 1884 and 1889, along with a host of Indian football clubs.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        Although Calcutta Football Club stayed away from Trades Cup, the country's first open football tournament because members felt that their " enjoyment of the sport would be impaired if they join the competitive fray", it was instrumental in instituting the Indian Football Association (IFA) in Calcutta very much on London lines.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        In the initial years of the IFA Shield, CFC had a very creditable record. In 1950 CFC was relegated. Declining membership also took its toll. On 14 May, 1963 CFC partially relinquished its exclusive rights on the Maidan tent and playing field in favour of Mohun Bagan Club and like Calcutta Cricket Club moved to Ballygunge.
+-                                                    </div>
+-                                                    <div class="history-content">
+-                                                        In 1965, it merged with the Calcutta Cricket Club already established there and the Calcutta Cricket and Football Club came into being.
+-                                                    </div>
+-                                                </div>
+-                                            </div>
+-                                                          <div class="col-lg-3">
+-                                                <div class="history-img">
+-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-1.jpg') }}" alt="" />
+-                                                </div>
+-                                                <div class="history-img">
+-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-2.jpg') }}" alt="" />
+-                                                </div>
+-                                                <div class="history-img">
+-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-3.jpg') }}" alt="" />
+-                                                </div>
+-                                                <div class="history-img">
+-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-4.jpg') }}" alt="" />
+-                                                </div>
+-                                                <div class="history-img">
+-                                                    <img class="img-fluid" src="{{ asset('img/history/history-sub-5.jpg') }}" alt="" />
+-                                                </div>
+-                                            </div>
++            <!-- ********|| ADVISE START ||******** -->
++            <section class="history-page">
++                <div class="container">
++                    <div class="row">
++                        <div class="col-lg-12">
++                            <div class="title-sec">
++                                <div class="title">
++                                    HISTORY
++                                </div>
++                            </div>
++                        </div>
++                    </div>
++                    <div class="row">
++                        <div class="col-lg-9">
++                            <div class="history-inner">
++                                @foreach($contentPages as $contentPage)
++                                <div class="history-content">
+ 
+-                                        </div>
+-                                    </div>
+-                                </section>
+-                                <!-- ********|| ADVISE END ||******** -->
++                                    {{$contentPage->excerpt}}
++                                    <!-- In the city of Calcutta, then just over a hundred years old and growing fast both in
++                                    commercial and political significance, the British Raj was busy setting its roots.
++                                    And sports were definitely a part of the social lore. -->
++                                </div>
+ 
+-                                
+-                                
+-                                @include('common.footer')
+-                                <!-- ?php include 'assets/inc/footer.php';?> -->
+-                                
+-                             
+-</body>
++                                @endforeach
++                                <!-- <div class="history-content">
++                                    Indeed, sports events were reckoned to be important enough for sub-continental
++                                    reporters. Fortunately, a copy of the Madras Courier dated 23rd. February, 1792 has
++                                    survived. The paper reported cricket fixtures between the Calcutta Cricket Club and
++                                    Barrackpore and the Calcutta Cricket Club and Dum Dum. Clearly, the Calcutta Cricket
++                                    Club was already in existence in 1792.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    The story of how CC&FC traced its origins is interesting and is preserved in its
++                                    archives thanks to Past President H.J. Moorhouse. It began in 1955 with a letter to
++                                    The Times, London from Alan R. Tait, Honorary Secretary of Oporto Cricket Club in
++                                    Portugal. The Club was celebrating its centenary that year, and Tait claimed that it
++                                    'must be one of the oldest cricket club outside Great Britain'.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    This letter drew a good deal of response from several quarters. Several clubs were
++                                    identified as being older than Oporto. To use a cricketing metaphor, the ball swung
++                                    in Calcutta's favour when one Irwing Rosenwater wrote to the Times about the news
++                                    item in the Madras Courier dated 23rd. February, 1792, mentioned above.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    In the absence of a permanent venue, the Calcutta Cricket Club played its games on
++                                    the esplanade, parallel with the river Hooghly, between Fort William and Government
++                                    House. By the 1820s, the members felt the need for a permanent ground. In 1825, the
++                                    Calcutta Cricket Club managed to obtain the use of a plot of land on the Maidan as
++                                    shown in the accompanying reproduction of the 'Sketch of the Maidan'. In 1841 the
++                                    Club was allowed to enclose the ground by putting a fence around it. The Army,
++                                    garrisoned at Fort William, however saw the Club as an encroacher and was extremely
++                                    suspicious of its alleged motives! They complained to the Chief Magistrate and as a
++                                    result the Club was relocated to the eastern boundary of the Auckland Circus
++                                    Gardens.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    Good times were not to last. In 1862, the Brigadier General Commanding Presidency
++                                    Division wrote to the Quarter Master General that 'open space is preserved, as a
++                                    general rule around forts as a Military precaution. And in 1864 the Club members
++                                    found that a new road was being constructed which would 'cut directly through the
++                                    ground and pass within a few yards of that portion of it on which the match wickets
++                                    are invariably pitched'
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    The Club's 'prayer' to the Governor General was rejected and it had to partially
++                                    relocate to the ground on the eastern end of Eden Gardens, the current location of
++                                    the test venue. The Club made several representations asking for permission to
++                                    'erect a suitable pavilion in the place of the wretched hut now in use'. Finally on
++                                    19 April the long awaited approval arrived. A handsome and well built pavilion
++                                    measuring 125 ft by 25 ft was promptly constructed out of the finest teak brought
++                                    from Burma. It even had a 'Long Room' on the lines of the MCC pavilion at Lords. The
++                                    pavilion no longer exists. It was pulled in the mid 1970s for the construction of
++                                    the Cricket Association of Bengal's modern B.C. Roy Clubhouse.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    The origin of the Ballgunge Cricket Club is a matter of some speculation. Possibly
++                                    the uncertainties regarding playing cricket at Eden Gardens in the 1850s and early
++                                    1860s led the players to form a separate Club in what was then a southern, civilian
++                                    suburb of the city in 1864.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    Ballygunge Cricket Club had some illustrious members. J.D. Guise (1872-1953) played
++                                    for India and MCC. Around the turn of the twentieth century, E.C. Cowdery and A.S.
++                                    Cowdrey played for the Club regularly. EC was the grandfather of Sir Colin Cowdrey,
++                                    England Captain and batsman, who was born in Bangalore.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    In the 1901-02 season there is interesting mention the unusual sport of Bicycle Polo
++                                    a game now known as Cycle Polo, that is still played at CC&FC.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    India found a place on the 'international' cricket map for the first time in 1889-90
++                                    when, at the invitation of the Calcutta Cricket Club, the first ever tour of an
++                                    English Cricket team, led by G.F. Vernon of Middlesex and composed entirely of
++                                    amateurs took place. The first official MCC tour of India was on, thanks entirely to
++                                    the initiative of the Calcutta Cricket Club. Moreover, MCC was to be skippered by
++                                    Arthur Gilligan, the Sussex and England Captain, who was then at the height of his
++                                    fame.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    These tours were also directly responsible for the formation of the Board of Control
++                                    of Cricket in India and paved the way for India to gain Test status. Subsequently
++                                    the Cricket Association of Bengal had also been formed. Dr. B.C. Roy, elected of
++                                    Chief Minister of West Bengal in 1948 felt that in independent India Eden Gardens
++                                    ought to be the 'rightful' home of the State's cricket headquarters.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    On Independence Day in 1950, T.C. Longfield, President, Calcutta Cricket Club handed
++                                    over Eden Gardens to the newly formed National Cricket Club. T.C. Longfield had led
++                                    Bengal when they won the Ranji Trophy for the first time in 1939.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    In another fine gesture, Ballygunge Cricket Club, in deference to Calcutta Cricket
++                                    Club, being an older Club, agreed to dissolve itself, after having transferred its
++                                    lease on the Ballygunge ground to Calcutta Cricket Club. Ballygunge Cricket Club
++                                    ceased to exist but its traditions remained.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    The Calcutta Football Club, founded in 1872, is the oldest surviving rugby club in
++                                    the world outside the United Kingdom. Why "football"? At that time, in Britain,
++                                    rugby and football was synonymous. Interestingly, the Scottish Football Union,
++                                    formed in 1873, did not alter its name to become the Scottish Rugby Union until
++                                    1924.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    By January 1873 as many as 137 members had enrolled. Probably the attraction of a
++                                    bar that was free to members had something to do with its popularity! Rugby,
++                                    however, suffered because of the departure of some of the regiments that had kept
++                                    the game going. By 1877, because of the lack of players the remaining members
++                                    decided to wind up the Club. Under the stewardship of Captain, Honorary Secretary
++                                    and Treasurer, G A James Rothney, the Committee decided to donate a trophy made of
++                                    ornate Indian workmanship to the Rugby Football Union from the available Club funds
++                                    amounting to pounds 60 sterling. The offer was accepted and even today, every year,
++                                    England and Scotland play an international rugby match for the "Calcutta Cup".
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    In May 1884, G A James Rothney called a meeting and decided to restart the club
++                                    because of the arrival of "excellent football material" which had come along with a
++                                    few regiments. Rugby began in all earnestness and in 1890 the Calcutta Rugby Union
++                                    Challenge Cup Tournament was inaugurated. A fine silver cup, promptly christened
++                                    "Calcutta Cup" - was presented by past C F C Presidents. The tournament is played
++                                    even today on the CCFC ground.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    The revival of the Calcutta Football Club in 1884 coincided with a renewed
++                                    enthusiasm for soccer amongst Calcutta's expatriates. Three more European football
++                                    clubs were formed between 1884 and 1889, along with a host of Indian football clubs.
++                                </div> -->
++                                <!-- <div class="history-content">
++                                    Although Calcutta Football Club stayed away from Trades Cup, the country's first
++                                    open football tournament because members felt that their " enjoyment of the sport
++                                    would be impaired if they join the competitive fray", it was instrumental in
++                                    instituting the Indian Football Association (IFA) in Calcutta very much on London
++                                    lines.
++                                </div>
++                                <div class="history-content">
++                                    In the initial years of the IFA Shield, CFC had a very creditable record. In 1950
++                                    CFC was relegated. Declining membership also took its toll. On 14 May, 1963 CFC
++                                    partially relinquished its exclusive rights on the Maidan tent and playing field in
++                                    favour of Mohun Bagan Club and like Calcutta Cricket Club moved to Ballygunge.
++                                </div>
++                                <div class="history-content">
++                                    In 1965, it merged with the Calcutta Cricket Club already established there and the
++                                    Calcutta Cricket and Football Club came into being.
++                                </div> -->
++                            </div>
++                        </div>
++                        <div class="col-lg-3">
++                            @foreach($galleries as $key => $gallery)
+ 
+-</html>
++                            @foreach($gallery->images as $key => $media)
++                            <div class="history-img">
++                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
++                            </div>
++                            @endforeach
++                            @endforeach
++                            <!-- <div class="history-img">
++                                <img class="img-fluid" src="{{ asset('img/history/history-sub-2.jpg') }}" alt="" />
++                            </div>
++                            <div class="history-img">
++                                <img class="img-fluid" src="{{ asset('img/history/history-sub-3.jpg') }}" alt="" />
++                            </div>
++                            <div class="history-img">
++                                <img class="img-fluid" src="{{ asset('img/history/history-sub-4.jpg') }}" alt="" />
++                            </div>
++                            <div class="history-img">
++                                <img class="img-fluid" src="{{ asset('img/history/history-sub-5.jpg') }}" alt="" />
++                            </div> -->
++                        </div>
++
++                    </div>
++                </div>
++            </section>
++            <!-- ********|| ADVISE END ||******** -->
++
++
++
++            @include('common.footer')
++            <!-- ?php include 'assets/inc/footer.php';?> -->
++
++
++            </body>
++
++</html>
+\ No newline at end of file
+diff --git a/routes/web.php b/routes/web.php
+index 8fe5349..aa4baa5 100644
+--- a/routes/web.php
++++ b/routes/web.php
+@@ -34,6 +34,16 @@ Route::get('/past-president', function () {
+ 
+ 
+ 
++Route::get('/history', function () {
++    $contentPages = ContentPage::all();
++    $galleries = Gallery::with(['media'])->get();
++    // $data='Data';
++    return view('history', compact(['contentPages', 'galleries']));
++    
++});
++
++
++
+ 
+ 
+ // Route::redirect('/', '/login');
+@@ -199,9 +209,11 @@ Route::get('/footer', [ContactController::class,'contact']);
+ 
+ Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
+ Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
+-Route::get('/history', function () {
+-    return view('history');
+-});
++
++
++// Route::get('/history', function () {
++//     return view('history');
++// });
+ Route::get('/member-login', function () {
+     return view('member-login');
+ });
+diff --git a/storage/tmp/uploads/620f655419b04_46010315.jpg b/storage/tmp/uploads/620f655419b04_46010315.jpg
+new file mode 100644
+index 0000000000000000000000000000000000000000..fb59829aa19b32df6fc1699114d4f28e8403ccf1
+GIT binary patch
+literal 13010
+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
+Of3N@lntJoJ_J08UbNE>R
+
+literal 0
+HcmV?d00001
+
+-- 
+2.35.1.windows.2
+

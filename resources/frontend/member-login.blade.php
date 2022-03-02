@@ -9,7 +9,7 @@
     <!-- ?php include 'assets/inc/header.php';?> -->
 
     <!-- header -->
-    @include('common.header_aftelogin')
+    @include('common.header_afterlogin')
     <!-- ********|| RIGHT PART START ||******** -->
 
     <div class="col-lg-9 col-md-7 p-0">

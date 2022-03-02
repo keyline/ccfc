@@ -45,4 +45,13 @@ class LoginController extends Controller
             $user->notify(new TwoFactorCodeNotification());
         }
     }
+
+    public function redirectPath()
+    {
+        if (auth()->user()->is_admin) {
+            return route('admin.home');
+        }
+
+        return route('/');
+    }
 }

@@ -19,6 +19,8 @@ use App\Models\Trophy;
 
 use App\Models\Sportsman;
 
+use App\Http\Controllers\Member\HomeController;
+
 use App\Models\Member;
 
 // use App\Models\Title;
@@ -34,6 +36,9 @@ use App\Models\SubCommitteeMember;
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
+    if (session('LoggedMember')) {
+        return redirect()->route('member.dashboard')->with('LoggedMember', session('LoggedMember'));
+    }
     $reciprocalClubs = ReciprocalClub::all();
     $contentPages = ContentPage::all();
     $sportstypes = Sportstype::all();
@@ -51,7 +56,6 @@ Route::get('/past-president', function () {
     $pastPresidents = PastPresident::with(['media'])->get();
     // $data='Data';
     return view('past-president', compact(['pastPresidents']));
-    
 });
 
 
@@ -61,7 +65,6 @@ Route::get('/history', function () {
     $galleries = Gallery::with(['media'])->get();
     // $data='Data';
     return view('history', compact(['contentPages', 'galleries']));
-    
 });
 
 Route::get('/food_beverages', function () {
@@ -70,31 +73,25 @@ Route::get('/food_beverages', function () {
     $contentBlocks = ContentBlock::with(['source_page'])->get();
     // $data='Data';
     return view('food_beverages', compact(['contentPages', 'galleries', 'contentBlocks']));
-    
 });
 
 
 Route::get('/trophies', function () {
-    
     $trophies = Trophy::with(['media'])->get();
     // $data='Data';
     return view('trophies', compact(['trophies']));
-    
 });
 
 
 Route::get('/famous_sportsmen', function () {
-    
     $sportsmen = Sportsman::with(['media'])->get();
     // $data='Data';
     return view('famous_sportsmen', compact(['sportsmen']));
-    
 });
 
 
 
 Route::get('/sports', function () {
-    
     $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
     // $users = User::with(['roles'])->get();
@@ -105,11 +102,9 @@ Route::get('/sports', function () {
 
 
 Route::get('/reciprocal_clubs', function () {
-    
     $reciprocal = ReciprocalClub::with(['media'])->get();
     
     return view('reciprocal_clubs', compact(['reciprocal']));
-    
 });
 
 Route::get('/general_committee', function () {
@@ -118,7 +113,6 @@ Route::get('/general_committee', function () {
     // $committeeNames = CommitteeName::all();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
     return view('general_committee', compact(['committeeMemberMappings','userDetails']));
-    
 });
 
 
@@ -127,7 +121,6 @@ Route::get('/balloting_committee', function () {
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
     return view('balloting_committee', compact(['committeeMemberMappings','userDetails']));
-    
 });
 
 
@@ -136,7 +129,6 @@ Route::get('/sub_committees', function () {
     $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
     return view('sub_committees', compact(['subCommitteeMembers','userDetails']));
-    
 });
 
 
@@ -189,7 +181,7 @@ Route::get('/home', function () {
 
 Auth::routes(['register' => false]);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -326,13 +318,21 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function 
     }
 });
 
-// Route::get('/past-president', function () {
-    //     return view('past-president');
-    // });
+Route::post('/member/check', [HomeController::class, 'checkMember'])->name('member.check');
+Route::get('/member/logout', [HomeController::class, 'logout'])->name('member.logout');
 
-// Route::get('/famous_sportsmen', function () {
-//     return view('famous_sportsmen');
-// });
+
+
+Route::group([
+    'prefix' => 'member',
+    'as' => 'member.',
+    'namespace' => 'Member',
+    'middleware' => ['member']
+], function () {
+    Route::get('/login', [HomeController::class, 'memberLogin'])->name('login');
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+});
+
 
 // Route::get('/reciprocal_clubs', function () {
 //     return view('reciprocal_clubs');
@@ -369,32 +369,24 @@ Route::get('/rules_regulation', function () {
     return view('rules_regulation');
 });
 
-
-
-Route::get('/member-login', function () {
-    return view('member-login');
-});
-// Route::get('/sports', function () {
-//     return view('sports');
-// });
 // Route::get('/gymming-rejuvenated', function () {
-//         return view('gymming-rejuvenated');
-//     });
+//     return view('gymming-rejuvenated');
+// });
 // Route::get('/swimming-pool', function () {
-//         return view('swimming-pool');
-//     });
+//     return view('swimming-pool');
+// });
 // Route::get('/club-bar', function () {
-//         return view('club-bar');
-//     });
+//     return view('club-bar');
+// });
 // Route::get('/pool-pub', function () {
-//         return view('pool-pub');
-//     });
+//     return view('pool-pub');
+// });
 Route::get('/contact-us', function () {
-        return view('contact-us');
-    });
+    return view('contact-us');
+});
 Route::get('/notice-circulars', function () {
-        return view('notice-circulars');
-    });
+    return view('notice-circulars');
+});
 Route::get('/amenities_services', function () {
     return view('amenities_services');
 });
@@ -461,8 +453,7 @@ Route::get('/amenities_services', function () {
     Route::get('/rules_regulation', function () {
         return view('rules_regulation');
     });
-    
-    
+     
     
     Route::get('/member-login', function () {
         return view('member-login');

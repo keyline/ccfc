@@ -1,0 +1,3200 @@
+From d7e757ab149217af39771bda8d7f5a0c188a91dd Mon Sep 17 00:00:00 2001
+From: pranoy <pranoy@keyline.net>
+Date: Fri, 18 Feb 2022 13:11:54 +0530
+Subject: [PATCH 3/5] past president section and activities blade file name
+ change
+
+---
+ .../Admin/PastPresidentController.php         |   2 +-
+ app/Models/Gallery.php                        |   2 +-
+ app/Models/PastPresident.php                  |   2 +-
+ resources/frontend/activities.blade.php       | 374 ----------------
+ .../frontend/common/home_header.blade.php     | 356 ++++++++-------
+ resources/frontend/food_beverages.blade.php   | 413 ++++++++++++++++++
+ resources/frontend/index.blade.php            |  56 ++-
+ resources/frontend/past-president.blade.php   | 363 ++++++++-------
+ resources/lang/en/cruds.php                   |   2 +-
+ .../views/admin/contentPages/create.blade.php | 240 +++++-----
+ .../views/admin/contentPages/index.blade.php  | 215 +++++----
+ .../views/admin/galleries/create.blade.php    | 109 ++---
+ .../admin/pastPresidents/index.blade.php      | 195 +++++----
+ routes/web.php                                |  22 +-
+ .../tmp/uploads/620e0696c3e55_history-4.jpg   | Bin 0 -> 10341 bytes
+ .../tmp/uploads/620e0698ed9d0_history-5.jpg   | Bin 0 -> 9186 bytes
+ 16 files changed, 1284 insertions(+), 1067 deletions(-)
+ delete mode 100644 resources/frontend/activities.blade.php
+ create mode 100644 resources/frontend/food_beverages.blade.php
+ create mode 100644 storage/tmp/uploads/620e0696c3e55_history-4.jpg
+ create mode 100644 storage/tmp/uploads/620e0698ed9d0_history-5.jpg
+
+diff --git a/app/Http/Controllers/Admin/PastPresidentController.php b/app/Http/Controllers/Admin/PastPresidentController.php
+index eedaadb..7b65abb 100644
+--- a/app/Http/Controllers/Admin/PastPresidentController.php
++++ b/app/Http/Controllers/Admin/PastPresidentController.php
+@@ -107,4 +107,4 @@ class PastPresidentController extends Controller
+ 
+         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
+     }
+-}
++}
+\ No newline at end of file
+diff --git a/app/Models/Gallery.php b/app/Models/Gallery.php
+index 10eb4b1..518bf1f 100644
+--- a/app/Models/Gallery.php
++++ b/app/Models/Gallery.php
+@@ -63,4 +63,4 @@ class Gallery extends Model implements HasMedia
+     {
+         return $date->format('Y-m-d H:i:s');
+     }
+-}
++}
+\ No newline at end of file
+diff --git a/app/Models/PastPresident.php b/app/Models/PastPresident.php
+index 594dad3..c496eb0 100644
+--- a/app/Models/PastPresident.php
++++ b/app/Models/PastPresident.php
+@@ -59,4 +59,4 @@ class PastPresident extends Model implements HasMedia
+     {
+         return $date->format('Y-m-d H:i:s');
+     }
+-}
++}
+\ No newline at end of file
+diff --git a/resources/frontend/activities.blade.php b/resources/frontend/activities.blade.php
+deleted file mode 100644
+index 5bffc1e..0000000
+--- a/resources/frontend/activities.blade.php
++++ /dev/null
+@@ -1,374 +0,0 @@
+-<!doctype html>
+-<html lang="en">
+-
+-<head>
+-    <!-- Required meta tags -->
+-    <meta charset="utf-8">
+-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+-
+-<!-- ?php include 'assets/inc/header.php';?> -->
+-
+-<!-- header -->
+-@include('common.home_header')
+-                        <!-- ********|| RIGHT PART START ||******** -->
+-
+-                        <div class="col-lg-9 col-md-7 p-0">
+-                            <div class="right-body">
+-                                <!-- ********|| BANNER PART START ||******** -->
+-                                <section class="banner">
+-
+-                                    <div class="banner-box">
+-
+-                                        <div id="innerpage-banner" class="owl-carousel owl-theme">
+-
+-                                            <div class="item">
+-
+-                                                <div class="about-img">
+-
+-                                                    <img class="img-fluid" src="{{ asset('img/activities/banner-img.jpg') }}" alt="" />
+-
+-                                                </div>
+-
+-                                            </div>
+-
+-                                            <div class="item">
+-
+-                                                <div class="about-img">
+-
+-                                                    <img class="img-fluid" src="{{ asset('img/activities/banner-img2.jpg') }}" alt="" />
+-
+-                                                </div>
+-
+-                                            </div>
+-
+-                                        </div>
+-
+-                                    </div>
+-
+-                                </section>
+-                                <!-- ********|| BANNER PART END ||******** -->
+-
+-                                
+-
+-                                <!-- ********|| ACTIVITIES START ||******** -->
+-                                <section class="history-sec">
+-                                    <div class="container">
+-                                        <div class="row">
+-                                            <div class="col-lg-8">
+-                                                <div class="history-inner">
+-                                                    <div class="title-sec">
+-                                                        <div class="title text-left">
+-                                                            FOOD & BEVERAGES
+-                                                        </div>
+-                                                    </div>
+-                                                    <div class="history-content text-left">
+-                                                        <p>The Club offers a wide range of delicious food in its dining hall along with varieties of snacks in its well-stocked bars, pavilion and sit-out areas.</p>
+-                                                        <p>The club also offers food from its different counters like charcoal-grilled kebabs, quick bites of wraps, burgers, pastas etc. There is also a pastry shop and specialized tea & coffee counters serving wide varieties of tea and coffee.</p>
+-                                                        <p>Apart from sports, the club offers members and guests a wide range of entertainment all-round the year, from open-air music & dancing to traditional gourmet events.</p>
+-                                                        <p>The club also offers excellent banquet facility to the members at the pool pub. It can comfortably accommodate about 60 persons for buffet lunch / dinner, 70 persons for cocktails and about 30 persons for a theatre style meeting. For all catering queries please email catering@ccfc1792.com</p>
+-                                                    </div>
+-                                                    
+-                                                    
+-
+-                                                </div>
+-
+-                                                <!-- ********|| ACTIVITIES Menu END ||******** -->
+-                                                    <div class="activities_menulist_section">
+-                                                        <div class="container">
+-                                                            <div class="row">
+-                                                                <div class="col-md-12 p-0">
+-                                                                    <div class="activities_list_item">
+-                                                                        <div class="activities_list_item_left">
+-                                                                            <div class="activities_list_item_leftinfo">
+-                                                                                <h3>Dining Room Timings</h3>
+-                                                                                <ul>
+-                                                                                    <li>Tuesday to Friday & Sunday 12.30 hrs to 22.45 hrs.</li>
+-                                                                                    <li>Saturday 12 Noon to 23.30 hrs.</li>
+-                                                                                    <li>Monday Closed.</li>
+-                                                                                    <li><strong>Last order will be taken 15 minutes before close.</strong></li>
+-                                                                                </ul>
+-                                                                            </div>
+-                                                                        </div>
+-                                                                        <div class="activities_list_item_right">
+-                                                                            <div class="activities_list_item_right_white">
+-                                                                                <div class="activities_list_item_right_img"><img class="img-fluid" src="{{ asset('img/activities/menu_icon.png') }}" alt="" /></div>
+-                                                                                <button type="button" class="btn" data-toggle="modal" data-target="#activities-dinning">
+-                                                                                    View Menu
+-                                                                                </button>
+-                                                                            </div>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-12 p-0">
+-                                                                    <div class="activities_list_item">
+-                                                                        <div class="activities_list_item_left">
+-                                                                            <div class="activities_list_item_leftinfo">
+-                                                                                <h3>Club Kitchen Timings</h3>
+-                                                                                <ul>
+-                                                                                    <li>Tuesday, Thursday & Friday 3.30 pm to 11.00 pm</li>
+-                                                                                    <li>Wednesday : 3.30 pm to 11.30 pm</li>
+-                                                                                    <li>Saturday: 11.00 am to 1 am</li>
+-                                                                                    <li>Sunday : 11.00 am to 11.00 pm</li>
+-                                                                                    <li><strong>Last order will be taken 30 minutes before close.</strong></li>
+-                                                                                </ul>
+-                                                                            </div>
+-                                                                        </div>
+-                                                                        <div class="activities_list_item_right">
+-                                                                            <div class="activities_list_item_right_white">
+-                                                                                <div class="activities_list_item_right_img"><img class="img-fluid" src="{{ asset('img/activities/menu_icon.png') }}" alt="" /></div>
+-                                                                                <button type="button" class="btn" data-toggle="modal" data-target="#activities-clubkitchen">
+-                                                                                    View Menu
+-                                                                                </button>
+-                                                                            </div>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-12 p-0">
+-                                                                    <div class="activities_list_item">
+-                                                                        <div class="activities_list_item_left">
+-                                                                            <div class="activities_list_item_leftinfo">
+-                                                                                <h3>Counter Timings</h3>
+-                                                                                <ul>
+-                                                                                    <li>Operational on all days i.e.<br>
+-                                                                                        Tuesday to Sunday<br>
+-                                                                                        with the exception of Monday (Club holiday)</li>
+-                                                                                    <li>Between :<br>
+-                                                                                        6.30 am to 8.30 am and 2.30 pm to 8.30 pm
+-                                                                                    </li>
+-                                                                                </ul>
+-                                                                            </div>
+-                                                                        </div>
+-                                                                        <div class="activities_list_item_right">
+-                                                                            <div class="activities_list_item_right_white">
+-                                                                                <div class="activities_list_item_right_img"><img class="img-fluid" src="{{ asset('img/activities/menu_icon.png') }}" alt="" /></div>
+-                                                                                <button type="button" class="btn" data-toggle="modal" data-target="#activities-counter">
+-                                                                                    View Menu
+-                                                                                </button>
+-                                                                            </div>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                            </div>
+-                                                        </div>
+-                                                    </div>
+-
+-                                                <!-- ********|| ACTIVITIES Menu END ||******** -->
+-
+-                                            </div>
+-
+-                                            <div class="col-lg-4">
+-                                                <div class="activites_rightside">
+-                                                    <div class="active_rightimg">
+-                                                        <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_1.jpg') }}" alt="" />
+-                                                    </div>
+-                                                    <div class="active_rightimg">
+-                                                        <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_2.jpg') }}" alt="" />
+-                                                    </div>
+-                                                    <div class="active_rightimg">
+-                                                        <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_3.jpg') }}" alt="" />
+-                                                    </div>
+-                                                    <div class="active_rightimg">
+-                                                        <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_4.jpg') }}" alt="" />
+-                                                    </div>
+-                                                    <div class="active_rightimg">
+-                                                        <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_4.jpg') }}" alt="" />
+-                                                    </div>
+-                                                </div>
+-                                            </div>
+-
+-                                        </div>
+-                                    </div>
+-                                </section>
+-                                <!-- ********|| ACTIVITIES END ||******** -->
+-
+-                                
+-
+-                                
+-                                @include('common.footer')
+-                                <!-- ?php include 'assets/inc/footer.php';?> -->
+-
+-
+-<!-- ********|| ACTIVITIES Menu Modal Start ||******** -->
+-
+-<!-- ******** Dining Room Modal ******* -->
+-<div class="modal fade" id="activities-dinning" tabindex="-1" role="dialog" aria-labelledby="ModalCarouselLabel">
+-    <div class="modal-dialog" role="document">
+-        
+-      <div class="modal-content">
+-        <div class="modal-header">
+-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+-        </div>
+-          <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
+-
+-              <!-- The slideshow -->
+-              <div class="carousel-inner">
+-                <div class="carousel-item active">
+-                  <img src="{{ asset('img/activities/dining-menu-1.jpeg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                  <img src="{{ asset('img/activities/dining-menu-2.jpeg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                  <img src="{{ asset('img/activities/dining-menu-3.jpeg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/dining-menu-4.jpeg') }}" alt="Menu" >
+-                  </div>
+-                  <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/dining-menu-5.jpeg') }}" alt="Menu" >
+-                  </div>
+-                  <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/dining-menu-6.jpeg') }}" alt="Menu" >
+-                  </div>
+-              </div>
+-              
+-              <!-- Left and right controls -->
+-              <a class="carousel-control-prev" href="#demo" data-slide="prev">
+-                <i class="zmdi zmdi-chevron-left"></i>
+-              </a>
+-              <a class="carousel-control-next" href="#demo" data-slide="next">
+-                <i class="zmdi zmdi-chevron-right"></i>
+-              </a>
+-          </div>
+-      </div>
+-    </div>
+-</div>
+-
+-
+-<!-- ******** Club Kitchen Modal ******* -->
+-<div class="modal fade" id="activities-clubkitchen" tabindex="-1" role="dialog" aria-labelledby="ModalCarouselLabel">
+-    <div class="modal-dialog" role="document">
+-        
+-      <div class="modal-content">
+-        <div class="modal-header">
+-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+-        </div>  
+-          <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
+-
+-              <!-- The slideshow -->
+-              <div class="carousel-inner">
+-                <div class="carousel-item active">
+-                  <img src="{{ asset('img/activities/club-kitchen-banner1.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                  <img src="{{ asset('img/activities/club-kitchen-banner2.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                  <img src="{{ asset('img/activities/club-kitchen-banner3.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner4.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner5.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner6.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner7.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner8.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner9.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner10.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner11.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner12.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner13.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner14.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner15.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner16.jpg') }}" alt="Menu" >
+-                </div>
+-                <div class="carousel-item">
+-                    <img src="{{ asset('img/activities/club-kitchen-banner17.jpg') }}" alt="Menu" >
+-                </div>
+-              </div>
+-              
+-              <!-- Left and right controls -->
+-              <a class="carousel-control-prev" href="#demo-clubkitchen" data-slide="prev">
+-                <!--<span class="carousel-control-prev-icon"></span>-->
+-                <i class="zmdi zmdi-chevron-left"></i>
+-              </a>
+-              <a class="carousel-control-next" href="#demo-clubkitchen" data-slide="next">
+-                <!--<span class="carousel-control-next-icon"></span>-->
+-                <i class="zmdi zmdi-chevron-right"></i>
+-              </a>
+-          </div>
+-      </div>
+-    </div>
+-</div>
+-
+-
+-
+-
+-<div class="modal fade" id="activities-dinning1" role="dialog">
+-    <div class="modal-dialog"> 
+-      
+-      <!-- Modal content-->
+-      <div class="modal-content">
+-        <div class="modal-header">
+-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+-          <h4 class="modal-title">Modal Header</h4>
+-        </div>
+-        <div class="modal-body">
+-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> 
+-            <!-- Indicators -->
+-            <ol class="carousel-indicators">
+-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+-              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+-              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+-            </ol>
+-            
+-            <!-- Wrapper for slides -->
+-            <div class="carousel-inner" role="listbox">
+-              <div class="item active">
+-                <img class="img-fluid" src="{{ asset('img/activities/dining-menu-1.jpeg') }}"  alt="" />
+-                <div class="carousel-caption"> .332423 </div>
+-              </div>
+-              <div class="item"> 
+-                <img class="img-fluid" src="{{ asset('img/activities/dining-menu-2.jpeg') }}"  alt="" />
+-                <div class="carousel-caption"> .sdfsd </div>
+-              </div>
+-              ... </div>
+-            
+-            <!-- Controls --> 
+-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+-        </div>
+-        <div class="modal-footer">
+-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+-        </div>
+-      </div>
+-    </div>
+-</div>
+-
+-
+-
+-
+-<!-- ********|| ACTIVITIES Menu Modal End ||******** -->
+- 
+-
+-    
+-    <!-- Modal -->
+-    
+-
+-  
+-
+-</body>
+-
+-</html>
+diff --git a/resources/frontend/common/home_header.blade.php b/resources/frontend/common/home_header.blade.php
+index 333019c..fa7434c 100644
+--- a/resources/frontend/common/home_header.blade.php
++++ b/resources/frontend/common/home_header.blade.php
+@@ -1,16 +1,16 @@
+     <!-- Bootstrap CSS -->
+-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
++    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
++        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+ 
+     <title>CCFC</title>
+ 
+     <style>
+-        :root {
+-            --primaryColor: #be1f24;
+-            --secondaryColor: #c23233;
+-            --trirdColor: #000;
+-            --textColor: #2f2f2f;
+-        }
+-
++:root {
++    --primaryColor: #be1f24;
++    --secondaryColor: #c23233;
++    --trirdColor: #000;
++    --textColor: #2f2f2f;
++}
+     </style>
+ 
+     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+@@ -19,156 +19,180 @@
+     <!------------GOOGLE FONT------------>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
++    <link
++        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
++        rel="stylesheet">
+ 
+     <!------------ZMDI ICON------------>
+-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
++    <link rel="stylesheet"
++        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+     <!------------OWL------------>
+     <link rel="stylesheet" href="{{ asset('owl/owl3.css') }}">
+     <!------------FANCYBOX------------>
+     <link href="{{ asset('fancybox/jquery.fancybox.min.css') }}" rel="stylesheet" type="text/css">
+ 
+-</head>
+-
+-<body>
+-    <!-- ********|| BODY PART START ||******** -->
+-    <section class="ccfc-body">
+-        <div class="container">
+-            <div class="row">
+-                <div class="col-lg-12">
+-                    <div class="row">
+-
+-                        <!-- ********|| LEFT PART START ||******** -->
+-
+-                        <div class="col-lg-3 col-md-5 p-0">
+-                            <header class="header">
+-                                <div class="top-header">
+-                                    <div class="brand">
+-                                        <a href="{{ asset('/') }}" class="logo">
+-                                            <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" title="Home">
+-                                        </a>
+-                                    </div>
+-                                    <div class="member-login">
+-                                        <div class="member-title">
+-                                            Member Login
++    </head>
++
++    <body>
++        <!-- ********|| BODY PART START ||******** -->
++        <section class="ccfc-body">
++            <div class="container">
++                <div class="row">
++                    <div class="col-lg-12">
++                        <div class="row">
++
++                            <!-- ********|| LEFT PART START ||******** -->
++
++                            <div class="col-lg-3 col-md-5 p-0">
++                                <header class="header">
++                                    <div class="top-header">
++                                        <div class="brand">
++                                            <a href="{{ asset('/') }}" class="logo">
++                                                <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt=""
++                                                    title="Home">
++                                            </a>
+                                         </div>
+-                                        <!-- <form> -->
+-                                        <form action="{{ route('login') }}" method="POST">
+-                                        @csrf
+-                                            <div class="form-group">
+-                                                <!-- <input type="text" class="form-control" placeholder="User Name" autocomplete="off"> -->
+-                                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" name="email" value="{{ old('email', null) }}">
+-                                                @if($errors->has('email'))
++                                        <div class="member-login">
++                                            <div class="member-title">
++                                                Member Login
++                                            </div>
++                                            <!-- <form> -->
++                                            <form action="{{ route('login') }}" method="POST">
++                                                @csrf
++                                                <div class="form-group">
++                                                    <!-- <input type="text" class="form-control" placeholder="User Name" autocomplete="off"> -->
++                                                    <input id="email" type="email"
++                                                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
++                                                        required autocomplete="email" autofocus
++                                                        placeholder="{{ trans('global.login_email') }}" name="email"
++                                                        value="{{ old('email', null) }}">
++                                                    @if($errors->has('email'))
+                                                     <div class="invalid-feedback">
+                                                         {{ $errors->first('email') }}
+                                                     </div>
+-                                                @endif
+-                                            </div>
+-                                            <div class="form-group">
+-                                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="{{ trans('global.login_password') }}">
++                                                    @endif
++                                                </div>
++                                                <div class="form-group">
++                                                    <input id="password" type="password"
++                                                        class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
++                                                        name="password" required
++                                                        placeholder="{{ trans('global.login_password') }}">
+ 
+-                                                <!-- <input type="password" class="form-control" placeholder="Password" readonly onfocus="this.removeAttribute('readonly')" onblur="this.setAttribute('readonly')"> -->
+-                                                <!--<input type="password" readonly onfocus="this.removeAttribute('readonly')" onblur="this.setAttribute('readonly')">-->
+-                                                @if($errors->has('password'))
++                                                    <!-- <input type="password" class="form-control" placeholder="Password" readonly onfocus="this.removeAttribute('readonly')" onblur="this.setAttribute('readonly')"> -->
++                                                    <!--<input type="password" readonly onfocus="this.removeAttribute('readonly')" onblur="this.setAttribute('readonly')">-->
++                                                    @if($errors->has('password'))
+                                                     <div class="invalid-feedback">
+                                                         {{ $errors->first('password') }}
+                                                     </div>
+-                                                @endif
+-                                            
+-                                            </div>
+-                                            <div class="form-row">
+-                                                <div class="form-group col-md-4">
+-                                                <button type="submit" class="login-btn">login
+-                                                <!-- {{ __('Log in') }} -->
+-                                                </button>
+-                                                    <!-- <button type="submit" class="login-btn">login</button> -->
++                                                    @endif
++
+                                                 </div>
+-                                                <div class="form-group col-md-8">
+-                                                    <a href="#" class="forgot">Forgot Password?</a>
++                                                <div class="form-row">
++                                                    <div class="form-group col-md-4">
++                                                        <button type="submit" class="login-btn">login
++                                                            <!-- {{ __('Log in') }} -->
++                                                        </button>
++                                                        <!-- <button type="submit" class="login-btn">login</button> -->
++                                                    </div>
++                                                    <div class="form-group col-md-8">
++                                                        <a href="#" class="forgot">Forgot Password?</a>
++                                                    </div>
+                                                 </div>
+-                                            </div>
+-                                        </form>
++                                            </form>
++                                        </div>
+                                     </div>
+-                                </div>
+-                                <div class="topPanel">
+-
+-                                    <div class="nav-inner">
+-                                        <div class="nav-info">
+-                                            <nav class="navbar navbar-light">
+-                                                <ul class="navbar-nav text-uppercase h-md-100">
+-                                                    <li class="nav-item"><a class="nav-link" href="{{ asset('/') }}">Home</a></li>
+-                                                    <li class="nav-item">
+-                                                        <a class="nav-link" href="javascript:void(0)">
+-                                                            About us <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
+-                                                        </a>
+-                                                        <ul class="submenu dropdown-menu">
+-                                                            <li><a href="{{ asset('history') }}">History</a></li>
+-                                                            <li><a href="{{ asset('past-president') }}">Past Presidents</a></li>
+-                                                            <li><a href="#">Trophies</a></li>
+-                                                            <li><a href="#">Famous Sportsmen</a></li>
+-                                                            <li><a href="#">Reciprocal Clubs</a></li>
+-                                                        </ul>
+-                                                    </li>
+-                                                    <li class="nav-item">
+-                                                        <a class="nav-link" href="javascript:void(0)">
+-                                                            MANAGEMENT <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
+-                                                        </a>
+-                                                        <ul class="submenu dropdown-menu">
+-                                                            <li class="nav-item">
+-                                                                <a class="nav-link" href="javascript:void(0)">
+-                                                                    Committees <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
+-                                                                </a>
+-                                                                <ul class="submenu dropdown-menu">
+-                                                                    <li><a href="#">General Committee</a></li>
+-                                                                    <li><a href="#">Balloting Committee</a></li>
+-                                                                    <li><a href="#">Sub-Committees</a></li>
+-                                                                </ul>
+-                                                            </li>
+-                                                            <li class="nav-item">
+-                                                                <a class="nav-link" href="#">President's Corner</a>
+-                                                            </li>
+-                                                            <li class="nav-item">
+-                                                                <a class="nav-link" href="#">Annual report </a>
+-                                                            </li>
+-                                                        </ul>
+-                                                    </li>
+-                                                    <li class="nav-item">
+-                                                        <a class="nav-link" href="javascript:void(0)">
+-                                                            ACTIVITIES <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
+-                                                        </a>
+-                                                        <ul class="submenu dropdown-menu">
+-                                                            <li><a class="nav-link" href="{{ asset('activities') }}">Amenities & Services</a></li>
+-                                                            <li><a class="nav-link" href="#">Sports</a></li>
+-                                                        </ul>
+-                                                    </li>
+-                                                    <li class="nav-item">
+-                                                        <a class="nav-link" href="javascript:void(0)">
+-                                                            Members area <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
+-                                                        </a>
+-                                                        <ul class="submenu dropdown-menu">
+-                                                            <li><a class="nav-link" href="#">Member dashboard</a></li>
+-                                                            <li><a class="nav-link" href="#">Events (Members only)</a></li>
+-                                                            <li><a class="nav-link" href="#">News(Members only) </a></li>
+-                                                            <li><a class="nav-link" href="#">Rules & Regulations (Members only)</a></li>
+-                                                        </ul>
+-                                                    </li>
+-                                                    <li class="nav-item">
+-                                                        <a class="nav-link" href="javascript:void(0)">Gallery</a>
+-                                                    </li>
+-
+-                                                    <li class="nav-item">
+-                                                        <a class="nav-link" href="javascript:void(0)">Contact Us</a>
+-                                                    </li>
+-                                                </ul>
+-
+-                                                <!--                                                    </div>-->
+-                                            </nav>
++                                    <div class="topPanel">
++
++                                        <div class="nav-inner">
++                                            <div class="nav-info">
++                                                <nav class="navbar navbar-light">
++                                                    <ul class="navbar-nav text-uppercase h-md-100">
++                                                        <li class="nav-item"><a class="nav-link"
++                                                                href="{{ asset('/') }}">Home</a></li>
++                                                        <li class="nav-item">
++                                                            <a class="nav-link" href="javascript:void(0)">
++                                                                About us <span class="submenu_arrow"><i
++                                                                        class="zmdi zmdi-chevron-right"></i></span>
++                                                            </a>
++                                                            <ul class="submenu dropdown-menu">
++                                                                <li><a href="{{ asset('history') }}">History</a></li>
++                                                                <li><a href="{{ asset('past-president') }}">Past
++                                                                        Presidents</a></li>
++                                                                <li><a href="#">Trophies</a></li>
++                                                                <li><a href="#">Famous Sportsmen</a></li>
++                                                                <li><a href="#">Reciprocal Clubs</a></li>
++                                                            </ul>
++                                                        </li>
++                                                        <li class="nav-item">
++                                                            <a class="nav-link" href="javascript:void(0)">
++                                                                MANAGEMENT <span class="submenu_arrow"><i
++                                                                        class="zmdi zmdi-chevron-right"></i></span>
++                                                            </a>
++                                                            <ul class="submenu dropdown-menu">
++                                                                <li class="nav-item">
++                                                                    <a class="nav-link" href="javascript:void(0)">
++                                                                        Committees <span class="submenu_arrow"><i
++                                                                                class="zmdi zmdi-chevron-right"></i></span>
++                                                                    </a>
++                                                                    <ul class="submenu dropdown-menu">
++                                                                        <li><a href="#">General Committee</a></li>
++                                                                        <li><a href="#">Balloting Committee</a></li>
++                                                                        <li><a href="#">Sub-Committees</a></li>
++                                                                    </ul>
++                                                                </li>
++                                                                <li class="nav-item">
++                                                                    <a class="nav-link" href="#">President's Corner</a>
++                                                                </li>
++                                                                <li class="nav-item">
++                                                                    <a class="nav-link" href="#">Annual report </a>
++                                                                </li>
++                                                            </ul>
++                                                        </li>
++                                                        <li class="nav-item">
++                                                            <a class="nav-link" href="javascript:void(0)">
++                                                                ACTIVITIES <span class="submenu_arrow"><i
++                                                                        class="zmdi zmdi-chevron-right"></i></span>
++                                                            </a>
++                                                            <ul class="submenu dropdown-menu">
++                                                                <li><a class="nav-link"
++                                                                        href="{{ asset('food_beverages') }}">Amenities &
++                                                                        Services</a></li>
++                                                                <li><a class="nav-link" href="#">Sports</a></li>
++                                                            </ul>
++                                                        </li>
++                                                        <li class="nav-item">
++                                                            <a class="nav-link" href="javascript:void(0)">
++                                                                Members area <span class="submenu_arrow"><i
++                                                                        class="zmdi zmdi-chevron-right"></i></span>
++                                                            </a>
++                                                            <ul class="submenu dropdown-menu">
++                                                                <li><a class="nav-link" href="#">Member dashboard</a>
++                                                                </li>
++                                                                <li><a class="nav-link" href="#">Events (Members
++                                                                        only)</a></li>
++                                                                <li><a class="nav-link" href="#">News(Members only) </a>
++                                                                </li>
++                                                                <li><a class="nav-link" href="#">Rules & Regulations
++                                                                        (Members only)</a></li>
++                                                            </ul>
++                                                        </li>
++                                                        <li class="nav-item">
++                                                            <a class="nav-link" href="javascript:void(0)">Gallery</a>
++                                                        </li>
++
++                                                        <li class="nav-item">
++                                                            <a class="nav-link" href="javascript:void(0)">Contact Us</a>
++                                                        </li>
++                                                    </ul>
++
++                                                    <!--                                                    </div>-->
++                                                </nav>
+ 
++                                            </div>
+                                         </div>
+                                     </div>
+-                                </div>
+-                                <div class="ccfc-location">
+-                                    <!--<div class="ccfc-location-inner">
++                                    <div class="ccfc-location">
++                                        <!--<div class="ccfc-location-inner">
+                                         <ul>
+                                             <li>
+                                                 <i class="zmdi zmdi-phone-in-talk"></i>
+@@ -182,7 +206,7 @@
+                                             </li>
+                                         </ul>
+                                     </div>-->
+-                                    <!--<div class="ccfc-social">
++                                        <!--<div class="ccfc-social">
+                                         <ul>
+                                             <li>
+                                                 <a href="#" class="social-icon">
+@@ -216,7 +240,7 @@
+                                             </li>
+                                         </ul>
+                                     </div>-->
+-                                    <!--<div class="copy-part">
++                                        <!--<div class="copy-part">
+                                         <div class="copy-title">
+                                             Copyright © 2022 The CC&FC Club at Kolkata All Rights Reserved.
+                                         </div>
+@@ -224,29 +248,31 @@
+                                             Design & Developed by<a href="#" class="keyline"> KEYLINE</a>
+                                         </div>
+                                     </div>-->
+-                                </div>
+-                            </header>
+-                        </div>
+-                        <!-- ********|| LEFT PART END ||******** -->
+-      
+-      
+-      
+-      
+-<div class="site_righticon">
+-    <ul>
+-        <li>
+-            <i class="zmdi zmdi-phone-in-talk"></i>
+-            <div class="slider">
+-                <p><a href="tell:033 24615060" class="ccfc-icon">033 24615060</a>
+-                <span>/</span>
+-                <a href="tell:033 24615059" class="ccfc-icon">24615059</a></p>
+-          </div>
+-        </li>
+-        <li>
+-            <i class="zmdi zmdi-email mail"></i>
+-            <div class="slider">
+-                <p><a href="mailto:ccfcsecretary@ccfc1792.com" class="ccfc-icon">ccfcsecretary@ccfc1792.com</a></p>
+-            </div>
+-        </li>
+-    </ul>
+-</div>
+\ No newline at end of file
++                                    </div>
++                                </header>
++                            </div>
++                            <!-- ********|| LEFT PART END ||******** -->
++
++
++
++
++                            <div class="site_righticon">
++                                <ul>
++                                    <li>
++                                        <i class="zmdi zmdi-phone-in-talk"></i>
++                                        <div class="slider">
++                                            <p><a href="tell:033 24615060" class="ccfc-icon">033 24615060</a>
++                                                <span>/</span>
++                                                <a href="tell:033 24615059" class="ccfc-icon">24615059</a>
++                                            </p>
++                                        </div>
++                                    </li>
++                                    <li>
++                                        <i class="zmdi zmdi-email mail"></i>
++                                        <div class="slider">
++                                            <p><a href="mailto:ccfcsecretary@ccfc1792.com"
++                                                    class="ccfc-icon">ccfcsecretary@ccfc1792.com</a></p>
++                                        </div>
++                                    </li>
++                                </ul>
++                            </div>
+\ No newline at end of file
+diff --git a/resources/frontend/food_beverages.blade.php b/resources/frontend/food_beverages.blade.php
+new file mode 100644
+index 0000000..d15de83
+--- /dev/null
++++ b/resources/frontend/food_beverages.blade.php
+@@ -0,0 +1,413 @@
++<!doctype html>
++<html lang="en">
++
++<head>
++    <!-- Required meta tags -->
++    <meta charset="utf-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
++
++    <!-- ?php include 'assets/inc/header.php';?> -->
++
++    <!-- header -->
++    @include('common.home_header')
++    <!-- ********|| RIGHT PART START ||******** -->
++
++    <div class="col-lg-9 col-md-7 p-0">
++        <div class="right-body">
++            <!-- ********|| BANNER PART START ||******** -->
++            <section class="banner">
++
++                <div class="banner-box">
++
++                    <div id="innerpage-banner" class="owl-carousel owl-theme">
++
++                        <div class="item">
++
++                            <div class="about-img">
++
++                                <img class="img-fluid" src="{{ asset('img/activities/banner-img.jpg') }}" alt="" />
++
++                            </div>
++
++                        </div>
++
++                        <div class="item">
++
++                            <div class="about-img">
++
++                                <img class="img-fluid" src="{{ asset('img/activities/banner-img2.jpg') }}" alt="" />
++
++                            </div>
++
++                        </div>
++
++                    </div>
++
++                </div>
++
++            </section>
++            <!-- ********|| BANNER PART END ||******** -->
++
++
++
++            <!-- ********|| ACTIVITIES START ||******** -->
++            <section class="history-sec">
++                <div class="container">
++                    <div class="row">
++                        <div class="col-lg-8">
++                            <div class="history-inner">
++                                <div class="title-sec">
++                                    <div class="title text-left">
++                                        FOOD & BEVERAGES
++                                    </div>
++                                </div>
++                                <div class="history-content text-left">
++                                    <p>The Club offers a wide range of delicious food in its dining hall along with
++                                        varieties of snacks in its well-stocked bars, pavilion and sit-out areas.</p>
++                                    <p>The club also offers food from its different counters like charcoal-grilled
++                                        kebabs, quick bites of wraps, burgers, pastas etc. There is also a pastry shop
++                                        and specialized tea & coffee counters serving wide varieties of tea and coffee.
++                                    </p>
++                                    <p>Apart from sports, the club offers members and guests a wide range of
++                                        entertainment all-round the year, from open-air music & dancing to traditional
++                                        gourmet events.</p>
++                                    <p>The club also offers excellent banquet facility to the members at the pool pub.
++                                        It can comfortably accommodate about 60 persons for buffet lunch / dinner, 70
++                                        persons for cocktails and about 30 persons for a theatre style meeting. For all
++                                        catering queries please email catering@ccfc1792.com</p>
++                                </div>
++
++
++
++                            </div>
++
++                            <!-- ********|| ACTIVITIES Menu END ||******** -->
++                            <div class="activities_menulist_section">
++                                <div class="container">
++                                    <div class="row">
++                                        <div class="col-md-12 p-0">
++                                            <div class="activities_list_item">
++                                                <div class="activities_list_item_left">
++                                                    <div class="activities_list_item_leftinfo">
++                                                        <h3>Dining Room Timings</h3>
++                                                        <ul>
++                                                            <li>Tuesday to Friday & Sunday 12.30 hrs to 22.45 hrs.</li>
++                                                            <li>Saturday 12 Noon to 23.30 hrs.</li>
++                                                            <li>Monday Closed.</li>
++                                                            <li><strong>Last order will be taken 15 minutes before
++                                                                    close.</strong></li>
++                                                        </ul>
++                                                    </div>
++                                                </div>
++                                                <div class="activities_list_item_right">
++                                                    <div class="activities_list_item_right_white">
++                                                        <div class="activities_list_item_right_img"><img
++                                                                class="img-fluid"
++                                                                src="{{ asset('img/activities/menu_icon.png') }}"
++                                                                alt="" /></div>
++                                                        <button type="button" class="btn" data-toggle="modal"
++                                                            data-target="#activities-dinning">
++                                                            View Menu
++                                                        </button>
++                                                    </div>
++                                                </div>
++                                            </div>
++                                        </div>
++                                        <div class="col-md-12 p-0">
++                                            <div class="activities_list_item">
++                                                <div class="activities_list_item_left">
++                                                    <div class="activities_list_item_leftinfo">
++                                                        <h3>Club Kitchen Timings</h3>
++                                                        <ul>
++                                                            <li>Tuesday, Thursday & Friday 3.30 pm to 11.00 pm</li>
++                                                            <li>Wednesday : 3.30 pm to 11.30 pm</li>
++                                                            <li>Saturday: 11.00 am to 1 am</li>
++                                                            <li>Sunday : 11.00 am to 11.00 pm</li>
++                                                            <li><strong>Last order will be taken 30 minutes before
++                                                                    close.</strong></li>
++                                                        </ul>
++                                                    </div>
++                                                </div>
++                                                <div class="activities_list_item_right">
++                                                    <div class="activities_list_item_right_white">
++                                                        <div class="activities_list_item_right_img"><img
++                                                                class="img-fluid"
++                                                                src="{{ asset('img/activities/menu_icon.png') }}"
++                                                                alt="" /></div>
++                                                        <button type="button" class="btn" data-toggle="modal"
++                                                            data-target="#activities-clubkitchen">
++                                                            View Menu
++                                                        </button>
++                                                    </div>
++                                                </div>
++                                            </div>
++                                        </div>
++                                        <div class="col-md-12 p-0">
++                                            <div class="activities_list_item">
++                                                <div class="activities_list_item_left">
++                                                    <div class="activities_list_item_leftinfo">
++                                                        <h3>Counter Timings</h3>
++                                                        <ul>
++                                                            <li>Operational on all days i.e.<br>
++                                                                Tuesday to Sunday<br>
++                                                                with the exception of Monday (Club holiday)</li>
++                                                            <li>Between :<br>
++                                                                6.30 am to 8.30 am and 2.30 pm to 8.30 pm
++                                                            </li>
++                                                        </ul>
++                                                    </div>
++                                                </div>
++                                                <div class="activities_list_item_right">
++                                                    <div class="activities_list_item_right_white">
++                                                        <div class="activities_list_item_right_img"><img
++                                                                class="img-fluid"
++                                                                src="{{ asset('img/activities/menu_icon.png') }}"
++                                                                alt="" /></div>
++                                                        <button type="button" class="btn" data-toggle="modal"
++                                                            data-target="#activities-counter">
++                                                            View Menu
++                                                        </button>
++                                                    </div>
++                                                </div>
++                                            </div>
++                                        </div>
++                                    </div>
++                                </div>
++                            </div>
++
++                            <!-- ********|| ACTIVITIES Menu END ||******** -->
++
++                        </div>
++
++                        <div class="col-lg-4">
++                            <div class="activites_rightside">
++                                <div class="active_rightimg">
++                                    <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_1.jpg') }}"
++                                        alt="" />
++                                </div>
++                                <div class="active_rightimg">
++                                    <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_2.jpg') }}"
++                                        alt="" />
++                                </div>
++                                <div class="active_rightimg">
++                                    <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_3.jpg') }}"
++                                        alt="" />
++                                </div>
++                                <div class="active_rightimg">
++                                    <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_4.jpg') }}"
++                                        alt="" />
++                                </div>
++                                <div class="active_rightimg">
++                                    <img class="img-fluid" src="{{ asset('img/activities/right_sideimage_4.jpg') }}"
++                                        alt="" />
++                                </div>
++                            </div>
++                        </div>
++
++                    </div>
++                </div>
++            </section>
++            <!-- ********|| ACTIVITIES END ||******** -->
++
++
++
++
++            @include('common.footer')
++            <!-- ?php include 'assets/inc/footer.php';?> -->
++
++
++            <!-- ********|| ACTIVITIES Menu Modal Start ||******** -->
++
++            <!-- ******** Dining Room Modal ******* -->
++            <div class="modal fade" id="activities-dinning" tabindex="-1" role="dialog"
++                aria-labelledby="ModalCarouselLabel">
++                <div class="modal-dialog" role="document">
++
++                    <div class="modal-content">
++                        <div class="modal-header">
++                            <button type="button" class="close" data-dismiss="modal">&times;</button>
++                        </div>
++                        <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
++
++                            <!-- The slideshow -->
++                            <div class="carousel-inner">
++                                <div class="carousel-item active">
++                                    <img src="{{ asset('img/activities/dining-menu-1.jpeg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/dining-menu-2.jpeg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/dining-menu-3.jpeg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/dining-menu-4.jpeg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/dining-menu-5.jpeg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/dining-menu-6.jpeg') }}" alt="Menu">
++                                </div>
++                            </div>
++
++                            <!-- Left and right controls -->
++                            <a class="carousel-control-prev" href="#demo" data-slide="prev">
++                                <i class="zmdi zmdi-chevron-left"></i>
++                            </a>
++                            <a class="carousel-control-next" href="#demo" data-slide="next">
++                                <i class="zmdi zmdi-chevron-right"></i>
++                            </a>
++                        </div>
++                    </div>
++                </div>
++            </div>
++
++
++            <!-- ******** Club Kitchen Modal ******* -->
++            <div class="modal fade" id="activities-clubkitchen" tabindex="-1" role="dialog"
++                aria-labelledby="ModalCarouselLabel">
++                <div class="modal-dialog" role="document">
++
++                    <div class="modal-content">
++                        <div class="modal-header">
++                            <button type="button" class="close" data-dismiss="modal">&times;</button>
++                        </div>
++                        <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
++
++                            <!-- The slideshow -->
++                            <div class="carousel-inner">
++                                <div class="carousel-item active">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner1.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner2.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner3.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner4.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner5.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner6.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner7.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner8.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner9.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner10.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner11.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner12.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner13.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner14.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner15.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner16.jpg') }}" alt="Menu">
++                                </div>
++                                <div class="carousel-item">
++                                    <img src="{{ asset('img/activities/club-kitchen-banner17.jpg') }}" alt="Menu">
++                                </div>
++                            </div>
++
++                            <!-- Left and right controls -->
++                            <a class="carousel-control-prev" href="#demo-clubkitchen" data-slide="prev">
++                                <!--<span class="carousel-control-prev-icon"></span>-->
++                                <i class="zmdi zmdi-chevron-left"></i>
++                            </a>
++                            <a class="carousel-control-next" href="#demo-clubkitchen" data-slide="next">
++                                <!--<span class="carousel-control-next-icon"></span>-->
++                                <i class="zmdi zmdi-chevron-right"></i>
++                            </a>
++                        </div>
++                    </div>
++                </div>
++            </div>
++
++
++
++
++            <div class="modal fade" id="activities-dinning1" role="dialog">
++                <div class="modal-dialog">
++
++                    <!-- Modal content-->
++                    <div class="modal-content">
++                        <div class="modal-header">
++                            <button type="button" class="close" data-dismiss="modal">&times;</button>
++                            <h4 class="modal-title">Modal Header</h4>
++                        </div>
++                        <div class="modal-body">
++                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
++                                <!-- Indicators -->
++                                <ol class="carousel-indicators">
++                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
++                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
++                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
++                                </ol>
++
++                                <!-- Wrapper for slides -->
++                                <div class="carousel-inner" role="listbox">
++                                    <div class="item active">
++                                        <img class="img-fluid" src="{{ asset('img/activities/dining-menu-1.jpeg') }}"
++                                            alt="" />
++                                        <div class="carousel-caption"> .332423 </div>
++                                    </div>
++                                    <div class="item">
++                                        <img class="img-fluid" src="{{ asset('img/activities/dining-menu-2.jpeg') }}"
++                                            alt="" />
++                                        <div class="carousel-caption"> .sdfsd </div>
++                                    </div>
++                                    ...
++                                </div>
++
++                                <!-- Controls -->
++                                <a class="left carousel-control" href="#carousel-example-generic" role="button"
++                                    data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
++                                        aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a
++                                    class="right carousel-control" href="#carousel-example-generic" role="button"
++                                    data-slide="next"> <span class="glyphicon glyphicon-chevron-right"
++                                        aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
++                            </div>
++                        </div>
++                        <div class="modal-footer">
++                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
++                        </div>
++                    </div>
++                </div>
++            </div>
++
++
++
++
++            <!-- ********|| ACTIVITIES Menu Modal End ||******** -->
++
++
++
++            <!-- Modal -->
++
++
++
++
++            </body>
++
++</html>
+\ No newline at end of file
+diff --git a/resources/frontend/index.blade.php b/resources/frontend/index.blade.php
+index 305288a..dd126b0 100644
+--- a/resources/frontend/index.blade.php
++++ b/resources/frontend/index.blade.php
+@@ -6,6 +6,14 @@
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
++
++
++    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
++    <style>
++    #more {
++        display: none;
++    }
++    </style>
+     <!-- ?php include 'assets/inc/header.php';?> -->
+ 
+     <!-- header -->
+@@ -79,20 +87,25 @@
+                                         HISTORY
+                                     </div>
+                                 </div>
+-                                <!-- dynamic part starts -->
+-                                @foreach($contentPages as $contentPage)
+-                                <div class="history-content">
+-                                    {{$contentPage->excerpt}}
+-                                </div>
+ 
+ 
+-                                <div class="history-content">
+-                                    <!-- {{$contentPage->excerpt}} -->
+-                                    <!-- Indeed, sports events were reckoned to be important enough for sub-continental reporters. Fortunately, a copy of the Madras Courier dated 23rd. February, 1792 has survived. The paper reported cricket fixtures between the Calcutta Cricket Club and Barrackpore and the Calcutta Cricket Club and Dum Dum. Clearly, the Calcutta Cricket Club was already in existence in 1792. -->
+-                                </div>
+-                                @endforeach
+                                 <div class="history-action">
+-                                    <a href="#" class="read-btn">+ Read More</a>
++                                    <div class="history-content">
++
++                                        @foreach($contentPages as $contentPage)
++
++                                        <p class="ArticleBody">
++                                            {!! \Illuminate\Support\Str::limit(($contentPage->excerpt), 300, '') !!}
++                                            @if (strlen($contentPage->excerpt) > 300)
++                                            <span id="dots">...</span>
++                                            <span id="more"
++                                                style="display:none;">{{ substr($contentPage->excerpt, 300) }}</span>
++                                            <a class="read-btn" onclick="myFunction()" id="myBtn">+ Read More</a>
++                                            @endif
++
++                                            @endforeach
++                                    </div>
++
+                                 </div>
+ 
+                             </div>
+@@ -171,7 +184,8 @@
+                                                         hall along with varieties of snacks...
+                                                     </div>
+                                                     <div class="services-action">
+-                                                        <a href="#" class="read-btn">+ Read More</a>
++                                                        <a href="{{ asset('food_beverages') }}" class="read-btn">+ Read
++                                                            More</a>
+                                                     </div>
+                                                 </div>
+                                             </div>
+@@ -664,6 +678,24 @@
+                                     </div>
+ -->
+             </section>
++
++            <script>
++            function myFunction() {
++                var dots = document.getElementById("dots");
++                var moreText = document.getElementById("more");
++                var btnText = document.getElementById("myBtn");
++
++                if (dots.style.display === "none") {
++                    dots.style.display = "inline";
++                    btnText.innerHTML = "+ Read more";
++                    moreText.style.display = "none";
++                } else {
++                    dots.style.display = "none";
++                    btnText.innerHTML = "- Read less";
++                    moreText.style.display = "inline";
++                }
++            }
++            </script>
+             <!-- ********|| CONTACT END ||******** -->
+             @include('common.footer')
+             <!-- ?php include 'assets/inc/footer.php';?> -->
+diff --git a/resources/frontend/past-president.blade.php b/resources/frontend/past-president.blade.php
+index 5aed085..86526f4 100644
+--- a/resources/frontend/past-president.blade.php
++++ b/resources/frontend/past-president.blade.php
+@@ -6,199 +6,230 @@
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+-<!-- ?php include 'assets/inc/header.php';?> -->
++    <!-- ?php include 'assets/inc/header.php';?> -->
+ 
+-<!-- header -->
+-@include('common.home_header')
+-                        <!-- ********|| RIGHT PART START ||******** -->
++    <!-- header -->
++    @include('common.home_header')
++    <!-- ********|| RIGHT PART START ||******** -->
+ 
+-                        <div class="col-lg-9 col-md-7 p-0">
+-                            <div class="right-body">
+-                                <!-- ********|| BANNER PART START ||******** -->
+-                                <section class="banner">
++    <div class="col-lg-9 col-md-7 p-0">
++        <div class="right-body">
++            <!-- ********|| BANNER PART START ||******** -->
++            <section class="banner">
+ 
+-                                    <div class="banner-box">
++                <div class="banner-box">
+ 
+-                                        <div id="innerpage-banner" class="owl-carousel owl-theme">
++                    <div id="innerpage-banner" class="owl-carousel owl-theme">
+ 
+-                                            <div class="item">
++                        <div class="item">
+ 
+-                                                <div class="about-img">
++                            <div class="about-img">
+ 
+-                                                    <img class="img-fluid" src="{{ asset('img/past-president/banner1.jpg') }}" alt="" />
++                                <img class="img-fluid" src="{{ asset('img/past-president/banner1.jpg') }}" alt="" />
+ 
+-                                                </div>
++                            </div>
+ 
+-                                            </div>
++                        </div>
+ 
+-                                            <div class="item">
++                        <div class="item">
+ 
+-                                                <div class="about-img">
++                            <div class="about-img">
+ 
+-                                                    <img class="img-fluid" src="{{ asset('img/past-president/banner2.jpg') }}" alt="" />
++                                <img class="img-fluid" src="{{ asset('img/past-president/banner2.jpg') }}" alt="" />
+ 
+-                                                </div>
++                            </div>
+ 
+-                                            </div>
++                        </div>
+ 
+-                                        </div>
++                    </div>
+ 
+-                                    </div>
++                </div>
++
++            </section>
++            <!-- ********|| BANNER PART END ||******** -->
+ 
+-                                </section>
+-                                <!-- ********|| BANNER PART END ||******** -->
+ 
+-                                
+ 
+-                                <!-- ********|| HISTORY START ||******** -->
+-                                <section class="history-sec">
+-                                    <div class="container">
++            <!-- ********|| HISTORY START ||******** -->
++            <section class="history-sec">
++                <div class="container">
++                    <div class="row">
++                        <div class="col-lg-12">
++                            <div class="history-inner">
++                                <div class="title-sec">
++                                    <div class="title text-left">
++                                        Past Presidents
++                                    </div>
++                                </div>
++
++                                <div class="pastpresident_imagebox">
++                                    <div class="pastpresident_item">
+                                         <div class="row">
+-                                            <div class="col-lg-12">
+-                                                <div class="history-inner">
+-                                                    <div class="title-sec">
+-                                                        <div class="title text-left">
+-                                                            Past Presidents
+-                                                        </div>
+-                                                    </div>
+-
+-                                                    <div class="pastpresident_imagebox">
+-                                                        <div class="pastpresident_item">
+-                                                            <div class="row">
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame">
+-                                                                        <img src="{{ asset('img/past-president/frame.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/2a.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/frame.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/4.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame">
+-                                                                        <img src="{{ asset('img/past-president/5.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/6.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/frame.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/p1.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame">
+-                                                                        <img src="{{ asset('img/past-president/frame.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/p2.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/frame.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                                <div class="col-md-6 col-lg-3">
+-                                                                    <div class="pastpresdit_inner teamMember">
+-                                                                        <div class="photoFrame"><img src="{{ asset('img/past-president/p1.jpg') }}" alt=""></div>
+-                                                                        <div class="passtpredi_name">
+-                                                                            <h2>Mr. R. B. Lagden</h2>
+-                                                                            <p>Mr. R. B. Lagden</p>
+-                                                                        </div>
+-                                                                    </div>
+-                                                                </div>
+-                                                            </div>
+-                                                            
+-                                                            
+-                                                            
+-                                                        </div>
++
++                                            <!-- @php
++                                            var_dump($pastPresidents)
++                                            @endphp -->
++
++
++
++                                            @foreach($pastPresidents as $past)
++
++
++                                            <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    @if($past->image)
++                                                    <div class="photoFrame">
++                                                        <img src="{{ $past->image->getUrl('') }}" alt="">
+                                                     </div>
++                                                    @endif
++                                                    <div class="passtpredi_name">
++                                                        <h2>{{$past->name}}</h2>
++                                                        <p>{{$past->duration}}</p>
+ 
++                                                    </div>
+                                                 </div>
+-                                                
+                                             </div>
+ 
++                                            @endforeach
++
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame"><img
++                                                            src="{{ asset('img/past-president/2a.jpg') }}" alt=""></div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame"><img
++                                                            src="{{ asset('img/past-president/frame.jpg') }}" alt="">
++                                                    </div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame"><img
++                                                            src="{{ asset('img/past-president/4.jpg') }}" alt=""></div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame">
++                                                        <img src="{{ asset('img/past-president/5.jpg') }}" alt="">
++                                                    </div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame"><img
++                                                            src="{{ asset('img/past-president/6.jpg') }}" alt=""></div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame"><img
++                                                            src="{{ asset('img/past-president/frame.jpg') }}" alt="">
++                                                    </div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame"><img
++                                                            src="{{ asset('img/past-president/p1.jpg') }}" alt=""></div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame">
++                                                        <img src="{{ asset('img/past-president/frame.jpg') }}" alt="">
++                                                    </div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame"><img
++                                                            src="{{ asset('img/past-president/p2.jpg') }}" alt=""></div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame"><img
++                                                            src="{{ asset('img/past-president/frame.jpg') }}" alt="">
++                                                    </div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
++                                            <!-- <div class="col-md-6 col-lg-3">
++                                                <div class="pastpresdit_inner teamMember">
++                                                    <div class="photoFrame"><img
++                                                            src="{{ asset('img/past-president/p1.jpg') }}" alt=""></div>
++                                                    <div class="passtpredi_name">
++                                                        <h2>Mr. R. B. Lagden</h2>
++                                                        <p>Mr. R. B. Lagden</p>
++                                                    </div>
++                                                </div>
++                                            </div> -->
+                                         </div>
++
++
++
+                                     </div>
+-                                </section>
+-                                <!-- ********|| HISTORY END ||******** -->
++                                </div>
++
++                            </div>
++
++                        </div>
++
++                    </div>
++                </div>
++            </section>
++            <!-- ********|| HISTORY END ||******** -->
++
++
++
++
++            @include('common.footer')
++            <!-- ?php include 'assets/inc/footer.php';?> -->
+ 
+-                                
+ 
+-                                
+-                                @include('common.footer')
+-                                <!-- ?php include 'assets/inc/footer.php';?> -->
+-                                
+-                             
+-</body>
++            </body>
+ 
+-</html>
++</html>
+\ No newline at end of file
+diff --git a/resources/lang/en/cruds.php b/resources/lang/en/cruds.php
+index b25f873..5a7a6c6 100644
+--- a/resources/lang/en/cruds.php
++++ b/resources/lang/en/cruds.php
+@@ -473,4 +473,4 @@ return [
+             'deleted_at_helper' => ' ',
+         ],
+     ],
+-];
++];
+\ No newline at end of file
+diff --git a/resources/views/admin/contentPages/create.blade.php b/resources/views/admin/contentPages/create.blade.php
+index 5cb7d93..f8b7d31 100644
+--- a/resources/views/admin/contentPages/create.blade.php
++++ b/resources/views/admin/contentPages/create.blade.php
+@@ -11,9 +11,10 @@
+             @csrf
+             <div class="form-group">
+                 <label class="required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
+-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
++                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title"
++                    id="title" value="{{ old('title', '') }}" required>
+                 @if($errors->has('title'))
+-                    <span class="text-danger">{{ $errors->first('title') }}</span>
++                <span class="text-danger">{{ $errors->first('title') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
+             </div>
+@@ -22,9 +23,10 @@
+             <div class="form-group">
+                 <label class="required" for="slug">{{ trans('cruds.contentPage.fields.slug') }}</label>
+                 <!-- <label class="required" for="slug">Slug</label> -->
+-                <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}" required>
++                <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug"
++                    id="slug" value="{{ old('slug', '') }}" required>
+                 @if($errors->has('slug'))
+-                    <span class="text-danger">{{ $errors->first('slug') }}</span>
++                <span class="text-danger">{{ $errors->first('slug') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.contentPage.fields.slug_helper') }}</span>
+             </div>
+@@ -32,32 +34,39 @@
+             <div class="form-group">
+                 <label for="categories">{{ trans('cruds.contentPage.fields.category') }}</label>
+                 <div style="padding-bottom: 4px">
+-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
++                    <span class="btn btn-info btn-xs select-all"
++                        style="border-radius: 0">{{ trans('global.select_all') }}</span>
++                    <span class="btn btn-info btn-xs deselect-all"
++                        style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                 </div>
+-                <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" name="categories[]" id="categories" multiple>
++                <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}"
++                    name="categories[]" id="categories" multiple>
+                     @foreach($categories as $id => $category)
+-                        <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>{{ $category }}</option>
++                    <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>
++                        {{ $category }}</option>
+                     @endforeach
+                 </select>
+                 @if($errors->has('categories'))
+-                    <span class="text-danger">{{ $errors->first('categories') }}</span>
++                <span class="text-danger">{{ $errors->first('categories') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.contentPage.fields.category_helper') }}</span>
+             </div>
+             <div class="form-group">
+                 <label for="tags">{{ trans('cruds.contentPage.fields.tag') }}</label>
+                 <div style="padding-bottom: 4px">
+-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
++                    <span class="btn btn-info btn-xs select-all"
++                        style="border-radius: 0">{{ trans('global.select_all') }}</span>
++                    <span class="btn btn-info btn-xs deselect-all"
++                        style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                 </div>
+-                <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
++                <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]"
++                    id="tags" multiple>
+                     @foreach($tags as $id => $tag)
+-                        <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $tag }}</option>
++                    <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $tag }}</option>
+                     @endforeach
+                 </select>
+                 @if($errors->has('tags'))
+-                    <span class="text-danger">{{ $errors->first('tags') }}</span>
++                <span class="text-danger">{{ $errors->first('tags') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.contentPage.fields.tag_helper') }}</span>
+             </div>
+@@ -65,38 +74,42 @@
+ 
+             <div class="form-group">
+                 <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
+-                <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
++                <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}"
++                    name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
+                 @if($errors->has('page_text'))
+-                    <span class="text-danger">{{ $errors->first('page_text') }}</span>
++                <span class="text-danger">{{ $errors->first('page_text') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
+             </div>
+             <div class="form-group">
+                 <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
+-                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
++                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt"
++                    id="excerpt">{{ old('excerpt') }}</textarea>
+                 @if($errors->has('excerpt'))
+-                    <span class="text-danger">{{ $errors->first('excerpt') }}</span>
++                <span class="text-danger">{{ $errors->first('excerpt') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
+             </div>
+             <div class="form-group">
+                 <label for="featured_image">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
+-                <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
++                <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}"
++                    id="featured_image-dropzone">
+                 </div>
+                 @if($errors->has('featured_image'))
+-                    <span class="text-danger">{{ $errors->first('featured_image') }}</span>
++                <span class="text-danger">{{ $errors->first('featured_image') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.contentPage.fields.featured_image_helper') }}</span>
+             </div>
+             <div class="form-group">
+                 <label for="gallery_id">{{ trans('cruds.contentPage.fields.gallery') }}</label>
+-                <select class="form-control select2 {{ $errors->has('gallery') ? 'is-invalid' : '' }}" name="gallery_id" id="gallery_id">
++                <select class="form-control select2 {{ $errors->has('gallery') ? 'is-invalid' : '' }}" name="gallery_id"
++                    id="gallery_id">
+                     @foreach($galleries as $id => $entry)
+-                        <option value="{{ $id }}" {{ old('gallery_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
++                    <option value="{{ $id }}" {{ old('gallery_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                     @endforeach
+                 </select>
+                 @if($errors->has('gallery'))
+-                    <span class="text-danger">{{ $errors->first('gallery') }}</span>
++                <span class="text-danger">{{ $errors->first('gallery') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.contentPage.fields.gallery_helper') }}</span>
+             </div>
+@@ -115,106 +128,123 @@
+ 
+ @section('scripts')
+ <script>
+-    $(document).ready(function () {
+-  function SimpleUploadAdapter(editor) {
+-    editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
+-      return {
+-        upload: function() {
+-          return loader.file
+-            .then(function (file) {
+-              return new Promise(function(resolve, reject) {
+-                // Init request
+-                var xhr = new XMLHttpRequest();
+-                xhr.open('POST', '{{ route('admin.content-pages.storeCKEditorImages') }}', true);
+-                xhr.setRequestHeader('x-csrf-token', window._token);
+-                xhr.setRequestHeader('Accept', 'application/json');
+-                xhr.responseType = 'json';
+-
+-                // Init listeners
+-                var genericErrorText = `Couldn't upload file: ${ file.name }.`;
+-                xhr.addEventListener('error', function() { reject(genericErrorText) });
+-                xhr.addEventListener('abort', function() { reject() });
+-                xhr.addEventListener('load', function() {
+-                  var response = xhr.response;
+-
+-                  if (!response || xhr.status !== 201) {
+-                    return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
+-                  }
+-
+-                  $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
+-
+-                  resolve({ default: response.url });
+-                });
+-
+-                if (xhr.upload) {
+-                  xhr.upload.addEventListener('progress', function(e) {
+-                    if (e.lengthComputable) {
+-                      loader.uploadTotal = e.total;
+-                      loader.uploaded = e.loaded;
+-                    }
+-                  });
+-                }
++$(document).ready(function() {
++    function SimpleUploadAdapter(editor) {
++        editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
++            return {
++                upload: function() {
++                    return loader.file
++                        .then(function(file) {
++                            return new Promise(function(resolve, reject) {
++                                // Init request
++                                var xhr = new XMLHttpRequest();
++                                xhr.open('POST', '{{ route('
++                                    admin.content - pages.storeCKEditorImages ') }}',
++                                    true);
++                                xhr.setRequestHeader('x-csrf-token', window._token);
++                                xhr.setRequestHeader('Accept', 'application/json');
++                                xhr.responseType = 'json';
++
++                                // Init listeners
++                                var genericErrorText =
++                                    `Couldn't upload file: ${ file.name }.`;
++                                xhr.addEventListener('error', function() {
++                                    reject(genericErrorText)
++                                });
++                                xhr.addEventListener('abort', function() {
++                                    reject()
++                                });
++                                xhr.addEventListener('load', function() {
++                                    var response = xhr.response;
++
++                                    if (!response || xhr.status !== 201) {
++                                        return reject(response && response.message ?
++                                            `${genericErrorText}\n${xhr.status} ${response.message}` :
++                                            `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`
++                                        );
++                                    }
++
++                                    $('form').append(
++                                        '<input type="hidden" name="ck-media[]" value="' +
++                                        response.id + '">');
+ 
+-                // Send request
+-                var data = new FormData();
+-                data.append('upload', file);
+-                data.append('crud_id', '{{ $contentPage->id ?? 0 }}');
+-                xhr.send(data);
+-              });
+-            })
++                                    resolve({
++                                        default: response.url
++                                    });
++                                });
++
++                                if (xhr.upload) {
++                                    xhr.upload.addEventListener('progress', function(e) {
++                                        if (e.lengthComputable) {
++                                            loader.uploadTotal = e.total;
++                                            loader.uploaded = e.loaded;
++                                        }
++                                    });
++                                }
++
++                                // Send request
++                                var data = new FormData();
++                                data.append('upload', file);
++                                data.append('crud_id', '{{ $contentPage->id ?? 0 }}');
++                                xhr.send(data);
++                            });
++                        })
++                }
++            };
+         }
+-      };
+     }
+-  }
+-
+-  var allEditors = document.querySelectorAll('.ckeditor');
+-  for (var i = 0; i < allEditors.length; ++i) {
+-    ClassicEditor.create(
+-      allEditors[i], {
+-        extraPlugins: [SimpleUploadAdapter]
+-      }
+-    );
+-  }
++
++    var allEditors = document.querySelectorAll('.ckeditor');
++    for (var i = 0; i < allEditors.length; ++i) {
++        ClassicEditor.create(
++            allEditors[i], {
++                extraPlugins: [SimpleUploadAdapter]
++            }
++        );
++    }
+ });
+ </script>
+ 
+ <script>
+-    Dropzone.options.featuredImageDropzone = {
+-    url: '{{ route('admin.content-pages.storeMedia') }}',
++Dropzone.options.featuredImageDropzone = {
++    url: '{{ route('
++    admin.content - pages.storeMedia ') }}',
+     maxFilesize: 2, // MB
+     acceptedFiles: '.jpeg,.jpg,.png,.gif',
+     maxFiles: 1,
+     addRemoveLinks: true,
+     headers: {
+-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
++        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+     },
+     params: {
+-      size: 2,
+-      width: 4096,
+-      height: 4096
+-    },
+-    success: function (file, response) {
+-      $('form').find('input[name="featured_image"]').remove()
+-      $('form').append('<input type="hidden" name="featured_image" value="' + response.name + '">')
++        size: 2,
++        width: 4096,
++        height: 4096
+     },
+-    removedfile: function (file) {
+-      file.previewElement.remove()
+-      if (file.status !== 'error') {
++    success: function(file, response) {
+         $('form').find('input[name="featured_image"]').remove()
+-        this.options.maxFiles = this.options.maxFiles + 1
+-      }
++        $('form').append('<input type="hidden" name="featured_image" value="' + response.name + '">')
+     },
+-    init: function () {
+-@if(isset($contentPage) && $contentPage->featured_image)
+-      var file = {!! json_encode($contentPage->featured_image) !!}
+-          this.options.addedfile.call(this, file)
+-      this.options.thumbnail.call(this, file, file.preview)
+-      file.previewElement.classList.add('dz-complete')
+-      $('form').append('<input type="hidden" name="featured_image" value="' + file.file_name + '">')
+-      this.options.maxFiles = this.options.maxFiles - 1
+-@endif
++    removedfile: function(file) {
++        file.previewElement.remove()
++        if (file.status !== 'error') {
++            $('form').find('input[name="featured_image"]').remove()
++            this.options.maxFiles = this.options.maxFiles + 1
++        }
++    },
++    init: function() {
++        @if(isset($contentPage) && $contentPage - > featured_image)
++        var file = {
++            !!json_encode($contentPage - > featured_image) !!
++        }
++        this.options.addedfile.call(this, file)
++        this.options.thumbnail.call(this, file, file.preview)
++        file.previewElement.classList.add('dz-complete')
++        $('form').append('<input type="hidden" name="featured_image" value="' + file.file_name + '">')
++        this.options.maxFiles = this.options.maxFiles - 1
++        @endif
+     },
+-    error: function (file, response) {
++    error: function(file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+diff --git a/resources/views/admin/contentPages/index.blade.php b/resources/views/admin/contentPages/index.blade.php
+index ec187fb..1f12fb1 100644
+--- a/resources/views/admin/contentPages/index.blade.php
++++ b/resources/views/admin/contentPages/index.blade.php
+@@ -1,13 +1,13 @@
+ @extends('layouts.admin')
+ @section('content')
+ @can('content_page_create')
+-    <div style="margin-bottom: 10px;" class="row">
+-        <div class="col-lg-12">
+-            <a class="btn btn-success" href="{{ route('admin.content-pages.create') }}">
+-                {{ trans('global.add') }} {{ trans('cruds.contentPage.title_singular') }}
+-            </a>
+-        </div>
++<div style="margin-bottom: 10px;" class="row">
++    <div class="col-lg-12">
++        <a class="btn btn-success" href="{{ route('admin.content-pages.create') }}">
++            {{ trans('global.add') }} {{ trans('cruds.contentPage.title_singular') }}
++        </a>
+     </div>
++</div>
+ @endcan
+ <div class="card">
+     <div class="card-header">
+@@ -50,63 +50,68 @@
+                 </thead>
+                 <tbody>
+                     @foreach($contentPages as $key => $contentPage)
+-                        <tr data-entry-id="{{ $contentPage->id }}">
+-                            <td>
++                    <tr data-entry-id="{{ $contentPage->id }}">
++                        <td>
+ 
+-                            </td>
+-                            <td>
+-                                {{ $contentPage->id ?? '' }}
+-                            </td>
+-                            <td>
+-                                {{ $contentPage->title ?? '' }}
+-                            </td>
+-                            <td>
+-                                @foreach($contentPage->categories as $key => $item)
+-                                    <span class="badge badge-info">{{ $item->name }}</span>
+-                                @endforeach
+-                            </td>
+-                            <td>
+-                                @foreach($contentPage->tags as $key => $item)
+-                                    <span class="badge badge-info">{{ $item->name }}</span>
+-                                @endforeach
+-                            </td>
+-                            <td>
+-                                {{ $contentPage->excerpt ?? '' }}
+-                            </td>
+-                            <td>
+-                                @if($contentPage->featured_image)
+-                                    <a href="{{ $contentPage->featured_image->getUrl() }}" target="_blank" style="display: inline-block">
+-                                        <img src="{{ $contentPage->featured_image->getUrl('thumb') }}">
+-                                    </a>
+-                                @endif
+-                            </td>
+-                            <td>
+-                                {{ $contentPage->gallery->gallery_name ?? '' }}
+-                            </td>
+-                            <td>
+-                                @can('content_page_show')
+-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.content-pages.show', $contentPage->id) }}">
+-                                        {{ trans('global.view') }}
+-                                    </a>
+-                                @endcan
++                        </td>
++                        <td>
++                            {{ $contentPage->id ?? '' }}
++                        </td>
++                        <td>
++                            {{ $contentPage->title ?? '' }}
++                        </td>
++                        <td>
++                            @foreach($contentPage->categories as $key => $item)
++                            <span class="badge badge-info">{{ $item->name }}</span>
++                            @endforeach
++                        </td>
++                        <td>
++                            @foreach($contentPage->tags as $key => $item)
++                            <span class="badge badge-info">{{ $item->name }}</span>
++                            @endforeach
++                        </td>
++                        <td>
++                            {{ $contentPage->excerpt ?? '' }}
++                        </td>
++                        <td>
++                            @if($contentPage->featured_image)
++                            <a href="{{ $contentPage->featured_image->getUrl() }}" target="_blank"
++                                style="display: inline-block">
++                                <img src="{{ $contentPage->featured_image->getUrl('thumb') }}">
++                            </a>
++                            @endif
++                        </td>
++                        <td>
++                            {{ $contentPage->gallery->gallery_name ?? '' }}
++                        </td>
++                        <td>
++                            @can('content_page_show')
++                            <a class="btn btn-xs btn-primary"
++                                href="{{ route('admin.content-pages.show', $contentPage->id) }}">
++                                {{ trans('global.view') }}
++                            </a>
++                            @endcan
+ 
+-                                @can('content_page_edit')
+-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.content-pages.edit', $contentPage->id) }}">
+-                                        {{ trans('global.edit') }}
+-                                    </a>
+-                                @endcan
++                            @can('content_page_edit')
++                            <a class="btn btn-xs btn-info"
++                                href="{{ route('admin.content-pages.edit', $contentPage->id) }}">
++                                {{ trans('global.edit') }}
++                            </a>
++                            @endcan
+ 
+-                                @can('content_page_delete')
+-                                    <form action="{{ route('admin.content-pages.destroy', $contentPage->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+-                                        <input type="hidden" name="_method" value="DELETE">
+-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+-                                    </form>
+-                                @endcan
++                            @can('content_page_delete')
++                            <form action="{{ route('admin.content-pages.destroy', $contentPage->id) }}" method="POST"
++                                onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
++                                style="display: inline-block;">
++                                <input type="hidden" name="_method" value="DELETE">
++                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
++                                <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
++                            </form>
++                            @endcan
+ 
+-                            </td>
++                        </td>
+ 
+-                        </tr>
++                    </tr>
+                     @endforeach
+                 </tbody>
+             </table>
+@@ -120,50 +125,66 @@
+ @section('scripts')
+ @parent
+ <script>
+-    $(function () {
+-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+-@can('content_page_delete')
+-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+-  let deleteButton = {
+-    text: deleteButtonTrans,
+-    url: "{{ route('admin.content-pages.massDestroy') }}",
+-    className: 'btn-danger',
+-    action: function (e, dt, node, config) {
+-      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+-          return $(entry).data('entry-id')
+-      });
++$(function() {
++    let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
++    @can('content_page_delete')
++    let deleteButtonTrans = '{{ trans('
++    global.datatables.delete ') }}'
++    let deleteButton = {
++        text: deleteButtonTrans,
++        url: "{{ route('admin.content-pages.massDestroy') }}",
++        className: 'btn-danger',
++        action: function(e, dt, node, config) {
++            var ids = $.map(dt.rows({
++                selected: true
++            }).nodes(), function(entry) {
++                return $(entry).data('entry-id')
++            });
+ 
+-      if (ids.length === 0) {
+-        alert('{{ trans('global.datatables.zero_selected') }}')
++            if (ids.length === 0) {
++                alert('{{ trans('
++                    global.datatables.zero_selected ') }}')
+ 
+-        return
+-      }
++                return
++            }
+ 
+-      if (confirm('{{ trans('global.areYouSure') }}')) {
+-        $.ajax({
+-          headers: {'x-csrf-token': _token},
+-          method: 'POST',
+-          url: config.url,
+-          data: { ids: ids, _method: 'DELETE' }})
+-          .done(function () { location.reload() })
+-      }
++            if (confirm('{{ trans('
++                    global.areYouSure ') }}')) {
++                $.ajax({
++                        headers: {
++                            'x-csrf-token': _token
++                        },
++                        method: 'POST',
++                        url: config.url,
++                        data: {
++                            ids: ids,
++                            _method: 'DELETE'
++                        }
++                    })
++                    .done(function() {
++                        location.reload()
++                    })
++            }
++        }
+     }
+-  }
+-  dtButtons.push(deleteButton)
+-@endcan
++    dtButtons.push(deleteButton)
++    @endcan
+ 
+-  $.extend(true, $.fn.dataTable.defaults, {
+-    orderCellsTop: true,
+-    order: [[ 1, 'desc' ]],
+-    pageLength: 100,
+-  });
+-  let table = $('.datatable-ContentPage:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+-  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+-      $($.fn.dataTable.tables(true)).DataTable()
+-          .columns.adjust();
+-  });
+-  
+-})
++    $.extend(true, $.fn.dataTable.defaults, {
++        orderCellsTop: true,
++        order: [
++            [1, 'desc']
++        ],
++        pageLength: 100,
++    });
++    let table = $('.datatable-ContentPage:not(.ajaxTable)').DataTable({
++        buttons: dtButtons
++    })
++    $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e) {
++        $($.fn.dataTable.tables(true)).DataTable()
++            .columns.adjust();
++    });
+ 
++})
+ </script>
+ @endsection
+\ No newline at end of file
+diff --git a/resources/views/admin/galleries/create.blade.php b/resources/views/admin/galleries/create.blade.php
+index 68ab2bd..94536c5 100644
+--- a/resources/views/admin/galleries/create.blade.php
++++ b/resources/views/admin/galleries/create.blade.php
+@@ -11,22 +11,26 @@
+             @csrf
+             <div class="form-group">
+                 <label class="required" for="gallery_name">{{ trans('cruds.gallery.fields.gallery_name') }}</label>
+-                <input class="form-control {{ $errors->has('gallery_name') ? 'is-invalid' : '' }}" type="text" name="gallery_name" id="gallery_name" value="{{ old('gallery_name', '') }}" required>
++                <input class="form-control {{ $errors->has('gallery_name') ? 'is-invalid' : '' }}" type="text"
++                    name="gallery_name" id="gallery_name" value="{{ old('gallery_name', '') }}" required>
+                 @if($errors->has('gallery_name'))
+-                    <span class="text-danger">{{ $errors->first('gallery_name') }}</span>
++                <span class="text-danger">{{ $errors->first('gallery_name') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.gallery.fields.gallery_name_helper') }}</span>
+             </div>
+             <div class="form-group">
+                 <label class="required">{{ trans('cruds.gallery.fields.gallery_type') }}</label>
+-                <select class="form-control {{ $errors->has('gallery_type') ? 'is-invalid' : '' }}" name="gallery_type" id="gallery_type" required>
+-                    <option value disabled {{ old('gallery_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
++                <select class="form-control {{ $errors->has('gallery_type') ? 'is-invalid' : '' }}" name="gallery_type"
++                    id="gallery_type" required>
++                    <option value disabled {{ old('gallery_type', null) === null ? 'selected' : '' }}>
++                        {{ trans('global.pleaseSelect') }}</option>
+                     @foreach(App\Models\Gallery::GALLERY_TYPE_SELECT as $key => $label)
+-                        <option value="{{ $key }}" {{ old('gallery_type', 'Type 1') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
++                    <option value="{{ $key }}" {{ old('gallery_type', 'Type 1') === (string) $key ? 'selected' : '' }}>
++                        {{ $label }}</option>
+                     @endforeach
+                 </select>
+                 @if($errors->has('gallery_type'))
+-                    <span class="text-danger">{{ $errors->first('gallery_type') }}</span>
++                <span class="text-danger">{{ $errors->first('gallery_type') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.gallery.fields.gallery_type_helper') }}</span>
+             </div>
+@@ -35,7 +39,7 @@
+                 <div class="needsclick dropzone {{ $errors->has('images') ? 'is-invalid' : '' }}" id="images-dropzone">
+                 </div>
+                 @if($errors->has('images'))
+-                    <span class="text-danger">{{ $errors->first('images') }}</span>
++                <span class="text-danger">{{ $errors->first('images') }}</span>
+                 @endif
+                 <span class="help-block">{{ trans('cruds.gallery.fields.images_helper') }}</span>
+             </div>
+@@ -54,63 +58,66 @@
+ 
+ @section('scripts')
+ <script>
+-    var uploadedImagesMap = {}
++var uploadedImagesMap = {}
+ Dropzone.options.imagesDropzone = {
+-    url: '{{ route('admin.galleries.storeMedia') }}',
++    url: '{{ route('
++    admin.galleries.storeMedia ') }}',
+     maxFilesize: 2, // MB
+     acceptedFiles: '.jpeg,.jpg,.png,.gif',
+     addRemoveLinks: true,
+     headers: {
+-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
++        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+     },
+     params: {
+-      size: 2,
+-      width: 4096,
+-      height: 4096
++        size: 2,
++        width: 4096,
++        height: 4096
+     },
+-    success: function (file, response) {
+-      $('form').append('<input type="hidden" name="images[]" value="' + response.name + '">')
+-      uploadedImagesMap[file.name] = response.name
++    success: function(file, response) {
++        $('form').append('<input type="hidden" name="images[]" value="' + response.name + '">')
++        uploadedImagesMap[file.name] = response.name
+     },
+-    removedfile: function (file) {
+-      console.log(file)
+-      file.previewElement.remove()
+-      var name = ''
+-      if (typeof file.file_name !== 'undefined') {
+-        name = file.file_name
+-      } else {
+-        name = uploadedImagesMap[file.name]
+-      }
+-      $('form').find('input[name="images[]"][value="' + name + '"]').remove()
++    removedfile: function(file) {
++        console.log(file)
++        file.previewElement.remove()
++        var name = ''
++        if (typeof file.file_name !== 'undefined') {
++            name = file.file_name
++        } else {
++            name = uploadedImagesMap[file.name]
++        }
++        $('form').find('input[name="images[]"][value="' + name + '"]').remove()
+     },
+-    init: function () {
+-@if(isset($gallery) && $gallery->images)
+-      var files = {!! json_encode($gallery->images) !!}
+-          for (var i in files) {
+-          var file = files[i]
+-          this.options.addedfile.call(this, file)
+-          this.options.thumbnail.call(this, file, file.preview)
+-          file.previewElement.classList.add('dz-complete')
+-          $('form').append('<input type="hidden" name="images[]" value="' + file.file_name + '">')
++    init: function() {
++        @if(isset($gallery) && $gallery - > images)
++        var files = {
++            !!json_encode($gallery - > images) !!
++        }
++        for (var i in files) {
++            var file = files[i]
++            this.options.addedfile.call(this, file)
++            this.options.thumbnail.call(this, file, file.preview)
++            file.previewElement.classList.add('dz-complete')
++            $('form').append('<input type="hidden" name="images[]" value="' + file.file_name + '">')
+         }
+-@endif
++        @endif
+     },
+-     error: function (file, response) {
+-         if ($.type(response) === 'string') {
+-             var message = response //dropzone sends it's own error messages in string
+-         } else {
+-             var message = response.errors.file
+-         }
+-         file.previewElement.classList.add('dz-error')
+-         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+-         _results = []
+-         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+-             node = _ref[_i]
+-             _results.push(node.textContent = message)
+-         }
++    error: function(file, response) {
++        if ($.type(response) === 'string') {
++            var message = response //dropzone sends it's own error messages in string
++        } else {
++            var message = response.errors.file
++        }
++        file.previewElement.classList.add('dz-error')
++        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
++        _results = []
++        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
++            node = _ref[_i]
++            _results.push(node.textContent = message)
++        }
+ 
+-         return _results
+-     }
++        return _results
++    }
+ }
+ </script>
+ @endsection
+\ No newline at end of file
+diff --git a/resources/views/admin/pastPresidents/index.blade.php b/resources/views/admin/pastPresidents/index.blade.php
+index ad742fd..6bb8505 100644
+--- a/resources/views/admin/pastPresidents/index.blade.php
++++ b/resources/views/admin/pastPresidents/index.blade.php
+@@ -1,13 +1,13 @@
+ @extends('layouts.admin')
+ @section('content')
+ @can('past_president_create')
+-    <div style="margin-bottom: 10px;" class="row">
+-        <div class="col-lg-12">
+-            <a class="btn btn-success" href="{{ route('admin.past-presidents.create') }}">
+-                {{ trans('global.add') }} {{ trans('cruds.pastPresident.title_singular') }}
+-            </a>
+-        </div>
++<div style="margin-bottom: 10px;" class="row">
++    <div class="col-lg-12">
++        <a class="btn btn-success" href="{{ route('admin.past-presidents.create') }}">
++            {{ trans('global.add') }} {{ trans('cruds.pastPresident.title_singular') }}
++        </a>
+     </div>
++</div>
+ @endcan
+ <div class="card">
+     <div class="card-header">
+@@ -44,53 +44,58 @@
+                 </thead>
+                 <tbody>
+                     @foreach($pastPresidents as $key => $pastPresident)
+-                        <tr data-entry-id="{{ $pastPresident->id }}">
+-                            <td>
++                    <tr data-entry-id="{{ $pastPresident->id }}">
++                        <td>
+ 
+-                            </td>
+-                            <td>
+-                                {{ $pastPresident->id ?? '' }}
+-                            </td>
+-                            <td>
+-                                {{ $pastPresident->name ?? '' }}
+-                            </td>
+-                            <td>
+-                                {{ $pastPresident->duration ?? '' }}
+-                            </td>
+-                            <td>
+-                                {{ $pastPresident->short_order ?? '' }}
+-                            </td>
+-                            <td>
+-                                @if($pastPresident->image)
+-                                    <a href="{{ $pastPresident->image->getUrl() }}" target="_blank" style="display: inline-block">
+-                                        <img src="{{ $pastPresident->image->getUrl('thumb') }}">
+-                                    </a>
+-                                @endif
+-                            </td>
+-                            <td>
+-                                @can('past_president_show')
+-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.past-presidents.show', $pastPresident->id) }}">
+-                                        {{ trans('global.view') }}
+-                                    </a>
+-                                @endcan
++                        </td>
++                        <td>
++                            {{ $pastPresident->id ?? '' }}
++                        </td>
++                        <td>
++                            {{ $pastPresident->name ?? '' }}
++                        </td>
++                        <td>
++                            {{ $pastPresident->duration ?? '' }}
++                        </td>
++                        <td>
++                            {{ $pastPresident->short_order ?? '' }}
++                        </td>
++                        <td>
++                            @if($pastPresident->image)
++                            <a href="{{ $pastPresident->image->getUrl() }}" target="_blank"
++                                style="display: inline-block">
++                                <img src="{{ $pastPresident->image->getUrl('thumb') }}">
++                            </a>
++                            @endif
++                        </td>
++                        <td>
++                            @can('past_president_show')
++                            <a class="btn btn-xs btn-primary"
++                                href="{{ route('admin.past-presidents.show', $pastPresident->id) }}">
++                                {{ trans('global.view') }}
++                            </a>
++                            @endcan
+ 
+-                                @can('past_president_edit')
+-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.past-presidents.edit', $pastPresident->id) }}">
+-                                        {{ trans('global.edit') }}
+-                                    </a>
+-                                @endcan
++                            @can('past_president_edit')
++                            <a class="btn btn-xs btn-info"
++                                href="{{ route('admin.past-presidents.edit', $pastPresident->id) }}">
++                                {{ trans('global.edit') }}
++                            </a>
++                            @endcan
+ 
+-                                @can('past_president_delete')
+-                                    <form action="{{ route('admin.past-presidents.destroy', $pastPresident->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+-                                        <input type="hidden" name="_method" value="DELETE">
+-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+-                                    </form>
+-                                @endcan
++                            @can('past_president_delete')
++                            <form action="{{ route('admin.past-presidents.destroy', $pastPresident->id) }}"
++                                method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
++                                style="display: inline-block;">
++                                <input type="hidden" name="_method" value="DELETE">
++                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
++                                <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
++                            </form>
++                            @endcan
+ 
+-                            </td>
++                        </td>
+ 
+-                        </tr>
++                    </tr>
+                     @endforeach
+                 </tbody>
+             </table>
+@@ -104,50 +109,66 @@
+ @section('scripts')
+ @parent
+ <script>
+-    $(function () {
+-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+-@can('past_president_delete')
+-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+-  let deleteButton = {
+-    text: deleteButtonTrans,
+-    url: "{{ route('admin.past-presidents.massDestroy') }}",
+-    className: 'btn-danger',
+-    action: function (e, dt, node, config) {
+-      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+-          return $(entry).data('entry-id')
+-      });
++$(function() {
++    let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
++    @can('past_president_delete')
++    let deleteButtonTrans = '{{ trans('
++    global.datatables.delete ') }}'
++    let deleteButton = {
++        text: deleteButtonTrans,
++        url: "{{ route('admin.past-presidents.massDestroy') }}",
++        className: 'btn-danger',
++        action: function(e, dt, node, config) {
++            var ids = $.map(dt.rows({
++                selected: true
++            }).nodes(), function(entry) {
++                return $(entry).data('entry-id')
++            });
+ 
+-      if (ids.length === 0) {
+-        alert('{{ trans('global.datatables.zero_selected') }}')
++            if (ids.length === 0) {
++                alert('{{ trans('
++                    global.datatables.zero_selected ') }}')
+ 
+-        return
+-      }
++                return
++            }
+ 
+-      if (confirm('{{ trans('global.areYouSure') }}')) {
+-        $.ajax({
+-          headers: {'x-csrf-token': _token},
+-          method: 'POST',
+-          url: config.url,
+-          data: { ids: ids, _method: 'DELETE' }})
+-          .done(function () { location.reload() })
+-      }
++            if (confirm('{{ trans('
++                    global.areYouSure ') }}')) {
++                $.ajax({
++                        headers: {
++                            'x-csrf-token': _token
++                        },
++                        method: 'POST',
++                        url: config.url,
++                        data: {
++                            ids: ids,
++                            _method: 'DELETE'
++                        }
++                    })
++                    .done(function() {
++                        location.reload()
++                    })
++            }
++        }
+     }
+-  }
+-  dtButtons.push(deleteButton)
+-@endcan
++    dtButtons.push(deleteButton)
++    @endcan
+ 
+-  $.extend(true, $.fn.dataTable.defaults, {
+-    orderCellsTop: true,
+-    order: [[ 1, 'desc' ]],
+-    pageLength: 100,
+-  });
+-  let table = $('.datatable-PastPresident:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+-  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+-      $($.fn.dataTable.tables(true)).DataTable()
+-          .columns.adjust();
+-  });
+-  
+-})
++    $.extend(true, $.fn.dataTable.defaults, {
++        orderCellsTop: true,
++        order: [
++            [1, 'desc']
++        ],
++        pageLength: 100,
++    });
++    let table = $('.datatable-PastPresident:not(.ajaxTable)').DataTable({
++        buttons: dtButtons
++    })
++    $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e) {
++        $($.fn.dataTable.tables(true)).DataTable()
++            .columns.adjust();
++    });
+ 
++})
+ </script>
+ @endsection
+\ No newline at end of file
+diff --git a/routes/web.php b/routes/web.php
+index c76e22c..87c9c0a 100644
+--- a/routes/web.php
++++ b/routes/web.php
+@@ -10,6 +10,8 @@ use App\Models\Gallery;
+ 
+ use App\Models\Sportstype;
+ 
++use App\Models\PastPresident;
++
+ // Route::get('/', 'FrontendHome@index')->name('index');
+ 
+ Route::get('/', function () {
+@@ -23,6 +25,14 @@ Route::get('/', function () {
+ });
+ 
+ 
++Route::get('/past-president', function () {
++    $pastPresidents = PastPresident::with(['media'])->get();
++    // $data='Data';
++    return view('past-president', compact(['pastPresidents']));
++    
++});
++
++
+ 
+ 
+ 
+@@ -168,11 +178,11 @@ Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function
+     }
+ });
+ 
+-Route::get('/past-president', function () {
+-    return view('past-president');
+-});
+-Route::get('/activities', function () {
+-    return view('activities');
++// Route::get('/past-president', function () {
++//     return view('past-president');
++// });
++Route::get('/food_beverages', function () {
++    return view('food_beverages');
+ });
+ 
+ 
+@@ -194,4 +204,4 @@ Route::get('/history', function () {
+ });
+ Route::get('/memeber-login', function () {
+     return view('memeber-login');
+-});
++});
+\ No newline at end of file
+diff --git a/storage/tmp/uploads/620e0696c3e55_history-4.jpg b/storage/tmp/uploads/620e0696c3e55_history-4.jpg
+new file mode 100644
+index 0000000000000000000000000000000000000000..d0ab034f5bdf75898b825dd63b047a907134a9f7
+GIT binary patch
+literal 10341
+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
+
+literal 0
+HcmV?d00001
+
+diff --git a/storage/tmp/uploads/620e0698ed9d0_history-5.jpg b/storage/tmp/uploads/620e0698ed9d0_history-5.jpg
+new file mode 100644
+index 0000000000000000000000000000000000000000..8598595b868218658a22665e9035873fd23306d0
+GIT binary patch
+literal 9186
+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
+Iv0u;qKa$te*Z=?k
+
+literal 0
+HcmV?d00001
+
+-- 
+2.35.1.windows.2
+

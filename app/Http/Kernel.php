@@ -27,6 +27,8 @@ class Kernel extends HttpKernel
         'throttle'         => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified'         => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         '2fa'              => \App\Http\Middleware\TwoFactorMiddleware::class,
+        'admin'            => \App\Http\Middleware\IsAdminMiddleware::class,
+        'member'           => \App\Http\Middleware\MemberAuthMiddleware::class,
     ];
 
     protected $middlewareGroups = [

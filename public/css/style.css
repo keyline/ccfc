@@ -395,8 +395,8 @@ span {
         height: 8px;
         width: 8px;
         transform: rotate(45deg); 
-        left: -5px;
-        top: 14px;
+        left: -4px;
+        top: 10px;
     }
     .topPanel .navbar-light .navbar-nav .submenu a:hover{color: var(--white); background: #b01d22;}
 
