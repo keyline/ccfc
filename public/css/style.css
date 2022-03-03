@@ -186,6 +186,7 @@ span {
     border-radius: 50px;
     border: none;
     font-size: 14px;
+    color: #fff;
 }
 
 .ccfc-body .header .top-header .member-login .form-group .form-control::placeholder {
@@ -388,6 +389,27 @@ span {
         border-radius: 0.25em; 
     }
     .topPanel .navbar-light .navbar-nav .submenu a{color: #fff;}
+    .topPanel .navbar-light .navbar-nav .nav-item > ul.submenu.dropdown-menu {
+        box-shadow: 1px 2px 5px #444;
+    }
+    .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul {
+        background: #fff;
+        border: 1px solid var(--primaryColor);
+        box-shadow: 1px 2px 4px #444;
+    }
+    .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul::after {
+        background: #fff;
+    }
+    .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul a {
+        color: #000;
+        border-bottom: 1px solid #ddd;
+        margin: 0 15px;
+        padding: 4px 0;
+    }
+    .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul a:hover{
+        background: none;
+        color: var(--primaryColor);
+    }
     .submenu.dropdown-menu:after{
         position: absolute;
         content: '';
@@ -739,7 +761,9 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 .history-sec .history-inner {
     padding: 40px;
 }
-
+.history-sec .history-inner.foodbeverage_inner {
+    padding: 40px 0 40px 25px;
+}
 .history-sec .history-inner .history-content {
     color: var(--textColor);
     font-family: 'IBM Plex Serif', serif;
@@ -2401,7 +2425,7 @@ section.footer_top .col-md-4 {
 
 /* ********|| FOOTER END ||******** */
 .history-page{
-    padding: 60px;
+    padding: 30px;
 }
 .history-page .title-sec .title{
     text-align: left;

@@ -70,13 +70,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="history-inner">
+                            <div class="history-inner foodbeverage_inner">
                                 <div class="title-sec">
                                     <div class="title text-left">
                                         FOOD & BEVERAGES
                                     </div>
                                 </div>
-                                <div class="history-content text-left">
+                                <div class="history-content text-justify">
 
                                     @foreach($contentPages as $contentPage)
                                     <p>{{$contentPage->excerpt}}</p>
