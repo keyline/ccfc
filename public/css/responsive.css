@@ -425,6 +425,9 @@
     .history-sec .history-inner {
         padding: 40px 0px;
     }
+    .history-sec .history-inner.foodbeverage_inner {
+        padding: 40px 0;
+    }
     .history-page {
         padding: 40px 0px;
     }
