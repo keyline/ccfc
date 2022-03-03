@@ -77,92 +77,14 @@
                 <div class="container">
                     <div class="row">
 
+
+
+
                         @foreach($contentBlocks->where("id","4") as $contentBlock)
+                        {!! html_entity_decode($contentBlock->body) !!}
 
-                        <div class="col-lg-8">
+                        @endforeach
 
-                            <div class="gym-inner">
-
-
-                                {!! $contentBlock->body !!}
-                                <!-- <div class="title-sec">
-                                    <div class="title text-left">
-                                        GENERAL
-                                    </div>
-                                </div>
-                                <ul>
-                                    <li>Discipline & Order should be maintained while using the facilities of the GYM.
-                                    </li>
-                                    <li>Direction and procedure of the instructors are binding on all members for their
-                                        own good.</li>
-                                    <li>Members' co-operation will enable the GYM to render best of services.</li>
-                                </ul> -->
-
-                                <!-- </div> -->
-                                <!-- <div class="gym-inner">
-                            </div> -->
-                                @endforeach
-                                <!-- <div class="gym-inner"> -->
-                                <!-- <div class="title-sec">
-                                    <div class="title text-left">
-                                        CAUTION
-                                    </div>
-                                </div>
-                                <ul>
-                                    <li>For their own safety and benefit, members must consult their personal physician
-                                        on their suitability for taking up exercise offered at the GYM.</li>
-                                    <li>The gym will not be responsible for any injuries, sprains, muscle pain or any
-                                        such problem caused due to improper way of exercising.</li>
-                                    <li>The minimum age for using the GYM is 16 years. In case of special requirement,
-                                        kindly contact the club office for permission.</li>
-                                    <li>The member will be responsible for any damage to gym properties, due to his/her
-                                        mishandling.</li>
-                                    <li>The member is also required to maintain club decorum while using the GYM.</li>
-                                </ul> -->
-                            </div>
-                            <!-- <div class="gym-inner"> -->
-                            <!-- <div class="title-sec">
-                                    <div class="title text-left">
-                                        BEHAVIOUR CODE
-                                    </div>
-                                </div>
-                                <ul>
-                                    <li>Member should come in proper exercising dress. Members should carry their own
-                                        clean shoes with them in a bag. Shoes worn from outside will not be allowed.
-                                    </li>
-                                    <li>Use of mobile phone is strictly prohibited inside the gym. This is for the
-                                        convenience of co-members using the facility.</li>
-                                    <li>For the convenience of other members, please change your t-shirts before coming
-                                        to the GYM if you have been running / playing outside.</li>
-                                    <li>Members are also requested to maintain minimum hygiene while in the GYM.</li>
-                                    <li>Members are not allowed to bring in any Food and Alcoholic drinks inside the
-                                        GYM.</li>
-                                    <li>Members are requested to keep the weights, mats, towels, glasses, etc., after
-                                        use in their rightful place. </li>
-                                </ul> -->
-
-                            <!-- </div> -->
-                            <!-- <div class="gym-inner"> -->
-                            <!-- <div class="title-sec">
-                                    <div class="title text-left">
-                                        TERMINATION
-                                    </div>
-                                </div>
-                                <ul>
-                                    <li>The GYM reserves the right to stop any member from using the GYM for
-                                        misbehaviour/misconduct in the interest of the Club without assigning that
-                                        member any reason.</li>
-                                </ul> -->
-                            <!-- </div> -->
-                            <!-- <div class="gym-inner"> -->
-                            <!-- <div class="title-sec">
-                                    <div class="title text-left">
-                                        Tuesday to Sunday
-                                    </div>
-                                </div>
-                                <p class="gym-time">6.00 am to 1.30 pm&2.30 pm to 9 pm</p> -->
-                            <!-- </div> -->
-                        </div>
 
 
                         <div class="col-lg-4">

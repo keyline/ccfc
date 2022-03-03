@@ -154,6 +154,17 @@ $(document).ready(function() {
             }
         );
     }
+	
+	CKEDITOR.on( 'instanceCreated', function( event ) {
+ editor.on( 'configLoaded', function() {
+
+  editor.config.basicEntities = false;
+  editor.config.entities_greek = false; 
+  editor.config.entities_latin = false; 
+  editor.config.entities_additional = '';
+
+ });
+});
 });
 </script>
 

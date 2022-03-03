@@ -76,40 +76,8 @@
                                 {!! $contentBlock->body !!}
                             </div>
                             @endforeach
-                            <!-- <div class="gym-inner">
-                                <div class="title-sec">
-                                    <div class="title text-left">
-                                        Main Bar
-                                    </div>
-                                </div>
-                                <ul>
-                                    <li><strong>Tuesday to Friday :</strong> 3.00 pm to 11.00 pm</li>
-                                    <li><strong>Saturday / Sunday :</strong> 11.00 am to 11.00 pm</li>
-                                    <li><strong>(Till 1.00 am on Saturday in case of late Bar Licence)</strong></li>
-                                </ul>
-                            </div> -->
-                            <!-- <div class="gym-inner">
-                                <div class="title-sec">
-                                    <div class="title text-left">
-                                        Gazebo Bar
-                                    </div>
-                                </div>
-                                <ul>
-                                    <li><strong>Tuesday to Friday :</strong> 3.00 pm to 11.00 pm</li>
-                                    <li><strong>Saturday / Sunday :</strong> 11.00 am to 11.00 pm</li>
-                                </ul>
-                            </div> -->
-                            <!-- <div class="gym-inner">
-                                <div class="title-sec">
-                                    <div class="title text-left">
-                                        Lounge Bar
-                                    </div>
-                                </div>
-                                <ul>
-                                    <li><strong>Tuesday :</strong> 3.00 pm to 11.00 pm</li>
-                                    <li><strong>Wednesday to Sunday :</strong> 12 Noon to 11.00 pm</li>
-                                </ul>
-                            </div> -->
+
+
 
                         </div>
                         <div class="col-lg-4">
@@ -133,21 +101,7 @@
 
                             @endforeach
                             @endforeach
-                            <!-- <div class="project-item">
-                                <div class="gallery">
-                                    <a href="{{ asset('img/activities/right_sideimage_2.jpg') }}" class="item-inner"
-                                        data-fancybox="image">
-                                        <div class="item-img">
-                                            <img class="img-fluid"
-                                                src="{{ asset('img/activities/right_sideimage_2.jpg') }}" alt="">
-                                            <div class="hvr">
-                                                <i class="zmdi zmdi-search"></i>
-                                            </div>
-                                        </div>
-                                    </a>
 
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>

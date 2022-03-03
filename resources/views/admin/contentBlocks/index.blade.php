@@ -38,7 +38,8 @@
                             {{ trans('cruds.contentBlock.fields.source_page') }}
                         </th>
                         <th>
-                            {{ trans('cruds.contentPage.fields.excerpt') }}
+                            <!-- {{ trans('cruds.contentPage.fields.excerpt') }} -->
+                            {{ trans('cruds.contentBlock.fields.body') }}
                         </th>
                         <th>
                             &nbsp;
@@ -67,7 +68,8 @@
                             {{ $contentBlock->source_page->title ?? '' }}
                         </td>
                         <td>
-                            {{ $contentBlock->source_page->excerpt ?? '' }}
+                            <!-- {{ $contentBlock->source_page->excerpt ?? '' }} -->
+                            {!! $contentBlock->body ?? '' !!}
                         </td>
                         <td>
                             @can('content_block_show')

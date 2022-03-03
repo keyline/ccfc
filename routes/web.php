@@ -33,6 +33,8 @@ use App\Models\CommitteeMemberMapping;
 
 use App\Models\SubCommitteeMember;
 
+use App\Models\CommitteeName;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -128,7 +130,8 @@ Route::get('/balloting_committee', function () {
 Route::get('/sub_committees', function () {
     $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
-    return view('sub_committees', compact(['subCommitteeMembers','userDetails']));
+    $committeeNames = CommitteeName::all();
+    return view('sub_committees', compact(['subCommitteeMembers','userDetails','committeeNames']));
 });
 
 

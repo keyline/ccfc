@@ -134,9 +134,18 @@
     ClassicEditor.create(
       allEditors[i], {
         extraPlugins: [SimpleUploadAdapter]
-      }
+      },
+	  {
+
+  editor.config.basicEntities = false;
+  editor.config.entities_greek = false; 
+  editor.config.entities_latin = false; 
+  editor.config.entities_additional = '';
+
+ }
     );
   }
+  
 });
 </script>
 
