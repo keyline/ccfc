@@ -82,6 +82,18 @@
                     <div class="row">
                         <div class="subcomminttees-tablist">
                             <ul class="nav nav-tabs form-tabs hideonmobile" role="tablist">
+
+                                <!-- @foreach($committeeNames as
+                                $committee)
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab"
+                                        href="{{ $committee->committee_name_master ?? '' }}">
+                                        <div class="tab_icontext">
+                                            <h3>{{ $committee->committee_name_master ?? '' }}</h3>
+                                        </div>
+                                    </a>
+                                </li>
+                                @endforeach -->
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#bar">
                                         <div class="tab_icontext">
@@ -159,6 +171,11 @@
                                 <option value="2">Entertainment & Communications</option>
                                 <option value="3">Health And Wellness</option>
                                 <option value="4">The Cc&fc Women's Wing</option>
+                                <option value="5">The Cc&fc Kids Club</option>
+                                <option value="6">Childrens Broadway Musical</option>
+                                <option value="7">Sports Co-ordinator</option>
+                                <option value="8">Sponsorship</option>
+                                <option value="9">Finance</option>
                             </select>
 
                             <div class="tab-content" id="myTabContent">
@@ -176,7 +193,8 @@
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
                                                                 src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                                alt="" />
+                                                        </a>
                                                     </div>
                                                     <div class="multiuse_bottom_general">
                                                         <h3>{{ $committeeMember->member->name ?? '' }}</h3>

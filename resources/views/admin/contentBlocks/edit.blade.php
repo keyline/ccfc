@@ -34,6 +34,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentBlock.fields.body_helper') }}</span>
             </div>
+			
+			
+				
             <div class="form-group">
                 <label>{{ trans('cruds.contentBlock.fields.status') }}</label>
                 @foreach(App\Models\ContentBlock::STATUS_RADIO as $key => $label)
@@ -131,10 +134,20 @@
     ClassicEditor.create(
       allEditors[i], {
         extraPlugins: [SimpleUploadAdapter]
-      }
+      },
+	  {
+
+  editor.config.basicEntities = false;
+  editor.config.entities_greek = false; 
+  editor.config.entities_latin = false; 
+  editor.config.entities_additional = '';
+
+ }
     );
   }
+  
 });
 </script>
+
 
 @endsection

@@ -36,6 +36,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentBlock.fields.body_helper') }}</span>
             </div>
+
+         
+			
             <div class="form-group">
                 <label>{{ trans('cruds.contentBlock.fields.status') }}</label>
                 @foreach(App\Models\ContentBlock::STATUS_RADIO as $key => $label)
@@ -110,7 +113,7 @@ $(document).ready(function() {
                                         return reject(response && response.message ?
                                             `${genericErrorText}\n${xhr.status} ${response.message}` :
                                             `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`
-                                            );
+                                        );
                                     }
 
                                     $('form').append(
@@ -151,6 +154,17 @@ $(document).ready(function() {
             }
         );
     }
+	
+	CKEDITOR.on( 'instanceCreated', function( event ) {
+ editor.on( 'configLoaded', function() {
+
+  editor.config.basicEntities = false;
+  editor.config.entities_greek = false; 
+  editor.config.entities_latin = false; 
+  editor.config.entities_additional = '';
+
+ });
+});
 });
 </script>
 

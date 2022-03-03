@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="famoussport_info">
                                     <h3>{{$sport->name}}</h3>
-                                    <p>{{$sport->details}}</p>
+                                    <p>{!!$sport->details!!}</p>
                                 </div>
                             </div>
                         </div>

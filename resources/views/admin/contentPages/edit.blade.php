@@ -7,83 +7,101 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.content-pages.update", [$contentPage->id]) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.content-pages.update", [$contentPage->id]) }}"
+            enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $contentPage->title) }}" required>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title"
+                    id="title" value="{{ old('title', $contentPage->title) }}" required>
                 @if($errors->has('title'))
-                    <span class="text-danger">{{ $errors->first('title') }}</span>
+                <span class="text-danger">{{ $errors->first('title') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="categories">{{ trans('cruds.contentPage.fields.category') }}</label>
                 <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                    <span class="btn btn-info btn-xs select-all"
+                        style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all"
+                        style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                 </div>
-                <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" name="categories[]" id="categories" multiple>
+                <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}"
+                    name="categories[]" id="categories" multiple>
                     @foreach($categories as $id => $category)
-                        <option value="{{ $id }}" {{ (in_array($id, old('categories', [])) || $contentPage->categories->contains($id)) ? 'selected' : '' }}>{{ $category }}</option>
+                    <option value="{{ $id }}"
+                        {{ (in_array($id, old('categories', [])) || $contentPage->categories->contains($id)) ? 'selected' : '' }}>
+                        {{ $category }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('categories'))
-                    <span class="text-danger">{{ $errors->first('categories') }}</span>
+                <span class="text-danger">{{ $errors->first('categories') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.category_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="tags">{{ trans('cruds.contentPage.fields.tag') }}</label>
                 <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                    <span class="btn btn-info btn-xs select-all"
+                        style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all"
+                        style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                 </div>
-                <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
+                <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]"
+                    id="tags" multiple>
                     @foreach($tags as $id => $tag)
-                        <option value="{{ $id }}" {{ (in_array($id, old('tags', [])) || $contentPage->tags->contains($id)) ? 'selected' : '' }}>{{ $tag }}</option>
+                    <option value="{{ $id }}"
+                        {{ (in_array($id, old('tags', [])) || $contentPage->tags->contains($id)) ? 'selected' : '' }}>
+                        {{ $tag }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('tags'))
-                    <span class="text-danger">{{ $errors->first('tags') }}</span>
+                <span class="text-danger">{{ $errors->first('tags') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.tag_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text', $contentPage->page_text) !!}</textarea>
+                <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}"
+                    name="page_text" id="page_text">{!! old('page_text', $contentPage->page_text) !!}</textarea>
                 @if($errors->has('page_text'))
-                    <span class="text-danger">{{ $errors->first('page_text') }}</span>
+                <span class="text-danger">{{ $errors->first('page_text') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
-                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt', $contentPage->excerpt) }}</textarea>
+                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt"
+                    id="excerpt">{{ old('excerpt', $contentPage->excerpt) }}</textarea>
                 @if($errors->has('excerpt'))
-                    <span class="text-danger">{{ $errors->first('excerpt') }}</span>
+                <span class="text-danger">{{ $errors->first('excerpt') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="featured_image">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
+                <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}"
+                    id="featured_image-dropzone">
                 </div>
                 @if($errors->has('featured_image'))
-                    <span class="text-danger">{{ $errors->first('featured_image') }}</span>
+                <span class="text-danger">{{ $errors->first('featured_image') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.featured_image_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="gallery_id">{{ trans('cruds.contentPage.fields.gallery') }}</label>
-                <select class="form-control select2 {{ $errors->has('gallery') ? 'is-invalid' : '' }}" name="gallery_id" id="gallery_id">
+                <select class="form-control select2 {{ $errors->has('gallery') ? 'is-invalid' : '' }}" name="gallery_id"
+                    id="gallery_id">
                     @foreach($galleries as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('gallery_id') ? old('gallery_id') : $contentPage->gallery->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    <option value="{{ $id }}"
+                        {{ (old('gallery_id') ? old('gallery_id') : $contentPage->gallery->id ?? '') == $id ? 'selected' : '' }}>
+                        {{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('gallery'))
-                    <span class="text-danger">{{ $errors->first('gallery') }}</span>
+                <span class="text-danger">{{ $errors->first('gallery') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.gallery_helper') }}</span>
             </div>
@@ -102,106 +120,121 @@
 
 @section('scripts')
 <script>
-    $(document).ready(function () {
-  function SimpleUploadAdapter(editor) {
-    editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
-      return {
-        upload: function() {
-          return loader.file
-            .then(function (file) {
-              return new Promise(function(resolve, reject) {
-                // Init request
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', '{{ route('admin.content-pages.storeCKEditorImages') }}', true);
-                xhr.setRequestHeader('x-csrf-token', window._token);
-                xhr.setRequestHeader('Accept', 'application/json');
-                xhr.responseType = 'json';
+$(document).ready(function() {
+    function SimpleUploadAdapter(editor) {
+        editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
+            return {
+                upload: function() {
+                    return loader.file
+                        .then(function(file) {
+                            return new Promise(function(resolve, reject) {
+                                // Init request
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('POST', '{{ route('admin.content-pages.storeCKEditorImages') }}',
+                                    true);
+                                xhr.setRequestHeader('x-csrf-token', window._token);
+                                xhr.setRequestHeader('Accept', 'application/json');
+                                xhr.responseType = 'json';
 
-                // Init listeners
-                var genericErrorText = `Couldn't upload file: ${ file.name }.`;
-                xhr.addEventListener('error', function() { reject(genericErrorText) });
-                xhr.addEventListener('abort', function() { reject() });
-                xhr.addEventListener('load', function() {
-                  var response = xhr.response;
+                                // Init listeners
+                                var genericErrorText =
+                                    `Couldn't upload file: ${ file.name }.`;
+                                xhr.addEventListener('error', function() {
+                                    reject(genericErrorText)
+                                });
+                                xhr.addEventListener('abort', function() {
+                                    reject()
+                                });
+                                xhr.addEventListener('load', function() {
+                                    var response = xhr.response;
 
-                  if (!response || xhr.status !== 201) {
-                    return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
-                  }
+                                    if (!response || xhr.status !== 201) {
+                                        return reject(response && response.message ?
+                                            `${genericErrorText}\n${xhr.status} ${response.message}` :
+                                            `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`
+                                            );
+                                    }
 
-                  $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
+                                    $('form').append(
+                                        '<input type="hidden" name="ck-media[]" value="' +
+                                        response.id + '">');
 
-                  resolve({ default: response.url });
-                });
+                                    resolve({
+                                        default: response.url
+                                    });
+                                });
 
-                if (xhr.upload) {
-                  xhr.upload.addEventListener('progress', function(e) {
-                    if (e.lengthComputable) {
-                      loader.uploadTotal = e.total;
-                      loader.uploaded = e.loaded;
-                    }
-                  });
+                                if (xhr.upload) {
+                                    xhr.upload.addEventListener('progress', function(e) {
+                                        if (e.lengthComputable) {
+                                            loader.uploadTotal = e.total;
+                                            loader.uploaded = e.loaded;
+                                        }
+                                    });
+                                }
+
+                                // Send request
+                                var data = new FormData();
+                                data.append('upload', file);
+                                data.append('crud_id', '{{ $contentPage->id ?? 0 }}');
+                                xhr.send(data);
+                            });
+                        })
                 }
-
-                // Send request
-                var data = new FormData();
-                data.append('upload', file);
-                data.append('crud_id', '{{ $contentPage->id ?? 0 }}');
-                xhr.send(data);
-              });
-            })
+            };
         }
-      };
     }
-  }
 
-  var allEditors = document.querySelectorAll('.ckeditor');
-  for (var i = 0; i < allEditors.length; ++i) {
-    ClassicEditor.create(
-      allEditors[i], {
-        extraPlugins: [SimpleUploadAdapter]
-      }
-    );
-  }
+    var allEditors = document.querySelectorAll('.ckeditor');
+    for (var i = 0; i < allEditors.length; ++i) {
+        ClassicEditor.create(
+            allEditors[i], {
+                extraPlugins: [SimpleUploadAdapter]
+            }
+        );
+    }
 });
 </script>
 
 <script>
-    Dropzone.options.featuredImageDropzone = {
+Dropzone.options.featuredImageDropzone = {
     url: '{{ route('admin.content-pages.storeMedia') }}',
     maxFilesize: 2, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 2,
-      width: 4096,
-      height: 4096
+        size: 2,
+        width: 4096,
+        height: 4096
     },
-    success: function (file, response) {
-      $('form').find('input[name="featured_image"]').remove()
-      $('form').append('<input type="hidden" name="featured_image" value="' + response.name + '">')
-    },
-    removedfile: function (file) {
-      file.previewElement.remove()
-      if (file.status !== 'error') {
+    success: function(file, response) {
         $('form').find('input[name="featured_image"]').remove()
-        this.options.maxFiles = this.options.maxFiles + 1
-      }
+        $('form').append('<input type="hidden" name="featured_image" value="' + response.name + '">')
     },
-    init: function () {
-@if(isset($contentPage) && $contentPage->featured_image)
-      var file = {!! json_encode($contentPage->featured_image) !!}
-          this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, file.preview)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="featured_image" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
+    removedfile: function(file) {
+        file.previewElement.remove()
+        if (file.status !== 'error') {
+            $('form').find('input[name="featured_image"]').remove()
+            this.options.maxFiles = this.options.maxFiles + 1
+        }
     },
-    error: function (file, response) {
+    init: function() {
+        @if(isset($contentPage) && $contentPage->featured_image)
+        var file = {
+            !!json_encode($contentPage->featured_image) !!
+        }
+        this.options.addedfile.call(this, file)
+        this.options.thumbnail.call(this, file, file.preview)
+        file.previewElement.classList.add('dz-complete')
+        $('form').append('<input type="hidden" name="featured_image" value="' + file.file_name + '">')
+        this.options.maxFiles = this.options.maxFiles - 1
+        @endif
+    },
+    error: function(file, response) {
         if ($.type(response) === 'string') {
             var message = response //dropzone sends it's own error messages in string
         } else {

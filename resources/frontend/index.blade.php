@@ -110,11 +110,13 @@
                                         @foreach($contentPages->where("id","1") as $contentPage)
 
                                         <p class="ArticleBody">
-                                            {!! \Illuminate\Support\Str::limit(($contentPage->excerpt), 300, '') !!}
+                                            {!! \Illuminate\Support\Str::limit(($contentPage->excerpt),300,'') !!}
                                             @if (strlen($contentPage->excerpt) > 300)
                                             <span id="dots">...</span>
+                                            <!-- <span id="more"
+                                                style="display:none;">{{ substr($contentPage->page_text, 300) }}</span> -->
                                             <span id="more"
-                                                style="display:none;">{{ substr($contentPage->excerpt, 300) }}</span>
+                                                style="display:none;">{{!! substr( $contentPage->excerpt, 300) !!}}</span>
                                             <a class="read-btn" onclick="myFunction()" id="myBtn">+ Read More</a>
                                             @endif
 
@@ -239,7 +241,9 @@
                                                         February bringing a whole new face of health and fitness...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('gymming-rejuvenated') }}" class="read-btn">+
+                                                            Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -270,7 +274,8 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('pool-pub') }}" class="read-btn">+
+                                                            Read More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -301,7 +306,8 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('club-bar') }}" class="read-btn">+ Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -332,7 +338,8 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="#" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('swimming-pool') }}" class="read-btn">+ Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>

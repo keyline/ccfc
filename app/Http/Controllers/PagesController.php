@@ -6,7 +6,7 @@ use App\Models\Member;
 use App\Models\Sportstype;
 use App\Models\Title;
 use App\Models\User;
-
+use App\Models\UserDetail;
 
 use Illuminate\Http\Request;
 
@@ -27,7 +27,7 @@ class PagesController extends Controller
         // $members = Member::with("title,sport")->get(); 
 
         $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
-
+        $userDetails = UserDetail::with(['user_code', 'media'])->get();
         // $a = $members->where('sport_name',$sport_name);
 
         // $query = Member::where('sport_name', '=', $sport_name);
@@ -42,7 +42,7 @@ class PagesController extends Controller
         
 
         // return view('pages')->with('id',$id);
-        return view('pages',compact('members','sport_name'));
+        return view('pages',compact('members','sport_name','userDetails'));
     }
 
 

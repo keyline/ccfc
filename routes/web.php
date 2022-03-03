@@ -33,6 +33,8 @@ use App\Models\CommitteeMemberMapping;
 
 use App\Models\SubCommitteeMember;
 
+use App\Models\CommitteeName;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -128,7 +130,44 @@ Route::get('/balloting_committee', function () {
 Route::get('/sub_committees', function () {
     $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
-    return view('sub_committees', compact(['subCommitteeMembers','userDetails']));
+    $committeeNames = CommitteeName::all();
+    return view('sub_committees', compact(['subCommitteeMembers','userDetails','committeeNames']));
+});
+
+
+Route::get('/gymming-rejuvenated', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('gymming-rejuvenated', compact(['contentPages', 'galleries', 'contentBlocks']));
+    
+});
+
+
+Route::get('/pool-pub', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('pool-pub', compact(['contentPages', 'galleries', 'contentBlocks']));
+    
+});
+
+
+Route::get('/club-bar', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('club-bar', compact(['contentPages', 'galleries', 'contentBlocks']));
+    
+});
+
+
+Route::get('/swimming-pool', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('swimming-pool', compact(['contentPages', 'galleries', 'contentBlocks']));
+    
 });
 
 
@@ -333,18 +372,18 @@ Route::get('/rules_regulation', function () {
     return view('rules_regulation');
 });
 
-Route::get('/gymming-rejuvenated', function () {
-    return view('gymming-rejuvenated');
-});
-Route::get('/swimming-pool', function () {
-    return view('swimming-pool');
-});
-Route::get('/club-bar', function () {
-    return view('club-bar');
-});
-Route::get('/pool-pub', function () {
-    return view('pool-pub');
-});
+// Route::get('/gymming-rejuvenated', function () {
+//     return view('gymming-rejuvenated');
+// });
+// Route::get('/swimming-pool', function () {
+//     return view('swimming-pool');
+// });
+// Route::get('/club-bar', function () {
+//     return view('club-bar');
+// });
+// Route::get('/pool-pub', function () {
+//     return view('pool-pub');
+// });
 Route::get('/contact-us', function () {
     return view('contact-us');
 });
@@ -431,3 +470,6 @@ Route::get('/amenities_services', function () {
     Route::get('/gallery', function () {
         return view('gallery');
     });
+
+
+    
