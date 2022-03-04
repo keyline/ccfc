@@ -110,8 +110,8 @@
                                         <td>11827.59</td>
                                         <td>6106</td>
                                         <td>11826.96</td>
-                                        <td>Good</td>
-                                        <td>View</td>
+                                        <td><a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a></td>
+                                        <td><a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a></td>
                                         <td>Payment</td>
                                     </tr>
                                     <tr>
@@ -120,8 +120,8 @@
                                         <td>11827.59</td>
                                         <td>6106</td>
                                         <td>11826.96</td>
-                                        <td>Good</td>
-                                        <td>View</td>
+                                        <td><a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a></td>
+                                        <td><a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a></td>
                                         <td>Payment</td>
                                     </tr>
                                     <tr>
@@ -130,8 +130,8 @@
                                         <td>11827.59</td>
                                         <td>6106</td>
                                         <td>11826.96</td>
-                                        <td>Good</td>
-                                        <td>View</td>
+                                        <td><a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a></td>
+                                        <td><a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a></td>
                                         <td>Payment</td>
                                     </tr>
                                     </tbody>
