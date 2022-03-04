@@ -119,7 +119,8 @@
                                                     </div>
                                                     <div class="trophy_player">
                                                         <h3>{{$trophie->trophy}}</h3>
-                                                        <h4>{{$trophie->year_of_award}} - January</h4>
+                                                        <h4>{{$trophie->year_of_award}} - {{$trophie->year_of_month}}
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -191,7 +192,8 @@
                                                     </div>
                                                     <div class="trophy_player">
                                                         <h3>{{$trophie->trophy}}</h3>
-                                                        <h4>{{$trophie->year_of_award}} - January</h4>
+                                                        <h4>{{$trophie->year_of_award}} - {{$trophie->year_of_month}}
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>

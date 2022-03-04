@@ -68,6 +68,7 @@
 
                                 <li class="nav-item">
 
+                                    @if (count($posts) == 1)
                                     <a class="nav-link active" id="cricket-tab" data-toggle="tab" href="#cricket">
                                         <div class="tab_icontext">
                                             <img src="{{ asset('img/sports/cricket_icon.png') }}" alt="" />

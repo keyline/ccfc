@@ -13,6 +13,7 @@ class CreateTrophiesTable extends Migration
             $table->string('trophy');
             $table->longText('trophy_description')->nullable();
             $table->string('year_of_award')->nullable();
+            $table->string('year_of_month')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

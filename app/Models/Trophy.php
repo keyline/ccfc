@@ -32,6 +32,7 @@ class Trophy extends Model implements HasMedia
         'trophy',
         'trophy_description',
         'year_of_award',
+        'year_of_month',
         'created_at',
         'updated_at',
         'deleted_at',

@@ -59,6 +59,14 @@
                             {{ $trophy->year_of_award }}
                         </td>
                     </tr>
+					<tr>
+                        <th>
+                            {{ trans('cruds.trophy.fields.year_of_month') }}
+                        </th>
+                        <td>
+                            {{ $trophy->year_of_month }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

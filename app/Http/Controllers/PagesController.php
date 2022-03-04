@@ -42,7 +42,8 @@ class PagesController extends Controller
         
 
         // return view('pages')->with('id',$id);
-        return view('pages',compact('members','sport_name','userDetails'));
+        // return view('pages',compact('members','sport_name','userDetails'));
+        return view('sports',compact('members','sport_name','userDetails'));
     }
 
 

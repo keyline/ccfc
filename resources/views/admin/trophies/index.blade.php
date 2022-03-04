@@ -34,6 +34,9 @@
                         <th>
                             {{ trans('cruds.trophy.fields.year_of_award') }}
                         </th>
+						<th>
+                            {{ trans('cruds.trophy.fields.year_of_month') }}
+                        </th>
                         <th>
                             &nbsp;
                         </th>
@@ -61,6 +64,9 @@
                         </td>
                         <td>
                             {{ $trophy->year_of_award ?? '' }}
+                        </td>
+						<td>
+                            {{ $trophy->year_of_month ?? '' }}
                         </td>
                         <td>
                             @can('trophy_show')
