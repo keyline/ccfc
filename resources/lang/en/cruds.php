@@ -316,6 +316,8 @@ return [
             'trophy_photo_helper'       => ' ',
             'year_of_award'             => 'Year Of Award',
             'year_of_award_helper'      => ' ',
+            'year_of_month'             => 'Year Of Month',
+            'year_of_month_helper'      => ' ',
             'created_at'                => 'Created at',
             'created_at_helper'         => ' ',
             'updated_at'                => 'Updated at',

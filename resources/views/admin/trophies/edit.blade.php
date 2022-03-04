@@ -43,6 +43,14 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.trophy.fields.year_of_award_helper') }}</span>
             </div>
+			<div class="form-group">
+                <label for="year_of_month">{{ trans('cruds.trophy.fields.year_of_month') }}</label>
+                <input class="form-control {{ $errors->has('year_of_month') ? 'is-invalid' : '' }}" type="text" name="year_of_month" id="year_of_month" value="{{ old('year_of_month', $trophy->year_of_month) }}">
+                @if($errors->has('year_of_month'))
+                    <span class="text-danger">{{ $errors->first('year_of_month') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.trophy.fields.year_of_month_helper') }}</span>
+            </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}

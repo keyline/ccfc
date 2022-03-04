@@ -411,7 +411,8 @@ Route::get('/amenities_services', function () {
     
     // require _DIR_.'/auth.php';
     
-    Route::get('pages/{sport_name}', 'PagesController@show');
+    Route::get('sports/{sport_name}', 'PagesController@show');
+    // Route::get('sports/{sport_name}', 'PagesController@show');
     
     Route::get('demo', 'FrontendhtmlController@pastpresident');
     
