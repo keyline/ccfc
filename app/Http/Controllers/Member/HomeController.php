@@ -37,7 +37,7 @@ class HomeController extends Controller
         if (! Hash::check($request->password, $userInfo->password)) {
             return back()->withErrors(['password' => ['Password is incorrect']]);
         }
-        $request->session()->put('LoggedMember', $userInfo->id);
+        $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name ]);
         return redirect('member/dashboard');
     }
 

@@ -1,9 +1,9 @@
 <div class="member-login member_afterlogin">
     <div class="member-title">
         Welcome </br>
-        @foreach($userData AS $user)
-        {{ $user['name'] }}
-        @endforeach
+        @if(Session::has('LoggedMember'))
+        {{Session::get('LoggedMember')['name']}}
+        @endif
     </div>
 
     <div class="member_aftelogin_btn">
