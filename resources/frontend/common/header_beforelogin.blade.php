@@ -13,7 +13,7 @@
                                                         <!-- <input type="text" class="form-control" placeholder="User Name" autocomplete="off"> -->
                                                         <input id="email"
                                                             class="form-control @error('email') is-invalid @enderror"
-                                                            placeholder="{{ trans('global.login_email') }}" name="email"
+                                                            placeholder="Member Code" name="email"
                                                             value="{{ old('email', null) }}">
                                                         
                                                         @if($errors->has('email'))
