@@ -392,8 +392,11 @@
                                                 <div class="sports-action">
                                                     <!-- <a href="{{ url('/pages', $sportstype->sport_name) }}" class="read-btn">+ Read More</a> -->
 
-                                                    <a href="{{ url('/sports', $sportstype->sport_name) }}"
+                                                    <!-- <a href="{{ url('/sports', $sportstype->sport_name) }}"
                                                         class="read-btn">+
+                                                        Read More</a> -->
+
+                                                    <a href="{{ url('/sports') }}" class="read-btn">+
                                                         Read More</a>
 
                                                     <!-- <a href="{{ url('/sports') }}" class="read-btn">
