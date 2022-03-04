@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="col-lg-9">
                             <div class="history-inner">
-                                @foreach($contentPages->where("title","History") as $contentPage)
+                                @foreach($contentPages->where("id","1") as $contentPage)
                                 <div class="history-content">
 
                                     <!-- {!! $contentPage->excerpt !!} -->

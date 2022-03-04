@@ -116,7 +116,7 @@
                                             <!-- <span id="more"
                                                 style="display:none;">{{ substr($contentPage->page_text, 300) }}</span> -->
                                             <span id="more"
-                                                style="display:none;">{{!! substr( $contentPage->excerpt, 300) !!}}</span>
+                                                style="display:none;">{{ substr( $contentPage->excerpt, 300) }}</span>
                                             <a class="read-btn" onclick="myFunction()" id="myBtn">+ Read More</a>
                                             @endif
 

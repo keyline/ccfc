@@ -34,7 +34,10 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="content_inner">
+                            @foreach($contentPages->where("id","13") as $contentPage)
+                            {!! $contentPage->page_text !!}
+                            @endforeach
+                            <!-- <div class="content_inner">
                                 <p>
                                     In the city of Calcutta, then just over a hundred years old and growing fast both in
                                     commercial and political significance, the British Raj was busy setting its roots.
@@ -54,7 +57,7 @@
                                     Portugal. The Club was celebrating its centenary that year, and Tait claimed that it
                                     'must be one of the oldest cricket club outside Great Britain'.
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -68,7 +71,7 @@
 
                                 <li class="nav-item">
 
-                                    @if (count($posts) == 1)
+
                                     <a class="nav-link active" id="cricket-tab" data-toggle="tab" href="#cricket">
                                         <div class="tab_icontext">
                                             <img src="{{ asset('img/sports/cricket_icon.png') }}" alt="" />
