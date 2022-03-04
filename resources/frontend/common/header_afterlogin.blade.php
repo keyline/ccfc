@@ -9,7 +9,7 @@
     <div class="member_aftelogin_btn">
         <ul>
             <li>
-                <a href="#">Member Dashboard</a>
+                <a href="{{ route('member.dashboard')}}">Member Dashboard</a>
             </li>
             <li>
                 <a href="#">Invoices & Payment</a>
