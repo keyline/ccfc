@@ -140,7 +140,6 @@ Route::get('/gymming-rejuvenated', function () {
     $galleries = Gallery::with(['media'])->get();
     $contentBlocks = ContentBlock::with(['source_page'])->get();
     return view('gymming-rejuvenated', compact(['contentPages', 'galleries', 'contentBlocks']));
-    
 });
 
 
@@ -149,7 +148,6 @@ Route::get('/pool-pub', function () {
     $galleries = Gallery::with(['media'])->get();
     $contentBlocks = ContentBlock::with(['source_page'])->get();
     return view('pool-pub', compact(['contentPages', 'galleries', 'contentBlocks']));
-    
 });
 
 
@@ -158,7 +156,6 @@ Route::get('/club-bar', function () {
     $galleries = Gallery::with(['media'])->get();
     $contentBlocks = ContentBlock::with(['source_page'])->get();
     return view('club-bar', compact(['contentPages', 'galleries', 'contentBlocks']));
-    
 });
 
 
@@ -167,7 +164,6 @@ Route::get('/swimming-pool', function () {
     $galleries = Gallery::with(['media'])->get();
     $contentBlocks = ContentBlock::with(['source_page'])->get();
     return view('swimming-pool', compact(['contentPages', 'galleries', 'contentBlocks']));
-    
 });
 
 
@@ -333,7 +329,25 @@ Route::group([
     'middleware' => ['member']
 ], function () {
     Route::get('/login', [HomeController::class, 'memberLogin'])->name('login');
+
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/events_members_only', function () {
+        return view('events_members_only');
+    })->name('events_members_only');
+
+    Route::get('/1792-newsletter', function () {
+        return view('1792-newsletter');
+    })->name('1792-newsletter');
+
+    Route::get('/notice-circulars', function () {
+        return view('notice-circulars');
+    })->name('notice-circulars');
+
+    
+    Route::get('/rules_regulation', function () {
+        return view('rules_regulation');
+    })->name('rules_regulation');
 });
 
 
@@ -360,17 +374,12 @@ Route::get('/annual_report', function () {
     return view('annual_report');
 });
 
-Route::get('/events_members_only', function () {
-    return view('events_members_only');
-});
+
 
 Route::get('/new_member', function () {
     return view('new_member');
 });
 
-Route::get('/rules_regulation', function () {
-    return view('rules_regulation');
-});
 
 // Route::get('/gymming-rejuvenated', function () {
 //     return view('gymming-rejuvenated');
@@ -387,9 +396,7 @@ Route::get('/rules_regulation', function () {
 Route::get('/contact-us', function () {
     return view('contact-us');
 });
-Route::get('/notice-circulars', function () {
-    return view('notice-circulars');
-});
+
 Route::get('/amenities_services', function () {
     return view('amenities_services');
 });
@@ -464,12 +471,7 @@ Route::get('/amenities_services', function () {
     // Route::get('/sports', function () {
     //     return view('sports');
     // });
-    Route::get('/1792-newsletter', function () {
-        return view('1792-newsletter');
-    });
+    
     Route::get('/gallery', function () {
         return view('gallery');
     });
-
-
-    

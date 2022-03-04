@@ -5,7 +5,9 @@
                                                 </div>
                                                 <!-- <form> -->
                                                 <form action="{{ route('member.check') }}" method="POST">
-                                                    
+                                                    @if(Session::has('fail'))
+                                                    {{ Session::get('fail') }}
+                                                    @endif
                                                     @csrf
                                                     <div class="form-group">
                                                         <!-- <input type="text" class="form-control" placeholder="User Name" autocomplete="off"> -->
