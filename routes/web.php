@@ -38,9 +38,7 @@ use App\Models\CommitteeName;
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
-    if (session('LoggedMember')) {
-        return redirect()->route('member.dashboard')->with('LoggedMember', session('LoggedMember'));
-    }
+    
     $reciprocalClubs = ReciprocalClub::all();
     $contentPages = ContentPage::all();
     $sportstypes = Sportstype::all();
