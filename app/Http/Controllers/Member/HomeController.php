@@ -72,11 +72,28 @@ class HomeController extends Controller
                                     'Content-Type' => 'application/json',])
                     ->withOptions(["verify"=>false])
                     ->post($url)->json()['data'];
-        //dd($profile);
+
+
+        $transactionFields= [
+            'MCODE'     => $user->user_code,
+            'FromDate'  => '01-apr-2020',
+            'ToDate'    => '01-jun-2021', 
+        ];
+
+        $tansactionUrl= 'https://ccfcmemberdata.in/Api/MEMBERTRANSACTIONS/?' . http_build_query($transactionFields);
+
+        $transactions = Http::withoutVerifying()
+                    ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                                    'Content-Type' => 'application/json',])
+                    ->withOptions(["verify"=>false])
+                    ->post($tansactionUrl)->json()['data'];
+        
+        //dd($transactions);
            
         return view('member.dashboard', [
-            'userData'      => $data,
-            'userProfile'   => $profile
+            'userData'          => $data,
+            'userProfile'       => $profile,
+            'userTransactions'  => $transactions,
         ]);
     }
 }

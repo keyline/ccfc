@@ -38,12 +38,10 @@
                     <div class="col-md-12">
                         <!-- printing member profile data  -->
                         
-                        Name : {{ $userProfile['MEMBER_NAME'] }}
-                        DOB  : {{ $userProfile['DOB'] }}
-                        
-                        <img src="data:image/jpeg;base64,{{ $userProfile['MemberImage'] }}" alt="Red dot" width="200" height="200" />
+                        <pre><code>{{ json_encode($userProfile, JSON_PRETTY_PRINT) }}</code></pre>
 
-                        <img src="data:image/jpeg;base64,{{ $userProfile['SpouseImage'] }}" alt="Red dot" width="200" height="200" />
+                        <pre><code>{{ json_encode($userTransactions, JSON_PRETTY_PRINT) }}</code></pre>
+                        
                         
                         
                         
