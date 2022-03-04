@@ -55,7 +55,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="content_inner">
+                            @foreach($contentPages->where("id","12") as $contentPage)
+                            {!! $contentPage->page_text !!}
+                            @endforeach
+                            <!-- <div class="content_inner">
                                 <ul class="pool">
                                     <li>Children (Below 3 years) not allowed.</li>
                                     <li>No spitting allowed in the pool area and pool hygiene should be maintained at
@@ -77,7 +80,7 @@
                                     <li>The club will not be responsible for any accident or loss of personal articles
                                         left in the pool area.</li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

@@ -77,59 +77,68 @@ Route::get('/food_beverages', function () {
 
 
 Route::get('/trophies', function () {
+    $contentPages = ContentPage::all();
     $trophies = Trophy::with(['media'])->get();
     // $data='Data';
-    return view('trophies', compact(['trophies']));
+    return view('trophies', compact(['contentPages','trophies']));
 });
 
 
 Route::get('/famous_sportsmen', function () {
+    $contentPages = ContentPage::all();
     $sportsmen = Sportsman::with(['media'])->get();
     // $data='Data';
-    return view('famous_sportsmen', compact(['sportsmen']));
+    return view('famous_sportsmen', compact(['contentPages','sportsmen']));
 });
 
 
 
 Route::get('/sports', function () {
+    $contentPages = ContentPage::all();
     $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
     // $users = User::with(['roles'])->get();
-    return view('sports', compact(['members','userDetails']));
+    return view('sports', compact(['contentPages','members','userDetails']));
     // return view('sports', compact(['members','users']));
 });
 
 
 
 Route::get('/reciprocal_clubs', function () {
+    $contentPages = ContentPage::all();
     $reciprocal = ReciprocalClub::with(['media'])->get();
     
-    return view('reciprocal_clubs', compact(['reciprocal']));
+    return view('reciprocal_clubs', compact(['contentPages','reciprocal']));
 });
 
 Route::get('/general_committee', function () {
+
+    $contentPages = ContentPage::all();
     // $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
     // $committeeNames = CommitteeName::all();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
-    return view('general_committee', compact(['committeeMemberMappings','userDetails']));
+    return view('general_committee', compact(['contentPages','committeeMemberMappings','userDetails']));
 });
 
 
 
 Route::get('/balloting_committee', function () {
+
+    $contentPages = ContentPage::all();
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
-    return view('balloting_committee', compact(['committeeMemberMappings','userDetails']));
+    return view('balloting_committee', compact(['contentPages','committeeMemberMappings','userDetails']));
 });
 
 
 
 Route::get('/sub_committees', function () {
+    $contentPages = ContentPage::all();
     $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
     $committeeNames = CommitteeName::all();
-    return view('sub_committees', compact(['subCommitteeMembers','userDetails','committeeNames']));
+    return view('sub_committees', compact(['contentPages','subCommitteeMembers','userDetails','committeeNames']));
 });
 
 

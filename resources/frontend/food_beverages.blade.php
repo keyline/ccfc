@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="history-content text-justify">
 
-                                    @foreach($contentPages as $contentPage)
+                                    @foreach($contentPages->where("id","2") as $contentPage)
                                     <p>{{$contentPage->excerpt}}</p>
                                     @endforeach
                                     <!-- <p>The Club offers a wide range of delicious food in its dining hall along with

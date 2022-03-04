@@ -51,7 +51,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="content_inner">
+                            @foreach($contentPages->where("id","9") as $contentPage)
+                            {!! $contentPage->page_text !!}
+                            @endforeach
+                            <!-- <div class="content_inner">
                                 <p>The Club gym went through refurbishment and up gradation this February bringing a
                                     whole new face of health and fitness to our club. With the installation of new
                                     equipment it promises to bring a more pleasant and satisfying work out experience.
@@ -65,7 +68,7 @@
                                 <p>We hope to see more members use the gym to build on their fitness and strength. The
                                     gym timings are 6 am to 1.30 pm and 2.30 pm to 9 pm from Tuesday to Sunday and the
                                     trainer is there to assist you whenever called upon.</p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
