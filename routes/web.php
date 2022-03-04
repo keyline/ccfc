@@ -474,3 +474,9 @@ Route::get('/amenities_services', function () {
     Route::get('/gallery', function () {
         return view('gallery');
     });
+    Route::get('/dashboard-landing', function () {
+        return view('dashboard-landing');
+    });
+    Route::get('/invoice', function () {
+        return view('invoice');
+    });
