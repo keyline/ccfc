@@ -138,15 +138,15 @@
                                                                         class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
                                                             <ul class="submenu dropdown-menu">
-                                                                <li><a class="nav-link"href="{{ asset('member-login') }}">Member  dashboard</a></li>
-                                                                <li><a class="nav-link" href="{{ asset('events_members_only') }}">Events</a></li>
+                                                                <li><a class="nav-link"href="{{ route('member.dashboard') }}">Member  dashboard</a></li>
+                                                                <li><a class="nav-link" href="{{ route('member.events_members_only') }}">Events</a></li>
                                                                 <li><a class="nav-link"href="#/">News</a>
                                                                     <ul class="submenu dropdown-menu">
-                                                                        <li><a href="{{ asset('1792-newsletter') }}">1792</a></li>
-                                                                        <li><a href="{{ asset('notice-circulars') }}">Notice & Circulars</a></li>
+                                                                        <li><a href="{{ route('member.1792-newsletter') }}">1792</a></li>
+                                                                        <li><a href="{{ route('member.notice-circulars') }}">Notice & Circulars</a></li>
                                                                     </ul>
                                                                 </li>
-                                                                <li><a class="nav-link" href="{{ asset('rules_regulation') }}">Rules & Regulations</a></li>
+                                                                <li><a class="nav-link" href="{{ route('member.rules_regulation') }}">Rules & Regulations</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="nav-item">

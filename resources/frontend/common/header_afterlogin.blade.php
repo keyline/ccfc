@@ -1,7 +1,9 @@
 <div class="member-login member_afterlogin">
     <div class="member-title">
         Welcome </br>
-        {{ $LoggedMemberInfo['name'] }}
+        @foreach($userData AS $user)
+        {{ $user['name'] }}
+        @endforeach
     </div>
 
     <div class="member_aftelogin_btn">
