@@ -37,14 +37,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- printing member profile data  -->
-                        
+
                         <pre><code>{{ json_encode($userProfile, JSON_PRETTY_PRINT) }}</code></pre>
 
                         <pre><code>{{ json_encode($userTransactions, JSON_PRETTY_PRINT) }}</code></pre>
-                        
-                        
-                        
-                        
+
+
+
+
                     </div>
                 </div>
             </div>

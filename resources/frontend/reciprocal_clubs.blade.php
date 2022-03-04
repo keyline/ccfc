@@ -120,8 +120,9 @@
                                                             {{$recip->address_1}}</p>
                                                         <p class="clubdetails_info"><a href="tel:{{$recip->phone}}"><i
                                                                     class="zmdi zmdi-phone"></i>
-                                                                {{$recip->phone}}</a>/<a
-                                                                href="tel:{{$recip->phone}}">{{$recip->phone}}</a></p>
+                                                                {{$recip->phone}}</a>
+                                                            <!-- /<a href="tel:{{$recip->phone}}">{{$recip->phone}}</a> -->
+                                                        </p>
                                                         <p class="clubdetails_info"><a
                                                                 href="mailto:{{$recip->email}}"><i
                                                                     class="zmdi zmdi-email"></i>
