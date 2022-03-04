@@ -277,21 +277,20 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-
+                        @foreach($galleries->where("id","6") as $key => $gallery)
+                        @foreach($gallery->images as $key => $media)
                         <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
-                            @foreach($galleries->where("id","6") as $key => $gallery)
-                            @foreach($gallery->images as $key => $media)
+
                             <!-- The slideshow -->
+
                             <div class="carousel-inner">
 
-
                                 <div class="carousel-item active">
-
                                     <img src="{{$media->getUrl('')}}" alt="Menu">
                                 </div>
-                                <div class="carousel-item">
+                                <!-- <div class="carousel-item">
+                                </div> -->
 
-                                </div>
 
 
                                 <!-- <div class="carousel-item active">
@@ -313,6 +312,7 @@
                                     <img src="{{ asset('img/activities/dining-menu-6.jpeg') }}" alt="Menu">
                                 </div> -->
 
+
                             </div>
 
                             <!-- Left and right controls -->
@@ -322,11 +322,12 @@
                             <a class="carousel-control-next" href="#demo" data-slide="next">
                                 <i class="zmdi zmdi-chevron-right"></i>
                             </a>
-                            @endforeach
-                            @endforeach
-                        </div>
 
+                        </div>
+                        @endforeach
+                        @endforeach
                     </div>
+
 
                 </div>
             </div>
