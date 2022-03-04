@@ -52,17 +52,31 @@ class HomeController extends Controller
     public function dashboard()
     {
         $user = User::where('id', '=', session('LoggedMember'))->first();
+
         $data= ['LoggedMemberInfo' => $user];
+        
         //get member profile
-        $url= "https://ccfcmemberdata.in/Api/MemberProfile";
         $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+
         $fields= [
             'MCODE' => $user->user_code
         ];
-        $headers= ['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '*/*',
-      'Content-Type' => 'application/json',];
-    
         
-        return view('member.dashboard', $data);
+        $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+
+        dd(openssl_get_cert_locations());
+
+
+        $profile = Http::withoutVerifying()
+                    ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                                    'Content-Type' => 'application/json',])
+                    ->withOptions(["verify"=>false])
+                    ->post($url)->json()['results'];
+        dd($profile);
+           
+        return view('member.dashboard', [
+            'userData'      => $data,
+            'userProfile'   => $profile
+        ]);
     }
 }
