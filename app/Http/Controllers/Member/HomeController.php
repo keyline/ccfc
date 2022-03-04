@@ -64,15 +64,15 @@ class HomeController extends Controller
         
         $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
-        dd(openssl_get_cert_locations());
+        //dd(openssl_get_cert_locations());
 
 
         $profile = Http::withoutVerifying()
                     ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
                                     'Content-Type' => 'application/json',])
                     ->withOptions(["verify"=>false])
-                    ->post($url)->json()['results'];
-        dd($profile);
+                    ->post($url)->json()['data'];
+        //dd($profile);
            
         return view('member.dashboard', [
             'userData'      => $data,
