@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                         </div>
-                        <hr class="divider_red">
+                        
                     </div>
                           
                 </div>
