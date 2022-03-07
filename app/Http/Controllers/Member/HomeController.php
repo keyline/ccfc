@@ -74,26 +74,26 @@ class HomeController extends Controller
                     ->post($url)->json()['data'];
 
 
-        $transactionFields= [
-            'MCODE'     => $user->user_code,
-            'FromDate'  => '01-apr-2020',
-            'ToDate'    => '01-jun-2021', 
-        ];
+        // $transactionFields= [
+        //     'MCODE'     => $user->user_code,
+        //     'FromDate'  => '01-apr-2020',
+        //     'ToDate'    => '01-jun-2021', 
+        // ];
 
-        $tansactionUrl= 'https://ccfcmemberdata.in/Api/MEMBERTRANSACTIONS/?' . http_build_query($transactionFields);
+        // $tansactionUrl= 'https://ccfcmemberdata.in/Api/MEMBERTRANSACTIONS/?' . http_build_query($transactionFields);
 
-        $transactions = Http::withoutVerifying()
-                    ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                                    'Content-Type' => 'application/json',])
-                    ->withOptions(["verify"=>false])
-                    ->post($tansactionUrl)->json()['data'];
+        // $transactions = Http::withoutVerifying()
+        //             ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+        //                             'Content-Type' => 'application/json',])
+        //             ->withOptions(["verify"=>false])
+        //             ->post($tansactionUrl)->json()['data'];
         
         //dd($transactions);
            
         return view('member.dashboard', [
             'userData'          => $data,
             'userProfile'       => $profile,
-            'userTransactions'  => $transactions,
+            // 'userTransactions'  => $transactions,
         ]);
     }
 }

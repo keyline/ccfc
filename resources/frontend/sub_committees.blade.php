@@ -195,16 +195,32 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
 
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" />
+                                                            <img src="{{ asset('img/demopic.png') }}" alt="" />
                                                         </a>
 
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+
+                                                        </a>
+
+                                                    </div>
+                                                    @endif
+
                                                     <div class="multiuse_bottom_general">
+
+
 
                                                         <h3>{{ $committeeMember->member->name }}</h3>
 
@@ -231,18 +247,20 @@
 
 
 
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="multiuse_tabcontent_inner">
-                                                    <div class="multiuse_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
-                                                    </div>
-                                                    <div class="multiuse_bottom_general">
-                                                        <h3>Suhel Niyogi</h3>
-                                                        <h4>MEMBER</h4>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+                                            <!-- <div class=" col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                            <div class="multiuse_tabcontent_inner">
+                                                                <div class="multiuse_tab_ceibity-img">
+                                                                    <a href="#" data-toggle="modal"
+                                                                        data-target="#year1992_1"><img
+                                                                            src="{{ asset('img/demopic.png') }}"
+                                                                            alt="" /></a>
+                                                                </div>
+                                                                <div class="multiuse_bottom_general">
+                                                                    <h3>Suhel Niyogi</h3>
+                                                                    <h4>MEMBER</h4>
+                                                                </div>
+                                                            </div>
+                                                    </div> -->
                                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
                                                     <div class="multiuse_tab_ceibity-img">
@@ -289,16 +307,27 @@
                                         <div class="row">
                                             @foreach($subCommitteeMembers->where("comittee_name_id","4") as
                                             $committeeMember)
-                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
+                                            as
                                             $key =>$userDetail)
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
+                                                    </div>
+                                                    @else
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
                                                                 src="{{ $userDetail->member_image->getUrl('') }}"
                                                                 alt="" /></a>
                                                     </div>
+                                                    @endif
+
                                                     <div class="multiuse_bottom_general">
                                                         <h3>{{ $committeeMember->member->name ?? '' }}</h3>
                                                         <h4>{{ $committeeMember->designation ?? '' }}</h4>
@@ -313,26 +342,44 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="entertainment-communications" role="tabpanel">
+                                <div class=" tab-pane fade" id="entertainment-communications" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($subCommitteeMembers->where("comittee_name_id","5") as
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","5")
+                                            as
                                             $committeeMember)
-                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
+                                            as
                                             $key =>$userDetail)
+
+
+
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
+                                                    </div>
+                                                    @else
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
                                                                 src="{{ $userDetail->member_image->getUrl('') }}"
                                                                 alt="" /></a>
                                                     </div>
+                                                    @endif
+
                                                     <div class="multiuse_bottom_general">
-                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
-                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}
+                                                        </h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}
+                                                        </h4>
                                                     </div>
+
                                                 </div>
                                             </div>
 
@@ -346,21 +393,37 @@
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($subCommitteeMembers->where("comittee_name_id","6") as
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","6")
+                                            as
                                             $committeeMember)
-                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
+                                            as
                                             $key =>$userDetail)
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
+                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
+                                                    </div>
+
+                                                    @else
+
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
                                                                 src="{{ $userDetail->member_image->getUrl('') }}"
                                                                 alt="" /></a>
                                                     </div>
+                                                    @endif
+
                                                     <div class="multiuse_bottom_general">
-                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
-                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}
+                                                        </h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -376,21 +439,41 @@
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($subCommitteeMembers->where("comittee_name_id","7") as
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","7")
+                                            as
                                             $committeeMember)
-                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
+                                            as
                                             $key =>$userDetail)
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+
+                                                        </a>
+
+                                                    </div>
+                                                    @endif
+
                                                     <div class="multiuse_bottom_general">
-                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
-                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}
+                                                        </h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -407,25 +490,47 @@
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($subCommitteeMembers->where("comittee_name_id","8") as
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","8")
+                                            as
                                             $committeeMember)
-                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
+                                            as
                                             $key =>$userDetail)
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
+
                                                     <div class="multiuse_bottom_general">
-                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
-                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}
+                                                        </h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             @endforeach
+
                                             @endforeach
 
                                         </div>
@@ -437,21 +542,41 @@
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($subCommitteeMembers->where("comittee_name_id","9") as
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","9")
+                                            as
                                             $committeeMember)
-                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
+                                            as
                                             $key =>$userDetail)
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
                                                     </div>
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+
+                                                        </a>
+
+                                                    </div>
+                                                    @endif
+
+
                                                     <div class="multiuse_bottom_general">
-                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
-                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}
+                                                        </h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -468,21 +593,39 @@
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($subCommitteeMembers->where("comittee_name_id","10") as
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","10")
+                                            as
                                             $committeeMember)
-                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
+                                            as
                                             $key =>$userDetail)
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
                                                     </div>
+
+                                                    @else
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
+
+                                                    </div>
+                                                    @endif
+
                                                     <div class="multiuse_bottom_general">
-                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
-                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}
+                                                        </h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -499,21 +642,44 @@
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($subCommitteeMembers->where("comittee_name_id","11") as
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","11")
+                                            as
                                             $committeeMember)
-                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
+                                            as
                                             $key =>$userDetail)
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+
+                                                        </a>
+
+                                                    </div>
+
+                                                    @endif
+
+
+
                                                     <div class="multiuse_bottom_general">
-                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
-                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}
+                                                        </h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -530,21 +696,39 @@
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($subCommitteeMembers->where("comittee_name_id","12") as
+                                            @foreach($subCommitteeMembers->where("comittee_name_id","12")
+                                            as
                                             $committeeMember)
-                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
+                                            as
                                             $key =>$userDetail)
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                                src="{{ asset('img/demopic.png') }}" alt="" /></a>
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
+
                                                     <div class="multiuse_bottom_general">
-                                                        <h3>{{ $committeeMember->member->name ?? '' }}</h3>
-                                                        <h4>{{ $committeeMember->designation ?? '' }}</h4>
+                                                        <h3>{{ $committeeMember->member->name ?? '' }}
+                                                        </h3>
+                                                        <h4>{{ $committeeMember->designation ?? '' }}
+                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>

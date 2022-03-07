@@ -90,9 +90,22 @@
 
                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                 <div class="multiuse_tabcontent_inner">
+
+                                    @if($userDetail['member_image'] == '')
                                     <div class="multiuse_tab_ceibity-img">
-                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
                                     </div>
+                                    @else
+
+                                    <div class="multiuse_tab_ceibity-img">
+                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                            <img class="img-fluid" src="                          
+                                              {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                        </a>
+                                    </div>
+
+                                    @endif
+
                                     <div class="multiuse_bottom_general">
                                         <h3>{{ $committeeMember->member->name ?? '' }}</h3>
                                         <h4>{{ $committeeMember->designation ?? '' }}</h4>
