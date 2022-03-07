@@ -57,7 +57,7 @@
                                 <p><strong>Mail ID:</strong> debtej@gmail.com</p>
                             </div>
                         </div>
-                        <hr class="divider_red">
+
                     </div>
                 </div>
             </section>
@@ -70,7 +70,7 @@
                                 <h2>Member Details</h2>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div class="member_probile_list">
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Member Type</p>
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div class="member_probile_list">
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Address I</p>

@@ -334,7 +334,7 @@
         text-align: center;
     }
     .history-page .history-inner .history-content {
-        text-align: center;
+        /* text-align: center; */
     }
     .history-page .history-inner {
         padding-bottom: 30px;
@@ -377,6 +377,7 @@
         padding-bottom: 15px;
         margin-bottom: 15px;
     }
+    .member_profile_item{padding: 0 10px;}
 }
 @media screen and (min-width: 768px) {
     .mobile_menu, .topPanel a.closebtn {
@@ -586,6 +587,24 @@
         position: relative;
         padding-bottom: 15px;
         margin-bottom: 15px;
+    }
+    .member_details_section{
+        padding:30px 5px;
+    }
+    .inner_belowbanner{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .member_profile_item{padding: 0 5px;}
+    .famoussport-details{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .famoussport_info {
+        padding-left: 0;
+    }
+    .gym-general-sec .project-item .gallery .item-img img {
+        width: 100%;
     }
     
 }

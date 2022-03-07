@@ -169,7 +169,7 @@ span {
 .ccfc-body .header .top-header .member-login {
     background: var(--primaryColor);
     text-align: center;
-    padding: 10px 50px;
+    padding: 10px 30px;
 }
 
 .ccfc-body .header .top-header .member-login .member-title {
@@ -207,6 +207,9 @@ span {
     border: none;
     padding: 4px 16px;
     text-transform: uppercase;
+}
+.ccfc-body .header .top-header .member-login .form-group .invalid-feedback {
+    color: #fff;
 }
 
 .ccfc-body .header .top-header .member-login .form-group .forgot {
@@ -2584,7 +2587,7 @@ p.member_list_text {
     border-radius: 50px;
 }
 .invoicepayment_box .invoicepayment_paybtn button {
-    background: #951014;
+    background: var(--primaryColor);
     border: none;
     color: #fff;
     border-radius: 50px;
@@ -2593,7 +2596,7 @@ p.member_list_text {
     font-weight: 600;
 }
 .invoicepayment_box .invoicepayment_paybtn button:hover {
-    background:var(--primaryColor);
+    background:#951014;
 }
 
 
