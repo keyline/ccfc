@@ -174,6 +174,14 @@ Route::get('/swimming-pool', function () {
 });
 
 
+Route::get('/president_corner', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('president_corner', compact(['contentPages', 'galleries', 'contentBlocks']));
+});
+
+
 
 // Route::redirect('/', '/login');
 
@@ -373,9 +381,9 @@ Route::group([
 //     return view('sub_committees');
 // });
 
-Route::get('/president_corner', function () {
-    return view('president_corner');
-});
+// Route::get('/president_corner', function () {
+//     return view('president_corner');
+// });
 
 Route::get('/annual_report', function () {
     return view('annual_report');
@@ -452,9 +460,9 @@ Route::get('/amenities_services', function () {
     //     return view('sub_committees');
     // });
     
-    Route::get('/president_corner', function () {
-        return view('president_corner');
-    });
+    // Route::get('/president_corner', function () {
+    //     return view('president_corner');
+    // });
     
     Route::get('/annual_report', function () {
         return view('annual_report');

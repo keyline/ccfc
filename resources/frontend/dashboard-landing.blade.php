@@ -57,8 +57,8 @@
                                 <p><strong>Mail ID:</strong> debtej@gmail.com</p>
                             </div>
                         </div>
-                        
-                    </div>      
+
+                    </div>
                 </div>
             </section>
 
