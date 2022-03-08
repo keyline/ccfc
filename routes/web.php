@@ -38,7 +38,9 @@ use App\Models\CommitteeName;
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
-    
+    if (session('fail')) {
+        return view('member.protected');
+    }
     $reciprocalClubs = ReciprocalClub::all();
     $contentPages = ContentPage::all();
     $sportstypes = Sportstype::all();
@@ -112,7 +114,6 @@ Route::get('/reciprocal_clubs', function () {
 });
 
 Route::get('/general_committee', function () {
-
     $contentPages = ContentPage::all();
     // $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
@@ -124,7 +125,6 @@ Route::get('/general_committee', function () {
 
 
 Route::get('/balloting_committee', function () {
-
     $contentPages = ContentPage::all();
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
