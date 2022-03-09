@@ -70,15 +70,15 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="history-inner foodbeverage_inner">
+                            <div class="history-inner">
                                 <div class="title-sec">
                                     <div class="title text-left">
                                         FOOD & BEVERAGES
                                     </div>
                                 </div>
-                                <div class="history-content text-justify">
+                                <div class="history-content text-left">
 
-                                    @foreach($contentPages->where("id","2") as $contentPage)
+                                    @foreach($contentPages as $contentPage)
                                     <p>{{$contentPage->excerpt}}</p>
                                     @endforeach
                                     <!-- <p>The Club offers a wide range of delicious food in its dining hall along with
@@ -277,20 +277,21 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        @foreach($galleries->where("id","6") as $key => $gallery)
-                        @foreach($gallery->images as $key => $media)
+
                         <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
-
+                            @foreach($galleries->where("id","6") as $key => $gallery)
+                            @foreach($gallery->images as $key => $media)
                             <!-- The slideshow -->
-
                             <div class="carousel-inner">
 
+
                                 <div class="carousel-item active">
+
                                     <img src="{{$media->getUrl('')}}" alt="Menu">
                                 </div>
-                                <!-- <div class="carousel-item">
-                                </div> -->
+                                <div class="carousel-item">
 
+                                </div>
 
 
                                 <!-- <div class="carousel-item active">
@@ -312,7 +313,6 @@
                                     <img src="{{ asset('img/activities/dining-menu-6.jpeg') }}" alt="Menu">
                                 </div> -->
 
-
                             </div>
 
                             <!-- Left and right controls -->
@@ -322,12 +322,11 @@
                             <a class="carousel-control-next" href="#demo" data-slide="next">
                                 <i class="zmdi zmdi-chevron-right"></i>
                             </a>
-
+                            @endforeach
+                            @endforeach
                         </div>
-                        @endforeach
-                        @endforeach
-                    </div>
 
+                    </div>
 
                 </div>
             </div>
