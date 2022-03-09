@@ -159,11 +159,25 @@
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="sport_tab_ceibity-img">
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                    </div>
+
+                                                    @else
+
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
-
+                                                        <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
                                                     </div>
+
+                                                    @endif
+
+
                                                     <div class=" sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">
@@ -183,59 +197,8 @@
                                             </div>
                                             @endforeach
                                             @endforeach
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo2.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>VICE CAPTAIN</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aadit Osatwal</h4>
-                                                            <p><a href="tel:+91 98302 22255">+91 98302 22255</a></p>
-                                                            <p><a
-                                                                    href="mailto:aadit@angesbags.com">aadit@angesbags.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
 
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo3.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>SECRETARY</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aadit Osatwal</h4>
-                                                            <p><a href="tel:+91 98302 22255">+91 98302 22255</a></p>
-                                                            <p><a
-                                                                    href="mailto:aadit@angesbags.com">aadit@angesbags.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
 
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo4.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>JT. SECRETARY</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aditya Gupta</h4>
-                                                            <p><a href="tel:+ 91 98303 50092"> + 91 98303 50092</a></p>
-                                                            <p><a
-                                                                    href="mailto:mainak8717@gmail.com">adi_wgsha@yahoo.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -248,9 +211,22 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">
@@ -268,23 +244,7 @@
                                             </div>
                                             @endforeach
                                             @endforeach
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo2.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>VICE CAPTAIN</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aadit Osatwal</h4>
-                                                            <p><a href="tel:+91 98302 22255">+91 98302 22255</a></p>
-                                                            <p><a
-                                                                    href="mailto:aadit@angesbags.com">aadit@angesbags.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+
                                         </div>
                                     </div>
                                 </div>
@@ -297,9 +257,22 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">
@@ -317,93 +290,7 @@
                                             </div>
                                             @endforeach
                                             @endforeach
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo2.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>VICE CAPTAIN</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aadit Osatwal</h4>
-                                                            <p><a href="tel:+91 98302 22255">+91 98302 22255</a></p>
-                                                            <p><a
-                                                                    href="mailto:aadit@angesbags.com">aadit@angesbags.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
 
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo3.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>SECRETARY</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aadit Osatwal</h4>
-                                                            <p><a href="tel:+91 98302 22255">+91 98302 22255</a></p>
-                                                            <p><a
-                                                                    href="mailto:aadit@angesbags.com">aadit@angesbags.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo4.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>JT. SECRETARY</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aditya Gupta</h4>
-                                                            <p><a href="tel:+ 91 98303 50092"> + 91 98303 50092</a></p>
-                                                            <p><a
-                                                                    href="mailto:mainak8717@gmail.com">adi_wgsha@yahoo.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo4.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>JT. SECRETARY</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aditya Gupta</h4>
-                                                            <p><a href="tel:+ 91 98303 50092"> + 91 98303 50092</a></p>
-                                                            <p><a
-                                                                    href="mailto:mainak8717@gmail.com">adi_wgsha@yahoo.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo4.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>JT. SECRETARY</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aditya Gupta</h4>
-                                                            <p><a href="tel:+ 91 98303 50092"> + 91 98303 50092</a></p>
-                                                            <p><a
-                                                                    href="mailto:mainak8717@gmail.com">adi_wgsha@yahoo.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -416,9 +303,22 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">
@@ -436,57 +336,8 @@
                                             </div>
                                             @endforeach
                                             @endforeach
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo4.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>JT. SECRETARY</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aditya Gupta</h4>
-                                                            <p><a href="tel:+ 91 98303 50092"> + 91 98303 50092</a></p>
-                                                            <p><a
-                                                                    href="mailto:mainak8717@gmail.com">adi_wgsha@yahoo.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo4.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>JT. SECRETARY</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aditya Gupta</h4>
-                                                            <p><a href="tel:+ 91 98303 50092"> + 91 98303 50092</a></p>
-                                                            <p><a
-                                                                    href="mailto:mainak8717@gmail.com">adi_wgsha@yahoo.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/sports/demo4.png') }}" alt="" />
-                                                    </div>
-                                                    <div class="sport_player">
-                                                        <h3>JT. SECRETARY</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>Mr. Aditya Gupta</h4>
-                                                            <p><a href="tel:+ 91 98303 50092"> + 91 98303 50092</a></p>
-                                                            <p><a
-                                                                    href="mailto:mainak8717@gmail.com">adi_wgsha@yahoo.com</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -499,9 +350,22 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">
@@ -531,9 +395,22 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">
@@ -563,9 +440,22 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
                                                     <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
                                                     </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="                          
+                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
                                                     <div class="sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">

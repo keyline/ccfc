@@ -347,6 +347,8 @@ Route::group([
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
+    Route::get('/invoice', [HomeController::class, 'invoice'])->name('invoice');
+
     Route::get('/events_members_only', function () {
         return view('events_members_only');
     })->name('events_members_only');
@@ -494,6 +496,8 @@ Route::get('/amenities_services', function () {
     Route::get('/dashboard-landing', function () {
         return view('dashboard-landing');
     });
-    Route::get('/invoice', function () {
-        return view('invoice');
-    });
+    // Route::get('member/invoice', function () {
+    //     return view('member/invoice');
+    // });
+
+    // Route::get('invoice', [HomeController::class, 'invoice'])->name('invoice');

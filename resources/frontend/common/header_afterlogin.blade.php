@@ -12,7 +12,7 @@
                 <a href="{{ route('member.dashboard')}}">Member Dashboard</a>
             </li>
             <li>
-                <a href="#">Invoices & Payment</a>
+                <a href="{{ route('member.invoice')}}">Invoices & Payment</a>
             </li>
             <li class="mem-aftlogin_signout">
                 <a href="{{ route('member.logout') }}">Sign out</a>
