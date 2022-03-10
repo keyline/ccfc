@@ -44,6 +44,7 @@ class User extends Authenticatable
         'created_at',
         'user_code',
         'phone_number_1',
+        'is_active',
         'updated_at',
         'deleted_at',
         'two_factor_expires_at',

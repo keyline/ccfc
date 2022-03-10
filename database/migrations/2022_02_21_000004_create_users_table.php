@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('remember_token')->nullable();
             $table->string('user_code')->nullable();
             $table->string('phone_number_1')->nullable();
+            $table->char('is_active', 1);
             $table->datetime('two_factor_expires_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
