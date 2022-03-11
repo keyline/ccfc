@@ -222,6 +222,19 @@
         width: 100%;
     }
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+    .invoice_section .col-md-12.col-lg-6 {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    .invoice_section .member_profiletop::after{width: 0px;}
+    .invoice_section .invoicepayment_section {
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+    }
+}
 @media screen and (min-width: 992px) {
     .right_side_panel .right-body {
         height: 100%;
@@ -357,16 +370,18 @@
 @media (min-width: 768px) and (max-width: 992px) {
     .member_profile_item{display: block;}
     p.member_list_input, p.member_list_text{width: 100%; padding-right: 0;}
-    .member_profileimg {
+    /* .member_profileimg {
         width: auto;
-    }
+    } */
     .member_profiletop h2{font-size: 22px;margin-bottom: 10px;}
     .invoicepayment_section {
-        margin-top: 40px;
+        margin-top: 20px;
+        border-top: 2px solid #ddd;
+        padding-top: 20px;
     }
     .invoice_section .member_profiletop::after {
         width: 100%;
-        height: 2px;
+        height: 0;
         top: auto;
         right: auto;
         left: 0;
@@ -378,6 +393,12 @@
         margin-bottom: 15px;
     }
     .member_profile_item{padding: 0 10px;}
+    .memberbelowinfo_section {
+        padding: 40px 30px;
+    }
+    .member_details_section {
+        padding: 30px 15px;
+    }
 }
 @media screen and (min-width: 768px) {
     .mobile_menu, .topPanel a.closebtn {
@@ -386,6 +407,9 @@
     .mobile_bottom_icon{display: none;}
     /* .greneral_infolist .multiuse_tabcontent_inner .multiuse_bottom_general h3{ min-height: 76px;} */
     .hideondesktop{display: none !important;}
+    section.member-protected {
+        min-height: 450px;
+    }
 }
 /*MOBILE VERSION*/
 @media screen and (max-width: 767px) {
@@ -605,6 +629,13 @@
     }
     .gym-general-sec .project-item .gallery .item-img img {
         width: 100%;
+    }
+    .memberbelowinfo_section .dashboardpic_items, .memberbelowinfo_section .dashboardpic_itemsinfo {
+        margin-right: 0;
+        width: 100%;
+    }
+    .member_details_section .col-md-12.pl-0 {
+        padding-left: 15px !important;
     }
     
 }

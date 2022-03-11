@@ -2475,12 +2475,26 @@ hr.divider_red {
     width: 100%;
 }
 .member_profileimg {
-    width: 150px;
+    width: 140px;
     margin: auto;
+    height: 140px;
+    border: 2px solid #bdbdbd;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    text-align: center;
 }
+.memberbelowinfo_section .dashboardpic_items {
+    margin-right: 20px;
+}
+.memberbelowinfo_section {padding: 40px 55px;}
 .member_profileimg img {
-    border-radius: 10px;
-    border: 2px solid var(--primaryColor);
+    object-fit: cover;
+    height: 100%;
+}
+.member_profileimg img.ifnotpic {
+    max-width: 110px;
+    object-fit: contain;
 }
 .member_profiletop h4 {
     color: #000;
@@ -2543,7 +2557,7 @@ p.member_list_text {
     font-size: 14px;
 }
 .invoice_section .member_profileimg {
-    width: auto;
+    /* width: auto; */
     text-align: center;
 }
 .invoice_section .member_profiletop h2 {
@@ -2597,6 +2611,24 @@ p.member_list_text {
 }
 .invoicepayment_box .invoicepayment_paybtn button:hover {
     background:#951014;
+}
+.member-protected .membermustlogin_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primaryColor);
+    max-width: 500px;
+    width: 100%;
+    padding: 25px;
+    margin: 15% auto;
+}
+.member-protected .membermustlogin_box img {
+    max-width: 80px;
+}
+.member-protected .membermustlogin_box .menbt_text {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'IBM PLEX SERIF';
 }
 
 
