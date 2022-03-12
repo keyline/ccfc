@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="col-md-12 col-lg-6">
                             <div class="row">
-                                <div class="col-lg-4 col-md-4">
+                                <div class="col-lg-4 col-md-5">
                                     <!-- <div class="member_profileimg">
                                         <img class="img-fluid" src="{{ asset('img/demopic.png') }}" alt="" />
                                     </div> -->
@@ -71,7 +71,7 @@
 
 
                                 </div>
-                                <div class="col-lg-8 col-md-8">
+                                <div class="col-lg-8 col-md-7">
                                     <div class="member_profiletop">
                                         <h4>Welcome</h4>
                                         <h2>{{ $userProfile['MEMBER_NAME'] }}</h2>
@@ -115,7 +115,7 @@
             <section class="member_details_section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 pl-0">
                             <div class="table-responsive">
 
                                 <!-- <pre><code>{{ json_encode($userTransactions, JSON_PRETTY_PRINT) }}</code></pre> -->

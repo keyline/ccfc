@@ -41,11 +41,11 @@
 
 
             <!-- ********|| HISTORY START ||******** -->
-            <section class="inner_belowbanner">
+            <section class="inner_belowbanner memberbelowinfo_section">
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-lg-3 col-md-3">
+                        <div class="dashboardpic_items">
 
                             @if($userProfile['MemberImage'] == '')
 
@@ -60,12 +60,18 @@
                             <div class="member_profileimg">
                                 <img class="img-fluid" src="data:image/png;base64,                          
                                     {{ $userProfile['MemberImage'] }}" alt="" />
+                                    {{-- <img class="img-fluid ifnotpic" src="{{ asset('img/Profile-Icon-01.svg') }}" alt="" /> --}}
                             </div>
 
                             @endif
                         </div>
+<<<<<<< HEAD
                         <!-- <pre><code>{{ json_encode($userProfile, JSON_PRETTY_PRINT) }}</code></pre> -->
                         <div class="col-lg-9 col-md-9">
+=======
+
+                        <div class="dashboardpic_itemsinfo">
+>>>>>>> 3b8db673cb92e7ff56bb46ccd980d6fb7bb8c02d
                             <div class="member_profiletop">
                                 <h4>Welcome</h4>
                                 <h2>{{ $userProfile['MEMBER_NAME'] }}</h2>
@@ -73,7 +79,7 @@
                                 <p><strong>Mail ID:</strong> {{ $userProfile['EMAIL'] }}</p>
                             </div>
                         </div>
-                        <hr class="divider_red">
+                        {{-- <hr class="divider_red"> --}}
                     </div>
                 </div>
             </section>
