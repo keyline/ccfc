@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 @section('content')
 @can('user_detail_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.user-details.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.userDetail.title_singular') }}
-            </a>
-        </div>
+<div style="margin-bottom: 10px;" class="row">
+    <div class="col-lg-12">
+        <a class="btn btn-success" href="{{ route('admin.user-details.create') }}">
+            {{ trans('global.add') }} {{ trans('cruds.userDetail.title_singular') }}
+        </a>
     </div>
+</div>
 @endcan
 <div class="card">
     <div class="card-header">
@@ -188,201 +188,210 @@
                 </thead>
                 <tbody>
                     @foreach($userDetails as $key => $userDetail)
-                        <tr data-entry-id="{{ $userDetail->id }}">
-                            <td>
+                    <tr data-entry-id="{{ $userDetail->id }}">
+                        <td>
 
-                            </td>
-                            <td>
-                                {{ $userDetail->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->user_code->user_code ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->user_code->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->member_type_code ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->member_type ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->date_of_birth ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->member_since ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\UserDetail::SEX_RADIO[$userDetail->sex] ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->address_1 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->address_2 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->address_3 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->city ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->state ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->pin ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->phone_1 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->phone_2 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->mobile_no ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->email ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->current_status ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->represented_club_in ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->hobbies_interest ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_profession ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->category ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_address_1 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_address_2 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_address_3 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_city ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_state ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_pin ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_phone_1 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_phone_2 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->business_email ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_dob ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\UserDetail::SPOUSE_SEX_RADIO[$userDetail->spouse_sex] ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_phone_1 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_phone_2 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_mobile_no ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_email ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->anniversary_date ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_profession ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_category ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_address_1 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_address_2 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_address_3 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_city ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_state ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_pin ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_phone_1 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_phone_2 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userDetail->spouse_business_email ?? '' }}
-                            </td>
-                            <td>
-                                @if($userDetail->member_image)
-                                    <a href="{{ $userDetail->member_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $userDetail->member_image->getUrl('thumb') }}">
-                                    </a>
-                                @endif
-                            </td>
-                            <td>
-                                @if($userDetail->spouse_image)
-                                    <a href="{{ $userDetail->spouse_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $userDetail->spouse_image->getUrl('thumb') }}">
-                                    </a>
-                                @endif
-                            </td>
-                            <td>
-                                @can('user_detail_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.user-details.show', $userDetail->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
+                        </td>
+                        <td>
+                            {{ $userDetail->id ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->user_code->user_code ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->user_code->name ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->member_type_code ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->member_type ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->date_of_birth ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->member_since ?? '' }}
+                        </td>
+                        <td>
+                            {{ App\Models\UserDetail::SEX_RADIO[$userDetail->sex] ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->address_1 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->address_2 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->address_3 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->city ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->state ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->pin ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->phone_1 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->phone_2 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->mobile_no ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->email ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->current_status ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->represented_club_in ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->hobbies_interest ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_profession ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->category ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_address_1 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_address_2 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_address_3 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_city ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_state ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_pin ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_phone_1 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_phone_2 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->business_email ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_name ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_dob ?? '' }}
+                        </td>
+                        <td>
+                            {{ App\Models\UserDetail::SPOUSE_SEX_RADIO[$userDetail->spouse_sex] ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_phone_1 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_phone_2 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_mobile_no ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_email ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->anniversary_date ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_profession ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_category ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_address_1 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_address_2 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_address_3 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_city ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_state ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_pin ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_phone_1 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_phone_2 ?? '' }}
+                        </td>
+                        <td>
+                            {{ $userDetail->spouse_business_email ?? '' }}
+                        </td>
+                        <td>
+                            @if($userDetail->member_image)
+                            <a href="{{ $userDetail->member_image->getUrl() }}" target="_blank"
+                                style="display: inline-block">
+                                <img src="{{ $userDetail->member_image->getUrl('thumb') }}">
+                            </a>
+                            @endif
+                        </td>
+                        <td>
+                            @if($userDetail->spouse_image)
+                            <a href="{{ $userDetail->spouse_image->getUrl() }}" target="_blank"
+                                style="display: inline-block">
+                                <img src="{{ $userDetail->spouse_image->getUrl('thumb') }}">
+                            </a>
+                            @endif
+                        </td>
+                        <td>
+                            @can('user_detail_show')
+                            <a class="btn btn-xs btn-primary"
+                                href="{{ route('admin.user-details.show', $userDetail->id) }}">
+                                {{ trans('global.view') }}
+                            </a>
+                            @endcan
 
-                                @can('user_detail_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.user-details.edit', $userDetail->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                @endcan
+                            @can('user_detail_edit')
+                            <a class="btn btn-xs btn-info"
+                                href="{{ route('admin.user-details.edit', $userDetail->id) }}">
+                                {{ trans('global.edit') }}
+                            </a>
+                            @endcan
 
-                                @can('user_detail_delete')
-                                    <form action="{{ route('admin.user-details.destroy', $userDetail->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                                @endcan
+                            @can('user_detail_delete')
+                            <form action="{{ route('admin.user-details.destroy', $userDetail->id) }}" method="POST"
+                                onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
+                                style="display: inline-block;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                            </form>
+                            @endcan
 
-                            </td>
 
-                        </tr>
+
+
+                        </td>
+
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -396,50 +405,66 @@
 @section('scripts')
 @parent
 <script>
-    $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('user_detail_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
-  let deleteButton = {
-    text: deleteButtonTrans,
-    url: "{{ route('admin.user-details.massDestroy') }}",
-    className: 'btn-danger',
-    action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
-          return $(entry).data('entry-id')
-      });
+$(function() {
+    let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+    @can('user_detail_delete')
+    let deleteButtonTrans = '{{ trans('
+    global.datatables.delete ') }}'
+    let deleteButton = {
+        text: deleteButtonTrans,
+        url: "{{ route('admin.user-details.massDestroy') }}",
+        className: 'btn-danger',
+        action: function(e, dt, node, config) {
+            var ids = $.map(dt.rows({
+                selected: true
+            }).nodes(), function(entry) {
+                return $(entry).data('entry-id')
+            });
 
-      if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+            if (ids.length === 0) {
+                alert('{{ trans('
+                    global.datatables.zero_selected ') }}')
 
-        return
-      }
+                return
+            }
 
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
-          headers: {'x-csrf-token': _token},
-          method: 'POST',
-          url: config.url,
-          data: { ids: ids, _method: 'DELETE' }})
-          .done(function () { location.reload() })
-      }
+            if (confirm('{{ trans('
+                    global.areYouSure ') }}')) {
+                $.ajax({
+                        headers: {
+                            'x-csrf-token': _token
+                        },
+                        method: 'POST',
+                        url: config.url,
+                        data: {
+                            ids: ids,
+                            _method: 'DELETE'
+                        }
+                    })
+                    .done(function() {
+                        location.reload()
+                    })
+            }
+        }
     }
-  }
-  dtButtons.push(deleteButton)
-@endcan
+    dtButtons.push(deleteButton)
+    @endcan
 
-  $.extend(true, $.fn.dataTable.defaults, {
-    orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
-    pageLength: 100,
-  });
-  let table = $('.datatable-UserDetail:not(.ajaxTable)').DataTable({ buttons: dtButtons })
-  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
-      $($.fn.dataTable.tables(true)).DataTable()
-          .columns.adjust();
-  });
-  
+    $.extend(true, $.fn.dataTable.defaults, {
+        orderCellsTop: true,
+        order: [
+            [1, 'desc']
+        ],
+        pageLength: 100,
+    });
+    let table = $('.datatable-UserDetail:not(.ajaxTable)').DataTable({
+        buttons: dtButtons
+    })
+    $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e) {
+        $($.fn.dataTable.tables(true)).DataTable()
+            .columns.adjust();
+    });
+
 })
-
 </script>
 @endsection

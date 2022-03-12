@@ -64,7 +64,7 @@
 
                             @endif
                         </div>
-
+                        <!-- <pre><code>{{ json_encode($userProfile, JSON_PRETTY_PRINT) }}</code></pre> -->
                         <div class="col-lg-9 col-md-9">
                             <div class="member_profiletop">
                                 <h4>Welcome</h4>

@@ -83,4 +83,16 @@ class UsersController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+
+    public function updatedetails(User $user)
+    {
+        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $roles = Role::pluck('title', 'id');
+
+        $user->load('roles');
+
+        return view('admin.users.edit', compact('roles', 'user'));
+    }
 }

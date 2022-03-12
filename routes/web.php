@@ -207,6 +207,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::delete('users/updatedetails', 'UsersController@updatedetails')->name('users.updatedetails');
     Route::resource('users', 'UsersController');
 
     // Content Category
@@ -501,3 +502,9 @@ Route::get('/amenities_services', function () {
     // });
 
     // Route::get('invoice', [HomeController::class, 'invoice'])->name('invoice');
+
+    // Route::get('/member-update', [MemberUpdateController::class, 'memberupdate'])->name('memberupdate');
+
+
+    Route::get('ajaxRequest', [MemberUpdateController::class, 'ajaxRequest']);
+    Route::post('ajaxRequest', [MemberUpdateController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
