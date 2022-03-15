@@ -21,17 +21,22 @@
 
                     <div id="innerpage-banner" class="owl-carousel owl-theme">
 
+                        @foreach($galleries->where("id","23") as $key => $gallery)
+
+                        @foreach($gallery->images as $key => $media)
+
                         <div class="item">
 
                             <div class="about-img">
 
-                                <img class="img-fluid" src="{{ asset('img/past-president/banner1.jpg') }}" alt="" />
-
+                                <!-- <img class="img-fluid" src="{{ asset('img/past-president/banner1.jpg') }}" alt="" /> -->
+                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
                             </div>
 
                         </div>
-
-                        <div class="item">
+                        @endforeach
+                        @endforeach
+                        <!-- <div class="item">
 
                             <div class="about-img">
 
@@ -39,7 +44,7 @@
 
                             </div>
 
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -119,7 +124,8 @@
                                                         February bringing a whole new face of health and fitness...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="{{ asset('gymming-rejuvenated') }}" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('gymming-rejuvenated') }}" class="read-btn">+
+                                                            Read More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -150,7 +156,8 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="{{ asset('pool-pub') }}" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('pool-pub') }}" class="read-btn">+ Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,7 +188,8 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="{{ asset('club-bar') }}" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('club-bar') }}" class="read-btn">+ Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,7 +220,8 @@
                                                         euismod tincidunt ut sad asdlaoreet dolore...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="{{ asset('swimming-pool') }}" class="read-btn">+ Read More</a>
+                                                        <a href="{{ asset('swimming-pool') }}" class="read-btn">+ Read
+                                                            More</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -231,7 +240,7 @@
 
             @include('common.footer')
             <!-- ?php include 'assets/inc/footer.php';?> -->
-            
+
 
 
             </body>

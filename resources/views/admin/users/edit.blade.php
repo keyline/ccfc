@@ -5,7 +5,7 @@
     <div class="card-header">
         {{ trans('global.edit') }} {{ trans('cruds.user.title_singular') }}
     </div>
-    <!-- <pre><code>{{ json_encode($userProfile, JSON_PRETTY_PRINT) }}</code></pre> -->
+    <pre><code>{{ json_encode($userProfile, JSON_PRETTY_PRINT) }}</code></pre>
     <div class="card-body">
         <form method="POST" action="{{ route("admin.users.update", [$user->id]) }}" enctype="multipart/form-data">
             @method('PUT')
