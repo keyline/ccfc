@@ -12,6 +12,12 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+
+
+
 class UsersController extends Controller
 {
     public function index()
@@ -40,16 +46,16 @@ class UsersController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    public function edit(User $user)
-    {
-        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // public function edit(User $user)
+    // {
+    //     abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::pluck('title', 'id');
+    //     $roles = Role::pluck('title', 'id');
 
-        $user->load('roles');
+    //     $user->load('roles');
 
-        return view('admin.users.edit', compact('roles', 'user'));
-    }
+    //     return view('admin.users.edit', compact('roles', 'user'));
+    // }
 
     public function update(UpdateUserRequest $request, User $user)
     {
@@ -82,5 +88,71 @@ class UsersController extends Controller
         User::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+
+    public function updatedetails(User $user)
+    {
+        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $roles = Role::pluck('title', 'id');
+
+        $user->load('roles');
+
+        return view('admin.users.edit', compact('roles', 'user'));
+    }
+
+
+
+    public function edit(User $user)
+    {
+        {
+            abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        
+            $roles = Role::pluck('title', 'id');
+            
+          
+
+           $user->load('roles');
+   
+       //    return view('admin.users.edit', compact('roles', 'user'));
+
+           
+
+          $user = User::where('id', '=', session('LoggedMember'))->first();
+
+       
+   
+       //get member profile
+           $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+
+       $fields= [
+             'MCODE' => $user->user_code
+           ];
+   
+           $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+
+       
+          
+
+       $profile = Http::withoutVerifying()
+               ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                               'Content-Type' => 'application/json',])
+               ->withOptions(["verify"=>false])
+               ->post($url)->json()['data'];
+
+               
+             
+            
+            //    dd($profile);
+               
+               return view('admin.users.edit',compact('roles', 'user'), [
+                   
+                   'userProfile'       => $profile,
+                   // 'userTransactions'  => $transactions,
+               ]);  
+               
+
+        }   
     }
 }

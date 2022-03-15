@@ -85,10 +85,15 @@
 
                         <div class="col-md-12 col-lg-6">
                             <div class="invoicepayment_section">
-                                <h3>Total current outstanding : INR. 12057.06</h3>
+                                @foreach($userTransactions as $user)
+                                @if($user['Month'] == 'Feb 2022')
+                                <h3>Total current outstanding : INR. {{ $user['Balance'] }}</h3>
+                                @endif
+                                @endforeach
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
 
                                 <div class="invoicepayment_box">
+
                                     <div class="invoicepayment_input">
 
                                         <input type="text" placeholder="Enter amount being paid">
@@ -96,7 +101,9 @@
                                     <div class="invoicepayment_paybtn">
                                         <button type="button">Pay Now</button>
                                     </div>
+
                                 </div>
+
                             </div>
                         </div>
 

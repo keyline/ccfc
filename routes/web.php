@@ -56,8 +56,9 @@ Route::get('/', function () {
 
 Route::get('/past-president', function () {
     $pastPresidents = PastPresident::with(['media'])->get();
+    $galleries = Gallery::with(['media'])->get();
     // $data='Data';
-    return view('past-president', compact(['pastPresidents']));
+    return view('past-president', compact(['pastPresidents','galleries']));
 });
 
 
@@ -81,16 +82,18 @@ Route::get('/food_beverages', function () {
 Route::get('/trophies', function () {
     $contentPages = ContentPage::all();
     $trophies = Trophy::with(['media'])->get();
+    $galleries = Gallery::with(['media'])->get();
     // $data='Data';
-    return view('trophies', compact(['contentPages','trophies']));
+    return view('trophies', compact(['contentPages','trophies','galleries']));
 });
 
 
 Route::get('/famous_sportsmen', function () {
     $contentPages = ContentPage::all();
     $sportsmen = Sportsman::with(['media'])->get();
+    $galleries = Gallery::with(['media'])->get();
     // $data='Data';
-    return view('famous_sportsmen', compact(['contentPages','sportsmen']));
+    return view('famous_sportsmen', compact(['contentPages','sportsmen','galleries']));
 });
 
 
@@ -109,8 +112,8 @@ Route::get('/sports', function () {
 Route::get('/reciprocal_clubs', function () {
     $contentPages = ContentPage::all();
     $reciprocal = ReciprocalClub::with(['media'])->get();
-    
-    return view('reciprocal_clubs', compact(['contentPages','reciprocal']));
+    $galleries = Gallery::with(['media'])->get();
+    return view('reciprocal_clubs', compact(['contentPages','reciprocal','galleries']));
 });
 
 Route::get('/general_committee', function () {
@@ -119,7 +122,8 @@ Route::get('/general_committee', function () {
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
     // $committeeNames = CommitteeName::all();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
-    return view('general_committee', compact(['contentPages','committeeMemberMappings','userDetails']));
+    $galleries = Gallery::with(['media'])->get();
+    return view('general_committee', compact(['contentPages','committeeMemberMappings','userDetails','galleries']));
 });
 
 
@@ -128,7 +132,8 @@ Route::get('/balloting_committee', function () {
     $contentPages = ContentPage::all();
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
-    return view('balloting_committee', compact(['contentPages','committeeMemberMappings','userDetails']));
+    $galleries = Gallery::with(['media'])->get();
+    return view('balloting_committee', compact(['contentPages','committeeMemberMappings','userDetails','galleries']));
 });
 
 
@@ -138,7 +143,8 @@ Route::get('/sub_committees', function () {
     $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
     $committeeNames = CommitteeName::all();
-    return view('sub_committees', compact(['contentPages','subCommitteeMembers','userDetails','committeeNames']));
+    $galleries = Gallery::with(['media'])->get();
+    return view('sub_committees', compact(['contentPages','subCommitteeMembers','userDetails','committeeNames','galleries']));
 });
 
 
@@ -177,9 +183,43 @@ Route::get('/swimming-pool', function () {
 Route::get('/president_corner', function () {
     $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
-    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();    
     return view('president_corner', compact(['contentPages', 'galleries', 'contentBlocks']));
 });
+
+
+Route::get('/amenities_services', function () {
+    
+    $galleries = Gallery::with(['media'])->get();
+   
+    return view('amenities_services', compact(['galleries']));
+});
+
+
+Route::get('/annual_report', function () {
+    
+    $galleries = Gallery::with(['media'])->get();
+  
+    return view('annual_report', compact(['galleries']));
+});
+
+
+Route::get('/gallery', function () {
+    
+    $galleries = Gallery::with(['media'])->get();
+  
+    return view('gallery', compact(['galleries']));
+});
+
+
+
+Route::get('/contact-us', function () {
+    
+    $galleries = Gallery::with(['media'])->get();
+  
+    return view('contact-us', compact(['galleries']));
+});
+
 
 
 
@@ -207,6 +247,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    // Route::delete('users/updatedetails', 'UsersController@updatedetails')->name('users.updatedetails');
     Route::resource('users', 'UsersController');
 
     // Content Category
@@ -387,9 +428,9 @@ Route::group([
 //     return view('president_corner');
 // });
 
-Route::get('/annual_report', function () {
-    return view('annual_report');
-});
+// Route::get('/annual_report', function () {
+//     return view('annual_report');
+// });
 
 
 
@@ -410,17 +451,17 @@ Route::get('/new_member', function () {
 // Route::get('/pool-pub', function () {
 //     return view('pool-pub');
 // });
-Route::get('/contact-us', function () {
-    return view('contact-us');
-});
+// Route::get('/contact-us', function () {
+//     return view('contact-us');
+// });
 
-Route::get('/amenities_services', function () {
-    return view('amenities_services');
-});
+// Route::get('/amenities_services', function () {
+//     return view('amenities_services');
+// });
     
-    Route::get('/amenities_services', function () {
-        return view('amenities_services');
-    });
+    // Route::get('/amenities_services', function () {
+    //     return view('amenities_services');
+    // });
     
     
     // Route::get('/', 'PagesController@index')->name('pages');
@@ -466,13 +507,13 @@ Route::get('/amenities_services', function () {
     //     return view('president_corner');
     // });
     
-    Route::get('/annual_report', function () {
-        return view('annual_report');
-    });
+    // Route::get('/annual_report', function () {
+    //     return view('annual_report');
+    // });
     
-    Route::get('/events_members_only', function () {
-        return view('events_members_only');
-    });
+    // Route::get('/events_members_only', function () {
+    //     return view('events_members_only');
+    // });
     
     Route::get('/new_member', function () {
         return view('new_member');
@@ -490,9 +531,9 @@ Route::get('/amenities_services', function () {
     //     return view('sports');
     // });
     
-    Route::get('/gallery', function () {
-        return view('gallery');
-    });
+    // Route::get('/gallery', function () {
+    //     return view('gallery');
+    // });
     Route::get('/dashboard-landing', function () {
         return view('dashboard-landing');
     });
@@ -500,4 +541,16 @@ Route::get('/amenities_services', function () {
     //     return view('member/invoice');
     // });
 
-    // Route::get('invoice', [HomeController::class, 'invoice'])->name('invoice');
+    
+
+
+    
+    // Route::post('user-details/media', 'UserDetailsController@storeMedia')->name('user-details.storeMedia');
+
+    Route::get('/edit', [MemberDetailsController::class, 'edit'])->name('edit');
+
+    
+    // Route::get('/invoice', [HomeController::class, 'invoice'])->name('invoice');
+
+    // Route::get('ajaxRequest', [MemberUpdateController::class, 'ajaxRequest']);
+    // Route::post('ajaxRequest', [MemberUpdateController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');

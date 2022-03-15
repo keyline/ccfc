@@ -20,18 +20,23 @@
                 <div class="banner-box">
 
                     <div id="innerpage-banner" class="owl-carousel owl-theme">
+                        @foreach($galleries->where("id","21") as $key => $gallery)
+
+                        @foreach($gallery->images as $key => $media)
 
                         <div class="item">
 
                             <div class="about-img">
 
-                                <img class="img-fluid" src="{{ asset('img/past-president/banner1.jpg') }}" alt="" />
+                                <!-- <img class="img-fluid" src="{{ asset('img/past-president/banner1.jpg') }}" alt="" /> -->
+                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
 
                             </div>
 
                         </div>
-
-                        <div class="item">
+                        @endforeach
+                        @endforeach
+                        <!-- <div class="item">
 
                             <div class="about-img">
 
@@ -39,7 +44,7 @@
 
                             </div>
 
-                        </div>
+                        </div> -->
 
                     </div>
 

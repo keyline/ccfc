@@ -51,7 +51,7 @@
 
 
                             <div class="member_profileimg">
-                                <img class="img-fluid" src="{{ asset('img/demopic.png') }}" alt="" />
+                                <img class="img-fluid ifnotpic" src="{{ asset('img/Profile-Icon-01.svg') }}" alt="" />
                             </div>
 
 
@@ -60,7 +60,7 @@
                             <div class="member_profileimg">
                                 <img class="img-fluid" src="data:image/png;base64,                          
                                     {{ $userProfile['MemberImage'] }}" alt="" />
-                                    {{-- <img class="img-fluid ifnotpic" src="{{ asset('img/Profile-Icon-01.svg') }}" alt="" /> --}}
+
                             </div>
 
                             @endif
@@ -70,7 +70,9 @@
                             <div class="member_profiletop">
                                 <h4>Welcome</h4>
                                 <h2>{{ $userProfile['MEMBER_NAME'] }}</h2>
-                                <p><strong>Ph No:</strong> {{ $userProfile['PHONE1'] }}</p>
+                                <p><strong>Ph No:</strong>
+                                    {{ $userProfile['MOBILENO'] }}
+                                </p>
                                 <p><strong>Mail ID:</strong> {{ $userProfile['EMAIL'] }}</p>
                             </div>
                         </div>
@@ -170,10 +172,18 @@
                         </div>
                         <div class="col-md-6">
                             <div class="member_probile_list">
+                                @if($userProfile['SPOUSE_NAME'] == '')
+
+                                @else
+
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Spouse Name</p>
                                     <p class="member_list_input">{{ $userProfile['SPOUSE_NAME'] }}</p>
                                 </div>
+
+                                @endif
+
+
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Date of Birth</p>
                                     <p class="member_list_input">{{ $userProfile['SPOUSE_DOB'] }}</p>

@@ -19,66 +19,83 @@
                 <div class="banner-box">
                     <div class="banner-box">
                         <div id="innerpage-banner" class="owl-carousel owl-theme">
+
+                            @foreach($galleries->where("id","29") as $key => $gallery)
+
+                            @foreach($gallery->images as $key => $media)
+
                             <div class="item">
                                 <div class="about-img">
-                                    <img class="img-fluid" src="http://ccfc.keylines.net.in/storage/56/621718fa30d84_food_banner2.jpg" alt="">
+                                    <!-- <img class="img-fluid"
+                                        src="http://ccfc.keylines.net.in/storage/56/621718fa30d84_food_banner2.jpg"
+                                        alt=""> -->
+
+                                    <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
                                 </div>
                             </div>
-                            <div class="item">
+
+                            @endforeach
+                            @endforeach
+
+                            <!-- <div class="item">
                                 <div class="about-img">
-                                    <img class="img-fluid" src="http://ccfc.keylines.net.in/storage/57/621718fe6b14f_food_banner1.jpg" alt="">
+                                    <img class="img-fluid"
+                                        src="http://ccfc.keylines.net.in/storage/57/621718fe6b14f_food_banner1.jpg"
+                                        alt="">
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </section>
             <!-- ********|| BANNER PART END ||******** -->
 
-        <section class="contact-us-sec">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                           <div class="map-location">
-                                            <div class="map-content">
-                                                19/1 Gurusaday Road, Beckbagan,Ballygunge, Kolkata 700 019
-                                            </div>
-                                            <div class="contact-location">
-                                                E:
-                                                <a href="mailto:ccfcsecretary@ccfc1792.com" class="contact-btn">
-                                                    ccfcsecretary@ccfc1792.com
-                                                </a>
-                                            </div>
-                                            <div class="contact-location">
-                                                P:
-                                                <a href="tel:033 24615060" class="contact-btn">
-                                                    033 24615060
-                                                </a>
-                                                <span>/</span>
-                                                <a href="tel:033 24615059" class="contact-btn">
-                                                    033 24615059
-                                                </a>
-                                            </div>
-                                            <div class="map-content">
-                                                <i>( Monday to Saturday, 11am to 5pm )</i>
-                                            </div>
-                                        </div>
+            <section class="contact-us-sec">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="map-location">
+                                <div class="map-content">
+                                    19/1 Gurusaday Road, Beckbagan,Ballygunge, Kolkata 700 019
+                                </div>
+                                <div class="contact-location">
+                                    E:
+                                    <a href="mailto:ccfcsecretary@ccfc1792.com" class="contact-btn">
+                                        ccfcsecretary@ccfc1792.com
+                                    </a>
+                                </div>
+                                <div class="contact-location">
+                                    P:
+                                    <a href="tel:033 24615060" class="contact-btn">
+                                        033 24615060
+                                    </a>
+                                    <span>/</span>
+                                    <a href="tel:033 24615059" class="contact-btn">
+                                        033 24615059
+                                    </a>
+                                </div>
+                                <div class="map-content">
+                                    <i>( Monday to Saturday, 11am to 5pm )</i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-                                        
-                                    </section>
+
+            </section>
 
             <section class="contact-sec contact-body">
                 <div class="container">
                     <div class="row">
-                       
-                                <div class="col-lg-6 pl-0">
-                                    <div class="contact-left">
-                                        <div class="map">
-                                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3685.2201366718136!2d88.363747!3d22.533425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1c410a073b08b94!2sCalcutta%20Cricket%20and%20Football%20Club!5e0!3m2!1sen!2sin!4v1643977564770!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                                        </div>
-<!--
+
+                        <div class="col-lg-6 pl-0">
+                            <div class="contact-left">
+                                <div class="map">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3685.2201366718136!2d88.363747!3d22.533425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1c410a073b08b94!2sCalcutta%20Cricket%20and%20Football%20Club!5e0!3m2!1sen!2sin!4v1643977564770!5m2!1sen!2sin"
+                                        style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                                <!--
                                         <div class="map-location">
                                             <div class="map-content">
                                                 19/1 Gurusaday Road, Beckbagan,Ballygunge, Kolkata 700 019
@@ -104,41 +121,43 @@
                                             </div>
                                         </div>
 -->
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="contact-inner">
+                                <div class="title-sec">
+                                    <div class="title">
+                                        CONTACT US
                                     </div>
                                 </div>
-                                <div class="col-lg-5">
-                                    <div class="contact-inner">
-                                        <div class="title-sec">
-                                            <div class="title">
-                                                CONTACT US
-                                            </div>
-                                        </div>
-                                        <div class="contact-content">
-                                            Have any questions?
-                                        </div>
-                                        <div class="contact-content">
-                                            We’d love to hear from you.
-                                        </div>
-                                        <div class="contact-form">
-                                            <form method="POST" action="http://ccfc.keylines.net.in/send-message" enctype="multipart/form-data">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Your Name*">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="Your Email*">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Your Mobile No*">
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea class="form-control" placeholder="Your Message" rows="3"></textarea>
-                                                </div>
-                                                <button type="submit" class="send-btn">Send Message</button>
-                                            </form>
-                                        </div>
-                                    </div>
+                                <div class="contact-content">
+                                    Have any questions?
                                 </div>
-                            
+                                <div class="contact-content">
+                                    We’d love to hear from you.
+                                </div>
+                                <div class="contact-form">
+                                    <form method="POST" action="http://ccfc.keylines.net.in/send-message"
+                                        enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Your Name*">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email*">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Your Mobile No*">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" placeholder="Your Message"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <button type="submit" class="send-btn">Send Message</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <!--
@@ -167,7 +186,7 @@
                         </div>
 
                         <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
-                           
+
                             <!-- The slideshow -->
                             <div class="carousel-inner">
 
@@ -191,7 +210,7 @@
                             <a class="carousel-control-next" href="#demo" data-slide="next">
                                 <i class="zmdi zmdi-chevron-right"></i>
                             </a>
-                           
+
                         </div>
 
                     </div>
@@ -210,7 +229,7 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
-                            
+
                             <!-- The slideshow -->
                             <div class="carousel-inner">
 
@@ -218,7 +237,7 @@
 
                                     <img src="" alt="Menu">
                                 </div>
-              
+
                             </div>
 
                             <!-- Left and right controls -->
@@ -337,67 +356,74 @@
 
 
             <style>
-                .contact-us-sec{
-                    background-color: #f6f6f6;
-                    padding: 40px;
-                    text-align: center;
-                }
-                .contact-us-sec {
-    padding: 40px 0px;
-}
-                .contact-us-sec .map-location .map-content{
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    padding-bottom: 5px;
-                     font-family: 'Lato', sans-serif;
-                    color: var(--textColor);
-                }
-                .contact-us-sec .map-location .contact-location {
-    font-family: 'Lato', sans-serif;
-                    color: var(--textColor);
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-                .contact-us-sec .map-location .contact-location .contact-btn {
-    font-family: 'Lato', sans-serif;
-                    color: var(--textColor);
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-}
-                .contact-us-sec .map-location .map-content {
-    font-family: 'Lato', sans-serif;
-                    color: var(--textColor);
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    padding-bottom: 5px;
-}
-               
-                .contact-sec.contact-body .contact-left .map iframe {
-    width: 100%;
-    height: 466px;
-}
-                .contact-sec.contact-body .contact-inner .send-btn {
-    margin-top: 5px;
-}
-               .contact-sec.contact-body .contact-inner {
-    padding-top: 30px;
-}
-                
-     
-                                @media screen and (max-width: 767px) {
-                                    .contact-sec.contact-body .contact-left{
-                                        padding-left: 15px;
-                                    }
-                                    .contact-sec.contact-body {
-    padding-left: 0px;
-}
+            .contact-us-sec {
+                background-color: #f6f6f6;
+                padding: 40px;
+                text-align: center;
+            }
+
+            .contact-us-sec {
+                padding: 40px 0px;
+            }
+
+            .contact-us-sec .map-location .map-content {
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: 0.5px;
+                padding-bottom: 5px;
+                font-family: 'Lato', sans-serif;
+                color: var(--textColor);
+            }
+
+            .contact-us-sec .map-location .contact-location {
+                font-family: 'Lato', sans-serif;
+                color: var(--textColor);
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+
+            .contact-us-sec .map-location .contact-location .contact-btn {
+                font-family: 'Lato', sans-serif;
+                color: var(--textColor);
+                font-size: 16px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                text-decoration: none;
+            }
+
+            .contact-us-sec .map-location .map-content {
+                font-family: 'Lato', sans-serif;
+                color: var(--textColor);
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: 0.5px;
+                padding-bottom: 5px;
+            }
+
+            .contact-sec.contact-body .contact-left .map iframe {
+                width: 100%;
+                height: 466px;
+            }
+
+            .contact-sec.contact-body .contact-inner .send-btn {
+                margin-top: 5px;
+            }
+
+            .contact-sec.contact-body .contact-inner {
+                padding-top: 30px;
+            }
+
+
+            @media screen and (max-width: 767px) {
+                .contact-sec.contact-body .contact-left {
+                    padding-left: 15px;
                 }
 
+                .contact-sec.contact-body {
+                    padding-left: 0px;
+                }
+            }
             </style>
 
             </body>
