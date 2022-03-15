@@ -37,8 +37,8 @@
                         </div>
 
                         @endforeach
-                        @endforeach
 
+                        @endforeach
                         <!-- <div class="item">
 
                             <div class="about-img">
