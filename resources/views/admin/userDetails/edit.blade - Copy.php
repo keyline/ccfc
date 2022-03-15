@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="member_type_code">{{ trans('cruds.userDetail.fields.member_type_code') }}</label>
-                <input class="form-control {{ $errors->has('member_type_code') ? 'is-invalid' : '' }}" type="text" name="member_type_code" id="member_type_code" value="{{$userProfile['MEMBERTYPECODE'] }}" required>
+                <input class="form-control {{ $errors->has('member_type_code') ? 'is-invalid' : '' }}" type="text" name="member_type_code" id="member_type_code" value="{{ old('member_type_code', $userDetail->member_type_code) }}" required>
                 @if($errors->has('member_type_code'))
                     <span class="text-danger">{{ $errors->first('member_type_code') }}</span>
                 @endif
@@ -32,42 +32,44 @@
             </div>
             <div class="form-group">
                 <label for="member_type">{{ trans('cruds.userDetail.fields.member_type') }}</label>
-                <input class="form-control {{ $errors->has('member_type') ? 'is-invalid' : '' }}" type="text" name="member_type" id="member_type" value="{{ $userProfile['MEMBERTYPE'] }}">
+                <input class="form-control {{ $errors->has('member_type') ? 'is-invalid' : '' }}" type="text" name="member_type" id="member_type" value="{{ old('member_type', $userDetail->member_type) }}">
                 @if($errors->has('member_type'))
                     <span class="text-danger">{{ $errors->first('member_type') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.userDetail.fields.member_type_helper') }}</span>
             </div>
-			
-			
-
-			
             <div class="form-group">
                 <label for="date_of_birth">{{ trans('cruds.userDetail.fields.date_of_birth') }}</label>
-                <input class="form-control {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}" type="text" name="date_of_birth" id="date_of_birth" value="{{$userProfile['DOB'] }}">
+                <input class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}" type="text" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth', $userDetail->date_of_birth) }}">
                 @if($errors->has('date_of_birth'))
                     <span class="text-danger">{{ $errors->first('date_of_birth') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.userDetail.fields.date_of_birth_helper') }}</span>
             </div>
-			
             <div class="form-group">
                 <label for="member_since">{{ trans('cruds.userDetail.fields.member_since') }}</label>
-                <input class="form-control {{ $errors->has('member_since') ? 'is-invalid' : '' }}" type="text" name="member_since" id="member_since" value="{{$userProfile['MEMBER_SINCE'] }}">
+                <input class="form-control {{ $errors->has('member_since') ? 'is-invalid' : '' }}" type="text" name="member_since" id="member_since" value="{{ old('member_since', $userDetail->member_since) }}">
                 @if($errors->has('member_since'))
                     <span class="text-danger">{{ $errors->first('member_since') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.userDetail.fields.member_since_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="name">SEX</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="sex"
-                    id="name" value="{{$userProfile['SEX'] }}">
+                <label>{{ trans('cruds.userDetail.fields.sex') }}</label>
+                @foreach(App\Models\UserDetail::SEX_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('sex') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="sex_{{ $key }}" name="sex" value="{{ $key }}" {{ old('sex', $userDetail->sex) === (string) $key ? 'checked' : '' }}>
+                        <label class="form-check-label" for="sex_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
+                @if($errors->has('sex'))
+                    <span class="text-danger">{{ $errors->first('sex') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.userDetail.fields.sex_helper') }}</span>
             </div>
-			
             <div class="form-group">
                 <label for="address_1">{{ trans('cruds.userDetail.fields.address_1') }}</label>
-                <input class="form-control {{ $errors->has('address_1') ? 'is-invalid' : '' }}" type="text" name="address_1" id="address_1" value="{{$userProfile['ADDRESS1'] }}">
+                <input class="form-control {{ $errors->has('address_1') ? 'is-invalid' : '' }}" type="text" name="address_1" id="address_1" value="{{ old('address_1', $userDetail->address_1) }}">
                 @if($errors->has('address_1'))
                     <span class="text-danger">{{ $errors->first('address_1') }}</span>
                 @endif
@@ -75,7 +77,7 @@
             </div>
             <div class="form-group">
                 <label for="address_2">{{ trans('cruds.userDetail.fields.address_2') }}</label>
-                <input class="form-control {{ $errors->has('address_2') ? 'is-invalid' : '' }}" type="text" name="address_2" id="address_2" value="{{$userProfile['ADDRESS2'] }}">
+                <input class="form-control {{ $errors->has('address_2') ? 'is-invalid' : '' }}" type="text" name="address_2" id="address_2" value="{{ old('address_2', $userDetail->address_2) }}">
                 @if($errors->has('address_2'))
                     <span class="text-danger">{{ $errors->first('address_2') }}</span>
                 @endif
@@ -83,7 +85,7 @@
             </div>
             <div class="form-group">
                 <label for="address_3">{{ trans('cruds.userDetail.fields.address_3') }}</label>
-                <input class="form-control {{ $errors->has('address_3') ? 'is-invalid' : '' }}" type="text" name="address_3" id="address_3" value="{{$userProfile['ADDRESS3'] }}">
+                <input class="form-control {{ $errors->has('address_3') ? 'is-invalid' : '' }}" type="text" name="address_3" id="address_3" value="{{ old('address_3', $userDetail->address_3) }}">
                 @if($errors->has('address_3'))
                     <span class="text-danger">{{ $errors->first('address_3') }}</span>
                 @endif
@@ -91,7 +93,7 @@
             </div>
             <div class="form-group">
                 <label for="city">{{ trans('cruds.userDetail.fields.city') }}</label>
-                <input class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" type="text" name="city" id="city" value="{{$userProfile['CITY'] }}">
+                <input class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" type="text" name="city" id="city" value="{{ old('city', $userDetail->city) }}">
                 @if($errors->has('city'))
                     <span class="text-danger">{{ $errors->first('city') }}</span>
                 @endif
@@ -99,7 +101,7 @@
             </div>
             <div class="form-group">
                 <label for="state">{{ trans('cruds.userDetail.fields.state') }}</label>
-                <input class="form-control {{ $errors->has('state') ? 'is-invalid' : '' }}" type="text" name="state" id="state" value="{{$userProfile['STATE'] }}">
+                <input class="form-control {{ $errors->has('state') ? 'is-invalid' : '' }}" type="text" name="state" id="state" value="{{ old('state', $userDetail->state) }}">
                 @if($errors->has('state'))
                     <span class="text-danger">{{ $errors->first('state') }}</span>
                 @endif
@@ -107,7 +109,7 @@
             </div>
             <div class="form-group">
                 <label for="pin">{{ trans('cruds.userDetail.fields.pin') }}</label>
-                <input class="form-control {{ $errors->has('pin') ? 'is-invalid' : '' }}" type="text" name="pin" id="pin" value="{{$userProfile['PIN'] }}">
+                <input class="form-control {{ $errors->has('pin') ? 'is-invalid' : '' }}" type="text" name="pin" id="pin" value="{{ old('pin', $userDetail->pin) }}">
                 @if($errors->has('pin'))
                     <span class="text-danger">{{ $errors->first('pin') }}</span>
                 @endif
@@ -115,7 +117,7 @@
             </div>
             <div class="form-group">
                 <label for="phone_1">{{ trans('cruds.userDetail.fields.phone_1') }}</label>
-                <input class="form-control {{ $errors->has('phone_1') ? 'is-invalid' : '' }}" type="text" name="phone_1" id="phone_1" value="{{$userProfile['PHONE1'] }}">
+                <input class="form-control {{ $errors->has('phone_1') ? 'is-invalid' : '' }}" type="text" name="phone_1" id="phone_1" value="{{ old('phone_1', $userDetail->phone_1) }}">
                 @if($errors->has('phone_1'))
                     <span class="text-danger">{{ $errors->first('phone_1') }}</span>
                 @endif
@@ -123,7 +125,7 @@
             </div>
             <div class="form-group">
                 <label for="phone_2">{{ trans('cruds.userDetail.fields.phone_2') }}</label>
-                <input class="form-control {{ $errors->has('phone_2') ? 'is-invalid' : '' }}" type="text" name="phone_2" id="phone_2" value="{{$userProfile['PHONE2'] }}">
+                <input class="form-control {{ $errors->has('phone_2') ? 'is-invalid' : '' }}" type="text" name="phone_2" id="phone_2" value="{{ old('phone_2', $userDetail->phone_2) }}">
                 @if($errors->has('phone_2'))
                     <span class="text-danger">{{ $errors->first('phone_2') }}</span>
                 @endif
@@ -131,7 +133,7 @@
             </div>
             <div class="form-group">
                 <label for="mobile_no">{{ trans('cruds.userDetail.fields.mobile_no') }}</label>
-                <input class="form-control {{ $errors->has('mobile_no') ? 'is-invalid' : '' }}" type="text" name="mobile_no" id="mobile_no" value="{{$userProfile['MOBILENO'] }}">
+                <input class="form-control {{ $errors->has('mobile_no') ? 'is-invalid' : '' }}" type="text" name="mobile_no" id="mobile_no" value="{{ old('mobile_no', $userDetail->mobile_no) }}">
                 @if($errors->has('mobile_no'))
                     <span class="text-danger">{{ $errors->first('mobile_no') }}</span>
                 @endif
@@ -139,7 +141,7 @@
             </div>
             <div class="form-group">
                 <label for="email">{{ trans('cruds.userDetail.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{$userProfile['BUSINESS_EMAIL'] }}">
+                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', $userDetail->email) }}">
                 @if($errors->has('email'))
                     <span class="text-danger">{{ $errors->first('email') }}</span>
                 @endif
@@ -147,7 +149,7 @@
             </div>
             <div class="form-group">
                 <label for="current_status">{{ trans('cruds.userDetail.fields.current_status') }}</label>
-                <input class="form-control {{ $errors->has('current_status') ? 'is-invalid' : '' }}" type="text" name="current_status" id="current_status" value="{{$userProfile['CURENTSTATUS'] }}">
+                <input class="form-control {{ $errors->has('current_status') ? 'is-invalid' : '' }}" type="text" name="current_status" id="current_status" value="{{ old('current_status', $userDetail->current_status) }}">
                 @if($errors->has('current_status'))
                     <span class="text-danger">{{ $errors->first('current_status') }}</span>
                 @endif
@@ -155,7 +157,7 @@
             </div>
             <div class="form-group">
                 <label for="represented_club_in">{{ trans('cruds.userDetail.fields.represented_club_in') }}</label>
-                <input class="form-control {{ $errors->has('represented_club_in') ? 'is-invalid' : '' }}" type="text" name="represented_club_in" id="represented_club_in" value="{{ $userProfile['REPRESENTED_CLUB_IN'] }}">
+                <input class="form-control {{ $errors->has('represented_club_in') ? 'is-invalid' : '' }}" type="text" name="represented_club_in" id="represented_club_in" value="{{ old('represented_club_in', $userDetail->represented_club_in) }}">
                 @if($errors->has('represented_club_in'))
                     <span class="text-danger">{{ $errors->first('represented_club_in') }}</span>
                 @endif
@@ -251,7 +253,7 @@
             </div>
             <div class="form-group">
                 <label for="business_email">{{ trans('cruds.userDetail.fields.business_email') }}</label>
-                <input class="form-control {{ $errors->has('business_email') ? 'is-invalid' : '' }}" type="text" name="business_email" id="business_email" value="{{ $userProfile['BUSINESS_EMAIL'] }}">
+                <input class="form-control {{ $errors->has('business_email') ? 'is-invalid' : '' }}" type="text" name="business_email" id="business_email" value="{{ old('business_email', $userDetail->business_email) }}">
                 @if($errors->has('business_email'))
                     <span class="text-danger">{{ $errors->first('business_email') }}</span>
                 @endif
@@ -259,7 +261,7 @@
             </div>
             <div class="form-group">
                 <label for="spouse_name">{{ trans('cruds.userDetail.fields.spouse_name') }}</label>
-                <input class="form-control {{ $errors->has('spouse_name') ? 'is-invalid' : '' }}" type="text" name="spouse_name" id="spouse_name" value="{{ $userProfile['SPOUSE_NAME'] }}">
+                <input class="form-control {{ $errors->has('spouse_name') ? 'is-invalid' : '' }}" type="text" name="spouse_name" id="spouse_name" value="{{ old('spouse_name', $userDetail->spouse_name) }}">
                 @if($errors->has('spouse_name'))
                     <span class="text-danger">{{ $errors->first('spouse_name') }}</span>
                 @endif
@@ -267,7 +269,7 @@
             </div>
             <div class="form-group">
                 <label for="spouse_dob">{{ trans('cruds.userDetail.fields.spouse_dob') }}</label>
-                <input class="form-control date {{ $errors->has('spouse_dob') ? 'is-invalid' : '' }}" type="text" name="spouse_dob" id="spouse_dob" value="{{ $userProfile['SPOUSE_DOB'] }}">
+                <input class="form-control date {{ $errors->has('spouse_dob') ? 'is-invalid' : '' }}" type="text" name="spouse_dob" id="spouse_dob" value="{{ old('spouse_dob', $userDetail->spouse_dob) }}">
                 @if($errors->has('spouse_dob'))
                     <span class="text-danger">{{ $errors->first('spouse_dob') }}</span>
                 @endif
@@ -304,7 +306,7 @@
             </div>
             <div class="form-group">
                 <label for="spouse_mobile_no">{{ trans('cruds.userDetail.fields.spouse_mobile_no') }}</label>
-                <input class="form-control {{ $errors->has('spouse_mobile_no') ? 'is-invalid' : '' }}" type="text" name="spouse_mobile_no" id="spouse_mobile_no" value="{{$userProfile['SPOUSEMOBILENO'] }}">
+                <input class="form-control {{ $errors->has('spouse_mobile_no') ? 'is-invalid' : '' }}" type="text" name="spouse_mobile_no" id="spouse_mobile_no" value="{{ old('spouse_mobile_no', $userDetail->spouse_mobile_no) }}">
                 @if($errors->has('spouse_mobile_no'))
                     <span class="text-danger">{{ $errors->first('spouse_mobile_no') }}</span>
                 @endif
@@ -320,7 +322,7 @@
             </div>
             <div class="form-group">
                 <label for="anniversary_date">{{ trans('cruds.userDetail.fields.anniversary_date') }}</label>
-                <input class="form-control date {{ $errors->has('anniversary_date') ? 'is-invalid' : '' }}" type="text" name="anniversary_date" id="anniversary_date" value="{{$userProfile['ANNIVERSARY_DATE'] }}">
+                <input class="form-control date {{ $errors->has('anniversary_date') ? 'is-invalid' : '' }}" type="text" name="anniversary_date" id="anniversary_date" value="{{ old('anniversary_date', $userDetail->anniversary_date) }}">
                 @if($errors->has('anniversary_date'))
                     <span class="text-danger">{{ $errors->first('anniversary_date') }}</span>
                 @endif
@@ -414,19 +416,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.userDetail.fields.spouse_business_email_helper') }}</span>
             </div>
-			
-			<div class="form-group">
-                <img class="img-fluid" src="data:image/png;base64,                          
-                    {{ $userProfile['MemberImage'] }}" width="300" height="300" alt="" />
-            </div>
-					
-			<div class="form-group">
-                <img class="img-fluid" src="data:image/png;base64,                          
-                    {{ $userProfile['SpouseImage'] }}" width="300" height="50" alt="" />
-            </div>
-
-
-			
             <div class="form-group">
                 <label for="member_image">{{ trans('cruds.userDetail.fields.member_image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('member_image') ? 'is-invalid' : '' }}" id="member_image-dropzone">

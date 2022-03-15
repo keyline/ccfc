@@ -91,11 +91,11 @@
                             </a>
                             @endcan
 
-                            @can('user_edit')
+                            <!-- @can('user_edit')
                             <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
                                 {{ trans('global.edit') }}
                             </a>
-                            @endcan
+                            @endcan -->
 
                             @can('user_delete')
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
@@ -109,11 +109,20 @@
 
 
                             @can('user_edit')
-                            <!-- <a class="btn btn-xs btn-info" href="{{ route('admin.users.updatedetails', $user->id) }}"> -->
-                            <a class="btn btn-xs btn-info fetch-memberapi">
+
+                            <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
                                 {{ trans('global.updatedetails') }}
                             </a>
+
+                            <!-- <li>
+                                <a href="{{ route('member.invoice')}}">Invoices & Payment</a>
+                            </li> -->
+
+
+
                             @endcan
+
+
 
                         </td>
 
@@ -195,39 +204,6 @@ $(function() {
 </script>
 
 
-
-<script type="text/javascript">
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
-$(".fetch-memberapi").click(function(e) {
-
-    e.preventDefault();
-
-    var name = $("input[name=name]").val();
-    var email = $("input[name=email]").val();
-    var user_code = $("input[name=user_code]").val();
-    var phone_number_1 = $("input[name=phone_number_1]").val();
-
-    $.ajax({
-        type: 'POST',
-        url: "{{ route('ajaxRequest.post') }}",
-        data: {
-            name: name,
-            email: email,
-            user_code: user_code,
-            phone_number_1: phone_number_1
-        },
-        success: function(data) {
-            alert(data.success);
-        }
-    });
-
-});
-</script>
 
 
 @endsection
