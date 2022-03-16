@@ -15,8 +15,46 @@
     <div class="col-lg-9 col-md-7 p-0">
         <div class="right-body">
             <!-- ********|| BANNER PART START ||******** -->
-            <section class="history-banner">
+            <!-- <section class="history-banner">
                 <img class="img-fluid" src="{{ asset('img/history/history-banner.jpg') }}" alt="" />
+            </section> -->
+
+            <section class="banner">
+
+                <div class="banner-box">
+
+                    <div id="innerpage-banner" class="owl-carousel owl-theme">
+
+                        @foreach($galleries->where("id","30") as $key => $gallery)
+
+                        @foreach($gallery->images as $key => $media)
+
+                        <div class="item">
+
+                            <div class="about-img">
+
+                                <!-- <img class="img-fluid" src="{{ asset('img/past-president/banner1.jpg') }}" alt="" /> -->
+                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
+
+                            </div>
+
+                        </div>
+                        @endforeach
+                        @endforeach
+                        <!-- <div class="item">
+
+                            <div class="about-img">
+
+                                <img class="img-fluid" src="{{ asset('img/past-president/banner2.jpg') }}" alt="" />
+
+                            </div>
+
+                        </div> -->
+
+                    </div>
+
+                </div>
+
             </section>
             <!-- ********|| BANNER PART END ||******** -->
 

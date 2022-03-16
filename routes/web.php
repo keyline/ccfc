@@ -102,8 +102,9 @@ Route::get('/sports', function () {
     $contentPages = ContentPage::all();
     $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    $galleries = Gallery::with(['media'])->get();
     // $users = User::with(['roles'])->get();
-    return view('sports', compact(['contentPages','members','userDetails']));
+    return view('sports', compact(['contentPages','members','userDetails','galleries']));
     // return view('sports', compact(['members','users']));
 });
 

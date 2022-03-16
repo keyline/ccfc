@@ -44,7 +44,7 @@
             <section class="inner_belowbanner memberbelowinfo_section">
                 <div class="container">
                     <div class="row">
-
+                        <!-- <pre><code>{{ json_encode($userProfile, JSON_PRETTY_PRINT) }}</code></pre> -->
                         <div class="dashboardpic_items">
 
                             @if($userProfile['MemberImage'] == '')
@@ -163,6 +163,24 @@
                         </div>
                     </div>
 
+                    @if($userProfile['SPOUSE_NAME'] == '')
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="member_probile_list">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="member_probile_list">
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    @else
+
 
                     <div class="row">
                         <div class="col-md-12">
@@ -172,16 +190,12 @@
                         </div>
                         <div class="col-md-6">
                             <div class="member_probile_list">
-                                @if($userProfile['SPOUSE_NAME'] == '')
 
-                                @else
 
                                 <div class="member_profile_item">
-                                    <p class="member_list_text">Spouse Name</p>
+                                    <p class="member_list_text"> Name</p>
                                     <p class="member_list_input">{{ $userProfile['SPOUSE_NAME'] }}</p>
                                 </div>
-
-                                @endif
 
 
                                 <div class="member_profile_item">
@@ -197,7 +211,7 @@
                         <div class="col-md-6">
                             <div class="member_probile_list">
                                 <div class="member_profile_item">
-                                    <p class="member_list_text">Spouse Business</p>
+                                    <p class="member_list_text"> Business</p>
                                     <p class="member_list_input"></p>
                                 </div>
                                 <div class="member_profile_item">
@@ -208,21 +222,47 @@
                         </div>
                     </div>
 
+                    @endif
+
+
+
+
+                    <!-- <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="member_probile_list">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="member_probile_list">
+
+
+                            </div>
+                        </div>
+                    </div> -->
+
+
+
+
+
                     <div class="row">
+                        @foreach ($userProfile['children'] as $childrendetails)
                         <div class="col-md-12">
                             <div class="member_titlebg">
                                 <h2>Children Details</h2>
                             </div>
                         </div>
                         <div class="col-md-6">
+
                             <div class="member_probile_list">
                                 <div class="member_profile_item">
-                                    <p class="member_list_text">Children Name</p>
-                                    <p class="member_list_input"></p>
+                                    <p class="member_list_text"> Name</p>
+                                    <p class="member_list_input">{{ $childrendetails['CHILDREN1_NAME']}}</p>
                                 </div>
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Date of Birth</p>
-                                    <p class="member_list_input"></p>
+                                    <p class="member_list_input">{{ $childrendetails['DOB']}}</p>
                                 </div>
                             </div>
                         </div>
@@ -230,11 +270,16 @@
                             <div class="member_probile_list">
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Phone </p>
-                                    <p class="member_list_input"></p>
+                                    <p class="member_list_input">{{ $childrendetails['PHONE1']}}</p>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
+
+
+
+
                 </div>
             </section>
             <!-- ********|| HISTORY END ||******** -->
