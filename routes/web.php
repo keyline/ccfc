@@ -407,6 +407,12 @@ Route::group([
     Route::get('/rules_regulation', function () {
         return view('rules_regulation');
     })->name('rules_regulation');
+
+    # Call Route
+    Route::post('payment', ['as' => 'payment', 'uses' => 'PaymentController@payment']);
+
+    # Status Route
+    Route::get('payment/status', ['as' => 'payment.status', 'uses' => 'PaymentController@status']);
 });
 
 
