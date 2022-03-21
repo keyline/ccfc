@@ -145,7 +145,16 @@
                                                             <ul class="submenu dropdown-menu">
                                                                 <li><a class="nav-link"
                                                                         href="{{ asset('amenities_services') }}">Amenities
-                                                                        & Services</a></li>
+                                                                        & Services</a>
+
+                                                                        <ul class="submenu dropdown-menu">
+                                                                            <li><a href="{{ asset('food_beverages') }}">Food & Beverages</a></li>
+                                                                            <li><a href="{{ asset('gymming-rejuvenated') }}">Gymming</a></li>
+                                                                            <li><a href="{{ asset('pool-pub') }}">Pool Pub</a></li>
+                                                                            <li><a href="{{ asset('club-bar') }}">Club Bar</a></li>
+                                                                            <li><a href="{{ asset('swimming-pool') }}">Swimming Pool</a></li>
+                                                                        </ul>    
+                                                                </li>
                                                                 <li><a class="nav-link"
                                                                         href="{{ asset('sports') }}">Sports</a></li>
                                                             </ul>
