@@ -47,10 +47,8 @@ class PaymentController extends Controller
 
     public function status(){
         $transaction = Payu::capture();
-        // Get the payment status.
-        $transaction->isCaptured(); // Returns boolean - true / false
-
-        dd($transaction);
+        
+        dd($transaction->response);
 
     }
 }
