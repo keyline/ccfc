@@ -184,7 +184,8 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="member_titlebg">
+                            <div class="member_titlebg profil_oth_img">
+                                <div class="member_other-pro-img"><img src="{{ asset('img/women_icon_profile.png') }}" alt="image"></div>
                                 <h2>Spouse Details</h2>
                             </div>
                         </div>
@@ -249,7 +250,8 @@
                     <div class="row">
                         @foreach ($userProfile['children'] as $childrendetails)
                         <div class="col-md-12">
-                            <div class="member_titlebg">
+                            <div class="member_titlebg profil_oth_img">
+                                <div class="member_other-pro-img"><img src="{{ asset('img/child_icon_profile.png') }}" alt="image"></div>
                                 <h2>Children Details</h2>
                             </div>
                         </div>
