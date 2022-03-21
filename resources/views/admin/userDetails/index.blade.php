@@ -369,14 +369,22 @@
                             </a>
                             @endcan
 
-                            @can('user_detail_edit')
+                            <!-- @can('user_detail_edit')
                             <a class="btn btn-xs btn-info"
                                 href="{{ route('admin.user-details.edit', $userDetail->id) }}">
                                 {{ trans('global.edit') }}
                             </a>
+                            @endcan -->
+
+
+                            @can('user_detail_edit')
+                            <a class="btn btn-xs btn-info"
+                                href="{{ route('admin.user-details.edit', $userDetail->id) }}">
+                                {{ trans('global.updatedetails') }}
+                            </a>
                             @endcan
 
-                            @can('user_detail_delete')
+                            <!-- @can('user_detail_delete')
                             <form action="{{ route('admin.user-details.destroy', $userDetail->id) }}" method="POST"
                                 onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
                                 style="display: inline-block;">
@@ -384,7 +392,7 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                             </form>
-                            @endcan
+                            @endcan -->
 
 
 

@@ -8,7 +8,14 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\MemberDetails;
+use Gate;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
 
 class MemberDetailsController extends Controller
 {
@@ -119,7 +126,10 @@ class MemberDetailsController extends Controller
      */
     public function update(Request $request, MemberDetails $memberDetails)
     {
-        //
+        $user->update($request->all());
+        $user->roles()->sync($request->input('roles', []));
+
+        return redirect()->route('admin.users.index');
     }
 
     /**

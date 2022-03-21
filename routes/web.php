@@ -251,6 +251,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Route::delete('users/updatedetails', 'UsersController@updatedetails')->name('users.updatedetails');
     Route::resource('users', 'UsersController');
 
+
+    // Users
+    // Route::delete('users/destroy', 'MemberDetailsController@massDestroy')->name('users.massDestroy');
+    // Route::delete('users/updatedetails', 'UsersController@updatedetails')->name('users.updatedetails');
+    // Route::resource('users', 'MemberDetailsController');
+
     // Content Category
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
     Route::resource('content-categories', 'ContentCategoryController');
