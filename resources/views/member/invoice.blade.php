@@ -93,14 +93,16 @@
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
 
                                 <div class="invoicepayment_box">
-
+                                    <form action="{{ route('member.payment')}}" method="POST">
+                                        @csrf
                                     <div class="invoicepayment_input">
 
-                                        <input type="text" placeholder="Enter amount being paid">
+                                        <input type="text" name="amount" placeholder="Enter amount being paid">
                                     </div>
                                     <div class="invoicepayment_paybtn">
-                                        <button type="button">Pay Now</button>
+                                        <button type="submit">Pay Now</button>
                                     </div>
+                                    </form>
 
                                 </div>
 
