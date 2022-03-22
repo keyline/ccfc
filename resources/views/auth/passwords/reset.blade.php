@@ -4,7 +4,7 @@
     <div class="login-logo">
         <div class="login-logo">
             <a href="{{ route('admin.home') }}">
-                {{ trans('panel.site_title') }}
+                <!-- {{ trans('panel.site_title') }} -->
             </a>
         </div>
     </div>
@@ -21,25 +21,31 @@
 
                 <div>
                     <div class="form-group">
-                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}">
+                        <input id="email" type="email"
+                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                            value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus
+                            placeholder="{{ trans('global.login_email') }}">
 
                         @if($errors->has('email'))
-                            <span class="text-danger">
-                                {{ $errors->first('email') }}
-                            </span>
+                        <span class="text-danger">
+                            {{ $errors->first('email') }}
+                        </span>
                         @endif
                     </div>
                     <div class="form-group">
-                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="{{ trans('global.login_password') }}">
+                        <input id="password" type="password"
+                            class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
+                            required placeholder="{{ trans('global.login_password') }}">
 
                         @if($errors->has('password'))
-                            <span class="text-danger">
-                                {{ $errors->first('password') }}
-                            </span>
+                        <span class="text-danger">
+                            {{ $errors->first('password') }}
+                        </span>
                         @endif
                     </div>
                     <div class="form-group">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="{{ trans('global.login_password_confirmation') }}">
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                            required placeholder="{{ trans('global.login_password_confirmation') }}">
                     </div>
                 </div>
                 <div class="row">

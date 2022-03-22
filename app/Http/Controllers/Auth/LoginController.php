@@ -50,6 +50,7 @@ class LoginController extends Controller
     {
         if (auth()->user()->is_admin) {
             return route('admin.home');
+            
         }
 
         return route('/');

@@ -44,7 +44,9 @@ class ChangePasswordController extends Controller
 
         $user->delete();
 
-        return redirect()->route('login')->with('message', __('global.delete_account_success'));
+        // return redirect()->route('login')->with('message', __('global.delete_account_success'));
+        return redirect()->route('member/dashboard')->with('message', __('global.delete_account_success'));
+
     }
 
     public function toggleTwoFactor(Request $request)
