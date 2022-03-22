@@ -26,8 +26,8 @@ class PaymentController extends Controller
             $data = $request->all();
 
             $customer = Customer::make()
-                            ->firstName('John Doe')
-                            ->email('john@example.com');
+                            ->firstName($user->name)
+                            ->email($user->email);
             
             // Associate the transaction with your invoice
             $transaction = Transaction::make()
@@ -47,8 +47,11 @@ class PaymentController extends Controller
 
     public function status(){
         $transaction = Payu::capture();
+
+        $status= $transaction->response;
         
-        dd($transaction->response);
+        //dd($transaction->response);
+        return view('member.paymentstatus', compact('status'));
 
     }
 }
