@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\apiController;
 
 use App\Http\Controllers\ContactController;
@@ -214,13 +217,17 @@ Route::get('/gallery', function () {
 
 
 
-Route::get('/contact-us', function () {
+// Route::get('/contact-us', function () {
     
-    $galleries = Gallery::with(['media'])->get();
+//     $galleries = Gallery::with(['media'])->get();
   
-    return view('contact-us', compact(['galleries']));
-});
+//     return view('contact-us', compact(['galleries']));
+// });
 
+
+
+Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-us');
+Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-us.store');
 
 
 
@@ -250,6 +257,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     // Route::delete('users/updatedetails', 'UsersController@updatedetails')->name('users.updatedetails');
     Route::resource('users', 'UsersController');
+
 
     // Content Category
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
@@ -554,10 +562,26 @@ Route::get('/new_member', function () {
     
     // Route::post('user-details/media', 'UserDetailsController@storeMedia')->name('user-details.storeMedia');
 
-    Route::get('/edit', [MemberDetailsController::class, 'edit'])->name('edit');
+    // Route::get('users/index', [MemberDetailsController::class, 'index'])->name('index');
+    
+    // Route::get('insert','MemberDetailsController@index');
+    
+    // Route::post('store','MemberDetailsController@store');
+
+
+    // Route::get('memberdetails', 'MemberDetailsController@index')->name('memberdetails.index');
+
+    // Route::post('memberdetails','MemberDetailsController@index');
+
+    Route::get('users/memberdetails', 'MemberDetailsController@index')->name('memberdetails');
+
 
     
-    // Route::get('/invoice', [HomeController::class, 'invoice'])->name('invoice');
+    
+    // Route::get('users/userDetails', [MemberDetailsController::class, 'userDetails'])->name('userDetails');
 
     // Route::get('ajaxRequest', [MemberUpdateController::class, 'ajaxRequest']);
     // Route::post('ajaxRequest', [MemberUpdateController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
+
+
+    

@@ -106,8 +106,8 @@ class UsersController extends Controller
 
 
 
-    // public function edit(User $user)
-    // {
+    public function edit(User $user)
+    {
     //     {
     //         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
@@ -156,5 +156,5 @@ class UsersController extends Controller
                
 
     //     }   
-    // }
+    }
 }

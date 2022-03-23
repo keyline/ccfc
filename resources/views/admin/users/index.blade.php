@@ -117,13 +117,20 @@
                             @endcan -->
 
 
-                            @can('user_edit')
+                            <!-- @can('user_edit')
 
                             <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
                                 {{ trans('global.fetchdetails') }}
                             </a>
 
-                            @endcan
+                            @endcan -->
+
+                            <a class="btn btn-xs btn-info" href="{{ url('admin/users/memberdetails', $user->id) }}">
+                                {{ trans('global.fetchdetails') }}
+                            </a>
+
+
+
 
 
                         </td>
