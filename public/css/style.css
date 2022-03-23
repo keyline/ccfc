@@ -400,8 +400,15 @@ span {
         border: 1px solid var(--primaryColor);
         box-shadow: 1px 2px 4px #444;
     }
+    .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul.amenitiessubsub{
+        top: -100px;
+    }
     .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul::after {
         background: #fff;
+    }
+    .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul.amenitiessubsub::after {
+        bottom: 33%;
+        top: auto;
     }
     .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul a {
         color: #000;
@@ -770,6 +777,13 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 .history-sec .history-inner.foodbeverage_inner {
     padding: 40px 0 40px 25px;
 }
+.history-sec .history-img #home_history .project-item .item-img {
+    height: 110px;
+}
+.history-sec .history-img #home_history .project-item .item-img img {
+    object-fit: cover;
+    height: 100%;
+}
 .history-sec .history-inner .history-content {
     color: var(--textColor);
     font-family: 'IBM Plex Serif', serif;
@@ -1086,7 +1100,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     padding-bottom: 20px;
 }
 .sports-sec .owl-nav {
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     position: absolute;
     width: 100%;
@@ -1100,7 +1114,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     color: #fff;
 }
 .sports-sec .owl-nav .owl-prev i {
-    color: #8b8b8b;
+    color: #fff;
 }
 
 
@@ -1158,7 +1172,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     padding-bottom: 40px;
 }
 .club-sec .club-inner .club-info .club-body .club-img img{
-    width: 100px;
+    /* width: 100px; */
     display: block;
     margin: 0 auto;
 }
@@ -1174,6 +1188,30 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 }
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
         border-color: transparent;
+}
+.club-sec .club-inner {
+    position: relative;
+    padding: 0 25px;
+}
+.club-sec #home_reciprocal_indian .owl-nav.disabled, .club-sec #home_reciprocal_indian .owl-nav,
+.club-sec #home_reciprocal_overseas .owl-nav.disabled, .club-sec #home_reciprocal_overseas .owl-nav {
+    display: block;
+    position: absolute;
+    top: 5%;
+    width: 100%;
+}
+.club-sec #home_reciprocal_indian .owl-nav button, .club-sec #home_reciprocal_overseas .owl-nav button {
+    font-size: 53px;
+    line-height: 1.25;
+    color: var(--primaryColor);
+    position: absolute;
+    
+}
+.club-sec #home_reciprocal_indian .owl-nav button.owl-prev, .club-sec #home_reciprocal_overseas .owl-nav button.owl-prev {  
+    left: -24px;
+}
+.club-sec #home_reciprocal_indian .owl-nav button.owl-next, .club-sec #home_reciprocal_overseas .owl-nav button.owl-next {  
+    right: -24px;
 }
 /* ********|| CLUB END ||******** */
 
@@ -1791,10 +1829,12 @@ section.sports-page {
     display: flex;
 }
 .sports-sec .owl-nav button.owl-prev {
-    margin-left: -20px;
+    position: absolute;
+    left: 0;
 }
 .sports-sec .owl-nav button.owl-next {
-    margin-right: -20px;
+    position: absolute;
+    right: 0;
 }
 /* ********|| Sports END ||******** */
 
