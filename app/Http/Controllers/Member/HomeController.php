@@ -174,7 +174,7 @@ class HomeController extends Controller
         
         //return response()->download($pathToFile);
         // Download file with custom headers
-        $testPath= SearchInvoicePdf::$basepath . implode("\\", ["{$month}_{$year}", $fileName]);
+        $testPath= SearchInvoicePdf::$basepath . implode("/", ["{$month}_{$year}", $fileName]);
         
         
         if(Storage::disk('local')->exists($testPath)){
