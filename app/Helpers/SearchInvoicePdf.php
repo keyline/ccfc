@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 class SearchInvoicePdf{
 
-    public static $basepath= "monthly_invoices\\";
+    public static $basepath= "monthly_invoices/";
 
     private static $detailBillFormat= "{member_code}-{month}-{year}billdetail";
 
