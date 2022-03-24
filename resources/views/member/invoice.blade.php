@@ -50,7 +50,7 @@
                                     <!-- <div class="member_profileimg">
                                         <img class="img-fluid" src="{{ asset('img/demopic.png') }}" alt="" />
                                     </div> -->
-
+                                    
                                     @if($userProfile['MemberImage'] == '')
 
 
@@ -91,10 +91,10 @@
                                 @endif
                                 @endforeach
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
-
-                                <div class="invoicepayment_box">
-                                    <form action="{{ route('member.payment')}}" method="POST">
+                                <form action="{{ route('member.payment')}}" method="POST">
                                         @csrf
+                                <div class="invoicepayment_box">
+                                    
                                     <div class="invoicepayment_input">
 
                                         <input type="text" name="amount" placeholder="Enter amount being paid">
@@ -144,10 +144,24 @@
                                             <td>{{ $user['paidamount'] }}</td>
                                             <td>{{ $user['debitamount'] }}</td>
                                             <td>{{ $user['Balance'] }}</td>
-                                            <td><a href="#" target="_blank"><img class="img-fluid"
+                                            <!-- summary -->
+                                            <td>
+                                            @if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $user['Month']))))
+                                                                                       
+                                            <a href="{{ SearchInvoicePdf::getSummaryBillLink($userProfile['MEMBER_CODE'],  $user['Month']) }}" target="_blank"><img class="img-fluid"
+                                                        src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a>
+                                            @else
+                                            <span>Not ready</span>
+                                            @endif
+                                            </td>
+                                            <!-- Detail -->
+                                            <td>
+                                            @if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $user['Month']))))
+                                                <a href="{{ SearchInvoicePdf::getDetailBillLink($userProfile['MEMBER_CODE'],  $user['Month']) }}" target="_blank"><img class="img-fluid"
                                                         src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a></td>
-                                            <td><a href="#" target="_blank"><img class="img-fluid"
-                                                        src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a></td>
+                                            @else
+                                            <span>Not Ready</span>
+                                            @endif            
                                             <!-- <td>Payment</td> -->
                                         </tr>
                                         <!-- <tr>

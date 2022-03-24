@@ -229,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Payment' => Tzsk\Payu\Facade\Payment::class,
+        'SearchInvoicePdf' => App\Helpers\SearchInvoicePdf::class
 
     ],
 
