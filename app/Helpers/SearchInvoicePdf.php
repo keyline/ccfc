@@ -43,6 +43,8 @@ class SearchInvoicePdf{
         //Replace three letter month
         // $m_array contains matched elements of array.
         //$m_array = preg_grep("/$monthlyFolderPath\s.*/", self::$months);
+        $monthlyFolderPath= strtoupper($monthlyFolderPath);
+
         $extract= explode(" ", $monthlyFolderPath);
 
         $results = array_filter(self::$months, function($value) use(&$extract)  {
@@ -76,6 +78,8 @@ class SearchInvoicePdf{
     }
 
     public static function getSummaryBillLink(string $memberCode, string $monthlyFolderPath=""){
+
+        $monthlyFolderPath= strtoupper($monthlyFolderPath);
 
         $extract= explode(" ", $monthlyFolderPath);
 
