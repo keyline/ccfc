@@ -34,7 +34,7 @@ class SearchInvoicePdf{
     public static function isBillUploaded(string $monthlyFolderPath=""){
 
         
-        return Storage::exists(self::$basepath . $monthlyFolderPath);
+        return Storage::exists(self::$basepath . strtoupper($monthlyFolderPath));
     }
 
     public static function getDetailBillLink(string $memberCode, string $monthlyFolderPath=""){

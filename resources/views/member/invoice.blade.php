@@ -145,7 +145,7 @@
                                             <td>{{ $user['debitamount'] }}</td>
                                             <td>{{ $user['Balance'] }}</td>
                                             <!-- summary -->
-                                            <td>
+                                            <td>                                    
                                             @if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $user['Month']))))
                                                                                        
                                             <a href="{{ SearchInvoicePdf::getSummaryBillLink($userProfile['MEMBER_CODE'],  $user['Month']) }}" target="_blank"><img class="img-fluid"
