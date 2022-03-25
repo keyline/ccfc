@@ -136,7 +136,7 @@
                                 </div>
                                 @endif
 
-                                @if($userProfile['SEX'] == '')
+                                @if($userProfile['PHONE1'] == '')
 
                                 @else
                                 <div class="member_profile_item">
