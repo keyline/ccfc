@@ -73,7 +73,7 @@
                                 <p><strong>Ph No:</strong>
                                     {{ $userProfile['MOBILENO'] }}
                                 </p>
-                                <p><strong>Mail ID:</strong> {{ $userProfile['EMAIL'] }}</p>
+                                <p><strong>Mail ID:</strong> {!! $userProfile['EMAIL'] !!}</p>
                             </div>
                         </div>
                         {{-- <hr class="divider_red"> --}}
@@ -302,10 +302,10 @@
                                     <p class="member_list_text">Date of Birth</p>
                                     <p class="member_list_input">{{ $userProfile['SPOUSE_DOB'] }}</p>
                                 </div>
-                                <div class="member_profile_item">
+                                <!-- <div class="member_profile_item">
                                     <p class="member_list_text">Anniversary Date</p>
                                     <p class="member_list_input">{{ $userProfile['ANNIVERSARY_DATE'] }}</p>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-md-6">
