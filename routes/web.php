@@ -435,6 +435,8 @@ Route::group([
 
     # Status Route
     Route::get('payment/status', ['as' => 'payment.status', 'uses' => 'PaymentController@status']);
+
+    Route::get('/invoice/{month}/{year}/{filename}/download', [HomeController::class, 'download'])->name('download');
 });
 
 

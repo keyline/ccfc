@@ -301,7 +301,18 @@ $("#home_sports").owlCarousel({
             dots: false,
             nav: true,
         },
+        778: {
+            items: 2,
+            dots: false,
+            nav: true,
+        },
         1000: {
+            items: 3,
+            margin: 20,
+            nav: true,
+            dots: false,
+        },
+        1325: {
             items: 5,
             margin: 20,
             nav: true,
@@ -325,13 +336,13 @@ $("#home_reciprocal_indian").owlCarousel({
             nav: true,
         },
         600: {
-            items: 5,
+            items: 4,
             dots: false,
             nav: true,
         },
         1000: {
-            items: 7,
-            margin: 20,
+            items: 6,
+            margin: 10,
             nav: true,
             dots: false,
         }
@@ -353,12 +364,12 @@ $("#home_reciprocal_overseas").owlCarousel({
             nav: true,
         },
         600: {
-            items: 5,
+            items: 4,
             dots: false,
             nav: true,
         },
         1000: {
-            items: 7,
+            items: 6,
             margin: 20,
             nav: true,
             dots: false,

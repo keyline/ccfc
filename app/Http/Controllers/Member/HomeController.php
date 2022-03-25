@@ -8,6 +8,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
+use App\Helpers\SearchInvoicePdf;
+use Illuminate\Support\Facades\Storage;
+use File;
+use Response;
 
 class HomeController extends Controller
 {
@@ -138,8 +142,7 @@ class HomeController extends Controller
                     ->withOptions(["verify"=>false])
                     ->post($tansactionUrl)->json()['data'];
         
-        // dd($transactions);
-           
+                   
         return view('member.invoice', [
             'userData'          => $data,
             'userProfile'       => $profile,
@@ -149,5 +152,48 @@ class HomeController extends Controller
 
         
         
+    }
+
+    /**
+     * Download specified pdf file from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $month
+     * @param  string  $year
+     * @param  string  $fileName 
+     * @return \Illuminate\Http\Response
+     */
+
+    public function download(Request $request, $month, $year, $fileName){
+
+        $month =strtoupper($month);
+        
+        //$pathToFile = storage_path("app\\" . SearchInvoicePdf::$basepath . implode("\\", ["{$month}_{$year}", $fileName]));
+
+        //$base_path_mod = str_replace('\\', '/', $pathToFile);
+        
+        //return response()->download($pathToFile);
+        // Download file with custom headers
+        $testPath= SearchInvoicePdf::$basepath . implode("/", ["{$month}_{$year}", $fileName]);
+        
+        
+        if(Storage::disk('local')->exists($testPath)){
+            $path= Storage::disk('local')->path($testPath);
+
+            $content= file_get_contents($path);
+
+            return response($content)->withHeaders([
+                'Content-type'  => mime_content_type($path)
+            ]);
+        }
+
+        return redirect('/404');
+        
+        
+
+        
+
+
+
     }
 }

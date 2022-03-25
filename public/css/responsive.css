@@ -246,6 +246,8 @@
         padding-top: 70px;
         width: 100%;
     } */
+    .sports-sec .owl-nav button.owl-prev{left: -25px;}
+    .sports-sec .owl-nav button.owl-next{right: -25px}
 }
 
 /*TAB VERSION*/

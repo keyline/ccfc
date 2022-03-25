@@ -144,10 +144,11 @@
 
                                                             <ul class="submenu dropdown-menu">
                                                                 <li><a class="nav-link"
-                                                                        href="{{ asset('amenities_services') }}">Amenities
-                                                                        & Services</a>
+                                                                        href="javascript:void(0)">Amenities
+                                                                        & Services<span class="submenu_arrow"><i
+                                                                            class="zmdi zmdi-chevron-right"></i></span></a>
 
-                                                                        <ul class="submenu dropdown-menu">
+                                                                        <ul class="submenu dropdown-menu amenitiessubsub">
                                                                             <li><a href="{{ asset('food_beverages') }}">Food & Beverages</a></li>
                                                                             <li><a href="{{ asset('gymming-rejuvenated') }}">Gymming</a></li>
                                                                             <li><a href="{{ asset('pool-pub') }}">Pool Pub</a></li>
