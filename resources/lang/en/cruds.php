@@ -366,6 +366,8 @@ return [
             'deleted_at_helper'   => ' ',
         ],
     ],
+
+    
     'sportsManagement' => [
         'title'          => 'Sports Management',
         'title_singular' => 'Sports Management',
@@ -620,6 +622,29 @@ return [
             'deleted_at_helper'            => ' ',
             'head_of_the_committee'        => 'Head Of The Committee',
             'head_of_the_committee_helper' => ' ',
+        ],
+    ],
+
+    'contact' => [
+        'title'          => 'Contact Us',
+        'title_singular' => 'Contact Us',
+        'fields'         => [
+            'id'                  => 'ID',
+            'id_helper'           => ' ',
+            'name'                => 'Name',
+            'name_helper'         => ' ',
+            'email'               => 'Email',
+            'email_helper'        => '',
+            'phone'               => 'Phone',
+            'phone_helper'        => ' ',
+            'message'             => 'Message',
+            'message_helper'      => ' ',
+            'created_at'          => 'Created at',
+            'created_at_helper'   => ' ',
+            'updated_at'          => 'Updated at',
+            'updated_at_helper'   => ' ',
+            'deleted_at'          => 'Deleted at',
+            'deleted_at_helper'   => ' ',
         ],
     ],
 ];

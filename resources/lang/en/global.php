@@ -14,6 +14,7 @@ return [
     'downloadFile'                   => 'Download file',
     'edit'                           => 'Edit',
     'updatedetails'                  => 'Update Details',
+    'fetchdetails'                  => 'Fetch Details',
     'emailVerificationSuccess'       => 'User email verified successfully',
     'entries'                        => 'Entries',
     'filterDate'                     => 'Filter by date',

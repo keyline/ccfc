@@ -688,7 +688,7 @@
                                             We’d love to hear from you.
                                         </div>
                                         <div class="contact-form">
-                                            <form method="POST" action="{{route('contact.send')}}"
+                                            <!-- <form method="POST" action="{{route('contact.send')}}"
                                                 enctype="multipart/form-data">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" placeholder="Your Name*">
@@ -705,7 +705,73 @@
                                                         rows="3"></textarea>
                                                 </div>
                                                 <button type="submit" class="send-btn">Send Message</button>
+                                            </form> -->
+
+                                            @if(Session::has('success'))
+                                            <div class="alert alert-success">
+                                                {{ Session::get('success') }}
+                                                @php
+                                                Session::forget('success');
+                                                @endphp
+                                            </div>
+                                            @endif
+
+
+                                            <form method="POST" action="{{ route('contact-us.store') }}"
+                                                enctype="multipart/form-data">
+                                                {{ csrf_field() }}
+
+                                                <input type="hidden" id="subject" name="subject"
+                                                    value="New enquiry from the website" size="30" required="">
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="name" id="name"
+                                                        placeholder="Your Name*">
+
+                                                    <!-- Show error -->
+                                                    @if ($errors->has('name'))
+                                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                    @endif
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" name="email" id="email"
+                                                        placeholder="Your Email*">
+
+                                                    <!-- Show error -->
+                                                    @if ($errors->has('email'))
+                                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                                    @endif
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="phone" id="phone"
+                                                        placeholder="Your Mobile No*">
+
+                                                    <!-- Show error -->
+                                                    @if ($errors->has('phone'))
+                                                    <div class="alert alert-danger">
+                                                        {{ $errors->first('phone') }}
+                                                    </div>
+                                                    @endif
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="message" id="message"
+                                                        placeholder="Your Message" rows="3"></textarea>
+
+                                                    <!-- Show error -->
+                                                    @if ($errors->has('message'))
+                                                    <span class="text-danger">{{ $errors->first('message') }}</span>
+                                                    @endif
+                                                </div>
+
+
+                                                <button type="submit" class="send-btn">Send Message</button>
                                             </form>
+
+
                                         </div>
                                     </div>
                                 </div>

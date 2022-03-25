@@ -91,74 +91,156 @@
                         </div>
                         <div class="col-md-6">
                             <div class="member_probile_list">
+                                @if($userProfile['MEMBERTYPE'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Member Type</p>
                                     <p class="member_list_input">{{ $userProfile['MEMBERTYPE'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['MEMBER_CODE'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Member Code</p>
                                     <p class="member_list_input">{{ $userProfile['MEMBER_CODE'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['DOB'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Date of Birth</p>
                                     <p class="member_list_input">{{ $userProfile['DOB'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['MEMBER_SINCE'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Member since</p>
                                     <p class="member_list_input">{{ $userProfile['MEMBER_SINCE'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['SEX'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Sex</p>
                                     <p class="member_list_input">{{ $userProfile['SEX'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['SEX'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Phone I</p>
                                     <p class="member_list_input">{{ $userProfile['PHONE1'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['PHONE2'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Phone II</p>
                                     <p class="member_list_input">{{ $userProfile['PHONE2'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['MOBILENO'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Phone III</p>
                                     <p class="member_list_input">{{ $userProfile['MOBILENO'] }}</p>
                                 </div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="member_probile_list">
+
+                                @if($userProfile['ADDRESS1'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Address I</p>
                                     <p class="member_list_input">{{ $userProfile['ADDRESS1'] }}</p>
                                 </div>
+                                @endif
+
+
+
+                                @if($userProfile['ADDRESS2'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Address II</p>
                                     <p class="member_list_input">{{ $userProfile['ADDRESS2'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['ADDRESS3'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Address III</p>
                                     <p class="member_list_input">{{ $userProfile['ADDRESS3'] }}</p>
                                 </div>
+                                @endif
+
+
+                                @if($userProfile['CITY'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">City</p>
                                     <p class="member_list_input">{{ $userProfile['CITY'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['STATE'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">State</p>
                                     <p class="member_list_input">{{ $userProfile['STATE'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['PIN'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Pincode</p>
                                     <p class="member_list_input">{{ $userProfile['PIN'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['EMAIL'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Email</p>
                                     <p class="member_list_input">{{ $userProfile['EMAIL'] }}</p>
                                 </div>
+                                @endif
+
+                                @if($userProfile['CURENTSTATUS'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Curent status</p>
                                     <p class="member_list_input">{{ $userProfile['CURENTSTATUS'] }}</p>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -185,7 +267,24 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="member_titlebg profil_oth_img">
-                                <div class="member_other-pro-img"><img src="{{ asset('img/women_icon_profile.png') }}" alt="image"></div>
+
+                                @if($userProfile['SpouseImage'] == '')
+
+                                <div class="member_other-pro-img">
+                                    <img src="{{ asset('img/women_icon_profile.png') }}" alt="image">
+                                </div>
+
+                                @else
+
+                                <div class="member_other-pro-img">
+                                    <img class="img-fluid" src="data:image/png;base64,                          
+                                    {{ $userProfile['SpouseImage'] }}" alt="" />
+
+                                </div>
+
+                                @endif
+
+
                                 <h2>Spouse Details</h2>
                             </div>
                         </div>
@@ -211,10 +310,12 @@
                         </div>
                         <div class="col-md-6">
                             <div class="member_probile_list">
+
                                 <div class="member_profile_item">
                                     <p class="member_list_text"> Business</p>
                                     <p class="member_list_input"></p>
                                 </div>
+
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Phone </p>
                                     <p class="member_list_input">{{ $userProfile['SPOUSEMOBILENO'] }}</p>
@@ -251,7 +352,26 @@
                         @foreach ($userProfile['children'] as $childrendetails)
                         <div class="col-md-12">
                             <div class="member_titlebg profil_oth_img">
-                                <div class="member_other-pro-img"><img src="{{ asset('img/child_icon_profile.png') }}" alt="image"></div>
+
+                                @if($childrendetails['Image'] == '')
+
+                                <div class="member_other-pro-img">
+                                    <img src="{{ asset('img/child_icon_profile.png') }}" alt="image">
+                                </div>
+
+                                @else
+                                <div class="member_other-pro-img">
+                                    <img class="img-fluid" src="data:image/png;base64,                          
+                                    {{ $childrendetails['Image'] }}" alt="" />
+
+                                </div>
+
+                                @endif
+
+
+
+
+
                                 <h2>Children Details</h2>
                             </div>
                         </div>
@@ -270,10 +390,16 @@
                         </div>
                         <div class="col-md-6">
                             <div class="member_probile_list">
+
+                                @if($childrendetails['PHONE1'] == '')
+
+                                @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Phone </p>
                                     <p class="member_list_input">{{ $childrendetails['PHONE1']}}</p>
                                 </div>
+                                @endif
+
                             </div>
                         </div>
                         @endforeach

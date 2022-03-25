@@ -42,8 +42,16 @@
                     <!-- <button type="submit" class="login-btn">login</button> -->
                 </div>
                 <div class="form-group col-md-8">
-                    <a href="#" class="forgot">Forgot Password?</a>
+                    <a href="{{ route('password.request') }}" class="forgot">Forgot Password?</a>
                 </div>
+
+                <!-- @if(Route::has('password.request'))
+                <p class="mb-1">
+                    <a href="{{ route('password.request') }}">
+                        {{ trans('global.forgot_password') }}
+                    </a>
+                </p>
+                @endif -->
             </div>
         </form>
     </div>

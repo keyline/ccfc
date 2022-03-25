@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">{{ trans('panel.site_title') }}</span>
+        <span class="brand-text font-weight-light">{{ trans('panel.site_title1') }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -291,6 +291,19 @@
                     </a>
                 </li>
                 @endcan
+                @can('contact_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.contact.index") }}"
+                        class="nav-link {{ request()->is("admin/contact") || request()->is("admin/contact/*") ? "active" : "" }}">
+                        <i class="fa-fw nav-icon fas fa-images">
+
+                        </i>
+                        <p>
+                            {{ trans('cruds.contact.title') }}
+                        </p>
+                    </a>
+                </li>
+                @endcan
                 @can('sports_management_access')
                 <li
                     class="nav-item has-treeview {{ request()->is("admin/sportstypes*") ? "menu-open" : "" }} {{ request()->is("admin/titles*") ? "menu-open" : "" }} {{ request()->is("admin/members*") ? "menu-open" : "" }}">
@@ -427,6 +440,8 @@
                     </a>
                 </li>
                 @endcan
+
+
                 @endif
                 <li class="nav-item">
                     <a href="#" class="nav-link"

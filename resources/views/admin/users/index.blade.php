@@ -108,19 +108,28 @@
                             @endcan
 
 
-                            @can('user_edit')
+                            <!-- @can('user_edit')
 
                             <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
                                 {{ trans('global.updatedetails') }}
                             </a>
 
-                            <!-- <li>
-                                <a href="{{ route('member.invoice')}}">Invoices & Payment</a>
-                            </li> -->
+                            @endcan -->
 
 
+                            <!-- @can('user_edit')
 
-                            @endcan
+                            <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
+                                {{ trans('global.fetchdetails') }}
+                            </a>
+
+                            @endcan -->
+
+                            <a class="btn btn-xs btn-info" href="{{ url('admin/users/memberdetails', $user->id) }}">
+                                {{ trans('global.fetchdetails') }}
+                            </a>
+
+
 
 
 
