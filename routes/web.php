@@ -226,6 +226,7 @@ Route::get('/gallery', function () {
 
 
 
+
 Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-us');
 Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-us.store');
 
@@ -233,13 +234,23 @@ Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'stor
 
 // Route::redirect('/', '/login');
 
-Route::get('/home', function () {
-    if (session('status')) {
-        return redirect()->route('admin.home')->with('status', session('status'));
-    }
+// Route::get('/home', function () {
+//     if (session('status')) {
+//         return redirect()->route('admin.home')->with('status', session('status'));
+//     }
 
-    return redirect()->route('admin.home');
-});
+//     return redirect()->route('admin.home');
+// });
+
+
+// Route::get('/home', function () {
+//     if (session('status')) {
+//         return redirect()->route('admin.home')->with('status', session('status'));
+//     }
+
+//     return redirect()->route('admin.home');
+// });
+
 
 Auth::routes(['register' => false]);
 
@@ -328,6 +339,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('galleries/media', 'GalleryController@storeMedia')->name('galleries.storeMedia');
     Route::post('galleries/ckmedia', 'GalleryController@storeCKEditorImages')->name('galleries.storeCKEditorImages');
     Route::resource('galleries', 'GalleryController');
+
+
+    
 
     // Sportstype
     Route::delete('sportstypes/destroy', 'SportstypeController@massDestroy')->name('sportstypes.massDestroy');
@@ -584,4 +598,11 @@ Route::get('/new_member', function () {
     // Route::post('ajaxRequest', [MemberUpdateController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
 
 
-    
+    //contact
+
+    // Route::get('admin/contactus', function () {
+    //     return view('admin.contact.index');
+    // });
+
+
+    Route::get('admin/contactus','ContactController@index');

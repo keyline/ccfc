@@ -12,6 +12,12 @@ use Mail;
 
 class ContactController extends Controller
 {
+
+    public function index(){
+        
+        return view('admin.contact.index')->with('ContactArr',Contact::all());
+    }
+    
     public function contact(){
         
         // return view('index');
@@ -48,7 +54,7 @@ class ContactController extends Controller
             'message' => $input['message'],
         ), function($message) use ($request){
             $message->from($request->email);
-            $message->to('pranoy@keylines.net', 'Admin')->subject($request->get('subject'));;
+            $message->to('pranoy@keylines.net', 'Admin')->subject($request->get('subject'));
         });
 
         return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);

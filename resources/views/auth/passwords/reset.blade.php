@@ -31,7 +31,7 @@
                         <div class="col-lg-12">
                             <div class="title-sec">
                                 <div class="title mb-3">
-                                    Forgot Password
+                                    Reset password
                                 </div>
                             </div>
                         </div>
@@ -40,12 +40,17 @@
                         <div class="col-lg-9">
                             <div class="history-inner">
 
+                                <p>Please type your registered email id and new password.</p>
 
+                                <div class="login-logo">
+                                    <div class="login-logo">
 
+                                    </div>
+                                </div>
                                 <div class="card">
                                     <div class="card-body login-card-body">
                                         <p class="login-box-msg">
-                                            {{ trans('global.reset_password') }}
+                                            <!-- {{ trans('global.reset_password') }} -->
                                         </p>
 
                                         <form method="POST" action="{{ route('password.request') }}">

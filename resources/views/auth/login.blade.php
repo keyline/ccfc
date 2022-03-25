@@ -4,7 +4,7 @@
     <div class="login-logo">
         <div class="login-logo">
             <a href="{{ route('admin.home') }}">
-                {{ trans('panel.site_title') }}
+                {{ trans('panel.site_title1') }}
             </a>
         </div>
     </div>
@@ -66,7 +66,7 @@
             </form>
 
 
-            @if(Route::has('password.request'))
+            <!-- @if(Route::has('password.request'))
             <p class="mb-1">
                 <a href="{{ route('password.request') }}">
                     {{ trans('global.forgot_password') }}
@@ -75,7 +75,7 @@
             @endif
             <p class="mb-1">
 
-            </p>
+            </p> -->
         </div>
         <!-- /.login-card-body -->
     </div>

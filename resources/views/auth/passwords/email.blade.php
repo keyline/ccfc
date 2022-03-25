@@ -32,7 +32,7 @@
                         <div class="col-lg-12">
                             <div class="title-sec">
                                 <div class="title mb-3">
-                                    Forgot Password
+                                    Reset password
                                 </div>
                             </div>
                         </div>
@@ -47,11 +47,14 @@
                                     </a>
                                 </div> -->
 
+                                <p>Please type your registered email id. We will send a password reset link to your mail
+                                    id. If you do not remember your registered mail id, please contact Club
+                                    Administrator.</p>
                                 <div class="card">
                                     <div class="card-body login-card-body">
-                                        <p class="login-box-msg">
+                                        <!-- <p class="login-box-msg">
                                             {{ trans('global.reset_password') }}
-                                        </p>
+                                        </p> -->
 
                                         @if(session('status'))
                                         <div class="alert alert-success" role="alert">
@@ -72,7 +75,9 @@
 
                                                     @if($errors->has('email'))
                                                     <span class="text-danger">
-                                                        {{ $errors->first('email') }}
+                                                        <!-- {{ $errors->first('email') }} -->
+                                                        Sorry, your email id is not found in our database. Please
+                                                        contact club administrator to update your latest email id.
                                                     </span>
                                                     @endif
                                                 </div>
