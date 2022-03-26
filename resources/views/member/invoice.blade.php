@@ -128,8 +128,8 @@
                                     <tr>
                                         <th scope="col">Month</th>
                                         <th scope="col">Opening Balance</th>
-                                        <th scope="col">Total of Invoice & Adjustment</th>
                                         <th scope="col">Total of receipts & Adjustment</th>
+                                        <th scope="col">Total of Invoice & Adjustment</th>                    
                                         <th scope="col">Closing Balance</th>
                                         <th scope="col">View Summarized bill</th>
                                         <th scope="col">View Detailed bill</th>
