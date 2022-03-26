@@ -163,8 +163,4 @@
             </form>
         </div>
     </div>
-<<<<<<< HEAD
 </div> -->
-=======
-</div> -->
->>>>>>> 9f0a75e781f33feec8a0dc393abf625a5c590dcf
