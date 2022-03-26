@@ -100,8 +100,7 @@
    <div class="mobile_bottom_icon">
        <div class="mb_writeuscall">
            <div class="mb_write_left">
-               <a href="mailto:ccfcsecretary@ccfc1792.com" class="ccfc-icon"> <i class="zmdi zmdi-email"></i> Write
-                   us</a>
+               <a href="mailto:ccfcsecretary@ccfc1792.com" class="ccfc-icon"> <i class="zmdi zmdi-email"></i> Write to us</a>
            </div>
            <div class="mb_call_right">
                <a href="tel:033 24615060"><i class="zmdi zmdi-phone-ring"></i></a> <a

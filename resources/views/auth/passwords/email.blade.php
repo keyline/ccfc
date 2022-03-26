@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-9">
+                        <div class="col-lg-12">
                             <div class="history-inner">
 
                                 <!-- <div class="login-logo">
@@ -45,46 +45,48 @@
                                 <p>Please type your registered email id. We will send a password reset link to your mail
                                     id. If you do not remember your registered mail id, please contact Club
                                     Administrator.</p>
-                                <div class="card">
-                                    <div class="card-body login-card-body">
-                                        <!-- <p class="login-box-msg">
-                                            {{ trans('global.reset_password') }}
-                                        </p> -->
+                                <div class="resetbox_section">
+                                    <div class="card">
+                                        <div class="card-body login-card-body">
+                                            <!-- <p class="login-box-msg">
+                                                {{ trans('global.reset_password') }}
+                                            </p> -->
 
-                                        @if(session('status'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{ session('status') }}
+                                            @if(session('status'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('status') }}
+                                            </div>
+                                            @endif
+
+                                            <form method="POST" action="{{ route('password.email') }}">
+                                                @csrf
+
+                                                <div>
+                                                    <div class="form-group">
+                                                        <input id="email" type="email"
+                                                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                                            name="email" required autocomplete="email" autofocus
+                                                            placeholder="{{ trans('global.login_email') }}"
+                                                            value="{{ old('email') }}">
+
+                                                        @if($errors->has('email'))
+                                                        <span class="text-danger">
+                                                            <!-- {{ $errors->first('email') }} -->
+                                                            Sorry, your email id is not found in our database. Please
+                                                            contact club administrator to update your latest email id.
+                                                        </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-right">
+                                                        <button type="submit" class="btn btn-primary btn-flat btn-block">
+                                                            {{ trans('global.send_password') }}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
-                                        @endif
-
-                                        <form method="POST" action="{{ route('password.email') }}">
-                                            @csrf
-
-                                            <div>
-                                                <div class="form-group">
-                                                    <input id="email" type="email"
-                                                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                                        name="email" required autocomplete="email" autofocus
-                                                        placeholder="{{ trans('global.login_email') }}"
-                                                        value="{{ old('email') }}">
-
-                                                    @if($errors->has('email'))
-                                                    <span class="text-danger">
-                                                        <!-- {{ $errors->first('email') }} -->
-                                                        Sorry, your email id is not found in our database. Please
-                                                        contact club administrator to update your latest email id.
-                                                    </span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12 text-right">
-                                                    <button type="submit" class="btn btn-primary btn-flat btn-block">
-                                                        {{ trans('global.send_password') }}
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
 

@@ -762,6 +762,7 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 }
 .advise .advise-img {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 /* ********|| ADVISE END ||******** */
@@ -2702,6 +2703,30 @@ p.member_list_text {
     font-size: 20px;
     font-weight: 800;
     font-family: 'IBM PLEX SERIF';
+}
+
+
+
+.resetbox_section .card {
+    max-width: 600px;
+    margin: 35px auto;
+    padding: 20px;
+    background: #f2f2f2;
+    border: none;
+}
+.resetbox_section .card input {
+    border-radius: 40px;
+    height: 40px;
+    line-height: 1.25;
+}
+.resetbox_section .card button.btn {
+    border-radius: 40px;
+    width: auto;
+    margin: 0 auto;
+    background: var(--primaryColor);
+    border: none;
+    font-family: 'IBM Plex Serif', serif;
+    padding: 8px 24px;
 }
 
 
