@@ -443,6 +443,18 @@
 
 
                 @endif
+
+                <li class="nav-item">
+                    <a href="{{ url('admin/contactus') }}" class="nav-link">
+                        <p>
+                            <i class="fas fa-fw fa fa-address-book">
+
+                            </i>
+                            <p>{{ trans('global.contact-us') }}</p>
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
@@ -454,6 +466,7 @@
                         </p>
                     </a>
                 </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
