@@ -58,7 +58,7 @@ Route::get('/', function () {
 
 
 Route::get('/past-president', function () {
-    $pastPresidents = PastPresident::with(['media'])->get();
+    $pastPresidents = PastPresident::with(['media'])->orderBy('short_order', 'ASC')->get();
     $galleries = Gallery::with(['media'])->get();
     // $data='Data';
     return view('past-president', compact(['pastPresidents','galleries']));

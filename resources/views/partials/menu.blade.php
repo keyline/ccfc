@@ -455,17 +455,18 @@
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="{{ route("admin.contactus") }}" class="nav-link"
-                        >
+                    <a href="{{ url('admin/contactus') }}" class="nav-link">
                         <p>
-                            <i class="fas fa-fw fa-sign-out-alt nav-icon">
+                            <i class="fas fa-fw fa fa-address-book">
 
                             </i>
-                            <p>Contact Details</p>
+                            <p>{{ trans('global.contact-us') }}</p>
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
@@ -477,6 +478,7 @@
                         </p>
                     </a>
                 </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
