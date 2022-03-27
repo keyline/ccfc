@@ -443,6 +443,29 @@
 
 
                 @endif
+                
+                <li class="nav-item">
+                    <a href="{{ route("admin.email") }}" class="nav-link"
+                        >
+                        <p>
+                            <i class="fas fa-fw fa-sign-out-alt nav-icon">
+
+                            </i>
+                            <p>{{ trans('global.email') }}</p>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route("admin.contactus") }}" class="nav-link"
+                        >
+                        <p>
+                            <i class="fas fa-fw fa-sign-out-alt nav-icon">
+
+                            </i>
+                            <p>Contact Details</p>
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logoutform').submit();">

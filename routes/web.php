@@ -187,13 +187,12 @@ Route::get('/swimming-pool', function () {
 Route::get('/president_corner', function () {
     $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
-    $contentBlocks = ContentBlock::with(['source_page'])->get();    
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
     return view('president_corner', compact(['contentPages', 'galleries', 'contentBlocks']));
 });
 
 
 Route::get('/amenities_services', function () {
-    
     $galleries = Gallery::with(['media'])->get();
    
     return view('amenities_services', compact(['galleries']));
@@ -201,7 +200,6 @@ Route::get('/amenities_services', function () {
 
 
 Route::get('/annual_report', function () {
-    
     $galleries = Gallery::with(['media'])->get();
   
     return view('annual_report', compact(['galleries']));
@@ -209,7 +207,6 @@ Route::get('/annual_report', function () {
 
 
 Route::get('/gallery', function () {
-    
     $galleries = Gallery::with(['media'])->get();
   
     return view('gallery', compact(['galleries']));
@@ -376,6 +373,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Sub Committee Members
     Route::delete('sub-committee-members/destroy', 'SubCommitteeMembersController@massDestroy')->name('sub-committee-members.massDestroy');
     Route::resource('sub-committee-members', 'SubCommitteeMembersController');
+
+    Route::get('create/email', [App\Http\Controllers\Admin\SendInBlueController::class, 'index'])->name('email');
+
+    Route::get('contactus', 'ContactController@index')->name('contactus');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
@@ -605,6 +606,3 @@ Route::get('/new_member', function () {
     // Route::get('admin/contactus', function () {
     //     return view('admin.contact.index');
     // });
-
-
-    Route::get('admin/contactus','ContactController@index');
