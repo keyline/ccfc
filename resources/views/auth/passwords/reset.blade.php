@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="en">
 
@@ -82,14 +80,15 @@
                                                         @endif
                                                     </div>
                                                     <div class="form-group">
-                                                        <input id="password-confirm" type="password" class="form-control"
-                                                            name="password_confirmation" required
+                                                        <input id="password-confirm" type="password"
+                                                            class="form-control" name="password_confirmation" required
                                                             placeholder="{{ trans('global.login_password_confirmation') }}">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <button type="submit" class="btn btn-primary btn-flat btn-block">
+                                                        <button type="submit"
+                                                            class="btn btn-primary btn-flat btn-block">
                                                             {{ trans('global.reset_password') }}
                                                         </button>
                                                     </div>
