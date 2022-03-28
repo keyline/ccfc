@@ -42,8 +42,8 @@ class HomeController extends Controller
             return back()->withErrors(['password' => ['Password is incorrect']]);
         }
 
-        if (is_null($userInfo->email_verified_at) == null) {
-            return redirect('member.login')->withErrors(['email' => ["Please reset your password first, ...."]]);
+        if (is_null($userInfo->email_verified_at)) {
+            return redirect('password/reset')->withErrors(['email' => ["Please reset your password first, ...."]]);
         }
         $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name ]);
         return redirect('member/dashboard');
