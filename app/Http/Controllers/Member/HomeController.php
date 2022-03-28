@@ -41,6 +41,10 @@ class HomeController extends Controller
         if (! Hash::check($request->password, $userInfo->password)) {
             return back()->withErrors(['password' => ['Password is incorrect']]);
         }
+
+        if (is_null($userInfo->email_verified_at)) {
+            return redirect('password/reset')->withErrors(['email' => ["Please reset your password first, ...."]]);
+        }
         $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name ]);
         return redirect('member/dashboard');
     }
@@ -81,7 +85,7 @@ class HomeController extends Controller
         // $transactionFields= [
         //     'MCODE'     => $user->user_code,
         //     'FromDate'  => '01-apr-2020',
-        //     'ToDate'    => '01-jun-2021', 
+        //     'ToDate'    => '01-jun-2021',
         // ];
 
         // $tansactionUrl= 'https://ccfcmemberdata.in/Api/MEMBERTRANSACTIONS/?' . http_build_query($transactionFields);
@@ -102,9 +106,8 @@ class HomeController extends Controller
     }
 
 
-    public function invoice(){
-
-
+    public function invoice()
+    {
         $user = User::where('id', '=', session('LoggedMember'))->first();
 
         $data= ['LoggedMemberInfo' => $user];
@@ -131,7 +134,7 @@ class HomeController extends Controller
         $transactionFields= [
             'MCODE'     => $user->user_code,
             'FromDate'  => '01-apr-2020',
-            'ToDate'    => '01-jun-2021', 
+            'ToDate'    => '01-jun-2021',
         ];
 
         $tansactionUrl= 'https://ccfcmemberdata.in/api/MemberMonthlyBalance/?' . http_build_query($transactionFields);
@@ -148,10 +151,6 @@ class HomeController extends Controller
             'userProfile'       => $profile,
             'userTransactions'  => $transactions,
         ]);
-
-
-        
-        
     }
 
     /**
@@ -160,12 +159,12 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $month
      * @param  string  $year
-     * @param  string  $fileName 
+     * @param  string  $fileName
      * @return \Illuminate\Http\Response
      */
 
-    public function download(Request $request, $month, $year, $fileName){
-
+    public function download(Request $request, $month, $year, $fileName)
+    {
         $month =strtoupper($month);
         
         //$pathToFile = storage_path("app\\" . SearchInvoicePdf::$basepath . implode("\\", ["{$month}_{$year}", $fileName]));
@@ -177,7 +176,7 @@ class HomeController extends Controller
         $testPath= SearchInvoicePdf::$basepath . implode("/", ["{$month}_{$year}", $fileName]);
         
         
-        if(Storage::disk('local')->exists($testPath)){
+        if (Storage::disk('local')->exists($testPath)) {
             $path= Storage::disk('local')->path($testPath);
 
             $content= file_get_contents($path);
@@ -188,12 +187,5 @@ class HomeController extends Controller
         }
 
         return redirect('/404');
-        
-        
-
-        
-
-
-
     }
 }
