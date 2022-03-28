@@ -443,6 +443,18 @@
 
 
                 @endif
+                
+                <li class="nav-item">
+                    <a href="{{ route("admin.email") }}" class="nav-link"
+                        >
+                        <p>
+                            <i class="fas fa-fw fa-sign-out-alt nav-icon">
+
+                            </i>
+                            <p>{{ trans('global.email') }}</p>
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a href="{{ url('admin/contactus') }}" class="nav-link">

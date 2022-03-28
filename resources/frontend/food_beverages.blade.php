@@ -126,16 +126,18 @@
                                                     </div>
                                                 </div>
                                                 <div class="activities_list_item_right">
-                                                    <div class="activities_list_item_right_white">
-                                                        <div class="activities_list_item_right_img"><img
-                                                                class="img-fluid"
-                                                                src="{{ asset('img/activities/menu_icon.png') }}"
-                                                                alt="" /></div>
-                                                        <button type="button" class="btn" data-toggle="modal"
-                                                            data-target="#activities-dinning">
-                                                            View Menu
-                                                        </button>
-                                                    </div>
+                                                    <a href="#" data-toggle="modal" data-target="#activities-dinning">
+                                                        <div class="activities_list_item_right_white">
+                                                            <div class="activities_list_item_right_img"><img
+                                                                    class="img-fluid"
+                                                                    src="{{ asset('img/activities/menu_icon.png') }}"
+                                                                    alt="" /></div>
+                                                            <button type="button" class="btn" data-toggle="modal"
+                                                                data-target="#activities-dinning">
+                                                                View Menu
+                                                            </button>
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -162,16 +164,18 @@
                                                     </div>
                                                 </div>
                                                 <div class="activities_list_item_right">
-                                                    <div class="activities_list_item_right_white">
-                                                        <div class="activities_list_item_right_img"><img
-                                                                class="img-fluid"
-                                                                src="{{ asset('img/activities/menu_icon.png') }}"
-                                                                alt="" /></div>
-                                                        <button type="button" class="btn" data-toggle="modal"
-                                                            data-target="#activities-clubkitchen">
-                                                            View Menu
-                                                        </button>
-                                                    </div>
+                                                    <a href="#" data-toggle="modal" data-target="#activities-clubkitchen">
+                                                        <div class="activities_list_item_right_white">
+                                                            <div class="activities_list_item_right_img"><img
+                                                                    class="img-fluid"
+                                                                    src="{{ asset('img/activities/menu_icon.png') }}"
+                                                                    alt="" /></div>
+                                                            <button type="button" class="btn" data-toggle="modal"
+                                                                data-target="#activities-clubkitchen">
+                                                                View Menu
+                                                            </button>
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -198,16 +202,17 @@
                                                     </div>
                                                 </div>
                                                 <div class="activities_list_item_right">
-                                                    <div class="activities_list_item_right_white">
-                                                        <div class="activities_list_item_right_img"><img
-                                                                class="img-fluid"
-                                                                src="{{ asset('img/activities/menu_icon.png') }}"
-                                                                alt="" /></div>
-                                                        <button type="button" class="btn" data-toggle="modal"
-                                                            data-target="#activities-counter">
-                                                            Wine Menu
-                                                        </button>
-                                                    </div>
+                                                    <a href="#">
+                                                        <div class="activities_list_item_right_white">
+                                                            <div class="activities_list_item_right_img"><img
+                                                                    class="img-fluid"
+                                                                    src="{{ asset('img/activities/menu_icon.png') }}"
+                                                                    alt="" /></div>
+                                                            <button type="button" class="btn">
+                                                                Wine Menu
+                                                            </button>
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -279,20 +284,29 @@
                         </div>
 
                         <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
+<<<<<<< HEAD
 
+=======
+                           
+>>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                             <!-- The slideshow -->
                             <div class="carousel-inner">
 
                                 @foreach($galleries->where("id","6") as $key => $gallery)
                                 @foreach($gallery->images as $key => $media)
+<<<<<<< HEAD
                                 <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
+=======
+                                <div class="carousel-item  {{ $loop->first ? ' active' : '' }} ">
+
+>>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                                     <img src="{{$media->getUrl('')}}" alt="Menu">
                                 </div>
                                 @endforeach
                                 @endforeach
 
 
-                                <!-- <div class="carousel-item active">
+                                {{-- <div class="carousel-item active">
                                     <img src="{{ asset('img/activities/dining-menu-1.jpeg') }}" alt="Menu">
                                 </div>
                                 <div class="carousel-item">
@@ -309,7 +323,7 @@
                                 </div>
                                 <div class="carousel-item">
                                     <img src="{{ asset('img/activities/dining-menu-6.jpeg') }}" alt="Menu">
-                                </div> -->
+                                </div>  --}}
 
                             </div>
 
@@ -320,7 +334,11 @@
                             <a class="carousel-control-next" href="#demo" data-slide="next">
                                 <i class="zmdi zmdi-chevron-right"></i>
                             </a>
+<<<<<<< HEAD
 
+=======
+                            
+>>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                         </div>
 
                     </div>
@@ -340,11 +358,21 @@
                         </div>
 
                         <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
+<<<<<<< HEAD
 
 
+=======
+                            
+>>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                             <!-- The slideshow -->
                             <div class="carousel-inner">
+                                @foreach($galleries->where("id","7") as $key => $gallery)
+                                @foreach($gallery->images as $key => $media)
 
+<<<<<<< HEAD
+=======
+                                <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
+>>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
 
                                 @foreach($galleries->where("id","7") as $key => $gallery)
                                 @foreach($gallery->images as $key => $media)
@@ -353,8 +381,11 @@
                                 </div>
                                 @endforeach
                                 @endforeach
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                                 <!-- <div class="carousel-item active">
                                     <img src="{{ asset('img/activities/club-kitchen-banner1.jpg') }}" alt="Menu">
                                 </div>
@@ -417,8 +448,12 @@
                                 <!--<span class="carousel-control-next-icon"></span>-->
                                 <i class="zmdi zmdi-chevron-right"></i>
                             </a>
+<<<<<<< HEAD
 
 
+=======
+                            
+>>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                         </div>
 
                     </div>
