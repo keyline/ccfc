@@ -164,7 +164,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="activities_list_item_right">
-                                                    <a href="#" data-toggle="modal" data-target="#activities-clubkitchen">
+                                                    <a href="#" data-toggle="modal"
+                                                        data-target="#activities-clubkitchen">
                                                         <div class="activities_list_item_right_white">
                                                             <div class="activities_list_item_right_img"><img
                                                                     class="img-fluid"
@@ -284,22 +285,14 @@
                         </div>
 
                         <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
-<<<<<<< HEAD
 
-=======
-                           
->>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                             <!-- The slideshow -->
                             <div class="carousel-inner">
 
                                 @foreach($galleries->where("id","6") as $key => $gallery)
                                 @foreach($gallery->images as $key => $media)
-<<<<<<< HEAD
-                                <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
-=======
                                 <div class="carousel-item  {{ $loop->first ? ' active' : '' }} ">
 
->>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                                     <img src="{{$media->getUrl('')}}" alt="Menu">
                                 </div>
                                 @endforeach
@@ -308,85 +301,64 @@
 
                                 {{-- <div class="carousel-item active">
                                     <img src="{{ asset('img/activities/dining-menu-1.jpeg') }}" alt="Menu">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('img/activities/dining-menu-2.jpeg') }}" alt="Menu">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('img/activities/dining-menu-3.jpeg') }}" alt="Menu">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('img/activities/dining-menu-4.jpeg') }}" alt="Menu">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('img/activities/dining-menu-5.jpeg') }}" alt="Menu">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('img/activities/dining-menu-6.jpeg') }}" alt="Menu">
-                                </div>  --}}
-
                             </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('img/activities/dining-menu-2.jpeg') }}" alt="Menu">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('img/activities/dining-menu-3.jpeg') }}" alt="Menu">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('img/activities/dining-menu-4.jpeg') }}" alt="Menu">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('img/activities/dining-menu-5.jpeg') }}" alt="Menu">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('img/activities/dining-menu-6.jpeg') }}" alt="Menu">
+                            </div> --}}
 
-                            <!-- Left and right controls -->
-                            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                                <i class="zmdi zmdi-chevron-left"></i>
-                            </a>
-                            <a class="carousel-control-next" href="#demo" data-slide="next">
-                                <i class="zmdi zmdi-chevron-right"></i>
-                            </a>
-<<<<<<< HEAD
-
-=======
-                            
->>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                         </div>
+
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            <i class="zmdi zmdi-chevron-left"></i>
+                        </a>
+                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                            <i class="zmdi zmdi-chevron-right"></i>
+                        </a>
 
                     </div>
 
                 </div>
+
             </div>
+        </div>
 
 
-            <!-- ******** Club Kitchen Modal ******* -->
-            <div class="modal fade" id="activities-clubkitchen" tabindex="-1" role="dialog"
-                aria-labelledby="ModalCarouselLabel">
-                <div class="modal-dialog" role="document">
+        <!-- ******** Club Kitchen Modal ******* -->
+        <div class="modal fade" id="activities-clubkitchen" tabindex="-1" role="dialog"
+            aria-labelledby="ModalCarouselLabel">
+            <div class="modal-dialog" role="document">
 
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
 
-                        <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
-<<<<<<< HEAD
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+                            @foreach($galleries->where("id","7") as $key => $gallery)
+                            @foreach($gallery->images as $key => $media)
 
+                            <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
 
-=======
-                            
->>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
-                            <!-- The slideshow -->
-                            <div class="carousel-inner">
-                                @foreach($galleries->where("id","7") as $key => $gallery)
-                                @foreach($gallery->images as $key => $media)
-
-<<<<<<< HEAD
-=======
-                                <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
->>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
-
-                                @foreach($galleries->where("id","7") as $key => $gallery)
-                                @foreach($gallery->images as $key => $media)
-                                <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
-                                    <img src="{{$media->getUrl('')}}" alt="Menu">
-                                </div>
-                                @endforeach
-                                @endforeach
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
-                                <!-- <div class="carousel-item active">
+                                <img src="{{$media->getUrl('')}}" alt="Menu">
+                            </div>
+                            @endforeach
+                            @endforeach
+                            <!-- <div class="carousel-item active">
                                     <img src="{{ asset('img/activities/club-kitchen-banner1.jpg') }}" alt="Menu">
                                 </div>
                                 <div class="carousel-item">
@@ -437,134 +409,128 @@
                                 <div class="carousel-item">
                                     <img src="{{ asset('img/activities/club-kitchen-banner17.jpg') }}" alt="Menu">
                                 </div> -->
-                            </div>
-
-                            <!-- Left and right controls -->
-                            <a class="carousel-control-prev" href="#demo-clubkitchen" data-slide="prev">
-                                <!--<span class="carousel-control-prev-icon"></span>-->
-                                <i class="zmdi zmdi-chevron-left"></i>
-                            </a>
-                            <a class="carousel-control-next" href="#demo-clubkitchen" data-slide="next">
-                                <!--<span class="carousel-control-next-icon"></span>-->
-                                <i class="zmdi zmdi-chevron-right"></i>
-                            </a>
-<<<<<<< HEAD
-
-
-=======
-                            
->>>>>>> 70947741ba0563dd608c835dcb788c55e79a10e0
                         </div>
+
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo-clubkitchen" data-slide="prev">
+                            <!--<span class="carousel-control-prev-icon"></span>-->
+                            <i class="zmdi zmdi-chevron-left"></i>
+                        </a>
+                        <a class="carousel-control-next" href="#demo-clubkitchen" data-slide="next">
+                            <!--<span class="carousel-control-next-icon"></span>-->
+                            <i class="zmdi zmdi-chevron-right"></i>
+                        </a>
 
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
 
-            <div class="modal fade" id="activities-counter" tabindex="-1" role="dialog"
-                aria-labelledby="ModalCarouselLabel">
-                <div class="modal-dialog" role="document">
+        <div class="modal fade" id="activities-counter" tabindex="-1" role="dialog"
+            aria-labelledby="ModalCarouselLabel">
+            <div class="modal-dialog" role="document">
 
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
+                        @foreach($galleries->where("id","8") as $key => $gallery)
+                        @foreach($gallery->images as $key => $media)
+                        <!-- The slideshow -->
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+
+                                <img src="{{$media->getUrl('')}}" alt="Menu">
+                            </div>
+
                         </div>
-                        <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
-                            @foreach($galleries->where("id","8") as $key => $gallery)
-                            @foreach($gallery->images as $key => $media)
-                            <!-- The slideshow -->
-                            <div class="carousel-inner">
 
-                                <div class="carousel-item active">
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#demo-clubkitchen" data-slide="prev">
+                            <!--<span class="carousel-control-prev-icon"></span>-->
+                            <i class="zmdi zmdi-chevron-left"></i>
+                        </a>
+                        <a class="carousel-control-next" href="#demo-clubkitchen" data-slide="next">
+                            <!--<span class="carousel-control-next-icon"></span>-->
+                            <i class="zmdi zmdi-chevron-right"></i>
+                        </a>
+                        @endforeach
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                    <img src="{{$media->getUrl('')}}" alt="Menu">
+
+
+
+        <div class="modal fade" id="activities-dinning1" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
+                                </li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img class="img-fluid" src="{{ asset('img/activities/dining-menu-1.jpeg') }}"
+                                        alt="" />
+                                    <div class="carousel-caption"> .332423 </div>
                                 </div>
-
-                            </div>
-
-                            <!-- Left and right controls -->
-                            <a class="carousel-control-prev" href="#demo-clubkitchen" data-slide="prev">
-                                <!--<span class="carousel-control-prev-icon"></span>-->
-                                <i class="zmdi zmdi-chevron-left"></i>
-                            </a>
-                            <a class="carousel-control-next" href="#demo-clubkitchen" data-slide="next">
-                                <!--<span class="carousel-control-next-icon"></span>-->
-                                <i class="zmdi zmdi-chevron-right"></i>
-                            </a>
-                            @endforeach
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <div class="modal fade" id="activities-dinning1" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modal Header</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
-                                    </li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                </ol>
-
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="item active">
-                                        <img class="img-fluid" src="{{ asset('img/activities/dining-menu-1.jpeg') }}"
-                                            alt="" />
-                                        <div class="carousel-caption"> .332423 </div>
-                                    </div>
-                                    <div class="item">
-                                        <img class="img-fluid" src="{{ asset('img/activities/dining-menu-2.jpeg') }}"
-                                            alt="" />
-                                        <div class="carousel-caption"> .sdfsd </div>
-                                    </div>
-                                    ...
+                                <div class="item">
+                                    <img class="img-fluid" src="{{ asset('img/activities/dining-menu-2.jpeg') }}"
+                                        alt="" />
+                                    <div class="carousel-caption"> .sdfsd </div>
                                 </div>
-
-                                <!-- Controls -->
-                                <a class="left carousel-control" href="#carousel-example-generic" role="button"
-                                    data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
-                                        aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a
-                                    class="right carousel-control" href="#carousel-example-generic" role="button"
-                                    data-slide="next"> <span class="glyphicon glyphicon-chevron-right"
-                                        aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+                                ...
                             </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                                data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
+                                    aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a
+                                class="right carousel-control" href="#carousel-example-generic" role="button"
+                                data-slide="next"> <span class="glyphicon glyphicon-chevron-right"
+                                    aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
 
-            <!-- ********|| ACTIVITIES Menu Modal End ||******** -->
+        <!-- ********|| ACTIVITIES Menu Modal End ||******** -->
 
 
 
-            <!-- Modal -->
+        <!-- Modal -->
 
 
 
 
-            </body>
+        </body>
 
 </html>

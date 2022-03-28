@@ -93,7 +93,7 @@
             <section class="therapy-sec">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 col-12">
+                        <div class="col-lg-4 col-12">
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                 aria-orientation="vertical">
                                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
@@ -102,8 +102,8 @@
                                     role="tab" aria-controls="v-pills-profile" aria-selected="false">Event</a>
                             </div>
                         </div>
-                        <div class="col-lg-9 col-12">
-                            <div class="tab-content galleytabimg" id="v-pills-tabContent">
+                        <div class="col-lg-8 col-12">
+                            <div class="tab-content" id="v-pills-tabContent">
                                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                                     aria-labelledby="v-pills-home-tab">
                                     <!--1-->
@@ -452,20 +452,19 @@
             .therapy-sec .nav-pills .nav-link {
                 margin-bottom: 1px;
                 padding: 15px 10px;
-                color: var(--textColor);
+                background-color: var(--primaryColor);
+                color: #fff;
                 text-transform: uppercase;
                 font-size: 14px;
                 font-weight: 600;
                 font-family: 'Open Sans', sans-serif;
                 letter-spacing: 0.5px;
                 width: 100%;
-                text-align: center;
-                border: 1px solid var(--primaryColor);
             }
 
             .therapy-sec .nav-pills .nav-link.active,
             .therapy-sec .nav-pills .show>.nav-link {
-                background-color: var(--primaryColor);
+                background-color: #951014;
                 color: #fff;
                 position: relative;
                 width: 100%
@@ -474,7 +473,7 @@
             .therapy-sec .nav-pills .nav-link.active:after {
                 position: absolute;
                 content: '';
-                background-color:  var(--primaryColor);
+                background-color: #951014;
                 height: 10px;
                 width: 10px;
                 transform: rotate(45deg);
@@ -492,18 +491,13 @@
                     font-size: 50px;
                 }
 */
-                .therapy-sec .nav-pills .nav-link{
-                    margin-bottom: 10px;
-                }
 
             #sync2 .item {
                 display: block;
                 margin: 0 auto;
-                /* width: 140px; */
+                width: 140px;
             }
-            @media screen and (max-width: 991px) {
-                .therapy-sec .nav-pills .nav-link.active:after{background: none;}
-            }
+
             @media screen and (max-width: 767px) {
                 .therapy-sec {
                     padding: 40px 0px;
@@ -530,17 +524,16 @@
                     },
                     600: {
                         items: 3,
-                        margin: 5,
 
                     },
                     1000: {
                         items: 4,
-                        margin: 10,
+                        margin: 20,
 
                     },
                     1400: {
                         items: 6,
-                        margin: 10,
+                        margin: 20,
 
                     }
 
