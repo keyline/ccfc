@@ -94,27 +94,28 @@
 
                         </div>
                         <div class="col-lg-4">
-                            @foreach($galleries->where("id","11") as $key => $gallery)
+                            <div class="clubbar_sidebar">
+                                @foreach($galleries->where("id","11") as $key => $gallery)
 
-                            @foreach($gallery->images as $key => $media)
+                                @foreach($gallery->images as $key => $media)
 
-                            <div class="project-item">
-                                <div class="gallery">
-                                    <a href="{{$media->getUrl('')}}" class="item-inner" data-fancybox="image">
-                                        <div class="item-img">
-                                            <img class="img-fluid" src="{{$media->getUrl('')}}" alt="">
-                                            <div class="hvr">
-                                                <i class="zmdi zmdi-search"></i>
+                                <div class="project-item">
+                                    <div class="gallery">
+                                        <a href="{{$media->getUrl('')}}" class="item-inner" data-fancybox="image">
+                                            <div class="item-img">
+                                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="">
+                                                <div class="hvr">
+                                                    <i class="zmdi zmdi-search"></i>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
 
+                                    </div>
                                 </div>
+
+                                @endforeach
+                                @endforeach
                             </div>
-
-                            @endforeach
-                            @endforeach
-
                         </div>
                     </div>
                 </div>
