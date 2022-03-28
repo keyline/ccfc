@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Contact;
 
+use App\Http\Controllers\Controller;
 // use App\Mail\ContactMail;
 
 use Illuminate\Http\Request;
@@ -12,13 +13,13 @@ use Mail;
 
 class ContactController extends Controller
 {
-
-    public function index(){
-        
-        return view('admin.contact.index')->with('ContactArr',Contact::all());
+    public function index()
+    {
+        return view('admin.contact.index')->with('ContactArr', Contact::all());
     }
     
-    public function contact(){
+    public function contact()
+    {
         
         // return view('index');
     }
@@ -52,7 +53,7 @@ class ContactController extends Controller
             'phone' => $input['phone'],
             'subject' => $input['subject'],
             'message' => $input['message'],
-        ), function($message) use ($request){
+        ), function ($message) use ($request) {
             $message->from($request->email);
             $message->to('pranoy@keylines.net', 'Admin')->subject($request->get('subject'));
         });
