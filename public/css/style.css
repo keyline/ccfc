@@ -403,10 +403,17 @@ span {
     .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul.amenitiessubsub{
         top: -100px;
     }
+    .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul.newssubsub{
+        top: -45px;
+    }
     .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul::after {
         background: #fff;
     }
     .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul.amenitiessubsub::after {
+        bottom: 33%;
+        top: auto;
+    }
+    .topPanel .nav-info ul.submenu.dropdown-menu li:hover ul.newssubsub::after {
         bottom: 33%;
         top: auto;
     }
@@ -1580,6 +1587,9 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
 .active_rightimg {
     margin-bottom: 15px;
 }
+.activites_rightside .active_rightimg img {
+    width: 100%;
+}
 .carousel-inner img {
     width: 100%;
     height: 100%;
@@ -1688,6 +1698,19 @@ nav.navbar .navbar-nav > li.active > a.nav-link {
     border-left: 10px solid var(--primaryColor);
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
+}
+.poolpub_midimg {
+    display: flex;
+    flex-wrap: wrap;
+}
+.gym-general-sec .poolpub_midimg .project-item:first-child {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.gym-general-sec .poolpub_midimg .project-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 50%;
 }
 
 /* ********|| Activities END ||******** */
@@ -2286,6 +2309,10 @@ section.sports-page {
 
 .gym-general-sec .project-item .item-img{
     position: relative;
+    text-align: center;
+}
+.gym-general-sec .project-item .item-img img {
+    width: 100%;
 }
 .gym-general-sec .project-item .item-img .hvr {
     display: flex;
@@ -2311,7 +2338,7 @@ section.sports-page {
     padding-bottom: 20px;
 }
 .gym-general-sec .project-item:last-child{
-    padding-bottom: 0px;
+    /* padding-bottom: 0px; */
 }
 .gym-general-sec .gym-inner{
     border-bottom: 1px solid var(--secondaryColor);
@@ -2350,6 +2377,13 @@ section.sports-page {
 .gym-general-sec .gym-inner .pool-part{
     margin-bottom: 0;
 }
+.clubbar_sidebar .project-item .gallery {
+    text-align: center;
+}
+.clubbar_sidebar .project-item .gallery .item-img img {
+    width: 100%;
+}
+
 
 /* ********|| CLUB BAR  END ||******** */
 

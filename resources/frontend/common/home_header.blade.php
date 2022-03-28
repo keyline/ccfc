@@ -179,7 +179,7 @@
                                                                         href="{{ route('member.events_members_only') }}">Events</a>
                                                                 </li>
                                                                 <li><a class="nav-link" href="#/">News</a>
-                                                                    <ul class="submenu dropdown-menu">
+                                                                    <ul class="submenu dropdown-menu newssubsub">
                                                                         <li><a
                                                                                 href="{{ route('member.1792-newsletter') }}">1792</a>
                                                                         </li>

@@ -710,5 +710,11 @@
     }
     .invoicepayment_section .invoicepayment_box input[type="text"]{width: 100%;}
     .invoicepayment_box .invoicepayment_paybtn button{width: 100%; margin-top: 15px;}
+    .poolpub_midimg {
+        flex-direction: column;
+        align-items: center;
+    }
+    .gym-general-sec .poolpub_midimg .project-item{padding-bottom: 15px !important; width: 100%;}
+
     
 }
