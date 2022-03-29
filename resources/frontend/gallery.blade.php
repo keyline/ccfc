@@ -474,7 +474,7 @@
             .therapy-sec .nav-pills .nav-link.active:after {
                 position: absolute;
                 content: '';
-                background-color:  var(--primaryColor);
+                background-color: var(--primaryColor);
                 height: 10px;
                 width: 10px;
                 transform: rotate(45deg);
@@ -492,18 +492,22 @@
                     font-size: 50px;
                 }
 */
-                .therapy-sec .nav-pills .nav-link{
-                    margin-bottom: 10px;
-                }
+            .therapy-sec .nav-pills .nav-link {
+                margin-bottom: 10px;
+            }
 
             #sync2 .item {
                 display: block;
                 margin: 0 auto;
                 /* width: 140px; */
             }
+
             @media screen and (max-width: 991px) {
-                .therapy-sec .nav-pills .nav-link.active:after{background: none;}
+                .therapy-sec .nav-pills .nav-link.active:after {
+                    background: none;
+                }
             }
+
             @media screen and (max-width: 767px) {
                 .therapy-sec {
                     padding: 40px 0px;
