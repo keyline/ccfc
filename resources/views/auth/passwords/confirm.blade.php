@@ -2,21 +2,23 @@
 
 @section('styles')
 <style>
-    .lockscreen-image-fallback {
-        width: 70px;
-        height: 70px;
-        background: #3c8dbc;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-    }
-    input[type="password"], button {
-        outline: none;
-        box-shadow:none !important;
-        border: 0;
-    }
+.lockscreen-image-fallback {
+    width: 70px;
+    height: 70px;
+    background: #3c8dbc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+input[type="password"],
+button {
+    outline: none;
+    box-shadow: none !important;
+    border: 0;
+}
 </style>
 @endsection
 
@@ -40,7 +42,7 @@
 
                 <div class="lockscreen-image-fallback text-uppercase text-white">
                     @if(auth()->user()->name)
-                        {{ substr(auth()->user()->name, 0, 2) }}
+                    {{ substr(auth()->user()->name, 0, 2) }}
                     @endif
                 </div>
             </div>
@@ -49,7 +51,8 @@
                 @csrf
 
                 <div class="input-group">
-                    <input id="password" type="password" name="password" class="form-control" placeholder="{{ __('Confirm Password') }}" required>
+                    <input id="password" type="password" name="password" class="form-control"
+                        placeholder="{{ __('Confirm Password') }}" required>
 
                     <div class="input-group-append">
                         <button type="submit" class="btn">
@@ -61,9 +64,9 @@
         </div>
 
         @error('password')
-            <div class="help-block text-center text-danger">
-                {{ $message }}
-            </div>
+        <div class="help-block text-center text-danger">
+            {{ $message }}
+        </div>
         @enderror
 
         <div class="help-block text-center">
@@ -72,9 +75,9 @@
 
         <div class="text-center">
             @if(Route::has('password.request'))
-                <a href="{{ route('password.request') }}">
-                    {{ trans('global.forgot_password') }}
-                </a>
+            <a href="{{ route('password.request') }}">
+                {{ trans('global.forgot_password') }}
+            </a>
             @endif
         </div>
     </div>
