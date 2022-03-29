@@ -1,16 +1,11 @@
 @extends('layouts.admin')
 @section('content')
-@can('amenities_service_create')
-<div style="margin-bottom: 10px;" class="row">
-
-</div>
-@endcan
 <div class="card">
     <div class="card-header">
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.email.create") }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.email") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="required" for="mail_subject">Subject</label>
@@ -69,8 +64,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($amenitiesServices as $key => $amenitiesService)
-                        <tr data-entry-id="{{ $amenitiesService->id }}">
+                    
+                        <tr data-entry-id="">
                             <td>
 
                             </td>
@@ -94,7 +89,7 @@
                             <td></td>
 
                         </tr>
-                    @endforeach
+                    
                 </tbody>
             </table>
         </div>
@@ -112,7 +107,7 @@ $(function() {
   for (var i = 0; i < allEditors.length; ++i) {
     ClassicEditor.create(
       allEditors[i], {
-        extraPlugins: [SimpleUploadAdapter]
+        //extraPlugins: [SimpleUploadAdapter]
       }
     );
   }
