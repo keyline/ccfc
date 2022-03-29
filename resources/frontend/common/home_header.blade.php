@@ -176,6 +176,10 @@
                                                                         href="{{ route('member.dashboard') }}">Member
                                                                         dashboard</a></li>
                                                                 <li><a class="nav-link"
+                                                                        href="{{ route('member.change_password') }}">Change
+                                                                        password</a>
+                                                                </li>
+                                                                <li><a class="nav-link"
                                                                         href="{{ route('member.events_members_only') }}">Events</a>
                                                                 </li>
                                                                 <li><a class="nav-link" href="#/">News</a>
@@ -188,6 +192,9 @@
                                                                                 & Circulars</a></li>
                                                                     </ul>
                                                                 </li>
+
+
+
                                                                 <li><a class="nav-link"
                                                                         href="{{ route('member.rules_regulation') }}">Rules
                                                                         & Regulations</a></li>
