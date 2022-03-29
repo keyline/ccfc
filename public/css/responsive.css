@@ -639,6 +639,15 @@
     .member_details_section .col-md-12.pl-0 {
         padding-left: 15px !important;
     }
+    .memberbelowinfo_section .row {
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .dashboard_resetbtn {
+        margin-top: 20px;
+    }
     
 }
 

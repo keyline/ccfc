@@ -2568,6 +2568,26 @@ hr.divider_red {
 .memberbelowinfo_section .dashboardpic_items {
     margin-right: 20px;
 }
+.memberbelowinfo_section .row {
+    justify-content: space-between;
+    align-items: center;
+}
+.dashboard_picname_section {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80%;
+}
+.memberbelowinfo_section .dashboard_resetbtn a {
+    background: var(--primaryColor);
+    color: var(--white);
+    font-size: 18px;
+    padding: 6px 30px;
+    border-radius: 20px; 
+    display: block;
+}
+.memberbelowinfo_section .dashboard_resetbtn a:hover {
+    background: var(--red);
+}
 .memberbelowinfo_section {padding: 40px 55px;}
 .member_profileimg img {
     object-fit: cover;
@@ -2648,6 +2668,9 @@ p.member_list_input {
     line-height: 1.25;
     border: 1px solid #ddd;
     font-size: 14px;
+}
+p.member_list_input.addressline {
+    line-height: 24px;
 }
 p.member_list_text {
     width: 50%;

@@ -45,38 +45,45 @@
                 <div class="container">
                     <div class="row">
                         <!-- <pre><code>{{ json_encode($userProfile, JSON_PRETTY_PRINT) }}</code></pre> -->
-                        <div class="dashboardpic_items">
+                        <div class="dashboard_picname_section">
+                            <div class="dashboardpic_items">
 
-                            @if($userProfile['MemberImage'] == '')
+                                @if($userProfile['MemberImage'] == '')
 
 
-                            <div class="member_profileimg">
-                                <img class="img-fluid ifnotpic" src="{{ asset('img/Profile-Icon-01.svg') }}" alt="" />
+                                <div class="member_profileimg">
+                                    <img class="img-fluid ifnotpic" src="{{ asset('img/Profile-Icon-01.svg') }}" alt="" />
+                                </div>
+
+
+                                @else
+
+                                <div class="member_profileimg">
+                                    <img class="img-fluid" src="data:image/png;base64,                          
+                                        {{ $userProfile['MemberImage'] }}" alt="" />
+
+                                </div>
+
+                                @endif
                             </div>
+                        
 
-
-                            @else
-
-                            <div class="member_profileimg">
-                                <img class="img-fluid" src="data:image/png;base64,                          
-                                    {{ $userProfile['MemberImage'] }}" alt="" />
-
-                            </div>
-
-                            @endif
-                        </div>
-
-                        <div class="dashboardpic_itemsinfo">
-                            <div class="member_profiletop">
-                                <h4>Welcome</h4>
-                                <h2>{{ $userProfile['MEMBER_NAME'] }}</h2>
-                                <p><strong>Ph No:</strong>
-                                    {{ $userProfile['MOBILENO'] }}
-                                </p>
-                                <p><strong>Mail ID:</strong> {!! $userProfile['EMAIL'] !!}</p>
+                            <div class="dashboardpic_itemsinfo">
+                                <div class="member_profiletop">
+                                    <h4>Welcome</h4>
+                                    <h2>{{ $userProfile['MEMBER_NAME'] }}</h2>
+                                    <p><strong>Ph No:</strong>
+                                        {{ $userProfile['MOBILENO'] }}
+                                    </p>
+                                    <p><strong>Mail ID:</strong> {!! $userProfile['EMAIL'] !!}</p>
+                                </div>
                             </div>
                         </div>
                         {{-- <hr class="divider_red"> --}}
+
+                        <div class="dashboard_resetbtn">
+                            <a href="#">Reset Password</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -166,35 +173,39 @@
                         </div>
                         <div class="col-md-6">
                             <div class="member_probile_list">
+                                <div class="member_profile_item">
+                                    <p class="member_list_text">Communication Address</p>
+                                    <p class="member_list_input addressline">FLAT # 1A, ANUBHAV APARTMENT, 40D SOUTH END PARK</p>
+                                </div>
 
-                                @if($userProfile['ADDRESS1'] == '')
+                                {{-- @if($userProfile['ADDRESS1'] == '')
 
                                 @else
                                 <div class="member_profile_item">
-                                    <p class="member_list_text">Address I</p>
+                                    <p class="member_list_text">Communication Address</p>
                                     <p class="member_list_input">{{ $userProfile['ADDRESS1'] }}</p>
                                 </div>
-                                @endif
+                                @endif --}}
 
 
 
-                                @if($userProfile['ADDRESS2'] == '')
+                                {{-- @if($userProfile['ADDRESS2'] == '')
 
                                 @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Address II</p>
                                     <p class="member_list_input">{{ $userProfile['ADDRESS2'] }}</p>
                                 </div>
-                                @endif
+                                @endif --}}
 
-                                @if($userProfile['ADDRESS3'] == '')
+                                {{-- @if($userProfile['ADDRESS3'] == '')
 
                                 @else
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Address III</p>
                                     <p class="member_list_input">{{ $userProfile['ADDRESS3'] }}</p>
                                 </div>
-                                @endif
+                                @endif --}}
 
 
                                 @if($userProfile['CITY'] == '')
