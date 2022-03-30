@@ -171,7 +171,7 @@
                                                                 Members area <span class="submenu_arrow"><i
                                                                         class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
-                                                            <ul class="submenu dropdown-menu">
+                                                            <ul class="submenu dropdown-menu membermenusub">
                                                                 <li><a class="nav-link"
                                                                         href="{{ route('member.dashboard') }}">Member
                                                                         dashboard</a></li>
