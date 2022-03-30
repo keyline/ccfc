@@ -35,6 +35,8 @@ use App\Models\SubCommitteeMember;
 
 use App\Models\CommitteeName;
 
+use App\Http\Controllers\Admin\UsersController;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -354,6 +356,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Sub Committee Members
     Route::delete('sub-committee-members/destroy', 'SubCommitteeMembersController@massDestroy')->name('sub-committee-members.massDestroy');
     Route::resource('sub-committee-members', 'SubCommitteeMembersController');
+
+    //Ajax Request
+    Route::get('/saveUserJson/{code}', [UsersController::class, 'saveUserJson'])->name('saveUserJson');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

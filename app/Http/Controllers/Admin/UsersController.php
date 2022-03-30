@@ -8,6 +8,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\UserDetail;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -154,5 +155,51 @@ class UsersController extends Controller
                
 
         }   
+    }
+
+    public function saveUserJson(Request $request){
+
+        $user = User::where('user_code', '=', $request->code)->first();
+
+        $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+
+       $fields= [
+             'MCODE' => $request->code
+           ];
+   
+           $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+
+       
+          
+
+       $profile = Http::withoutVerifying()
+               ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                               'Content-Type' => 'application/json',])
+               ->withOptions(["verify"=>false])
+               ->post($url)->json()['data'];
+
+        //Saving data into user table
+        $user->email= ($profile['EMAIL'] != "") ? $profile['EMAIL'] : "";
+
+        $user->is_active= ($profile['CURENTSTATUS'] != 'ACTIVE') ? '0' : '1';
+
+        $user->phone_number_1 = (preg_match('/^[0-9]{10}+$/', $profile['MOBILENO'])) ? $profile['MOBILENO'] : "";
+
+        if($user->save()){
+            $userInformation = UserDetail::where('user_code_id',$user->id)->first();
+            
+            
+
+        $userInformation->member_type_code= $profile['MEMBERTYPECODE'];
+        $userInformation->member_type= $profile['MEMBERTYPE'];
+        $userInformation->date_of_birth= date("d-m-Y", strtotime($profile["DOB"]));
+
+        $userInformation->save();
+
+        }
+        return redirect()->back()->with('success', 'user data updated successfully');
+
+        
+
     }
 }

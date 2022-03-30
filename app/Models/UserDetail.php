@@ -118,6 +118,7 @@ class UserDetail extends Model implements HasMedia
 
     public function setDateOfBirthAttribute($value)
     {
+        
         $this->attributes['date_of_birth'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
