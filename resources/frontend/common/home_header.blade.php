@@ -175,10 +175,7 @@
                                                                 <li><a class="nav-link"
                                                                         href="{{ route('member.dashboard') }}">Member
                                                                         dashboard</a></li>
-                                                                <li><a class="nav-link"
-                                                                        href="{{ route('member.change_password') }}">Change
-                                                                        password</a>
-                                                                </li>
+
                                                                 <li><a class="nav-link"
                                                                         href="{{ route('member.events_members_only') }}">Events</a>
                                                                 </li>

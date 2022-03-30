@@ -7,9 +7,11 @@ use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use Gate;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use App\Models\User;
 use Hash;
 use Auth;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class ChangePasswordResetController extends Controller
 {
@@ -27,7 +29,7 @@ class ChangePasswordResetController extends Controller
     //     // return view('member.change_password')->with('message', __('global.change_password_success'));
     //     // return redirect()->route('member.change_password')->with('message', __('global.change_password_success'));
 
-    //     return redirect()->route('member.change_password')->with(['success' => 'password change successfully']);
+    //     return redirect()->route('change_password')->with(['success' => 'password change successfully']);
 
 
     // }
@@ -73,15 +75,19 @@ class ChangePasswordResetController extends Controller
     //     return redirect()->route('profile.password.edit')->with('message', $message);
     // }
 
-
+    
 
     public function showChangePasswordGet() {
         // return view('auth.passwords.change-password');
 
-        return view('member.change_password');
+        return view('change_password');
     }
 
     public function changePasswordPost(Request $request) {
+
+        // $user = Auth::user();  
+        // dd($request);
+    
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
             return redirect()->back()->with("error","Your current password does not matches with the password.");
@@ -98,10 +104,42 @@ class ChangePasswordResetController extends Controller
         ]);
 
         //Change Password
-        $user = Auth::user();
+        $user = Auth::user();       
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
         return redirect()->back()->with("success","Password successfully changed!");
+
     }
+
+
+
+
+
+
+    
+    // public function changePasswordPost(Request $request)
+
+    // {       
+    //     $user = Auth::user();
+    
+    //     $userPassword = $user->password;
+        
+    //     $request->validate([
+    //         'current_password' => 'required',
+    //         'password' => 'required|same:confirm_password|min:6',
+    //         'confirm_password' => 'required',
+    //     ]);
+
+    //     if (!Hash::check($request->current_password, $userPassword)) {
+    //         return back()->withErrors(['current_password'=>'password not match']);
+    //     }
+
+    //     $user->password = Hash::make($request->password);
+
+    //     $user->save();
+
+    //     return redirect()->back()->with('success','password successfully updated');
+    // }
+
 }

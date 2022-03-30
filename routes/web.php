@@ -390,21 +390,30 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
     }
 });
 
-Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
-    // Change password
-    // if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
+// Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
+//     // Change password
+//     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordResetController.php'))) {
         
-    //     Route::post('change_password', 'ChangePasswordResetController@update')->name('passwordreset.update');
         
-    // }   
+//         Route::post('/change_password', 'ChangePasswordResetController@update')->name('change_password.update');
+        
+//     }   
 
 
-});
+// });
+
+    Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+
+    Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
 
 
+        Route::get('/change_password', function () {
+            return view('change_password');
+        })->name('change_password');
+        
 
-Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
-Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
+// Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+// Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
 
 Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Two Factor Authentication
@@ -424,7 +433,7 @@ Route::group([
     'prefix' => 'member',
     'as' => 'member.',
     'namespace' => 'Member',
-    'middleware' => ['member']
+    'middleware' => ['member'],
 ], function () {
     Route::get('/login', [HomeController::class, 'memberLogin'])->name('login');
 
@@ -432,14 +441,16 @@ Route::group([
 
     Route::get('/invoice', [HomeController::class, 'invoice'])->name('invoice');
 
+    
+
     Route::get('/events_members_only', function () {
         return view('events_members_only');
     })->name('events_members_only');
 
 
-    Route::get('/change_password', function () {
-        return view('change_password');
-    })->name('change_password');
+    
+
+   
 
     Route::get('/1792-newsletter', function () {
         return view('1792-newsletter');
@@ -461,6 +472,10 @@ Route::group([
     Route::get('payment/status', ['as' => 'payment.status', 'uses' => 'PaymentController@status']);
 
     Route::get('/invoice/{month}/{year}/{filename}/download', [HomeController::class, 'download'])->name('download');
+
+
+    
+
 });
 
 
