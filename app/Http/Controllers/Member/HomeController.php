@@ -36,13 +36,14 @@ class HomeController extends Controller
         ]);
         $userInfo= User::where('user_code', '=', $request->email)->first();
 
+        if (!$userInfo) {
+            return back()->withErrors(['email' => ['Member code not found! please contact admin']]);
+        }
+
         if (is_null($userInfo->email_verified_at)) {
             return redirect('password/reset')->withErrors(['email' => ["Please reset your password first, ...."]]);
         }
 
-        if (!$userInfo) {
-            return back()->withErrors(['email' => ['Member code not found! please contact admin']]);
-        }
         if (! Hash::check($request->password, $userInfo->password)) {
             return back()->withErrors(['password' => ['Password is incorrect']]);
         }
