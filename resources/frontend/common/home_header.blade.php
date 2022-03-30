@@ -172,8 +172,7 @@
                                                                         class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
                                                             <ul class="submenu dropdown-menu membermenusub">
-                                                                <li><a class="nav-link"
-                                                                        href="{{ route('member.dashboard') }}">Member
+                                                                <li><a class="nav-link" href="{{ route('member.dashboard') }}">Member
                                                                         dashboard</a></li>
                                                                 <li><a class="nav-link"
                                                                         href="{{ route('member.change_password') }}">Change
