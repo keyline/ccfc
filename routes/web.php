@@ -221,6 +221,7 @@ Route::get('/gallery', function () {
 //     return view('contact-us', compact(['galleries']));
 // });
 
+// Route::post('password', 'ChangePasswordResetController@update')->name('passwordreset.update');
 
 
 
@@ -388,6 +389,23 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/two-factor', 'ChangePasswordController@toggleTwoFactor')->name('password.toggleTwoFactor');
     }
 });
+
+Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
+    // Change password
+    // if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
+        
+    //     Route::post('change_password', 'ChangePasswordResetController@update')->name('passwordreset.update');
+        
+    // }   
+
+
+});
+
+
+
+Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
+
 Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Two Factor Authentication
     if (file_exists(app_path('Http/Controllers/Auth/TwoFactorController.php'))) {
@@ -417,6 +435,11 @@ Route::group([
     Route::get('/events_members_only', function () {
         return view('events_members_only');
     })->name('events_members_only');
+
+
+    Route::get('/change_password', function () {
+        return view('change_password');
+    })->name('change_password');
 
     Route::get('/1792-newsletter', function () {
         return view('1792-newsletter');
@@ -590,7 +613,7 @@ Route::get('/new_member', function () {
 
     // Route::post('memberdetails','MemberDetailsController@index');
 
-    Route::get('users/memberdetails', 'MemberDetailsController@index')->name('memberdetails');
+    // Route::get('users/memberdetails', 'MemberDetailsController@index')->name('memberdetails');
 
 
     

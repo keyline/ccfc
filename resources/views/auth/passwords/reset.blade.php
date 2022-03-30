@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="en">
 
@@ -70,26 +68,32 @@
                                                         @endif
                                                     </div>
                                                     <div class="form-group">
-                                                        <input id="password" type="password"
+                                                        <!-- <input id="password" type="password"
                                                             class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                                            name="password" required
+                                                            placeholder="{{ trans('global.login_password') }}"> -->
+
+
+                                                        <input id="password" type="password" class="form-control"
                                                             name="password" required
                                                             placeholder="{{ trans('global.login_password') }}">
 
-                                                        @if($errors->has('password'))
+                                                        <!-- @if($errors->has('password'))
                                                         <span class="text-danger">
                                                             {{ $errors->first('password') }}
                                                         </span>
-                                                        @endif
+                                                        @endif -->
                                                     </div>
                                                     <div class="form-group">
-                                                        <input id="password-confirm" type="password" class="form-control"
-                                                            name="password_confirmation" required
+                                                        <input id="password-confirm" type="password"
+                                                            class="form-control" name="password_confirmation" required
                                                             placeholder="{{ trans('global.login_password_confirmation') }}">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <button type="submit" class="btn btn-primary btn-flat btn-block">
+                                                        <button type="submit"
+                                                            class="btn btn-primary btn-flat btn-block">
                                                             {{ trans('global.reset_password') }}
                                                         </button>
                                                     </div>

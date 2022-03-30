@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
+
+
 class UserDetailsController extends Controller
 {
     use MediaUploadingTrait;
@@ -82,15 +84,18 @@ class UserDetailsController extends Controller
 
         $userDetail->load('user_code');
 
-        // return view('admin.userDetails.edit', compact('userDetail', 'user_codes'));
         
         $user = User::where('id', '=', session('LoggedMember'))->first();
+
+        
 
         $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
 
         $fields= [
-          'MCODE' => $user->user_code
-        ];
+            'MCODE' => $user->user_code
+          ];
+
+        // dd($fields);
 
         $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
@@ -102,11 +107,11 @@ class UserDetailsController extends Controller
             ->post($url)->json()['data'];
 
             
-            return view('admin.userDetails.edit',compact('userDetail', 'user_codes'), [
+            return view('admin.userDetails.edit', compact('userDetail', 'user_codes'), [
                 
-                'userProfile' => $profile,
+                'userProfile'       => $profile,
+                // 'userTransactions'  => $transactions,
             ]);
-
 
     }
 

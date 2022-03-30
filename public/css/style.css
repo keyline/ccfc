@@ -379,7 +379,9 @@ span {
         min-width: 240px;
         padding: 12px;
     }
-    
+    .topPanel .navbar-light .navbar-nav .nav-item > ul.submenu.dropdown-menu.membermenusub {
+        top: -130px;
+    }
 
     [dir=rtl] .topPanel li .submenu{ 
         right:100%; left:auto;
@@ -436,6 +438,10 @@ span {
         transform: rotate(45deg); 
         left: -4px;
         top: 10px;
+    }
+    .topPanel .navbar-light .navbar-nav .nav-item > ul.submenu.dropdown-menu.membermenusub::after {
+        top: auto;
+        bottom: 21px;
     }
     .topPanel .navbar-light .navbar-nav .submenu a:hover{color: var(--white); background: #b01d22;}
 
