@@ -110,7 +110,7 @@
 
                             @can('user_edit')
 
-                            <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
+                            <a class="btn btn-xs btn-info user-json" href="{{ route('admin.saveUserJson', $user->user_code) }}">
                                 {{ trans('global.updatedetails') }}
                             </a>
 

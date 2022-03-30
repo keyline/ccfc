@@ -38,6 +38,8 @@ use App\Models\SubCommitteeMember;
 
 use App\Models\CommitteeName;
 
+use App\Http\Controllers\Admin\UsersController;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -378,6 +380,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/email', [App\Http\Controllers\Admin\SendInBlueController::class, 'index'])->name('email');
 
     Route::get('contactus', 'ContactController@index')->name('contactus');
+    //Ajax Request
+    Route::get('/saveUserJson/{code}', [UsersController::class, 'saveUserJson'])->name('saveUserJson');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
