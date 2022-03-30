@@ -41,7 +41,7 @@ class HomeController extends Controller
         }
 
         if (is_null($userInfo->email_verified_at)) {
-            return redirect('password/reset')->withErrors(['email' => ["Please reset your password first, ...."]]);
+            return redirect('password/reset');
         }
 
         if (! Hash::check($request->password, $userInfo->password)) {
