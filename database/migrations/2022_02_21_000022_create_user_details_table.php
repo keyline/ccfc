@@ -10,7 +10,7 @@ class CreateUserDetailsTable extends Migration
     {
         Schema::create('user_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('member_type_code');
+            $table->string('member_type_code')->nullable();
             $table->string('member_type')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('member_since')->nullable();

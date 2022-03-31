@@ -19,12 +19,5 @@ class UserDetailSeed extends Seeder
     public function run()
     {
         //
-        User::factory(10)
-                ->create()
-                ->each(function ($user) {
-                    $user->roles()->sync(2);
-                    UserDetail::factory(1)
-                                ->create(['user_code_id' => $user->id]);
-                });
     }
 }
