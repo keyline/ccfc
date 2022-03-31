@@ -12,6 +12,7 @@ use App\Helpers\SearchInvoicePdf;
 use Illuminate\Support\Facades\Storage;
 use File;
 use Response;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -43,11 +44,18 @@ class HomeController extends Controller
         if (!$userInfo) {
             return back()->withErrors(['email' => ['Member code not found! please contact admin']]);
         }
-        if (! Hash::check($request->password, $userInfo->password)) {
-            return back()->withErrors(['password' => ['Password is incorrect']]);
-        }
+        // if (! Hash::check($request->password, $userInfo->password)) {
+        //     return back()->withErrors(['password' => ['Password is incorrect']]);
+        // }
+
+       if(Auth::attempt(['user_code'=>$request->email,'password'=>$request->password])){
+
         $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name ]);
         return redirect('member/dashboard');
+
+       }
+        
+        return back()->withErrors(['password' => ['Password is incorrect']]);
     }
 
     public function logout()

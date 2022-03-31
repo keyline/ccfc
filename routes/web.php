@@ -402,14 +402,23 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 
 // });
 
-    Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+    // Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
 
-    Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
+    // Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
 
 
-        Route::get('/change_password', function () {
-            return view('change_password');
-        })->name('change_password');
+
+    Route::get('/member/change-password','ChangePasswordResetController@change_password')->name('change_password');
+
+    Route::post('/member/update-password','ChangePasswordResetController@update_password')->name('update_password');
+
+
+    
+
+
+        // Route::get('/change_password', function () {
+        //     return view('change_password');
+        // })->name('change_password');
         
 
 // Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
