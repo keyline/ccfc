@@ -180,6 +180,8 @@ class UsersController extends Controller
                ->withOptions(["verify"=>false])
                ->post($url)->json()['data'];
 
+
+               dd($profile);
         //Saving data into user table
         $user->email= ($profile['EMAIL'] != "") ? $profile['EMAIL'] : "";
 
