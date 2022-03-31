@@ -176,9 +176,10 @@
                             <div class="member_probile_list">
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Communication Address</p>
-                                    <p class="member_list_input addressline">{{ $userProfile['ADDRESS1'] }},
-                                        {{ $userProfile['ADDRESS2'] }}, {{ $userProfile['ADDRESS3'] }}
-                                        PARK</p>
+                                    <p class="member_list_input addressline">
+                                        {{ $userProfile['ADDRESS1'] }},{{ $userProfile['ADDRESS2'] }},{{ $userProfile['ADDRESS3'] }}
+
+                                    </p>
                                 </div>
 
                                 {{-- @if($userProfile['ADDRESS1'] == '')
