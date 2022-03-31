@@ -108,7 +108,7 @@
                                                 id="old_password" required>
 
                                             @if ($errors->any('old_password'))
-                                            <span class="text-danger">
+                                            <span class="alert alert-danger">
                                                 {{ $errors->first('old_password') }}
                                             </span>
                                             @endif

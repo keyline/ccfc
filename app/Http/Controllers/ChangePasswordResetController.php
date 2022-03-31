@@ -34,8 +34,7 @@ class ChangePasswordResetController extends Controller
         ]);
 
         $current_user=auth()->user();
-
-        // dd($current_user);
+        
 
         if(Hash::check($request->old_password,$current_user->password)){
 
