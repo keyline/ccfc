@@ -72,6 +72,7 @@
                             <div class="dashboardpic_itemsinfo">
                                 <div class="member_profiletop">
                                     <h4>Welcome</h4>
+
                                     <h2>{{ $userProfile['MEMBER_NAME'] }}</h2>
                                     <p><strong>Ph No:</strong>
                                         {{ $userProfile['MOBILENO'] }}

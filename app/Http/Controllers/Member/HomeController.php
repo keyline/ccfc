@@ -49,6 +49,8 @@ class HomeController extends Controller
         $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name ]);
         return redirect('member/dashboard');
 
+        
+
        }
         
         return back()->withErrors(['password' => ['Password is incorrect']]);
@@ -64,27 +66,37 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $user = User::where('id', '=', session('LoggedMember'))->first();
+            
 
-        $data= ['LoggedMemberInfo' => $user];
+        // $user = User::where('id', '=', session('LoggedMember'))->first();
+
+        $user = User::with('userCodeUserDetails')->find(session('LoggedMember'));
+
+        // dd($user);
+
+        // $userdetails = $user->userCodeUserDetails()->get();
+
+        // dd($userdetails);
+       
+        // $data= ['LoggedMemberInfo' => $userdetails];
         
         //get member profile
-        $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+        // $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
 
-        $fields= [
-            'MCODE' => $user->user_code
-        ];
+        // $fields= [
+        //     'MCODE' => $user->user_code
+        // ];
         
-        $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+        // $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
         //dd(openssl_get_cert_locations());
 
 
-        $profile = Http::withoutVerifying()
-                    ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                                    'Content-Type' => 'application/json',])
-                    ->withOptions(["verify"=>false])
-                    ->post($url)->json()['data'];
+        // $profile = Http::withoutVerifying()
+        //             ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+        //                             'Content-Type' => 'application/json',])
+        //             ->withOptions(["verify"=>false])
+        //             ->post($url)->json()['data'];
 
 
         // $transactionFields= [
@@ -103,9 +115,9 @@ class HomeController extends Controller
         
         //dd($transactions);
            
-        return view('member.dashboard', [
-            'userData'          => $data,
-            'userProfile'       => $profile,
+        return view('member.dashboard_local', [
+            // 'userData'          => $data,
+            'userProfile'       => $user,
             // 'userTransactions'  => $transactions,
         ]);
     }
@@ -113,9 +125,13 @@ class HomeController extends Controller
 
     public function invoice()
     {
-        $user = User::where('id', '=', session('LoggedMember'))->first();
+        $user = User::with('userCodeUserDetails')->find(session('LoggedMember'))->first();
 
-        $data= ['LoggedMemberInfo' => $user];
+        // dd($userProfile);
+
+        // $user = User::where('id', '=', session('LoggedMember'))->first();
+
+        // $data= ['LoggedMemberInfo' => $user];
         
         //get member profile
         $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
@@ -152,8 +168,8 @@ class HomeController extends Controller
         
                    
         return view('member.invoice', [
-            'userData'          => $data,
-            'userProfile'       => $profile,
+            'userData'          => $user,
+            // 'userProfile'       => $profile,
             'userTransactions'  => $transactions,
         ]);
     }
