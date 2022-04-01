@@ -159,7 +159,7 @@
                                             @if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
                                             $user['Month']))))
 
-                                            <a href="{{ SearchInvoicePdf::getSummaryBillLink($userProfile['MEMBER_CODE'],  $user['Month']) }}"
+                                            <a href="{{ SearchInvoicePdf::getSummaryBillLink($userData['user_code'],  $user['Month']) }}"
                                                 target="_blank"><img class="img-fluid"
                                                     src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a>
                                             @else
@@ -170,7 +170,7 @@
                                         <td>
                                             @if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
                                             $user['Month']))))
-                                            <a href="{{ SearchInvoicePdf::getDetailBillLink($userProfile['MEMBER_CODE'],  $user['Month']) }}"
+                                            <a href="{{ SearchInvoicePdf::getDetailBillLink($userData['user_code'],  $user['Month']) }}"
                                                 target="_blank"><img class="img-fluid"
                                                     src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a>
                                         </td>
