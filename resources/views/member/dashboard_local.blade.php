@@ -221,7 +221,7 @@
 
                                 <div class="member_other-pro-img">
                                     <img class="img-fluid" src="data:image/png;base64,                          
-                                    {{ $userProfile['spouse_image'] }}" alt="" />
+                                    {{ $details['spouse_image'] }}" alt="" />
 
                                 </div>
 
