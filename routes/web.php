@@ -450,6 +450,9 @@ Route::group([
 ], function () {
     Route::get('/login', [HomeController::class, 'memberLogin'])->name('login');
 
+
+    
+
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/invoice', [HomeController::class, 'invoice'])->name('invoice');
