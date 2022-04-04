@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
-
-
 class UsersController extends Controller
 {
     public function index()
@@ -149,48 +147,48 @@ class UsersController extends Controller
             
             //    dd($profile);
                
-               return view('admin.users.edit',compact('roles', 'user'), [
+               return view('admin.users.edit', compact('roles', 'user'), [
                    
                    'userProfile'       => $profile,
                    // 'userTransactions'  => $transactions,
-               ]);  
+               ]);
                
 
-        }   
+        }
     }
 
-    public function saveUserJson(Request $request){
-
+    public function saveUserJson(Request $request)
+    {
         $user = User::where('user_code', '=', $request->code)->first();
 
         $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
 
-       $fields= [
+        $fields= [
              'MCODE' => $request->code
            ];
    
-           $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+        $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
        
           
 
-       $profile = Http::withoutVerifying()
+        $profile = Http::withoutVerifying()
                ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
                                'Content-Type' => 'application/json',])
                ->withOptions(["verify"=>false])
                ->post($url)->json()['data'];
 
 
-            //    dd($profile);
+        //    dd($profile);
         //Saving data into user table
         $user->email= ($profile['EMAIL'] != "") ? $profile['EMAIL'] : "";
 
-        $user->is_active= ($profile['CURENTSTATUS'] != 'ACTIVE') ? '0' : '1';
+        $user->status= $profile['CURENTSTATUS'];
 
         $user->phone_number_1 = (preg_match('/^[0-9]{10}+$/', $profile['MOBILENO'])) ? $profile['MOBILENO'] : "";
 
-        if($user->save()){
-            $userInformation = UserDetail::where('user_code_id',$user->id)->first();
+        if ($user->save()) {
+            $userInformation = UserDetail::where('user_code_id', $user->id)->first();
             
             // $memberbase64 = "data:image/png". ";base64," . base64_encode($profile['MemberImage']);
 
@@ -205,68 +203,50 @@ class UsersController extends Controller
 
             // dd($profile['children']);
 
-            if(!empty($profile['children'])){
-
-
- 
-                for($i=0; $i< count($profile['children']); ++$i){
-                //save the first child
-                if(!empty($profile['children'][$i]) && $i == 0)
-                {
-
-                    $child1_name = $profile['children'][$i]['CHILDREN1_NAME'];
-                    $child1_dob = $profile['children'][$i]['DOB'];
-                    $child1_sex = $profile['children'][$i]['SEX'];
-                    $child1_phone1 = $profile['children'][$i]['PHONE1'];
-                    $child1_phone2 = $profile['children'][$i]['PHONE2'];
-                    $child1_mobile = $profile['children'][$i]['MOBILENO'];
-                    $child1_image = $profile['children'][$i]['Image'];
-                    
-
-                    
+            if (!empty($profile['children'])) {
+                for ($i=0; $i< count($profile['children']); ++$i) {
+                    //save the first child
+                    if (!empty($profile['children'][$i]) && $i == 0) {
+                        $child1_name = $profile['children'][$i]['CHILDREN1_NAME'];
+                        $child1_dob = $profile['children'][$i]['DOB'];
+                        $child1_sex = $profile['children'][$i]['SEX'];
+                        $child1_phone1 = $profile['children'][$i]['PHONE1'];
+                        $child1_phone2 = $profile['children'][$i]['PHONE2'];
+                        $child1_mobile = $profile['children'][$i]['MOBILENO'];
+                        $child1_image = $profile['children'][$i]['Image'];
+                    } else {
+                        // break;
+                    }
                 
-                }else{
-                    // break;
+                    //Save the second child
+                    if (!empty($profile['children'][$i]) && $i == 1) {
+                        $child2_name = $profile['children'][$i]['CHILDREN1_NAME'];
+                        $child2_dob = $profile['children'][$i]['DOB'];
+                        $child2_sex = $profile['children'][$i]['SEX'];
+                        $child2_phone1 = $profile['children'][$i]['PHONE1'];
+                        $child2_phone2 = $profile['children'][$i]['PHONE2'];
+                        $child2_mobile = $profile['children'][$i]['MOBILENO'];
+                        $child2_image = $profile['children'][$i]['Image'];
+                    } else {
+                        // break;
+                    }
+                
+                    //Save the Third child
+                    if (!empty($profile['children'][$i]) && $i == 2) {
+                        $child3_name = $profile['children'][$i]['CHILDREN1_NAME'];
+                        $child3_dob = $profile['children'][$i]['DOB'];
+                        $child3_sex = $profile['children'][$i]['SEX'];
+                        $child3_phone1 = $profile['children'][$i]['PHONE1'];
+                        $child3_phone2 = $profile['children'][$i]['PHONE2'];
+                        $child3_mobile = $profile['children'][$i]['MOBILENO'];
+                        $child3_image = $profile['children'][$i]['Image'];
+                    } else {
+                        // break;
+                    }
                 }
-                
-                //Save the second child
-                if(!empty($profile['children'][$i]) && $i == 1)
-                {
-                
-                    $child2_name = $profile['children'][$i]['CHILDREN1_NAME'];
-                    $child2_dob = $profile['children'][$i]['DOB'];
-                    $child2_sex = $profile['children'][$i]['SEX'];
-                    $child2_phone1 = $profile['children'][$i]['PHONE1'];
-                    $child2_phone2 = $profile['children'][$i]['PHONE2'];
-                    $child2_mobile = $profile['children'][$i]['MOBILENO'];
-                    $child2_image = $profile['children'][$i]['Image'];
+            }
 
-                }else{
-                    // break;
-                }
-                
-                //Save the Third child
-                if(!empty($profile['children'][$i]) && $i == 2)
-                {
-                
-                    $child3_name = $profile['children'][$i]['CHILDREN1_NAME'];
-                    $child3_dob = $profile['children'][$i]['DOB'];
-                    $child3_sex = $profile['children'][$i]['SEX'];
-                    $child3_phone1 = $profile['children'][$i]['PHONE1'];
-                    $child3_phone2 = $profile['children'][$i]['PHONE2'];
-                    $child3_mobile = $profile['children'][$i]['MOBILENO'];
-                    $child3_image = $profile['children'][$i]['Image'];
-
-                }else{
-                    // break;
-                }
-                
-                
-                
-                }
-             }
-
-            if(!$userInformation){
+            if (!$userInformation) {
                 $user->userCodeUserDetails()->create([
                     'member_type_code'=>$profile['MEMBERTYPECODE'],
                     'member_type'=>$profile['MEMBERTYPE'],
@@ -342,9 +322,7 @@ class UsersController extends Controller
                     'children3_mobileno'=>isset($child3_mobile) ? $child3_mobile : '',
 
                     ])->id;
-            }
-            else{
-
+            } else {
                 $userInformation->member_type_code= $profile['MEMBERTYPECODE'];
                 $userInformation->member_type= $profile['MEMBERTYPE'];
                 $userInformation->date_of_birth= date("d-m-Y", strtotime($profile["DOB"]));
@@ -431,18 +409,8 @@ class UsersController extends Controller
                 $userInformation->children3_mobileno = isset($child3_mobile) ? $child3_mobile : '';
 
                 $userInformation->save();
-
             }
-
-        
-
-       
-        
-
         }
         return redirect()->back()->with('success', 'user data updated successfully');
-
-        
-
     }
 }
