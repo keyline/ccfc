@@ -171,15 +171,15 @@
                                                                 Members area <span class="submenu_arrow"><i
                                                                         class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
-                                                            <ul class="submenu dropdown-menu">
-                                                                <li><a class="nav-link"
-                                                                        href="{{ route('member.dashboard') }}">Member
+                                                            <ul class="submenu dropdown-menu membermenusub">
+                                                                <li><a class="nav-link" href="{{ route('member.dashboard') }}">Member
                                                                         dashboard</a></li>
+
                                                                 <li><a class="nav-link"
                                                                         href="{{ route('member.events_members_only') }}">Events</a>
                                                                 </li>
                                                                 <li><a class="nav-link" href="#/">News</a>
-                                                                    <ul class="submenu dropdown-menu">
+                                                                    <ul class="submenu dropdown-menu newssubsub">
                                                                         <li><a
                                                                                 href="{{ route('member.1792-newsletter') }}">1792</a>
                                                                         </li>
@@ -188,6 +188,9 @@
                                                                                 & Circulars</a></li>
                                                                     </ul>
                                                                 </li>
+
+
+
                                                                 <li><a class="nav-link"
                                                                         href="{{ route('member.rules_regulation') }}">Rules
                                                                         & Regulations</a></li>

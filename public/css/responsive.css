@@ -639,6 +639,15 @@
     .member_details_section .col-md-12.pl-0 {
         padding-left: 15px !important;
     }
+    .memberbelowinfo_section .row {
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .dashboard_resetbtn {
+        margin-top: 20px;
+    }
     
 }
 
@@ -701,7 +710,7 @@
 
 /*SMALL MOBILE VERSION*/
 @media screen and (max-width: 480px) {
-    .mobile_bottom_icon .mb_writeuscall a{font-size: 16px;}
+    .mobile_bottom_icon .mb_writeuscall a{font-size: 15px;}
     .member_profile_item{display: block;}
     p.member_list_input, p.member_list_text{width: 100%; padding-right: 0;}
     .invoicepayment_section .invoicepayment_box{display: block;}
@@ -710,5 +719,11 @@
     }
     .invoicepayment_section .invoicepayment_box input[type="text"]{width: 100%;}
     .invoicepayment_box .invoicepayment_paybtn button{width: 100%; margin-top: 15px;}
+    .poolpub_midimg {
+        flex-direction: column;
+        align-items: center;
+    }
+    .gym-general-sec .poolpub_midimg .project-item{padding-bottom: 15px !important; width: 100%;}
+
     
 }

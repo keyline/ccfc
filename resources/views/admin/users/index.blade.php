@@ -46,6 +46,10 @@
                         <th>
                             {{ trans('cruds.user.fields.phone_number_1') }}
                         </th>
+
+                        <th>
+                            {{ trans('cruds.user.fields.updated_at') }}
+                        </th>
                         <th>
                             &nbsp;
                         </th>
@@ -84,6 +88,11 @@
                         <td>
                             {{ $user->phone_number_1 ?? '' }}
                         </td>
+
+                        <td>
+                            {{ $user->updated_at ?? '' }}
+                        </td>
+
                         <td>
                             @can('user_show')
                             <a class="btn btn-xs btn-primary" href="{{ route('admin.users.show', $user->id) }}">
@@ -108,13 +117,14 @@
                             @endcan
 
 
-                            <!-- @can('user_edit')
+                            @can('user_edit')
 
-                            <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
+                            <a class="btn btn-xs btn-info user-json"
+                                href="{{ route('admin.saveUserJson', $user->user_code) }}">
                                 {{ trans('global.updatedetails') }}
                             </a>
 
-                            @endcan -->
+                            @endcan
 
 
                             <!-- @can('user_edit')
@@ -125,9 +135,9 @@
 
                             @endcan -->
 
-                            <a class="btn btn-xs btn-info" href="{{ url('admin/users/memberdetails', $user->id) }}">
+                            <!-- <a class="btn btn-xs btn-info" href="{{ url('admin/users/memberdetails', $user->id) }}">
                                 {{ trans('global.fetchdetails') }}
-                            </a>
+                            </a> -->
 
 
 

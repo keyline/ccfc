@@ -90,17 +90,36 @@
             <section class="gym-general-sec">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-8">
-                            <div class="gym-inner">
-                                <div class="title-sec">
-                                    <div class="title text-left">
+                        <div class="col-lg-12">
+                            <div class="gym-inner poolpub_midimg">
+                                {{--<div class="title-sec">
+                                     <div class="title text-left">
                                         comming soon
+                                    </div> 
+                                </div>--}}
+                                @foreach($galleries->where("id","10") as $key => $gallery)
+
+                                @foreach($gallery->images as $key => $media)
+                                <div class="project-item">
+                                    <div class="gallery">
+                                        <a href="{{$media->getUrl('')}}" class="item-inner" data-fancybox="image">
+                                            <div class="item-img">
+                                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="">
+                                                <div class="hvr">
+                                                    <i class="zmdi zmdi-search"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+
                                     </div>
                                 </div>
+
+                                @endforeach
+                                @endforeach
                             </div>
 
                         </div>
-                        <div class="col-lg-4">
+                        {{-- <div class="col-lg-4">
                             @foreach($galleries->where("id","10") as $key => $gallery)
 
                             @foreach($gallery->images as $key => $media)
@@ -120,23 +139,8 @@
 
                             @endforeach
                             @endforeach
-                            <!-- <div class="project-item">
-                                <div class="gallery">
-                                    <a href="http://ccfc.keylines.net.in/storage/58/62171940e4354_right_sideimage_1.jpg"
-                                        class="item-inner" data-fancybox="image">
-                                        <div class="item-img">
-                                            <img class="img-fluid"
-                                                src="http://ccfc.keylines.net.in/storage/58/62171940e4354_right_sideimage_1.jpg"
-                                                alt="">
-                                            <div class="hvr">
-                                                <i class="zmdi zmdi-search"></i>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                </div>
-                            </div> -->
-                        </div>
+                            
+                        </div> --}}
                     </div>
                 </div>
             </section>

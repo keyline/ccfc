@@ -95,6 +95,8 @@ class UserDetail extends Model implements HasMedia
         'spouse_business_phone_1',
         'spouse_business_phone_2',
         'spouse_business_email',
+        'member_image',
+        'spouse_image',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -118,6 +120,7 @@ class UserDetail extends Model implements HasMedia
 
     public function setDateOfBirthAttribute($value)
     {
+        
         $this->attributes['date_of_birth'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
@@ -141,29 +144,29 @@ class UserDetail extends Model implements HasMedia
         $this->attributes['anniversary_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function getMemberImageAttribute()
-    {
-        $file = $this->getMedia('member_image')->last();
-        if ($file) {
-            $file->url       = $file->getUrl();
-            $file->thumbnail = $file->getUrl('thumb');
-            $file->preview   = $file->getUrl('preview');
-        }
+    // public function getMemberImageAttribute()
+    // {
+    //     $file = $this->getMedia('member_image')->last();
+    //     if ($file) {
+    //         $file->url       = $file->getUrl();
+    //         $file->thumbnail = $file->getUrl('thumb');
+    //         $file->preview   = $file->getUrl('preview');
+    //     }
 
-        return $file;
-    }
+    //     return $file;
+    // }
 
-    public function getSpouseImageAttribute()
-    {
-        $file = $this->getMedia('spouse_image')->last();
-        if ($file) {
-            $file->url       = $file->getUrl();
-            $file->thumbnail = $file->getUrl('thumb');
-            $file->preview   = $file->getUrl('preview');
-        }
+    // public function getSpouseImageAttribute()
+    // {
+    //     $file = $this->getMedia('spouse_image')->last();
+    //     if ($file) {
+    //         $file->url       = $file->getUrl();
+    //         $file->thumbnail = $file->getUrl('thumb');
+    //         $file->preview   = $file->getUrl('preview');
+    //     }
 
-        return $file;
-    }
+    //     return $file;
+    // }
 
     protected function serializeDate(DateTimeInterface $date)
     {

@@ -38,6 +38,8 @@ use App\Models\SubCommitteeMember;
 
 use App\Models\CommitteeName;
 
+use App\Http\Controllers\Admin\UsersController;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -221,6 +223,7 @@ Route::get('/gallery', function () {
 //     return view('contact-us', compact(['galleries']));
 // });
 
+// Route::post('password', 'ChangePasswordResetController@update')->name('passwordreset.update');
 
 
 
@@ -377,6 +380,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/email', [App\Http\Controllers\Admin\SendInBlueController::class, 'index'])->name('email');
 
     Route::get('contactus', 'ContactController@index')->name('contactus');
+    //Ajax Request
+    Route::get('/saveUserJson/{code}', [UsersController::class, 'saveUserJson'])->name('saveUserJson');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
@@ -388,6 +393,41 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/two-factor', 'ChangePasswordController@toggleTwoFactor')->name('password.toggleTwoFactor');
     }
 });
+
+// Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
+//     // Change password
+//     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordResetController.php'))) {
+        
+        
+//         Route::post('/change_password', 'ChangePasswordResetController@update')->name('change_password.update');
+        
+//     }   
+
+
+// });
+
+    // Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+
+    // Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
+
+
+
+    Route::get('/member/change-password','ChangePasswordResetController@change_password')->name('change_password');
+
+    Route::post('/member/update-password','ChangePasswordResetController@update_password')->name('update_password');
+
+
+    
+
+
+        // Route::get('/change_password', function () {
+        //     return view('change_password');
+        // })->name('change_password');
+        
+
+// Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+// Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
+
 Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Two Factor Authentication
     if (file_exists(app_path('Http/Controllers/Auth/TwoFactorController.php'))) {
@@ -406,17 +446,27 @@ Route::group([
     'prefix' => 'member',
     'as' => 'member.',
     'namespace' => 'Member',
-    'middleware' => ['member']
+    'middleware' => ['member'],
 ], function () {
     Route::get('/login', [HomeController::class, 'memberLogin'])->name('login');
+
+
+    
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/invoice', [HomeController::class, 'invoice'])->name('invoice');
 
+    
+
     Route::get('/events_members_only', function () {
         return view('events_members_only');
     })->name('events_members_only');
+
+
+    
+
+   
 
     Route::get('/1792-newsletter', function () {
         return view('1792-newsletter');
@@ -438,6 +488,10 @@ Route::group([
     Route::get('payment/status', ['as' => 'payment.status', 'uses' => 'PaymentController@status']);
 
     Route::get('/invoice/{month}/{year}/{filename}/download', [HomeController::class, 'download'])->name('download');
+
+
+    
+
 });
 
 
@@ -590,7 +644,7 @@ Route::get('/new_member', function () {
 
     // Route::post('memberdetails','MemberDetailsController@index');
 
-    Route::get('users/memberdetails', 'MemberDetailsController@index')->name('memberdetails');
+    // Route::get('users/memberdetails', 'MemberDetailsController@index')->name('memberdetails');
 
 
     

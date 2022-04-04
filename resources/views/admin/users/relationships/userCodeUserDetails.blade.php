@@ -345,20 +345,18 @@
                                 {{ $userDetail->spouse_business_email ?? '' }}
                             </td>
                             <td>
-                                @if($userDetail->member_image)
-                                <a href="{{ $userDetail->member_image->getUrl() }}" target="_blank"
-                                    style="display: inline-block">
-                                    <img src="{{ $userDetail->member_image->getUrl('thumb') }}">
-                                </a>
-                                @endif
+
+
+                                <img src="data:image/png;base64,                          
+                                        {{ $userDetail['member_image'] }}" height="90" width="100" alt="" />
+
+
                             </td>
                             <td>
-                                @if($userDetail->spouse_image)
-                                <a href="{{ $userDetail->spouse_image->getUrl() }}" target="_blank"
-                                    style="display: inline-block">
-                                    <img src="{{ $userDetail->spouse_image->getUrl('thumb') }}">
-                                </a>
-                                @endif
+
+                                <img src="data:image/png;base64,                          
+                                        {{ $userDetail['spouse_image'] }}" height="90" width="100" alt="" />
+
                             </td>
                             <td>
                                 @can('user_detail_show')
