@@ -183,9 +183,10 @@ class UsersController extends Controller
         //Saving data into user table
         $user->email= ($profile['EMAIL'] != "") ? $profile['EMAIL'] : "";
 
-        $user->status= $profile['CURENTSTATUS'];
-
         $user->phone_number_1 = (preg_match('/^[0-9]{10}+$/', $profile['MOBILENO'])) ? $profile['MOBILENO'] : "";
+
+        $user->status= $profile['CURENTSTATUS']; //saving member status
+
 
         if ($user->save()) {
             $userInformation = UserDetail::where('user_code_id', $user->id)->first();
