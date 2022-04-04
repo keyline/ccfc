@@ -26,7 +26,6 @@ class UsersTableSeeder extends Seeder
         ];
 
         //User::insert($users);
-
         //Rest of Users
         
         $file = public_path() . "//csv//member-data.csv";
