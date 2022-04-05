@@ -40,18 +40,16 @@ class HomeController extends Controller
         if (!$userInfo) {
             return back()->withErrors(['email' => ['Member code not found! please contact admin']]);
         }
-        // if (! Hash::check($request->password, $userInfo->password)) {
-        //     return back()->withErrors(['password' => ['Password is incorrect']]);
-        // }
-
-       if(Auth::attempt(['user_code'=>$request->email,'password'=>$request->password])){
-
-        $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name ]);
-        return redirect('member/dashboard');
-
         
 
-       }
+        if (Auth::attempt(['user_code'=>$request->email,'password'=>$request->password])) {
+            if (is_null($userInfo->email_verified_at)) {
+                return redirect('password/reset')->with([ 'user_code' => $userInfo->user_code ]);
+            } else {
+                $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name ]);
+                return redirect('member/dashboard');
+            }
+        }
         
         return back()->withErrors(['password' => ['Password is incorrect']]);
     }
