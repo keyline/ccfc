@@ -126,13 +126,15 @@ Route::get('/reciprocal_clubs', function () {
 });
 
 Route::get('/general_committee', function () {
+
+    $users = User::with(['roles'])->get();
     $contentPages = ContentPage::all();
     // $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
     // $committeeNames = CommitteeName::all();
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
     $galleries = Gallery::with(['media'])->get();
-    return view('general_committee', compact(['contentPages','committeeMemberMappings','userDetails','galleries']));
+    return view('general_committee', compact(['contentPages','committeeMemberMappings','userDetails','galleries','users']));
 });
 
 

@@ -91,12 +91,14 @@
                 <div class="multiuse_tab_content_section">
                     <div class="container">
                         <div class="row">
-                            @foreach($committeeMemberMappings->where("committee_id","1") as
-                            $committeeMember)
-                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
-                            $key =>$userDetail)
+
                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                 <div class="multiuse_tabcontent_inner">
+
+                                    @foreach($committeeMemberMappings->where("committee_id","1") as
+                                    $committeeMember)
+                                    @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                                    $key =>$userDetail)
 
                                     @if($userDetail['member_image'] == '')
 
@@ -108,21 +110,26 @@
 
                                     <div class="multiuse_tab_ceibity-img">
                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                            <img class="img-fluid" src="                          
-                                              {{ $userDetail->member_image->getUrl('') }}" alt="" />
+
+                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                        {{ $userDetail['member_image'] }}" alt="" />
                                         </a>
                                     </div>
 
                                     @endif
 
+
+
                                     <div class="multiuse_bottom_general">
                                         <h3>{{ $committeeMember->member->name ?? '' }}</h3>
                                         <h4>{{ $committeeMember->designation ?? '' }}</h4>
                                     </div>
+
+                                    @endforeach
+                                    @endforeach
                                 </div>
                             </div>
-                            @endforeach
-                            @endforeach
+
                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                 <div class="multiuse_tabcontent_inner">
                                     <div class="multiuse_tab_ceibity-img">
