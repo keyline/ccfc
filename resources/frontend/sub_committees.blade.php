@@ -214,6 +214,7 @@
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
                                                             <img class="img-fluid" src="data:image/png;base64,                          
                                                                 {{ $userDetail['member_image'] }}" alt="" />
+
                                                         </a>
                                                     </div>
                                                     @endif
