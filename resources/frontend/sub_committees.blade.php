@@ -211,13 +211,10 @@
                                                     @else
 
                                                     <div class="multiuse_tab_ceibity-img">
-
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
-
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
-
                                                     </div>
                                                     @endif
 
@@ -325,9 +322,10 @@
                                                     </div>
                                                     @else
                                                     <div class="multiuse_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        </a>
                                                     </div>
                                                     @endif
 
@@ -370,9 +368,10 @@
                                                     </div>
                                                     @else
                                                     <div class="multiuse_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        </a>
                                                     </div>
                                                     @endif
 
@@ -416,9 +415,10 @@
                                                     @else
 
                                                     <div class="multiuse_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ $userDetail->member_image->getUrl('') }}"
-                                                                alt="" /></a>
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        </a>
                                                     </div>
                                                     @endif
 
@@ -462,13 +462,10 @@
                                                     @else
 
                                                     <div class="multiuse_tab_ceibity-img">
-
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
-
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
-
                                                     </div>
                                                     @endif
 
@@ -514,10 +511,9 @@
                                                     @else
 
                                                     <div class="multiuse_tab_ceibity-img">
-
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 
@@ -564,13 +560,10 @@
                                                     @else
 
                                                     <div class="multiuse_tab_ceibity-img">
-
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
-
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
-
                                                     </div>
                                                     @endif
 
@@ -615,12 +608,10 @@
 
                                                     @else
                                                     <div class="multiuse_tab_ceibity-img">
-
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
-
                                                     </div>
                                                     @endif
 
@@ -665,13 +656,10 @@
                                                     @else
 
                                                     <div class="multiuse_tab_ceibity-img">
-
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
-
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
-
                                                     </div>
 
                                                     @endif
@@ -720,8 +708,8 @@
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                            <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 
