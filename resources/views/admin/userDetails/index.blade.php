@@ -360,6 +360,9 @@
                                         {{ $userDetail['spouse_image'] }}" height="90" width="100" alt="" />
                             </a>
                             @endif
+
+
+
                         </td>
                         <td>
                             @can('user_detail_show')
