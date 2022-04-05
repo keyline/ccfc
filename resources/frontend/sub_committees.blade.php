@@ -205,7 +205,6 @@
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
                                                             <img src="{{ asset('img/demopic.png') }}" alt="" />
                                                         </a>
-
                                                     </div>
 
                                                     @else
