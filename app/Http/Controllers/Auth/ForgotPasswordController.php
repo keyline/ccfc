@@ -49,7 +49,9 @@ class ForgotPasswordController extends Controller
                             ->first();
 
         if (is_null($user)) {
-            return $this->sendResetLinkFailedResponse($request, PasswordBroker::INVALID_USER);
+            //return $this->sendResetLinkFailedResponse($request, PasswordBroker::INVALID_USER);
+            return redirect()->back()->withErrors(['email' => 'Sorry, your email id is not found in our database. Please
+                                                        contact club administrator to update your latest email id.']);
         }
 
         $reset = DB::table('password_resets')
