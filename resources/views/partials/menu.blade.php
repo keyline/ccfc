@@ -204,6 +204,17 @@
                                     </a>
                                 </li>
                                 @endcan
+
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.circulars") }}" class="nav-link">
+                                        <p>
+                                            <i class="fa-fw nav-icon far fa-edit">
+
+                                            </i>
+                                            <p>{{ trans('global.circular') }}</p>
+                                        </p>
+                                    </a>
+                                </li>
                                 @can('content_block_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.content-blocks.index") }}"

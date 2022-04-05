@@ -74,12 +74,18 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="content_inner">
-                                <p>In the city of Calcutta, then just over a hundred years old and growing fast both in
+                                @foreach($contentPages->where("id","19") as $details)
+
+                                {!! $details->page_text !!}
+
+                                @endforeach
+
+                                <!-- <p>In the city of Calcutta, then just over a hundred years old and growing fast both in
                                     commercial and political significance, the British Raj was busy setting its roots.
                                     And sports were definitely a part of the social lore.</p>
                                 <p>The club also offers food from its different counters like charcoal-grilled kebabs,
                                     quick bites of wraps, burgers, pastas etc. There is also a pastry shop and
-                                    specialized tea & coffee counters serving wide varieties of tea and coffee.</p>
+                                    specialized tea & coffee counters serving wide varieties of tea and coffee.</p> -->
                             </div>
                         </div>
                     </div>
@@ -104,54 +110,88 @@
                         </div>
                         <div class="col-lg-9 col-12">
                             <div class="tab-content galleytabimg" id="v-pills-tabContent">
+
+
+                                <!-- <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                                    aria-labelledby="v-pills-home-tab"> -->
+
+                                @foreach($galleries->where("id","35") as $key => $gallery)
                                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                                     aria-labelledby="v-pills-home-tab">
+
+
                                     <!--1-->
+
 
                                     <div class="product-content">
                                         <div class="product-image-content">
+
                                             <div class="product-image">
+
+
+                                                <!-- <img class="img-fluid" id="myImage"
+                                                    src="{{ asset('img/gallary/gal2.jpg') }}" alt=""> -->
+
                                                 <img class="img-fluid" id="myImage"
-                                                    src="{{ asset('img/gallary/gal2.jpg') }}" alt="">
+                                                    src="{{ $gallery->images->first()->getUrl('') }}" alt="">
+
                                             </div>
 
                                             <div class="product-image-slider">
+
                                                 <div id="sync2" class="owl-carousel owl-theme">
+                                                    @foreach($gallery->images as $key => $media)
                                                     <div class="item">
+                                                        <!-- <a href="javascript:void(0)" class="item"
+                                                            onclick="document.getElementById('myImage').src='{{$media->getUrl('')}}'">
+                                                            <img class="img-fluid" src="{{$media->getUrl('')}}" alt=""> -->
+
                                                         <a href="javascript:void(0)" class="item"
-                                                            onclick="document.getElementById('myImage').src='{{ asset('img/gallary/gal2.jpg') }}'">
-                                                            <img class="img-fluid"
-                                                                src="{{ asset('img/gallary/gal2.jpg') }}" alt="">
+                                                            onclick="document.getElementById('myImage').src='{{$media->getUrl('')}}'">
+                                                            <img class="img-fluid" src="{{$media->getUrl('')}}" alt="">
                                                         </a>
                                                     </div>
-                                                    <div class="item">
+                                                    @endforeach
+
+
+                                                    <!-- <div class="item">
                                                         <a href="javascript:void(0)" class="item"
                                                             onclick="document.getElementById('myImage').src='{{ asset('img/gallary/gal1.jpg') }}'">
                                                             <img class="img-fluid"
                                                                 src="{{ asset('img/gallary/gal1.jpg') }}" alt="">
                                                         </a>
-                                                    </div>
-                                                    <div class="item">
+                                                    </div> -->
+                                                    <!-- <div class="item">
                                                         <a href="javascript:void(0)" class="item"
                                                             onclick="document.getElementById('myImage').src='{{ asset('img/gallary/gal3.jpg') }}'">
                                                             <img class="img-fluid"
                                                                 src="{{ asset('img/gallary/gal3.jpg') }}" alt="">
                                                         </a>
-                                                    </div>
-                                                    <div class="item">
+                                                    </div> -->
+                                                    <!-- <div class="item">
                                                         <a href="javascript:void(0)" class="item"
                                                             onclick="document.getElementById('myImage').src='{{ asset('img/gallary/gal4.jpg') }}'">
                                                             <img class="img-fluid"
                                                                 src="{{ asset('img/gallary/gal4.jpg') }}" alt="">
                                                         </a>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
 
                                             </div>
+
                                         </div>
                                     </div>
 
+
+
+
                                 </div>
+
+                                @endforeach
+
+
+                                @foreach($galleries->where("id","36") as $key => $gallery)
+
                                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                                     aria-labelledby="v-pills-profile-tab">
 
@@ -159,39 +199,47 @@
                                         <div class="product-image-content">
                                             <div class="product-image">
                                                 <img class="img-fluid" id="myImageevent"
-                                                    src="{{ asset('img/gallary/gal7.jpg') }}" alt="">
+                                                    src="{{ $gallery->images->first()->getUrl('') }}" alt="">
                                             </div>
 
                                             <div class="product-image-slider">
                                                 <div id="sync2" class="sync2event owl-carousel owl-theme">
+                                                    @foreach($gallery->images as $key => $media)
                                                     <div class="item">
+                                                        <a href="javascript:void(0)" class="item"
+                                                            onclick="document.getElementById('myImageevent').src='{{$media->getUrl('')}}'">
+                                                            <img class="img-fluid" src="{{$media->getUrl('')}}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    @endforeach
+                                                    <!-- <div class="item">
                                                         <a href="javascript:void(0)" class="item"
                                                             onclick="document.getElementById('myImageevent').src='{{ asset('img/gallary/gal7.jpg') }}'">
                                                             <img class="img-fluid"
                                                                 src="{{ asset('img/gallary/gal7.jpg') }}" alt="">
                                                         </a>
-                                                    </div>
-                                                    <div class="item">
+                                                    </div> -->
+                                                    <!-- <div class="item">
                                                         <a href="javascript:void(0)" class="item"
                                                             onclick="document.getElementById('myImageevent').src='{{ asset('img/gallary/gal6.jpg') }}'">
                                                             <img class="img-fluid"
                                                                 src="{{ asset('img/gallary/gal6.jpg') }}" alt="">
                                                         </a>
-                                                    </div>
-                                                    <div class="item">
+                                                    </div> -->
+                                                    <!-- <div class="item">
                                                         <a href="javascript:void(0)" class="item"
                                                             onclick="document.getElementById('myImageevent').src='{{ asset('img/gallary/gal5.jpg') }}'">
                                                             <img class="img-fluid"
                                                                 src="{{ asset('img/gallary/gal5.jpg') }}" alt="">
                                                         </a>
-                                                    </div>
-                                                    <div class="item">
+                                                    </div> -->
+                                                    <!-- <div class="item">
                                                         <a href="javascript:void(0)" class="item"
                                                             onclick="document.getElementById('myImageevent').src='{{ asset('img/gallary/gal4.jpg') }}'">
                                                             <img class="img-fluid"
                                                                 src="{{ asset('img/gallary/gal4.jpg') }}" alt="">
                                                         </a>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
 
                                             </div>
@@ -199,6 +247,8 @@
                                     </div>
 
                                 </div>
+
+                                @endforeach
 
                             </div>
 

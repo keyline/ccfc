@@ -324,6 +324,7 @@ return [
     'leave'                          => 'Leave',
     'calendar'                       => 'Calendar',
     'messenger'                      => 'Messenger',
-    'email'                         =>  'Email',
-    'contact-us'                      => 'Contact Us',
+    'email'                          => 'Email',
+    'circular'                       => 'Circular',
+    'contact-us'                     => 'Contact Us',
 ];

@@ -40,6 +40,9 @@ use App\Models\CommitteeName;
 
 use App\Http\Controllers\Admin\UsersController;
 
+
+use App\Models\circular;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -209,9 +212,11 @@ Route::get('/annual_report', function () {
 
 
 Route::get('/gallery', function () {
+
+    $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
   
-    return view('gallery', compact(['galleries']));
+    return view('gallery', compact(['contentPages','galleries']));
 });
 
 
@@ -273,6 +278,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Content Category
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
     Route::resource('content-categories', 'ContentCategoryController');
+
+
 
     // Content Tag
     Route::delete('content-tags/destroy', 'ContentTagController@massDestroy')->name('content-tags.massDestroy');
@@ -379,6 +386,24 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('create/email', [App\Http\Controllers\Admin\SendInBlueController::class, 'index'])->name('email');
 
+
+
+
+    Route::get('create/circulars', [App\Http\Controllers\Admin\CircularController::class, 'index'])->name('circulars');
+
+    Route::get('create/add-circular', [App\Http\Controllers\Admin\CircularController::class, 'create']);
+
+    Route::post('create/add-circular', [App\Http\Controllers\Admin\CircularController::class, 'store']);
+
+    Route::get('create/edit-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'edit']);
+
+    Route::put('create/update-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'update']);
+
+    Route::get('create/delete-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'destroy']);
+
+
+
+
     Route::get('contactus', 'ContactController@index')->name('contactus');
     //Ajax Request
     Route::get('/saveUserJson/{code}', [UsersController::class, 'saveUserJson'])->name('saveUserJson');
@@ -459,8 +484,14 @@ Route::group([
 
     
 
+    
+
+
     Route::get('/events_members_only', function () {
-        return view('events_members_only');
+
+        $galleries = Gallery::with(['media'])->get();
+        $contentPages = ContentPage::all();
+        return view('events_members_only',compact(['galleries','contentPages']));
     })->name('events_members_only');
 
 
@@ -469,17 +500,33 @@ Route::group([
    
 
     Route::get('/1792-newsletter', function () {
-        return view('1792-newsletter');
+
+        $galleries = Gallery::with(['media'])->get();
+        $contentPages = ContentPage::all();
+
+        return view('1792-newsletter',compact(['galleries','contentPages']));
     })->name('1792-newsletter');
 
     Route::get('/notice-circulars', function () {
-        return view('notice-circulars');
+
+        $galleries = Gallery::with(['media'])->get();
+
+        $contentPages = ContentPage::all();
+
+        $circular = circular::all();
+
+        return view('notice-circulars',compact(['galleries','contentPages','circular']));
+
     })->name('notice-circulars');
 
     
     Route::get('/rules_regulation', function () {
-        return view('rules_regulation');
+
+        $galleries = Gallery::with(['media'])->get();
+        $contentPages = ContentPage::all();
+        return view('rules_regulation',compact(['galleries','contentPages']));
     })->name('rules_regulation');
+    
 
     # Call Route
     Route::post('payment', ['as' => 'payment', 'uses' => 'PaymentController@payment']);
@@ -605,9 +652,9 @@ Route::get('/new_member', function () {
         return view('new_member');
     });
     
-    Route::get('/rules_regulation', function () {
-        return view('rules_regulation');
-    });
+    // Route::get('/rules_regulation', function () {
+    //     return view('rules_regulation');
+    // });
      
     
     Route::get('/member-login', function () {
