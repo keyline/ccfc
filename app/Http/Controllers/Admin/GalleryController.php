@@ -23,6 +23,8 @@ class GalleryController extends Controller
 
         $galleries = Gallery::with(['media'])->get();
 
+        // dd($galleries);
+
         return view('admin.galleries.index', compact('galleries'));
     }
 
