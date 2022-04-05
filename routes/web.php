@@ -426,7 +426,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         
 //         Route::post('/change_password', 'ChangePasswordResetController@update')->name('change_password.update');
         
-//     }   
+//     }
 
 
 // });
@@ -437,9 +437,9 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 
 
 
-    Route::get('/member/change-password','ChangePasswordResetController@change_password')->name('change_password');
+    Route::get('/member/change-password', 'ChangePasswordResetController@change_password')->name('change_password');
 
-    Route::post('/member/update-password','ChangePasswordResetController@update_password')->name('update_password');
+    Route::post('/member/update-password', 'ChangePasswordResetController@update_password')->name('update_password');
 
 
     
@@ -535,11 +535,8 @@ Route::group([
     Route::get('payment/status', ['as' => 'payment.status', 'uses' => 'PaymentController@status']);
 
     Route::get('/invoice/{month}/{year}/{filename}/download', [HomeController::class, 'download'])->name('download');
-
-
-    
-
 });
+
 
 
 // Route::get('/reciprocal_clubs', function () {
@@ -707,3 +704,8 @@ Route::get('/new_member', function () {
     // Route::get('admin/contactus', function () {
     //     return view('admin.contact.index');
     // });
+
+    Route::get('password/reset/{token}/{email}/{user_code}', 'Auth\ResetPasswordController@showResetForm')
+    ->name('password.reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')
+    ->name('password.update');

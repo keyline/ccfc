@@ -62,6 +62,12 @@
 
                                             <div>
                                                 <div class="form-group">
+                                                    <input id="user_code" type="text"
+                                                        class="form-control{{ $errors->has('usercode') ? ' is-invalid' : '' }}"
+                                                        name="user_code" required autofocus
+                                                        placeholder="User Code"
+                                                        value="{{ session()->get('user_code') }}">
+
                                                     <input id="email" type="email"
                                                         class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                                         name="email" required autocomplete="email" autofocus
@@ -70,9 +76,12 @@
 
                                                     @if($errors->has('email'))
                                                     <span class="text-danger">
-                                                        <!-- {{ $errors->first('email') }} -->
-                                                        Sorry, your email id is not found in our database. Please
-                                                        contact club administrator to update your latest email id.
+                                                        {{ $errors->first('email') }}
+                                                    </span>
+                                                    @endif
+                                                    @if($errors->has('usercode'))
+                                                    <span class="text-danger">
+                                                        {{ $errors->first('usercode') }}
                                                     </span>
                                                     @endif
                                                 </div>
