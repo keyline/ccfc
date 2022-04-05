@@ -441,6 +441,7 @@ Route::group([
 });
 
 
+
 // Route::get('/reciprocal_clubs', function () {
 //     return view('reciprocal_clubs');
 // });
@@ -606,3 +607,8 @@ Route::get('/new_member', function () {
     // Route::get('admin/contactus', function () {
     //     return view('admin.contact.index');
     // });
+
+    Route::get('password/reset/{token}/{email}/{user_code}', 'Auth\ResetPasswordController@showResetForm')
+    ->name('password.reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')
+    ->name('password.update');
