@@ -30,7 +30,7 @@ class CommitteeMemberMappingController extends Controller
 
         $committees = CommitteeName::pluck('committee_name_master', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $members = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $members = User::pluck('user_code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.committeeMemberMappings.create', compact('committees', 'members'));
     }
@@ -48,7 +48,7 @@ class CommitteeMemberMappingController extends Controller
 
         $committees = CommitteeName::pluck('committee_name_master', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $members = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $members = User::pluck('user_code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $committeeMemberMapping->load('committee', 'member');
 
