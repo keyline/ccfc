@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Member;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
@@ -37,6 +38,8 @@ class HomeController extends Controller
         ]);
         $userInfo= User::where('user_code', '=', $request->email)->first();
 
+        $userDetailsInfo= $userInfo->userCodeUserDetails()->first();
+
         if (!$userInfo) {
             return back()->withErrors(['email' => ['Member code not found! please contact admin']]);
         }
@@ -46,7 +49,14 @@ class HomeController extends Controller
         }
 
         if (Auth::attempt(['user_code'=>$request->email,'password'=>$request->password])) {
-            $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name ]);
+            $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name]);
+
+            //Check if fetching member data has been done or not
+            if (is_null($userDetailsInfo->current_status)) {
+                $request->session()->put('firstMemberUpdate', ['usercode' => $userInfo->user_code]);
+                return redirect()->route('member.profileupdate', $userInfo->user_code);
+            }
+            
             return redirect('member/dashboard');
         }
         
@@ -63,7 +73,14 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $user = User::where('id', '=', session('LoggedMember'))->first();
+        $user = User::with('userCodeUserDetails')
+                        ->where('id', '=', session('LoggedMember'))->first();
+
+        if (is_null($user->current_status)) {
+            //redirect user to have update profile button
+            return redirect()->route('member.profileupdate', $user->user_code);
+        }
+                
 
         $data= ['LoggedMemberInfo' => $user];
         
@@ -101,6 +118,9 @@ class HomeController extends Controller
         //             ->post($tansactionUrl)->json()['data'];
         
         //dd($transactions);
+
+        
+
            
         return view('member.dashboard', [
             'userData'          => $data,
@@ -191,5 +211,10 @@ class HomeController extends Controller
         }
 
         return redirect('/404');
+    }
+
+    public function updateMyProfile(Request $request)
+    {
+        dd($request->all());
     }
 }
