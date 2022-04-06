@@ -30,7 +30,7 @@ class SubCommitteeMembersController extends Controller
 
         $comittee_names = CommitteeName::pluck('committee_name_master', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $members = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $members = User::pluck('user_code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.subCommitteeMembers.create', compact('comittee_names', 'members'));
     }
@@ -48,7 +48,7 @@ class SubCommitteeMembersController extends Controller
 
         $comittee_names = CommitteeName::pluck('committee_name_master', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $members = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $members = User::pluck('user_code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $subCommitteeMember->load('comittee_name', 'member');
 
