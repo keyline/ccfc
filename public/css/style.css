@@ -1317,6 +1317,8 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     /* width: 100px; */
     display: block;
     margin: 0 auto;
+    height: 120px;
+    object-fit: cover;
 }
 
 .club-sec .club-inner .club-info .club-body .club-title {
