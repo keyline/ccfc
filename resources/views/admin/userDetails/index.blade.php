@@ -347,26 +347,29 @@
                         </td>
                         <td>
                             @if($userDetail->member_image)
-                            <a href="{{ $userDetail->member_image->getUrl() }}" target="_blank"
-                                style="display: inline-block">
-                                <img src="{{ $userDetail->member_image->getUrl('thumb') }}">
+                            <a href="{{ $userDetail['member_image'] }}" target="_blank" style="display: inline-block">
+                                <img src="data:image/png;base64,                          
+                                        {{ $userDetail['member_image'] }}" height="90" width="100" alt="" />
                             </a>
                             @endif
                         </td>
                         <td>
                             @if($userDetail->spouse_image)
-                            <a href="{{ $userDetail->spouse_image->getUrl() }}" target="_blank"
-                                style="display: inline-block">
-                                <img src="{{ $userDetail->spouse_image->getUrl('thumb') }}">
+                            <a href="{{ $userDetail['spouse_image'] }}" target="_blank" style="display: inline-block">
+                                <img src="data:image/png;base64,                          
+                                        {{ $userDetail['spouse_image'] }}" height="90" width="100" alt="" />
                             </a>
                             @endif
+
+
+
                         </td>
                         <td>
                             @can('user_detail_show')
-                            <a class="btn btn-xs btn-primary"
+                            <!-- <a class="btn btn-xs btn-primary"
                                 href="{{ route('admin.user-details.show', $userDetail->id) }}">
                                 {{ trans('global.view') }}
-                            </a>
+                            </a> -->
                             @endcan
 
                             <!-- @can('user_detail_edit')

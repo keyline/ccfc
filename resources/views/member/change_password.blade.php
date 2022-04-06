@@ -74,97 +74,71 @@
                     </div>
                     @endif
 
-                    <!-- @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                        @php
-                        Session::forget('success');
-                        @endphp
-                    </div>
-                    @endif -->
-                    <!-- @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                        @php
-                        Session::forget('success');
-                        @endphp
-                    </div>
-                    @endif -->
 
-                    <!-- @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                    @endif -->
 
                     <div class="row">
 
 
                         <div class="col-md-10 offset-2">
                             <div class="panel panel-default">
-                                <!-- <h2>Change password</h2> -->
 
                                 <div class="panel-body">
-                                    <!-- @if (session('error'))
-                                    <div class="alert alert-danger">
-                                        {{ session('error') }}
-                                    </div>
-                                    @endif -->
-                                    <!-- @if (session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                    @endif -->
+
                                     @if($errors)
                                     @foreach ($errors->all() as $error)
-                                    <div class="alert alert-danger">{{ $error }}</div>
+                                    <div class="alert alert-danger">
+
+                                        <!-- {{ $error }} -->
+
+                                        The confirm password and new password does not match.
+
+                                    </div>
                                     @endforeach
                                     @endif
-                                    <form class="form-horizontal" method="POST"
-                                        action="{{ route('changePasswordPost') }}">
-                                        {{ csrf_field() }}
 
-                                        <div
-                                            class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
-                                            <label for="new-password" class="col-md-4 control-label">Current
-                                                Password</label>
+                                    <form action="{{ route('update_password') }}" id="change_password_form"
+                                        method="post">
 
-                                            <div class="col-md-6">
-                                                <input id="current-password" type="password" class="form-control"
-                                                    name="current-password" required>
+                                        @csrf
 
-                                                @if ($errors->has('current-password'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('current-password') }}</strong>
-                                                </span>
-                                                @endif
-                                            </div>
-                                        </div>
+                                        <div class="form-group">
+                                            <label for="old_password">Old Password</label>
 
-                                        <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
-                                            <label for="new-password" class="col-md-4 control-label">New
-                                                Password</label>
+                                            <input type="password" name="old_password" class="form-control"
+                                                id="old_password" required>
 
-                                            <div class="col-md-6">
-                                                <input id="new-password" type="password" class="form-control"
-                                                    name="new-password" required>
+                                            @if ($errors->any('old_password'))
+                                            <span class="alert alert-danger">
+                                                {{ $errors->first('old_password') }}
+                                            </span>
+                                            @endif
 
-                                                @if ($errors->has('new-password'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('new-password') }}</strong>
-                                                </span>
-                                                @endif
-                                            </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="new-password-confirm" class="col-md-4 control-label">Confirm New
-                                                Password</label>
+                                            <label for="password">New Password</label>
 
-                                            <div class="col-md-6">
-                                                <input id="new-password-confirm" type="password" class="form-control"
-                                                    name="new-password_confirmation" required>
-                                            </div>
+                                            <input type="password" name="new_password" class="form-control"
+                                                id="new_password" required>
+
+
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="confirm_password">Confirm Password</label>
+
+                                            <input type="password" name="confirm_password" class="form-control"
+                                                id="confirm_password" required>
+
+                                            <!-- @if ($errors->any('confirm_password'))
+                                            <span class="text-danger">
+                                                 {{ $errors->first('confirm_password') }}
+
+                                            The confirm password and new password does not match.
+                                            </span>
+                                            @endif -->
+
                                         </div>
 
                                         <div class="form-group">
