@@ -44,47 +44,57 @@
             <section class="inner_belowbanner invoice_section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 col-lg-6">
-                            <div class="row">
-                                <form name="updateme" method="POST" action="{{ route('member.updateme') }}">
-                                    @csrf
-                                    <input type="hidden" name="user_code" value="{{ $usercode ??  ''}}" required>
-                                    <button type="submit" name="updateme" value="yes">Update Your Profile</button>
-                                </form>
-                                
+                        <div class="col-md-12 col-lg-12">
+
+                            <div class="resetbox_section">
+                                <div class="card">
+                                    <div class="card-body login-card-body">
+                                        <div class="col-md-12 col-lg-12">
+                                            <form name="updateme" method="POST" action="{{ route('member.updateme') }}">
+                                                @csrf
+                                                <input type="hidden" name="user_code" value="{{ $usercode ??  ''}}"
+                                                    required>
+                                                <button class="btn btn-primary btn-flat btn-block" type="submit"
+                                                    name="updateme" value="yes">Update Your
+                                                    Profile</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+
                         </div>
 
-                        
+
                     </div>
 
                 </div>
 
-        </div>
-        </section>
+            </section>
 
-        <section class="member_details_section">
-            <div class="container">
-                <div class="row">
-                    
+            <section class="member_details_section">
+                <div class="container">
+                    <div class="row">
+
+
+                    </div>
+
+
+
+
 
                 </div>
+            </section>
+            <!-- ********|| HISTORY END ||******** -->
 
 
 
 
-
-            </div>
-        </section>
-        <!-- ********|| HISTORY END ||******** -->
+            @include('common.footer')
+            <!-- ?php include 'assets/inc/footer.php';?> -->
 
 
-
-
-        @include('common.footer')
-        <!-- ?php include 'assets/inc/footer.php';?> -->
-
-
-        </body>
+            </body>
 
 </html>
