@@ -12,7 +12,7 @@
     @include('common.home_header')
     <!-- ********|| RIGHT PART START ||******** -->
 
-    <div class="col-lg-9 col-md-7 p-0 right_side_panel">
+    <div class="col-lg-9 col-md-7 p-0">
         <div class="right-body">
             <!-- ********|| BANNER PART START ||******** -->
             <section class="banner">
@@ -35,7 +35,6 @@
                             </div>
 
                         </div>
-
                         @endforeach
                         @endforeach
                         <!-- <div class="item">
@@ -80,37 +79,32 @@
                                     quick bites of wraps, burgers, pastas etc. There is also a pastry shop and
                                     specialized tea & coffee counters serving wide varieties of tea and coffee.</p>
                             </div> -->
-
                             {!! $contentPage->page_text !!}
                             @endforeach
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="greneral_infolist inner_belowbox_wrapper">
+            <section class="balloting_infolist inner_belowbox_wrapper">
                 <div class="multiuse_tab_content_section">
                     <div class="container">
                         <div class="row">
+                            @foreach($committeeMemberMappings->where("committee_id","1") as
+                            $committeeMember)
+                            @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
+                            $key =>$userDetail)
 
                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                 <div class="multiuse_tabcontent_inner">
 
-                                    @foreach($committeeMemberMappings->where("committee_id","1") as
-                                    $committeeMember)
-                                    @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
-                                    $key =>$userDetail)
-
                                     @if($userDetail['member_image'] == '')
-
                                     <div class="multiuse_tab_ceibity-img">
                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
                                     </div>
-
                                     @else
 
                                     <div class="multiuse_tab_ceibity-img">
                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-
                                             <img class="img-fluid" src="data:image/png;base64,                          
                                         {{ $userDetail['member_image'] }}" alt="" />
                                         </a>
@@ -118,68 +112,59 @@
 
                                     @endif
 
-
-
                                     <div class="multiuse_bottom_general">
                                         <h3>{{ $committeeMember->member->name ?? '' }}</h3>
                                         <h4>{{ $committeeMember->designation ?? '' }}</h4>
                                     </div>
-
-                                    @endforeach
-                                    @endforeach
                                 </div>
                             </div>
 
+                            @endforeach
+                            @endforeach
                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                 <div class="multiuse_tabcontent_inner">
                                     <div class="multiuse_tab_ceibity-img">
-                                        <img src="{{ asset('img/general-committee/AMITAVA DATTA.jpg') }}" alt="" />
+                                        <img src="{{ asset('img/balloting-committee/DINYAR M.jpg') }}" alt="" />
                                     </div>
                                     <div class="multiuse_bottom_general">
-                                        <h3>Mr. Amitava Datta</h3>
-                                        <h4>Vice President</h4>
+                                        <h3>Mr. Dinyar Mucadum</h3>
+                                        <h4>Member</h4>
                                     </div>
                                 </div>
                             </div> -->
                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                 <div class="multiuse_tabcontent_inner">
                                     <div class="multiuse_tab_ceibity-img">
-                                        <img src="{{ asset('img/general-committee/HIMANGSHU AJMERA.jpg') }}" alt="" />
+                                        <img src="{{ asset('img/balloting-committee/PRONOB DASGUPTA.jpg') }}" alt="" />
                                     </div>
                                     <div class="multiuse_bottom_general">
-                                        <h3>Mr. Himangshu Ajmera</h3>
-                                        <h4>Hony. Treasurer</h4>
+                                        <h3>Dr. Pronab Dasgupta</h3>
+                                        <h4>Member</h4>
                                     </div>
                                 </div>
                             </div> -->
                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                 <div class="multiuse_tabcontent_inner">
                                     <div class="multiuse_tab_ceibity-img">
-                                        <img src="{{ asset('img/general-committee/HIRAK DASGUPTA.jpg') }}" alt="" />
+                                        <img src="{{ asset('img/balloting-committee/RAVI KIDWAI.jpg') }}" alt="" />
                                     </div>
                                     <div class="multiuse_bottom_general">
-                                        <h3>Mr. Hirak Dasgupta</h3>
-                                        <h4>Member- Catering</h4>
+                                        <h3>Mr. Ravi Kidwai</h3>
+                                        <h4>Member</h4>
                                     </div>
                                 </div>
                             </div> -->
                             <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                 <div class="multiuse_tabcontent_inner">
                                     <div class="multiuse_tab_ceibity-img">
-                                        <img src="{{ asset('img/general-committee/SANAYA MEHTA VYAS.jpg') }}" alt="" />
+                                        <img src="{{ asset('img/balloting-committee/BABUL MITTER.jpg') }}" alt="" />
                                     </div>
                                     <div class="multiuse_bottom_general">
-                                        <h3>Mrs. Sanaya Mehta Vyas</h3>
-                                        <h4>Member - Entertainment /Communications & Website</h4>
+                                        <h3>Mr. Babul Mitter</h3>
+                                        <h4>Member</h4>
                                     </div>
                                 </div>
                             </div> -->
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>
