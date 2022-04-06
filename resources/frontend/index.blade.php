@@ -456,7 +456,7 @@
                                                         <div class="club-img">
                                                             <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
                                                             <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
-                                                                height="75" width="75" alt="" />
+                                                                alt="" />
                                                         </div>
                                                         <div class="club-title">
 
@@ -492,7 +492,7 @@
                                                         <div class="club-img">
                                                             <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
                                                             <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
-                                                                height="75" width="75" alt="" />
+                                                                alt="" />
                                                         </div>
                                                         <div class="club-title">
 
