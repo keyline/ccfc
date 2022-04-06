@@ -48,13 +48,12 @@
 
                             <div class="row">
 
-
                                 <div class="col-lg-4 col-md-5">
                                     <!-- <div class="member_profileimg">
                                         <img class="img-fluid" src="{{ asset('img/demopic.png') }}" alt="" />
                                     </div> -->
 
-                                    @if($userData['member_image'] == '')
+                                    @if($userData->userCodeUserDetails[0]['member_image'] == '')
 
 
                                     <div class="member_profileimg">
@@ -67,7 +66,7 @@
 
                                     <div class="member_profileimg">
                                         <img class="img-fluid" src="data:image/png;base64,                          
-                                        {{ $userData->member_image}} " alt="" />
+                                        {{ $userData->userCodeUserDetails[0]->member_image}} " alt="" />
                                     </div>
 
 
