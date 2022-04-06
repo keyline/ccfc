@@ -536,6 +536,12 @@ Route::group([
     Route::get('payment/status', ['as' => 'payment.status', 'uses' => 'PaymentController@status']);
 
     Route::get('/invoice/{month}/{year}/{filename}/download', [HomeController::class, 'download'])->name('download');
+
+    Route::get('/{usercode}/update/', function ($usercode) {
+        return view('member.updateprofile', ['usercode' => $usercode]);
+    })->name('profileupdate');
+
+    Route::POST('/updateme', [HomeController::class , 'updateMyProfile'])->name('updateme');
 });
 
 
