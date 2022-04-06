@@ -24,12 +24,13 @@ class MemberAuthMiddleware
             return back();
         }
 
+        if(session()->has('firstMemberUpdate') && $request->path() == 'member/updateme'){
+            return $next($request);
+        }
+
         if (session()->has('firstMemberUpdate') && ! $request->is('member/*/update')) {
             return redirect()->route('member.profileupdate', session('firstMemberUpdate'));
         }
-
-        
-
 
         return $next($request)->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate')
                                 ->header('Pragma', 'no-cache')
