@@ -476,7 +476,6 @@ Route::post('/member/check', [HomeController::class, 'checkMember'])->name('memb
 Route::get('/member/logout', [HomeController::class, 'logout'])->name('member.logout');
 
 
-
 Route::group([
     'prefix' => 'member',
     'as' => 'member.',
@@ -551,6 +550,8 @@ Route::group([
     })->name('profileupdate');
 
     Route::POST('/updateme', [HomeController::class , 'updateMyProfile'])->name('updateme');
+
+
 });
 
 
