@@ -75,7 +75,6 @@
                             <div class="content_inner">
 
                                 @foreach($contentPages->where("id","15") as $contentPage)
-
                                 {!! $contentPage->page_text !!}
                                 @endforeach
 
