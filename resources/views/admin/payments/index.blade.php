@@ -49,7 +49,7 @@
                     @foreach($payments as $key => $user)
                     @foreach($user as $payment)
                     
-                    
+                    @php $userDetails= \App\Models\User::select('*')->where('id', '=', $payment->paid_for_id)->first();@endphp
                     
                         <tr data-entry-id="{{ $payment->paid_for_id }}">
                             <td>
@@ -59,7 +59,7 @@
                                 {{ $payment->id ?? '' }}
                             </td>
                             <td>
-                                {{ $payment->response('firstName') ?? '' }}
+                                {{ $userDetails->name ?? ''}} {{ $userDetails->user_code ?? '' }}
                             </td>
                             <td>
                                 {{ $payment->response('amount') ?? '' }}
