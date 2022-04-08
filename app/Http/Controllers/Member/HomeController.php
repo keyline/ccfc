@@ -15,6 +15,8 @@ use File;
 use Response;
 use Auth;
 
+use pcrov\JsonReader\JsonReader;
+
 class HomeController extends Controller
 {
     //
@@ -227,25 +229,54 @@ class HomeController extends Controller
 
         $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
 
-        $fields= [
-             'MCODE' => $request->user_code
-           ];
-   
-        $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+
+        $client = new Client(['verify' => false]);
+        $res = $client->request('POST', 'https://ccfcmemberdata.in/Api/MemberProfile', [
+        'headers'=> ['Authorization' =>'Bearer '. $token,'Accept'     => 'application/json'],
+            'query' => [
+                'MCODE' => $user->user_code,
+                
+            ]
+        ]);
+        // echo $res->getStatusCode();
+        // 200
+        // echo $res->getHeader('content-type');
+        // 'application/json; charset=utf8'
+       $respones=$res->getBody()->getContents();
+// dd($respones);
+    $teststr = <<< JSON
+
+{$respones}
+
+JSON;
+
+       $reader = new JsonReader();
+       
+$reader->json($teststr);
+
+
+// while ($reader->read("EMAIL")) {
+//     var_dump($reader->value());
+// }
+// $reader->close();
+
+
+$reader->read('EMAIL');
+
+$memberemail=$reader->value();
+
 
        
-          
-
-        $profile = Http::withoutVerifying()
-               ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                               'Content-Type' => 'application/json',])
-               ->withOptions(["verify"=>false])
-               ->post($url)->json()['data'];
+// var_dump($reader->value()); 
 
 
-        //    dd($profile);
+$reader->close(); 
+
+        $profileArr=json_decode($respones,true);
+
+        $profile=$profileArr['data'];
         //Saving data into user table
-        $user->email= ($profile['EMAIL'] != "") ? $profile['EMAIL'] : "";
+        $user->email= $memberemail;
 
         $user->phone_number_1 = (preg_match('/^[0-9]{10}+$/', $profile['MOBILENO'])) ? $profile['MOBILENO'] : "";
 
