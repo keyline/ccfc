@@ -150,11 +150,20 @@ Route::get('/balloting_committee', function () {
 
 Route::get('/sub_committees', function () {
     $contentPages = ContentPage::all();
+
+    
     $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
+    
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
+
+
     $committeeNames = CommitteeName::all();
+
+   
     $galleries = Gallery::with(['media'])->get();
-    return view('sub_committees', compact(['contentPages','subCommitteeMembers','userDetails','committeeNames','galleries']));
+  
+
+    return view('sub_committees', compact(['contentPages','subCommitteeMembers','committeeNames','galleries','userDetails']));
 });
 
 
@@ -206,9 +215,10 @@ Route::get('/amenities_services', function () {
 
 
 Route::get('/annual_report', function () {
+    $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
   
-    return view('annual_report', compact(['galleries']));
+    return view('annual_report', compact(['galleries','contentPages']));
 });
 
 
