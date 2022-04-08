@@ -208,9 +208,8 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/jpg;base64,                          
-                                                                {{ $userDetail['member_image'] }}" width="5" height="6"
-                                                            alt="" />
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 

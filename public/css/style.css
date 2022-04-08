@@ -2032,6 +2032,8 @@ section.sports-page {
 
 .sport_tab_content_section img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
 }
