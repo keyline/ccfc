@@ -46,8 +46,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($payments as $key => $payment)
-                        <tr data-entry-id="{{ $payment->id }}">
+                    @foreach($payments as $key => $user)
+                    @foreach($user as $payment)
+                    
+                    
+                    
+                        <tr data-entry-id="{{ $payment->paid_for_id }}">
                             <td>
 
                             </td>
@@ -55,22 +59,22 @@
                                 {{ $payment->id ?? '' }}
                             </td>
                             <td>
-                                {{ $payment->member->name ?? '' }}
+                                {{ $payment->response('firstName') ?? '' }}
                             </td>
                             <td>
-                                {{ $payment->amount_paid ?? '' }}
+                                {{ $payment->response('amount') ?? '' }}
                             </td>
                             <td>
-                                {{ $payment->gateway_name ?? '' }}
+                                {{ $payment->gateway_name ?? 'PayU Money' }}
                             </td>
                             <td>
-                                {{ $payment->comment ?? '' }}
+                                {{ $payment->response('status') ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $payment->status ?? '' }}</span>
+                                <span style="display:none">{{ $payment->response('status') ?? '' }}</span>
                                 <input type="checkbox" disabled="disabled" {{ $payment->status ? 'checked' : '' }}>
                             </td>
-                            <td>
+                            <!-- <td>
                                 @can('payment_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.payments.show', $payment->id) }}">
                                         {{ trans('global.view') }}
@@ -91,10 +95,12 @@
                                     </form>
                                 @endcan
 
-                            </td>
+                            </td> -->
 
                         </tr>
                     @endforeach
+                    @endforeach
+                    
                 </tbody>
             </table>
         </div>
