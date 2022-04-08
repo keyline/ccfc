@@ -186,9 +186,6 @@
                                     aria-labelledby="indian-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            <!-- @php
-                                            var_dump($userDetails)
-                                            @endphp -->
 
                                             @foreach($members->where("select_sport_id","1") as $member)
 
@@ -208,13 +205,14 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/jpg;base64,                          
-                                                                {{ $userDetail['member_image'] }}" width="5" height="6"
-                                                            alt="" />
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 
                                                     @endif
+
+
 
                                                     <div class=" sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
