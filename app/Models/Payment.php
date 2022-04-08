@@ -6,11 +6,14 @@ use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Tzsk\Payu\Models\HasTransactions;
 
 class Payment extends Model
 {
     use SoftDeletes;
     use HasFactory;
+    use HasTransactions;
+
 
     public $table = 'payments';
 
