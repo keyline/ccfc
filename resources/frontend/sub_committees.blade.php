@@ -192,8 +192,13 @@
                                             @foreach($subCommitteeMembers->where("comittee_name_id","3") as
                                             $committeeMember)
 
+                                            @php echo $committeeMember->member->id @endphp
+
+
                                             @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
                                             as $userDetail)
+
+
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
@@ -307,6 +312,9 @@
                                         <div class="row">
                                             @foreach($subCommitteeMembers->where("comittee_name_id","4") as
                                             $committeeMember)
+
+
+
                                             @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
                                             as
                                             $key =>$userDetail)

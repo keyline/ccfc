@@ -215,9 +215,10 @@ Route::get('/amenities_services', function () {
 
 
 Route::get('/annual_report', function () {
+    $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
   
-    return view('annual_report', compact(['galleries']));
+    return view('annual_report', compact(['galleries','contentPages']));
 });
 
 

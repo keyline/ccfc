@@ -73,7 +73,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="content_inner">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+
+                                @foreach($contentPages->where("id","15") as $contentPage)
+
+                                {!! $contentPage->page_text !!}
+                                @endforeach
+
+                                <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                     Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                                     unknown printer took a galley of type and scrambled it to make a type specimen book.
                                     It has survived not only five centuries, but also the leap into electronic
@@ -88,7 +94,7 @@
                                     packages and web page editors now use Lorem Ipsum as their default model text, and a
                                     search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
                                     versions have evolved over the years, sometimes by accident, sometimes on purpose
-                                    (injected humour and the like).</p>
+                                    (injected humour and the like).</p> -->
                             </div>
                         </div>
                     </div>
