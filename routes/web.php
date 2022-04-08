@@ -109,11 +109,9 @@ Route::get('/famous_sportsmen', function () {
 Route::get('/sports', function () {
     $contentPages = ContentPage::all();
     $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
-    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    $userDetails = UserDetail::with(['user_code'])->get();
     $galleries = Gallery::with(['media'])->get();
-    // $users = User::with(['roles'])->get();
     return view('sports', compact(['contentPages','members','userDetails','galleries']));
-    // return view('sports', compact(['members','users']));
 });
 
 

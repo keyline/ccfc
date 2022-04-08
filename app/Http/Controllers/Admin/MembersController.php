@@ -29,7 +29,7 @@ class MembersController extends Controller
     {
         abort_if(Gate::denies('member_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $select_members = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $select_members = User::pluck('user_code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $select_titles = Title::pluck('titles', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -49,7 +49,7 @@ class MembersController extends Controller
     {
         abort_if(Gate::denies('member_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $select_members = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $select_members = User::pluck('user_code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $select_titles = Title::pluck('titles', 'id')->prepend(trans('global.pleaseSelect'), '');
 
