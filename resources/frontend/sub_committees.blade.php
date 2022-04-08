@@ -192,7 +192,7 @@
                                             @foreach($subCommitteeMembers->where("comittee_name_id","3") as
                                             $committeeMember)
 
-                                            @php echo $committeeMember->member->id @endphp
+
 
 
                                             @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
