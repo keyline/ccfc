@@ -32,7 +32,7 @@ class PaymentsController extends Controller
         //dd($payments);
 
         
-        return view('admin.payments.index', compact('payments'));
+        return view('admin.payments.index', compact('payments', 'users'));
     }
 
     public function create()
