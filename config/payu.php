@@ -11,8 +11,8 @@ return [
     'gateways' => [
         'money' => new PayuMoney([
             'mode' => env('PAYU_MONEY_MODE', Gateway::LIVE_MODE),
-            'key' => env('PAYU_MONEY_KEY', 'JsaZRQ'),
-            'salt' => env('PAYU_MONEY_SALT', 'g2U72sm8'),
+            'key' => env('PAYU_MONEY_KEY', 'Bg6kFX'),
+            'salt' => env('PAYU_MONEY_SALT', 'iUf3jtDm'),
             'auth' => env('PAYU_MONEY_AUTH', 'default'),
         ]),
 
