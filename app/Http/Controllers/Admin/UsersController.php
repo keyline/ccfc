@@ -165,7 +165,7 @@ class UsersController extends Controller
         //Dispatching the Job here
         \App\Jobs\MemberProfileUpdate::dispatch($request->code)->onQueue('memberprofile');
         
-        //return redirect()->back()->with('success', 'user data updated successfully');
-        dd("placed this job");
+        return redirect()->back()->with('success', 'user data updated successfully');
+        //dd("placed this job");
     }
 }
