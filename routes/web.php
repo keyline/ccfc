@@ -417,7 +417,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('/auto-memberprofileupdate', function () {
         $query= \App\Models\User::query();
-        $query->where('email', '=', null);
+        $query->where('email', '=', '');
         $query->where('id', '<>', 1);
         $users= $query->get();
         foreach ($users as $user) {
