@@ -44,26 +44,28 @@
             <section class="inner_belowbanner invoice_section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 col-lg-6">
-                            <div class="row">
-                                
-                                <div class="col-lg-8 col-md-7">
-                                    <div class="member_profiletop">
-                                        <h4>Payment Status : {{ $status['status'] }}</h4>
-                                        <h4>Payment Ref. No.: {{ $status['mihpayid'] }}</h4>
+                        <div class="col-md-12 col-lg-12">
+                                <div class="title-sec pt-5">
+                                    <div class="title mb-3">
+                                        Payment Status : {{ $status['status'] }}
                                     </div>
+                                </div>                           
+
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="history-inner resetbox_section text-center pb-5">
+                                <h4>Payment Ref. No.: {{ $status['mihpayid'] }}</h4>
                                     @if ($status['status'] == 'success')
                                     <span class="success-msg">Thank you for your payment. The paid amount will reflect in your account within next 24 hours.</span>
                                     @else
-                                    <a class="btn btn-info" href="{{ route('member.invoice')}}">Try Again</a>
+                                    <div class="card">
+                                    <button class="btn btn-primary btn-flat btn-block" onclick="location.href='{{ route('member.invoice')}}'">Try Again</button>
+                                    </div>
                                     @endif
-                                </div>
-
                             </div>
                         </div>
-
-                        
-
                     </div>
 
                 </div>
