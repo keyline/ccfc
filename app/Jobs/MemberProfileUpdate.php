@@ -11,6 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use GuzzleHttp\Client;
 use pcrov\JsonReader\JsonReader;
 use App\Models\User;
+use App\Models\UserDetail;
 
 class MemberProfileUpdate implements ShouldQueue
 {
