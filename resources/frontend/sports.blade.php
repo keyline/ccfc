@@ -186,9 +186,6 @@
                                     aria-labelledby="indian-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            <!-- @php
-                                            var_dump($userDetails)
-                                            @endphp -->
 
                                             @foreach($members->where("select_sport_id","1") as $member)
 
@@ -216,6 +213,7 @@
                                                     @endif
 
 
+
                                                     <div class=" sport_player">
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">
@@ -227,7 +225,7 @@
                                                                     {{ $member->select_member->phone_number_1 ?? '' }}</a>
                                                             </p>
                                                             <p><a
-                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
+                                                                    href="mailto:{{ $userDetail->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
                                                             </p>
                                                         </div>
                                                     </div>

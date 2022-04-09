@@ -109,11 +109,9 @@ Route::get('/famous_sportsmen', function () {
 Route::get('/sports', function () {
     $contentPages = ContentPage::all();
     $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
-    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    $userDetails = UserDetail::with(['user_code'])->get();
     $galleries = Gallery::with(['media'])->get();
-    // $users = User::with(['roles'])->get();
     return view('sports', compact(['contentPages','members','userDetails','galleries']));
-    // return view('sports', compact(['members','users']));
 });
 
 
@@ -150,11 +148,20 @@ Route::get('/balloting_committee', function () {
 
 Route::get('/sub_committees', function () {
     $contentPages = ContentPage::all();
+
+    
     $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
+    
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
+
+
     $committeeNames = CommitteeName::all();
+
+   
     $galleries = Gallery::with(['media'])->get();
-    return view('sub_committees', compact(['contentPages','subCommitteeMembers','userDetails','committeeNames','galleries']));
+  
+
+    return view('sub_committees', compact(['contentPages','subCommitteeMembers','committeeNames','galleries','userDetails']));
 });
 
 
@@ -206,9 +213,10 @@ Route::get('/amenities_services', function () {
 
 
 Route::get('/annual_report', function () {
+    $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
   
-    return view('annual_report', compact(['galleries']));
+    return view('annual_report', compact(['galleries','contentPages']));
 });
 
 
