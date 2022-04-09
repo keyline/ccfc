@@ -52,6 +52,11 @@
                                         <h4>Payment Status : {{ $status['status'] }}</h4>
                                         <h4>Payment Ref. No.: {{ $status['mihpayid'] }}</h4>
                                     </div>
+                                    @if ($status['status'] == 'successful')
+                                    <span class="success-msg">Thank you for your payment. The paid amount will reflect in your account within next 24 hours.</span>
+                                    @else
+                                    <a class="btn btn-info" href="{{ route('member.invoice')}}">Try Again</a>
+                                    @endif
                                 </div>
 
                             </div>
