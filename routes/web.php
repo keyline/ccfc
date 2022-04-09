@@ -414,6 +414,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('contactus', 'ContactController@index')->name('contactus');
     //Ajax Request
     Route::get('/saveUserJson/{code}', [UsersController::class, 'saveUserJson'])->name('saveUserJson');
+
+    Route::get('/auto-memberprofileupdate', function () {
+        $query= \App\Models\User::query();
+        $query->where('email', '=', null);
+        $query->where('id', '<>', 1);
+        $users= $query->get();
+        foreach ($users as $user) {
+            \App\Jobs\MemberProfileUpdate::dispatch($user->user_code)->onQueue('memberprofile');
+        }
+        return view('home');
+    });
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
