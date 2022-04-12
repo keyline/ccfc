@@ -8,15 +8,13 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\UserDetail;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
-
-
 
 class UsersController extends Controller
 {
@@ -128,6 +126,9 @@ class UsersController extends Controller
        //get member profile
            $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
 
+
+           
+
        $fields= [
              'MCODE' => $user->user_code
            ];
@@ -148,13 +149,23 @@ class UsersController extends Controller
             
             //    dd($profile);
                
-               return view('admin.users.edit',compact('roles', 'user'), [
+               return view('admin.users.edit', compact('roles', 'user'), [
                    
                    'userProfile'       => $profile,
                    // 'userTransactions'  => $transactions,
-               ]);  
+               ]);
                
 
-        }   
+        }
+    }
+
+    public function saveUserJson(Request $request)
+    {
+        
+        //Dispatching the Job here
+        \App\Jobs\MemberProfileUpdate::dispatch($request->code)->onQueue('memberprofile');
+        
+        return redirect()->back()->with('success', 'user data updated successfully');
+        //dd("placed this job");
     }
 }

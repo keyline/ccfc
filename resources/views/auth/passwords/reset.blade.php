@@ -55,6 +55,19 @@
 
                                                 <div>
                                                     <div class="form-group">
+                                                        <input id="user_code" type="text"
+                                                            class="form-control{{ $errors->has('user_code') ? ' is-invalid' : '' }}"
+                                                            name="user_code"
+                                                            value="{{ $user_code ?? old('user_code') }}" required
+                                                            autocomplete="User Code" autofocus placeholder="User Code">
+
+                                                        @if($errors->has('user_code'))
+                                                        <span class="text-danger">
+                                                            {{ $errors->first('user_code') }}
+                                                        </span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group">
                                                         <input id="email" type="email"
                                                             class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                                             name="email" value="{{ $email ?? old('email') }}" required

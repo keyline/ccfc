@@ -21,7 +21,24 @@
 
                     <div id="innerpage-banner" class="owl-carousel owl-theme">
 
+
+                        @foreach($galleries->where("id","33") as $key => $gallery)
+
+                        @foreach($gallery->images as $key => $media)
+
                         <div class="item">
+
+                            <div class="about-img">
+
+                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
+
+                            </div>
+
+                        </div>
+                        @endforeach
+                        @endforeach
+
+                        <!-- <div class="item">
 
                             <div class="about-img">
 
@@ -39,7 +56,7 @@
 
                             </div>
 
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -65,11 +82,19 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="content_inner">
-                                <p>In the city of Calcutta, then just over a hundred years old and growing fast both in commercial and political significance, the British Raj was busy setting its roots. And sports were definitely a part of the social lore.</p>
-                                <p>The club also offers food from its different counters like charcoal-grilled kebabs, quick bites of wraps, burgers, pastas etc. There is also a pastry shop and specialized tea & coffee counters serving wide varieties of tea and coffee.</p>
+
+                                @foreach($contentPages->where("id","17") as $contentPage)
+                                {!! $contentPage->page_text !!}
+                                @endforeach
+                                <!-- <p>In the city of Calcutta, then just over a hundred years old and growing fast both in
+                                    commercial and political significance, the British Raj was busy setting its roots.
+                                    And sports were definitely a part of the social lore.</p>
+                                <p>The club also offers food from its different counters like charcoal-grilled kebabs,
+                                    quick bites of wraps, burgers, pastas etc. There is also a pastry shop and
+                                    specialized tea & coffee counters serving wide varieties of tea and coffee.</p> -->
                             </div>
                         </div>
-                    </div>      
+                    </div>
                 </div>
             </section>
 
@@ -79,7 +104,8 @@
                         <div class="col-lg-4 col-sm-6 col-md-12">
                             <div class="newsletter_pdfdownload">
                                 <div class="newsletter_left">
-                                    <a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
+                                    <a href="#" target="_blank"><img class="img-fluid"
+                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
                                 </div>
                                 <div class="newsletter_right">
                                     <h3><a href="#" target="_blank">Download<br> News letter</a></h3>
@@ -90,7 +116,8 @@
                         <div class="col-lg-4 col-sm-6 col-md-12">
                             <div class="newsletter_pdfdownload">
                                 <div class="newsletter_left">
-                                    <a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
+                                    <a href="#" target="_blank"><img class="img-fluid"
+                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
                                 </div>
                                 <div class="newsletter_right">
                                     <h3><a href="#" target="_blank">Download<br> News letter</a></h3>
@@ -101,7 +128,8 @@
                         <div class="col-lg-4 col-sm-6 col-md-12">
                             <div class="newsletter_pdfdownload">
                                 <div class="newsletter_left">
-                                    <a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
+                                    <a href="#" target="_blank"><img class="img-fluid"
+                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
                                 </div>
                                 <div class="newsletter_right">
                                     <h3><a href="#" target="_blank">Download<br> News letter</a></h3>
@@ -112,7 +140,8 @@
                         <div class="col-lg-4 col-sm-6 col-md-12">
                             <div class="newsletter_pdfdownload">
                                 <div class="newsletter_left">
-                                    <a href="#" target="_blank"><img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
+                                    <a href="#" target="_blank"><img class="img-fluid"
+                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
                                 </div>
                                 <div class="newsletter_right">
                                     <h3><a href="#" target="_blank">Download<br> News letter</a></h3>

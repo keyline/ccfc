@@ -45,42 +45,51 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-lg-6">
+
                             <div class="row">
+
                                 <div class="col-lg-4 col-md-5">
                                     <!-- <div class="member_profileimg">
                                         <img class="img-fluid" src="{{ asset('img/demopic.png') }}" alt="" />
                                     </div> -->
 
-                                    @if($userProfile['MemberImage'] == '')
+                                    @if($userData->userCodeUserDetails[0]['member_image'] == '')
 
 
                                     <div class="member_profileimg">
-                                        <img class="img-fluid" src="{{ asset('img/demopic.png') }}" alt="" />
+                                        <img class="img-fluid ifnotpic" src="{{ asset('img/Profile-Icon-01.svg') }}"
+                                            alt="" />
                                     </div>
-
 
                                     @else
 
+
                                     <div class="member_profileimg">
                                         <img class="img-fluid" src="data:image/png;base64,                          
-                                        {{ $userProfile['MemberImage'] }}" alt="" />
+                                        {{ $userData->userCodeUserDetails[0]->member_image}} " alt="" />
                                     </div>
 
-                                    @endif
 
+                                    @endif
 
 
                                 </div>
                                 <div class="col-lg-8 col-md-7">
                                     <div class="member_profiletop">
                                         <h4>Welcome</h4>
-                                        <h2>{{ $userProfile['MEMBER_NAME'] }}</h2>
-                                        <p><strong>Ph No:</strong>{{ $userProfile['MOBILENO'] }} </p>
-                                        <p><strong>Mail ID:</strong>{{ $userProfile['EMAIL'] }} </p>
+                                        <h2>{{ $userData->name}}</h2>
+
+                                        <p><strong>Ph No:</strong>{{ $userData->userCodeUserDetails[0]->mobile_no }}
+                                        </p>
+                                        <p><strong>Mail ID:</strong>{{ $userData->email}}
+                                        </p>
                                     </div>
                                 </div>
 
                             </div>
+
+
+
                         </div>
 
                         <div class="col-md-12 col-lg-6">
@@ -129,7 +138,7 @@
                                         <th scope="col">Month</th>
                                         <th scope="col">Opening Balance</th>
                                         <th scope="col">Total of receipts & Adjustment</th>
-                                        <th scope="col">Total of Invoice & Adjustment</th>                    
+                                        <th scope="col">Total of Invoice & Adjustment</th>
                                         <th scope="col">Closing Balance</th>
                                         <th scope="col">View Summarized bill</th>
                                         <th scope="col">View Detailed bill</th>
@@ -149,7 +158,7 @@
                                             @if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
                                             $user['Month']))))
 
-                                            <a href="{{ SearchInvoicePdf::getSummaryBillLink($userProfile['MEMBER_CODE'],  $user['Month']) }}"
+                                            <a href="{{ SearchInvoicePdf::getSummaryBillLink($userData['user_code'],  $user['Month']) }}"
                                                 target="_blank"><img class="img-fluid"
                                                     src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a>
                                             @else
@@ -160,7 +169,7 @@
                                         <td>
                                             @if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
                                             $user['Month']))))
-                                            <a href="{{ SearchInvoicePdf::getDetailBillLink($userProfile['MEMBER_CODE'],  $user['Month']) }}"
+                                            <a href="{{ SearchInvoicePdf::getDetailBillLink($userData['user_code'],  $user['Month']) }}"
                                                 target="_blank"><img class="img-fluid"
                                                     src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a>
                                         </td>

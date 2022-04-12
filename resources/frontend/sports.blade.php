@@ -15,9 +15,6 @@
     <div class="col-lg-9 col-md-7 p-0">
         <div class="right-body">
             <!-- ********|| BANNER PART START ||******** -->
-            <!-- <section class="history-banner">
-                <img class="img-fluid" src="{{ asset('img/history/history-banner.jpg') }}" alt="" />
-            </section> -->
 
             <section class="banner">
 
@@ -33,7 +30,6 @@
 
                             <div class="about-img">
 
-                                <!-- <img class="img-fluid" src="{{ asset('img/past-president/banner1.jpg') }}" alt="" /> -->
                                 <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
 
                             </div>
@@ -41,15 +37,7 @@
                         </div>
                         @endforeach
                         @endforeach
-                        <!-- <div class="item">
-
-                            <div class="about-img">
-
-                                <img class="img-fluid" src="{{ asset('img/past-president/banner2.jpg') }}" alt="" />
-
-                            </div>
-
-                        </div> -->
+                        
 
                     </div>
 
@@ -106,79 +94,118 @@
                     <div class="row">
                         <div class="sport-tablist">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-
-                                <li class="nav-item">
-
-
-                                    <a class="nav-link active" id="cricket-tab" data-toggle="tab" href="#cricket">
-                                        <div class="tab_icontext">
-                                            <img src="{{ asset('img/sports/cricket_icon.png') }}" alt="" />
-                                            <h3>Cricket</h3>
-                                        </div>
-                                    </a>
-
-                                </li>
-                                <li class="nav-item">
-
-                                    <a class="nav-link" id="football-tab" data-toggle="tab" href="#football">
-                                        <div class="tab_icontext">
-                                            <img src="{{ asset('img/sports/football_icon.png') }}" alt="" />
-                                            <h3>Football</h3>
-                                        </div>
-                                    </a>
-
-                                </li>
-                                <li class="nav-item">
-
-                                    <a class="nav-link" id="rugby-tab" data-toggle="tab" href="#rugby">
-                                        <div class="tab_icontext">
-                                            <img src="{{ asset('img/sports/rugby_icon.png') }}" alt="" />
-                                            <h3>Rugby</h3>
-                                        </div>
-                                    </a>
-
-                                </li>
-                                <li class="nav-item">
-
-                                    <a class="nav-link" id="hockey-tab" data-toggle="tab" href="#hockey">
-                                        <div class="tab_icontext">
-                                            <img src="{{ asset('img/sports/hockey_icon.png') }}" alt="" />
-                                            <h3>Hockey</h3>
-                                        </div>
-                                    </a>
-
-                                </li>
-                                <li class="nav-item">
-
-                                    <a class="nav-link" id="tennis-tab" data-toggle="tab" href="#tennis">
-                                        <div class="tab_icontext">
-                                            <img src="{{ asset('img/sports/tennis_icon.png') }}" alt="" />
-                                            <h3>Tennis</h3>
-                                        </div>
-                                    </a>
-
-                                </li>
-                                <li class="nav-item">
-
-                                    <a class="nav-link" id="golf-tab" data-toggle="tab" href="#golf">
-                                        <div class="tab_icontext">
-                                            <img src="{{ asset('img/sports/golf_icon.png') }}" alt="" />
-                                            <h3>Golf</h3>
-                                        </div>
-                                    </a>
-
-                                </li>
-                                <li class="nav-item">
-
-                                    <a class="nav-link" id="other-tab" data-toggle="tab" href="#other">
-                                        <div class="tab_icontext">
-                                            <img src="{{ asset('img/sports/other_icon.png') }}" alt="" />
-                                            <h3>Other</h3>
-                                        </div>
-                                    </a>
-
-                                </li>
-
+                                <div class="sport_listing owl-carousel owl-theme">
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="cricket-tab" data-toggle="tab" href="#cricket">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/cricket_sport.svg') }}" alt="" />
+                                                    <h3>Cricket</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="football-tab" data-toggle="tab" href="#football">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/football_sport.svg') }}" alt="" />
+                                                    <h3>Football</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="hockey-tab" data-toggle="tab" href="#hockey">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/hockey_sport.svg') }}" alt="" />
+                                                    <h3>Hockey</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="rugby-tab" data-toggle="tab" href="#rugby">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/rugby_sport.svg') }}" alt="" />
+                                                    <h3>Rugby</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="tennis-tab" data-toggle="tab" href="#tennis">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/tennis_sports.svg') }}" alt="" />
+                                                    <h3>Tennis</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="cyclepolo-tab" data-toggle="tab" href="#cyclepolo">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/cyclepolo_sport.svg') }}" alt="" />
+                                                    <h3>Cycle Polo</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="darts-tab" data-toggle="tab" href="#darts">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/darts_sport.svg') }}" alt="" />
+                                                    <h3>Darts</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="golf-tab" data-toggle="tab" href="#golf">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/golf_sport.svg') }}" alt="" />
+                                                    <h3>Golf</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="tablerennis-tab" data-toggle="tab" href="#tablerennis">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/tablerennis_sport.svg') }}" alt="" />
+                                                    <h3>Table Tennis</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="badminton-tab" data-toggle="tab" href="#badminton">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/badminton_sport.svg') }}" alt="" />
+                                                    <h3>Badminton</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="squash-tab" data-toggle="tab" href="#squash">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/squash_sport.svg') }}" alt="" />
+                                                    <h3>Squash</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                </div>
                             </ul>
 
                             <div class="tab-content" id="myTabContent">
@@ -186,9 +213,6 @@
                                     aria-labelledby="indian-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            <!-- @php
-                                            var_dump($userDetails)
-                                            @endphp -->
 
                                             @foreach($members->where("select_sport_id","1") as $member)
 
@@ -208,12 +232,13 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 
                                                     @endif
+
 
 
                                                     <div class=" sport_player">
@@ -227,7 +252,7 @@
                                                                     {{ $member->select_member->phone_number_1 ?? '' }}</a>
                                                             </p>
                                                             <p><a
-                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
+                                                                    href="mailto:{{ $userDetail->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -259,8 +284,8 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 
@@ -275,52 +300,6 @@
                                                             </p>
                                                             <p><a
                                                                     href="{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                            @endforeach
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="rugby" role="tabpanel" aria-labelledby="rugby-tab">
-                                    <div class="sport_tab_content_section">
-                                        <div class="row">
-                                            @foreach($members->where("select_sport_id","3") as $member)
-                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
-                                            $key =>$userDetail)
-                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2">
-                                                <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
-
-                                                    <div class="sport_tab_ceibity-img">
-                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
-                                                    </div>
-
-                                                    @else
-
-                                                    <div class="sport_tab_ceibity-img">
-
-                                                        <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
-                                                        </a>
-                                                    </div>
-
-                                                    @endif
-                                                    <div class="sport_player">
-                                                        <h3>{{ $member->select_title->titles ?? '' }}</h3>
-                                                        <div class="sport_player_detail">
-                                                            <h4>{{ $member->select_member->name ?? '' }}</h4>
-                                                            <p><a
-                                                                    href="tel:+91 {{ $member->select_member->phone_number_1 ?? '' }}">+91
-                                                                    {{ $member->select_member->phone_number_1 ?? '' }}</a>
-                                                            </p>
-                                                            <p><a
-                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -351,8 +330,8 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 
@@ -380,6 +359,52 @@
                                     </div>
                                 </div>
 
+                                <div class="tab-pane fade" id="rugby" role="tabpanel" aria-labelledby="rugby-tab">
+                                    <div class="sport_tab_content_section">
+                                        <div class="row">
+                                            @foreach($members->where("select_sport_id","3") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2">
+                                                <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="sport_tab_ceibity-img">
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
+                                                    <div class="sport_player">
+                                                        <h3>{{ $member->select_title->titles ?? '' }}</h3>
+                                                        <div class="sport_player_detail">
+                                                            <h4>{{ $member->select_member->name ?? '' }}</h4>
+                                                            <p><a
+                                                                    href="tel:+91 {{ $member->select_member->phone_number_1 ?? '' }}">+91
+                                                                    {{ $member->select_member->phone_number_1 ?? '' }}</a>
+                                                            </p>
+                                                            <p><a
+                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="tab-pane fade" id="tennis" role="tabpanel" aria-labelledby="tennis-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
@@ -398,8 +423,98 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
+                                                    <div class="sport_player">
+                                                        <h3>{{ $member->select_title->titles ?? '' }}</h3>
+                                                        <div class="sport_player_detail">
+                                                            <h4>{{ $member->select_member->name ?? '' }}</h4>
+                                                            <p><a
+                                                                    href="tel:+91 {{ $member->select_member->phone_number_1 ?? '' }}">+91
+                                                                    {{ $member->select_member->phone_number_1 ?? '' }}</a>
+                                                            </p>
+                                                            <p><a
+                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="cyclepolo" role="tabpanel" aria-labelledby="cyclepolo-tab">
+                                    <div class="sport_tab_content_section">
+                                        <div class="row">
+                                            @foreach($members->where("select_sport_id","5") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2">
+                                                <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="sport_tab_ceibity-img">
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
+                                                    <div class="sport_player">
+                                                        <h3>{{ $member->select_title->titles ?? '' }}</h3>
+                                                        <div class="sport_player_detail">
+                                                            <h4>{{ $member->select_member->name ?? '' }}</h4>
+                                                            <p><a
+                                                                    href="tel:+91 {{ $member->select_member->phone_number_1 ?? '' }}">+91
+                                                                    {{ $member->select_member->phone_number_1 ?? '' }}</a>
+                                                            </p>
+                                                            <p><a
+                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="darts" role="tabpanel" aria-labelledby="darts-tab">
+                                    <div class="sport_tab_content_section">
+                                        <div class="row">
+                                            @foreach($members->where("select_sport_id","5") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2">
+                                                <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="sport_tab_ceibity-img">
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 
@@ -443,8 +558,8 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 
@@ -470,7 +585,7 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+                                <div class="tab-pane fade" id="tablerennis" role="tabpanel" aria-labelledby="tablerennis-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
                                             @foreach($members->where("select_sport_id","7") as $member)
@@ -488,8 +603,8 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="                          
-                                                            {{ $userDetail->member_image->getUrl('') }}" alt="" />
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
                                                     </div>
 
@@ -514,6 +629,97 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tab-pane fade" id="badminton" role="tabpanel" aria-labelledby="badminton-tab">
+                                    <div class="sport_tab_content_section">
+                                        <div class="row">
+                                            @foreach($members->where("select_sport_id","7") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2">
+                                                <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="sport_tab_ceibity-img">
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
+                                                    <div class="sport_player">
+                                                        <h3>{{ $member->select_title->titles ?? '' }}</h3>
+                                                        <div class="sport_player_detail">
+                                                            <h4>{{ $member->select_member->name ?? '' }}</h4>
+                                                            <p><a
+                                                                    href="tel:+91 {{ $member->select_member->phone_number_1 ?? '' }}">+91
+                                                                    {{ $member->select_member->phone_number_1 ?? '' }}</a>
+                                                            </p>
+                                                            <p><a
+                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="squash" role="tabpanel" aria-labelledby="squash-tab">
+                                    <div class="sport_tab_content_section">
+                                        <div class="row">
+                                            @foreach($members->where("select_sport_id","7") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2">
+                                                <div class="sports_tabcontent_inner">
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="sport_tab_ceibity-img">
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
+                                                    <div class="sport_player">
+                                                        <h3>{{ $member->select_title->titles ?? '' }}</h3>
+                                                        <div class="sport_player_detail">
+                                                            <h4>{{ $member->select_member->name ?? '' }}</h4>
+                                                            <p><a
+                                                                    href="tel:+91 {{ $member->select_member->phone_number_1 ?? '' }}">+91
+                                                                    {{ $member->select_member->phone_number_1 ?? '' }}</a>
+                                                            </p>
+                                                            <p><a
+                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -528,72 +734,68 @@
             <!-- ?php include 'assets/inc/footer.php';?> -->
 
             <script>
-            $(document).ready(function() {
-                if ($(window).width() < 767) {
-                    startCarousel();
-                } else {
-                    $('.owl-carousel').addClass('off');
-                }
-            });
+            // $(document).ready(function() {
+            //     if ($(window).width() < 767) {
+            //         startCarousel();
+            //     } else {
+            //         $('.owl-carousel').addClass('off');
+            //     }
+            // });
 
-            $(window).resize(function() {
-                if ($(window).width() < 767) {
-                    startCarousel();
-                } else {
-                    stopCarousel();
-                }
-            });
-
-            function startCarousel() {
-                $("#owl_player_icon").owlCarousel({
-                    slideSpeed: 500,
-                    margin: 10,
-                    paginationSpeed: 400,
-                    autoplay: true,
-                    items: 4,
-                    itemsDesktop: false,
-                    itemsDesktopSmall: false,
-                    itemsTablet: false,
-                    itemsMobile: false,
-                    loop: false,
-                    nav: true,
-                    navText: ["<i class='zmdi zmdi-chevron-left'></i>",
-                        "<i class='zmdi zmdi-chevron-right'></i>"
-                    ],
-                    responsive: {
-                        0: {
-                            items: 3,
-                            dots: false,
-                            nav: true,
-                        },
-                        400: {
-                            items: 4,
-                            dots: false,
-                            nav: true,
-                        },
-                        500: {
-                            items: 5,
-                            dots: false,
-                            nav: true,
-                        },
-                        600: {
-                            items: 7,
-                            dots: false,
-                            nav: true,
-                        },
-                        767: {
-                            items: 7,
-                            nav: true,
-                            dots: false,
-                        }
+            $('.sport_listing').owlCarousel({
+                loop:true,
+                margin:2, 
+                responsiveClass:true,
+                autoplayHoverPause:true,
+                autoplay:false,
+                dots:false,
+                nav:true,
+                slideSpeed: 400,
+                paginationSpeed: 400,
+                autoplayTimeout:3000,
+                navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
+                responsive:{
+                    0:{
+                        items:2,
+                    },
+                    480:{
+                        items:3,
+                    },
+                    600:{
+                        items:3,
+                    },
+                    950:{
+                        items:3,
+                    },
+                    1000:{
+                        items:6,
                     }
+                }
+            })
+
+            $(document) .ready(function(){
+                var li =  $(".owl-item li a");
+                    $(".owl-item li a").click(function(){
+                    li.removeClass('active');
                 });
-            }
+            });
+
+            
+
+            // $(window).resize(function() {
+            //     if ($(window).width() < 767) {
+            //         startCarousel();
+            //     } else {
+            //         stopCarousel();
+            //     }
+            // });
+
+            
 
             function stopCarousel() {
                 var owl = $('.owl-carousel');
-                owl.trigger('destroy.owl.carousel');
-                owl.addClass('off');
+                //owl.trigger('destroy.owl.carousel');
+                //owl.addClass('off');
             }
             </script>
 

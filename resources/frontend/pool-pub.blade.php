@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-justify">
                             @foreach($contentPages->where("id","10") as $contentPage)
                             {!! $contentPage->page_text !!}
                             @endforeach

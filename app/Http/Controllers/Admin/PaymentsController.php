@@ -10,6 +10,8 @@ use App\Models\Payment;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class PaymentsController extends Controller
 {
@@ -17,9 +19,20 @@ class PaymentsController extends Controller
     {
         abort_if(Gate::denies('payment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $payments = Payment::with(['member'])->get();
+        //$payments = User::with(['member'])->transactions()->get();
+        //$payments= USER::find(1952)->transactions()->get()->first();
+        $users = DB::table('payu_transactions')
+                        ->join('users', 'users.id', '=', 'payu_transactions.paid_for_id')
+                        ->distinct()
+                        ->get(['users.id']);
+        
+        $payments=  $users->map(function ($item) {
+            return USER::find($item->id)->transactions()->get();
+        });
+        //dd($payments);
 
-        return view('admin.payments.index', compact('payments'));
+        
+        return view('admin.payments.index', compact('payments', 'users'));
     }
 
     public function create()

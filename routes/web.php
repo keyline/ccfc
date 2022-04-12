@@ -38,6 +38,11 @@ use App\Models\SubCommitteeMember;
 
 use App\Models\CommitteeName;
 
+use App\Http\Controllers\Admin\UsersController;
+
+
+use App\Models\circular;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -104,11 +109,9 @@ Route::get('/famous_sportsmen', function () {
 Route::get('/sports', function () {
     $contentPages = ContentPage::all();
     $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
-    $userDetails = UserDetail::with(['user_code', 'media'])->get();
+    $userDetails = UserDetail::with(['user_code'])->get();
     $galleries = Gallery::with(['media'])->get();
-    // $users = User::with(['roles'])->get();
     return view('sports', compact(['contentPages','members','userDetails','galleries']));
-    // return view('sports', compact(['members','users']));
 });
 
 
@@ -144,11 +147,20 @@ Route::get('/balloting_committee', function () {
 
 Route::get('/sub_committees', function () {
     $contentPages = ContentPage::all();
+
+    
     $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
+    
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
+
+
     $committeeNames = CommitteeName::all();
+
+   
     $galleries = Gallery::with(['media'])->get();
-    return view('sub_committees', compact(['contentPages','subCommitteeMembers','userDetails','committeeNames','galleries']));
+  
+
+    return view('sub_committees', compact(['contentPages','subCommitteeMembers','committeeNames','galleries','userDetails']));
 });
 
 
@@ -200,16 +212,18 @@ Route::get('/amenities_services', function () {
 
 
 Route::get('/annual_report', function () {
+    $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
   
-    return view('annual_report', compact(['galleries']));
+    return view('annual_report', compact(['galleries','contentPages']));
 });
 
 
 Route::get('/gallery', function () {
+    $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
   
-    return view('gallery', compact(['galleries']));
+    return view('gallery', compact(['contentPages','galleries']));
 });
 
 
@@ -271,6 +285,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Content Category
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
     Route::resource('content-categories', 'ContentCategoryController');
+
+
 
     // Content Tag
     Route::delete('content-tags/destroy', 'ContentTagController@massDestroy')->name('content-tags.massDestroy');
@@ -377,7 +393,38 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('create/email', [App\Http\Controllers\Admin\SendInBlueController::class, 'index'])->name('email');
 
+
+
+
+    Route::get('create/circulars', [App\Http\Controllers\Admin\CircularController::class, 'index'])->name('circulars');
+
+    Route::get('create/add-circular', [App\Http\Controllers\Admin\CircularController::class, 'create']);
+
+    Route::post('create/add-circular', [App\Http\Controllers\Admin\CircularController::class, 'store']);
+
+    Route::get('create/edit-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'edit']);
+
+    Route::put('create/update-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'update']);
+
+    Route::get('create/delete-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'destroy']);
+
+
+
+
     Route::get('contactus', 'ContactController@index')->name('contactus');
+    //Ajax Request
+    Route::get('/saveUserJson/{code}', [UsersController::class, 'saveUserJson'])->name('saveUserJson');
+
+    Route::get('/auto-memberprofileupdate', function () {
+        $query= \App\Models\User::query();
+        $query->where('email', '=', '');
+        $query->where('id', '<>', 1);
+        $users= $query->get();
+        foreach ($users as $user) {
+            \App\Jobs\MemberProfileUpdate::dispatch($user->user_code)->onQueue('memberprofile');
+        }
+        return view('home');
+    });
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
@@ -390,21 +437,39 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
     }
 });
 
-Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
-    // Change password
-    // if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
+// Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
+//     // Change password
+//     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordResetController.php'))) {
         
-    //     Route::post('change_password', 'ChangePasswordResetController@update')->name('passwordreset.update');
         
-    // }   
+//         Route::post('/change_password', 'ChangePasswordResetController@update')->name('change_password.update');
+        
+//     }
 
 
-});
+// });
+
+    // Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+
+    // Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
 
 
 
-Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
-Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
+    Route::get('/member/change-password', 'ChangePasswordResetController@change_password')->name('change_password');
+
+    Route::post('/member/update-password', 'ChangePasswordResetController@update_password')->name('update_password');
+
+
+    
+
+
+        // Route::get('/change_password', function () {
+        //     return view('change_password');
+        // })->name('change_password');
+        
+
+// Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+// Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
 
 Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Two Factor Authentication
@@ -419,40 +484,61 @@ Route::post('/member/check', [HomeController::class, 'checkMember'])->name('memb
 Route::get('/member/logout', [HomeController::class, 'logout'])->name('member.logout');
 
 
-
 Route::group([
     'prefix' => 'member',
     'as' => 'member.',
     'namespace' => 'Member',
-    'middleware' => ['member']
+    'middleware' => ['member'],
 ], function () {
     Route::get('/login', [HomeController::class, 'memberLogin'])->name('login');
+
+
+    
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/invoice', [HomeController::class, 'invoice'])->name('invoice');
 
+    
+
+    
+
+
     Route::get('/events_members_only', function () {
-        return view('events_members_only');
+        $galleries = Gallery::with(['media'])->get();
+        $contentPages = ContentPage::all();
+        return view('events_members_only', compact(['galleries','contentPages']));
     })->name('events_members_only');
 
 
-    Route::get('/change_password', function () {
-        return view('change_password');
-    })->name('change_password');
+    
+
+   
 
     Route::get('/1792-newsletter', function () {
-        return view('1792-newsletter');
+        $galleries = Gallery::with(['media'])->get();
+        $contentPages = ContentPage::all();
+
+        return view('1792-newsletter', compact(['galleries','contentPages']));
     })->name('1792-newsletter');
 
     Route::get('/notice-circulars', function () {
-        return view('notice-circulars');
+        $galleries = Gallery::with(['media'])->get();
+
+        $contentPages = ContentPage::all();
+
+        $circular = circular::all();
+
+        return view('notice-circulars', compact(['galleries','contentPages','circular']));
     })->name('notice-circulars');
 
     
     Route::get('/rules_regulation', function () {
-        return view('rules_regulation');
+        $galleries = Gallery::with(['media'])->get();
+        $contentPages = ContentPage::all();
+        return view('rules_regulation', compact(['galleries','contentPages']));
     })->name('rules_regulation');
+    
 
     # Call Route
     Route::post('payment', ['as' => 'payment', 'uses' => 'PaymentController@payment']);
@@ -461,7 +547,14 @@ Route::group([
     Route::get('payment/status', ['as' => 'payment.status', 'uses' => 'PaymentController@status']);
 
     Route::get('/invoice/{month}/{year}/{filename}/download', [HomeController::class, 'download'])->name('download');
+
+    Route::get('/{usercode}/update/', function ($usercode) {
+        return view('member.updateprofile', ['usercode' => $usercode]);
+    })->name('profileupdate');
+
+    Route::POST('/updateme', [HomeController::class , 'updateMyProfile'])->name('updateme');
 });
+
 
 
 // Route::get('/reciprocal_clubs', function () {
@@ -574,9 +667,9 @@ Route::get('/new_member', function () {
         return view('new_member');
     });
     
-    Route::get('/rules_regulation', function () {
-        return view('rules_regulation');
-    });
+    // Route::get('/rules_regulation', function () {
+    //     return view('rules_regulation');
+    // });
      
     
     Route::get('/member-login', function () {
@@ -629,3 +722,8 @@ Route::get('/new_member', function () {
     // Route::get('admin/contactus', function () {
     //     return view('admin.contact.index');
     // });
+
+    Route::get('password/reset/{token}/{email}/{user_code}', 'Auth\ResetPasswordController@showResetForm')
+    ->name('password.reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')
+    ->name('password.update');

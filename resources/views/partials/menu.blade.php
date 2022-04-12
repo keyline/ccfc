@@ -1,11 +1,12 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">{{ trans('panel.site_title1') }}</span>
+        <span class="brand-text font-weight-light">{{ trans('panel.site_title') }}</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
+
         <!-- Sidebar user (optional) -->
 
         <!-- Sidebar Menu -->
@@ -204,6 +205,17 @@
                                     </a>
                                 </li>
                                 @endcan
+
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.circulars") }}" class="nav-link">
+                                        <p>
+                                            <i class="fa-fw nav-icon far fa-edit">
+
+                                            </i>
+                                            <p>{{ trans('global.circular') }}</p>
+                                        </p>
+                                    </a>
+                                </li>
                                 @can('content_block_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.content-blocks.index") }}"

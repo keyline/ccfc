@@ -72,8 +72,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="content_inner">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                            <div class="content_inner text-justify">
+
+                                @foreach($contentPages->where("id","15") as $contentPage)
+                                {!! $contentPage->page_text !!}
+                                @endforeach
+
+                                <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                     Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                                     unknown printer took a galley of type and scrambled it to make a type specimen book.
                                     It has survived not only five centuries, but also the leap into electronic
@@ -88,7 +93,19 @@
                                     packages and web page editors now use Lorem Ipsum as their default model text, and a
                                     search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
                                     versions have evolved over the years, sometimes by accident, sometimes on purpose
-                                    (injected humour and the like).</p>
+                                    (injected humour and the like).</p> -->
+                                    
+                                        <div class="newsletter_pdfdownload president_corner">
+                                            
+                                            <div class="newsletter_left">
+                                                <img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                                            </div>
+                                            <div class="newsletter_right">
+                                                <h3>Annual Report 2020-2021</h3>
+                                            </div>
+                                            <a class="wholenewdivlink" href="{{ asset('pdf/CCFC-Annual-Report-2021.pdf') }}" target="_blank"></a>
+                                        </div>
+                                    
                             </div>
                         </div>
                     </div>
