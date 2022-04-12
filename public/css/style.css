@@ -860,6 +860,11 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
 /* ********|| ADVISE END ||******** */
 
 /* ********|| HISTORY START ||******** */
+#innerpage-banner .item .about-img img {
+    height: 275px;
+    width: 100%;
+    object-fit: cover;
+}
 .history-sec {
     background-color: #f6f6f6;
 }
@@ -1181,6 +1186,18 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     width: 144px;
     display: block;
     margin: 0 auto;
+}
+.sports-sec #home_sports .sports-info .sports-img {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    height: 144px;
+    padding: 10px;
+}
+.sports-sec #home_sports .sports-info .sports-img img {
+    max-height: 115px;
+    padding: 4px;
+    filter: invert(100%) sepia(77%) saturate(0%) hue-rotate(162deg) brightness(115%) contrast(100%);
+    -webkit-filter: invert(100%) sepia(77%) saturate(0%) hue-rotate(162deg) brightness(115%) contrast(100%);
 }
 
 .sports-sec .sports-inner .sports-info .sports-box {
@@ -1881,6 +1898,8 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 20px 0;
 }
 
 .activities_list_item_right .activities_list_item_right_white {
@@ -1888,8 +1907,7 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     border-radius: 20px;
     width: 100%;
     position: relative;
-    text-align: center;
-    margin: 20px;
+    text-align: center;    
     padding: 20px;
 }
 
@@ -1903,12 +1921,14 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     font-weight: 600;
     font-size: 22px;
 }
-
-.activities_list_item_right_white:after {
+.activities_list_item_right_white .activities_list_item_right_img img {
+    max-width: 50px;
+}
+.activities_list_item_right:after {
     content: '';
     position: absolute;
     top: 50%;
-    left: -20px;
+    left: 0;
     z-index: 1;
     transform: translateY(-50%);
     border-left: 10px solid var(--primaryColor);
@@ -1954,6 +1974,32 @@ section.sports-page {
     display: flex;
     border: none;
     justify-content: center;
+    padding-right: 25px;
+    padding-left: 25px;
+    position: relative;
+}
+.sport-tablist .owl-nav {
+    /* top: 50%;
+    position: absolute;
+    transform: translate(0,-50%);
+    width: 100%;
+    height: 70%; */
+}
+.sport-tablist .sport_listing .owl-nav button {
+    position: absolute;
+    background: var(--primaryColor) !important;
+    font-size: 30px !important;
+    color: #fff !important;
+    height: 70%;
+    width: 20px;
+    top: 50% !important;
+    transform: translate(0,-50%);
+}
+.sport-tablist .owl-nav button.owl-prev {
+    left: -20px;
+}
+.sport-tablist .owl-nav button.owl-next {
+    right: -20px;
 }
 
 .sport_tab_content_section .row {
@@ -1990,15 +2036,18 @@ section.sports-page {
 }
 
 .sport-tablist .nav-tabs .nav-link .tab_icontext img {
-    filter: grayscale(1);
+    filter: invert(22%) sepia(10%) saturate(23%) hue-rotate(324deg) brightness(93%) contrast(84%);
+    -webkit-filter:invert(22%) sepia(10%) saturate(23%) hue-rotate(324deg) brightness(93%) contrast(84%);
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
+    max-height: 62px;
+    min-height: 62px;
 }
 
 .sport-tablist .nav-tabs .nav-link.active .tab_icontext img,
 .sport-tablist .nav-tabs .nav-link:hover .tab_icontext img {
-    filter: none;
-    -webkit-filter: grayscale(0);
+    filter: invert(14%) sepia(81%) saturate(5220%) hue-rotate(351deg) brightness(81%) contrast(86%);
+    -webkit-filter: invert(14%) sepia(81%) saturate(5220%) hue-rotate(351deg) brightness(81%) contrast(86%);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
@@ -2017,8 +2066,8 @@ section.sports-page {
 
 .sport-tablist ul.nav-tabs a.nav-link {
     border: none;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .sport_tab_content_section .sport_tab_ceibity-img {
@@ -2698,7 +2747,6 @@ section.sports-page {
     padding-bottom: 4px;
     color: var(--textColor);
     font-size: 16px;
-    letter-spacing: 0.5px;
 }
 
 .gym-general-sec .gym-inner ul {
@@ -2766,6 +2814,7 @@ section.sports-page {
     font-size: 22px;
     font-family: 'IBM Plex Serif', serif;
     margin-bottom: 0;
+    color: var(--secondaryColor);
 }
 
 .newsletter_right p a,
@@ -2797,6 +2846,12 @@ section.sports-page {
 
 .newsletter_right {
     width: 60%;
+}
+.president_corner.newsletter_pdfdownload a.wholenewdivlink {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
 }
 
 .president_corner.newsletter_pdfdownload {

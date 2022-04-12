@@ -300,7 +300,7 @@ $("#home_sports").owlCarousel({
             dots: false,
             nav: true,
         },
-        778: {
+        800: {
             items: 2,
             dots: false,
             nav: true,

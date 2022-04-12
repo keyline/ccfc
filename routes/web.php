@@ -124,7 +124,6 @@ Route::get('/reciprocal_clubs', function () {
 });
 
 Route::get('/general_committee', function () {
-
     $contentPages = ContentPage::all();
     // $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
     $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
@@ -221,7 +220,6 @@ Route::get('/annual_report', function () {
 
 
 Route::get('/gallery', function () {
-
     $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
   
@@ -416,6 +414,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('contactus', 'ContactController@index')->name('contactus');
     //Ajax Request
     Route::get('/saveUserJson/{code}', [UsersController::class, 'saveUserJson'])->name('saveUserJson');
+
+    Route::get('/auto-memberprofileupdate', function () {
+        $query= \App\Models\User::query();
+        $query->where('email', '=', '');
+        $query->where('id', '<>', 1);
+        $users= $query->get();
+        foreach ($users as $user) {
+            \App\Jobs\MemberProfileUpdate::dispatch($user->user_code)->onQueue('memberprofile');
+        }
+        return view('home');
+    });
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
@@ -496,10 +505,9 @@ Route::group([
 
 
     Route::get('/events_members_only', function () {
-
         $galleries = Gallery::with(['media'])->get();
         $contentPages = ContentPage::all();
-        return view('events_members_only',compact(['galleries','contentPages']));
+        return view('events_members_only', compact(['galleries','contentPages']));
     })->name('events_members_only');
 
 
@@ -508,31 +516,27 @@ Route::group([
    
 
     Route::get('/1792-newsletter', function () {
-
         $galleries = Gallery::with(['media'])->get();
         $contentPages = ContentPage::all();
 
-        return view('1792-newsletter',compact(['galleries','contentPages']));
+        return view('1792-newsletter', compact(['galleries','contentPages']));
     })->name('1792-newsletter');
 
     Route::get('/notice-circulars', function () {
-
         $galleries = Gallery::with(['media'])->get();
 
         $contentPages = ContentPage::all();
 
         $circular = circular::all();
 
-        return view('notice-circulars',compact(['galleries','contentPages','circular']));
-
+        return view('notice-circulars', compact(['galleries','contentPages','circular']));
     })->name('notice-circulars');
 
     
     Route::get('/rules_regulation', function () {
-
         $galleries = Gallery::with(['media'])->get();
         $contentPages = ContentPage::all();
-        return view('rules_regulation',compact(['galleries','contentPages']));
+        return view('rules_regulation', compact(['galleries','contentPages']));
     })->name('rules_regulation');
     
 
@@ -549,8 +553,6 @@ Route::group([
     })->name('profileupdate');
 
     Route::POST('/updateme', [HomeController::class , 'updateMyProfile'])->name('updateme');
-
-
 });
 
 

@@ -54,7 +54,7 @@
                         <div class="col-lg-12">
                             <div class="title-sec">
                                 <div class="title text-left">
-                                    CLUB BAR
+                                    BAR
                                 </div>
                             </div>
                         </div>

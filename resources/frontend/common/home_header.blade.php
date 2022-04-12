@@ -149,15 +149,13 @@
                                                                                 class="zmdi zmdi-chevron-right"></i></span></a>
 
                                                                     <ul class="submenu dropdown-menu amenitiessubsub">
-                                                                        <li><a href="{{ asset('food_beverages') }}">Food
-                                                                                & Beverages</a></li>
+                                                                        <li><a href="{{ asset('food_beverages') }}">Food</a></li>
                                                                         <li><a
                                                                                 href="{{ asset('gymming-rejuvenated') }}">Gymming</a>
                                                                         </li>
                                                                         <li><a href="{{ asset('pool-pub') }}">Pool
                                                                                 Pub</a></li>
-                                                                        <li><a href="{{ asset('club-bar') }}">Club
-                                                                                Bar</a></li>
+                                                                        <li><a href="{{ asset('club-bar') }}">Bar</a></li>
                                                                         <li><a href="{{ asset('swimming-pool') }}">Swimming
                                                                                 Pool</a></li>
                                                                     </ul>

@@ -202,7 +202,7 @@
 
                                                 <div class="services-body">
                                                     <div class="services-title">
-                                                        FOOD & BEVERAGES
+                                                        FOOD
                                                     </div>
                                                     <div class="services-content">
                                                         The Club offers a wide range of delicious food in its dining
@@ -267,7 +267,7 @@
                                                 </div>
                                                 <div class="services-body">
                                                     <div class="services-title">
-                                                        SWIMMING POOL
+                                                        POOL PUB
                                                     </div>
                                                     <div class="services-content">
                                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
@@ -299,7 +299,7 @@
                                                 </div>
                                                 <div class="services-body">
                                                     <div class="services-title">
-                                                        CLUB BAR
+                                                        BAR
                                                     </div>
                                                     <div class="services-content">
                                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed

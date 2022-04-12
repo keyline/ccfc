@@ -56,7 +56,7 @@
 
 
             <!-- ********|| President Corner START ||******** -->
-            <section class="inner_belowbanner">
+            <section class="inner_belowbanner text-justify">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -109,12 +109,13 @@
                             </div> -->
                             <div class="newsletter_pdfdownload president_corner">
                                 <div class="newsletter_left">
-                                    <a href="#" target="_blank"><img class="img-fluid"
-                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
+                                    <img class="img-fluid"
+                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
                                 </div>
                                 <div class="newsletter_right">
-                                    <h3><a href="#" target="_blank">President's Letter</a></h3>
+                                    <h3>President's Letter</h3>
                                 </div>
+                                <a class="wholenewdivlink" href="{{ asset('pdf/Diwali-Greetings-to-members-2.11.21.pdf') }}" target="_blank"></a>
                             </div>
                         </div>
                     </div>
