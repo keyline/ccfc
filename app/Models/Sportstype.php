@@ -17,6 +17,7 @@ class Sportstype extends Model implements HasMedia
     use HasFactory;
 
     public $table = 'sportstypes';
+    
 
     protected $appends = [
         'icon',

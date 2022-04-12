@@ -52,10 +52,10 @@ class SportstypeController extends Controller
         return redirect()->route('admin.sportstypes.index');
     }
 
-    public function edit(Sportstype $sportstype)
+    public function edit(Sportstype $sportstype , Request $request)
     {
         abort_if(Gate::denies('sportstype_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        // dd($sportstype->icon);
         return view('admin.sportstypes.edit', compact('sportstype'));
     }
 
