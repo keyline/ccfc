@@ -77,7 +77,7 @@
 Dropzone.options.iconDropzone = {
     url: '{{ route('admin.sportstypes.storeMedia') }}',
     maxFilesize: 2, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.svg',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
@@ -101,9 +101,7 @@ Dropzone.options.iconDropzone = {
     },
     init: function() {
         @if(isset($sportstype) && $sportstype->icon)
-        var file = {
-            !!json_encode($sportstype->icon) !!
-        }
+        var file = {!! json_encode($sportstype->icon) !!}
         this.options.addedfile.call(this, file)
         this.options.thumbnail.call(this, file, file.preview)
         file.previewElement.classList.add('dz-complete')

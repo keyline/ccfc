@@ -51,7 +51,7 @@ class ReciprocalClubsController extends Controller
     public function edit(ReciprocalClub $reciprocalClub)
     {
         abort_if(Gate::denies('reciprocal_club_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+  
         return view('admin.reciprocalClubs.edit', compact('reciprocalClub'));
     }
 
