@@ -73,10 +73,10 @@
                             <div class="history-inner">
                                 <div class="title-sec">
                                     <div class="title text-left">
-                                        FOOD & BEVERAGES
+                                        FOOD
                                     </div>
                                 </div>
-                                <div class="history-content text-left">
+                                <div class="history-content text-justify">
 
                                     @foreach($contentPages->where("id","2") as $contentPage)
                                     <p>{{$contentPage->excerpt}}</p>

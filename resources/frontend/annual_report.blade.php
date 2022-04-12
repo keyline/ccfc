@@ -72,7 +72,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="content_inner">
+                            <div class="content_inner text-justify">
 
                                 @foreach($contentPages->where("id","15") as $contentPage)
                                 {!! $contentPage->page_text !!}
@@ -94,6 +94,18 @@
                                     search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
                                     versions have evolved over the years, sometimes by accident, sometimes on purpose
                                     (injected humour and the like).</p> -->
+                                    
+                                        <div class="newsletter_pdfdownload president_corner">
+                                            
+                                            <div class="newsletter_left">
+                                                <img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                                            </div>
+                                            <div class="newsletter_right">
+                                                <h3>Annual Report 2020-2021</h3>
+                                            </div>
+                                            <a class="wholenewdivlink" href="{{ asset('pdf/CCFC-Annual-Report-2021.pdf') }}" target="_blank"></a>
+                                        </div>
+                                    
                             </div>
                         </div>
                     </div>

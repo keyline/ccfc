@@ -45,7 +45,7 @@
                                 </div>
 
 
-                                <div class="history-content">
+                                <div class="history-content text-justify">
 
                                     {!! $contentPage->page_text !!}
                                 </div>
