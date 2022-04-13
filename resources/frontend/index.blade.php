@@ -64,8 +64,11 @@
 
             <!-- ********|| ADVISE START ||******** -->
             <section class="advise">
+
+
                 <div class="container">
                     <div class="row">
+
                         @foreach($galleries->where("id","2") as $key => $gallery)
 
                         @foreach($gallery->images as $key => $media)
@@ -75,8 +78,11 @@
                                 <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
                             </div>
                         </div>
+
+
                         @endforeach
                         @endforeach
+
                         <!-- <div class="col-lg-6">
                             <div class="advise-img">
                                 <img class="img-fluid" src="{{ asset('img/advise-1.jpg') }}" alt="" />
@@ -89,6 +95,10 @@
                         </div> -->
                     </div>
                 </div>
+
+
+
+
             </section>
             <!-- ********|| ADVISE END ||******** -->
 
@@ -270,8 +280,7 @@
                                                         POOL PUB
                                                     </div>
                                                     <div class="services-content">
-                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                        euismod tincidunt ut sad asdlaoreet dolore...
+                                                        This beautiful facility is let out to members for their meetings/parties etc..
                                                     </div>
                                                     <div class="services-action">
                                                         <a href="{{ asset('pool-pub') }}" class="read-btn">+
@@ -302,8 +311,7 @@
                                                         BAR
                                                     </div>
                                                     <div class="services-content">
-                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                        euismod tincidunt ut sad asdlaoreet dolore...
+                                                        The club has three bars each of them having a unique style & decor..
                                                     </div>
                                                     <div class="services-action">
                                                         <a href="{{ asset('club-bar') }}" class="read-btn">+ Read
@@ -334,8 +342,7 @@
                                                         SWIMMING POOL
                                                     </div>
                                                     <div class="services-content">
-                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                        euismod tincidunt ut sad asdlaoreet dolore...
+                                                        The members can use the pool as per the specific timings...
                                                     </div>
                                                     <div class="services-action">
                                                         <a href="{{ asset('swimming-pool') }}" class="read-btn">+ Read
@@ -385,10 +392,9 @@
                                                     <!-- cricket -->
                                                     {{$sportstype->sport_name}}
                                                 </div>
-                                                <div class="sports-content">
-                                                    <!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit... -->
+                                                {{-- <div class="sports-content">
                                                     {{$sportstype->sport_details}}
-                                                </div>
+                                                </div> --}}
                                                 <div class="sports-action">
                                                     <!-- <a href="{{ url('/pages', $sportstype->sport_name) }}" class="read-btn">+ Read More</a> -->
 

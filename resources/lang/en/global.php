@@ -326,5 +326,6 @@ return [
     'messenger'                      => 'Messenger',
     'email'                          => 'Email',
     'circular'                       => 'Circular',
+    'event'                          => 'Event',
     'contact-us'                     => 'Contact Us',
 ];

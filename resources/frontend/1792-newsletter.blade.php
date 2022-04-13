@@ -102,6 +102,22 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 col-sm-6 col-md-12">
+                            <div class="newslerterpdf_wholelink">
+                                <a href="{{ asset('pdf/cc&fc-newsletter-first-edition.pdf') }}" target="_blank"></a>
+                                <div class="newsletter_pdfdownload">
+                                    <div class="newsletter_left">
+                                        <img class="img-fluid"src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                                    </div>
+                                    <div class="newsletter_right">
+                                        <h3>Download<br> News letter</h3>
+                                        <p>June 2021</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        {{-- <div class="col-lg-4 col-sm-6 col-md-12">
                             <div class="newsletter_pdfdownload">
                                 <div class="newsletter_left">
                                     <a href="#" target="_blank"><img class="img-fluid"
@@ -112,43 +128,7 @@
                                     <p><a href="#" target="_blank">June 2021</a></p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6 col-md-12">
-                            <div class="newsletter_pdfdownload">
-                                <div class="newsletter_left">
-                                    <a href="#" target="_blank"><img class="img-fluid"
-                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
-                                </div>
-                                <div class="newsletter_right">
-                                    <h3><a href="#" target="_blank">Download<br> News letter</a></h3>
-                                    <p><a href="#" target="_blank">June 2021</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6 col-md-12">
-                            <div class="newsletter_pdfdownload">
-                                <div class="newsletter_left">
-                                    <a href="#" target="_blank"><img class="img-fluid"
-                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
-                                </div>
-                                <div class="newsletter_right">
-                                    <h3><a href="#" target="_blank">Download<br> News letter</a></h3>
-                                    <p><a href="#" target="_blank">June 2021</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6 col-md-12">
-                            <div class="newsletter_pdfdownload">
-                                <div class="newsletter_left">
-                                    <a href="#" target="_blank"><img class="img-fluid"
-                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
-                                </div>
-                                <div class="newsletter_right">
-                                    <h3><a href="#" target="_blank">Download<br> News letter</a></h3>
-                                    <p><a href="#" target="_blank">June 2021</a></p>
-                                </div>
-                            </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </section>
