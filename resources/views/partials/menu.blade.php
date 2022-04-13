@@ -216,6 +216,18 @@
                                         </p>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.event") }}" class="nav-link">
+                                        <p>
+                                            <i class="fa-fw nav-icon far fa-edit">
+
+                                            </i>
+                                            <p>{{ trans('global.event') }}</p>
+                                        </p>
+                                    </a>
+                                </li>
+
                                 @can('content_block_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.content-blocks.index") }}"

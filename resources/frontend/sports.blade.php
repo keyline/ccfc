@@ -37,7 +37,7 @@
                         </div>
                         @endforeach
                         @endforeach
-                        
+
 
                     </div>
 
@@ -97,7 +97,8 @@
                                 <div class="sport_listing owl-carousel owl-theme">
                                     <div class="item">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="cricket-tab" data-toggle="tab" href="#cricket">
+                                            <a class="nav-link active" id="cricket-tab" data-toggle="tab"
+                                                href="#cricket">
                                                 <div class="tab_icontext">
                                                     <img src="{{ asset('img/sports/cricket_sport.svg') }}" alt="" />
                                                     <h3>Cricket</h3>
@@ -177,7 +178,8 @@
                                     </div>
                                     <div class="item">
                                         <li class="nav-item">
-                                            <a class="nav-link" id="tablerennis-tab" data-toggle="tab" href="#tablerennis">
+                                            <a class="nav-link" id="tablerennis-tab" data-toggle="tab"
+                                                href="#tablerennis">
                                                 <div class="tab_icontext">
                                                     <img src="{{ asset('img/sports/tablerennis_sport.svg') }}" alt="" />
                                                     <h3>Table Tennis</h3>
@@ -450,7 +452,8 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="cyclepolo" role="tabpanel" aria-labelledby="cyclepolo-tab">
+                                <div class="tab-pane fade" id="cyclepolo" role="tabpanel"
+                                    aria-labelledby="cyclepolo-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
                                             @foreach($members->where("select_sport_id","5") as $member)
@@ -585,7 +588,8 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="tablerennis" role="tabpanel" aria-labelledby="tablerennis-tab">
+                                <div class="tab-pane fade" id="tablerennis" role="tabpanel"
+                                    aria-labelledby="tablerennis-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
                                             @foreach($members->where("select_sport_id","7") as $member)
@@ -630,7 +634,8 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="badminton" role="tabpanel" aria-labelledby="badminton-tab">
+                                <div class="tab-pane fade" id="badminton" role="tabpanel"
+                                    aria-labelledby="badminton-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
                                             @foreach($members->where("select_sport_id","7") as $member)
@@ -743,44 +748,44 @@
             // });
 
             $('.sport_listing').owlCarousel({
-                loop:true,
-                margin:2, 
-                responsiveClass:true,
-                autoplayHoverPause:true,
-                autoplay:false,
-                dots:false,
-                nav:true,
+                loop: true,
+                margin: 2,
+                responsiveClass: true,
+                autoplayHoverPause: true,
+                autoplay: false,
+                dots: false,
+                nav: true,
                 slideSpeed: 400,
                 paginationSpeed: 400,
-                autoplayTimeout:3000,
+                autoplayTimeout: 3000,
                 navText: ["<i class='zmdi zmdi-chevron-left'></i>", "<i class='zmdi zmdi-chevron-right'></i>"],
-                responsive:{
-                    0:{
-                        items:2,
+                responsive: {
+                    0: {
+                        items: 2,
                     },
-                    480:{
-                        items:3,
+                    480: {
+                        items: 3,
                     },
-                    600:{
-                        items:3,
+                    600: {
+                        items: 3,
                     },
-                    950:{
-                        items:3,
+                    950: {
+                        items: 3,
                     },
-                    1000:{
-                        items:6,
+                    1000: {
+                        items: 6,
                     }
                 }
             })
 
-            $(document) .ready(function(){
-                var li =  $(".owl-item li a");
-                    $(".owl-item li a").click(function(){
+            $(document).ready(function() {
+                var li = $(".owl-item li a");
+                $(".owl-item li a").click(function() {
                     li.removeClass('active');
                 });
             });
 
-            
+
 
             // $(window).resize(function() {
             //     if ($(window).width() < 767) {
@@ -790,7 +795,7 @@
             //     }
             // });
 
-            
+
 
             function stopCarousel() {
                 var owl = $('.owl-carousel');
