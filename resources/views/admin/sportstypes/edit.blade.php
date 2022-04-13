@@ -155,9 +155,7 @@ Dropzone.options.featuredImageDropzone = {
     },
     init: function() {
         @if(isset($sportstype) && $sportstype->featured_image)
-        var file = {
-            !!json_encode($sportstype->featured_image) !!
-        }
+        var file = {!!json_encode($sportstype->featured_image) !!}
         this.options.addedfile.call(this, file)
         this.options.thumbnail.call(this, file, file.preview)
         file.previewElement.classList.add('dz-complete')

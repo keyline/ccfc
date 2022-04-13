@@ -47,7 +47,6 @@ class CircularController extends Controller
     {
         $circular = new circular;
         $circular->day = $request->input('day');
-        $circular->day = $request->input('month');
         $circular->month = $request->input('month');
         $circular->details_1 = $request->input('circular_details1');
         $circular->details_2 = $request->input('circular_details2');
