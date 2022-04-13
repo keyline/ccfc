@@ -1192,6 +1192,7 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     border-radius: 50%;
     height: 144px;
     padding: 10px;
+    overflow: hidden;
 }
 .sports-sec #home_sports .sports-info .sports-img img {
     max-height: 115px;
@@ -1334,7 +1335,7 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     /* width: 100px; */
     display: block;
     margin: 0 auto;
-    height: 120px;
+    /* height: 120px; */
     object-fit: cover;
 }
 
@@ -2805,7 +2806,7 @@ section.sports-page {
     transform: translate(-35%, 0);
 }
 
-.newsletter_pdfdownload:hover {
+.newslerterpdf_wholelink:hover {
     border: 1px solid var(--primaryColor);
 }
 
@@ -2846,6 +2847,12 @@ section.sports-page {
 
 .newsletter_right {
     width: 60%;
+}
+.newslerterpdf_wholelink a{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 9;
 }
 .president_corner.newsletter_pdfdownload a.wholenewdivlink {
     position: absolute;
