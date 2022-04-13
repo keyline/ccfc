@@ -65,31 +65,13 @@
             <!-- ********|| ADVISE START ||******** -->
             <section class="advise">
 
-                @foreach($galleries->where("id","2") as $key => $gallery)
 
-                @foreach($gallery->images as $key => $media)
-
-                @if($media->getUrl('') == '')
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-lg-6">
-                            <div class="advise-img">
-                                <!-- <img class="img-fluid" src="{{ asset('img/advise-1.jpg') }}" alt="" /> -->
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="advise-img">
-                                <!-- <img class="img-fluid" src="{{ asset('img/advise-2.jpg') }}" alt="" /> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @else
-                <div class="container">
-                    <div class="row">
+                        @foreach($galleries->where("id","2") as $key => $gallery)
 
-
+                        @foreach($gallery->images as $key => $media)
 
                         <div class="col-lg-6">
                             <div class="advise-img">
@@ -98,6 +80,8 @@
                         </div>
 
 
+                        @endforeach
+                        @endforeach
 
                         <!-- <div class="col-lg-6">
                             <div class="advise-img">
@@ -111,10 +95,8 @@
                         </div> -->
                     </div>
                 </div>
-                @endif
 
-                @endforeach
-                @endforeach
+
 
 
             </section>
