@@ -35,8 +35,14 @@
                 <input type="text" name="month" value="{{$event->month}}" class="form-control">
 
             </div>
+
             <div class="form-group">
-                <label for="name_of_the_block">Circular Details 1</label>
+                <label for="name_of_the_block">Event name</label>
+                <input type="text" name="event_name" value="{{$event->event_name}}" class="form-control">
+
+            </div>
+            <div class="form-group">
+                <label for="name_of_the_block">Event Details 1</label>
                 <input type="text" name="event_details1" value="{{$event->details_1}}" class="form-control">
 
             </div>
@@ -44,7 +50,7 @@
 
 
 
-                <label for="name_of_the_block">Circular Details 2</label>
+                <label for="name_of_the_block">Event Details 2</label>
 
 
                 <textarea class="form-control ckeditor {{ $errors->has('body') ? 'is-invalid' : '' }}"

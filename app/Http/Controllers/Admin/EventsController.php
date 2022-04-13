@@ -45,6 +45,7 @@ class EventsController extends Controller
         $event = new Events;
         $event->day = $request->input('day');        
         $event->month = $request->input('month');
+        $event->event_name = $request->input('event_name');
         $event->details_1 = $request->input('event_details1');
         $event->details_2 = $request->input('event_details2');
 
@@ -102,6 +103,7 @@ class EventsController extends Controller
         
         $event->day = $request->input('day');
         $event->month = $request->input('month');
+        $event->event_name = $request->input('event_name');
         $event->details_1 = $request->input('event_details1');
         $event->details_2 = $request->input('event_details2');
 

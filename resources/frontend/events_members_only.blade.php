@@ -66,10 +66,10 @@
                             <div class="history-inner">
                                 <div class="title-sec">
                                     <div class="title text-left">
-                                        EVENTS MEMBERS ONLY
+                                        EVENTS
                                     </div>
                                 </div>
-                                <div class="history-content text-left">
+                                <div class="history-content text-justify">
 
 
                                     @foreach($contentPages->where("id","15") as $contentPage)
@@ -100,7 +100,7 @@
             <!-- ********|| ACTIVITIES END ||******** -->
 
             <!-- ********|| GYM GENERAL START ||******** -->
-            <section class="activities-sec">
+            <section class="activities-sec noticepage_section">
                 <div class="container">
                     <div class="row">
                         @foreach($event as $value)
@@ -124,7 +124,7 @@
                                             {{$value->month}}<br><span>{{$value->day}}</span>
                                         </div>
                                         <div class="activities-box-part">
-                                            posted by CCFC<br><span>circular</span>
+                                            <span>{{$value->event_name}}</span> <br> posted by CCFC
                                         </div>
                                     </div>
                                     <div class="activities-content">
@@ -417,7 +417,7 @@
                                     </div>
                                     <div class="activities-inner">
                                         <div class="activities-title">
-                                            circular
+                                            {{$value->event_name}}
                                         </div>
 
                                         <div class="activities-content circularspopup">
@@ -625,6 +625,19 @@
             .activities-modal .modal-header .close {
                 color: #fff;
                 opacity: 1;
+            }
+
+            .noticepage_section {
+                padding: 20px 40px;
+            }
+
+            .noticepage_section .activities-inner .activities-info .activities-body .activities-box-part span {
+                position: relative;
+                top: 0px;
+            }
+
+            .noticepage_section .activities-inner .activities-info .activities-body .activities-box-part {
+                padding-top: 0px;
             }
 
             /*

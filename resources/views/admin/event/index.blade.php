@@ -30,6 +30,11 @@
                             Publish of month
                         </th>
 
+
+                        <th>
+                            Event name
+                        </th>
+
                         <th>
                             Details 1
                         </th>
@@ -64,6 +69,10 @@
 
                         <td>
                             {{$value->month}}
+                        </td>
+
+                        <td>
+                            {{$value->event_name}}
                         </td>
 
                         <td>
