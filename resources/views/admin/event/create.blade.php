@@ -33,6 +33,13 @@
                 <input type="text" name="month" class="form-control">
 
             </div>
+
+            <div class="form-group">
+                <label for="name_of_the_block">Event name</label>
+                <input type="text" name="event_name" class="form-control">
+
+            </div>
+
             <div class="form-group">
                 <label for="name_of_the_block">Event Details 1</label>
                 <input type="text" name="event_details1" class="form-control">
