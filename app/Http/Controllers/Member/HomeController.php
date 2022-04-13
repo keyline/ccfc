@@ -55,7 +55,7 @@ class HomeController extends Controller
             $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name]);
 
             //Check if fetching member data has been done or not
-            if (is_null($userDetailsInfo->current_status)) {
+            if (!$userDetailsInfo || is_null($userDetailsInfo->current_status) ) {
                 $request->session()->put('firstMemberUpdate', ['usercode' => $userInfo->user_code]);
                 return redirect()->route('member.profileupdate', $userInfo->user_code);
             }

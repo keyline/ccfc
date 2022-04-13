@@ -43,6 +43,9 @@ use App\Http\Controllers\Admin\UsersController;
 
 use App\Models\circular;
 
+
+use App\Models\Events;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -394,7 +397,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/email', [App\Http\Controllers\Admin\SendInBlueController::class, 'index'])->name('email');
 
 
-
+    //circular
 
     Route::get('create/circulars', [App\Http\Controllers\Admin\CircularController::class, 'index'])->name('circulars');
 
@@ -407,6 +410,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('create/update-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'update']);
 
     Route::get('create/delete-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'destroy']);
+
+
+    //events    
+
+    Route::get('create/event', [App\Http\Controllers\Admin\EventsController::class, 'index'])->name('event');
+
+    Route::get('create/add-event', [App\Http\Controllers\Admin\EventsController::class, 'create']);
+
+    Route::post('create/add-event', [App\Http\Controllers\Admin\EventsController::class, 'store']);
+
+    Route::get('create/edit-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'edit']);
+
+    Route::put('create/update-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'update']);
+
+    Route::get('create/delete-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'destroy']);
 
 
 
@@ -507,7 +525,10 @@ Route::group([
     Route::get('/events_members_only', function () {
         $galleries = Gallery::with(['media'])->get();
         $contentPages = ContentPage::all();
-        return view('events_members_only', compact(['galleries','contentPages']));
+
+        $event = Events::all();
+
+        return view('events_members_only', compact(['galleries','contentPages','event']));
     })->name('events_members_only');
 
 

@@ -64,8 +64,11 @@
 
             <!-- ********|| ADVISE START ||******** -->
             <section class="advise">
+
+
                 <div class="container">
                     <div class="row">
+
                         @foreach($galleries->where("id","2") as $key => $gallery)
 
                         @foreach($gallery->images as $key => $media)
@@ -75,8 +78,11 @@
                                 <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
                             </div>
                         </div>
+
+
                         @endforeach
                         @endforeach
+
                         <!-- <div class="col-lg-6">
                             <div class="advise-img">
                                 <img class="img-fluid" src="{{ asset('img/advise-1.jpg') }}" alt="" />
@@ -89,6 +95,10 @@
                         </div> -->
                     </div>
                 </div>
+
+
+
+
             </section>
             <!-- ********|| ADVISE END ||******** -->
 
