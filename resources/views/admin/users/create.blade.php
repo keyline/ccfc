@@ -60,14 +60,11 @@
 
             <div class="form-group">
                 <label class="required" for="roles">Status</label>
-
                 <select class="form-control" name="status" required>
                     <option>Select</option>
                     <option value="ACTIVE">ACTIVE</option>
                     <option value="INACTIVE">INACTIVE</option>
                 </select>
-
-
             </div>
 
             <div class="form-group">
