@@ -1194,6 +1194,7 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     border-radius: 50%;
     height: 144px;
     padding: 10px;
+    overflow: hidden;
 }
 
 .sports-sec #home_sports .sports-info .sports-img img {
@@ -1337,7 +1338,7 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     /* width: 100px; */
     display: block;
     margin: 0 auto;
-    height: 120px;
+    /* height: 120px; */
     object-fit: cover;
 }
 
