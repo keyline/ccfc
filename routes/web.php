@@ -384,6 +384,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('user-details/ckmedia', 'UserDetailsController@storeCKEditorImages')->name('user-details.storeCKEditorImages');
     Route::resource('user-details', 'UserDetailsController');
 
+    Route::get('create/edit-details/{id}', [App\Http\Controllers\Admin\UserDetailsController::class, 'edit']);
+    Route::put('create/update-details/{id}', [App\Http\Controllers\Admin\UserDetailsController::class, 'update']);
+
+
     // Content Block
     Route::delete('content-blocks/destroy', 'ContentBlockController@massDestroy')->name('content-blocks.massDestroy');
     Route::post('content-blocks/media', 'ContentBlockController@storeMedia')->name('content-blocks.storeMedia');

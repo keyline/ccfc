@@ -105,7 +105,7 @@
                     <div class="row">
                         @foreach($event as $value)
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="activities-inner">
                                 <div class="activities-img">
                                     <!-- <img class="img-fluid"
@@ -638,6 +638,11 @@
 
             .noticepage_section .activities-inner .activities-info .activities-body .activities-box-part {
                 padding-top: 0px;
+            }
+
+            .noticepage_section .activities-inner .activities-img {
+                max-width: 300px;
+                width: 100%;
             }
 
             /*
