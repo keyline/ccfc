@@ -62,6 +62,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+
                         <!-- @can('event_detail_access')
                         <li class="nav-item">
                             <a href="{{ route("admin.event-details.index") }}"
@@ -88,6 +89,8 @@
                             </a>
                         </li>
                         @endcan -->
+
+
                         @can('reciprocal_club_access')
                         <li class="nav-item">
                             <a href="{{ route("admin.reciprocal-clubs.index") }}"
