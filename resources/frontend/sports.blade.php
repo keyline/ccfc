@@ -241,6 +241,7 @@
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
                                                             alt="" />
                                                         </a>
+
                                                     </div>
 
                                                     @endif
