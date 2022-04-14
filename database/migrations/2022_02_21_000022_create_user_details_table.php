@@ -60,6 +60,9 @@ class CreateUserDetailsTable extends Migration
             $table->string('spouse_business_email', 100)->nullable();
 
             $table->mediumText('member_image')->nullable();
+
+            $table->string('member_image_2')->nullable();
+            
             $table->mediumText('spouse_image')->nullable();
 
             $table->string('children1_name', 50)->nullable();

@@ -192,18 +192,13 @@
                                             @foreach($subCommitteeMembers->where("comittee_name_id","3") as
                                             $committeeMember)
 
-
-
-
                                             @foreach($userDetails->where("user_code_id",$committeeMember->member->id)
                                             as $userDetail)
-
-
 
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
 
@@ -216,8 +211,14 @@
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
 
                                                         </a>
                                                     </div>
@@ -322,7 +323,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
@@ -331,8 +332,14 @@
                                                     @else
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
                                                         </a>
                                                     </div>
                                                     @endif
@@ -368,7 +375,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
@@ -377,8 +384,14 @@
                                                     @else
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
+
                                                         </a>
                                                     </div>
                                                     @endif
@@ -413,7 +426,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
@@ -424,8 +437,13 @@
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
                                                         </a>
                                                     </div>
                                                     @endif
@@ -460,7 +478,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
@@ -471,8 +489,13 @@
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
                                                         </a>
                                                     </div>
                                                     @endif
@@ -509,7 +532,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
@@ -520,8 +543,14 @@
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
                                                         </a>
                                                     </div>
 
@@ -559,7 +588,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
@@ -569,8 +598,15 @@
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
                                                         </a>
                                                     </div>
                                                     @endif
@@ -607,7 +643,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
@@ -617,8 +653,13 @@
                                                     @else
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
                                                         </a>
                                                     </div>
                                                     @endif
@@ -654,7 +695,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
@@ -665,8 +706,13 @@
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
                                                         </a>
                                                     </div>
 
@@ -705,7 +751,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                                 <div class="multiuse_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1"><img
@@ -716,8 +762,13 @@
 
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
                                                         </a>
                                                     </div>
 

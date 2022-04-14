@@ -224,7 +224,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
 
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -234,8 +234,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
                                                         </a>
                                                     </div>
 
@@ -276,7 +280,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -286,8 +290,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
                                                         </a>
                                                     </div>
 
@@ -317,12 +325,12 @@
                                 <div class="tab-pane fade" id="hockey" role="tabpanel" aria-labelledby="hockey-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","4") as $member)
+                                            @foreach($members->where("select_sport_id","3") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -332,8 +340,13 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
+
                                                         </a>
                                                     </div>
 
@@ -364,12 +377,12 @@
                                 <div class="tab-pane fade" id="rugby" role="tabpanel" aria-labelledby="rugby-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","3") as $member)
+                                            @foreach($members->where("select_sport_id","4") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -379,8 +392,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
                                                         </a>
                                                     </div>
 
@@ -415,7 +432,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -425,9 +442,13 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
                                                         </a>
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
                                                     </div>
 
                                                     @endif
@@ -456,12 +477,12 @@
                                     aria-labelledby="cyclepolo-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","5") as $member)
+                                            @foreach($members->where("select_sport_id","6") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -471,8 +492,13 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
                                                         </a>
                                                     </div>
 
@@ -501,12 +527,12 @@
                                 <div class="tab-pane fade" id="darts" role="tabpanel" aria-labelledby="darts-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","5") as $member)
+                                            @foreach($members->where("select_sport_id","7") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -516,8 +542,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
+
                                                         </a>
                                                     </div>
 
@@ -546,12 +576,12 @@
                                 <div class="tab-pane fade" id="golf" role="tabpanel" aria-labelledby="golf-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","6") as $member)
+                                            @foreach($members->where("select_sport_id","8") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -561,8 +591,13 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
                                                         </a>
                                                     </div>
 
@@ -592,12 +627,12 @@
                                     aria-labelledby="tablerennis-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","7") as $member)
+                                            @foreach($members->where("select_sport_id","9") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -607,8 +642,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
                                                         </a>
                                                     </div>
 
@@ -638,12 +677,12 @@
                                     aria-labelledby="badminton-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","7") as $member)
+                                            @foreach($members->where("select_sport_id","10") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -653,8 +692,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
                                                         </a>
                                                     </div>
 
@@ -683,12 +726,12 @@
                                 <div class="tab-pane fade" id="squash" role="tabpanel" aria-labelledby="squash-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","7") as $member)
+                                            @foreach($members->where("select_sport_id","11") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image'] == '')
+                                                    @if($userDetail['member_image_2'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -698,8 +741,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" />
+                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" />
                                                         </a>
                                                     </div>
 

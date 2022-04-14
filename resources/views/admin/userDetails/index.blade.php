@@ -178,6 +178,11 @@
                         <th>
                             {{ trans('cruds.userDetail.fields.member_image') }}
                         </th>
+
+                        <th>
+                            {{ trans('cruds.userDetail.fields.member_image_local') }}
+                        </th>
+
                         <th>
                             {{ trans('cruds.userDetail.fields.spouse_image') }}
                         </th>
@@ -353,6 +358,16 @@
                             </a>
                             @endif
                         </td>
+
+                        <td>
+
+                            <a href="{{ $userDetail['member_image_2'] }}" target="_blank" style="display: inline-block">
+                                <img src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}" height="90"
+                                    width="100" alt="" />
+                            </a>
+
+                        </td>
+
                         <td>
                             @if($userDetail->spouse_image)
                             <a href="{{ $userDetail['spouse_image'] }}" target="_blank" style="display: inline-block">
@@ -360,7 +375,6 @@
                                         {{ $userDetail['spouse_image'] }}" height="90" width="100" alt="" />
                             </a>
                             @endif
-
 
 
                         </td>
@@ -372,20 +386,25 @@
                             </a> -->
                             @endcan
 
+
+
+                            <a href="{{ url('admin/create/edit-details/'.$userDetail->id)}}"
+                                class="btn btn-primary btn-sm">Edit</a>
+
+
                             <!-- @can('user_detail_edit')
-                            <a class="btn btn-xs btn-info"
-                                href="{{ route('admin.user-details.edit', $userDetail->id) }}">
-                                {{ trans('global.edit') }}
-                            </a>
-                            @endcan -->
+                        <a class="btn btn-xs btn-info" href="{{ route('admin.user-details.edit', $userDetail->id) }}">
+                            {{ trans('global.edit') }}
+                        </a>
+                        @endcan -->
 
 
-                            @can('user_detail_edit')
+                            <!-- @can('user_detail_edit')
                             <a class="btn btn-xs btn-info"
                                 href="{{ route('admin.user-details.edit', $userDetail->id) }}">
                                 {{ trans('global.updatedetails') }}
                             </a>
-                            @endcan
+                            @endcan -->
 
                             <!-- @can('user_detail_delete')
                             <form action="{{ route('admin.user-details.destroy', $userDetail->id) }}" method="POST"
