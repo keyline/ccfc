@@ -457,7 +457,7 @@
                 @endif
 
                 <li class="nav-item">
-                    <a href="{{ route("admin.email") }}" class="nav-link">
+                    <a href="{{ route("admin.list-campaign") }}" class="nav-link">
                         <p>
                             <i class="fas fa-fw fa-sign-out-alt nav-icon">
 
