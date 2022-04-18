@@ -108,8 +108,6 @@
                                     <p class="member_list_input">{{ $details->member_type}}</p>
                                 </div>
 
-
-
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Member Code</p>
                                     <p class="member_list_input">{{ $data->user_code }}</p>
