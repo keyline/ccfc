@@ -33,7 +33,9 @@ class MemberAuthMiddleware
             return redirect()->route('member.profileupdate', session('firstMemberUpdate'));
         }
 
-        if (session()->has('LoggedMember') && Auth::user()->status == 'TERMINATED') {
+        if (session()->has('LoggedMember')
+            &&
+            ! (strtolower(Auth::user()->status) == 'active' || strtolower(Auth::user()->status) == 'inactive')) {
             return redirect('/')->with("fail", "YOUR MEMBERSHIP NO. " . Auth::user()->user_code . " STANDS TERMINATED.");
         }
 

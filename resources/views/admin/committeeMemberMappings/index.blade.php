@@ -31,6 +31,11 @@
                         <th>
                             {{ trans('cruds.committeeMemberMapping.fields.member') }}
                         </th>
+
+                        <th>
+                            {{ trans('cruds.committeeMemberMapping.fields.member_code') }}
+                        </th>
+
                         <th>
                             {{ trans('cruds.user.fields.email') }}
                         </th>
@@ -57,6 +62,11 @@
                         <td>
                             {{ $committeeMemberMapping->member->name ?? '' }}
                         </td>
+
+                        <td>
+                            {{ $committeeMemberMapping->member->user_code  ?? '' }}
+                        </td>
+
                         <td>
                             {{ $committeeMemberMapping->member->email ?? '' }}
                         </td>

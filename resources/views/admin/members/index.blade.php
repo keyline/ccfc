@@ -28,6 +28,10 @@
                         <th>
                             {{ trans('cruds.member.fields.select_member') }}
                         </th>
+
+                        <th>
+                            User Code
+                        </th>
                         <th>
                             {{ trans('cruds.user.fields.email') }}
                         </th>
@@ -54,6 +58,11 @@
                         <td>
                             {{ $member->select_member->name ?? '' }}
                         </td>
+
+                        <td>
+                            {{ $member->select_member->user_code  ?? '' }}
+                        </td>
+
                         <td>
                             {{ $member->select_member->email ?? '' }}
                         </td>

@@ -110,7 +110,7 @@
 
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Member Code</p>
-                                    <p class="member_list_input">{{ $details->member_type_code}}</p>
+                                    <p class="member_list_input">{{ $data->user_code }}</p>
                                 </div>
 
                                 <div class="member_profile_item">
@@ -174,7 +174,7 @@
 
                                 <div class="member_profile_item">
                                     <p class="member_list_text">Email</p>
-                                    <p class="member_list_input">{{ $details->email}}</p>
+                                    <p class="member_list_input">{{ $data->email}}</p>
                                 </div>
 
                                 <div class="member_profile_item">

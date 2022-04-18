@@ -62,7 +62,8 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @can('event_detail_access')
+
+                        <!-- @can('event_detail_access')
                         <li class="nav-item">
                             <a href="{{ route("admin.event-details.index") }}"
                                 class="nav-link {{ request()->is("admin/event-details") || request()->is("admin/event-details/*") ? "active" : "" }}">
@@ -74,8 +75,8 @@
                                 </p>
                             </a>
                         </li>
-                        @endcan
-                        @can('news_access')
+                        @endcan -->
+                        <!-- @can('news_access')
                         <li class="nav-item">
                             <a href="{{ route("admin.newss.index") }}"
                                 class="nav-link {{ request()->is("admin/newss") || request()->is("admin/newss/*") ? "active" : "" }}">
@@ -87,7 +88,9 @@
                                 </p>
                             </a>
                         </li>
-                        @endcan
+                        @endcan -->
+
+
                         @can('reciprocal_club_access')
                         <li class="nav-item">
                             <a href="{{ route("admin.reciprocal-clubs.index") }}"
@@ -469,7 +472,7 @@
                 @endif
 
                 <li class="nav-item">
-                    <a href="{{ route("admin.email") }}" class="nav-link">
+                    <a href="{{ route("admin.list-campaign") }}" class="nav-link">
                         <p>
                             <i class="fas fa-fw fa-sign-out-alt nav-icon">
 

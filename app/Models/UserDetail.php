@@ -33,13 +33,14 @@ class UserDetail extends Model implements HasMedia
 
     protected $appends = [
         'member_image',
+        'member_image_2',
         'spouse_image',
     ];
 
     protected $dates = [
         'date_of_birth',
         'spouse_dob',
-        'anniversary_date',
+        // 'anniversary_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -83,7 +84,7 @@ class UserDetail extends Model implements HasMedia
         'spouse_phone_2',
         'spouse_mobile_no',
         'spouse_email',
-        'anniversary_date',
+        // 'anniversary_date',
         'spouse_business_profession',
         'spouse_business_category',
         'spouse_business_address_1',
@@ -96,6 +97,7 @@ class UserDetail extends Model implements HasMedia
         'spouse_business_phone_2',
         'spouse_business_email',
         'member_image',
+        'member_image_2',
         'spouse_image',
         'created_at',
         'updated_at',
@@ -139,10 +141,10 @@ class UserDetail extends Model implements HasMedia
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
     }
 
-    public function setAnniversaryDateAttribute($value)
-    {
-        $this->attributes['anniversary_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
-    }
+    // public function setAnniversaryDateAttribute($value)
+    // {
+    //     $this->attributes['anniversary_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    // }
 
     // public function getMemberImageAttribute()
     // {

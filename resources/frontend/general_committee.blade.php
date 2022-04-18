@@ -71,15 +71,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             @foreach($contentPages->where("id","6") as $contentPage)
-                            <!-- <div class="content_inner">
-                                <p>In the city of Calcutta, then just over a hundred years old and growing fast both in
-                                    commercial and political significance, the British Raj was busy setting its roots.
-                                    And sports were definitely a part of the social lore.</p>
-                                <p>The club also offers food from its different counters like charcoal-grilled kebabs,
-                                    quick bites of wraps, burgers, pastas etc. There is also a pastry shop and
-                                    specialized tea & coffee counters serving wide varieties of tea and coffee.</p>
-                            </div> -->
+
                             {!! $contentPage->page_text !!}
+
                             @endforeach
                         </div>
                     </div>
@@ -97,7 +91,7 @@
                             <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
                                 <div class="multiuse_tabcontent_inner">
 
-                                    @if($userDetail['member_image'] == '')
+                                    @if($userDetail['member_image_2'] == '')
                                     <div class="multiuse_tab_ceibity-img">
                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
                                     </div>
@@ -105,8 +99,15 @@
 
                                     <div class="multiuse_tab_ceibity-img">
                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
-                                            <img class="img-fluid" src="data:image/png;base64,                          
-                                        {{ $userDetail['member_image'] }}" alt="" />
+
+                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                        {{ $userDetail['member_image'] }}" alt="" /> -->
+
+                                            <img class="img-fluid"
+                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                alt="" />
+
+
                                         </a>
                                     </div>
 
