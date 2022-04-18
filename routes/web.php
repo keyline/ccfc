@@ -398,10 +398,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('sub-committee-members/destroy', 'SubCommitteeMembersController@massDestroy')->name('sub-committee-members.massDestroy');
     Route::resource('sub-committee-members', 'SubCommitteeMembersController');
 
-    Route::get('create/email', [App\Http\Controllers\Admin\SendInBlueController::class, 'index'])->name('email');
+    Route::get('campaigns/index', [App\Http\Controllers\Admin\SendInBlueController::class, 'index'])->name('list-campaign');
 
+    Route::post('campaigns/new-campaign', [App\Http\Controllers\Admin\SendInBlueController::class, 'store'])->name('new-campaign');
 
     //circular
+    Route::post('campaingns/{campaign}/show', [App\Http\Controllers\Admin\SendInBlueController::class, 'show'])->name('show-campaign');
+
+    Route::get('campaingns/{campaign}/edit', [App\Http\Controllers\Admin\SendInBlueController::class, 'edit'])->name('edit-campaign');
+
+    Route::post('campaingns/{campaign}/update', [App\Http\Controllers\Admin\SendInBlueController::class, 'update'])->name('update-campaign');
+
+    Route::delete('campaigns/{campaign}/delete', [App\Http\Controllers\Admin\SendInBlueController::class, 'delete'])->name('delete-campaign');
+
 
     Route::get('create/circulars', [App\Http\Controllers\Admin\CircularController::class, 'index'])->name('circulars');
 
@@ -416,7 +425,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/delete-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'destroy']);
 
 
-    //events    
+    //events
 
     Route::get('create/event', [App\Http\Controllers\Admin\EventsController::class, 'index'])->name('event');
 
