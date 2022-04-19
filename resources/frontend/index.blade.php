@@ -75,7 +75,9 @@
 
                         <div class="col-lg-6">
                             <div class="advise-img">
-                                <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
+                                <a href="{{$media->getUrl('')}}" class="item-inner" data-fancybox="image">
+                                    <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
+                                </a>
                             </div>
                         </div>
 
