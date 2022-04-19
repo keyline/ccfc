@@ -728,11 +728,14 @@
                                 <div class="tab-pane fade" id="squash" role="tabpanel" aria-labelledby="squash-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
+
                                             @foreach($members->where("select_sport_id","11") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
+
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
+
                                                     @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
@@ -770,6 +773,7 @@
                                             </div>
                                             @endforeach
                                             @endforeach
+
                                         </div>
                                     </div>
                                 </div>
