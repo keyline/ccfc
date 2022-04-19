@@ -224,7 +224,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
 
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -234,13 +234,13 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
                                                             alt="" />
-                                                        </a>
+                                                        </a> -->
 
                                                     </div>
 
@@ -281,7 +281,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -291,12 +291,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
                                                         </a>
                                                     </div>
 
@@ -331,7 +331,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -341,12 +341,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
 
                                                         </a>
                                                     </div>
@@ -383,7 +383,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -393,12 +393,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
                                                         </a>
                                                     </div>
 
@@ -433,7 +433,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -443,13 +443,13 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
                                                         </a>
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
                                                     </div>
 
                                                     @endif
@@ -483,7 +483,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -493,13 +493,13 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
 
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
                                                         </a>
                                                     </div>
 
@@ -533,7 +533,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -543,11 +543,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
-                                                        <img class="img-fluid"
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
 
                                                         </a>
                                                     </div>
@@ -582,7 +583,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -592,13 +593,13 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
 
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
                                                         </a>
                                                     </div>
 
@@ -633,7 +634,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -643,12 +644,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
                                                         </a>
                                                     </div>
 
@@ -683,7 +684,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -693,12 +694,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
                                                         </a>
                                                     </div>
 
@@ -732,7 +733,7 @@
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
                                                 <div class="sports_tabcontent_inner">
-                                                    @if($userDetail['member_image_2'] == '')
+                                                    @if($userDetail['member_image'] == '')
 
                                                     <div class="sport_tab_ceibity-img">
                                                         <img src="{{ asset('img/demopic.png') }}" alt="" />
@@ -742,12 +743,12 @@
 
                                                     <div class="sport_tab_ceibity-img">
 
-                                                        <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
 
-                                                        <img class="img-fluid"
+                                                        <!-- <img class="img-fluid"
                                                             src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
-                                                            alt="" />
+                                                            alt="" /> -->
                                                         </a>
                                                     </div>
 
