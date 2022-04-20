@@ -2821,10 +2821,16 @@ section.sports-page {
 
 .newsletter_right h3,
 .newsletter_right h3 a {
-    font-size: 22px;
+    font-size: 20px;
     font-family: 'IBM Plex Serif', serif;
     margin-bottom: 0;
     color: var(--secondaryColor);
+}
+.newsletter_pdfdownload_section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .newsletter_right p a,
