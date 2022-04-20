@@ -221,6 +221,12 @@
     .photoFrame {
         width: 100%;
     }
+    .balloting_infolist .col-lg-3 {
+        max-width: 33.333333%;
+    }
+    .subcomminttees_tabsection .multiuse_tab_content_section .col-lg-3 {
+        max-width: 33.333333%;
+    }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
     .invoice_section .col-md-12.col-lg-6 {
@@ -403,6 +409,10 @@
     }
     .member_details_section {
         padding: 30px 15px;
+    }
+    .balloting_infolist .multiuse_tab_content_section .multiuse_tab_ceibity-img {
+        height: 130px;
+        width: 130px;
     }
 }
 @media screen and (min-width: 768px) {

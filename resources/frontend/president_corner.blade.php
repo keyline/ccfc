@@ -107,15 +107,54 @@
                                     season including the popular T10 and Corporate Tournaments. We are also in talks
                                     with CAB to host a few Ranji Trophy matches here.</p>
                             </div> -->
-                            <div class="newsletter_pdfdownload president_corner">
-                                <div class="newsletter_left">
-                                    <img class="img-fluid"
-                                            src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                            <div class="newsletter_pdfdownload_section">
+                                <div class="newsletter_pdfdownload president_corner">
+                                    <div class="newsletter_left">
+                                        <img class="img-fluid"
+                                                src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                                    </div>
+                                    <div class="newsletter_right">
+                                        <h3>President's Letter</h3>
+                                        <p class="pdfdate">16.03.22</p>
+                                    </div>
+                                    <a class="wholenewdivlink" href="{{ asset('pdf/Letter-from-President-16.03.22.pdf') }}" target="_blank"></a>
                                 </div>
-                                <div class="newsletter_right">
-                                    <h3>President's Letter</h3>
+
+                                <div class="newsletter_pdfdownload president_corner">
+                                    <div class="newsletter_left">
+                                        <img class="img-fluid"
+                                                src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                                    </div>
+                                    <div class="newsletter_right">
+                                        <h3>President's Letter</h3>
+                                        <p class="pdfdate">22.01.22</p>
+                                    </div>
+                                    <a class="wholenewdivlink" href="{{ asset('pdf/Letter-from-President-22.01.22.pdf') }}" target="_blank"></a>
                                 </div>
-                                <a class="wholenewdivlink" href="{{ asset('pdf/Diwali-Greetings-to-members-2.11.21.pdf') }}" target="_blank"></a>
+
+                                <div class="newsletter_pdfdownload president_corner">
+                                    <div class="newsletter_left">
+                                        <img class="img-fluid"
+                                                src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                                    </div>
+                                    <div class="newsletter_right">
+                                        <h3>President's Letter</h3>
+                                        <p class="pdfdate">22.12.21</p>
+                                    </div>
+                                    <a class="wholenewdivlink" href="{{ asset('pdf/LETTER-FROM-THE-PRESIDENT-22.12.21.pdf') }}" target="_blank"></a>
+                                </div>
+
+                                <div class="newsletter_pdfdownload president_corner">
+                                    <div class="newsletter_left">
+                                        <img class="img-fluid"
+                                                src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                                    </div>
+                                    <div class="newsletter_right">
+                                        <h3>President's Letter</h3>
+                                        <p class="pdfdate">02.11.21</p>
+                                    </div>
+                                    <a class="wholenewdivlink" href="{{ asset('pdf/Diwali-Greetings-to-members-2.11.21.pdf') }}" target="_blank"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
