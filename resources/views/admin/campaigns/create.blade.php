@@ -63,6 +63,9 @@
                             View
                         </th>
                         <th>
+                            Send
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -84,7 +87,7 @@
                             </td>
 
                             <td></td>
-                            <td></td>
+                            <td><button class="btn btn-info" onclick="location.href='{{ route('admin.start-campaign', ['campaign'=> $campaign->ec_id])}}'">Send</button></td>
 
                         </tr>
                     @endforeach
