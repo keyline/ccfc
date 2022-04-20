@@ -11,5 +11,7 @@ class EmailCampaign extends Model
 
     protected $table= "email_campaigns";
 
+    protected $primaryKey = 'ec_id';
+
     protected $fillable = ['ec_title', 'ec_body', 'ec_attachment', 'ec_is_despatched','created_at'];
 }
