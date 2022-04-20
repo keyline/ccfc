@@ -459,6 +459,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     //Bulk email send
     Route::get('campaigns/{campaign}/start', [App\Http\Controllers\Admin\SendInBlueController::class, 'startCampaign'])->name('start-campaign');
+
+    Route::get('/campaigns/showmeemailtpl', function () {
+        return view('admin.campaigns.notification', ['body' => "This is test"]);
+        //echo "pass";
+    });
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
