@@ -43,6 +43,9 @@ use App\Http\Controllers\Admin\UsersController;
 
 use App\Models\circular;
 
+
+use App\Models\Events;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -381,6 +384,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('user-details/ckmedia', 'UserDetailsController@storeCKEditorImages')->name('user-details.storeCKEditorImages');
     Route::resource('user-details', 'UserDetailsController');
 
+    Route::get('create/edit-details/{id}', [App\Http\Controllers\Admin\UserDetailsController::class, 'edit']);
+    Route::put('create/update-details/{id}', [App\Http\Controllers\Admin\UserDetailsController::class, 'update']);
+
+
     // Content Block
     Route::delete('content-blocks/destroy', 'ContentBlockController@massDestroy')->name('content-blocks.massDestroy');
     Route::post('content-blocks/media', 'ContentBlockController@storeMedia')->name('content-blocks.storeMedia');
@@ -395,6 +402,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::post('campaigns/new-campaign', [App\Http\Controllers\Admin\SendInBlueController::class, 'store'])->name('new-campaign');
 
+    //circular
     Route::post('campaingns/{campaign}/show', [App\Http\Controllers\Admin\SendInBlueController::class, 'show'])->name('show-campaign');
 
     Route::get('campaingns/{campaign}/edit', [App\Http\Controllers\Admin\SendInBlueController::class, 'edit'])->name('edit-campaign');
@@ -417,6 +425,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/delete-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'destroy']);
 
 
+    //events
+
+    Route::get('create/event', [App\Http\Controllers\Admin\EventsController::class, 'index'])->name('event');
+
+    Route::get('create/add-event', [App\Http\Controllers\Admin\EventsController::class, 'create']);
+
+    Route::post('create/add-event', [App\Http\Controllers\Admin\EventsController::class, 'store']);
+
+    Route::get('create/edit-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'edit']);
+
+    Route::put('create/update-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'update']);
+
+    Route::get('create/delete-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'destroy']);
+
+
 
 
     Route::get('contactus', 'ContactController@index')->name('contactus');
@@ -433,6 +456,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         }
         return view('home');
     });
+
+    //Bulk email send
+    Route::get('campaigns/{campaign}/start', [App\Http\Controllers\Admin\SendInBlueController::class, 'startCampaign'])->name('start-campaign');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
@@ -515,7 +541,10 @@ Route::group([
     Route::get('/events_members_only', function () {
         $galleries = Gallery::with(['media'])->get();
         $contentPages = ContentPage::all();
-        return view('events_members_only', compact(['galleries','contentPages']));
+
+        $event = Events::all();
+
+        return view('events_members_only', compact(['galleries','contentPages','event']));
     })->name('events_members_only');
 
 

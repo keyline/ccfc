@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\EmailCampaign;
+use App\Mail\SendInBlueNotification;
+use Mail;
 
 class SendInBlueController extends Controller
 {
@@ -108,5 +110,19 @@ class SendInBlueController extends Controller
 
         return redirect()->route('admin.list-campaign')
             ->with('success', 'Campaign deleted successfully');
+    }
+
+    /**
+     *
+     */
+    public function startCampaign(Request $request)
+    {
+
+        //check request has campaign id
+        if (!empty($request->campaign) && is_numeric($request->campaign)) {
+            //Dispatching the Job here
+            \App\Jobs\EmailCampaignJob::dispatch($request->campaign)->onQueue('sendinblueemail');
+            return redirect()->back()->with('success', 'Campaign started successfully');
+        }
     }
 }
