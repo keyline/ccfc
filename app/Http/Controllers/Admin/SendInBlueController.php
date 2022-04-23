@@ -121,7 +121,17 @@ class SendInBlueController extends Controller
         //check request has campaign id
         if (!empty($request->campaign) && is_numeric($request->campaign)) {
             //Dispatching the Job here
-            \App\Jobs\EmailCampaignJob::dispatch($request->campaign)->onQueue('sendinblueemail');
+            //fetch user list with email not empty
+            $query= \App\Models\User::query();
+            $query->where('email', '!=', '');
+            $query->where('id', '<>', 1);
+            $users= $query->limit(100)->get();
+
+            foreach ($users as $user) {
+                \App\Jobs\EmailCampaignJob::dispatch($request->campaign, $user)->onQueue('sendinblueemail');
+            }
+
+            
             return redirect()->back()->with('success', 'Campaign started successfully');
         }
     }

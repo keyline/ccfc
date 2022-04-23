@@ -18,14 +18,32 @@ class EmailCampaignJob implements ShouldQueue
 
     protected $campaignid;
 
+    protected $user;
+
+    /**
+     * The number of times the job may be attempted.
+     *
+     * @var int
+     */
+    public $tries = 5;
+
+    /**
+     * The number of seconds the job can run before timing out.
+     *
+     * @var int
+     */
+    public $timeout = 20;
+
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($campaignid)
+    public function __construct($campaignid, $user)
     {
         $this->campaignid= $campaignid;
+        $this->user= $user;
     }
 
     /**
@@ -35,15 +53,10 @@ class EmailCampaignJob implements ShouldQueue
      */
     public function handle()
     {
-        //fetch user list with email not empty
-        $query= \App\Models\User::query();
-        $query->where('email', '!=', '');
-        $query->where('id', '<>', 1);
-        $users= $query->limit(100)->get();
+        
         //code...
-        foreach ($users as $user) {
-            //send email operation
-            Mail::to($user->email, $user->name)->send(new SendInBlueNotification($this->campaignid, $user));
-        }
+        
+        //send email operation
+        Mail::to($this->user->email, $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
     }
 }
