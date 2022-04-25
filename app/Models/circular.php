@@ -12,6 +12,6 @@ class circular extends Model
     protected $table = 'circulars';
     
     public $fillable = [
-        'day', 'month', 'details_1', 'details_2', 'circular_image'
+        'day', 'month', 'details_1', 'details_2', 'circular_image', 'circular_image2'
     ];
 }

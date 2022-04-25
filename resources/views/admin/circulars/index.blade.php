@@ -43,6 +43,10 @@
                         </th>
 
                         <th>
+                            Notice Image
+                        </th>
+
+                        <th>
                             Edit
                         </th>
 
@@ -76,6 +80,12 @@
 
                         <td>
                             <img src="{{ asset('uploads/circularimg/'.$value->circular_image)}}" width="100px"
+                                height="100px" alt="">
+                        </td>
+
+
+                        <td>
+                            <img src="{{ asset('uploads/circularimg/'.$value->circular_image2)}}" width="100px"
                                 height="100px" alt="">
                         </td>
 

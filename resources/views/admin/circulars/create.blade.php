@@ -56,6 +56,13 @@
 
             </div>
 
+
+            <div class="form-group">
+                <label for="name_of_the_block">Notice Image </label>
+                <input type="file" name="circular_image2" class="form-control">
+
+            </div>
+
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     Save
