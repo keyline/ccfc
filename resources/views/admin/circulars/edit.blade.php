@@ -73,6 +73,14 @@
             </div><br><br>
 
             <div class="form-group">
+                <label for="name_of_the_block">Notice Image </label>
+                <input type="file" name="circular_image2" class="form-control"><br>
+                <img src="{{ asset('uploads/circularimg/'.$circular->circular_image2)}}" width="100px" height="100px"
+                    alt="">
+
+            </div><br><br>
+
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     Update
                 </button>

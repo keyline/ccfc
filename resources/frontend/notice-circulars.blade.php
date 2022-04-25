@@ -398,6 +398,8 @@
                 @foreach($circular as $value)
                 <div class="modal fade" id="exampleModal{{$value->id}}" tabindex="-1"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                    @if($value['circular_image2'] == '')
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -405,6 +407,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+
                             <div class="modal-body">
                                 <div class="modal-part">
                                     <div class="activities-img">
@@ -414,6 +417,7 @@
 
                                         <img class="img-fluid"
                                             src="{{ asset('uploads/circularimg/'.$value->circular_image)}}" alt="">
+
                                     </div>
                                     <div class="activities-inner">
                                         <div class="activities-title">
@@ -444,6 +448,56 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                        </div>
+                    </div>
+
+
+                    @else
+
+
+                    <div class="modal-dialog modal-activities-sigleimg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+
+
+
+
+                            <div class="modal-part">
+                                <div class="activities-img">
+                                    <!-- <img class="img-fluid"
+                                            src="http://ccfc.keylines.net.in/storage/58/62171940e4354_right_sideimage_1.jpg"
+                                            alt=""> -->
+
+
+                                </div>
+                                <div class="activities-inner">
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div class="modal-body">
+
+                                <img class="img-fluid" src="{{ asset('uploads/circularimg/'.$value->circular_image2)}}"
+                                    alt="">
+
+
+                            </div>
+
+
                             <!--
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -452,6 +506,8 @@
 -->
                         </div>
                     </div>
+                    @endif
+
                 </div>
 
                 @endforeach
@@ -577,6 +633,10 @@
 
             .activities-modal .modal-dialog {
                 max-width: 640px;
+            }
+
+            .activities-modal .modal-activities-sigleimg {
+                max-width: 800px;
             }
 
             .activities-modal .modal-body .modal-part .activities-img {
