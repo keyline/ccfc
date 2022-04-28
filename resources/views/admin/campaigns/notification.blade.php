@@ -30,7 +30,8 @@
             <div class="container text-center">
                 <div class="row mt-4">
                     <div class="col-md-6">
-                        <a href="https://ccfc1792.com/"><img class="img-fluid" src="{{ asset('img/email-logo.png') }}" alt="" /></a>
+                        <a href="{{ url()->current() }}"><img class="img-fluid" src="{{URL::to('/img/email-logo.png')}}" alt="" /></a>
+                        
                     </div>
                     <div class="col-md-6">
                         <div class="emailheader_top">
@@ -39,7 +40,7 @@
                             <p><strong>Phone:</strong> 2461-5060 , 2461-5204</p>
                             <p><strong>Fax:</strong> 2461-5058</p>
                             <p><strong>E-mail:</strong> <a href="mailto:ccfcsecretary@ccfc1792.com"> ccfcsecretary@ccfc1792.com</a></p>
-                            <p><strong>Website:</strong> <a href="https://ccfc1792.com/" target="_blank">www.ccfc1792.com</a></p>
+                            <p><strong>Website:</strong> <a href="{{ url()->current() }}" target="_blank">www.ccfc1792.com</a></p>
                             <p><strong>CIN :</strong> U92412WB2003GAP096325</p>
                         </div>
                     </div>
@@ -52,9 +53,9 @@
                 <div class="row">
                     <div class="col-md-12 pt-5 pb-5">
                         <div class="text-center">
-                            <h1 class="lead mt-3">Send mail using attachment</h1>
+                            <h1 class="lead mt-3"></h1>
                             <p class="lead">Please check attachment with this file.</p>
-                            {{ $body }}
+                            {{ strip_tags($body) }}
                         </div>
                     </div>
                 </div>
