@@ -39,8 +39,8 @@ class SendInBlueNotification extends Mailable
             $targetCampaign= EmailCampaign::findOrFail($this->campaignId);
 
             $this
-            ->view('admin.campaigns.notification')
             ->subject($targetCampaign->ec_title)
+            ->markdown('admin.campaigns.notification')
             ->with('body', $targetCampaign->ec_body);
 
             
