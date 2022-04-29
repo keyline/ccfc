@@ -29,8 +29,9 @@
                 <span class="help-block">{{ trans('cruds.committeeMemberMapping.fields.committee_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required"
-                    for="member_id">{{ trans('cruds.committeeMemberMapping.fields.member') }}</label>
+               <!-- <label class="required"
+                    for="member_id">{{ trans('cruds.committeeMemberMapping.fields.member') }}</label>-->
+					<label class="required" for="member_id">Member code</label>
                 <select class="form-control select2 {{ $errors->has('member') ? 'is-invalid' : '' }}" name="member_id"
                     id="member_id" required>
                     @foreach($members as $id => $entry)
