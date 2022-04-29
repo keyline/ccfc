@@ -262,7 +262,7 @@
                                     <div class="item">
                                         <div class="services-info">
                                             <div class="services-img">
-                                                <img class="img-fluid" src="{{ asset('img/services-3.jpg') }}" alt="">
+                                                <img class="img-fluid" src="{{ asset('img/services-3-pool.jpg') }}" alt="">
                                             </div>
                                             <div class="services-box">
                                                 <div class="top-img">

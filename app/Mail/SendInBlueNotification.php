@@ -16,6 +16,7 @@ class SendInBlueNotification extends Mailable
 
     protected $campaignId;
     protected $user;
+    public $theme;
 
     /**
      * Create a new message instance.
@@ -26,6 +27,7 @@ class SendInBlueNotification extends Mailable
     {
         $this->campaignId= $id;
         $this->user= $user;
+        $this->theme= "custom";
     }
 
     /**
@@ -40,7 +42,7 @@ class SendInBlueNotification extends Mailable
 
             $this
             ->subject($targetCampaign->ec_title)
-            ->markdown('admin.campaigns.notification')
+            ->view('admin.campaigns.notification')
             ->with('body', $targetCampaign->ec_body);
 
             
