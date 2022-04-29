@@ -73,7 +73,9 @@
 
 
                                     @foreach($contentPages->where("id","16") as $contentPage)
+
                                     {!! $contentPage->page_text !!}
+
                                     @endforeach
 
                                     <!-- <p>The Club gym went through refurbishment and up gradation this February bringing a
