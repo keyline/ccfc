@@ -87,6 +87,20 @@
                         <td>
                             <img src="{{ asset('uploads/circularimg/'.$value->circular_image2)}}" width="100px"
                                 height="100px" alt="">
+
+
+                            <!-- <form action="{{ url('admin/create/remove-circular/'.$value->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form> -->
+
+                            <!-- <form action="{{ url('admin/create/remove-circular/'.$value->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="id" value="{{$value->id}}" />
+                                <button type="submit" class="btn btn-sm btn-danger ml-2">Delete</button>
+                            </form> -->
                         </td>
 
 

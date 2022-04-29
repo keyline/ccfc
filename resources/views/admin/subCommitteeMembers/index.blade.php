@@ -32,7 +32,10 @@
                             {{ trans('cruds.subCommitteeMember.fields.member') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.user_code') }}
+
+                            <!-- {{ trans('cruds.user.fields.user_code') }} -->
+                            Member code
+
                         </th>
                         <th>
                             {{ trans('cruds.subCommitteeMember.fields.designation') }}
