@@ -11,7 +11,7 @@
     <div style="height: 2px; background: #be1f24;"></div>
     <div style="margin: 0 auto; display:table;">
         <p style="text-align: center; font-family:Arial, Helvetica, sans-serif;"></p>
-        <p style="font-size: 14px; color:#000; font-family:Arial, Helvetica, sans-serif; text-align: center;"> { !! $body !! }</p>
+        <p style="font-size: 14px; color:#000; font-family:Arial, Helvetica, sans-serif; text-align: center;"> {!! $body !!}</p>
     </div>
 
     
