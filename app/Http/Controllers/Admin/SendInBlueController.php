@@ -125,7 +125,7 @@ class SendInBlueController extends Controller
             $query= \App\Models\User::query();
             $query->where('email', '!=', '');
             $query->where('id', '<>', 1);
-            $users= $query->limit(100)->get();
+            $users= $query->get();
 
             foreach ($users as $user) {
                 \App\Jobs\EmailCampaignJob::dispatch($request->campaign, $user)->onQueue('sendinblueemail');
