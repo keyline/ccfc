@@ -30,7 +30,7 @@
                         </th>
 
                         <th>
-                            User Code
+                            Member Code
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.email') }}
