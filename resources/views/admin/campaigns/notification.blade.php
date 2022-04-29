@@ -4,25 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>This is test mail</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        
-        .emailheader_top h2 {
-            font-size: 24px;
-        }
-        .emailheader_top p {
-            margin-bottom: 2px;
-            font-size: 16px;
-            line-height: 1.25;
-        }
-        .emailheader_top a{
-            color: #000;
-            text-decoration: none;
-        }
-        .footer_section{background: #ddd;}
-        .footer_section address{margin-bottom: 0px;}
-        .footer_section{padding: 10px 0;}
-    </style>
 </head>
 <body>
     <div class="email_wrapper">
@@ -62,15 +43,15 @@
             </div>
         </div>
 
-        {{-- <div class="footer_section text-center">
+        <div class="footer_section text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <address>Copyright © 2022 The CC&FC Club at Kolkata All Rights Reserved.</address>
+                        <address>Copyright © {{ date('Y') }} The CC&FC Club at Kolkata All Rights Reserved.</address>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 
     
