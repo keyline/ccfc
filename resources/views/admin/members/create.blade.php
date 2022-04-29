@@ -11,7 +11,9 @@
             @csrf
             <div class="form-group">
                 <!-- <label class="required" for="select_member_id">{{ trans('cruds.member.fields.select_member') }}</label> -->
+
                 <label class="required" for="select_member_id">Select Member Code</label>
+
                 <select class="form-control select2 {{ $errors->has('select_member') ? 'is-invalid' : '' }}"
                     name="select_member_id" id="select_member_id" required>
                     @foreach($select_members as $id => $entry)
