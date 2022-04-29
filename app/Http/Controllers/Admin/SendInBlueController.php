@@ -129,7 +129,6 @@ class SendInBlueController extends Controller
 
             foreach ($users as $user) {
                 \App\Jobs\EmailCampaignJob::dispatch($request->campaign, $user)->onQueue('sendinblueemail');
-                break;
             }
 
             
