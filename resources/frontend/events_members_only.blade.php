@@ -72,7 +72,7 @@
                                 <div class="history-content text-justify">
 
 
-                                    @foreach($contentPages->where("id","15") as $contentPage)
+                                    @foreach($contentPages->where("id","16") as $contentPage)
                                     {!! $contentPage->page_text !!}
                                     @endforeach
 
