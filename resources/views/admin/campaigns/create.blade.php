@@ -33,8 +33,8 @@
             <input class="form-control" type="file" id="attachment" name="file">
             
             </div>
-            <button>Save as draft</button>
-            <button>Send</button>
+            <!-- <button>Save as draft</button> -->
+            <!-- <button>Send</button> -->
             <button type="submit" class="btn btn-success">Save</button>
             </div>
         </form>
