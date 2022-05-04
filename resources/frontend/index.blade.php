@@ -25,8 +25,6 @@
                         @foreach($gallery->images as $key => $media)
                         <div class="item">
 
-
-
                             <div class="about-img">
 
                                 <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
@@ -264,7 +262,7 @@
                                     <div class="item">
                                         <div class="services-info">
                                             <div class="services-img">
-                                                <img class="img-fluid" src="{{ asset('img/services-3.jpg') }}" alt="">
+                                                <img class="img-fluid" src="{{ asset('img/services-3-pool.jpg') }}" alt="">
                                             </div>
                                             <div class="services-box">
                                                 <div class="top-img">
@@ -282,7 +280,8 @@
                                                         POOL PUB
                                                     </div>
                                                     <div class="services-content">
-                                                        This beautiful facility is let out to members for their meetings/parties etc..
+                                                        This beautiful facility is let out to members for their
+                                                        meetings/parties etc..
                                                     </div>
                                                     <div class="services-action">
                                                         <a href="{{ asset('pool-pub') }}" class="read-btn">+
@@ -313,7 +312,8 @@
                                                         BAR
                                                     </div>
                                                     <div class="services-content">
-                                                        The club has three bars each of them having a unique style & decor..
+                                                        The club has three bars each of them having a unique style &
+                                                        decor..
                                                     </div>
                                                     <div class="services-action">
                                                         <a href="{{ asset('club-bar') }}" class="read-btn">+ Read
@@ -396,307 +396,306 @@
                                                 </div>
                                                 {{-- <div class="sports-content">
                                                     {{$sportstype->sport_details}}
-                                                </div> --}}
-                                                <div class="sports-action">
-                                                    <!-- <a href="{{ url('/pages', $sportstype->sport_name) }}" class="read-btn">+ Read More</a> -->
+                                            </div> --}}
+                                            <div class="sports-action">
+                                                <!-- <a href="{{ url('/pages', $sportstype->sport_name) }}" class="read-btn">+ Read More</a> -->
 
-                                                    <!-- <a href="{{ url('/sports', $sportstype->sport_name) }}"
+                                                <!-- <a href="{{ url('/sports', $sportstype->sport_name) }}"
                                                         class="read-btn">+
                                                         Read More</a> -->
 
-                                                    <a href="{{ url('/sports') }}" class="read-btn">+
-                                                        Read More</a>
+                                                <a href="{{ url('/sports') }}" class="read-btn">+
+                                                    Read More</a>
 
-                                                    <!-- <a href="{{ url('/sports') }}" class="read-btn">
+                                                <!-- <a href="{{ url('/sports') }}" class="read-btn">
                                                         +Read More
                                                     </a> -->
 
 
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    @endforeach
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- ********|| SPORTS END ||******** -->
+        </div>
+        </section>
+        <!-- ********|| SPORTS END ||******** -->
 
-            <!-- ********|| CLUB START ||******** -->
-            <section class="club-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 offset-lg-1">
-                            <div class="title-sec">
-                                <div class="title">
-                                    Reciprocal Club
-                                </div>
-                            </div>
-
-                            <div class="club-inner">
-
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="indian-tab" data-toggle="tab" href="#indian"
-                                            role="tab" aria-controls="indian" aria-selected="true">Indian</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="overseas-tab" data-toggle="tab" href="#overseas"
-                                            role="tab" aria-controls="overseas" aria-selected="false">Overseas</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="indian" role="tabpanel"
-                                        aria-labelledby="indian-tab">
-                                        <div class="club-info">
-                                            <div id="home_reciprocal_indian" class="owl-carousel owl-theme">
-
-                                                @foreach($reciprocalClubs->where("cub_type","indian") as $key =>
-                                                $reciprocalClub)
-
-                                                <div class="item">
-
-                                                    <div class="club-body">
-
-                                                        <div class="club-img">
-                                                            <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
-                                                            <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
-                                                                alt="" />
-                                                        </div>
-                                                        <div class="club-title">
-
-                                                            {{$reciprocalClub->reciprocal_club_name}}
-                                                            <!-- Madras Cricket Club -->
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                                @endforeach
-
-
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="overseas" role="tabpanel"
-                                        aria-labelledby="overseas-tab">
-                                        <div class="club-info">
-                                            <div id="home_reciprocal_overseas" class="owl-carousel owl-theme">
-
-
-                                                @foreach($reciprocalClubs->where("cub_type","overseas") as $key =>
-                                                $reciprocalClub)
-
-                                                <div class="item">
-
-                                                    <div class="club-body">
-
-                                                        <div class="club-img">
-                                                            <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
-                                                            <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
-                                                                alt="" />
-                                                        </div>
-                                                        <div class="club-title">
-
-                                                            {{$reciprocalClub->reciprocal_club_name}}
-                                                            <!-- Madras Cricket Club -->
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                                @endforeach
-
-
-
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <!-- ********|| CLUB START ||******** -->
+        <section class="club-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="title-sec">
+                            <div class="title">
+                                Reciprocal Club
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ********|| CLUB END ||******** -->
 
-            <!-- ***|| TESTIMONIAL START ||*** -->
-            <section class="testimonial-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 offset-lg-1">
-                            <div class="row">
-                                <div class="col-lg-8 or-2">
+                        <div class="club-inner">
 
-                                    <div class="testimonial-carousel">
-                                        <div id="home_testimonial" class="owl-carousel owl-theme">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="indian-tab" data-toggle="tab" href="#indian"
+                                        role="tab" aria-controls="indian" aria-selected="true">Indian</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="overseas-tab" data-toggle="tab" href="#overseas" role="tab"
+                                        aria-controls="overseas" aria-selected="false">Overseas</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="indian" role="tabpanel"
+                                    aria-labelledby="indian-tab">
+                                    <div class="club-info">
+                                        <div id="home_reciprocal_indian" class="owl-carousel owl-theme">
+
+                                            @foreach($reciprocalClubs->where("cub_type","indian") as $key =>
+                                            $reciprocalClub)
+
                                             <div class="item">
 
-                                                <div class="testimonial-body">
-                                                    <div class="testimonial-inner">
+                                                <div class="club-body">
 
-                                                        <div class="testimonial-info">
-                                                            <div class="quote-icon">
-                                                                <i class="zmdi zmdi-quote"></i>
-                                                            </div>
-                                                            <div class="testimonial-content">
-                                                                Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                                elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                                                                dolore magna aliquam erat volutpat. Ut wisi enim....
-                                                            </div>
-                                                            <div class="testimonial-name">
-                                                                Sourav Ganguly
-                                                            </div>
-                                                            <div class="testimonial-profession">
-                                                                BCCI President
-                                                            </div>
-                                                            <div class="testimonial-action">
-                                                                <a href="#" class="read-btn">+ Read more</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="testimonial-info-box"></div>
+                                                    <div class="club-img">
+                                                        <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
+                                                        <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
+                                                            alt="" />
                                                     </div>
-                                                    <div class="testimonial-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/testimonial-1.jpg') }}" alt="">
+                                                    <div class="club-title">
+
+                                                        {{$reciprocalClub->reciprocal_club_name}}
+                                                        <!-- Madras Cricket Club -->
+
                                                     </div>
 
                                                 </div>
 
                                             </div>
-                                            <div class="item">
+                                            @endforeach
 
-                                                <div class="testimonial-body">
-                                                    <div class="testimonial-inner">
 
-                                                        <div class="testimonial-info">
-                                                            <div class="quote-icon">
-                                                                <i class="zmdi zmdi-quote"></i>
-                                                            </div>
-                                                            <div class="testimonial-content">
-                                                                Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                                elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                                                                dolore magna aliquam erat volutpat. Ut wisi enim....
-                                                            </div>
-                                                            <div class="testimonial-name">
-                                                                Sachin Tendulkar
-                                                            </div>
-                                                            <div class="testimonial-profession">
-                                                                BCCI President
-                                                            </div>
-                                                            <div class="testimonial-action">
-                                                                <a href="#" class="read-btn">+ Read more</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="testimonial-info-box"></div>
-                                                    </div>
-                                                    <div class="testimonial-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/testimonial-2.jpg') }}" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-action-mobile">
-                                            <a href="#" class="read-btn">+ Read all</a>
+
+
                                         </div>
                                     </div>
-
                                 </div>
-                                <div class="col-lg-4 or-1">
-                                    <div class="testimonial-right">
-                                        <div class="testimonial-logo">
-                                            <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" />
+                                <div class="tab-pane fade" id="overseas" role="tabpanel" aria-labelledby="overseas-tab">
+                                    <div class="club-info">
+                                        <div id="home_reciprocal_overseas" class="owl-carousel owl-theme">
+
+
+                                            @foreach($reciprocalClubs->where("cub_type","overseas") as $key =>
+                                            $reciprocalClub)
+
+                                            <div class="item">
+
+                                                <div class="club-body">
+
+                                                    <div class="club-img">
+                                                        <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
+                                                        <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
+                                                            alt="" />
+                                                    </div>
+                                                    <div class="club-title">
+
+                                                        {{$reciprocalClub->reciprocal_club_name}}
+                                                        <!-- Madras Cricket Club -->
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            @endforeach
+
+
+
+
+
                                         </div>
-                                        <div class="testimonial-order-part">
-                                            <div class="title-sec">
-                                                <div class="title">
-                                                    Testimonials
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ********|| CLUB END ||******** -->
+
+        <!-- ***|| TESTIMONIAL START ||*** -->
+        <section class="testimonial-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="row">
+                            <div class="col-lg-8 or-2">
+
+                                <div class="testimonial-carousel">
+                                    <div id="home_testimonial" class="owl-carousel owl-theme">
+                                        <div class="item">
+
+                                            <div class="testimonial-body">
+                                                <div class="testimonial-inner">
+
+                                                    <div class="testimonial-info">
+                                                        <div class="quote-icon">
+                                                            <i class="zmdi zmdi-quote"></i>
+                                                        </div>
+                                                        <div class="testimonial-content">
+                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                                            elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+                                                            dolore magna aliquam erat volutpat. Ut wisi enim....
+                                                        </div>
+                                                        <div class="testimonial-name">
+                                                            Sourav Ganguly
+                                                        </div>
+                                                        <div class="testimonial-profession">
+                                                            BCCI President
+                                                        </div>
+                                                        <div class="testimonial-action">
+                                                            <a href="#" class="read-btn">+ Read more</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial-info-box"></div>
+                                                </div>
+                                                <div class="testimonial-img">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonial-1.jpg') }}"
+                                                        alt="">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="item">
+
+                                            <div class="testimonial-body">
+                                                <div class="testimonial-inner">
+
+                                                    <div class="testimonial-info">
+                                                        <div class="quote-icon">
+                                                            <i class="zmdi zmdi-quote"></i>
+                                                        </div>
+                                                        <div class="testimonial-content">
+                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                                            elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+                                                            dolore magna aliquam erat volutpat. Ut wisi enim....
+                                                        </div>
+                                                        <div class="testimonial-name">
+                                                            Sachin Tendulkar
+                                                        </div>
+                                                        <div class="testimonial-profession">
+                                                            BCCI President
+                                                        </div>
+                                                        <div class="testimonial-action">
+                                                            <a href="#" class="read-btn">+ Read more</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial-info-box"></div>
+                                                </div>
+                                                <div class="testimonial-img">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonial-2.jpg') }}"
+                                                        alt="">
                                                 </div>
                                             </div>
-                                            <div class="testimonial-content">
-                                                Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer
-                                                adipiscing elitconsectetuer adipiscing elit...
-                                            </div>
                                         </div>
-                                        <div class="testimonial-action">
-                                            <a href="#" class="read-btn">+ Read all</a>
-                                        </div>
+                                    </div>
+                                    <div class="testimonial-action-mobile">
+                                        <a href="#" class="read-btn">+ Read all</a>
                                     </div>
                                 </div>
 
                             </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- ***|| TESTIMONIAL END ||*** -->
-
-
-            <!-- ********|| CONTACT START ||******** -->
-            <section class="contact-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row">
-                                <div class="col-lg-6 pl-0">
-                                    <div class="contact-left">
-                                        <div class="map">
-                                            <iframe
-                                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3685.2201366718136!2d88.363747!3d22.533425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1c410a073b08b94!2sCalcutta%20Cricket%20and%20Football%20Club!5e0!3m2!1sen!2sin!4v1643977564770!5m2!1sen!2sin"
-                                                style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                                        </div>
-                                        <div class="map-location">
-                                            <div class="map-content">
-                                                19/1 Gurusaday Road, Beckbagan,Ballygunge, Kolkata 700 019
-                                            </div>
-                                            <div class="contact-location">
-                                                E:
-                                                <a href="#" class="contact-btn">
-                                                    ccfcsecretary@ccfc1792.com
-                                                </a>
-                                            </div>
-                                            <div class="contact-location">
-                                                P:
-                                                <a href="#" class="contact-btn">
-                                                    033 24615060
-                                                </a>
-                                                <span>/</span>
-                                                <a href="#" class="contact-btn">
-                                                    033 24615059
-                                                </a>
-                                            </div>
-                                            <div class="map-content">
-                                                <i>( Monday to Saturday, 11am to 5pm )</i>
-                                            </div>
-                                        </div>
+                            <div class="col-lg-4 or-1">
+                                <div class="testimonial-right">
+                                    <div class="testimonial-logo">
+                                        <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" />
                                     </div>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="contact-inner">
+                                    <div class="testimonial-order-part">
                                         <div class="title-sec">
                                             <div class="title">
-                                                CONTACT US
+                                                Testimonials
                                             </div>
                                         </div>
-                                        <div class="contact-content">
-                                            Have any questions?
+                                        <div class="testimonial-content">
+                                            Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer
+                                            adipiscing elitconsectetuer adipiscing elit...
                                         </div>
-                                        <div class="contact-content">
-                                            We’d love to hear from you.
+                                    </div>
+                                    <div class="testimonial-action">
+                                        <a href="#" class="read-btn">+ Read all</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ***|| TESTIMONIAL END ||*** -->
+
+
+        <!-- ********|| CONTACT START ||******** -->
+        <section class="contact-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-6 pl-0">
+                                <div class="contact-left">
+                                    <div class="map">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3685.2201366718136!2d88.363747!3d22.533425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1c410a073b08b94!2sCalcutta%20Cricket%20and%20Football%20Club!5e0!3m2!1sen!2sin!4v1643977564770!5m2!1sen!2sin"
+                                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                    <div class="map-location">
+                                        <div class="map-content">
+                                            19/1 Gurusaday Road, Beckbagan,Ballygunge, Kolkata 700 019
                                         </div>
-                                        <div class="contact-form">
-                                            <!-- <form method="POST" action="{{route('contact.send')}}"
+                                        <div class="contact-location">
+                                            E:
+                                            <a href="#" class="contact-btn">
+                                                ccfcsecretary@ccfc1792.com
+                                            </a>
+                                        </div>
+                                        <div class="contact-location">
+                                            P:
+                                            <a href="#" class="contact-btn">
+                                                033 24615060
+                                            </a>
+                                            <span>/</span>
+                                            <a href="#" class="contact-btn">
+                                                033 24615059
+                                            </a>
+                                        </div>
+                                        <div class="map-content">
+                                            <i>( Monday to Saturday, 11am to 5pm )</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="contact-inner">
+                                    <div class="title-sec">
+                                        <div class="title">
+                                            CONTACT US
+                                        </div>
+                                    </div>
+                                    <div class="contact-content">
+                                        Have any questions?
+                                    </div>
+                                    <div class="contact-content">
+                                        We’d love to hear from you.
+                                    </div>
+                                    <div class="contact-form">
+                                        <!-- <form method="POST" action="{{route('contact.send')}}"
                                                 enctype="multipart/form-data">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" placeholder="Your Name*">
@@ -715,108 +714,108 @@
                                                 <button type="submit" class="send-btn">Send Message</button>
                                             </form> -->
 
-                                            @if(Session::has('success'))
-                                            <div class="alert alert-success">
-                                                {{ Session::get('success') }}
-                                                @php
-                                                Session::forget('success');
-                                                @endphp
-                                            </div>
-                                            @endif
-
-
-                                            <form method="POST" action="{{ route('contact-us.store') }}"
-                                                enctype="multipart/form-data">
-                                                {{ csrf_field() }}
-
-                                                <input type="hidden" id="subject" name="subject"
-                                                    value="New enquiry from the website" size="30" required="">
-
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" name="name" id="name"
-                                                        placeholder="Your Name*">
-
-                                                    <!-- Show error -->
-                                                    @if ($errors->has('name'))
-                                                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                                                    @endif
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" name="email" id="email"
-                                                        placeholder="Your Email*">
-
-                                                    <!-- Show error -->
-                                                    @if ($errors->has('email'))
-                                                    <span class="text-danger">{{ $errors->first('email') }}</span>
-                                                    @endif
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" name="phone" id="phone"
-                                                        placeholder="Your Mobile No*">
-
-                                                    <!-- Show error -->
-                                                    @if ($errors->has('phone'))
-                                                    <div class="alert alert-danger">
-                                                        {{ $errors->first('phone') }}
-                                                    </div>
-                                                    @endif
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <textarea class="form-control" name="message" id="message"
-                                                        placeholder="Your Message" rows="3"></textarea>
-
-                                                    <!-- Show error -->
-                                                    @if ($errors->has('message'))
-                                                    <span class="text-danger">{{ $errors->first('message') }}</span>
-                                                    @endif
-                                                </div>
-
-
-                                                <button type="submit" class="send-btn">Send Message</button>
-                                            </form>
-
-
+                                        @if(Session::has('success'))
+                                        <div class="alert alert-success">
+                                            {{ Session::get('success') }}
+                                            @php
+                                            Session::forget('success');
+                                            @endphp
                                         </div>
+                                        @endif
+
+
+                                        <form method="POST" action="{{ route('contact-us.store') }}"
+                                            enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+
+                                            <input type="hidden" id="subject" name="subject"
+                                                value="New enquiry from the website" size="30" required="">
+
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name" id="name"
+                                                    placeholder="Your Name*">
+
+                                                <!-- Show error -->
+                                                @if ($errors->has('name'))
+                                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                @endif
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                    placeholder="Your Email*">
+
+                                                <!-- Show error -->
+                                                @if ($errors->has('email'))
+                                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                                                @endif
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="phone" id="phone"
+                                                    placeholder="Your Mobile No*">
+
+                                                <!-- Show error -->
+                                                @if ($errors->has('phone'))
+                                                <div class="alert alert-danger">
+                                                    {{ $errors->first('phone') }}
+                                                </div>
+                                                @endif
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="message" id="message"
+                                                    placeholder="Your Message" rows="3"></textarea>
+
+                                                <!-- Show error -->
+                                                @if ($errors->has('message'))
+                                                <span class="text-danger">{{ $errors->first('message') }}</span>
+                                                @endif
+                                            </div>
+
+
+                                            <button type="submit" class="send-btn">Send Message</button>
+                                        </form>
+
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--
+            </div>
+            <!--
                                     <div class="footer-ban">
                                         <img class="img-fluid" src="assets/img/footer-ban.png" alt="">
                                     </div>
 -->
-            </section>
+        </section>
 
 
-            <script>
-            function myFunction() {
-                var dots = document.getElementById("dots");
-                var moreText = document.getElementById("more");
-                var btnText = document.getElementById("myBtn");
+        <script>
+        function myFunction() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("myBtn");
 
-                if (dots.style.display === "none") {
-                    dots.style.display = "inline";
-                    btnText.innerHTML = "+ Read more";
-                    moreText.style.display = "none";
-                } else {
-                    dots.style.display = "none";
-                    btnText.innerHTML = "- Read less";
-                    moreText.style.display = "inline";
-                }
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "+ Read more";
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "- Read less";
+                moreText.style.display = "inline";
             }
-            </script>
-            <!-- ********|| CONTACT END ||******** -->
-            @include('common.footer')
-            <!-- ?php include 'assets/inc/footer.php';?> -->
+        }
+        </script>
+        <!-- ********|| CONTACT END ||******** -->
+        @include('common.footer')
+        <!-- ?php include 'assets/inc/footer.php';?> -->
 
 
-            </body>
+        </body>
 
 </html>

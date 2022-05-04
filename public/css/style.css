@@ -2538,6 +2538,7 @@ section.sports-page {
 }
 
 .multiuse_tab_content_section img {
+    filter: grayscale(100%);
     width: 100%;
     transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
@@ -2826,6 +2827,7 @@ section.sports-page {
     margin-bottom: 0;
     color: var(--secondaryColor);
 }
+
 .newsletter_pdfdownload_section {
     display: flex;
     flex-wrap: wrap;
@@ -2862,6 +2864,7 @@ section.sports-page {
 
 .newsletter_right {
     width: 60%;
+    text-align: left;
 }
 
 .president_corner.newsletter_pdfdownload a.wholenewdivlink {

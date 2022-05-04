@@ -66,8 +66,10 @@ class SearchInvoicePdf
         // list all filenames in given path
         $allFiles = Storage::allFiles(self::$basepath . implode("_", $extract));
 
+        $pattern= "/{$fileName}.PDF/i";
+
         // filter the ones that match the filename.*
-        $matchingFiles = preg_grep("/^$fileName$/i", $allFiles);
+        $matchingFiles = preg_grep($pattern, $allFiles);
 
         $downloadURl= route('member.download', ['month' => $extract[0], 'year'=> $extract[1], 'filename'=> "{$fileName}.PDF"]);
         
@@ -98,8 +100,10 @@ class SearchInvoicePdf
         // list all filenames in given path
         $allFiles = Storage::allFiles(self::$basepath . implode("_", $extract));
 
+        $pattern= "/{$fileName}+.PDF/i";
+
         // filter the ones that match the filename.*
-        return $matchingFiles = preg_grep("/^$fileName+\.PDF$/i", $allFiles);
+        $matchingFiles = preg_grep($pattern, $allFiles);
 
         $downloadURl= route('member.download', ['month' => $extract[0], 'year'=> $extract[1], 'filename'=> "{$fileName}.PDF"]);
 

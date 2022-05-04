@@ -3,9 +3,9 @@
 @can('user_detail_create')
 <div style="margin-bottom: 10px;" class="row">
     <div class="col-lg-12">
-        <a class="btn btn-success" href="{{ route('admin.user-details.create') }}">
+        <!-- <a class="btn btn-success" href="{{ route('admin.user-details.create') }}">
             {{ trans('global.add') }} {{ trans('cruds.userDetail.title_singular') }}
-        </a>
+        </a> -->
     </div>
 </div>
 @endcan

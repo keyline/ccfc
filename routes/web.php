@@ -424,6 +424,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('create/delete-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'destroy']);
 
+   
+    // Route::delete("delete", [App\Http\Controllers\Admin\CircularController::class, "deleteImage"])->name("delete");
 
     //events
 
@@ -544,10 +546,12 @@ Route::group([
 
 
     Route::get('/events_members_only', function () {
+
         $galleries = Gallery::with(['media'])->get();
+        
         $contentPages = ContentPage::all();
 
-        $event = Events::all();
+        $event = Events::orderBy('id', 'DESC')->get();
 
         return view('events_members_only', compact(['galleries','contentPages','event']));
     })->name('events_members_only');
@@ -565,11 +569,14 @@ Route::group([
     })->name('1792-newsletter');
 
     Route::get('/notice-circulars', function () {
+
         $galleries = Gallery::with(['media'])->get();
 
         $contentPages = ContentPage::all();
 
-        $circular = circular::all();
+        // $circular = circular::all();
+
+        $circular = circular::orderBy('id', 'DESC')->get();
 
         return view('notice-circulars', compact(['galleries','contentPages','circular']));
     })->name('notice-circulars');

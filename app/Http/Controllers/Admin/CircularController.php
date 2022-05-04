@@ -19,7 +19,9 @@ class CircularController extends Controller
      */
     public function index()
     {
-        $circular = circular::all();
+        // $circular = circular::all();
+
+        $circular = circular::orderBy('id', 'DESC')->get();
 
         return view('admin.circulars.index',compact('circular'));
 
@@ -62,6 +64,19 @@ class CircularController extends Controller
             $file->move('uploads/circularimg/',$filename);
 
             $circular->circular_image = $filename;
+        }
+
+        if($request->hasfile('circular_image2')){
+
+            $file = $request->file('circular_image2');
+
+            $extention = $file->getClientOriginalExtension();
+
+            $filename = time().'.'.$extention;
+
+            $file->move('uploads/circularimg/',$filename);
+
+            $circular->circular_image2 = $filename;
         }
 
         $circular->save();
@@ -133,6 +148,27 @@ class CircularController extends Controller
             $circular->circular_image = $filename;
         }
 
+
+        if($request->hasfile('circular_image2')){
+
+            $destination = 'uploads/circularimg/'.$circular->circular_image2;
+
+            if(File::exists($destination)){
+
+                File::delete($destination);
+            }
+
+            $file = $request->file('circular_image2');
+
+            $extention = $file->getClientOriginalExtension();
+
+            $filename = time().'.'.$extention;
+
+            $file->move('uploads/circularimg/',$filename);
+
+            $circular->circular_image2 = $filename;
+        }
+
         $circular->update();
 
         return redirect()->back()->with('status','Update successfully');
@@ -158,4 +194,8 @@ class CircularController extends Controller
 
         return redirect()->back()->with('status','Delete successfully');
     }
+
+
+
+    
 }

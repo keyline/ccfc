@@ -73,6 +73,28 @@
             </div><br><br>
 
             <div class="form-group">
+                <label for="name_of_the_block">Notice Image </label>
+                <input type="file" name="circular_image2" class="form-control"><br>
+                <img src="{{ asset('uploads/circularimg/'.$circular->circular_image2)}}" width="100px" height="100px"
+                    alt="">
+
+                <!-- <a href="{{ url('admin/create/remove-circular/'.$circular->id)}}"
+                    class="btn btn-danger btn-sm">Delete</a> -->
+
+
+
+
+                <!-- <form action="{{ url('admin/create/remove-circular/'.$circular->id)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input type="hidden" name="id" value="{{$circular->id}}" />
+                    <button type="submit" class="btn btn-sm btn-danger ml-2">Delete</button>
+                </form> -->
+
+
+            </div><br><br>
+
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     Update
                 </button>

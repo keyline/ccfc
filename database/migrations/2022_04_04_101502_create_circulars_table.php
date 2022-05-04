@@ -20,6 +20,7 @@ class CreateCircularsTable extends Migration
             $table->string('details_1')->nullable();
             $table->text('details_2')->nullable();
             $table->string('circular_image')->nullable();
+            $table->string('circular_image2')->nullable();
             $table->timestamps();
         });
     }
