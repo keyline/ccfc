@@ -57,13 +57,15 @@
             </div><br><br>
 
             <div class="form-group">
+
                 <label for="name_of_the_block">Member Image(Using for committee part)</label>
 
                 <input type="file" name="userimage" class="form-control"><br>
                 <img src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}" width="100px" height="100px"
                     alt=""><br>
 
-            </div><br><br>
+            </div>
+            <br><br>
 
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
