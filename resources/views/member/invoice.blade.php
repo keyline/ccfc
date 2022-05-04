@@ -168,7 +168,7 @@
                                         <!-- Detail -->
                                         <td>
                                             @if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
-                                            $user['Month']))) && !empty(SearchInvoicePdf::getSummaryBillLink($userData['user_code'],  $user['Month'])))
+                                            $user['Month']))) && !empty(SearchInvoicePdf::getDetailBillLink($userData['user_code'],  $user['Month'])))
                                             <a href="{{ SearchInvoicePdf::getDetailBillLink($userData['user_code'],  $user['Month']) }}"
                                                 target="_blank"><img class="img-fluid"
                                                     src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a>
