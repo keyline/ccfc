@@ -66,7 +66,7 @@ class SearchInvoicePdf
         // list all filenames in given path
         $allFiles = Storage::allFiles(self::$basepath . implode("_", $extract));
 
-        $pattern= "/^{$fileName}/i";
+        $pattern= "/{$fileName}.PDF/i";
 
         // filter the ones that match the filename.*
         $matchingFiles = preg_grep($pattern, $allFiles);
@@ -100,7 +100,7 @@ class SearchInvoicePdf
         // list all filenames in given path
         $allFiles = Storage::allFiles(self::$basepath . implode("_", $extract));
 
-        $pattern= "/^{$fileName}/i";
+        $pattern= "/{$fileName}+.PDF/i";
 
         // filter the ones that match the filename.*
         $matchingFiles = preg_grep($pattern, $allFiles);
