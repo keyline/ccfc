@@ -19,7 +19,9 @@ class CircularController extends Controller
      */
     public function index()
     {
-        $circular = circular::all();
+        // $circular = circular::all();
+
+        $circular = circular::orderBy('id', 'DESC')->get();
 
         return view('admin.circulars.index',compact('circular'));
 

@@ -549,7 +549,7 @@ Route::group([
         $galleries = Gallery::with(['media'])->get();
         $contentPages = ContentPage::all();
 
-        $event = Events::all();
+        $event = Events::orderBy('id', 'DESC')->get();
 
         return view('events_members_only', compact(['galleries','contentPages','event']));
     })->name('events_members_only');
@@ -571,7 +571,9 @@ Route::group([
 
         $contentPages = ContentPage::all();
 
-        $circular = circular::all();
+        // $circular = circular::all();
+
+        $circular = circular::orderBy('id', 'DESC')->get();
 
         return view('notice-circulars', compact(['galleries','contentPages','circular']));
     })->name('notice-circulars');
