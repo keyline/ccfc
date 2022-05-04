@@ -546,7 +546,9 @@ Route::group([
 
 
     Route::get('/events_members_only', function () {
+
         $galleries = Gallery::with(['media'])->get();
+        
         $contentPages = ContentPage::all();
 
         $event = Events::orderBy('id', 'DESC')->get();
@@ -567,6 +569,7 @@ Route::group([
     })->name('1792-newsletter');
 
     Route::get('/notice-circulars', function () {
+
         $galleries = Gallery::with(['media'])->get();
 
         $contentPages = ContentPage::all();
