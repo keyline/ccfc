@@ -95,7 +95,7 @@
                         <div class="col-md-12 col-lg-6">
                             <div class="invoicepayment_section">
                                 @foreach($userTransactions as $user)
-                                @if($user['Month'] == 'Feb 2022')
+                                @if($loop->first)
                                 <h3>Total current outstanding : INR. {{ $user['Balance'] }}</h3>
                                 @endif
                                 @endforeach
@@ -162,7 +162,7 @@
                                                 target="_blank"><img class="img-fluid"
                                                     src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a>
                                             @else
-                                            <span>Not ready</span>
+                                            <span>&#8211;</span>
                                             @endif
                                         </td>
                                         <!-- Detail -->
@@ -174,7 +174,7 @@
                                                     src="{{ asset('img/invoice_pdficon.png') }}" alt="" /></a>
                                         </td>
                                         @else
-                                        <span>Not Ready</span>
+                                        <span>&#8211;</span>
                                         @endif
                                         <!-- <td>Payment</td> -->
                                     </tr>
