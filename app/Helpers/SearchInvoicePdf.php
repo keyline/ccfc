@@ -93,7 +93,7 @@ class SearchInvoicePdf
             '{year}'         => $extract[1]
         ];
 
-        return $fileName= strtr(self::$summaryBillFormat, $input);
+        $fileName= strtr(self::$summaryBillFormat, $input);
 
         // list all filenames in given path
         $allFiles = Storage::allFiles(self::$basepath . implode("_", $extract));
