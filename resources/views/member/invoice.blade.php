@@ -155,7 +155,7 @@
                                         <td>{{ $user['Balance'] }}</td>
                                         <!-- summary -->
                                         <td>
-                                            {{var_dump(SearchInvoicePdf::getSummaryBillLink($userData['user_code'], $user['Month']))}}
+                                            {{dd(SearchInvoicePdf::getSummaryBillLink($userData['user_code'], $user['Month']))}}
 
                                             @if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
                                             $user['Month']))))
