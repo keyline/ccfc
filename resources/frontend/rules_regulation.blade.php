@@ -83,7 +83,7 @@
                         <div class="col-md-12">
                             <div class="content_inner">
 
-                                @foreach($contentPages->where("id","16") as $contentPage)
+                                @foreach($contentPages->where("id","17") as $contentPage)
                                 {!! $contentPage->page_text !!}
                                 @endforeach
                                 <!-- <p>This beautiful facility is let out to members for their meetings/parties etc. at a
