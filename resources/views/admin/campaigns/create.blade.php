@@ -40,7 +40,7 @@
         </form>
 
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-SendInBlueMails">
+            <table class=" table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         
@@ -60,7 +60,7 @@
                             Total Receipient
                         </th>
                         <th>
-                            View
+                            View/Edit
                         </th>
                         <th>
                             Send
@@ -83,11 +83,14 @@
                                
                             </td>
                             <td>
+                                <a class="btn btn-xs btn-info" href="{{ route('admin.edit-campaign', $campaign->ec_id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
 
                             </td>
 
-                            <td></td>
                             <td><button class="btn btn-info" onclick="location.href='{{ route('admin.start-campaign', ['campaign'=> $campaign->ec_id])}}'">Send</button></td>
+                            <td></td>
 
                         </tr>
                     @endforeach
@@ -113,20 +116,6 @@ $(function() {
       }
     );
   }
-
-  //DataTable
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-
-  $.extend(true, $.fn.dataTable.defaults, {
-    orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
-    pageLength: 100,
-  });
-  let table = $('.datatable-SendInBlueMails:not(.ajaxTable)').DataTable({ buttons: dtButtons })
-  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
-      $($.fn.dataTable.tables(true)).DataTable()
-          .columns.adjust();
-  });
 
 });
 </script>

@@ -18,10 +18,10 @@ class SendInBlueController extends Controller
     public function index()
     {
         $campaigns= EmailCampaign::latest()->paginate(5);
+        
 
         return view('admin.campaigns.create', ['campaigns' => $campaigns])
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-        ;
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -78,8 +78,9 @@ class SendInBlueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(EmailCampaign $emailcampaign)
+    public function edit($id)
     {
+        $emailcampaign= EmailCampaign::find($id);
         return view('admin.campaigns.edit', compact('emailcampaign'));
     }
 
