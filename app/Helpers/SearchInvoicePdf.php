@@ -98,7 +98,7 @@ class SearchInvoicePdf
         $fileName= strtr(self::$summaryBillFormat, $input);
 
         // list all filenames in given path
-        return $allFiles = Storage::allFiles(self::$basepath . implode("_", $extract));
+        $allFiles = Storage::allFiles(self::$basepath . implode("_", $extract));
 
         $pattern= "/^{$fileName}/i";
 
