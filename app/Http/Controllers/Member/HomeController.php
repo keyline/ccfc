@@ -55,12 +55,13 @@ class HomeController extends Controller
             $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name]);
 
             //Check if fetching member data has been done or not
-            if (!$userDetailsInfo || is_null($userDetailsInfo->current_status) ) {
+            if (!$userDetailsInfo || is_null($userDetailsInfo->current_status)) {
                 $request->session()->put('firstMemberUpdate', ['usercode' => $userInfo->user_code]);
                 return redirect()->route('member.profileupdate', $userInfo->user_code);
             }
             
-            return redirect('member/dashboard');
+            //return redirect('member/dashboard');
+            return redirect()->route('member.profileupdate', $userInfo->user_code);
         }
         
         return back()->withErrors(['password' => ['Password is incorrect']]);
@@ -242,37 +243,37 @@ class HomeController extends Controller
         // 200
         // echo $res->getHeader('content-type');
         // 'application/json; charset=utf8'
-       $respones=$res->getBody()->getContents();
-// dd($respones);
-    $teststr = <<< JSON
+        $respones=$res->getBody()->getContents();
+        // dd($respones);
+        $teststr = <<< JSON
 
 {$respones}
 
 JSON;
 
-       $reader = new JsonReader();
+        $reader = new JsonReader();
        
-$reader->json($teststr);
+        $reader->json($teststr);
 
 
-// while ($reader->read("EMAIL")) {
+        // while ($reader->read("EMAIL")) {
 //     var_dump($reader->value());
-// }
-// $reader->close();
+        // }
+        // $reader->close();
 
 
-$reader->read('EMAIL');
+        $reader->read('EMAIL');
 
-$memberemail=$reader->value();
+        $memberemail=$reader->value();
 
 
        
-// var_dump($reader->value()); 
+        // var_dump($reader->value());
 
 
-$reader->close(); 
+        $reader->close();
 
-        $profileArr=json_decode($respones,true);
+        $profileArr=json_decode($respones, true);
 
         $profile=$profileArr['data'];
         //Saving data into user table
@@ -507,7 +508,7 @@ $reader->close();
                 $userInformation->save();
             }
         }
-        if(session()->has('firstMemberUpdate')){
+        if (session()->has('firstMemberUpdate')) {
             session()->pull('firstMemberUpdate');
         }
         return redirect()->route('member.dashboard');

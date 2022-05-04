@@ -7,8 +7,8 @@ namespace App\Helpers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
 
-class SearchInvoicePdf{
-
+class SearchInvoicePdf
+{
     public static $basepath= "monthly_invoices/";
 
     private static $detailBillFormat= "{member_code}-{month}-{year}billdetail";
@@ -31,14 +31,15 @@ class SearchInvoicePdf{
         ];
 
     
-    public static function isBillUploaded(string $monthlyFolderPath=""){
-
+    public static function isBillUploaded(string $monthlyFolderPath="")
+    {
         $monthlyFolderPath= strtoupper($monthlyFolderPath);
         
         return Storage::exists(self::$basepath . $monthlyFolderPath);
     }
 
-    public static function getDetailBillLink(string $memberCode, string $monthlyFolderPath=""){
+    public static function getDetailBillLink(string $memberCode, string $monthlyFolderPath="")
+    {
 
         //Replace three letter month
         // $m_array contains matched elements of array.
@@ -47,7 +48,7 @@ class SearchInvoicePdf{
 
         $extract= explode(" ", $monthlyFolderPath);
 
-        $results = array_filter(self::$months, function($value) use(&$extract)  {
+        $results = array_filter(self::$months, function ($value) use (&$extract) {
             return stripos($value, $extract[0]) !== false;
         });
 
@@ -57,7 +58,7 @@ class SearchInvoicePdf{
         $input= [
             '{member_code}' => $memberCode,
             '{month}'       => strtoupper($billmonth),
-            '{year}'         => $extract[1] 
+            '{year}'         => $extract[1]
         ];
         
         $fileName= strtr(self::$detailBillFormat, $input);
@@ -65,25 +66,23 @@ class SearchInvoicePdf{
         // list all filenames in given path
         $allFiles = Storage::allFiles(self::$basepath . implode("_", $extract));
 
-        // filter the ones that match the filename.* 
-        $matchingFiles = preg_grep("/$fileName/i", $allFiles);
+        $pattern= "/{$fileName}.PDF/i";
+
+        // filter the ones that match the filename.*
+        $matchingFiles = preg_grep($pattern, $allFiles);
 
         $downloadURl= route('member.download', ['month' => $extract[0], 'year'=> $extract[1], 'filename'=> "{$fileName}.PDF"]);
         
         return (!empty($matchingFiles)) ?  $downloadURl : null;
-        
-        
-        
-
     }
 
-    public static function getSummaryBillLink(string $memberCode, string $monthlyFolderPath=""){
-
+    public static function getSummaryBillLink(string $memberCode, string $monthlyFolderPath="")
+    {
         $monthlyFolderPath= strtoupper($monthlyFolderPath);
 
         $extract= explode(" ", $monthlyFolderPath);
 
-        $results = array_filter(self::$months, function($value) use(&$extract)  {
+        $results = array_filter(self::$months, function ($value) use (&$extract) {
             return stripos($value, $extract[0]) !== false;
         });
 
@@ -93,7 +92,7 @@ class SearchInvoicePdf{
         $input= [
             '{member_code}' => $memberCode,
             '{month}'       => strtoupper($billmonth),
-            '{year}'         => $extract[1] 
+            '{year}'         => $extract[1]
         ];
 
         $fileName= strtr(self::$summaryBillFormat, $input);
@@ -101,14 +100,13 @@ class SearchInvoicePdf{
         // list all filenames in given path
         $allFiles = Storage::allFiles(self::$basepath . implode("_", $extract));
 
-        // filter the ones that match the filename.* 
-        $matchingFiles = preg_grep("/$fileName/i", $allFiles);
+        $pattern= "/{$fileName}+.PDF/i";
+
+        // filter the ones that match the filename.*
+        $matchingFiles = preg_grep($pattern, $allFiles);
 
         $downloadURl= route('member.download', ['month' => $extract[0], 'year'=> $extract[1], 'filename'=> "{$fileName}.PDF"]);
 
         return (!empty($matchingFiles)) ? $downloadURl : null;
-
     }
-
 }
-
