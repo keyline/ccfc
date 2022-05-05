@@ -1006,6 +1006,7 @@ Pearson Surita
           In one BCC. vs C.C.C game, Calcutta were soon in dire trouble and we four wickets down for under 20. It fell to my lot to prop the side up and this I did in the end to the tune of about 80 runs but not before I had been dropped at first slip. This was off the then captain of Ballygunge, Tom Parker,and the defaulting slip was my old Cambridge friend George Brown, who had played a lot of cricket for Cambridge and for Essex. This all- important catch he had put down was indeed a very easy one. And the mutterings that went on behind in the slips and of course from the wicket- keeper lasted I thought a bit too long—mostly, of course, they were anti- Brown, but they did not forget to let me know how lucky I had been.
 In the end, when it was really beginning to affect my concentration, I stopped the game in the middle of the over that George Brown himself was bowling at me and went up to Tom Parker and said, ”May we please change the conversation? I know I was lucky, I know George ought to have caught me and so does he, but let me tell you Mr Parker, George is a better cricketer than you have ever been or ever will be and as an Essex county cricketer I can assure you he does not drop catches on purpose.”
 When I got down to George’s end, he said, ‘that went on up there?” and I told him. George said,‘"l'hanks a lot Tom, you have indeed done me a goo turn —Tom Parker is only my Burra-Sahib and I was hoping for a raise this January.
+          
         </div>
     </div>
   </div>
