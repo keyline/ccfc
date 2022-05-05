@@ -219,7 +219,7 @@
                                                         hall along with varieties of snacks...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="{{ asset('food_beverages') }}" class="read-btn">+ Read
+                                                        <a href="{{ asset('food_beverages') }}" class="read-btn" data-toggle="modal" data-target="#foodModal">+ Read
                                                             More</a>
                                                     </div>
                                                 </div>
@@ -251,7 +251,7 @@
                                                         February bringing a whole new face of health and fitness...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="{{ asset('gymming-rejuvenated') }}" class="read-btn">+
+                                                        <a href="{{ asset('gymming-rejuvenated') }}" class="read-btn" data-toggle="modal" data-target="#gymModal">+
                                                             Read
                                                             More</a>
                                                     </div>
@@ -284,7 +284,7 @@
                                                         meetings/parties etc..
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="{{ asset('pool-pub') }}" class="read-btn">+
+                                                        <a href="{{ asset('pool-pub') }}" class="read-btn" data-toggle="modal" data-target="#poolModal">+
                                                             Read More</a>
                                                     </div>
                                                 </div>
@@ -316,7 +316,7 @@
                                                         decor..
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="{{ asset('club-bar') }}" class="read-btn">+ Read
+                                                        <a href="{{ asset('club-bar') }}" class="read-btn" data-toggle="modal" data-target="#barModal">+ Read
                                                             More</a>
                                                     </div>
                                                 </div>
@@ -347,7 +347,7 @@
                                                         The members can use the pool as per the specific timings...
                                                     </div>
                                                     <div class="services-action">
-                                                        <a href="{{ asset('swimming-pool') }}" class="read-btn">+ Read
+                                                        <a href="{{ asset('swimming-pool') }}" class="read-btn" data-toggle="modal" data-target="#swimmingModal">+ Read
                                                             More</a>
                                                     </div>
                                                 </div>
@@ -534,9 +534,12 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="row">
-                            <div class="col-lg-8 or-2">
-
-                                <div class="testimonial-carousel">
+                            <div class="col-lg-7 or-2">
+                                 <img class="img-fluid" src="{{ asset('img/testimonial-part1.png') }}"
+                                                        alt="">
+                            </div>
+                            <div class="col-lg-5 or-1">
+                                                  <div class="testimonial-carousel">
                                     <div id="home_testimonial" class="owl-carousel owl-theme">
                                         <div class="item">
 
@@ -606,28 +609,6 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-action-mobile">
-                                        <a href="#" class="read-btn">+ Read all</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-lg-4 or-1">
-                                <div class="testimonial-right">
-                                    <div class="testimonial-logo">
-                                        <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="" />
-                                    </div>
-                                    <div class="testimonial-order-part">
-                                        <div class="title-sec">
-                                            <div class="title">
-                                                Testimonials
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-content">
-                                            Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer
-                                            adipiscing elitconsectetuer adipiscing elit...
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-action">
                                         <a href="#" class="read-btn">+ Read all</a>
                                     </div>
                                 </div>
@@ -792,7 +773,93 @@
                                     </div>
 -->
         </section>
-
+<!-- Modal -->
+            <div class="amenities-modal">
+<div class="modal fade" id="foodModal" tabindex="-1" aria-labelledby="foodModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="foodModalLabel">FOOD</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          The Club offers a wide range of delicious food in its dining hall along with varieties of snacks...
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+                      <div class="amenities-modal">
+<div class="modal fade" id="gymModal" tabindex="-1" aria-labelledby="gymModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="gymModalLabel">GYMMING REJUVENATED</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          The Club gym went through refurbishment and up gradation this February bringing a whole new face of health and fitness...                                 
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+                      <div class="amenities-modal">
+<div class="modal fade" id="poolModal" tabindex="-1" aria-labelledby="poolModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="poolModalLabel">POOL PUB</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">                        
+           This beautiful facility is let out to members for their meetings/parties etc..   
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+                      <div class="amenities-modal">
+<div class="modal fade" id="barModal" tabindex="-1" aria-labelledby="barModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="barModalLabel">BAR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">                     
+            The club has three bars each of them having a unique style & decor.. 
+                                                                                               
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+                      <div class="amenities-modal">
+<div class="modal fade" id="swimmingModal" tabindex="-1" aria-labelledby="swimmingModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="swimmingModalLabel">SWIMMING POOL</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          The members can use the pool as per the specific timings...
+        </div>
+    </div>
+  </div>
+</div>
+</div>
 
         <script>
         function myFunction() {
