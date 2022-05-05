@@ -48,7 +48,7 @@
                     for="designation">{{ trans('cruds.subCommitteeMember.fields.designation') }}</label>
                 <input class="form-control {{ $errors->has('designation') ? 'is-invalid' : '' }}" type="text"
                     name="designation" id="designation"
-                    value="{{ old('designation', $subCommitteeMember->designation) }}" required>
+                    value="{{ old('designation', $subCommitteeMember->designation) }}">
                 @if($errors->has('designation'))
                 <span class="text-danger">{{ $errors->first('designation') }}</span>
                 @endif
