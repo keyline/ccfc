@@ -177,11 +177,13 @@
                                 <option value="2">STAFF & MEMBER RELATIONS</option>
                                 <option value="3">MEMBERSHIP</option>
                                 <option value="4">Finance</option>
+
                                 <!-- <option value="5">The Cc&fc Kids Club</option>
                                 <option value="6">Childrens Broadway Musical</option>
                                 <option value="7">Sports Co-ordinator</option>
                                 <option value="8">Sponsorship</option>
                                 <option value="9">Finance</option> -->
+
                             </select>
 
                             <div class="tab-content" id="myTabContent">
