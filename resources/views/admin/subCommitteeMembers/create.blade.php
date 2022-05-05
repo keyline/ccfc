@@ -38,6 +38,7 @@
                 <span class="help-block">{{ trans('cruds.subCommitteeMember.fields.member_helper') }}</span>
             </div>
 
+
             <!-- <div class="form-group">
                 <label class="required"
                     for="designation">{{ trans('cruds.subCommitteeMember.fields.designation') }}</label>
