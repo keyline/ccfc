@@ -37,9 +37,9 @@
                             Member code
 
                         </th>
-                        <th>
+                        <!-- <th>
                             {{ trans('cruds.subCommitteeMember.fields.designation') }}
-                        </th>
+                        </th> -->
 
                         <th>
                             {{ trans('cruds.subCommitteeMember.fields.head_of_the_committee') }}
@@ -69,9 +69,9 @@
                         <td>
                             {{ $subCommitteeMember->member->user_code ?? '' }}
                         </td>
-                        <th>
+                        <!-- <th>
                             {{ $subCommitteeMember->designation ?? '' }}
-                        </th>
+                        </th> -->
 
                         <td>
                             <span style="display:none">{{ $subCommitteeMember->head_of_the_committee ?? '' }}</span>

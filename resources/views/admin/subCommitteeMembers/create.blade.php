@@ -38,7 +38,8 @@
                 <span class="help-block">{{ trans('cruds.subCommitteeMember.fields.member_helper') }}</span>
             </div>
 
-            <div class="form-group">
+
+            <!-- <div class="form-group">
                 <label class="required"
                     for="designation">{{ trans('cruds.subCommitteeMember.fields.designation') }}</label>
                 <input class="form-control {{ $errors->has('designation') ? 'is-invalid' : '' }}" type="text"
@@ -47,7 +48,7 @@
                 <span class="text-danger">{{ $errors->first('designation') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.subCommitteeMember.fields.designation_helper') }}</span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <div class="form-check {{ $errors->has('head_of_the_committee') ? 'is-invalid' : '' }}">
