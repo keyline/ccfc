@@ -12,6 +12,7 @@ use Tzsk\Payu\Facades\Payu;
 
 use Tzsk\Pay\Models\PayuTransaction;
 use App\Notifications\PayUEmailNotification;
+use Notification;
 
 class PaymentController extends Controller
 {
@@ -28,11 +29,16 @@ class PaymentController extends Controller
             $customer = Customer::make()
                             ->firstName($user->name)
                             ->email($user->email);
+            // This is entirely optional custom attributes
+            $attributes = Attributes::make()
+                            ->udf1($user->id);
+                
             
             // Associate the transaction with your invoice
             $transaction = Transaction::make()
                             ->charge($request->amount)
                             ->for('Order of iPhone 12')
+                            ->with($attributes) // Only when using any custom attributes
                             ->against($user)
                             ->to($customer);
             //dd($transaction);
@@ -49,7 +55,17 @@ class PaymentController extends Controller
 
         $status= $transaction->response;
         
-        dd($transaction->response);
+        $user= User::find($status['udf1']);
+
+        if (!empty($user)) {
+            $emailInfo= array(
+                'greeting' => "PayU payment against CCFC",
+                'body'     => "Dear Member, Thank you for your payment. Please note that payment is subject to realization and will reflect in your account in the next 24 hours."
+            );
+
+            Notification::send($user, new PayUEmailNotification($emailInfo));
+        }
+
         return view('member.paymentstatus', compact('status'));
     }
 }
