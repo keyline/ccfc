@@ -11,18 +11,18 @@ use Tzsk\Payu\Concerns\Transaction;
 use Tzsk\Payu\Facades\Payu;
 
 use Tzsk\Pay\Models\PayuTransaction;
-
+use App\Notifications\PayUEmailNotification;
 
 class PaymentController extends Controller
 {
     //
-    public function payment(Request $request){
+    public function payment(Request $request)
+    {
 
         //$user = User::where('id', '=', session('LoggedMember'))->first();
         $user= User::find(session('LoggedMember'))->first();
         
-        if($user)
-        {
+        if ($user) {
             $data = $request->all();
 
             $customer = Customer::make()
@@ -35,23 +35,21 @@ class PaymentController extends Controller
                             ->for('Order of iPhone 12')
                             ->against($user)
                             ->to($customer);
-                          //dd($transaction);
+            //dd($transaction);
 
-            return Payu::initiate($transaction)->redirect(route('member.payment.status')); 
-            
-        }else
-        {
+            return Payu::initiate($transaction)->redirect(route('member.payment.status'));
+        } else {
             dd($user);
         }
     }
 
-    public function status(){
+    public function status()
+    {
         $transaction = Payu::capture();
 
         $status= $transaction->response;
         
-        //dd($transaction->response);
+        dd($transaction->response);
         return view('member.paymentstatus', compact('status'));
-
     }
 }

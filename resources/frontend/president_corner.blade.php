@@ -108,6 +108,18 @@
                                     with CAB to host a few Ranji Trophy matches here.</p>
                             </div> -->
                             <div class="newsletter_pdfdownload_section">
+                                 <div class="newsletter_pdfdownload president_corner">
+                                    <div class="newsletter_left">
+                                        <img class="img-fluid"
+                                                src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                                    </div>
+                                    <div class="newsletter_right">
+                                        <h3>President's Letter</h3>
+                                        <p class="pdfdate">27.04.22</p>
+                                    </div>
+                                    <a class="wholenewdivlink" href="{{ asset('pdf/PRESIDENT\'S LETTER.pdf') }}" target="_blank"></a>
+                                </div>
+                                
                                 <div class="newsletter_pdfdownload president_corner">
                                     <div class="newsletter_left">
                                         <img class="img-fluid"
