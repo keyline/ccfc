@@ -47,16 +47,19 @@
                         <div class="col-md-12 col-lg-12">
 
                             <div class="resetbox_section">
+                                
                                 <div class="card">
-                                    <div class="card-body login-card-body">
+                                    
+                                    <div class="card-body login-card-body text-center">
+                                        <p>Congratulations! You are successfully logged in.</p>
                                         <div class="col-md-12 col-lg-12">
+                                            
                                             <form name="updateme" method="POST" action="{{ route('member.updateme') }}">
                                                 @csrf
                                                 <input type="hidden" name="user_code" value="{{ $usercode ??  ''}}"
                                                     required>
                                                 <button class="btn btn-primary btn-flat btn-block" type="submit"
-                                                    name="updateme" value="yes">Update Your
-                                                    Profile</button>
+                                                    name="updateme" value="yes">Please Proceed</button>
                                             </form>
                                         </div>
                                     </div>
