@@ -46,6 +46,7 @@ class PayUEmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->subject("Payment Notification-CCFC")
                     ->greeting($this->paymentInfo['greeting'])
                     ->line($this->paymentInfo['body']);
         //->action('Notification Action', url('/'))
