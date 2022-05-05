@@ -1414,7 +1414,8 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     border-radius: 50%;
     border: 9px solid #fff;
     overflow: hidden;
-    width: 146px;
+    width: 150px;
+    height: 150px;
     display: block;
     margin-top: 30px;
     margin: 42px auto;
@@ -1484,13 +1485,14 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
 
 .testimonial-sec .testimonial-inner .testimonial-profession {
     position: relative;
-    color: var(--textColor);
+    color: var(--secondaryColor);
     font-family: 'IBM Plex Serif', serif;
     font-size: 14px;
     font-weight: 500;
     text-align: center;
 }
 
+/*
 .testimonial-sec .testimonial-inner .testimonial-name {
     color: var(--secondaryColor);
     font-family: 'IBM Plex Serif', serif;
@@ -1499,6 +1501,7 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
     text-align: center;
     text-transform: uppercase;
 }
+*/
 
 .testimonial-sec .testimonial-right .title-sec .title {
     text-align: left;
@@ -1567,6 +1570,17 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
 
 .testimonial-sec .owl-nav i:hover {
     color: var(--secondaryColor);
+}
+.testimonial-modal .modal-header .modal-title{
+        color: var(--primaryColor);
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.testimonial-modal .modal-header {
+    border: none;
+    padding-bottom: 0;
 }
 
 /*

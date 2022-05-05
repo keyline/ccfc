@@ -60,7 +60,7 @@
                             <div class="history-inner">
                                 <div class="title-sec">
                                     <div class="title text-left">
-                                        Past Presidents
+                                        Trophies
                                     </div>
                                 </div>
 
