@@ -25,16 +25,23 @@
                 <span class="help-block"></span>
             </div>
             <input type="hidden" name="ec_is_despatched" value='1'>
-            <div class="form-group">
+            
 
-            <div class="form-group">
+            <div class="form-group" {{ (isset($emailcampaign->ec_attachment) && trim($emailcampaign->ec_attachment) !== '') ? 'style=display:none;' : ''}}>
                 <label for="attachment" class="form-label">Attachment</label>
             
             <input class="form-control" type="file" id="attachment" name="file" value="">
             
             </div>
+            @if(isset($emailcampaign->ec_attachment) && trim($emailcampaign->ec_attachment) !== '')
+            <div class="attachment">
+            <span class="attached-file">{{asset('storage/campaign_attachments' . $emailcampaign->ec_attachment)}}</span>
+            <span><button class="btn btn-info rm-attachment" data-rmid="{{ $emailcampaign->ec_id }}">Remove Attachment</button></span>
+            </div>
+            @endif
             <!-- <button>Save as draft</button> -->
             <!-- <button>Send</button> -->
+            <div class="form-group">
             <button type="submit" class="btn btn-success">Save</button>
             </div>
         </form>
@@ -60,6 +67,46 @@ $(function() {
     );
   }
 
+  $(document).on('click', '.rm-attachment',function(e){
+      e.preventDefault();
+      var div_to_delete= $(this).closest('.attachment');
+
+      var diplay_on= $(this).closest('div').prev();
+  
+      var rmId= $(this).data('rmid');
+  
+      var _token = $("input[name='_token']").val();
+
+      if(!rmId){
+          alert("Nothing to delete");
+      }
+
+      deleteAttachment(_token, rmId).then(function(result){
+          if(result.status){
+              
+              $(diplay_on).delay(1000).css('display', '');
+                $(div_to_delete).remove();
+              
+              
+
+          }
+          console.log(result.error);
+      });
+  });
+
 });
+
+function deleteAttachment(token, deleteforid){
+    return $.ajax({
+          url: "{{ route('admin.remove-attachment') }}",
+          type: "POST",
+          data: {"_token": token, "forid": deleteforid},
+          cache: false,
+          dataType: 'JSON'
+
+      });
+
+
+}
 </script>
 @endsection

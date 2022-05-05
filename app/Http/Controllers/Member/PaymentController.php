@@ -11,47 +11,61 @@ use Tzsk\Payu\Concerns\Transaction;
 use Tzsk\Payu\Facades\Payu;
 
 use Tzsk\Pay\Models\PayuTransaction;
-
+use App\Notifications\PayUEmailNotification;
+use Notification;
 
 class PaymentController extends Controller
 {
     //
-    public function payment(Request $request){
+    public function payment(Request $request)
+    {
 
         //$user = User::where('id', '=', session('LoggedMember'))->first();
         $user= User::find(session('LoggedMember'))->first();
         
-        if($user)
-        {
+        if ($user) {
             $data = $request->all();
 
             $customer = Customer::make()
                             ->firstName($user->name)
                             ->email($user->email);
+            // This is entirely optional custom attributes
+            $attributes = Attributes::make()
+                            ->udf1($user->id);
+                
             
             // Associate the transaction with your invoice
             $transaction = Transaction::make()
                             ->charge($request->amount)
                             ->for('Order of iPhone 12')
+                            ->with($attributes) // Only when using any custom attributes
                             ->against($user)
                             ->to($customer);
-                          //dd($transaction);
+            //dd($transaction);
 
-            return Payu::initiate($transaction)->redirect(route('member.payment.status')); 
-            
-        }else
-        {
+            return Payu::initiate($transaction)->redirect(route('member.payment.status'));
+        } else {
             dd($user);
         }
     }
 
-    public function status(){
+    public function status()
+    {
         $transaction = Payu::capture();
 
         $status= $transaction->response;
         
-        //dd($transaction->response);
-        return view('member.paymentstatus', compact('status'));
+        $user= User::find($status['udf1']);
 
+        if (!empty($user)) {
+            $emailInfo= array(
+                'greeting' => "Dear, {$user->name}",
+                'body'     => "Thank you for making payment of &#x20B9;{$status['amount']}. Please note that payment is subject to realization and will reflect in your account in the next 24 hours."
+            );
+
+            Notification::send($user, new PayUEmailNotification($emailInfo));
+        }
+
+        return view('member.paymentstatus', compact('status'));
     }
 }

@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\EmailCampaign;
 use App\Mail\SendInBlueNotification;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+
+
 use Mail;
 
 class SendInBlueController extends Controller
@@ -96,6 +101,16 @@ class SendInBlueController extends Controller
             'ec_is_despatched'=> 'required',
         ]);
 
+        if ($request->file()) {
+            //$filepath = $request->file('ec_attachment')->store('campaign_attachments');
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('campaign_attachments', $fileName, 'local');
+            $filepathWithName = '/storage/' . $filePath;
+            
+            $request->merge(['ec_attachment' => $filepathWithName]);
+        }
+
+
         $campaign->update($request->all());
 
         return redirect()->route('admin.list-campaign')
@@ -123,6 +138,8 @@ class SendInBlueController extends Controller
         if (!empty($request->campaign) && is_numeric($request->campaign)) {
             //Dispatching the Job here
             //fetch user list with email not empty
+            $campaign= \App\Models\EmailCampaign::findOrFail($request->campaign);
+
             $query= \App\Models\User::query();
             $query->where('email', '!=', '');
             $query->where('id', '>', 36);
@@ -131,9 +148,68 @@ class SendInBlueController extends Controller
             foreach ($users as $user) {
                 \App\Jobs\EmailCampaignJob::dispatch($request->campaign, $user)->onQueue('sendinblueemail');
             }
-
+            $campaign->update(['ec_is_despatched' => '0']);
             
             return redirect()->back()->with('success', 'Campaign started successfully');
+        }
+    }
+
+    public function rmAttachment(Request $request)
+    {
+        $input = $request->all();
+
+        $response = array(
+
+            'status' => 0,
+
+            'error' => array(
+
+                'message' => 'Invalid Request!'
+
+            )
+
+        );
+        $error="";
+
+
+        if (!empty($input['_token']) && is_numeric($input['forid'])) {
+            $campaign= EmailCampaign::findOrFail($input['forid']);
+
+
+            if (!empty($campaign)) {
+                //delete the file physically and update model
+                if (File::exists(storage_path('app\\' . $campaign['ec_attachment']))) {
+                    Storage::delete(storage_path($campaign['ec_attachment']));
+                    //Update model
+                    $campaign->update(['ec_attachment' => ""]);
+                    $response=array(
+                    'status' => 1,
+                    'error'  => null,
+                    'message'=> 'Operation done successfully',
+                );
+                } else {
+                    # code...
+                    $error="File does not exists";
+                    $response=array(
+                    'status' => 0,
+                    'error'  => array(
+                        'message' => $error
+                    )
+                );
+                }
+            } else {
+                # code...
+                $error= "could not find data";
+                $response=array(
+                    'status' => 0,
+                    'error'  => array(
+                        'message' => $error
+                    )
+                );
+            }
+            return response()->json($response);
+        } else {
+            return response()->json($response);
         }
     }
 }
