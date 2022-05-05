@@ -541,7 +541,7 @@
                             <div class="col-lg-5 or-1">
                                                   <div class="testimonial-carousel">
                                     <div id="home_testimonial" class="owl-carousel owl-theme">
-                                        <div class="item">
+                                                 <div class="item">
 
                                             <div class="testimonial-body">
                                                 <div class="testimonial-inner">
@@ -551,29 +551,29 @@
                                                             <i class="zmdi zmdi-quote"></i>
                                                         </div>
                                                         <div class="testimonial-content">
-                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                            elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                                                            dolore magna aliquam erat volutpat. Ut wisi enim....
+                                                            The southern end of the present-day CC&FC pavilion is a small but elegant archway made of chunal stone, known as
+The Lagden Gate’, 
+This was erected as a memorial to Reggie Lagden, who....
                                                         </div>
+<!--
                                                         <div class="testimonial-name">
-                                                            Sourav Ganguly
+                                                            
                                                         </div>
+-->
                                                         <div class="testimonial-profession">
-                                                            BCCI President
+                                                            THE LAGDEN GATE
                                                         </div>
                                                         <div class="testimonial-action">
-                                                            <a href="#" class="read-btn">+ Read more</a>
+                                                            <a href="#" class="read-btn" data-toggle="modal" data-target="#gateModal">+ Read more</a>
                                                         </div>
                                                     </div>
                                                     <div class="testimonial-info-box"></div>
                                                 </div>
                                                 <div class="testimonial-img">
-                                                    <img class="img-fluid" src="{{ asset('img/testimonial-1.jpg') }}"
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/lageden-gate.jpg') }}"
                                                         alt="">
                                                 </div>
-
                                             </div>
-
                                         </div>
                                         <div class="item">
 
@@ -585,24 +585,88 @@
                                                             <i class="zmdi zmdi-quote"></i>
                                                         </div>
                                                         <div class="testimonial-content">
-                                                            Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                            elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                                                            dolore magna aliquam erat volutpat. Ut wisi enim....
+                                                            CC&FC is one of the few clubs of Calcutta to admit ladies as full members in their own right. This happened in 2000 but not before a raging debate in the Club as to whether....
                                                         </div>
+<!--
                                                         <div class="testimonial-name">
-                                                            Sachin Tendulkar
+                                                            
                                                         </div>
+-->
                                                         <div class="testimonial-profession">
-                                                            BCCI President
+                                                            Pearson Surita
                                                         </div>
                                                         <div class="testimonial-action">
-                                                            <a href="#" class="read-btn">+ Read more</a>
+                                                            <a href="#" class="read-btn" data-toggle="modal" data-target="#suritaModal">+ Read more</a>
                                                         </div>
                                                     </div>
                                                     <div class="testimonial-info-box"></div>
                                                 </div>
                                                 <div class="testimonial-img">
-                                                    <img class="img-fluid" src="{{ asset('img/testimonial-2.jpg') }}"
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/021320a4-0f5c-4bd4-a17a-dcb282314d6b.jpg') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                                <div class="item">
+
+                                            <div class="testimonial-body">
+                                                <div class="testimonial-inner">
+
+                                                    <div class="testimonial-info">
+                                                        <div class="quote-icon">
+                                                            <i class="zmdi zmdi-quote"></i>
+                                                        </div>
+                                                        <div class="testimonial-content">
+                                                            In another match the next day when Hobbs came into bat he received a ball which bounced twice and he mistimed it and sent a dolly catch to mid-off. After the match, the bowler got hold of Hobbs...
+                                                        </div>
+<!--
+                                                        <div class="testimonial-name">
+                                                           
+                                                        </div>
+-->
+                                                        <div class="testimonial-profession">
+                                                            A A LESLIE, M.C.
+                                                        </div>
+                                                        <div class="testimonial-action">
+                                                            <a href="#" class="read-btn" data-toggle="modal" data-target="#leslieModal">+ Read more</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial-info-box"></div>
+                                                </div>
+                                                <div class="testimonial-img">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/bb5c1478-33eb-4749-933a-d80c5a15095a.jpg') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                                <div class="item">
+
+                                            <div class="testimonial-body">
+                                                <div class="testimonial-inner">
+
+                                                    <div class="testimonial-info">
+                                                        <div class="quote-icon">
+                                                            <i class="zmdi zmdi-quote"></i>
+                                                        </div>
+                                                        <div class="testimonial-content">
+                                                            In one BCC. vs C.C.C game, Calcutta were soon in dire trouble and we four wickets down for under 20. It fell to my lot to prop the side up and this I did in the end to the tune of about 80....
+                                                        </div>
+<!--
+                                                        <div class="testimonial-name">
+                                                            
+                                                        </div>
+-->
+                                                        <div class="testimonial-profession">
+                                                            TOM LONGFIELD
+                                                        </div>
+                                                        <div class="testimonial-action">
+                                                            <a href="#" class="read-btn" data-toggle="modal" data-target="#longfieldModal">+ Read more</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial-info-box"></div>
+                                                </div>
+                                                <div class="testimonial-img">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/a5dd71bf-44e2-4342-b6e9-04a04b8e1567.jpg') }}"
                                                         alt="">
                                                 </div>
                                             </div>
@@ -855,6 +919,94 @@
       </div>
       <div class="modal-body">
           The members can use the pool as per the specific timings...
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+                               <div class="testimonial-modal">
+<div class="modal fade" id="gateModal" tabindex="-1" aria-labelledby="gateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="gateModalLabel">THE LAGDEN GATE</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          The southern end of the present-day CC&FC pavilion is a small but elegant archway made of chunal stone, known as
+The Lagden Gate’, 
+This was erected as a memorial to Reggie Lagden, who died in tragic circumstances during World War II. Having been secretly flown to England on some assignment relating to tea, he was on his way back when his aircraft overran the landing strip at Karachi and exploded. All those on board were killed instantaneously.
+Former President Alec Leslie recalled that “Reggie was held in such affectionate esteem in Calcutta that there was not an office in Clive Street or any club or public building in Calcutta that did not fly a flag at half- mast when the news of his death mmc through”.
+Originally; the archway had been erected at the entrance to the Calcutta Cricket Club ground at the Eden Gardens.
+Sometime after 1950, when the Calcutta Cricket Club had moved to its current venue, the Lagden Gate was shifted to BallyGunge, where it now stands.
+
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+                                           <div class="testimonial-modal">
+<div class="modal fade" id="suritaModal" tabindex="-1" aria-labelledby="suritaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="suritaModalLabel">PEARSON SURITA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          CC&FC is one of the few clubs of Calcutta to admit ladies as full members in their own right. This happened in 2000 but not before a raging debate in the Club as to whether it was good thing or not. Reproduced below, without comment, the letter that Pearson Surita wrote to the president in 1983. Its contents are self - explanatory
+Dear Mr. President
+I have recently returned from my holiday abroad to find your circular letter of the 21“June awaiting me.
+While I appreciate the various strong arguments you have put forward for the creation of a category of members which would admit ladies I am strongly opposed to this idea. You yourself have pointed out that the Calcutta Cricket and Calcutta Football Clubs have existed originally' as separate organizations and later as a joint unit for two hundred years without the members considering it necessary to open the rolls to the ladies. You has quite rightly pointed out that under Rule 3(ii) a wife and unmarried daughters shall be entitled to the use of the Club.  This at least guarantees the exclusiveness of the organization which might be threatened were single or married women be permitted to join in their own rights. In fact, this would constitute a real danger to the physical or other well-being of unattached or even attached male members.
+Let us remember that we are regarded as the Lords of India and I shudder to think of the consternation a similar proposal, if made to the members of MCC, might give rise to.
+Finally, to end on a personal note, as an MCP, I would be extremely hesitant in future to accept an invitation to speak at the Annual General Meeting of the Club as the presence of women at the meeting, I am afraid, would cramp my style completely
+
+Yours Sincerely
+
+Pearson Surita
+
+
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+                                           <div class="testimonial-modal">
+<div class="modal fade" id="leslieModal" tabindex="-1" aria-labelledby="leslieModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="leslieModalLabel">A A LESLIE, M.C.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          In another match the next day when Hobbs came into bat he received a ball which bounced twice and he mistimed it and sent a dolly catch to mid-off. After the match, the bowler got hold of Hobbs and handing him some Club writing paper and asked if he would give him a ‘certificate’ to the effect that he had been bowled by him. Hobbs immediately obliged and was about to sign the certificate when the bowler said “And would you please, Mr. Hobby certify that the ball was a good one?” And Hobbs did!
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+                                           <div class="testimonial-modal">
+<div class="modal fade" id="longfieldModal" tabindex="-1" aria-labelledby="longfieldModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="longfieldModalLabel">TOM LONGFIELD</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          In one BCC. vs C.C.C game, Calcutta were soon in dire trouble and we four wickets down for under 20. It fell to my lot to prop the side up and this I did in the end to the tune of about 80 runs but not before I had been dropped at first slip. This was off the then captain of Ballygunge, Tom Parker,and the defaulting slip was my old Cambridge friend George Brown, who had played a lot of cricket for Cambridge and for Essex. This all- important catch he had put down was indeed a very easy one. And the mutterings that went on behind in the slips and of course from the wicket- keeper lasted I thought a bit too long—mostly, of course, they were anti- Brown, but they did not forget to let me know how lucky I had been.
+In the end, when it was really beginning to affect my concentration, I stopped the game in the middle of the over that George Brown himself was bowling at me and went up to Tom Parker and said, ”May we please change the conversation? I know I was lucky, I know George ought to have caught me and so does he, but let me tell you Mr Parker, George is a better cricketer than you have ever been or ever will be and as an Essex county cricketer I can assure you he does not drop catches on purpose.”
+When I got down to George’s end, he said, ‘that went on up there?” and I told him. George said,‘"l'hanks a lot Tom, you have indeed done me a goo turn —Tom Parker is only my Burra-Sahib and I was hoping for a raise this January.
+          
         </div>
     </div>
   </div>
