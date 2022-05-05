@@ -2861,7 +2861,7 @@ section.sports-page {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+/*    justify-content: space-between;*/
 }
 
 .newsletter_right p a,
@@ -2906,6 +2906,7 @@ section.sports-page {
 .president_corner.newsletter_pdfdownload {
     background: #fff;
     max-width: 300px;
+    margin-right: 24px;
 }
 
 /* ********|| 1792 NEWS LETTER END ||******** */
