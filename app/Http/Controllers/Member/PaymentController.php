@@ -59,8 +59,8 @@ class PaymentController extends Controller
 
         if (!empty($user)) {
             $emailInfo= array(
-                'greeting' => "PayU payment against CCFC",
-                'body'     => "Dear Member, Thank you for your payment. Please note that payment is subject to realization and will reflect in your account in the next 24 hours."
+                'greeting' => "Dear, {$user->name}",
+                'body'     => "Thank you for making payment of &#x20B9;{$status['amount']}. Please note that payment is subject to realization and will reflect in your account in the next 24 hours."
             );
 
             Notification::send($user, new PayUEmailNotification($emailInfo));
