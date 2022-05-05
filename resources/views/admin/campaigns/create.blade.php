@@ -77,19 +77,17 @@
                             <td>{{ $campaign->created_at }}</td>
                             <td>{{ $campaign->ec_title }}</td>
                             <td>
-                                
+                                {{ ($campaign->ec_is_despatched == '0') ? $campaign->updated_at : ''}}
                             </td>
                             <td>
                                
                             </td>
                             <td>
-                                <a class="btn btn-xs btn-info" href="{{ route('admin.edit-campaign', $campaign->ec_id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
+                                    <button class="btn btn-info" onclick="location.href='{{ route('admin.edit-campaign', $campaign->ec_id) }}'" {{ ($campaign->ec_is_despatched == '0') ? 'disabled' : ''}}>{{ trans('global.edit') }}</button>
 
                             </td>
 
-                            <td><button class="btn btn-info" onclick="location.href='{{ route('admin.start-campaign', ['campaign'=> $campaign->ec_id])}}'">Send</button></td>
+                            <td><button class="btn btn-info" onclick="location.href='{{ route('admin.start-campaign', ['campaign'=> $campaign->ec_id])}}'" {{ ($campaign->ec_is_despatched == '0') ? 'disabled' : ''}}>Send</button></td>
                             <td></td>
 
                         </tr>

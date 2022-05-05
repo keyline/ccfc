@@ -411,6 +411,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::delete('campaigns/{campaign}/delete', [App\Http\Controllers\Admin\SendInBlueController::class, 'delete'])->name('delete-campaign');
 
+    Route::post('campaigns/remove/attachment', [App\Http\Controllers\Admin\SendInBlueController::class, 'rmAttachment'])->name('remove-attachment');
+
 
     Route::get('create/circulars', [App\Http\Controllers\Admin\CircularController::class, 'index'])->name('circulars');
 
@@ -546,7 +548,6 @@ Route::group([
 
 
     Route::get('/events_members_only', function () {
-
         $galleries = Gallery::with(['media'])->get();
         
         $contentPages = ContentPage::all();
@@ -569,7 +570,6 @@ Route::group([
     })->name('1792-newsletter');
 
     Route::get('/notice-circulars', function () {
-
         $galleries = Gallery::with(['media'])->get();
 
         $contentPages = ContentPage::all();
