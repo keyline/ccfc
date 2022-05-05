@@ -52,202 +52,170 @@
 
             </section>
             <!-- ********|| BANNER PART END ||******** -->
-
-
-
             <!-- ********|| TROPHIES START ||******** -->
-            <section class="famoussport-page inner_belowbanner">
+            <section class="history-sec">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="title-sec">
-                                <div class="title text-left">
-                                    TROPHIES
+                            <div class="history-inner">
+                                <div class="title-sec">
+                                    <div class="title text-left">
+                                        Past Presidents
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            @foreach($contentPages->where("id","3") as $contentPage)
-                            <!-- <div class="content_inner">
-                                <p>In the city of Calcutta, then just over a hundred years old and growing fast both in
-                                    commercial and political significance, the British Raj was busy setting its roots.
-                                    And sports were definitely a part of the social lore.</p>
-                                <p>The club also offers food from its different counters like charcoal-grilled kebabs,
-                                    quick bites of wraps, burgers, pastas etc. There is also a pastry shop and
-                                    specialized tea & coffee counters serving wide varieties of tea and coffee.</p>
-                            </div> -->
-                            {!! $contentPage->page_text !!}
-                            @endforeach
-                        </div>
-                    </div>
 
-
-                </div>
-            </section>
-
-            <section class="trophies_tabsection">
-                <div class="container">
-                    <div class="row">
-                        <div class="trophies-tablist">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="year1993-tab" data-toggle="tab" href="#year1992">
-                                        <div class="tab_icontext">
-                                            <img src="{{ asset('img/trophy/trophy-icon.png') }}" alt="" />
-                                            <h3>1992</h3>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="year1993-tab" data-toggle="tab" href="#year1993">
-                                        <div class="tab_icontext">
-                                            <img src="{{ asset('img/trophy/trophy-icon.png') }}" alt="" />
-                                            <h3>1993</h3>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="year1992" role="tabpanel"
-                                    aria-labelledby="year1992-tab">
-                                    <div class="trophies_tab_content_section">
+                                <div class="pastpresident_imagebox">
+                                    <div class="pastpresident_item">
                                         <div class="row">
-                                            @foreach($trophies->where("year_of_award","1992") as $trophie)
-                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="trophy_tabcontent_inner">
-                                                    <div class="trophy_tab_ceibity-img">
-
-                                                        <a href="#" data-toggle="modal"><img
-                                                                src="{{$trophie->getFirstMediaUrl('trophy_photo')}}"
-                                                                alt="" /></a>
-
+                                             <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/1.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>International Trophy for Annual Competition Between Scotland and England.</p>
                                                     </div>
-                                                    <div class="trophy_player">
-                                                        <h3>{{$trophie->trophy}}</h3>
-                                                        <h4>{{$trophie->year_of_award}} - {{$trophie->year_of_month}}
-                                                        </h4>
+                                                </div>
+                                            </div> 
+                                             <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/2.jpg') }}" alt="">
+                                                    </div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>The Centenary Cup Women.</p>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                             <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/3.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>Calcutta Cup Men.</p>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                             <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/4.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>The Centenary Cup Men.</p>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                             <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/5.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>Calcutta Club (Group B).</p>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                             <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/6.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>The Calcutta Club Women.</p>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                             <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/7.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>All India Women's Rugby XV's Championship.</p>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                              <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/8.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>J. Thomas Cup (August 1973).</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endforeach
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="trophy_tabcontent_inner">
-                                                    <div class="trophy_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ asset('img/trophy/t-img2.jpg') }}" alt="" /></a>
-                                                    </div>
-                                                    <div class="trophy_player">
-                                                        <h3>Champion</h3>
-                                                        <h4>1992 - January</h4>
+                                              <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/9.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>Traditional Friendly Cricket Match Between Dhaka Club.</p>
                                                     </div>
                                                 </div>
-                                            </div> -->
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="trophy_tabcontent_inner">
-                                                    <div class="trophy_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_2"><img
-                                                                src="{{ asset('img/trophy/t-img2.jpg') }}" alt="" /></a>
-                                                    </div>
-                                                    <div class="trophy_player">
-                                                        <h3>Champion</h3>
-                                                        <h4>1993 - February</h4>
+                                            </div>
+                                              <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/10.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>Millenium Cricket Eleven.</p>
                                                     </div>
                                                 </div>
-                                            </div> -->
-
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="trophy_tabcontent_inner">
-                                                    <div class="trophy_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ asset('img/trophy/t-img1.jpg') }}" alt="" /></a>
-                                                    </div>
-                                                    <div class="trophy_player">
-                                                        <h3>Champion</h3>
-                                                        <h4>1992 - January</h4>
+                                            </div>
+                                              <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/11.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>Constitution Club Trophy.</p>
                                                     </div>
                                                 </div>
-                                            </div> -->
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="trophy_tabcontent_inner">
-                                                    <div class="trophy_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_2"><img
-                                                                src="{{ asset('img/trophy/t-img2.jpg') }}" alt="" /></a>
-                                                    </div>
-                                                    <div class="trophy_player">
-                                                        <h3>Champion</h3>
-                                                        <h4>1993 - February</h4>
+                                            </div>
+                                              <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/12.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>The St. James Cup for Anglo Indian School.</p>
                                                     </div>
                                                 </div>
-                                            </div> -->
-
+                                            </div>
+                                              <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/13.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>Calcutta Rugby Team Kicking Cup.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                              <div class="col-md-6 col-lg-3">
+                                                <div class="pastpresdit_inner teamMember trophies">
+                                                    <div class="trophies-img"><img
+                                                            src="{{ asset('img/trophy/14.jpg') }}" alt=""></div>
+                                                    <div class="passtpredi_name">
+<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>St. James Trophy 1992.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="year1993" role="tabpanel" aria-labelledby="year1993-tab">
-                                    <div class="trophies_tab_content_section">
-                                        <div class="row">
-                                            @foreach($trophies->where("year_of_award","1993") as $trophie)
-                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="trophy_tabcontent_inner">
-                                                    <div class="trophy_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{$trophie->getFirstMediaUrl('trophy_photo')}}"
-                                                                alt="" /></a>
-                                                    </div>
-                                                    <div class="trophy_player">
-                                                        <h3>{{$trophie->trophy}}</h3>
-                                                        <h4>{{$trophie->year_of_award}} - {{$trophie->year_of_month}}
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="trophy_tabcontent_inner">
-                                                    <div class="trophy_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_2"><img
-                                                                src="{{ asset('img/trophy/t-img2.jpg') }}" alt="" /></a>
-                                                    </div>
-                                                    <div class="trophy_player">
-                                                        <h3>Champion</h3>
-                                                        <h4>1993 - February</h4>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="trophy_tabcontent_inner">
-                                                    <div class="trophy_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_1"><img
-                                                                src="{{ asset('img/trophy/t-img1.jpg') }}" alt="" /></a>
-                                                    </div>
-                                                    <div class="trophy_player">
-                                                        <h3>Champion</h3>
-                                                        <h4>1992 - January</h4>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <!-- <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
-                                                <div class="trophy_tabcontent_inner">
-                                                    <div class="trophy_tab_ceibity-img">
-                                                        <a href="#" data-toggle="modal" data-target="#year1992_2"><img
-                                                                src="{{ asset('img/trophy/t-img2.jpg') }}" alt="" /></a>
-                                                    </div>
-                                                    <div class="trophy_player">
-                                                        <h3>Champion</h3>
-                                                        <h4>1993 - February</h4>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </section>
