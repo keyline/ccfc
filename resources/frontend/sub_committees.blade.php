@@ -101,68 +101,68 @@
                                 </li>
                                 @endforeach -->
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#bar">
-                                        <div class="tab_icontext">
-                                            <h3>Bar</h3>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#house">
-                                        <div class="tab_icontext">
-                                            <h3>House</h3>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#entertainment-communications">
                                         <div class="tab_icontext">
-                                            <h3>Entertainment & Communications</h3>
+                                            <h3>ENTERTAINMENT / COMUNICATIONS & WEBSITE</h3>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#health-wellness">
+                                    <a class="nav-link" data-toggle="tab" href="#catering">
                                         <div class="tab_icontext">
-                                            <h3>Health And Wellness</h3>
+                                            <h3>CATERING</h3>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#staff-member-relations">
+                                        <div class="tab_icontext">
+                                            <h3>STAFF & MEMBER RELATIONS</h3>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#membership">
+                                        <div class="tab_icontext">
+                                            <h3>MEMBERSHIP</h3>
+                                        </div>
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#ccfc-women-wing">
                                         <div class="tab_icontext">
                                             <h3>The Cc&fc Women's Wing</h3>
                                         </div>
                                     </a>
-                                </li>
-                                <li class="nav-item">
+                                </li> -->
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#ccfc-kid-club">
                                         <div class="tab_icontext">
                                             <h3>The Cc&fc Kids Club</h3>
                                         </div>
                                     </a>
-                                </li>
-                                <li class="nav-item">
+                                </li> -->
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#children">
                                         <div class="tab_icontext">
                                             <h3>Childrens Broadway Musical</h3>
                                         </div>
                                     </a>
-                                </li>
-                                <li class="nav-item">
+                                </li> -->
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#sports-Co-ordinator">
                                         <div class="tab_icontext">
                                             <h3>Sports Co-ordinator</h3>
                                         </div>
                                     </a>
-                                </li>
-                                <li class="nav-item">
+                                </li> -->
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#sponsorships">
                                         <div class="tab_icontext">
                                             <h3>Sponsorship</h3>
                                         </div>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#finance">
                                         <div class="tab_icontext">
@@ -172,20 +172,21 @@
                                 </li>
                             </ul>
                             <select class="mb10 form-control hideondesktop" id="tab_selector">
-                                <option value="0">Bar</option>
-                                <option value="1">House</option>
-                                <option value="2">Entertainment & Communications</option>
-                                <option value="3">Health And Wellness</option>
-                                <option value="4">The Cc&fc Women's Wing</option>
-                                <option value="5">The Cc&fc Kids Club</option>
+                                <option value="0">ENTERTAINMENT / COMUNICATIONS & WEBSITE</option>
+                                <option value="1">CATERING</option>
+                                <option value="2">STAFF & MEMBER RELATIONS</option>
+                                <option value="3">MEMBERSHIP</option>
+                                <option value="4">Finance</option>
+                                <!-- <option value="5">The Cc&fc Kids Club</option>
                                 <option value="6">Childrens Broadway Musical</option>
                                 <option value="7">Sports Co-ordinator</option>
                                 <option value="8">Sponsorship</option>
-                                <option value="9">Finance</option>
+                                <option value="9">Finance</option> -->
                             </select>
 
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="bar" role="tabpanel">
+                                <div class="tab-pane fade show active" id="entertainment-communications"
+                                    role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
@@ -308,7 +309,7 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="house" role="tabpanel">
+                                <div class="tab-pane fade" id="catering" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
                                             @foreach($subCommitteeMembers->where("comittee_name_id","4") as
@@ -358,7 +359,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class=" tab-pane fade" id="entertainment-communications" role="tabpanel">
+                                <div class=" tab-pane fade" id="staff-member-relations" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
@@ -385,8 +386,7 @@
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
 
-                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
 
                                                             <img class="img-fluid"
                                                                 src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
@@ -412,7 +412,7 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="health-wellness" role="tabpanel">
+                                <div class="tab-pane fade" id="membership" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
@@ -438,8 +438,7 @@
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
 
-                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
 
                                                             <img class="img-fluid"
                                                                 src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
@@ -464,7 +463,7 @@
                                 </div>
 
 
-                                <div class="tab-pane fade" id="ccfc-women-wing" role="tabpanel">
+                                <div class="tab-pane fade" id="finance" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
@@ -490,8 +489,6 @@
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
 
-                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
 
                                                             <img class="img-fluid"
                                                                 src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
@@ -517,7 +514,7 @@
 
 
 
-                                <div class="tab-pane fade" id="ccfc-kid-club" role="tabpanel">
+                                <!-- <div class="tab-pane fade" id="ccfc-kid-club" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
@@ -544,8 +541,7 @@
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
 
-                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                            
 
 
                                                             <img class="img-fluid"
@@ -571,10 +567,10 @@
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
-                                <div class="tab-pane fade" id="children" role="tabpanel">
+                                <!-- <div class="tab-pane fade" id="children" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
@@ -600,8 +596,7 @@
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
 
 
-                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                           
 
 
                                                             <img class="img-fluid"
@@ -625,11 +620,11 @@
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
 
-                                <div class="tab-pane fade" id="sports-Co-ordinator" role="tabpanel">
+                                <!-- <div class="tab-pane fade" id="sports-Co-ordinator" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
@@ -654,8 +649,7 @@
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
 
-                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                            
 
                                                             <img class="img-fluid"
                                                                 src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
@@ -677,11 +671,11 @@
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
 
-                                <div class="tab-pane fade" id="sponsorships" role="tabpanel">
+                                <!-- <div class="tab-pane fade" id="sponsorships" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
@@ -707,8 +701,7 @@
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
 
-                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                            
 
                                                             <img class="img-fluid"
                                                                 src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
@@ -733,11 +726,11 @@
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
 
-                                <div class="tab-pane fade" id="finance" role="tabpanel">
+                                <!-- <div class="tab-pane fade" id="finance" role="tabpanel">
                                     <div class="multiuse_tab_content_section">
                                         <div class="row">
 
@@ -763,8 +756,7 @@
                                                     <div class="multiuse_tab_ceibity-img">
                                                         <a href="#" data-toggle="modal" data-target="#year1992_1">
 
-                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
-                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+                                                            
 
                                                             <img class="img-fluid"
                                                                 src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
@@ -787,7 +779,7 @@
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
 
