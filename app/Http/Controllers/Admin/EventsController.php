@@ -159,7 +159,7 @@ class EventsController extends Controller
 
             $extention = $file2->getClientOriginalExtension();
 
-            $filename = $extention;
+            $filename = time().'.'.$extention;
 
             $file2->move('uploads/enentimg/',$filename);
 

@@ -162,7 +162,7 @@ class CircularController extends Controller
 
             $extention = $file->getClientOriginalExtension();
 
-            $filename = $extention;
+            $filename = time().'.'.$extention;
 
             $file->move('uploads/circularimg/',$filename);
 
