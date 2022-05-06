@@ -13,6 +13,6 @@ class Events extends Model
     protected $table = 'events';
     
     public $fillable = [
-        'day', 'month', 'event_name', 'details_1', 'details_2', 'event_image'
+        'day', 'month', 'event_name', 'details_1', 'details_2', 'event_image','event_image_2'
     ];
 }

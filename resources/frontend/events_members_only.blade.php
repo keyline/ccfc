@@ -400,6 +400,8 @@
                 @foreach($event as $value)
                 <div class="modal fade" id="exampleModal{{$value->id}}" tabindex="-1"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                    @if($value['event_image_2'] == '')
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -446,14 +448,43 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
--->
+
                         </div>
                     </div>
+
+                    @else
+
+
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-part">
+                                    <!-- <div class="activities-img">
+
+                                    </div> -->
+
+
+                                    <div class="modal-body">
+
+                                        <img class="img-fluid"
+                                            src="{{ asset('uploads/enentimg/'.$value->event_image_2)}}" alt="">
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    @endif
+
+
                 </div>
 
                 @endforeach

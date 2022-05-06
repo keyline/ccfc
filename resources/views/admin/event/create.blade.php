@@ -55,8 +55,14 @@
 
 
             <div class="form-group">
-                <label for="name_of_the_block">Event Image</label>
+                <label for="name_of_the_block">Event Icon</label>
                 <input type="file" name="enentimage" class="form-control">
+
+            </div>
+
+            <div class="form-group">
+                <label for="name_of_the_block">Event Image</label>
+                <input type="file" name="event_image_2" class="form-control">
 
             </div>
 
