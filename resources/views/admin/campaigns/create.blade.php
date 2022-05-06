@@ -57,10 +57,10 @@
                             Sent On
                         </th>
                         <th>
-                            Total Receipient
+                            View
                         </th>
                         <th>
-                            View/Edit
+                            Edit
                         </th>
                         <th>
                             Send
@@ -80,7 +80,7 @@
                                 {{ ($campaign->ec_is_despatched == '0') ? $campaign->updated_at : ''}}
                             </td>
                             <td>
-                               
+                               <button class="btn btn-info" onclick="location.href='{{ route('admin.show-campaign', $campaign->ec_id) }}'">{{ trans('global.show') }}</button>
                             </td>
                             <td>
                                     <button class="btn btn-info" onclick="location.href='{{ route('admin.edit-campaign', $campaign->ec_id) }}'" {{ ($campaign->ec_is_despatched == '0') ? 'disabled' : ''}}>{{ trans('global.edit') }}</button>
