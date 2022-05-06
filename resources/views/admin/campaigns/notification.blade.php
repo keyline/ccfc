@@ -18,7 +18,7 @@
     <div style="padding-top:20px; width:100%; margin: 0 auto; display:table; text-align:center; font-family:Arial, Helvetica, sans-serif;">
         <div style="height: 2px; background: #000; "></div>
         <p style="margin: 10px 0 5px;">19/1, Gurusaday Road, Kolkata - 700 019</p>
-        <p style="margin: 0 0 5px;"><strong>Phone:</strong> 2461-5060 , 2461-5204 &nbsp; <strong>Fax:</strong> 2461-5058</p>
+        <p style="margin: 0 0 5px;"><strong>Phone:</strong> 24615058/59/60 &nbsp;</p>
         <p style="margin: 0 0 5px;"><strong>E-mail:</strong> <a style="color: #000; text-decoration:none;" href="mailto:ccfcsecretary@ccfc1792.com"> ccfcsecretary@ccfc1792.com</a>  <strong>Website:</strong> <a style="color: #000; text-decoration:none;" href="{{ url()->current() }}" target="_blank">www.ccfc1792.com</a></p>
         <p style="margin: 0 0 5px;"><strong>CIN :</strong> U92412WB2003GAP096325</p>
     </div>
