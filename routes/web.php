@@ -403,7 +403,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('campaigns/new-campaign', [App\Http\Controllers\Admin\SendInBlueController::class, 'store'])->name('new-campaign');
 
     //circular
-    Route::post('campaingns/{campaign}/show', [App\Http\Controllers\Admin\SendInBlueController::class, 'show'])->name('show-campaign');
+    Route::get('campaingns/{campaign}/show', [App\Http\Controllers\Admin\SendInBlueController::class, 'show'])->name('show-campaign');
 
     Route::get('campaingns/{campaign}/edit', [App\Http\Controllers\Admin\SendInBlueController::class, 'edit'])->name('edit-campaign');
 
