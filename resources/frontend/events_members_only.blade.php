@@ -464,6 +464,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="modal-part">
+
                                     <!-- <div class="activities-img">
 
                                     </div> -->

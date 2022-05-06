@@ -1024,6 +1024,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+
+
                     <div class="modal-body">
                         In another match the next day when Hobbs came into bat he received a ball which bounced twice
                         and he mistimed it and sent a dolly catch to mid-off. After the match, the bowler got hold of
@@ -1032,6 +1034,7 @@
                         certificate when the bowler said “And would you please, Mr. Hobby certify that the ball was a
                         good one?” And Hobbs did!
                     </div>
+
                 </div>
             </div>
         </div>
