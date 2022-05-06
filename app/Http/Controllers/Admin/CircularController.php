@@ -55,13 +55,17 @@ class CircularController extends Controller
 
         if($request->hasfile('circularimage')){
 
-            $file = $request->file('circularimage');
+            $file1 = $request->file('circularimage');
 
-            $extention = $file->getClientOriginalExtension();
 
-            $filename = time().'.'.$extention;
+            // $extention = $file1->getClientOriginalExtension();
 
-            $file->move('uploads/circularimg/',$filename);
+            // $filename = time().'.'.$extention;
+            
+
+            $filename= date('YmdHi').$file1->getClientOriginalName();
+
+            $file1->move('uploads/circularimg/',$filename);
 
             $circular->circular_image = $filename;
         }
@@ -72,7 +76,7 @@ class CircularController extends Controller
 
             $extention = $file->getClientOriginalExtension();
 
-            $filename = $extention;
+            $filename = time().'.'.$extention;
 
             $file->move('uploads/circularimg/',$filename);
 
@@ -137,13 +141,15 @@ class CircularController extends Controller
                 File::delete($destination);
             }
 
-            $file = $request->file('circularimage');
+            $file1 = $request->file('circularimage');
 
-            $extention = $file->getClientOriginalExtension();
+            // $extention = $file1->getClientOriginalExtension();
 
-            $filename = time().'.'.$extention;
+            // $filename = time().'.'.$extention;
 
-            $file->move('uploads/circularimg/',$filename);
+            $filename= date('YmdHi').$file1->getClientOriginalName();
+
+            $file1->move('uploads/circularimg/',$filename);
 
             $circular->circular_image = $filename;
         }
