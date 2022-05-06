@@ -55,9 +55,12 @@ class EventsController extends Controller
 
             $file1 = $request->file('enentimage');
 
-            $extention = $file1->getClientOriginalExtension();
+            // $extention = $file1->getClientOriginalExtension();
 
-            $filename = time().'.'.$extention;
+            // $filename = time().'.'.$extention;
+
+
+            $filename= date('YmdHi').$file1->getClientOriginalName();
 
             $file1->move('uploads/enentimg/',$filename);
 
@@ -70,7 +73,7 @@ class EventsController extends Controller
 
             $extention1 = $file2->getClientOriginalExtension();
 
-            $filename1 = $extention1;
+            $filename1 = time().'.'.$extention1;
 
             $file2->move('uploads/enentimg/',$filename1);
 
@@ -135,9 +138,11 @@ class EventsController extends Controller
 
             $file1 = $request->file('eventimage');
 
-            $extention = $file1->getClientOriginalExtension();
+            // $extention = $file1->getClientOriginalExtension();
 
-            $filename = time().'.'.$extention;
+            // $filename = time().'.'.$extention;
+
+            $filename= date('YmdHi').$file1->getClientOriginalName();
 
             $file1->move('uploads/enentimg/',$filename);
 
