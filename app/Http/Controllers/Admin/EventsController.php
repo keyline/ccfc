@@ -53,18 +53,33 @@ class EventsController extends Controller
 
         if($request->hasfile('enentimage')){
 
-            $file = $request->file('enentimage');
+            $file1 = $request->file('enentimage');
 
-            $extention = $file->getClientOriginalExtension();
+            $extention = $file1->getClientOriginalExtension();
 
             $filename = time().'.'.$extention;
 
-            $file->move('uploads/enentimg/',$filename);
+            $file1->move('uploads/enentimg/',$filename);
 
             $event->event_image = $filename;
         }
 
+        if($request->hasfile('event_image_2')){
+
+            $file2 = $request->file('event_image_2');
+
+            $extention1 = $file2->getClientOriginalExtension();
+
+            $filename1 = $extention1;
+
+            $file2->move('uploads/enentimg/',$filename1);
+
+            $event->event_image_2 = $filename1;
+        }
+
         $event->save();
+
+        
 
         return redirect()->back()->with('status','Save successfully');
     }
@@ -118,15 +133,37 @@ class EventsController extends Controller
                 File::delete($destination);
             }
 
-            $file = $request->file('eventimage');
+            $file1 = $request->file('eventimage');
 
-            $extention = $file->getClientOriginalExtension();
+            $extention = $file1->getClientOriginalExtension();
 
             $filename = time().'.'.$extention;
 
-            $file->move('uploads/enentimg/',$filename);
+            $file1->move('uploads/enentimg/',$filename);
 
             $event->event_image = $filename;
+        }
+
+
+
+        if($request->hasfile('event_image_2')){
+
+            $destination = 'uploads/enentimg/'.$event->event_image_2;
+
+            if(File::exists($destination)){
+
+                File::delete($destination);
+            }
+
+            $file2 = $request->file('event_image_2');
+
+            $extention = $file2->getClientOriginalExtension();
+
+            $filename = $extention;
+
+            $file2->move('uploads/enentimg/',$filename);
+
+            $event->event_image_2 = $filename;
         }
 
         $event->update();

@@ -44,7 +44,11 @@
                         </th>
 
                         <th>
-                            Image
+                            Event Icon
+                        </th>
+
+                        <th>
+                            Event Image
                         </th>
 
                         <th>
@@ -88,6 +92,11 @@
                                 alt="">
                         </td>
 
+
+                        <td>
+                            <img src="{{ asset('uploads/enentimg/'.$value->event_image_2)}}" width="100px"
+                                height="100px" alt="">
+                        </td>
 
                         <td>
                             <a href="{{ url('admin/create/edit-event/'.$value->id)}}"

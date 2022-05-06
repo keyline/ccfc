@@ -246,7 +246,276 @@
                                             </div>
 
 
+
+
+
+
+
                                             @endforeach
+                                            @endforeach
+
+                                            @foreach($userDetails->where("id","163")
+                                            as $userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image_2'] == '')
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
+
+                                                        </a>
+                                                    </div>
+                                                    @endif
+
+                                                    <div class="multiuse_bottom_general">
+
+
+
+                                                        <h3>{{ $userDetail->spouse_name }}</h3>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+                                            @endforeach
+
+                                            @foreach($userDetails->where("id","166")
+                                            as $userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image_2'] == '')
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
+
+                                                        </a>
+                                                    </div>
+                                                    @endif
+
+                                                    <div class="multiuse_bottom_general">
+
+
+
+                                                        <h3>BHAVNA JHINGAN</h3>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+                                            @endforeach
+
+                                            @foreach($userDetails->where("id","164")
+                                            as $userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image_2'] == '')
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
+
+                                                        </a>
+                                                    </div>
+                                                    @endif
+
+                                                    <div class="multiuse_bottom_general">
+
+
+
+                                                        <h3>{{ $userDetail->spouse_name }}</h3>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+                                            @endforeach
+
+
+                                            @foreach($userDetails->where("id","165")
+                                            as $userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image_2'] == '')
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
+
+                                                        </a>
+                                                    </div>
+                                                    @endif
+
+                                                    <div class="multiuse_bottom_general">
+
+
+
+                                                        <h3>DITIYA ROY CHOWDHRY</h3>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+                                            @endforeach
+
+
+
+                                            @foreach($userDetails->where("id","162")
+                                            as $userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2 mb-3">
+                                                <div class="multiuse_tabcontent_inner">
+
+                                                    @if($userDetail['member_image_2'] == '')
+
+                                                    <div class="multiuse_tab_ceibity-img">
+
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+                                                            <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                        </a>
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="multiuse_tab_ceibity-img">
+                                                        <a href="#" data-toggle="modal" data-target="#year1992_1">
+
+                                                            <!-- <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" /> -->
+
+
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                                alt="" />
+
+                                                        </a>
+                                                    </div>
+                                                    @endif
+
+                                                    <div class="multiuse_bottom_general">
+
+
+
+
+                                                        <h3>SNEHA KARIWALA</h3>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
                                             @endforeach
 
 

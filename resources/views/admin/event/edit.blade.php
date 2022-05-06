@@ -61,11 +61,21 @@
 
 
             <div class="form-group">
-                <label for="name_of_the_block">Circular Image</label>
+                <label for="name_of_the_block">Event Icon</label>
                 <input type="file" name="eventimage" class="form-control"><br>
                 <img src="{{ asset('uploads/enentimg/'.$event->event_image)}}" width="100px" height="100px" alt="">
 
             </div><br><br>
+
+
+            <div class="form-group">
+                <label for="name_of_the_block">Event Image</label>
+                <input type="file" name="event_image_2" class="form-control"><br>
+
+                <img src="{{ asset('uploads/enentimg/'.$event->event_image_2)}}" width="100px" height="100px" alt="">
+
+            </div><br><br>
+
 
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
