@@ -57,9 +57,11 @@ class CircularController extends Controller
 
             $file1 = $request->file('circularimage');
 
+
             // $extention = $file1->getClientOriginalExtension();
 
             // $filename = time().'.'.$extention;
+            
 
             $filename= date('YmdHi').$file1->getClientOriginalName();
 

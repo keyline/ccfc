@@ -138,9 +138,11 @@ class EventsController extends Controller
 
             $file1 = $request->file('eventimage');
 
+
             // $extention = $file1->getClientOriginalExtension();
 
             // $filename = time().'.'.$extention;
+            
 
             $filename= date('YmdHi').$file1->getClientOriginalName();
 
