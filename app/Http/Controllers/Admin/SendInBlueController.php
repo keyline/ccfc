@@ -75,9 +75,10 @@ class SendInBlueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(EmailCampaign $campaign)
+    public function show($id)
     {
-        return view('admin.campaigns.show', compact('campaign'));
+        $emailcampaign= EmailCampaign::find($id);
+        return view('admin.campaigns.show', compact('emailcampaign'));
     }
 
     /**
