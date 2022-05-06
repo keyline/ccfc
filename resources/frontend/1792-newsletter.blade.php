@@ -83,7 +83,7 @@
                         <div class="col-md-12">
                             <div class="content_inner">
 
-                                @foreach($contentPages->where("id","17") as $contentPage)
+                                @foreach($contentPages->where("id","18") as $contentPage)
                                 {!! $contentPage->page_text !!}
                                 @endforeach
                                 <!-- <p>In the city of Calcutta, then just over a hundred years old and growing fast both in
@@ -106,42 +106,44 @@
                                 <a href="{{ asset('pdf/cc&fc-newsletter-first-edition.pdf') }}" target="_blank"></a>
                                 <div class="newsletter_pdfdownload president_corner">
                                     <div class="newsletter_left">
-                                        <img class="img-fluid"src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
+                                        <img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
                                     </div>
                                     <div class="newsletter_right">
                                         <h3>Download<br> News letter</h3>
                                         <p>June 2021</p>
                                     </div>
-                                    <a class="wholenewdivlink" href="{{ asset('pdf/cc&fc-newsletter-first-edition.pdf') }}" target="_blank"></a>
+                                    <a class="wholenewdivlink"
+                                        href="{{ asset('pdf/cc&fc-newsletter-first-edition.pdf') }}"
+                                        target="_blank"></a>
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                         {{-- <div class="col-lg-4 col-sm-6 col-md-12">
                             <div class="newsletter_pdfdownload">
                                 <div class="newsletter_left">
                                     <a href="#" target="_blank"><img class="img-fluid"
                                             src="{{ asset('img//pdf_downloadicon.png') }}" alt="" /></a>
-                                </div>
-                                <div class="newsletter_right">
-                                    <h3><a href="#" target="_blank">Download<br> News letter</a></h3>
-                                    <p><a href="#" target="_blank">June 2021</a></p>
-                                </div>
-                            </div>
-                        </div> --}}
+                    </div>
+                    <div class="newsletter_right">
+                        <h3><a href="#" target="_blank">Download<br> News letter</a></h3>
+                        <p><a href="#" target="_blank">June 2021</a></p>
                     </div>
                 </div>
-            </section>
-            <!-- ********|| HISTORY END ||******** -->
+        </div> --}}
+    </div>
+    </div>
+    </section>
+    <!-- ********|| HISTORY END ||******** -->
 
 
 
 
-            @include('common.footer')
-            <!-- ?php include 'assets/inc/footer.php';?> -->
+    @include('common.footer')
+    <!-- ?php include 'assets/inc/footer.php';?> -->
 
 
-            </body>
+    </body>
 
 </html>
