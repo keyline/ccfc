@@ -149,7 +149,8 @@ class SendInBlueController extends Controller
             foreach ($users as $user) {
                 \App\Jobs\EmailCampaignJob::dispatch($request->campaign, $user)->onQueue('sendinblueemail');
             }
-            //$campaign->update(['ec_is_despatched' => '0']);
+            
+            $campaign->update(['ec_is_despatched' => '0']);
             
             return redirect()->back()->with('success', 'Campaign started successfully');
         }
