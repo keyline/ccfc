@@ -776,3 +776,4 @@ Route::get('/new_member', function () {
     ->name('password.reset');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')
     ->name('password.update');
+    Route::get('maintenace');
