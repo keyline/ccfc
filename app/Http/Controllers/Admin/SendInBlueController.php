@@ -181,8 +181,10 @@ class SendInBlueController extends Controller
 
             if (!empty($campaign)) {
                 //delete the file physically and update model
-                if (File::exists(storage_path('app\\' . $campaign['ec_attachment']))) {
-                    Storage::delete(storage_path($campaign['ec_attachment']));
+                if (Storage::disk('local')->exists($campaign["ec_attachment"])) {
+                    $path = Storage::disk('local')->getAdapter()->getPathPrefix();
+
+                    Storage::delete($path . $campaign["ec_attachment"]);
                     //Update model
                     $campaign->update(['ec_attachment' => ""]);
                     $response=array(
