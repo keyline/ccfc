@@ -190,6 +190,13 @@ Route::get('/club-bar', function () {
     return view('club-bar', compact(['contentPages', 'galleries', 'contentBlocks']));
 });
 
+Route::get('/maintains-new', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('maintains-new', compact(['contentPages', 'galleries', 'contentBlocks']));
+});
+
 
 Route::get('/swimming-pool', function () {
     $contentPages = ContentPage::all();
