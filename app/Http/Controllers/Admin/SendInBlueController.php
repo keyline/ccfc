@@ -140,6 +140,7 @@ class SendInBlueController extends Controller
             //Dispatching the Job here
             //fetch user list with email not empty
             $campaign= \App\Models\EmailCampaign::findOrFail($request->campaign);
+            dd(Storage::disk('local')->getAdapter()->getPathPrefix());
 
             $query= \App\Models\User::query();
             $query->where('email', '!=', '');
