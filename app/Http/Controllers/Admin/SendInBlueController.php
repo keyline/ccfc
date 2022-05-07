@@ -58,7 +58,7 @@ class SendInBlueController extends Controller
             //$filepath = $request->file('ec_attachment')->store('campaign_attachments');
             $fileName = time().'_'.$request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('campaign_attachments', $fileName, 'local');
-            $filepathWithName = '/storage/' . $filePath;
+            $filepathWithName = $filePath;
             
             $request->merge(['ec_attachment' => $filepathWithName]);
         }
