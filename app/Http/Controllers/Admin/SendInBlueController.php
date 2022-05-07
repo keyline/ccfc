@@ -106,7 +106,7 @@ class SendInBlueController extends Controller
             //$filepath = $request->file('ec_attachment')->store('campaign_attachments');
             $fileName = time().'_'.$request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('campaign_attachments', $fileName, 'local');
-            $filepathWithName = '/storage/' . $filePath;
+            $filepathWithName = $filePath;
             
             $request->merge(['ec_attachment' => $filepathWithName]);
         }
@@ -140,7 +140,6 @@ class SendInBlueController extends Controller
             //Dispatching the Job here
             //fetch user list with email not empty
             $campaign= \App\Models\EmailCampaign::findOrFail($request->campaign);
-            dd(Storage::disk('local')->getAdapter()->getPathPrefix());
 
             $query= \App\Models\User::query();
             $query->where('email', '!=', '');
