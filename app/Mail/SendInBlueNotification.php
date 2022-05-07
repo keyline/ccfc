@@ -49,7 +49,7 @@ class SendInBlueNotification extends Mailable
             if (isset($targetCampaign->ec_attachment) && Storage::disk('local')->exists($targetCampaign->ec_attachment)) {
                 $path = Storage::disk('local')->getAdapter()->getPathPrefix();
                 $this->attach($path . $targetCampaign->ec_attachment, [
-                         'as' => 'sample.pdf',
+                         'as' => 'MemberGuide.pdf',
                          'mime' => 'application/pdf',
             ]);
             }
