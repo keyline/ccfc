@@ -760,6 +760,7 @@
                                                         <h3>{{ $member->select_title->titles ?? '' }}</h3>
                                                         <div class="sport_player_detail">
                                                             <h4>{{ $member->select_member->name ?? '' }}</h4>
+
                                                             <!-- <p><a
                                                                     href="tel:+91 {{ $member->select_member->phone_number_1 ?? '' }}">+91
                                                                     {{ $member->select_member->phone_number_1 ?? '' }}</a>
@@ -767,6 +768,7 @@
                                                             <p><a
                                                                     href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
                                                             </p> -->
+
                                                         </div>
                                                     </div>
                                                 </div>
