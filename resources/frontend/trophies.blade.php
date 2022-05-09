@@ -67,143 +67,144 @@
                                 <div class="pastpresident_imagebox">
                                     <div class="pastpresident_item">
                                         <div class="row">
-                                             <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
-                                                    <div class="trophies-img"><img
-                                                            src="{{ asset('img/trophy/1.jpg') }}" alt=""></div>
+                                                    <div class="trophies-img"><img src="{{ asset('img/trophy/1.jpg') }}"
+                                                            alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
-                                                        <p>International Trophy for Annual Competition Between Scotland and England.</p>
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <p>International Trophy for Annual Competition Between Scotland
+                                                            and England.</p>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                             <div class="col-md-6 col-lg-3">
+                                            </div>
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
-                                                    <div class="trophies-img"><img
-                                                            src="{{ asset('img/trophy/2.jpg') }}" alt="">
+                                                    <div class="trophies-img"><img src="{{ asset('img/trophy/2.jpg') }}"
+                                                            alt="">
                                                     </div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>The Centenary Cup Women.</p>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                             <div class="col-md-6 col-lg-3">
+                                            </div>
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
-                                                    <div class="trophies-img"><img
-                                                            src="{{ asset('img/trophy/3.jpg') }}" alt=""></div>
+                                                    <div class="trophies-img"><img src="{{ asset('img/trophy/3.jpg') }}"
+                                                            alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>Calcutta Cup Men.</p>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                             <div class="col-md-6 col-lg-3">
+                                            </div>
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
-                                                    <div class="trophies-img"><img
-                                                            src="{{ asset('img/trophy/4.jpg') }}" alt=""></div>
+                                                    <div class="trophies-img"><img src="{{ asset('img/trophy/4.jpg') }}"
+                                                            alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>The Centenary Cup Men.</p>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                             <div class="col-md-6 col-lg-3">
+                                            </div>
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
-                                                    <div class="trophies-img"><img
-                                                            src="{{ asset('img/trophy/5.jpg') }}" alt=""></div>
+                                                    <div class="trophies-img"><img src="{{ asset('img/trophy/5.jpg') }}"
+                                                            alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>Calcutta Club (Group B).</p>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                             <div class="col-md-6 col-lg-3">
+                                            </div>
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
-                                                    <div class="trophies-img"><img
-                                                            src="{{ asset('img/trophy/6.jpg') }}" alt=""></div>
+                                                    <div class="trophies-img"><img src="{{ asset('img/trophy/6.jpg') }}"
+                                                            alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>The Calcutta Club Women.</p>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                             <div class="col-md-6 col-lg-3">
+                                            </div>
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
-                                                    <div class="trophies-img"><img
-                                                            src="{{ asset('img/trophy/7.jpg') }}" alt=""></div>
+                                                    <div class="trophies-img"><img src="{{ asset('img/trophy/7.jpg') }}"
+                                                            alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>All India Women's Rugby XV's Championship.</p>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                              <div class="col-md-6 col-lg-3">
+                                            </div>
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
-                                                    <div class="trophies-img"><img
-                                                            src="{{ asset('img/trophy/8.jpg') }}" alt=""></div>
+                                                    <div class="trophies-img"><img src="{{ asset('img/trophy/8.jpg') }}"
+                                                            alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>J. Thomas Cup (August 1973).</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                              <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
-                                                    <div class="trophies-img"><img
-                                                            src="{{ asset('img/trophy/9.jpg') }}" alt=""></div>
+                                                    <div class="trophies-img"><img src="{{ asset('img/trophy/9.jpg') }}"
+                                                            alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>Traditional Friendly Cricket Match Between Dhaka Club.</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                              <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
                                                     <div class="trophies-img"><img
                                                             src="{{ asset('img/trophy/10.jpg') }}" alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>Millenium Cricket Eleven.</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                              <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
                                                     <div class="trophies-img"><img
                                                             src="{{ asset('img/trophy/11.jpg') }}" alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>Constitution Club Trophy.</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                              <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
                                                     <div class="trophies-img"><img
                                                             src="{{ asset('img/trophy/12.jpg') }}" alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>The St. James Cup for Anglo Indian School.</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                              <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
                                                     <div class="trophies-img"><img
                                                             src="{{ asset('img/trophy/13.jpg') }}" alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>Calcutta Rugby Team Kicking Cup.</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                              <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember trophies">
                                                     <div class="trophies-img"><img
                                                             src="{{ asset('img/trophy/14.jpg') }}" alt=""></div>
                                                     <div class="passtpredi_name">
-<!--                                                        <h2>Mr. R. B. Lagden</h2>-->
+                                                        <!--                                                        <h2>Mr. R. B. Lagden</h2>-->
                                                         <p>St. James Trophy 1992.</p>
                                                     </div>
                                                 </div>
@@ -219,7 +220,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <!-- ********|| TROPHIES END ||******** -->
 
 
