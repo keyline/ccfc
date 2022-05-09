@@ -55,7 +55,7 @@ class ContactController extends Controller
             'message' => $input['message'],
         ), function ($message) use ($request) {
             $message->from($request->email);
-            $message->to('pranoy@keylines.net', 'Admin')->subject($request->get('subject'));
+            $message->to('ccfcsecretary@ccfc1792.com', 'Admin')->subject($request->get('subject'));
         });
 
         return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
