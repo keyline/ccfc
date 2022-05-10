@@ -60,7 +60,7 @@
 <script>
     Dropzone.options.imageDropzone = {
     url: '{{ route('admin.past-presidents.storeMedia') }}',
-    maxFilesize: 1, // MB
+    maxFilesize: 2, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     maxFiles: 1,
     addRemoveLinks: true,
@@ -68,7 +68,7 @@
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 1,
+      size: 2,
       //width: 500,
       //height: 500
     },
