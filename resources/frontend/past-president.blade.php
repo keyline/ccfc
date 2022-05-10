@@ -81,7 +81,7 @@
                                             @foreach($pastPresidents as $past)
 
 
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-sm-6 col-lg-3">
                                                 <div class="pastpresdit_inner teamMember">
                                                     @if($past->image)
                                                     <div class="photoFrame">

@@ -1,53 +1,35 @@
 /*XL PC VERSION*/
 @media screen and (max-width: 1600px) {
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .top-img
-        .trangle-img {
+    .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
         width: 90px;
     }
+
     .services-sec .services-inner .services-info .services-box .img-box img {
         width: 70px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .img-box.gym-img
-        img {
+
+    .services-sec .services-inner .services-info .services-box .img-box.gym-img img {
         width: 58px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-content {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-content {
         line-height: 16px;
         top: 54%;
     }
+
     .services-sec .services-inner .services-info .services-img img {
         height: 100%;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-title {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-title {
         padding-bottom: 6px;
         padding-top: 14px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-action {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-action {
         bottom: 18px;
     }
+
     .testimonial-sec .testimonial-carousel {
         padding-bottom: 40px;
     }
@@ -55,85 +37,69 @@
 
 /*LARGE PC VERSION*/
 @media screen and (max-width: 1400px) {
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .top-img
-        .trangle-img {
+    .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
         width: 120px;
     }
+
     .services-sec .services-inner .services-info .services-box .img-box img {
         width: 86px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .img-box.gym-img
-        img {
+
+    .services-sec .services-inner .services-info .services-box .img-box.gym-img img {
         width: 70px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-title {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-title {
         padding-bottom: 10px;
         padding-top: 0px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-action {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-action {
         bottom: 66px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-content {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-content {
         top: 61%;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-action {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-action {
         bottom: 12px;
     }
+
     .services-sec .services-inner .services-info .services-box .services-body .services-action {
-        bottom: 54px!important;
+        bottom: 54px !important;
     }
+
     .services-sec .services-inner .services-info .services-box .services-body .services-content {
         top: 56%;
     }
+
     .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
-        width: 140px!important;
+        width: 140px !important;
     }
+
     .services-sec .services-inner .services-info .services-box .services-body .services-title {
-         padding-top: 15px; 
+        padding-top: 15px;
     }
-    .testimonial-sec .testimonial-carousel{
+
+    .testimonial-sec .testimonial-carousel {
         padding: 0;
     }
-/*
+
+    /*
     .testimonial-sec .testimonial-body .testimonial-img{
         margin: 33px 0px 0px 216px;
     }
 */
-    .services-sec .services-inner .services-info .services-box .services-body .services-title{
+    .services-sec .services-inner .services-info .services-box .services-body .services-title {
         padding-top: 30px;
     }
+
     .testimonial-sec .testimonial-inner .testimonial-info {
-    width: auto;
+        width: auto;
+    }
 }
-}
+
 @media screen and (min-width: 1201px) {
     /* .all-footer {
         position: absolute;
@@ -143,53 +109,34 @@
         width: 100%;
     } */
 }
+
 /*PC VERSION*/
 @media screen and (max-width: 1200px) {
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .top-img
-        .trangle-img {
+    .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
         width: 90px;
     }
+
     .services-sec .services-inner .services-info .services-box .img-box img {
         width: 70px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .img-box.gym-img
-        img {
+
+    .services-sec .services-inner .services-info .services-box .img-box.gym-img img {
         width: 58px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-title {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-title {
         padding: 6px 0px;
         line-height: 16px;
     }
 
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-content {
+    .services-sec .services-inner .services-info .services-box .services-body .services-content {
         top: 50%;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-action {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-action {
         bottom: 26px;
     }
+
     /*
     .testimonial-sec .testimonial-carousel {
     background-size: 100%;
@@ -200,61 +147,79 @@
         height: 40px;
         width: 40px;
     }
+
     .testimonial-sec .testimonial-inner .testimonial-content {
         padding: 6px 0px;
         line-height: 16px;
     }
-/*
+
+    /*
     .testimonial-sec .testimonial-body .testimonial-img {
         width: 128px;
         margin: 33px 0px 0px 100px;
     }
 */
     .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
-        width: 90px!important;
+        width: 90px !important;
     }
-    .famoussport_item{
+
+    .famoussport_item {
         display: block;
         grid-template-columns: auto;
     }
-    .famoussport_item .famoussport_img{
+
+    .famoussport_item .famoussport_img {
         margin: 0 auto 15px;
     }
+
     .newsletter_left img {
         max-width: 50px;
     }
 }
+
 @media (min-width: 992px) and (max-width: 1300px) {
     .photoFrame {
         width: 100%;
     }
+
     .balloting_infolist .col-lg-3 {
         max-width: 33.333333%;
     }
+
     .subcomminttees_tabsection .multiuse_tab_content_section .col-lg-3 {
         max-width: 33.333333%;
     }
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
     .invoice_section .col-md-12.col-lg-6 {
         width: 100%;
         max-width: 100%;
         flex: 0 0 100%;
     }
-    .invoice_section .member_profiletop::after{width: 0px;}
+
+    .invoice_section .member_profiletop::after {
+        width: 0px;
+    }
+
     .invoice_section .invoicepayment_section {
         padding-top: 20px;
         border-top: 1px solid #ddd;
         margin-top: 20px;
     }
 }
+
 @media (min-width: 768px) and (max-width: 1100px) {
-    .activities_menulist_section .activities_list_item{ display: block;}
+    .activities_menulist_section .activities_list_item {
+        display: block;
+    }
 }
+
 @media screen and (min-width: 992px) {
     .right_side_panel .right-body {
         height: 100%;
     }
+
     /* .all-footer {
         position: absolute;
         bottom: 0;
@@ -262,8 +227,13 @@
         padding-top: 70px;
         width: 100%;
     } */
-    .sports-sec .owl-nav button.owl-prev{left: -25px;}
-    .sports-sec .owl-nav button.owl-next{right: -25px}
+    .sports-sec .owl-nav button.owl-prev {
+        left: -25px;
+    }
+
+    .sports-sec .owl-nav button.owl-next {
+        right: -25px
+    }
 }
 
 /*TAB VERSION*/
@@ -272,6 +242,7 @@
         max-width: 50%;
         flex: none;
     }
+
     section.footer_top .col-md-4.foot_webcomp {
         max-width: 100%;
     }
@@ -279,64 +250,50 @@
     .advise .advise-img {
         padding-bottom: 20px;
     }
+
     .advise {
         padding: 20px 10px 0px 10px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .top-img
-        .trangle-img {
+
+    .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
         width: 120px;
     }
+
     .services-sec .services-inner .services-info .services-box .img-box img {
         width: 86px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .img-box.gym-img
-        img {
+
+    .services-sec .services-inner .services-info .services-box .img-box.gym-img img {
         width: 70px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-title {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-title {
         padding-bottom: 10px;
         padding-top: 30px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-action {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-action {
         bottom: 66px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-content {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-content {
         top: 54%;
     }
+
     .testimonial-sec .testimonial-carousel {
         background-size: 62%;
     }
+
     .testimonial-sec .testimonial-inner .testimonial-info {
         margin: 30px auto 0px;
         width: 330px;
     }
+
     .testimonial-sec .testimonial-body .testimonial-img {
-    margin: 42px auto 0px;
-}
-/*
+        margin: 42px auto 0px;
+    }
+
+    /*
     .testimonial-sec .testimonial-body .testimonial-img {
         width: 128px;
         margin: 33px 0px 0px 190px;
@@ -345,63 +302,94 @@
     .testimonial-sec .testimonial-right {
         text-align: center;
     }
+
     .testimonial-sec .testimonial-right .title-sec .title {
         text-align: center;
     }
+
     .testimonial-sec .testimonial-right .testimonial-content {
         padding-bottom: 28px;
     }
+
     .contact-sec .contact-inner {
         padding-top: 30px;
         padding-bottom: 30px;
     }
+
     .contact-sec .contact-inner .title {
         text-align: center;
     }
+
     .contact-sec .contact-inner .contact-content {
         line-height: 20px;
         text-align: center;
     }
+
     .contact-sec .contact-inner .send-btn {
         display: block;
         margin: 0 auto;
     }
+
     .history-page .title-sec .title {
         text-align: center;
     }
+
     .history-page .history-inner .history-content {
         /* text-align: center; */
     }
+
     .history-page .history-inner {
         padding-bottom: 30px;
     }
+
     .sport-tablist ul.nav-tabs a.nav-link {
         padding-left: 1em;
         padding-right: 1em;
     }
-    .services-sec .services-inner .services-info .services-box .top-img .trangle-img{
-        width: 120px!important;
+
+    .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
+        width: 120px !important;
     }
+
     .services-sec .services-inner .services-info .services-box .services-body .services-action {
         bottom: 52px;
     }
+
     .services-sec .services-inner .services-info .services-box .services-body .services-title {
         padding-top: 14px;
     }
-    .famoussport_item .famoussport_info h3{text-align: center; font-size: 22px;}
+
+    .famoussport_item .famoussport_info h3 {
+        text-align: center;
+        font-size: 22px;
+    }
 }
+
 @media (min-width: 768px) and (max-width: 992px) {
-    .member_profile_item{display: block;}
-    p.member_list_input, p.member_list_text{width: 100%; padding-right: 0;}
+    .member_profile_item {
+        display: block;
+    }
+
+    p.member_list_input,
+    p.member_list_text {
+        width: 100%;
+        padding-right: 0;
+    }
+
     /* .member_profileimg {
         width: auto;
     } */
-    .member_profiletop h2{font-size: 22px;margin-bottom: 10px;}
+    .member_profiletop h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
     .invoicepayment_section {
         margin-top: 20px;
         border-top: 2px solid #ddd;
         padding-top: 20px;
     }
+
     .invoice_section .member_profiletop::after {
         width: 100%;
         height: 0;
@@ -410,40 +398,69 @@
         left: 0;
         bottom: 0;
     }
+
     .invoice_section .member_profiletop {
         position: relative;
         padding-bottom: 15px;
         margin-bottom: 15px;
     }
-    .member_profile_item{padding: 0 10px;}
+
+    .member_profile_item {
+        padding: 0 10px;
+    }
+
     .memberbelowinfo_section {
         padding: 40px 30px;
     }
+
     .member_details_section {
         padding: 30px 15px;
     }
+
     .balloting_infolist .multiuse_tab_content_section .multiuse_tab_ceibity-img {
         height: 130px;
         width: 130px;
     }
 }
+
+@media (min-width: 768px) and (max-width: 900px) {
+    .pastpresident_imagebox .pastpresident_item .col-md-6 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+}
+
 @media screen and (min-width: 768px) {
-    .mobile_menu, .topPanel a.closebtn {
+
+    .mobile_menu,
+    .topPanel a.closebtn {
         display: none;
     }
-    .mobile_bottom_icon{display: none;}
+
+    .mobile_bottom_icon {
+        display: none;
+    }
+
     /* .greneral_infolist .multiuse_tabcontent_inner .multiuse_bottom_general h3{ min-height: 76px;} */
-    .hideondesktop{display: none !important;}
+    .hideondesktop {
+        display: none !important;
+    }
+
     section.member-protected {
         min-height: 450px;
     }
 }
+
 /*MOBILE VERSION*/
 @media screen and (max-width: 767px) {
-    .hideonmobile{display: none !important;}
-    .site_righticon{
+    .hideonmobile {
         display: none !important;
     }
+
+    .site_righticon {
+        display: none !important;
+    }
+
     .ccfc-body .header .top-header .brand {
         width: 100%;
         display: flex;
@@ -452,13 +469,16 @@
         padding-left: 20px;
         padding-right: 20px;
     }
+
     .mobile_menu span {
         color: var(--primaryColor);
     }
+
     .topPanel .navbar-light .nav-item span.submenu_arrow {
         transform: rotate(90deg);
         -o-transform: rotate(90deg);
     }
+
     button.btn.collapsemember-button {
         background: var(--primaryColor);
         color: #fff;
@@ -468,14 +488,17 @@
         font-family: 'IBM Plex Serif', serif;
         font-size: 18px;
     }
-    button.btn.collapsemember-button:focus{
+
+    button.btn.collapsemember-button:focus {
         box-shadow: none;
     }
+
     .testimonial-sec .testimonial-inner .testimonial-info {
         width: 100%;
         margin: 0 auto;
     }
-/*
+
+    /*
     .testimonial-sec .testimonial-body .testimonial-img {
         width: 140px;
         margin: 33px auto 0px auto;
@@ -485,91 +508,115 @@
         color: var(--secondaryColor);
         padding-left: 0px;
     }
+
     .testimonial-sec .owl-nav {
         justify-content: space-between;
         top: 28%;
         right: 0;
         bottom: auto;
     }
+
     .testimonial-sec .testimonial-carousel {
         background-image: none;
     }
+
     .contact-sec {
         padding-left: 15px;
     }
+
     .contact-sec .contact-inner .title {
         text-align: center;
     }
+
     .history-sec .history-inner {
         padding: 40px 0px;
     }
+
     .history-sec .history-inner.foodbeverage_inner {
         padding: 40px 0;
     }
+
     .history-page {
         padding: 40px 0px;
     }
+
     .history-page .history-img img {
         display: block;
         margin: 0 auto;
         width: 100%;
     }
+
     .services-sec .owl-nav .owl-prev {
         margin-left: 0;
     }
+
     .services-sec .owl-nav .owl-next {
         margin-right: 0;
     }
+
     .topPanel .navbar-light .navbar-nav .show .dropdown-menu {
         width: 100%;
     }
-    .topPanel .navbar{
+
+    .topPanel .navbar {
         padding: 20px 0;
     }
-    .topPanel .navbar-light .navbar-nav .nav-link{
+
+    .topPanel .navbar-light .navbar-nav .nav-link {
         font-size: 15px;
         padding: 8px 0px;
     }
-    .topPanel .navbar-light .navbar-nav .submenu a{
+
+    .topPanel .navbar-light .navbar-nav .submenu a {
         padding: 8px 12px;
     }
+
     .topPanel .navbar-light .navbar-nav .nav-item a {
         padding-left: 20px;
     }
+
     .topPanel .navbar-light ul ul li a {
         padding-left: 40px !important;
     }
+
     .topPanel .navbar-light ul ul ul li a {
         padding-left: 50px !important;
     }
+
     .topPanel .navbar-light ul ul li span.submenu_arrow {
         margin-right: 0 !important;
     }
-    .footer-img{
+
+    .footer-img {
         margin-bottom: 42px;
     }
-    .mobile_bottom_icon{
-        position:fixed;
+
+    .mobile_bottom_icon {
+        position: fixed;
         bottom: 0;
         left: 0;
         z-index: 999999;
         width: 100%;
     }
+
     .mobile_bottom_icon .mb_writeuscall {
         display: grid;
         grid-template-columns: 50% 50%;
     }
+
     .mobile_bottom_icon .mb_writeuscall .mb_write_left {
         background: #000;
         text-align: center;
         padding: 6px;
     }
+
     .mobile_bottom_icon .mb_writeuscall .mb_call_right {
         background: var(--primaryColor);
         text-align: center;
         padding: 6px;
         color: #fff;
     }
+
     .mobile_bottom_icon .mb_writeuscall a {
         color: #fff;
         text-transform: uppercase;
@@ -577,6 +624,7 @@
         font-weight: 600;
         font-size: 18px;
     }
+
     .mobile_bottom_icon .mb_writeuscall i {
         background: #fff;
         border-radius: 50%;
@@ -585,14 +633,17 @@
         color: var(--primaryColor);
         line-height: 30px;
     }
-    .testimonial-sec .testimonial-right .testimonial-logo{
+
+    .testimonial-sec .testimonial-right .testimonial-logo {
         display: none;
     }
-    .testimonial-sec .testimonial-right .testimonial-action{
+
+    .testimonial-sec .testimonial-right .testimonial-action {
         display: none;
     }
-    .testimonial-sec .testimonial-action-mobile{
-        display: block!important;
+
+    .testimonial-sec .testimonial-action-mobile {
+        display: block !important;
         margin-top: 30px;
         text-align: center;
     }
@@ -600,34 +651,47 @@
     .or-2 {
         order: 2;
     }
+
     .or-1 {
-    order: 1;
+        order: 1;
     }
+
     .services-sec .services-inner .services-info .services-img {
         height: 400px;
     }
+
     .services-sec .services-inner .services-info .services-img img {
         object-fit: cover;
     }
+
     .services-sec .services-inner .services-info .services-box .services-body .services-title {
         padding-top: 15px;
     }
+
     .services-sec .services-inner .services-info .services-box .services-body .services-content {
         top: 58%;
     }
+
     .services-sec .services-inner .services-info .services-box .services-body .services-action {
         bottom: 60px;
     }
-    .title-sec .title{text-align: center !important;}
-    .services-sec.services-sec-main .services-inner .services-info .services-img img{
+
+    .title-sec .title {
+        text-align: center !important;
+    }
+
+    .services-sec.services-sec-main .services-inner .services-info .services-img img {
         height: 100%;
     }
+
     .gym-general-sec {
         padding: 40px 0px;
     }
+
     .member_profiletop {
         text-align: center;
     }
+
     .invoice_section .member_profiletop::after {
         width: 100%;
         height: 2px;
@@ -636,46 +700,60 @@
         left: 0;
         bottom: 0;
     }
+
     .invoice_section .member_profiletop {
         position: relative;
         padding-bottom: 15px;
         margin-bottom: 15px;
     }
-    .member_details_section{
-        padding:30px 5px;
+
+    .member_details_section {
+        padding: 30px 5px;
     }
-    .inner_belowbanner{
+
+    .inner_belowbanner {
         padding-left: 5px;
         padding-right: 5px;
     }
-    .member_profile_item{padding: 0 5px;}
-    .famoussport-details{
+
+    .member_profile_item {
+        padding: 0 5px;
+    }
+
+    .famoussport-details {
         padding-left: 5px;
         padding-right: 5px;
     }
+
     .famoussport_info {
         padding-left: 0;
     }
+
     .gym-general-sec .project-item .gallery .item-img img {
         width: 100%;
     }
-    .memberbelowinfo_section .dashboardpic_items, .memberbelowinfo_section .dashboardpic_itemsinfo {
+
+    .memberbelowinfo_section .dashboardpic_items,
+    .memberbelowinfo_section .dashboardpic_itemsinfo {
         margin-right: 0;
         width: 100%;
     }
+
     .member_details_section .col-md-12.pl-0 {
         padding-left: 15px !important;
     }
+
     .memberbelowinfo_section .row {
         justify-content: space-between;
         align-items: center;
         flex-wrap: nowrap;
         flex-direction: column;
     }
+
     .dashboard_resetbtn {
         margin-top: 20px;
     }
-    
+
 }
 
 /*LARGE MOBILE VERSION*/
@@ -683,53 +761,43 @@
     section.footer_top .col-md-4 {
         max-width: 100%;
     }
+
     .activities_menulist_section .activities_list_item {
         grid-template-columns: 100%;
     }
+
     .activities_list_item_right_white:after {
         border: none;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .top-img
-        .trangle-img {
+
+    .services-sec .services-inner .services-info .services-box .top-img .trangle-img {
         width: 184px;
     }
+
     .services-sec .services-inner .services-info .services-box .img-box img {
         width: 118px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-content {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-content {
         margin: 0 30px;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .services-body
-        .services-content {
+
+    .services-sec .services-inner .services-info .services-box .services-body .services-content {
         top: 56%;
     }
-    .services-sec
-        .services-inner
-        .services-info
-        .services-box
-        .img-box.gym-img
-        img {
+
+    .services-sec .services-inner .services-info .services-box .img-box.gym-img img {
         width: 95px;
     }
+
     .services-sec .services-inner .services-info .services-box .img-box img {
         width: 86px;
     }
+
     .services-sec .services-inner .services-info .services-box .img-box.gym-img img {
         width: 70px;
     }
+
     .inner_belowbox_wrapper {
         padding: 20px;
     }
@@ -737,20 +805,46 @@
 
 /*SMALL MOBILE VERSION*/
 @media screen and (max-width: 480px) {
-    .mobile_bottom_icon .mb_writeuscall a{font-size: 15px;}
-    .member_profile_item{display: block;}
-    p.member_list_input, p.member_list_text{width: 100%; padding-right: 0;}
-    .invoicepayment_section .invoicepayment_box{display: block;}
+    .mobile_bottom_icon .mb_writeuscall a {
+        font-size: 15px;
+    }
+
+    .member_profile_item {
+        display: block;
+    }
+
+    p.member_list_input,
+    p.member_list_text {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .invoicepayment_section .invoicepayment_box {
+        display: block;
+    }
+
     .invoicepayment_box .invoicepayment_input {
         width: 100%;
     }
-    .invoicepayment_section .invoicepayment_box input[type="text"]{width: 100%;}
-    .invoicepayment_box .invoicepayment_paybtn button{width: 100%; margin-top: 15px;}
+
+    .invoicepayment_section .invoicepayment_box input[type="text"] {
+        width: 100%;
+    }
+
+    .invoicepayment_box .invoicepayment_paybtn button {
+        width: 100%;
+        margin-top: 15px;
+    }
+
     .poolpub_midimg {
         flex-direction: column;
         align-items: center;
     }
-    .gym-general-sec .poolpub_midimg .project-item{padding-bottom: 15px !important; width: 100%;}
 
-    
+    .gym-general-sec .poolpub_midimg .project-item {
+        padding-bottom: 15px !important;
+        width: 100%;
+    }
+
+
 }

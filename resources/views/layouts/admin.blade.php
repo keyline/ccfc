@@ -83,7 +83,7 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.0-alpha
+                <b>Designed & Developed by</b> <a href="https://keylines.net/" class="keyline"> KEYLINE</a>
             </div>
             <strong> &copy;</strong> {{ trans('global.allRightsReserved') }}
         </footer>
