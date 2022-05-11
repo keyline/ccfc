@@ -25,7 +25,7 @@ class PaymentController extends Controller
         
         if ($user) {
             $validated = $request->validate([
-        'amount' => 'required|numeric'
+        'amount' => 'required|numeric|min:1'
     ]);
 
 
