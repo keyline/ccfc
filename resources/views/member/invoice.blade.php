@@ -47,6 +47,7 @@
                         <div class="col-md-12 col-lg-6">
 
                             <div class="row">
+                                
 
                                 <div class="col-lg-4 col-md-5">
                                     <!-- <div class="member_profileimg">
@@ -94,6 +95,15 @@
 
                         <div class="col-md-12 col-lg-6">
                             <div class="invoicepayment_section">
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
                                 @foreach($userTransactions as $user)
                                 @if($loop->first)
                                 <h3>Total current outstanding : INR. {{ $user['Balance'] }}</h3>
