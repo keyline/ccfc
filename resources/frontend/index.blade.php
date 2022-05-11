@@ -641,11 +641,6 @@
                                                             lot to prop the side up and this I did in the end to the
                                                             tune of about 80....
                                                         </div>
-                                                        <!--
-                                                        <div class="testimonial-name">
-                                                            
-                                                        </div>
--->
                                                         <div class="testimonial-profession">
                                                             TOM LONGFIELD
                                                         </div>
@@ -684,7 +679,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                     </div>
                 </div>
             </div>
