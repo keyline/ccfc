@@ -125,8 +125,7 @@
                                             <span id="dots">...</span>
                                             <!-- <span id="more"
                                                 style="display:none;">{{ substr($contentPage->page_text, 300) }}</span> -->
-                                            <span id="more"
-                                                style="display:none;">{{ substr( $contentPage->excerpt, 300) }}</span>
+                                            <span id="more" style="display:none;">{{ substr( $contentPage->excerpt, 300) }}</span>
                                             <a class="read-btn" onclick="myFunction()" id="myBtn">+ Read More</a>
                                             @endif
 
@@ -201,12 +200,10 @@
                                             <div class="services-box">
                                                 <div class="top-img">
                                                     <div class="trangle-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
                                                     </div>
                                                     <div class="img-box">
-                                                        <img class="img-fluid" src="{{ asset('img/food-01.svg') }}"
-                                                            alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/food-01.svg') }}" alt="">
                                                     </div>
                                                 </div>
 
@@ -234,12 +231,10 @@
                                             <div class="services-box">
                                                 <div class="top-img">
                                                     <div class="trangle-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
                                                     </div>
                                                     <div class="img-box gym-img">
-                                                        <img class="img-fluid" src="{{ asset('img/gym-01.svg') }}"
-                                                            alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/gym-01.svg') }}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="services-body">
@@ -262,18 +257,15 @@
                                     <div class="item">
                                         <div class="services-info">
                                             <div class="services-img">
-                                                <img class="img-fluid" src="{{ asset('img/services-3-pool.jpg') }}"
-                                                    alt="">
+                                                <img class="img-fluid" src="{{ asset('img/services-3-pool.jpg') }}" alt="">
                                             </div>
                                             <div class="services-box">
                                                 <div class="top-img">
                                                     <div class="trangle-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
                                                     </div>
                                                     <div class="img-box gym-img">
-                                                        <img class="img-fluid" src="{{ asset('img/swim-01.svg') }}"
-                                                            alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/swim-01.svg') }}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="services-body">
@@ -300,12 +292,10 @@
                                             <div class="services-box">
                                                 <div class="top-img">
                                                     <div class="trangle-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
                                                     </div>
                                                     <div class="img-box gym-img">
-                                                        <img class="img-fluid" src="{{ asset('img/bar-01.svg') }}"
-                                                            alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/bar-01.svg') }}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="services-body">
@@ -332,12 +322,10 @@
                                             <div class="services-box">
                                                 <div class="top-img">
                                                     <div class="trangle-img">
-                                                        <img class="img-fluid"
-                                                            src="{{ asset('img/services-box-01.svg') }}" alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/services-box-01.svg') }}" alt="">
                                                     </div>
                                                     <div class="img-box gym-img">
-                                                        <img class="img-fluid" src="{{ asset('img/swim-01.svg') }}"
-                                                            alt="">
+                                                        <img class="img-fluid" src="{{ asset('img/swim-01.svg') }}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="services-body">
@@ -385,8 +373,7 @@
                                     <div class="item">
                                         <div class="sports-info">
                                             <div class="sports-img">
-                                                <img class="img-fluid" src="{{$sportstype->getFirstMediaUrl('icon')}}"
-                                                    alt="">
+                                                <img class="img-fluid" src="{{$sportstype->getFirstMediaUrl('icon')}}" alt="">
 
                                                 <!-- <img class="img-fluid" src="{{ asset('img/sports-1-01.svg') }}" alt=""> -->
                                             </div>
@@ -441,17 +428,14 @@
 
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="indian-tab" data-toggle="tab" href="#indian"
-                                        role="tab" aria-controls="indian" aria-selected="true">Indian</a>
+                                    <a class="nav-link active" id="indian-tab" data-toggle="tab" href="#indian" role="tab" aria-controls="indian" aria-selected="true">Indian</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="overseas-tab" data-toggle="tab" href="#overseas" role="tab"
-                                        aria-controls="overseas" aria-selected="false">Overseas</a>
+                                    <a class="nav-link" id="overseas-tab" data-toggle="tab" href="#overseas" role="tab" aria-controls="overseas" aria-selected="false">Overseas</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="indian" role="tabpanel"
-                                    aria-labelledby="indian-tab">
+                                <div class="tab-pane fade show active" id="indian" role="tabpanel" aria-labelledby="indian-tab">
                                     <div class="club-info">
                                         <div id="home_reciprocal_indian" class="owl-carousel owl-theme">
 
@@ -464,8 +448,7 @@
 
                                                     <div class="club-img">
                                                         <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
-                                                        <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
-                                                            alt="" />
+                                                        <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}" alt="" />
                                                     </div>
                                                     <div class="club-title">
 
@@ -499,8 +482,7 @@
 
                                                     <div class="club-img">
                                                         <!-- <img class="img-fluid" src="{{ asset('img/club-1.png') }}" alt=""> -->
-                                                        <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}"
-                                                            alt="" />
+                                                        <img src=" {{$reciprocalClub->getFirstMediaUrl('club_image')}}" alt="" />
                                                     </div>
                                                     <div class="club-title">
 
@@ -534,13 +516,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
-                        <div class="row">
-                            <div class="col-lg-7 or-2">
-                                <img class="img-fluid" src="{{ asset('img/testimonial-part1.png') }}" alt="">
-                            </div>
-                            <div class="col-lg-5 or-1">
-                                <div class="testimonial-carousel">
-                                    <div id="home_testimonial" class="owl-carousel owl-theme">
+         
+                        
+                        
+                                     <div class="row">
+                                                    <div class="col-lg-8">
+                                                        
+                                                           
+                                                            <div class="testimonial-carousel">
+                                                               <div id="home_testimonial" class="owl-carousel owl-theme">
                                         <div class="item">
 
                                             <div class="testimonial-body">
@@ -565,15 +549,13 @@
                                                             THE LAGDEN GATE
                                                         </div>
                                                         <div class="testimonial-action">
-                                                            <a href="#" class="read-btn" data-toggle="modal"
-                                                                data-target="#gateModal">+ Read more</a>
+                                                            <a href="#" class="read-btn" data-toggle="modal" data-target="#gateModal">+ Read more</a>
                                                         </div>
                                                     </div>
                                                     <div class="testimonial-info-box"></div>
                                                 </div>
                                                 <div class="testimonial-img">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('img/testimonials/lageden-gate.jpg') }}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/lageden-gate.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -600,16 +582,13 @@
                                                             Pearson Surita
                                                         </div>
                                                         <div class="testimonial-action">
-                                                            <a href="#" class="read-btn" data-toggle="modal"
-                                                                data-target="#suritaModal">+ Read more</a>
+                                                            <a href="#" class="read-btn" data-toggle="modal" data-target="#suritaModal">+ Read more</a>
                                                         </div>
                                                     </div>
                                                     <div class="testimonial-info-box"></div>
                                                 </div>
                                                 <div class="testimonial-img">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('img/testimonials/021320a4-0f5c-4bd4-a17a-dcb282314d6b.jpg') }}"
-                                                        alt="">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/021320a4-0f5c-4bd4-a17a-dcb282314d6b.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -637,16 +616,13 @@
                                                             A A LESLIE, M.C.
                                                         </div>
                                                         <div class="testimonial-action">
-                                                            <a href="#" class="read-btn" data-toggle="modal"
-                                                                data-target="#leslieModal">+ Read more</a>
+                                                            <a href="#" class="read-btn" data-toggle="modal" data-target="#leslieModal">+ Read more</a>
                                                         </div>
                                                     </div>
                                                     <div class="testimonial-info-box"></div>
                                                 </div>
                                                 <div class="testimonial-img">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('img/testimonials/bb5c1478-33eb-4749-933a-d80c5a15095a.jpg') }}"
-                                                        alt="">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/bb5c1478-33eb-4749-933a-d80c5a15095a.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -674,27 +650,40 @@
                                                             TOM LONGFIELD
                                                         </div>
                                                         <div class="testimonial-action">
-                                                            <a href="#" class="read-btn" data-toggle="modal"
-                                                                data-target="#longfieldModal">+ Read more</a>
+                                                            <a href="#" class="read-btn" data-toggle="modal" data-target="#longfieldModal">+ Read more</a>
                                                         </div>
                                                     </div>
                                                     <div class="testimonial-info-box"></div>
                                                 </div>
                                                 <div class="testimonial-img">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('img/testimonials/a5dd71bf-44e2-4342-b6e9-04a04b8e1567.jpg') }}"
-                                                        alt="">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/a5dd71bf-44e2-4342-b6e9-04a04b8e1567.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="testimonial-action-mobile">
-                                        <a href="#" class="read-btn">+ Read all</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="testimonial-right">
+                                                            <div class="testimonial-logo">
+                                                                <img class="img-fluid" src="assets/img/logo.png" alt=""/>
+                                                            </div>
+                                                            <div class="title-sec">
+                                                    <div class="title">
+                                                        Snippets
+                                                    </div>
+                                                </div>
+                                                            <div class="testimonial-content">
+                                                                Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer adipiscing elitconsectetuer adipiscing elit...
+                                                            </div>
+<!--
+                                                            <div class="testimonial-action">
+                                                                <a href="#" class="read-btn">+ Read all</a>
+                                                            </div>
+-->
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                     </div>
                 </div>
@@ -712,9 +701,7 @@
                             <div class="col-lg-6 pl-0">
                                 <div class="contact-left">
                                     <div class="map">
-                                        <iframe
-                                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3685.2201366718136!2d88.363747!3d22.533425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1c410a073b08b94!2sCalcutta%20Cricket%20and%20Football%20Club!5e0!3m2!1sen!2sin!4v1643977564770!5m2!1sen!2sin"
-                                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3685.2201366718136!2d88.363747!3d22.533425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1c410a073b08b94!2sCalcutta%20Cricket%20and%20Football%20Club!5e0!3m2!1sen!2sin!4v1643977564770!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
                                     <div class="map-location">
                                         <div class="map-content">
@@ -785,16 +772,13 @@
                                         @endif
 
 
-                                        <form method="POST" action="{{ route('contact-us.store') }}"
-                                            enctype="multipart/form-data">
+                                        <form method="POST" action="{{ route('contact-us.store') }}" enctype="multipart/form-data">
                                             {{ csrf_field() }}
 
-                                            <input type="hidden" id="subject" name="subject"
-                                                value="New enquiry from the website" size="30" required="">
+                                            <input type="hidden" id="subject" name="subject" value="New enquiry from the website" size="30" required="">
 
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="name" id="name"
-                                                    placeholder="Your Name*">
+                                                <input type="text" class="form-control" name="name" id="name" placeholder="Your Name*">
 
                                                 <!-- Show error -->
                                                 @if ($errors->has('name'))
@@ -803,8 +787,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <input type="email" class="form-control" name="email" id="email"
-                                                    placeholder="Your Email*">
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email*">
 
                                                 <!-- Show error -->
                                                 @if ($errors->has('email'))
@@ -813,8 +796,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="phone" id="phone"
-                                                    placeholder="Your Mobile No*">
+                                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Mobile No*">
 
                                                 <!-- Show error -->
                                                 @if ($errors->has('phone'))
@@ -826,8 +808,7 @@
 
 
                                             <div class="form-group">
-                                                <textarea class="form-control" name="message" id="message"
-                                                    placeholder="Your Message" rows="3"></textarea>
+                                                <textarea class="form-control" name="message" id="message" placeholder="Your Message" rows="3"></textarea>
 
                                                 <!-- Show error -->
                                                 @if ($errors->has('message'))
@@ -938,34 +919,48 @@
         </div> -->
     </div>
     </div>
-    </div>
-    </div>
+    
+    
     <div class="testimonial-modal">
         <div class="modal fade" id="gateModal" tabindex="-1" aria-labelledby="gateModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="gateModalLabel">THE LAGDEN GATE</h5>
+                        <!--                        <h5 class="modal-title" id="gateModalLabel">THE LAGDEN GATE</h5>-->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        The southern end of the present-day CC&FC pavilion is a small but elegant archway made of chunal
-                        stone, known as
-                        The Lagden Gate’,
-                        This was erected as a memorial to Reggie Lagden, who died in tragic circumstances during World
-                        War II. Having been secretly flown to England on some assignment relating to tea, he was on his
-                        way back when his aircraft overran the landing strip at Karachi and exploded. All those on board
-                        were killed instantaneously.
-                        Former President Alec Leslie recalled that “Reggie was held in such affectionate esteem in
-                        Calcutta that there was not an office in Clive Street or any club or public building in Calcutta
-                        that did not fly a flag at half- mast when the news of his death mmc through”.
-                        Originally; the archway had been erected at the entrance to the Calcutta Cricket Club ground at
-                        the Eden Gardens.
-                        Sometime after 1950, when the Calcutta Cricket Club had moved to its current venue, the Lagden
-                        Gate was shifted to BallyGunge, where it now stands.
+                        <div class="testimonial-modal-inner">
+                            <div class="testimonial-img">
+                                <img class="img-fluid" src="http://ccfc-code.test/img/testimonials/lageden-gate.jpg" alt="">
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-title">THE LAGDEN GATE</div>
 
+                                
+                                                        <div class="scroll_text">
+		     <div class="testimonial-content">
+                                        The southern end of the present-day CC&FC pavilion is a small but elegant archway made of chunal
+                                        stone, known as
+                                        The Lagden Gate’,
+                                        This was erected as a memorial to Reggie Lagden, who died in tragic circumstances during World
+                                        War II. Having been secretly flown to England on some assignment relating to tea, he was on his
+                                        way back when his aircraft overran the landing strip at Karachi and exploded. All those on board
+                                        were killed instantaneously.
+                                        Former President Alec Leslie recalled that “Reggie was held in such affectionate esteem in
+                                        Calcutta that there was not an office in Clive Street or any club or public building in Calcutta
+                                        that did not fly a flag at half- mast when the news of his death mmc through”.
+                                        Originally; the archway had been erected at the entrance to the Calcutta Cricket Club ground at
+                                        the Eden Gardens.
+                                        Sometime after 1950, when the Calcutta Cricket Club had moved to its current venue, the Lagden
+                                        Gate was shifted to BallyGunge, where it now stands.
+                                    </div>
+		     </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -973,16 +968,24 @@
     </div>
     <div class="testimonial-modal">
         <div class="modal fade" id="suritaModal" tabindex="-1" aria-labelledby="suritaModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+                     <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="suritaModalLabel">PEARSON SURITA</h5>
+                        <!--                        <h5 class="modal-title" id="gateModalLabel">THE LAGDEN GATE</h5>-->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        CC&FC is one of the few clubs of Calcutta to admit ladies as full members in their own right.
+                        <div class="testimonial-modal-inner">
+                            <div class="testimonial-img">
+                                <img class="img-fluid" src="http://ccfc-code.test/img/testimonials/021320a4-0f5c-4bd4-a17a-dcb282314d6b.jpg" alt="">
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-title">PEARSON SURITA</div>
+                                <div class="scroll_text">
+                                    <div class="testimonial-content">
+                                               CC&FC is one of the few clubs of Calcutta to admit ladies as full members in their own right.
                         This happened in 2000 but not before a raging debate in the Club as to whether it was good thing
                         or not. Reproduced below, without comment, the letter that Pearson Surita wrote to the president
                         in 1983. Its contents are self - explanatory
@@ -1003,55 +1006,72 @@
                         Finally, to end on a personal note, as an MCP, I would be extremely hesitant in future to accept
                         an invitation to speak at the Annual General Meeting of the Club as the presence of women at the
                         meeting, I am afraid, would cramp my style completely
-
-                        Yours Sincerely
-
-                        Pearson Surita
-
-
+                                        <p>Yours Sincerely</p>
+                                        <p class="surita">Pearson Surita</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
     <div class="testimonial-modal">
         <div class="modal fade" id="leslieModal" tabindex="-1" aria-labelledby="leslieModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+                      <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="leslieModalLabel">A A LESLIE, M.C.</h5>
+                        <!--                        <h5 class="modal-title" id="gateModalLabel">THE LAGDEN GATE</h5>-->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-
-
                     <div class="modal-body">
-                        In another match the next day when Hobbs came into bat he received a ball which bounced twice
+                        <div class="testimonial-modal-inner">
+                            <div class="testimonial-img">
+                                <img class="img-fluid" src="http://ccfc-code.test/img/testimonials/bb5c1478-33eb-4749-933a-d80c5a15095a.jpg" alt="">
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-title">A A LESLIE, M.C.</div>
+                                <div class="scroll_text">
+                                    <div class="testimonial-content">
+                                               In another match the next day when Hobbs came into bat he received a ball which bounced twice
                         and he mistimed it and sent a dolly catch to mid-off. After the match, the bowler got hold of
                         Hobbs and handing him some Club writing paper and asked if he would give him a ‘certificate’ to
                         the effect that he had been bowled by him. Hobbs immediately obliged and was about to sign the
                         certificate when the bowler said “And would you please, Mr. Hobby certify that the ball was a
                         good one?” And Hobbs did!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
     <div class="testimonial-modal">
-        <div class="modal fade" id="longfieldModal" tabindex="-1" aria-labelledby="longfieldModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
+        <div class="modal fade" id="longfieldModal" tabindex="-1" aria-labelledby="longfieldModalLabel" aria-hidden="true">
+                         <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="longfieldModalLabel">TOM LONGFIELD</h5>
+                        <!--                        <h5 class="modal-title" id="gateModalLabel">THE LAGDEN GATE</h5>-->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        In one BCC. vs C.C.C game, Calcutta were soon in dire trouble and we four wickets down for under
+                        <div class="testimonial-modal-inner">
+                            <div class="testimonial-img">
+                                <img class="img-fluid" src="http://ccfc-code.test/img/testimonials/a5dd71bf-44e2-4342-b6e9-04a04b8e1567.jpg" alt="">
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-title">TOM LONGFIELD</div>
+                                <div class="scroll_text">
+                                    <div class="testimonial-content">
+                                               In one BCC. vs C.C.C game, Calcutta were soon in dire trouble and we four wickets down for under
                         20. It fell to my lot to prop the side up and this I did in the end to the tune of about 80 runs
                         but not before I had been dropped at first slip. This was off the then captain of Ballygunge,
                         Tom Parker,and the defaulting slip was my old Cambridge friend George Brown, who had played a
@@ -1068,29 +1088,34 @@
                         When I got down to George’s end, he said, ‘that went on up there?” and I told him. George
                         said,‘"l'hanks a lot Tom, you have indeed done me a goo turn —Tom Parker is only my Burra-Sahib
                         and I was hoping for a raise this January.
-
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 
     <script>
-    function myFunction() {
-        var dots = document.getElementById("dots");
-        var moreText = document.getElementById("more");
-        var btnText = document.getElementById("myBtn");
+        function myFunction() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("myBtn");
 
-        if (dots.style.display === "none") {
-            dots.style.display = "inline";
-            btnText.innerHTML = "+ Read more";
-            moreText.style.display = "none";
-        } else {
-            dots.style.display = "none";
-            btnText.innerHTML = "- Read less";
-            moreText.style.display = "inline";
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "+ Read more";
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "- Read less";
+                moreText.style.display = "inline";
+            }
         }
-    }
+
     </script>
     <!-- ********|| CONTACT END ||******** -->
     @include('common.footer')

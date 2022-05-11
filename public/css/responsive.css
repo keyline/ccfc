@@ -95,9 +95,11 @@
         padding-top: 30px;
     }
 
+/*
     .testimonial-sec .testimonial-inner .testimonial-info {
         width: auto;
     }
+*/
 }
 
 @media screen and (min-width: 1201px) {
@@ -175,6 +177,16 @@
     .newsletter_left img {
         max-width: 50px;
     }
+/*
+    .testimonial-modal .testimonial-modal-inner .testimonial-img {
+    width: 148px;
+}
+*/
+    .testimonial-modal .testimonial-modal-inner .testimonial-img img {
+    border: 5px solid #fff;
+    width: 120px;
+    height: 120px;
+}
 }
 
 @media (min-width: 992px) and (max-width: 1300px) {
@@ -362,6 +374,9 @@
     .famoussport_item .famoussport_info h3 {
         text-align: center;
         font-size: 22px;
+    }
+    .testimonial-modal .modal-dialog{
+        max-width: 500px;
     }
 }
 
@@ -638,6 +653,7 @@
         display: none;
     }
 
+/*
     .testimonial-sec .testimonial-right .testimonial-action {
         display: none;
     }
@@ -647,6 +663,7 @@
         margin-top: 30px;
         text-align: center;
     }
+*/
 
     .or-2 {
         order: 2;
@@ -753,6 +770,12 @@
     .dashboard_resetbtn {
         margin-top: 20px;
     }
+    .testimonial-modal .modal-dialog{
+        top: 0;
+    }
+    .testimonial-sec .testimonial-version{
+        display: none;
+    }
 
 }
 
@@ -845,6 +868,25 @@
         padding-bottom: 15px !important;
         width: 100%;
     }
-
+    .testimonial-modal .testimonial-modal-inner{
+        display: block;
+    }
+    .testimonial-modal .testimonial-modal-inner .testimonial-info{
+        width: 100%;
+    }
+.testimonial-modal .testimonial-modal-inner .testimonial-img img {
+    width: 100px;
+    height: 100px;
+}
+    .testimonial-modal .modal-dialog .modal-content .modal-header .close{
+        padding-bottom: 0px;
+    }
+        
+.testimonial-modal .modal-dialog .modal-content .modal-body {
+    padding: 0px 20px 30px;
+}
+    .testimonial-modal .testimonial-modal-inner .testimonial-img{
+        text-align: center;
+    }
 
 }
