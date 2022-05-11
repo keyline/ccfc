@@ -24,11 +24,15 @@ class PaymentController extends Controller
         $user= User::find(session('LoggedMember'))->first();
         
         if ($user) {
-            $data = $request->all();
+            $validated = $request->validate([
+        'amount' => 'required|numeric'
+    ]);
+
 
             $customer = Customer::make()
                             ->firstName($user->name)
-                            ->email($user->email);
+                            ->email($user->email)
+                            ->phone($user->phone_number_1 ?? 'NA');
             // This is entirely optional custom attributes
             $attributes = Attributes::make()
                             ->udf1($user->id);
@@ -37,7 +41,7 @@ class PaymentController extends Controller
             // Associate the transaction with your invoice
             $transaction = Transaction::make()
                             ->charge($request->amount)
-                            ->for('Order of iPhone 12')
+                            ->for($user->user_code)
                             ->with($attributes) // Only when using any custom attributes
                             ->against($user)
                             ->to($customer);
