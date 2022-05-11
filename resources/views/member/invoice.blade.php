@@ -47,6 +47,15 @@
                         <div class="col-md-12 col-lg-6">
 
                             <div class="row">
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
 
                                 <div class="col-lg-4 col-md-5">
                                     <!-- <div class="member_profileimg">
