@@ -257,7 +257,7 @@ JSON;
                     'children3_mobileno'=>isset($child3_mobile) ? $child3_mobile : '',
 
                     ])->id;
-                    Log::info("User Created for : " . $user->user_code);
+                //Log::info("User Created for : " . $user->user_code);
                 } else {
                     $userInformation->member_type_code= $profile['MEMBERTYPECODE'];
                     $userInformation->member_type= $profile['MEMBERTYPE'];
@@ -346,7 +346,7 @@ JSON;
 
                     $userInformation->save();
 
-                    Log::info("Updated saved for: ". $userInformation->user_code_id);
+                    //Log::info("Updated saved for: ". $userInformation->user_code_id);
                 }
             }
         }, function () {
