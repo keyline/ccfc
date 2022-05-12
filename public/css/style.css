@@ -1613,8 +1613,8 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
 }
 */
 .testimonial-modal .testimonial-modal-inner .testimonial-img img{
-        border-radius: 50%;
-    border: 9px solid #fff;
+    border-radius: 50%;
+    border: 8px solid #fff;
     width: 150px;
     height: 150px;
 }

@@ -589,7 +589,7 @@
                                                     <div class="testimonial-info-box"></div>
                                                 </div>
                                                 <div class="testimonial-img">
-                                                    <img class="img-fluid" src="{{ asset('img/testimonials/021320a4-0f5c-4bd4-a17a-dcb282314d6b.jpg') }}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/pearson-surita.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -623,7 +623,7 @@
                                                     <div class="testimonial-info-box"></div>
                                                 </div>
                                                 <div class="testimonial-img">
-                                                    <img class="img-fluid" src="{{ asset('img/testimonials/bb5c1478-33eb-4749-933a-d80c5a15095a.jpg') }}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/aaleslie-testimonial.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -652,7 +652,7 @@
                                                     <div class="testimonial-info-box"></div>
                                                 </div>
                                                 <div class="testimonial-img">
-                                                    <img class="img-fluid" src="{{ asset('img/testimonials/a5dd71bf-44e2-4342-b6e9-04a04b8e1567.jpg') }}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('img/testimonials/tom-longfield.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -929,7 +929,7 @@
                     <div class="modal-body">
                         <div class="testimonial-modal-inner">
                             <div class="testimonial-img">
-                                <img class="img-fluid" src="http://ccfc-code.test/img/testimonials/lageden-gate.jpg" alt="">
+                                <img class="img-fluid" src="{{ asset('img/testimonials/lageden-gate.jpg') }}" alt="THE LAGDEN GATE">
                             </div>
                             <div class="testimonial-info">
                                 <div class="testimonial-title">THE LAGDEN GATE</div>
@@ -974,7 +974,7 @@
                     <div class="modal-body">
                         <div class="testimonial-modal-inner">
                             <div class="testimonial-img">
-                                <img class="img-fluid" src="http://ccfc-code.test/img/testimonials/021320a4-0f5c-4bd4-a17a-dcb282314d6b.jpg" alt="">
+                                <img class="img-fluid" src="{{ asset('img/testimonials/pearson-surita.jpg') }}" alt="PEARSON SURITA">
                             </div>
                             <div class="testimonial-info">
                                 <div class="testimonial-title">PEARSON SURITA</div>
@@ -1026,7 +1026,7 @@
                     <div class="modal-body">
                         <div class="testimonial-modal-inner">
                             <div class="testimonial-img">
-                                <img class="img-fluid" src="http://ccfc-code.test/img/testimonials/bb5c1478-33eb-4749-933a-d80c5a15095a.jpg" alt="">
+                                <img class="img-fluid" src="{{ asset('img/testimonials/aaleslie-testimonial.jpg') }}" alt="">
                             </div>
                             <div class="testimonial-info">
                                 <div class="testimonial-title">A A LESLIE, M.C.</div>
@@ -1060,7 +1060,7 @@
                     <div class="modal-body">
                         <div class="testimonial-modal-inner">
                             <div class="testimonial-img">
-                                <img class="img-fluid" src="http://ccfc-code.test/img/testimonials/a5dd71bf-44e2-4342-b6e9-04a04b8e1567.jpg" alt="">
+                                <img class="img-fluid" src="{{ asset('img/testimonials/tom-longfield.jpg') }}" alt="">
                             </div>
                             <div class="testimonial-info">
                                 <div class="testimonial-title">TOM LONGFIELD</div>

@@ -382,7 +382,7 @@ $("#home_reciprocal_overseas").owlCarousel({
 $("#home_testimonial").owlCarousel({
     loop: true,
     margin: 10,
-    autoplay: true,
+    autoplay: false,
     autoplayTimeout: 4000,
     autoplayHoverPause: true,
     animateOut: 'fadeOut',
