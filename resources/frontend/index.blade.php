@@ -670,7 +670,7 @@
                                                     </div>
                                                 </div>
                                                             <div class="testimonial-content">
-                                                                Lorem ipsum dolor sit amet, ipsum dolor sit amet, consectetuer adipiscing elitconsectetuer adipiscing elit...
+                                                                A kaleidoscope of reminiscences of first hand memories of life and cricket at CCFC
                                                             </div>
 <!--
                                                             <div class="testimonial-action">
