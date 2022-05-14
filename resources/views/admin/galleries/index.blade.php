@@ -2,11 +2,11 @@
 @section('content')
 @can('gallery_create')
 <div style="margin-bottom: 10px;" class="row">
-    <div class="col-lg-12">
+    <!-- <div class="col-lg-12">
         <a class="btn btn-success" href="{{ route('admin.galleries.create') }}">
             {{ trans('global.add') }} {{ trans('cruds.gallery.title_singular') }}
         </a>
-    </div>
+    </div> -->
 </div>
 @endcan
 <div class="card">
@@ -28,9 +28,9 @@
                         <th>
                             {{ trans('cruds.gallery.fields.gallery_name') }}
                         </th>
-                        <th>
+                        <!-- <th>
                             {{ trans('cruds.gallery.fields.gallery_type') }}
-                        </th>
+                        </th> -->
                         <th>
                             {{ trans('cruds.gallery.fields.images') }}
                         </th>
@@ -54,13 +54,13 @@
                         <td>
                             {{ App\Models\Gallery::GALLERY_TYPE_SELECT[$gallery->gallery_type] ?? '' }}
                         </td>
-                        <td>
+                        <!-- <td>
                             @foreach($gallery->images as $key => $media)
                             <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
                                 <img src="{{ $media->getUrl('thumb') }}">
                             </a>
                             @endforeach
-                        </td>
+                        </td> -->
                         <td>
                             @can('gallery_show')
                             <a class="btn btn-xs btn-primary" href="{{ route('admin.galleries.show', $gallery->id) }}">
@@ -103,7 +103,8 @@
 $(function() {
     let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
     @can('gallery_delete')
-    let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+    let deleteButtonTrans = '{{ trans('
+    global.datatables.delete ') }}'
     let deleteButton = {
         text: deleteButtonTrans,
         url: "{{ route('admin.galleries.massDestroy') }}",
@@ -116,12 +117,14 @@ $(function() {
             });
 
             if (ids.length === 0) {
-                alert('{{ trans('global.datatables.zero_selected ') }}')
+                alert('{{ trans('
+                    global.datatables.zero_selected ') }}')
 
                 return
             }
 
-            if (confirm('{{ trans('global.areYouSure ') }}')) {
+            if (confirm('{{ trans('
+                    global.areYouSure ') }}')) {
                 $.ajax({
                         headers: {
                             'x-csrf-token': _token
