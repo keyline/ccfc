@@ -20,11 +20,9 @@
                 <thead>
                     <tr>
                         <th width="10">
-
-                        </th>
-                        <th>
                             {{ trans('cruds.payment.fields.id') }}
                         </th>
+                        
                         <th>
                             {{ trans('cruds.payment.fields.member') }}
                         </th>
@@ -34,13 +32,15 @@
                         <th>
                             {{ trans('cruds.payment.fields.gateway_name') }}
                         </th>
-                        <th>
+                        <th class="notexport">
                             {{ trans('cruds.payment.fields.comment') }}
                         </th>
                         <th>
                             {{ trans('cruds.payment.fields.status') }}
                         </th>
-                        <th>
+                        <th>Payment Datetime</th>
+                        <th class="notexport">Status Update</th>
+                        <th class="notexport">
                             &nbsp;
                         </th>
                     </tr>
@@ -52,12 +52,11 @@
                     @php $userDetails= \App\Models\User::select('*')->where('id', '=', $payment->paid_for_id)->first();@endphp
                     
                         <tr data-entry-id="{{ $payment->paid_for_id }}">
-                            <td>
-
-                            </td>
+                            
                             <td>
                                 {{ $payment->id ?? '' }}
                             </td>
+                            
                             <td>
                                 {{ $userDetails->name ?? ''}} {{ $userDetails->user_code ?? '' }}
                             </td>
@@ -68,34 +67,17 @@
                                 {{ $payment->gateway_name ?? 'PayU Money' }}
                             </td>
                             <td>
+                                {{ $payment->response('comment') ?? '' }}
+                            </td>
+                            <td>
                                 {{ $payment->response('status') ?? '' }}
                             </td>
+                            <td>{{ $payment->updated_at ?? '' }}</td>
                             <td>
                                 <span style="display:none">{{ $payment->response('status') ?? '' }}</span>
                                 <input type="checkbox" disabled="disabled" {{ $payment->status ? 'checked' : '' }}>
                             </td>
-                            <!-- <td>
-                                @can('payment_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.payments.show', $payment->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
-
-                                @can('payment_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.payments.edit', $payment->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                @endcan
-
-                                @can('payment_delete')
-                                    <form action="{{ route('admin.payments.destroy', $payment->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                                @endcan
-
-                            </td> -->
+                            <td></td>
 
                         </tr>
                     @endforeach
@@ -114,6 +96,8 @@
 @parent
 <script>
     $(function () {
+        let today = new Date()
+        today = today.toISOString().split('T')[0];
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('payment_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
@@ -149,8 +133,18 @@
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
+    dom: 'Bfrtip',
+        buttons: [
+             {
+      extend: 'excel',
+      title: 'PayU Reports',
+      exportOptions: {
+            columns: ':visible:not(.notexport)'
+        }
+    },
+        ]
   });
-  let table = $('.datatable-Payment:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Payment:not(.ajaxTable)').DataTable();
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
