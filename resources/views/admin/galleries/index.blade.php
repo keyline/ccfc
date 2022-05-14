@@ -2,11 +2,13 @@
 @section('content')
 @can('gallery_create')
 <div style="margin-bottom: 10px;" class="row">
+
     <!-- <div class="col-lg-12">
         <a class="btn btn-success" href="{{ route('admin.galleries.create') }}">
             {{ trans('global.add') }} {{ trans('cruds.gallery.title_singular') }}
         </a>
     </div> -->
+
 </div>
 @endcan
 <div class="card">
