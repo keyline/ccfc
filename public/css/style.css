@@ -2711,7 +2711,7 @@ section.sports-page {
     overflow: hidden;
     height: 150px;
     width: 150px;
-    border-radius: 50%;
+    border-radius: 5px;
     border: 8px solid #fff;
     display: inline-block;
     background: #fff;
@@ -2782,7 +2782,7 @@ section.sports-page {
 
 .greneral_infolist .multiuse_tab_content_section .multiuse_tab_ceibity-img {
     height: 180px;
-    width: 180px;
+    width: 150px;
 }
 
 /* ********|| General Committee END ||******** */
