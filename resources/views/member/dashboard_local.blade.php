@@ -157,7 +157,7 @@
 
                                 <div class="member_profile_item">
                                     <p class="member_list_text">City</p>
-                                    <p class="member_list_input">{{ $details->city}}</p>
+                                    <p class="member_list_input">{{ $details->business_city}}</p>
                                 </div>
 
 
