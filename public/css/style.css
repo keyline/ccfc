@@ -2236,9 +2236,9 @@ section.sports-page {
 
 .sport_tab_content_section .sport_tab_ceibity-img {
     overflow: hidden;
-    height: 150px;
+    height: 180px;
     width: 150px;
-    border-radius: 50%;
+    border-radius: 5px;
     border: 8px solid #fff;
     display: inline-block;
 }
