@@ -494,6 +494,17 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/create/contactlist') }}" class="nav-link">
+                        <p>
+                            <i class="fa-fw nav-icon far fa-edit">
+
+                            </i>
+                            <p>Contact List</p>
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="#" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>

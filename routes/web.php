@@ -1,51 +1,27 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\apiController;
-
 use App\Http\Controllers\ContactController;
-
 use App\Models\ReciprocalClub;
-
 use App\Models\ContentPage;
-
 use App\Models\Gallery;
-
 use App\Models\Sportstype;
-
 use App\Models\PastPresident;
-
 use App\Models\ContentBlock;
-
 use App\Models\Trophy;
-
 use App\Models\Sportsman;
-
 use App\Http\Controllers\Member\HomeController;
-
 use App\Models\Member;
-
 // use App\Models\Title;
-
 use App\Models\User;
-
 use App\Models\UserDetail;
-
 use App\Models\CommitteeMemberMapping;
-
 use App\Models\SubCommitteeMember;
-
 use App\Models\CommitteeName;
-
 use App\Http\Controllers\Admin\UsersController;
-
-
 use App\Models\circular;
-
-
+use App\Models\Contactlist;
 use App\Models\Events;
-
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -55,13 +31,13 @@ Route::get('/', function () {
     $reciprocalClubs = ReciprocalClub::all();
     $contentPages = ContentPage::all();
     $sportstypes = Sportstype::all();
-
+    $contactlists = Contactlist::all();
     $galleries = Gallery::with(['media'])->get();
     
     // $galleries = Gallery::all();
     
 
-    return view('index', compact('reciprocalClubs', 'contentPages', 'galleries', 'sportstypes'));
+    return view('index', compact('reciprocalClubs', 'contentPages', 'galleries', 'sportstypes', 'contactlists'));
 });
 
 
@@ -376,6 +352,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Titles
     Route::delete('titles/destroy', 'TitlesController@massDestroy')->name('titles.massDestroy');
     Route::resource('titles', 'TitlesController');
+
+    // Contact List    
+    Route::get('create/contactlist', [App\Http\Controllers\Admin\ContactlistsController::class, 'index'])->name('contactlist');
+    Route::get('create/add-contactlist', [App\Http\Controllers\Admin\ContactlistsController::class, 'create']);
+    Route::post('create/add-contactlist', [App\Http\Controllers\Admin\ContactlistsController::class, 'store']);
+    Route::get('create/edit-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'edit']);
+    Route::put('create/update-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'update']);
+    Route::get('create/delete-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'destroy']);
 
     // Members
     Route::delete('members/destroy', 'MembersController@massDestroy')->name('members.massDestroy');

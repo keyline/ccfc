@@ -6,7 +6,7 @@ use App\Models\Contact;
 
 use App\Http\Controllers\Controller;
 // use App\Mail\ContactMail;
-
+use App\Models\Contactlist;
 use Illuminate\Http\Request;
 
 use Mail;
@@ -24,17 +24,16 @@ class ContactController extends Controller
         // return view('index');
     }
 
-
     public function contactForm()
     {
-        return view('contact-us');
+        $contactlists = Contactlist::all();
+        return view('contact-us', compact('contactlists'));
     }
-
-
 
     public function storeContactForm(Request $request)
     {
         $request->validate([
+            'department' => 'required',
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required|digits:10|numeric',
@@ -43,7 +42,7 @@ class ContactController extends Controller
         ]);
 
         $input = $request->all();
-
+        //echo '<pre>';print_r($department);die;
         Contact::create($input);
 
         //  Send mail to admin
@@ -52,10 +51,15 @@ class ContactController extends Controller
             'email' => $input['email'],
             'phone' => $input['phone'],
             'subject' => $input['subject'],
-            'message' => $input['message'],
+            'description' => $input['message'],
         ), function ($message) use ($request) {
             $message->from($request->email);
-            $message->to('ccfcsecretary@ccfc1792.com', 'Admin')->subject($request->get('subject'));
+            $department = [];
+            $department = explode("/", $request->get('department'));
+            $senderEmail = $department[0];
+            $senderName = $department[1];
+            //$message->to('ccfcsecretary@ccfc1792.com', 'Admin')->subject($request->get('subject'));
+            $message->to($senderEmail, $senderName)->subject($request->get('subject'));
         });
 
         return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
