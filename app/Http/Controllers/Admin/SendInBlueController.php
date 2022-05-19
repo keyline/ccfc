@@ -50,7 +50,7 @@ class SendInBlueController extends Controller
         $request->validate([
             'ec_title' => 'required',
             'ec_body' => 'required',
-            'file' => 'mimes:csv,txt,xlx,xls,pdf|max:2048',
+            'file' => 'mimes:csv,txt,xlx,xls,pdf,jpg,png,gif|max:2048',
             'ec_is_despatched'=> 'required',
         ]);
 
