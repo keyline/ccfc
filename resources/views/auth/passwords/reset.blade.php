@@ -55,7 +55,16 @@
 
                                                 <div>
                                                     <div class="form-group">
-                                                        <input id="user_code" type="text"
+
+
+                                                        <input id="user_code" type="text" class="form-control"
+                                                            name="user_code" value="{{ $user_code}}"
+                                                            autocomplete="User Code" autofocus placeholder="User Code"
+                                                            disabled>
+
+
+
+                                                        <input id="user_code" type="hidden"
                                                             class="form-control{{ $errors->has('user_code') ? ' is-invalid' : '' }}"
                                                             name="user_code"
                                                             value="{{ $user_code ?? old('user_code') }}" required
