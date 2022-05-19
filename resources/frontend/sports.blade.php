@@ -207,6 +207,16 @@
                                             </a>
                                         </li>
                                     </div>
+                                    <div class="item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="swimming-tab" data-toggle="tab" href="#swimming">
+                                                <div class="tab_icontext">
+                                                    <img src="{{ asset('img/sports/swimming.svg') }}" alt="" />
+                                                    <h3>Swimming</h3>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
                                 </div>
                             </ul>
 
@@ -730,6 +740,61 @@
                                         <div class="row">
 
                                             @foreach($members->where("select_sport_id","11") as $member)
+                                            @foreach($userDetails->where("user_code_id",$member->select_member->id) as
+                                            $key =>$userDetail)
+
+                                            <div class="col-sm-6 col-md-6 col-lg-3 px-2">
+                                                <div class="sports_tabcontent_inner">
+
+                                                    @if($userDetail['member_image'] == '')
+
+                                                    <div class="sport_tab_ceibity-img">
+                                                        <img src="{{ asset('img/demopic.png') }}" alt="" />
+                                                    </div>
+
+                                                    @else
+
+                                                    <div class="sport_tab_ceibity-img">
+
+                                                        <img class="img-fluid" src="data:image/png;base64,                          
+                                                                {{ $userDetail['member_image'] }}" alt="" />
+
+                                                        <!-- <img class="img-fluid"
+                                                            src="{{ asset('uploads/userimg/'.$userDetail->member_image_2)}}"
+                                                            alt="" /> -->
+                                                        </a>
+                                                    </div>
+
+                                                    @endif
+                                                    <div class="sport_player">
+                                                        <h3>{{ $member->select_title->titles ?? '' }}</h3>
+                                                        <div class="sport_player_detail">
+                                                            <h4>{{ $member->select_member->name ?? '' }}</h4>
+
+                                                            <!-- <p><a
+                                                                    href="tel:+91 {{ $member->select_member->phone_number_1 ?? '' }}">+91
+                                                                    {{ $member->select_member->phone_number_1 ?? '' }}</a>
+                                                            </p>
+                                                            <p><a
+                                                                    href="mailto:{{ $member->select_member->email  ?? '' }}">{{ $member->select_member->email  ?? '' }}</a>
+                                                            </p> -->
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="swimming" role="tabpanel" aria-labelledby="swimming-tab">
+                                    <div class="sport_tab_content_section">
+                                        <div class="row">
+
+                                            @foreach($members->where("select_sport_id","12") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
 
