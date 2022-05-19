@@ -171,6 +171,20 @@
                                             value="New enquiry from the website" size="30" required="">
 
                                         <div class="form-group">
+                                            <select class="form-control" name="department" id="department">
+                                                <option value="" selected>Select Department</option>
+                                                <?php if($contactlists){ foreach($contactlists as $contactlist){?>
+                                                <option value="<?=$contactlist->department_email?>/<?=$contactlist->department_name?>"><?=$contactlist->department_name?></option>
+                                                <?php } }?>
+                                            </select>
+
+                                            <!-- Show error -->
+                                            @if ($errors->has('department'))
+                                            <span class="text-danger">{{ $errors->first('department') }}</span>
+                                            @endif
+                                        </div>
+
+                                        <div class="form-group">
                                             <input type="text" class="form-control" name="name" id="name"
                                                 placeholder="Your Name*">
 

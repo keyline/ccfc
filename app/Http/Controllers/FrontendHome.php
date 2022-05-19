@@ -11,9 +11,7 @@ class FrontendHome extends Controller
 
     public function index()
     {
-        // $reciprocalClubs = ReciprocalClub::all();
-        
-        
+        // $reciprocalClubs = ReciprocalClub::all();        
         // return view('frontend.index', compact('reciprocalClubs'));
     }
 

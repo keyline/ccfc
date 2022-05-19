@@ -10,7 +10,7 @@ Enquiry details: <br><br>
 Name: {{ $name }}<br>
 Email: {{ $email }}<br>
 Phone: {{ $phone }}<br>
-
+Message: {{ $description }}<br>
 <br><br>
 
 Thank you <br>
