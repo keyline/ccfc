@@ -48,9 +48,10 @@ class SendInBlueController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'ec_type' => 'required',
             'ec_title' => 'required',
             'ec_body' => 'required',
-            'file' => 'mimes:csv,txt,xlx,xls,pdf,jpg,png,gif|max:2048',
+            'file' => 'mimes:csv,txt,xlsx,xls,pdf,jpg,png,gif|max:2048',
             'ec_is_despatched'=> 'required',
         ]);
 
@@ -61,8 +62,7 @@ class SendInBlueController extends Controller
             $filepathWithName = $filePath;
             
             $request->merge(['ec_attachment' => $filepathWithName]);
-        }
-
+        }        
         EmailCampaign::create($request->all());
 
         return redirect()->route('admin.list-campaign')
@@ -96,6 +96,7 @@ class SendInBlueController extends Controller
     public function update(Request $request, EmailCampaign $campaign)
     {
         $request->validate([
+            'ec_type' => 'required',
             'ec_title' => 'required',
             'ec_body' => 'required',
             'ec_attachment' => '',
@@ -140,11 +141,12 @@ class SendInBlueController extends Controller
             //Dispatching the Job here
             //fetch user list with email not empty
             $campaign= \App\Models\EmailCampaign::findOrFail($request->campaign);
-
+            
             $query= \App\Models\User::query();
             $query->where('email', '!=', '');
             $query->where('id', '>', 36);
-            $users= $query->get();
+            //$query->where('id', '=', 6178);
+            $users= $query->get();            
 
             foreach ($users as $user) {
                 \App\Jobs\EmailCampaignJob::dispatch($request->campaign, $user)->onQueue('sendinblueemail');

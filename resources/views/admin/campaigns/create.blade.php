@@ -8,6 +8,20 @@
         <form method="POST" action="{{ route("admin.new-campaign") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label class="required">Type</label><br>
+
+                <input type="radio" name="ec_type" id="ec_type1" value="Notice and Circulars Emails" required>
+                <label class="required" for="ec_type1">Notice and Circulars Emails</label>
+
+                <input type="radio" name="ec_type" id="ec_type2" value="Invoice Emails" required>
+                <label class="required" for="ec_type2">Invoice Emails</label>
+
+                @if($errors->has('ec_type'))
+                    <span class="text-danger">{{ $errors->first('ec_type') }}</span>
+                @endif
+                <span class="help-block"></span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="mail_subject">Subject</label>
                 <input class="form-control {{ $errors->has('mail_subject') ? 'is-invalid' : '' }}" type="text" name="ec_title" id="mail_subject" value="{{ old('mail_subject', '') }}" required>
                 @if($errors->has('mail_subject'))
@@ -51,6 +65,9 @@
                             Date Created
                         </th>
                         <th>
+                            Type
+                        </th>
+                        <th>
                             Subject
                         </th>
                         <th>
@@ -75,6 +92,7 @@
                         <tr data-entry-id="{{ $campaign->ec_id }}">
                             <td>{{ $campaign->ec_id }}</td>
                             <td>{{ $campaign->created_at }}</td>
+                            <td>{{ $campaign->ec_type }}</td>
                             <td>{{ $campaign->ec_title }}</td>
                             <td>
                                 {{ ($campaign->ec_is_despatched == '0') ? $campaign->updated_at : ''}}
