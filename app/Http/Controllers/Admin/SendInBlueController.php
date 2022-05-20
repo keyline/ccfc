@@ -62,7 +62,7 @@ class SendInBlueController extends Controller
             $filepathWithName = $filePath;
             
             $request->merge(['ec_attachment' => $filepathWithName]);
-        }        
+        }
         EmailCampaign::create($request->all());
 
         return redirect()->route('admin.list-campaign')
@@ -144,9 +144,9 @@ class SendInBlueController extends Controller
             
             $query= \App\Models\User::query();
             $query->where('email', '!=', '');
-            $query->where('id', '>', 36);
+            $query->where('id', '!=', 'admin@admin.com');
             //$query->where('id', '=', 6178);
-            $users= $query->get();            
+            $users= $query->get();
 
             foreach ($users as $user) {
                 \App\Jobs\EmailCampaignJob::dispatch($request->campaign, $user)->onQueue('sendinblueemail');
