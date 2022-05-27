@@ -71,6 +71,8 @@ class SendInBlueNotification extends Mailable
                 $filename       = $attachment1[1];
                 $fileTypeArr    = explode(".", $filename);
                 $fileType       = $fileTypeArr[1];
+                $mime = 'application/image';
+
                 if ($fileType == 'jpg' || $fileType == 'jpeg') {
                     $mime = 'application/image';
                 } elseif ($fileType == 'png') {

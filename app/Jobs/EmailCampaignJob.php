@@ -57,6 +57,13 @@ class EmailCampaignJob implements ShouldQueue
         //code...
         
         //send email operation
-        Mail::to("shuvadeep@keylines.net", $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
+        try {
+            //code...
+            Mail::to("shuvadeep@keylines.net", $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
+        } catch (\Exception $ex) {
+            //throw $th;
+            dd($ex);
+        }
+        //Mail::to("shuvadeep@keylines.net", $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
     }
 }
