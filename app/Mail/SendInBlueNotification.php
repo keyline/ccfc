@@ -101,7 +101,7 @@ class SendInBlueNotification extends Mailable
                 $path = Storage::disk('local')->getAdapter()->getPathPrefix();
                 $this->attach($path . $targetCampaign->ec_attachment, [
                          'as' => $filename,
-                         'mime' => $mime,
+                         'mime' => 'application/image',
                 ]);
             }
             return $this;
