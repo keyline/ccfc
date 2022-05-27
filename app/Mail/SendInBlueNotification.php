@@ -71,7 +71,7 @@ class SendInBlueNotification extends Mailable
                 $filename       = $attachment1[1];
                 $fileTypeArr    = explode(".", $filename);
                 $fileType       = $fileTypeArr[1];
-                if ($fileType == 'jpg') {
+                if ($fileType == 'jpg' || $fileType == 'jpeg') {
                     $mime = 'application/image';
                 } elseif ($fileType == 'png') {
                     $mime = 'application/image';
@@ -87,6 +87,12 @@ class SendInBlueNotification extends Mailable
                     $mime = 'text/plain';
                 } elseif ($fileType == 'csv') {
                     $mime = 'text/csv';
+                } else {
+                    # code...
+                    //generic mime type
+                    
+
+                    $mime= File::mimeType($targetCampaign->ec_attachment);
                 }
 
                 $path = Storage::disk('local')->getAdapter()->getPathPrefix();
