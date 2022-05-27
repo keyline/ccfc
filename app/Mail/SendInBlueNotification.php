@@ -92,7 +92,8 @@ class SendInBlueNotification extends Mailable
                     //generic mime type
                     
 
-                    $mime= File::mimeType($targetCampaign->ec_attachment);
+                    //$mime= File::mimeType($targetCampaign->ec_attachment);
+                    $mime = 'application/image';
                 }
 
                 $path = Storage::disk('local')->getAdapter()->getPathPrefix();
