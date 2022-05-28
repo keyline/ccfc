@@ -102,7 +102,7 @@ class SendInBlueController extends Controller
             'ec_attachment' => '',
             'ec_is_despatched'=> 'required',
         ]);
-
+        //echo '<pre>';print_r($request);die;
         if ($request->file()) {
             //$filepath = $request->file('ec_attachment')->store('campaign_attachments');
             $fileName = time().'_'.$request->file->getClientOriginalName();
@@ -150,6 +150,7 @@ class SendInBlueController extends Controller
             
             foreach ($users as $user) {
                 \App\Jobs\EmailCampaignJob::dispatch($request->campaign, $user)->onQueue('sendinblueemail');
+                break;
             }
             
             $campaign->update(['ec_is_despatched' => '0']);

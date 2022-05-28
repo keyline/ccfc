@@ -56,42 +56,23 @@
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover">
                 <thead>
-                    <tr>
-                        
-                        <th>
-                            NO.
-                        </th>
-                        <th>
-                            Date Created
-                        </th>
-                        <th>
-                            Type
-                        </th>
-                        <th>
-                            Subject
-                        </th>
-                        <th>
-                            Sent On
-                        </th>
-                        <th>
-                            View
-                        </th>
-                        <th>
-                            Edit
-                        </th>
-                        <th>
-                            Send
-                        </th>
-                        <th>
-                            &nbsp;
-                        </th>
+                    <tr>                        
+                        <th>NO.</th>
+                        <th>Date Created</th>
+                        <th>Type</th>
+                        <th>Subject</th>
+                        <th>Sent On</th>
+                        <th>View</th>
+                        <th>Edit</th>
+                        <th>Send</th>
+                        <!-- <th>&nbsp;</th> -->
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($campaigns AS $campaign)
                         <tr data-entry-id="{{ $campaign->ec_id }}">
                             <td>{{ $campaign->ec_id }}</td>
-                            <td>{{ $campaign->created_at }}</td>
+                            <td>{{ date_format(date_create($campaign->created_at), "d-m-Y h:i A") }}</td>
                             <td>{{ $campaign->ec_type }}</td>
                             <td>{{ $campaign->ec_title }}</td>
                             <td>
@@ -101,13 +82,10 @@
                                <button class="btn btn-info" onclick="location.href='{{ route('admin.show-campaign', $campaign->ec_id) }}'">{{ trans('global.show') }}</button>
                             </td>
                             <td>
-                                    <button class="btn btn-info" onclick="location.href='{{ route('admin.edit-campaign', $campaign->ec_id) }}'" {{ ($campaign->ec_is_despatched == '0') ? 'disabled' : ''}}>{{ trans('global.edit') }}</button>
-
+                                <button class="btn btn-info" onclick="location.href='{{ route('admin.edit-campaign', $campaign->ec_id) }}'" {{ ($campaign->ec_is_despatched == '0') ? 'disabled' : ''}}>{{ trans('global.edit') }}</button>
                             </td>
-
                             <td><button class="btn btn-info" onclick="location.href='{{ route('admin.start-campaign', ['campaign'=> $campaign->ec_id])}}'" {{ ($campaign->ec_is_despatched == '0') ? 'disabled' : ''}}>Send</button></td>
-                            <td></td>
-
+                            <!-- <td></td> -->
                         </tr>
                     @endforeach
                 </tbody>
