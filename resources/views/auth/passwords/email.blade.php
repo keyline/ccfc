@@ -64,11 +64,11 @@
                                                 <div>
                                                     <div class="form-group">
 
+
                                                         <!-- <input id="user_code" type="text"
                                                             class="form-control{{ $errors->has('usercode') ? ' is-invalid' : '' }}"
                                                             name="user_code" required autofocus placeholder="User Code"
                                                             value="{{ session()->get('user_code') }}" disabled> -->
-
 
                                                         <input id="user_code" type="text"
                                                             class="form-control{{ $errors->has('usercode') ? ' is-invalid' : '' }}"
