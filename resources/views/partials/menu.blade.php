@@ -439,7 +439,7 @@
                         </li>
                         @endcan
                         @can('user_detail_access')
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route("admin.user-details.index") }}"
                                 class="nav-link {{ request()->is("admin/user-details") || request()->is("admin/user-details/*") ? "active" : "" }}">
                                 <i class="fa-fw nav-icon fas fa-info">
@@ -449,7 +449,7 @@
                                     {{ trans('cruds.userDetail.title') }}
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                         @endcan
                     </ul>
                 </li>
