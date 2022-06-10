@@ -9,6 +9,8 @@
     </div>
 </div>
 @endcan
+
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.sportsman.title_singular') }} {{ trans('global.list') }}
@@ -16,7 +18,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Sportsman">
+            <table id="example" class="table table-bordered table-striped table-hover datatable datatable-Sportsman">
                 <thead>
                     <tr>
                         <th width="10">

@@ -11,36 +11,18 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-AmenitiesService">
+            <table id="example" class="table table-bordered table-striped table-hover datatable datatable-AmenitiesService">
                 <thead>
                     <tr>
-                        <th width="10">
-                            Sl No
-                        </th>
-
-                        <th>
-                            Name
-                        </th>
-
-                        <th>
-                            Email
-                        </th>
-
-                        <th>
-                            Phone
-                        </th>
-
-                        <th>
-                            Message
-                        </th>
-
-                        <th>
-                            Add on
-                        </th>
+                        <th width="10">Sl No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Message</th>
+                        <th>Add on</th>
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach ($ContactArr as $value)
 
                     <tr>
