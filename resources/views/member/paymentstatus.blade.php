@@ -45,12 +45,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-lg-12">
-                                <div class="title-sec pt-5">
-                                    <div class="title mb-3">
-                                        Payment Status : {{ $status['status'] }}
-                                    </div>
-                                </div>                           
-
+                            <div class="title-sec pt-5">
+                                <div class="title mb-3">
+                                    Payment Status : {{ $status['status'] }}
+                                </div>
+                            </div>
                         </div> 
                     </div>
                     <div class="row">

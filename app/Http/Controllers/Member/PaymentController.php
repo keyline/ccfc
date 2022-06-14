@@ -28,7 +28,6 @@ class PaymentController extends Controller
         'amount' => 'required|numeric|min:1'
     ]);
 
-
             $customer = Customer::make()
                             ->firstName($user->name)
                             ->email($user->email)

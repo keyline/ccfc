@@ -148,10 +148,7 @@ class SendInBlueController extends Controller
             $query->where('status', 'LIKE', '%ACTIVE%');
             //$query->orWhere('status', '=', 'INACTIVE');
             //$query->where('id', '=', 6178);
-            $users= $query->get();
-            //echo count($users);die;
-            //echo '<pre>';print_r($users);die;
-            
+            $users= $query->get();            
             foreach ($users as $user) {
                 \App\Jobs\EmailCampaignJob::dispatch($request->campaign, $user)->onQueue('sendinblueemail');
             }
