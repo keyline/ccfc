@@ -58,7 +58,7 @@
                             <div class="history-inner resetbox_section text-center pb-5">
                                 <h4>Payment Ref. No.: {{ $status['mihpayid'] }}</h4>
                                     @if ($status['status'] == 'success')
-                                    <span class="success-msg">Thank you for your payment. The paid amount will reflect in your account within next 24 hours.</span>
+                                    <span class="success-msg">Thank you for your payment. The paid amount will reflect in your account within next 24 working hours.</span>
                                     @else
                                     <div class="card">
                                     <button class="btn btn-primary btn-flat btn-block" onclick="location.href='{{ route('member.invoice')}}'">Try Again</button>
