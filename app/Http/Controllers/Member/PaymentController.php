@@ -28,7 +28,6 @@ class PaymentController extends Controller
         'amount' => 'required|numeric|min:1'
     ]);
 
-
             $customer = Customer::make()
                             ->firstName($user->name)
                             ->email($user->email)
@@ -64,7 +63,7 @@ class PaymentController extends Controller
         if (!empty($user)) {
             $emailInfo= array(
                 'greeting' => "Dear, {$user->name}",
-                'body'     => "Thank you for making payment of Rs.{$status['amount']}. Please note that payment is subject to realization and will reflect in your account in the next 24 hours."
+                'body'     => "Thank you for making payment of Rs.{$status['amount']}. Please note that payment is subject to realization and will reflect in your account in the next 24 working hours."
             );
 
             Notification::send($user, new PayUEmailNotification($emailInfo));
