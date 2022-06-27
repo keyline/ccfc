@@ -39,6 +39,7 @@ class UsersController extends Controller
 
     public function store(StoreUserRequest $request)
     {
+        //dd($request);
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
 
@@ -80,6 +81,10 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user->delete();
+
+        $user->roles()->detach();
+
+        $user->userCodeUserDetails()->delete();
 
         return back();
     }
