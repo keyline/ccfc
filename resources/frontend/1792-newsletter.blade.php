@@ -113,11 +113,13 @@
                                         <img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
                                     </div>
                                     <div class="newsletter_right">
-                                        <h3>Download<br> News letter</h3>
-                                        <p>June 2021</p>
+                                        <!-- <h3>Download<br> News letter</h3> -->
+                                        <h3>EGM</h3>
+                                        <!-- <p>June 2021</p> -->
+                                        <!-- cc&fc-newsletter-first-edition.pdf -->
                                     </div>
                                     <a class="wholenewdivlink"
-                                        href="{{ asset('pdf/cc&fc-newsletter-first-edition.pdf') }}"
+                                        href="{{ asset('pdf/EGM.pdf') }}"
                                         target="_blank"></a>
                                 </div>
                             </div>
