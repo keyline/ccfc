@@ -556,7 +556,12 @@ Route::group([
     Route::get('/1792-newsletter', function () {
         $galleries = Gallery::with(['media'])->get();
         $contentPages = ContentPage::all();
-        $contentBlocks = ContentBlock::all();
+
+        $query = \App\Models\ContentBlock::query();
+        $query->where('source_page_id', '=', 18);
+        $contentBlocks = $query->get();
+
+        //$contentBlocks = ContentBlock::all();
         return view('1792-newsletter', compact(['galleries','contentPages','contentBlocks']));
     })->name('1792-newsletter');
 
