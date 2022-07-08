@@ -556,8 +556,8 @@ Route::group([
     Route::get('/1792-newsletter', function () {
         $galleries = Gallery::with(['media'])->get();
         $contentPages = ContentPage::all();
-
-        return view('1792-newsletter', compact(['galleries','contentPages']));
+        $contentBlocks = ContentBlock::all();
+        return view('1792-newsletter', compact(['galleries','contentPages','contentBlocks']));
     })->name('1792-newsletter');
 
     Route::get('/notice-circulars', function () {

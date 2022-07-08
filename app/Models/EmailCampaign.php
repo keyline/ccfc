@@ -13,5 +13,5 @@ class EmailCampaign extends Model
 
     protected $primaryKey = 'ec_id';
 
-    protected $fillable = ['ec_type', 'ec_title', 'ec_body', 'ec_attachment', 'ec_is_despatched','created_at'];
+    protected $fillable = ['ec_member_type', 'ec_type', 'ec_title', 'ec_body', 'ec_attachment', 'ec_is_despatched','created_at'];
 }
