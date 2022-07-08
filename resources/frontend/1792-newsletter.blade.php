@@ -70,7 +70,9 @@
                 <div class="container">
                     <div class="row">
                         <?php
-                        //echo '<pre>';print_r($contentBlocks[7]);die;
+                        //echo '<pre>';print_r($contentBlocks);die;
+                        if($contentBlocks) { foreach($contentBlocks as $contentBlock){
+                           
                         ?>
                         <div class="col-lg-4 col-sm-6 col-md-12">
                             <div class="newslerterpdf_wholelink">
@@ -81,19 +83,19 @@
                                     </div>
                                     <div class="newsletter_right">
                                         <!-- <h3>Download<br> News letter</h3> -->
-                                        <h3><?=$contentBlocks[7]['heading']?></h3>
+                                        <h3><?=$contentBlock['heading']?></h3>
                                         <!-- <p>June 2021</p> -->
-                                        <!-- <?=$contentBlocks[7]['body']?> -->
+                                        <?=$contentBlock['body']?>
                                     </div>
                                     <?php
-                                    $circular_image = $contentBlocks[7]['circularimage'];
+                                    $circular_image = $contentBlock['circularimage'];
                                     $fileURL = url('/').'/uploads/circularimg/'.$circular_image;
                                     ?>
                                     <a class="wholenewdivlink" href="<?=$fileURL?>" target="_blank"></a>
                                 </div>
                             </div>
                         </div>
-
+                        <?php } }?>
                         {{-- <div class="col-lg-4 col-sm-6 col-md-12">
                             <div class="newsletter_pdfdownload">
                                 <div class="newsletter_left">
