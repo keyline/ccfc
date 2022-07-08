@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header">
         <a href="{{ route("admin.circulars") }}" class="btn btn-primary float-end">Back</a>
-    </div>
+    </div> 
     <div class="col-lg-12">
     </div>
     @if (session('status'))

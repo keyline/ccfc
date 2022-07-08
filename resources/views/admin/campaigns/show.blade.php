@@ -2,8 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-    </div>
-    
+    </div>    
     <div class="card-body">
         <form>
             @csrf

@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-
 <div class="card">
     <div class="card-header">
         {{ trans('global.edit') }} {{ trans('cruds.contentBlock.title_singular') }}

@@ -1,11 +1,9 @@
 @extends('layouts.admin')
 @section('content')
-
 <div class="card">
     <div class="card-header">
         {{ trans('global.create') }} {{ trans('cruds.contentBlock.title_singular') }}
     </div>
-
     <div class="card-body">
         <form method="POST" action="{{ route("admin.content-blocks.store") }}" enctype="multipart/form-data">
             @csrf

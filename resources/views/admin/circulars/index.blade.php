@@ -78,6 +78,7 @@
                                 }
                             }
                             ?>
+                            
                             <!-- <img src="{{ asset('uploads/circularimg/'.$value->circular_image2)}}" width="100px"
                                 height="100px" alt=""> -->
                             <!-- <form action="{{ url('admin/create/remove-circular/'.$value->id)}}" method="post">
