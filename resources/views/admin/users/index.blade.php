@@ -138,7 +138,7 @@
                                 $className = 'btn-warning';
                             }
                             ?>
-                            <a class="btn btn-xs <?=$className?> user-json"
+                            <a class="btn btn-xs <?php echo $className; ?> user-json"
                                 href="{{ route('admin.saveUserJson', $user->user_code) }}">
                                 {{ trans('global.updatedetails') }}
                             </a>
