@@ -9,17 +9,29 @@
             @csrf
             <div class="form-group">
                 <label class="required">Type</label><br>
-
                 <input type="radio" name="ec_type" id="ec_type1" value="Notice and Circulars Emails" required>
                 <label class="required" for="ec_type1">Notice and Circulars Emails</label>
-
                 <input type="radio" name="ec_type" id="ec_type2" value="Invoice Emails" required>
                 <label class="required" for="ec_type2">Invoice Emails</label>
-
                 @if($errors->has('ec_type'))
                     <span class="text-danger">{{ $errors->first('ec_type') }}</span>
                 @endif
                 <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+                <label class="required">Member Type</label><br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="checkbox" id="checkAll">
+                        <label for="checkAll">Check All</label>
+                    </div>
+                    <?php if($memberTypes){ $i=1;foreach($memberTypes as $memberType){?>
+                    <div class="col-md-4">
+                        <input type="checkbox" name="ec_member_type[]" id="ec_member_type<?=$i?>" value="<?=$memberType->member_type?>">
+                        <label for="ec_member_type<?=$i?>" style="font-weight: normal;"><?=$memberType->member_type?></label>
+                    </div>
+                    <?php $i++;} }?>
+                </div>
             </div>
             <div class="form-group">
                 <label class="required" for="mail_subject">Subject</label>
@@ -49,7 +61,7 @@
             </div>
             <!-- <button>Save as draft</button> -->
             <!-- <button>Send</button> -->
-            <button type="submit" class="btn btn-success">Save</button>
+            <button type="submit" class="btn btn-success" id="checkBtn">Save</button>
             </div>
         </form>
 
@@ -59,13 +71,11 @@
                     <tr>                        
                         <th>NO.</th>
                         <th>Date Created</th>
+                        <th>Member Type</th>
                         <th>Type</th>
                         <th>Subject</th>
                         <th>Sent On</th>
-                        <th>View</th>
-                        <th>Edit</th>
-                        <th>Send</th>
-                        <!-- <th>&nbsp;</th> -->
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,19 +83,28 @@
                         <tr data-entry-id="{{ $campaign->ec_id }}">
                             <td>{{ $campaign->ec_id }}</td>
                             <td>{{ date_format(date_create($campaign->created_at), "d-m-Y h:i A") }}</td>
+                            <td>
+                                <ul>
+                                    <?php
+                                    $ec_member_type = json_decode($campaign->ec_member_type);
+                                    if(count($ec_member_type)>0){ for($emt=0;$emt<count($ec_member_type);$emt++){
+                                    ?>
+                                        <li><?=$ec_member_type[$emt]?></li>
+                                    <?php } }?>
+                                </ul>
+                            </td>
                             <td>{{ $campaign->ec_type }}</td>
                             <td>{{ $campaign->ec_title }}</td>
                             <td>
                                 {{ ($campaign->ec_is_despatched == '0') ? $campaign->updated_at : ''}}
                             </td>
                             <td>
-                               <button class="btn btn-info" onclick="location.href='{{ route('admin.show-campaign', $campaign->ec_id) }}'">{{ trans('global.show') }}</button>
-                            </td>
-                            <td>
+                                <button class="btn btn-info" onclick="location.href='{{ route('admin.show-campaign', $campaign->ec_id) }}'">{{ trans('global.show') }}</button>
+                                <br><br>
                                 <button class="btn btn-info" onclick="location.href='{{ route('admin.edit-campaign', $campaign->ec_id) }}'" {{ ($campaign->ec_is_despatched == '0') ? 'disabled' : ''}}>{{ trans('global.edit') }}</button>
+                                <br><br>
+                                <button class="btn btn-info" onclick="location.href='{{ route('admin.start-campaign', ['campaign'=> $campaign->ec_id])}}'" {{ ($campaign->ec_is_despatched == '0') ? 'disabled' : ''}}>Send</button>
                             </td>
-                            <td><button class="btn btn-info" onclick="location.href='{{ route('admin.start-campaign', ['campaign'=> $campaign->ec_id])}}'" {{ ($campaign->ec_is_despatched == '0') ? 'disabled' : ''}}>Send</button></td>
-                            <!-- <td></td> -->
                         </tr>
                     @endforeach
                 </tbody>
@@ -112,5 +131,20 @@ $(function() {
   }
 
 });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#checkAll").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+        $('#checkBtn').click(function() {
+            checked = $("input[type=checkbox]:checked").length;
+            if(!checked) {
+                alert("You Must Select At Least One Member Type !!!");
+                return false;
+            }
+        });
+    });
 </script>
 @endsection

@@ -63,6 +63,25 @@
                             {{ $contentBlock->source_page->title ?? '' }}
                         </td>
                     </tr>
+                    <?php
+                    $circular_image = $contentBlock->circularimage;
+                    $fileURL = url('/').'/uploads/circularimg/'.$circular_image;
+                    if($circular_image != ''){
+                        $fileExtn = $ext = pathinfo($circular_image, PATHINFO_EXTENSION);
+                    ?>
+                        <tr>
+                            <th>
+                                Attachment
+                            </th>
+                            <td>
+                                <?php if($fileExtn == 'pdf' || $fileExtn == 'PDF'){?>
+                                    <embed src="<?=$fileURL?>" width="300" height="200" type="application/pdf">
+                                <?php } else {?>
+                                    <img src="<?=$fileURL?>" width="300" height="200" class="img-thumbnail">
+                                <?php }?>
+                            </td>
+                        </tr>
+                    <?php }?>
                 </tbody>
             </table>
             <div class="form-group">

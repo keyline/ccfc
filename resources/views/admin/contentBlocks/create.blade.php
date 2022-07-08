@@ -37,7 +37,10 @@
                 <span class="help-block">{{ trans('cruds.contentBlock.fields.body_helper') }}</span>
             </div>
 
-         
+            <div class="form-group">
+                <label for="name_of_the_block">Attachment</label>
+                <input type="file" name="circularimage" class="form-control">
+            </div>
 			
             <div class="form-group">
                 <label>{{ trans('cruds.contentBlock.fields.status') }}</label>
