@@ -69,8 +69,10 @@ class SendInBlueNotification extends Mailable
                 //get correct mime type
                 $attachment1    = explode("campaign_attachments/", $targetCampaign->ec_attachment);
                 $filename       = $attachment1[1];
-                $fileTypeArr    = explode(".", $filename);
-                $fileType       = $fileTypeArr[1];
+                //$fileTypeArr    = explode(".", $filename);
+                $fileTypeArr    = pathinfo($filename, PATHINFO_EXTENSION);
+                $fileType       = $fileTypeArr;
+                //dd($fileType);die;
                 $mime = 'application/image';
 
                 if ($fileType == 'jpg' || $fileType == 'jpeg') {

@@ -37,7 +37,7 @@
             
             @if(isset($emailcampaign->ec_attachment) && trim($emailcampaign->ec_attachment) !== '')
             <div class="attachment">
-            <span class="attached-file">{{asset('storage/campaign_attachments' . $emailcampaign->ec_attachment)}}</span>
+            <span class="attached-file">{{asset('storage/' . $emailcampaign->ec_attachment)}}</span>
             <span><button class="btn btn-danger rm-attachment" data-rmid="{{ $emailcampaign->ec_id }}" disabled>Remove Attachment</button></span>
             </div>
             @endif
