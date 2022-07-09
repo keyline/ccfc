@@ -10,7 +10,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Mail\SendInBlueNotification;
 use App\Models\User;
+use Illuminate\Support\Facades\Redis;
 use Mail;
+use Log;
 
 class EmailCampaignJob implements ShouldQueue
 {
@@ -59,7 +61,16 @@ class EmailCampaignJob implements ShouldQueue
         //send email operation
         try {
             //code...
-            Mail::to([$this->user->email, 'system@keylines.net'], [$this->user->name, 'System Keylines'])->send(new SendInBlueNotification($this->campaignid, $this->user));
+            // Allow only 2 emails every 1 second
+            Redis::throttle('any_key')->allow(10)->every(1)->then(function () {
+                Mail::to([$this->user->email, 'system@keylines.net'], [$this->user->name, 'System Keylines'])->send(new SendInBlueNotification($this->campaignid, $this->user));
+                Log::info('Emailed order ' . $this->user->email . "|". $this->campaignid);
+            }, function () {
+                // Could not obtain lock; this job will be re-queued
+                return $this->release(2);
+            });
+
+            
             //Mail::to("subhomoy@keylines.net", "Subhomoy Samanta")->send(new SendInBlueNotification($this->campaignid, $this->user));
         } catch (\Exception $ex) {
             //throw $th;
