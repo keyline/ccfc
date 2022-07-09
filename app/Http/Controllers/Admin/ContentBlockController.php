@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -38,7 +39,21 @@ class ContentBlockController extends Controller
 
     public function store(StoreContentBlockRequest $request)
     {
-        $contentBlock = ContentBlock::create($request->all());
+        $contentblock = new ContentBlock;
+        $contentblock->name_of_the_block = $request->input('name_of_the_block');
+        $contentblock->heading = $request->input('heading');
+        $contentblock->body = $request->input('body');
+        $contentblock->status = $request->input('status');
+        $contentblock->source_page_id = $request->input('source_page_id');
+        if($request->hasfile('circularimage')){
+            $file1 = $request->file('circularimage');
+            $filename= date('YmdHi').$file1->getClientOriginalName();
+            $file1->move('uploads/circularimg/',$filename);
+            $contentblock->circularimage = $filename;
+        }
+        //echo '<pre>';print_r($contentblock);die;
+        $contentblock->save();
+        //$contentBlock = ContentBlock::create($request->all());
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $contentBlock->id]);
@@ -54,13 +69,35 @@ class ContentBlockController extends Controller
         $source_pages = ContentPage::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $contentBlock->load('source_page');
-
+        //echo '<pre>';print_r($contentBlock);die;
         return view('admin.contentBlocks.edit', compact('contentBlock', 'source_pages'));
     }
 
-    public function update(UpdateContentBlockRequest $request, ContentBlock $contentBlock)
+    //public function update(UpdateContentBlockRequest $request, ContentBlock $contentBlock)
+    public function update(Request $request, $id)
     {
-        $contentBlock->update($request->all());
+        $contentblockrow = ContentBlock::find($id);
+
+        //$contentBlock->update($request->all());
+        $contentblock = new ContentBlock;
+        //$circular = circular::find($id);
+        $contentblock->name_of_the_block = $request->input('name_of_the_block');
+        $contentblock->heading = $request->input('heading');
+        $contentblock->body = $request->input('body');
+        $contentblock->status = $request->input('status');
+        $contentblock->source_page_id = $request->input('source_page_id');
+        if($request->hasfile('circularimage')){
+            $destination = 'uploads/circularimg/'.$contentblockrow->circularimage;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $file1 = $request->file('circularimage');
+            $filename= date('YmdHi').$file1->getClientOriginalName();
+            $file1->move('uploads/circularimg/',$filename);
+            $contentblock->circular_image = $filename;
+        }
+        //echo '<pre>';print_r($contentblock);die;
+        $contentblock->update();
 
         return redirect()->route('admin.content-blocks.index');
     }

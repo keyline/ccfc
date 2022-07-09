@@ -20,7 +20,7 @@
                 <thead>
                     <tr>
                         <th width="10">
-
+ 
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.id') }}
@@ -128,12 +128,20 @@
 
 
                             @can('user_edit')
-
-                            <a class="btn btn-xs btn-info user-json"
+                            <?php
+                            $query = \App\Models\UserDetail::query();
+                            $query->where('user_code_id', '=', $user->id);
+                            $checkUserDetails = $query->count();
+                            if($checkUserDetails>0){
+                                $className = 'btn-success';
+                            } else {
+                                $className = 'btn-warning';
+                            }
+                            ?>
+                            <a class="btn btn-xs <?php echo $className; ?> user-json"
                                 href="{{ route('admin.saveUserJson', $user->user_code) }}">
                                 {{ trans('global.updatedetails') }}
                             </a>
-
                             @endcan
 
 

@@ -13,86 +13,79 @@
             <table id="example" class="table table-bordered table-striped table-hover datatable datatable-ContentBlock">
                 <thead>
                     <tr>
-                        <!-- <th width="10">
-
-                        </th> -->
-
-                        <th>
-                            Sl No
-                        </th>
-                        <th>
-                            Publish of date
-                        </th>
-
-                        <th>
-                            Publish of month
-                        </th>
-
-                        <th>
-                            Details 1
-                        </th>
-
-                        <th>
-                            Details 2
-                        </th>
-
-                        <th>
-                            Image
-                        </th>
-
-                        <th>
-                            Notice Image
-                        </th>
-
-                        <th>
-                            Edit
-                        </th>
-
-                        <th>
-                            Delete
-                        </th>
+                        <th>Sl No</th>
+                        <th>Publish of date</th>
+                        <th>Publish of month</th>
+                        <th>Details 1</th>
+                        <th>Details 2</th>
+                        <th>Image</th>
+                        <th>Notice Image</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $sl=1;?>
                     @foreach($circular as $value)
                     <tr>
                         <td>
-                            {{$value->id}}
+                            <?=$sl++?>
                         </td>
-
                         <td>
                             {{$value->day}}
                         </td>
-
                         <td>
                             {{$value->month}}
                         </td>
-
                         <td>
                             {{$value->details_1}}
                         </td>
-
                         <td>
                             {!! $value->details_2 !!}
                         </td>
-
                         <td>
-                            <img src="{{ asset('uploads/circularimg/'.$value->circular_image)}}" width="100px"
-                                height="100px" alt="">
+                            <?php
+                            $circular_image = $value->circular_image;
+                            $fileURL = url('/').'/uploads/circularimg/'.$circular_image;
+                            if($circular_image != ''){
+                                $fileExtn = $ext = pathinfo($circular_image, PATHINFO_EXTENSION);
+                                if($fileExtn == 'pdf' || $fileExtn == 'PDF'){
+                                ?>
+                                    <embed src="<?=$fileURL?>" width="300" height="200" type="application/pdf">
+                                <?php
+                                } else {
+                                ?>
+                                    <img src="<?=$fileURL?>" width="100" height="100" class="img-thumbnail">
+                                <?php
+                                }
+                            }
+                            ?>                            
                         </td>
-
-
                         <td>
-                            <img src="{{ asset('uploads/circularimg/'.$value->circular_image2)}}" width="100px"
-                                height="100px" alt="">
-
-
+                            <?php
+                            $circular_image2 = $value->circular_image2;
+                            $fileURL = url('/').'/uploads/circularimg/'.$circular_image2;
+                            if($circular_image2 != ''){
+                                $fileExtn = $ext = pathinfo($circular_image2, PATHINFO_EXTENSION);
+                                if($fileExtn == 'pdf' || $fileExtn == 'PDF'){
+                                ?>
+                                    <embed src="<?=$fileURL?>" width="300" height="200" type="application/pdf">
+                                <?php
+                                } else {
+                                ?>
+                                    <img src="<?=$fileURL?>" width="100" height="100" class="img-thumbnail">
+                                <?php
+                                }
+                            }
+                            ?>
+                            
+                            <!-- <img src="{{ asset('uploads/circularimg/'.$value->circular_image2)}}" width="100px"
+                                height="100px" alt=""> -->
                             <!-- <form action="{{ url('admin/create/remove-circular/'.$value->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             </form> -->
-
                             <!-- <form action="{{ url('admin/create/remove-circular/'.$value->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
@@ -100,32 +93,21 @@
                                 <button type="submit" class="btn btn-sm btn-danger ml-2">Delete</button>
                             </form> -->
                         </td>
-
-
                         <td>
                             <a href="{{ url('admin/create/edit-circular/'.$value->id)}}"
                                 class="btn btn-primary btn-sm">Edit</a>
                         </td>
-
-
                         <td>
                             <a href="{{ url('admin/create/delete-circular/'.$value->id)}}"
                                 class="btn btn-danger btn-sm">Delete</a>
-
                         </td>
-
                     </tr>
-
                     @endforeach
-
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-
-
 @endsection
 @section('scripts')
 @parent
@@ -145,14 +127,11 @@ $(function() {
             }).nodes(), function(entry) {
                 return $(entry).data('entry-id')
             });
-
             if (ids.length === 0) {
                 alert('{{ trans('
                     global.datatables.zero_selected ') }}')
-
                 return
             }
-
             if (confirm('{{ trans('
                     global.areYouSure ') }}')) {
                 $.ajax({
@@ -174,7 +153,6 @@ $(function() {
     }
     dtButtons.push(deleteButton)
     @endcan
-
     $.extend(true, $.fn.dataTable.defaults, {
         orderCellsTop: true,
         order: [
@@ -189,7 +167,6 @@ $(function() {
         $($.fn.dataTable.tables(true)).DataTable()
             .columns.adjust();
     });
-
 })
 </script>
 @endsection

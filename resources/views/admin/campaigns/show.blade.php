@@ -2,11 +2,18 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-    </div>
-    
+    </div>    
     <div class="card-body">
         <form>
             @csrf
+            <div class="form-group">
+                <label class="required" for="mail_subject">Type</label>
+                <input class="form-control {{ $errors->has('mail_subject') ? 'is-invalid' : '' }}" type="text" name="ec_type" id="mail_subject" value="{{ old('mail_subject', $emailcampaign->ec_type) }}" required>
+                @if($errors->has('mail_subject'))
+                    <span class="text-danger">{{ $errors->first('mail_subject') }}</span>
+                @endif
+                <span class="help-block"></span>
+            </div>
             <div class="form-group">
                 <label class="required" for="mail_subject">Subject</label>
                 <input class="form-control {{ $errors->has('mail_subject') ? 'is-invalid' : '' }}" type="text" name="ec_title" id="mail_subject" value="{{ old('mail_subject', $emailcampaign->ec_title) }}" required>
@@ -30,17 +37,25 @@
             
             @if(isset($emailcampaign->ec_attachment) && trim($emailcampaign->ec_attachment) !== '')
             <div class="attachment">
-            <span class="attached-file">{{asset('storage/campaign_attachments' . $emailcampaign->ec_attachment)}}</span>
-            <span><button class="btn btn-info rm-attachment" data-rmid="{{ $emailcampaign->ec_id }}" disabled>Remove Attachment</button></span>
+            <span class="attached-file">{{asset('storage/' . $emailcampaign->ec_attachment)}}</span>
+            <span><button class="btn btn-danger rm-attachment" data-rmid="{{ $emailcampaign->ec_id }}" disabled>Remove Attachment</button></span>
             </div>
             @endif
             <!-- <button>Save as draft</button> -->
             <!-- <button>Send</button> -->
             <div class="form-group">
-            
+                <label>Member Type</label>
+                <ul>
+                    <?php
+                    $ec_member_type = json_decode($emailcampaign->ec_member_type);
+                    if(count($ec_member_type)>0){ for($emt=0;$emt<count($ec_member_type);$emt++){
+                    ?>
+                        <li><?=$ec_member_type[$emt]?></li>
+                    <?php } }?>
+                </ul>
             </div>
         </form>
-        <button  onclick="location.href= '{{ route('admin.list-campaign')}}'" class="btn btn-success">Cancel</button>
+        <button  onclick="location.href= '{{ route('admin.list-campaign')}}'" class="btn btn-success">Back To List</button>
         
     </div>
 

@@ -1,17 +1,13 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags --> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- ?php include 'assets/inc/header.php';?> -->
-
     <!-- header -->
     @include('common.home_header')
     <!-- ********|| RIGHT PART START ||******** -->
-
     <div class="col-lg-9 col-md-7 p-0">
         <div class="right-body">
             <!-- ********|| BANNER PART START ||******** -->
@@ -19,20 +15,12 @@
                 <div class="banner-box">
                     <div class="banner-box">
                         <div id="innerpage-banner" class="owl-carousel owl-theme">
-
-
                             @foreach($galleries->where("id","34") as $key => $gallery)
-
                             @foreach($gallery->images as $key => $media)
-
                             <div class="item">
-
                                 <div class="about-img">
-
                                     <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
-
                                 </div>
-
                             </div>
                             @endforeach
                             @endforeach
@@ -55,9 +43,6 @@
                 </div>
             </section>
             <!-- ********|| BANNER PART END ||******** -->
-
-
-
             <!-- ********|| ACTIVITIES START ||******** -->
             <section class="history-sec">
                 <div class="container">
@@ -70,12 +55,9 @@
                                     </div>
                                 </div>
                                 <div class="history-content text-left">
-
-
                                     @foreach($contentPages->where("id","18") as $contentPage)
                                     {!! $contentPage->page_text !!}
                                     @endforeach
-
                                     <!-- <p>The Club gym went through refurbishment and up gradation this February bringing a
                                         whole new face of health and fitness to our club. With the installation of new
                                         equipment it promises to bring a more pleasant and satisfying work out
@@ -98,24 +80,19 @@
                 </div>
             </section>
             <!-- ********|| ACTIVITIES END ||******** -->
-
             <!-- ********|| GYM GENERAL START ||******** -->
             <section class="activities-sec">
                 <div class="container">
                     <div class="row">
                         @foreach($circular as $value)
-
                         <div class="col-lg-6">
                             <div class="activities-inner">
                                 <div class="activities-img">
                                     <!-- <img class="img-fluid"
                                         src="http://ccfc.keylines.net.in/storage/58/62171940e4354_right_sideimage_1.jpg"
                                         alt=""> -->
-
                                     <img class="img-fluid"
                                         src="{{ asset('uploads/circularimg/'.$value->circular_image)}}" alt="">
-
-
                                 </div>
                                 <div class="activities-info">
                                     <div class="activities-body">
@@ -128,9 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="activities-content">
-
                                         {{$value->details_1}}
-
                                         <!-- Tuesday to Friday : 6.00 am to 10.00 am / 2.00 pm to 9.00 pm -->
                                     </div>
                                     <div class="activities-action">
@@ -143,9 +118,7 @@
                                 </div>
                             </div>
                         </div>
-
                         @endforeach
-
                         <!-- <div class="col-lg-6">
                             <div class="activities-inner">
                                 <div class="activities-img">
@@ -174,48 +147,29 @@
                                 </div>
                             </div>
                         </div> -->
-
-
-
                     </div>
                 </div>
             </section>
             <!-- ********|| GYM GENERAL END ||******** -->
-
-
-
-
             @include('common.footer')
             <!-- ?php include 'assets/inc/footer.php';?> -->
-
-
             <!-- ********|| ACTIVITIES Menu Modal Start ||******** -->
-
             <!-- ******** Dining Room Modal ******* -->
             <div class="modal fade" id="activities-dinning" tabindex="-1" role="dialog"
                 aria-labelledby="ModalCarouselLabel">
                 <div class="modal-dialog" role="document">
-
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-
                         <div id="demo" class="carousel slide" data-interval="false" data-ride="carousel">
-
                             <!-- The slideshow -->
                             <div class="carousel-inner">
-
-
                                 <div class="carousel-item active">
-
                                     <img src="" alt="Menu">
                                 </div>
                                 <div class="carousel-item">
-
                                 </div>
-
-
                                 <!-- <div class="carousel-item active">
                                     <img src="{{ asset('img/activities/dining-menu-1.jpeg') }}" alt="Menu">
                                 </div>
@@ -234,9 +188,7 @@
                                 <div class="carousel-item">
                                     <img src="{{ asset('img/activities/dining-menu-6.jpeg') }}" alt="Menu">
                                 </div> -->
-
                             </div>
-
                             <!-- Left and right controls -->
                             <a class="carousel-control-prev" href="#demo" data-slide="prev">
                                 <i class="zmdi zmdi-chevron-left"></i>
@@ -244,31 +196,22 @@
                             <a class="carousel-control-next" href="#demo" data-slide="next">
                                 <i class="zmdi zmdi-chevron-right"></i>
                             </a>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
-
-
             <!-- ******** Club Kitchen Modal ******* -->
             <div class="modal fade" id="activities-clubkitchen" tabindex="-1" role="dialog"
                 aria-labelledby="ModalCarouselLabel">
                 <div class="modal-dialog" role="document">
-
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
-
                             <!-- The slideshow -->
                             <div class="carousel-inner">
-
                                 <div class="carousel-item active">
-
                                     <img src="" alt="Menu">
                                 </div>
                                 <!-- <div class="carousel-item active">
@@ -323,7 +266,6 @@
                                     <img src="{{ asset('img/activities/club-kitchen-banner17.jpg') }}" alt="Menu">
                                 </div> -->
                             </div>
-
                             <!-- Left and right controls -->
                             <a class="carousel-control-prev" href="#demo-clubkitchen" data-slide="prev">
                                 <!--<span class="carousel-control-prev-icon"></span>-->
@@ -337,30 +279,20 @@
                     </div>
                 </div>
             </div>
-
-
-
-
             <div class="modal fade" id="activities-counter" tabindex="-1" role="dialog"
                 aria-labelledby="ModalCarouselLabel">
                 <div class="modal-dialog" role="document">
-
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div id="demo-clubkitchen" class="carousel slide" data-interval="false" data-ride="carousel">
-
                             <!-- The slideshow -->
                             <div class="carousel-inner">
-
                                 <div class="carousel-item active">
-
                                     <img src="" alt="Menu">
                                 </div>
-
                             </div>
-
                             <!-- Left and right controls -->
                             <a class="carousel-control-prev" href="#demo-clubkitchen" data-slide="prev">
                                 <!--<span class="carousel-control-prev-icon"></span>-->
@@ -370,35 +302,18 @@
                                 <!--<span class="carousel-control-next-icon"></span>-->
                                 <i class="zmdi zmdi-chevron-right"></i>
                             </a>
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
             <!-- ********|| ACTIVITIES Menu Modal End ||******** -->
-
-
-
             <!-- Modal Starts-->
             <!-- Button trigger modal -->
-
-
             <!-- Modal -->
             <section class="activities-modal">
-
                 @foreach($circular as $value)
                 <div class="modal fade" id="exampleModal{{$value->id}}" tabindex="-1"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-
                     @if($value['circular_image2'] == '')
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -407,27 +322,38 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-
                             <div class="modal-body">
                                 <div class="modal-part">
                                     <div class="activities-img">
                                         <!-- <img class="img-fluid"
                                             src="http://ccfc.keylines.net.in/storage/58/62171940e4354_right_sideimage_1.jpg"
                                             alt=""> -->
-
-                                        <img class="img-fluid"
-                                            src="{{ asset('uploads/circularimg/'.$value->circular_image)}}" alt="">
-
+                                        <!-- <img class="img-fluid"
+                                            src="{{ asset('uploads/circularimg/'.$value->circular_image)}}" alt=""> -->
+                                        <?php
+                                        $circular_image = $value->circular_image;
+                                        $fileURL = url('/').'/uploads/circularimg/'.$circular_image;
+                                        if($circular_image != ''){
+                                            $fileExtn = $ext = pathinfo($circular_image, PATHINFO_EXTENSION);
+                                            if($fileExtn == 'pdf' || $fileExtn == 'PDF'){
+                                            ?>
+                                                <embed src="<?=$fileURL?>" width="100%" height="300" type="application/pdf" style="margin-top: 60px;">
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <img src="<?=$fileURL?>" width="100%" height="300" class="img-thumbnail" style="margin-top: 60px;">
+                                            <?php
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                     <div class="activities-inner">
                                         <div class="activities-title">
                                             circular
                                         </div>
-
                                         <div class="activities-content circularspopup">
                                             {!! $value->details_2 !!}
                                         </div>
-
                                         <!-- <div class="activities-content">
                                             The Club gym went through refurbishment and up gradation this February
                                             bringing a whole new face of health and fitness to our club.
@@ -448,15 +374,9 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-
-
                     @else
-
-
                     <div class="modal-dialog modal-activities-sigleimg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -464,61 +384,60 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-
-
-
-
-
                             <div class="modal-part">
                                 <div class="activities-img">
                                     <!-- <img class="img-fluid"
-                                            src="http://ccfc.keylines.net.in/storage/58/62171940e4354_right_sideimage_1.jpg"
-                                            alt=""> -->
-
-
+                                            src="http://ccfc.keylines.net.in/storage/58/62171940e4354_right_sideimage_1.jpg" alt=""> -->
+                                    <?php
+                                    $circular_image = $value->circular_image;
+                                    $fileURL = url('/').'/uploads/circularimg/'.$circular_image;
+                                    if($circular_image != ''){
+                                        $fileExtn = $ext = pathinfo($circular_image, PATHINFO_EXTENSION);
+                                        if($fileExtn == 'pdf' || $fileExtn == 'PDF'){
+                                        ?>
+                                            <embed src="<?=$fileURL?>" width="100%" height="300" type="application/pdf">
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <img src="<?=$fileURL?>" width="100%" height="300" class="img-thumbnail">
+                                        <?php
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <div class="activities-inner">
-
-
-
                                 </div>
                             </div>
-
-
-
-
-
-
                             <div class="modal-body">
-
-                                <img class="img-fluid" src="{{ asset('uploads/circularimg/'.$value->circular_image2)}}"
-                                    alt="">
-
-
+                                <!-- <img class="img-fluid" src="{{ asset('uploads/circularimg/'.$value->circular_image2)}}" alt=""> -->
+                                <?php
+                                $circular_image2 = $value->circular_image2;
+                                $fileURL = url('/').'/uploads/circularimg/'.$circular_image2;
+                                if($circular_image2 != ''){
+                                    $fileExtn = $ext = pathinfo($circular_image2, PATHINFO_EXTENSION);
+                                    if($fileExtn == 'pdf' || $fileExtn == 'PDF'){
+                                    ?>
+                                        <embed src="<?=$fileURL?>" width="100%" height="300" type="application/pdf">
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <img src="<?=$fileURL?>" width="100%" height="300" class="img-thumbnail">
+                                    <?php
+                                    }
+                                }
+                                ?>
                             </div>
-
-
-                            <!--
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
--->
                         </div>
                     </div>
                     @endif
-
                 </div>
-
                 @endforeach
             </section>
             <!-- Modal Ends-->
-
             <style>
             .activities-sec {
                 padding: 40px;
             }
-
             .activities-sec .activities-inner {
                 display: flex;
                 background-color: #f6f6f6;
@@ -528,26 +447,21 @@
                 transition: ease 0.3s;
                 border: 1px solid #f6f6f6;
             }
-
             .activities-sec .activities-inner:hover {
                 border: 1px solid var(--secondaryColor);
             }
-
             .activities-sec .activities-inner .activities-img {
                 border-radius: 10px;
                 overflow: hidden;
                 height: 100%;
             }
-
             .activities-sec .activities-inner .activities-info {
                 padding-left: 10px;
                 position: relative;
             }
-
             .activities-sec .activities-inner .activities-info .activities-body {
                 display: flex;
             }
-
             .activities-sec .activities-inner .activities-info .activities-body .activities-time {
                 font-family: 'IBM Plex Serif', serif;
                 font-size: 18px;
@@ -557,13 +471,11 @@
                 text-transform: uppercase;
                 padding-top: 18px;
             }
-
             .activities-sec .activities-inner .activities-info .activities-body .activities-time span {
                 font-size: 24px;
                 position: absolute;
                 top: -6px;
             }
-
             .activities-sec .activities-inner .activities-info .activities-body .activities-box-part {
                 padding-left: 8px;
                 font-family: 'IBM Plex Serif', serif;
@@ -575,7 +487,6 @@
                 padding-top: 22px;
                 border-left: 1px solid #333;
             }
-
             .activities-sec .activities-inner .activities-info .activities-body .activities-box-part span {
                 font-size: 20px;
                 font-family: 'IBM Plex Serif', serif;
@@ -586,7 +497,6 @@
                 letter-spacing: 0.5px;
                 text-transform: uppercase;
             }
-
             .activities-sec .activities-inner .activities-info .activities-content {
                 color: var(--textColor);
                 font-family: 'IBM Plex Serif', serif;
@@ -595,7 +505,6 @@
                 padding: 10px 0px;
                 line-height: 18px;
             }
-
             .activities-sec .activities-inner .activities-info .activities-action .read-btn {
                 border: 1px solid var(--secondaryColor);
                 font-family: 'IBM Plex Serif', serif;
@@ -609,46 +518,37 @@
                 transition: ease 0.3s;
                 background-color: #fff;
             }
-
             .activities-sec .activities-inner .activities-info .activities-action {
                 margin-top: 10px;
             }
-
             .activities-modal .modal-body {
                 border: 4px solid var(--secondaryColor);
                 border-radius: 10px;
                 background-color: #fff;
                 padding: 10px 20px;
             }
-
             .activities-modal .modal-body .modal-part {
                 display: flex;
             }
-
             .activities-modal .modal-content {
                 border-radius: 12px;
                 background-color: transparent;
                 border: none;
             }
-
             .activities-modal .modal-dialog {
                 max-width: 640px;
             }
-
             .activities-modal .modal-activities-sigleimg {
                 max-width: 800px;
             }
-
             .activities-modal .modal-body .modal-part .activities-img {
                 width: 40%;
                 padding-top: 10px;
             }
-
             .activities-modal .modal-body .modal-part .activities-inner {
                 width: 60%;
                 padding-left: 10px;
             }
-
             .activities-modal .modal-body .modal-part .activities-inner .activities-title,
             .activities-modal .modal-body .modal-part .activities-inner .circularspopup strong {
                 font-size: 20px;
@@ -659,7 +559,6 @@
                 text-transform: uppercase;
                 padding-bottom: 10px;
             }
-
             .activities-modal .modal-body .modal-part .activities-inner .activities-title.title,
             .activities-modal .modal-body .modal-part .activities-inner .circularspopup strong {
                 border-bottom: 1px solid #9f9e9e;
@@ -667,7 +566,6 @@
                 width: 100%;
                 display: block;
             }
-
             .activities-modal .modal-body .modal-part .activities-inner .activities-content {
                 color: var(--textColor);
                 font-family: 'IBM Plex Serif', serif;
@@ -676,55 +574,43 @@
                 padding-bottom: 10px;
                 line-height: 18px;
             }
-
             .activities-modal .modal-header {
                 border: none;
                 padding: 0px;
             }
-
             .activities-modal .modal-header .close {
                 color: #fff;
                 opacity: 1;
             }
-
             /*
                 .activities-modal .modal-body{
                     padding: 10px 20px;
                 }
 */
-
             @media screen and (max-width: 767px) {
                 .activities-sec {
                     padding: 10px 0;
                 }
-
                 .activities-sec .activities-inner {
                     display: block !important;
                 }
-
                 .activities-modal .modal-body .modal-part {
                     display: block !important;
                 }
-
                 .activities-modal .modal-body .modal-part .activities-img {
                     width: 100%
                 }
-
                 .activities-modal .modal-body .modal-part .activities-inner {
                     width: 100%;
                 }
-
                 .activities-sec .activities-inner .activities-info {
                     padding-left: 0;
                     margin-top: 20px;
                 }
-
                 .activities-modal .modal-body .modal-part .activities-inner {
                     padding-left: 0;
                 }
             }
             </style>
-
             </body>
-
 </html>

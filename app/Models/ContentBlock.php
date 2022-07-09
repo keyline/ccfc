@@ -33,6 +33,7 @@ class ContentBlock extends Model implements HasMedia
         'name_of_the_block',
         'heading',
         'body',
+        'circularimage',
         'status',
         'source_page_id',
         'created_at',

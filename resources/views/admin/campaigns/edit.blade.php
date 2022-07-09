@@ -2,8 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-    </div>
-    
+    </div>    
     <div class="card-body">
         <form method="POST" action="{{ route("admin.update-campaign", [$emailcampaign->ec_id]) }}" enctype="multipart/form-data">
             @csrf
@@ -20,6 +19,22 @@
                     <span class="text-danger">{{ $errors->first('ec_type') }}</span>
                 @endif
                 <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+                <label class="required">Member Type</label><br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="checkbox" id="checkAll">
+                        <label for="checkAll">Check All</label>
+                    </div>
+                    <?php if($memberTypes){ $i=1;foreach($memberTypes as $memberType){?>
+                    <?php $ec_member_type = json_decode($emailcampaign->ec_member_type); ?>
+                    <div class="col-md-4">
+                        <input type="checkbox" name="ec_member_type[]" id="ec_member_type<?=$i?>" value="<?=$memberType->member_type?>" <?=((in_array($memberType->member_type, $ec_member_type))?'checked':'')?>>
+                        <label for="ec_member_type<?=$i?>" style="font-weight: normal;"><?=$memberType->member_type?></label>
+                    </div>
+                    <?php $i++;} }?>
+                </div>
             </div>
             <div class="form-group">
                 <label class="required" for="mail_subject">Subject</label>
@@ -50,13 +65,13 @@
             @if(isset($emailcampaign->ec_attachment) && trim($emailcampaign->ec_attachment) !== '')
             <div class="attachment">
             <span class="attached-file">{{asset('storage/campaign_attachments' . $emailcampaign->ec_attachment)}}</span>
-            <span><button class="btn btn-info rm-attachment" data-rmid="{{ $emailcampaign->ec_id }}">Remove Attachment</button></span>
+            <span><button class="btn btn-danger rm-attachment" data-rmid="{{ $emailcampaign->ec_id }}">Remove Attachment</button></span>
             </div>
             @endif
             <!-- <button>Save as draft</button> -->
             <!-- <button>Send</button> -->
             <div class="form-group">
-            <button type="submit" class="btn btn-success">Save</button>
+            <button type="submit" class="btn btn-success" id="checkBtn">Save</button>
             </div>
         </form>
 
@@ -122,5 +137,20 @@ function deleteAttachment(token, deleteforid){
 
 
 }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#checkAll").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+        $('#checkBtn').click(function() {
+            checked = $("input[type=checkbox]:checked").length;
+            if(!checked) {
+                alert("You Must Select At Least One Member Type !!!");
+                return false;
+            }
+        });
+    });
 </script>
 @endsection
