@@ -10,11 +10,16 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Mail\SendInBlueNotification;
 use App\Models\User;
+use Illuminate\Support\Facades\Redis;
 use Mail;
+use Log;
 
 class EmailCampaignJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     protected $campaignid;
 
@@ -53,14 +58,13 @@ class EmailCampaignJob implements ShouldQueue
      */
     public function handle()
     {
-        
         //code...
-        
+
         //send email operation
         try {
             //code...
-            //Mail::to($this->user->email, $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
-            Mail::to("subhomoy@keylines.net", "Subhomoy Samanta")->send(new SendInBlueNotification($this->campaignid, $this->user));
+            Mail::to($this->user->email, $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
+            //Mail::to("subhomoy@keylines.net", "Subhomoy Samanta")->send(new SendInBlueNotification($this->campaignid, $this->user));
         } catch (\Exception $ex) {
             //throw $th;
             //dd($ex);
