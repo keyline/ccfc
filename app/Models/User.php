@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use \DateTimeInterface;
+use DateTimeInterface;
 use Carbon\Carbon;
 use Hash;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -14,6 +14,8 @@ use App\Notifications\MemberResetPasswordNotification as MemberResetPasswordNoti
 use Illuminate\Notifications\Notifiable;
 
 use Tzsk\Payu\Models\HasTransactions;
+
+use Illuminate\Support\Str;
 
 // class User extends Authenticatable implements MustVerifyEmail
 class User extends Authenticatable
@@ -122,5 +124,13 @@ class User extends Authenticatable
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function createApiToken()
+    {
+        $token= Str::random(64);
+        $this->api_token= $token;
+        $this->save();
+        return $token;
     }
 }

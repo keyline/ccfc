@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Models\circular;
 use App\Models\Contactlist;
 use App\Models\Events;
+
 // Route::get('/', 'FrontendHome@index')->name('index');
 
 Route::get('/', function () {
@@ -34,9 +35,9 @@ Route::get('/', function () {
     $sportstypes = Sportstype::all();
     $contactlists = Contactlist::all();
     $galleries = Gallery::with(['media'])->get();
-    
+
     // $galleries = Gallery::all();
-    
+
 
     return view('index', compact('reciprocalClubs', 'contentPages', 'galleries', 'sportstypes', 'contactlists'));
 });
@@ -128,17 +129,17 @@ Route::get('/balloting_committee', function () {
 Route::get('/sub_committees', function () {
     $contentPages = ContentPage::all();
 
-    
+
     $subCommitteeMembers = SubCommitteeMember::with(['comittee_name', 'member'])->get();
-    
+
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
 
 
     $committeeNames = CommitteeName::all();
 
-   
+
     $galleries = Gallery::with(['media'])->get();
-  
+
 
     return view('sub_committees', compact(['contentPages','subCommitteeMembers','committeeNames','galleries','userDetails']));
 });
@@ -193,7 +194,7 @@ Route::get('/president_corner', function () {
 
 Route::get('/amenities_services', function () {
     $galleries = Gallery::with(['media'])->get();
-   
+
     return view('amenities_services', compact(['galleries']));
 });
 
@@ -201,7 +202,7 @@ Route::get('/amenities_services', function () {
 Route::get('/annual_report', function () {
     $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
-  
+
     return view('annual_report', compact(['galleries','contentPages']));
 });
 
@@ -209,16 +210,16 @@ Route::get('/annual_report', function () {
 Route::get('/gallery', function () {
     $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
-  
+
     return view('gallery', compact(['contentPages','galleries']));
 });
 
 
 
 // Route::get('/contact-us', function () {
-    
+
 //     $galleries = Gallery::with(['media'])->get();
-  
+
 //     return view('contact-us', compact(['galleries']));
 // });
 
@@ -342,7 +343,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('galleries', 'GalleryController');
 
 
-    
+
 
     // Sportstype
     Route::delete('sportstypes/destroy', 'SportstypeController@massDestroy')->name('sportstypes.massDestroy');
@@ -354,7 +355,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('titles/destroy', 'TitlesController@massDestroy')->name('titles.massDestroy');
     Route::resource('titles', 'TitlesController');
 
-    // Contact List    
+    // Contact List
     Route::get('create/contactlist', [App\Http\Controllers\Admin\ContactlistsController::class, 'index'])->name('contactlist');
     Route::get('create/add-contactlist', [App\Http\Controllers\Admin\ContactlistsController::class, 'create']);
     Route::post('create/add-contactlist', [App\Http\Controllers\Admin\ContactlistsController::class, 'store']);
@@ -418,7 +419,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('create/delete-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'destroy']);
 
-   
+
     // Route::delete("delete", [App\Http\Controllers\Admin\CircularController::class, "deleteImage"])->name("delete");
 
     //events
@@ -475,33 +476,33 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 // Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
 //     // Change password
 //     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordResetController.php'))) {
-        
-        
+
+
 //         Route::post('/change_password', 'ChangePasswordResetController@update')->name('change_password.update');
-        
+
 //     }
 
 
 // });
 
-    // Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+// Route::get('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
 
-    // Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
-
-
-
-    Route::get('/member/change-password', 'ChangePasswordResetController@change_password')->name('change_password');
-
-    Route::post('/member/update-password', 'ChangePasswordResetController@update_password')->name('update_password');
+// Route::post('/changePassword', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
 
 
-    
+
+Route::get('/member/change-password', 'ChangePasswordResetController@change_password')->name('change_password');
+
+Route::post('/member/update-password', 'ChangePasswordResetController@update_password')->name('update_password');
 
 
-        // Route::get('/change_password', function () {
+
+
+
+// Route::get('/change_password', function () {
         //     return view('change_password');
-        // })->name('change_password');
-        
+// })->name('change_password');
+
 
 // Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'showChangePasswordGet'])->name('changePasswordGet');
 // Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordResetController::class, 'changePasswordPost'])->name('changePasswordPost');
@@ -528,20 +529,20 @@ Route::group([
     Route::get('/login', [HomeController::class, 'memberLogin'])->name('login');
 
 
-    
+
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/invoice', [HomeController::class, 'invoice'])->name('invoice');
 
-    
 
-    
+
+
 
 
     Route::get('/events_members_only', function () {
         $galleries = Gallery::with(['media'])->get();
-        
+
         $contentPages = ContentPage::all();
 
         $event = Events::orderBy('id', 'DESC')->get();
@@ -550,9 +551,9 @@ Route::group([
     })->name('events_members_only');
 
 
-    
 
-   
+
+
 
     Route::get('/1792-newsletter', function () {
         $galleries = Gallery::with(['media'])->get();
@@ -578,13 +579,13 @@ Route::group([
         return view('notice-circulars', compact(['galleries','contentPages','circular']));
     })->name('notice-circulars');
 
-    
+
     Route::get('/rules_regulation', function () {
         $galleries = Gallery::with(['media'])->get();
         $contentPages = ContentPage::all();
         return view('rules_regulation', compact(['galleries','contentPages']));
     })->name('rules_regulation');
-    
+
 
     # Call Route
     Route::post('payment', ['as' => 'payment', 'uses' => 'PaymentController@payment']);
@@ -652,125 +653,125 @@ Route::get('/new_member', function () {
 // Route::get('/amenities_services', function () {
 //     return view('amenities_services');
 // });
-    
-    // Route::get('/amenities_services', function () {
+
+// Route::get('/amenities_services', function () {
     //     return view('amenities_services');
-    // });
-    
-    
-    // Route::get('/', 'PagesController@index')->name('pages');
-    // Route::resource('pages', 'PagesController');
-    
-    // require _DIR_.'/auth.php';
-    
-    Route::get('sports/{sport_name}', 'PagesController@show');
-    // Route::get('sports/{sport_name}', 'PagesController@show');
-    
-    Route::get('demo', 'FrontendhtmlController@pastpresident');
-    
-    Route::get('/footer', [ContactController::class,'contact']);
-    
-    Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
-    Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
-    
-    
-    // Route::get('/trophies', function () {
+// });
+
+
+// Route::get('/', 'PagesController@index')->name('pages');
+// Route::resource('pages', 'PagesController');
+
+// require _DIR_.'/auth.php';
+
+Route::get('sports/{sport_name}', 'PagesController@show');
+// Route::get('sports/{sport_name}', 'PagesController@show');
+
+Route::get('demo', 'FrontendhtmlController@pastpresident');
+
+Route::get('/footer', [ContactController::class,'contact']);
+
+Route::post('/send-message', [ContactController::class,'sendEmail'])->name('contact.send');
+Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
+
+
+// Route::get('/trophies', function () {
     //     return view('trophies');
-    // });
-    
-    // Route::get('/famous_sportsmen', function () {
+// });
+
+// Route::get('/famous_sportsmen', function () {
     //     return view('famous_sportsmen');
-    // });
-    
-    // Route::get('/reciprocal_clubs', function () {
+// });
+
+// Route::get('/reciprocal_clubs', function () {
     //     return view('reciprocal_clubs');
-    // });
-    // Route::get('/general_committee', function () {
+// });
+// Route::get('/general_committee', function () {
     //     return view('general_committee');
-    // });
-    
-    // Route::get('/balloting_committee', function () {
+// });
+
+// Route::get('/balloting_committee', function () {
     //     return view('balloting_committee');
-    // });
-    
-    // Route::get('/sub_committees', function () {
+// });
+
+// Route::get('/sub_committees', function () {
     //     return view('sub_committees');
-    // });
-    
-    // Route::get('/president_corner', function () {
+// });
+
+// Route::get('/president_corner', function () {
     //     return view('president_corner');
-    // });
-    
-    // Route::get('/annual_report', function () {
+// });
+
+// Route::get('/annual_report', function () {
     //     return view('annual_report');
-    // });
-    
-    // Route::get('/events_members_only', function () {
+// });
+
+// Route::get('/events_members_only', function () {
     //     return view('events_members_only');
-    // });
-    
-    Route::get('/new_member', function () {
-        return view('new_member');
-    });
-    
-    // Route::get('/rules_regulation', function () {
+// });
+
+Route::get('/new_member', function () {
+    return view('new_member');
+});
+
+// Route::get('/rules_regulation', function () {
     //     return view('rules_regulation');
-    // });
-     
-    
-    Route::get('/member-login', function () {
-        return view('member-login');
-    });
-    // Route::get('/sports', function () {
+// });
+
+
+Route::get('/member-login', function () {
+    return view('member-login');
+});
+// Route::get('/sports', function () {
     //     return view('sports');
-    // });
-    
-    // Route::get('/gallery', function () {
+// });
+
+// Route::get('/gallery', function () {
     //     return view('gallery');
-    // });
-    Route::get('/dashboard-landing', function () {
-        return view('dashboard-landing');
-    });
-    // Route::get('member/invoice', function () {
+// });
+Route::get('/dashboard-landing', function () {
+    return view('dashboard-landing');
+});
+// Route::get('member/invoice', function () {
     //     return view('member/invoice');
-    // });
-
-    
+// });
 
 
-    
-    // Route::post('user-details/media', 'UserDetailsController@storeMedia')->name('user-details.storeMedia');
-
-    // Route::get('users/index', [MemberDetailsController::class, 'index'])->name('index');
-    
-    // Route::get('insert','MemberDetailsController@index');
-    
-    // Route::post('store','MemberDetailsController@store');
 
 
-    // Route::get('memberdetails', 'MemberDetailsController@index')->name('memberdetails.index');
 
-    // Route::post('memberdetails','MemberDetailsController@index');
+// Route::post('user-details/media', 'UserDetailsController@storeMedia')->name('user-details.storeMedia');
 
-    // Route::get('users/memberdetails', 'MemberDetailsController@index')->name('memberdetails');
+// Route::get('users/index', [MemberDetailsController::class, 'index'])->name('index');
 
+// Route::get('insert','MemberDetailsController@index');
 
-    
-    
-    // Route::get('users/userDetails', [MemberDetailsController::class, 'userDetails'])->name('userDetails');
-
-    // Route::get('ajaxRequest', [MemberUpdateController::class, 'ajaxRequest']);
-    // Route::post('ajaxRequest', [MemberUpdateController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
+// Route::post('store','MemberDetailsController@store');
 
 
-    //contact
+// Route::get('memberdetails', 'MemberDetailsController@index')->name('memberdetails.index');
 
-    // Route::get('admin/contactus', function () {
+// Route::post('memberdetails','MemberDetailsController@index');
+
+// Route::get('users/memberdetails', 'MemberDetailsController@index')->name('memberdetails');
+
+
+
+
+// Route::get('users/userDetails', [MemberDetailsController::class, 'userDetails'])->name('userDetails');
+
+// Route::get('ajaxRequest', [MemberUpdateController::class, 'ajaxRequest']);
+// Route::post('ajaxRequest', [MemberUpdateController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
+
+
+//contact
+
+// Route::get('admin/contactus', function () {
     //     return view('admin.contact.index');
-    // });
+// });
 
-    Route::get('password/reset/{token}/{email}/{user_code}', 'Auth\ResetPasswordController@showResetForm')
-    ->name('password.reset');
-    Route::post('password/reset', 'Auth\ResetPasswordController@reset')
-    ->name('password.update');
-    Route::get('maintenace');
+// Route::get('password/reset/{token}/{email}/{user_code}', 'Auth\ResetPasswordController@showResetForm')
+// ->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')
+->name('password.update');
+Route::get('maintenace');
