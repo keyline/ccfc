@@ -36,7 +36,6 @@ class MemberDetailsController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -46,10 +45,9 @@ class MemberDetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     
+
     public function store(Request $request)
     {
-       
     }
 
     /**
@@ -63,14 +61,15 @@ class MemberDetailsController extends Controller
         $user = User::where('id', '=', session('LoggedMember'))->first();
 
         $data= ['LoggedMemberInfo' => $user];
-        
+
         //get member profile
-        $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+        //$token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+        $token= "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
 
         $fields= [
             'MCODE' => $user->user_code
         ];
-        
+
         $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
         //dd(openssl_get_cert_locations());
@@ -83,15 +82,15 @@ class MemberDetailsController extends Controller
                     ->post($url)->json()['data'];
 
 
-        
-           
+
+
         return view('member.dashboard', [
             'userData'          => $data,
             'userProfile'       => $profile,
         ]);
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -101,7 +100,6 @@ class MemberDetailsController extends Controller
      */
     public function edit(MemberDetails $memberDetails)
     {
-        
     }
 
     /**
@@ -113,7 +111,6 @@ class MemberDetailsController extends Controller
      */
     public function update(Request $request, MemberDetails $memberDetails)
     {
-        
     }
 
     /**
