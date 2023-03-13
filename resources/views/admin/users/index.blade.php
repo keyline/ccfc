@@ -6,6 +6,9 @@
         <a class="btn btn-success" href="{{ route('admin.users.create') }}">
             {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
         </a>
+        <a class="btn btn-info float-right" href="{{ route('admin.users.exporttocsv') }}">
+            <span>Exort User List</span>
+        </a>
     </div>
 </div>
 @endcan
@@ -132,7 +135,7 @@
                             $query = \App\Models\UserDetail::query();
                             $query->where('user_code_id', '=', $user->id);
                             $checkUserDetails = $query->count();
-                            if($checkUserDetails>0){
+                            if ($checkUserDetails>0) {
                                 $className = 'btn-success';
                             } else {
                                 $className = 'btn-warning';

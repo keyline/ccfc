@@ -460,6 +460,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         return view('admin.campaigns.notification', ['body' => "This is test"]);
         //echo "pass";
     });
+
+    Route::get('/exporttocsv', 'UsersController@exportToCSV')->name('users.exporttocsv');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
