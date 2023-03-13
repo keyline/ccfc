@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -17,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Log;
+use Carbon\Carbon;
 
 class UsersController extends Controller
 {
@@ -116,65 +116,93 @@ class UsersController extends Controller
         {
             abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::pluck('title', 'id');
+            $roles = Role::pluck('title', 'id');
 
-        $user->load('roles');
-
-           
-   
-        //   return view('admin.users.edit', compact('roles', 'user'));
-
-           
-
-          $user = User::where('id', '=', session('LoggedMember'))->first();
-
-       
-   
-       //get member profile
-           $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+            $user->load('roles');
 
 
-           
 
-       $fields= [
-             'MCODE' => $user->user_code
-           ];
-   
-           $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+            //   return view('admin.users.edit', compact('roles', 'user'));
 
-       
-          
 
-       $profile = Http::withoutVerifying()
-               ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                               'Content-Type' => 'application/json',])
-               ->withOptions(["verify"=>false])
-               ->post($url)->json()['data'];
 
-               
-             
-            
+            $user = User::where('id', '=', session('LoggedMember'))->first();
+
+
+
+            //get member profile
+            $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+
+
+
+
+            $fields= [
+                  'MCODE' => $user->user_code
+                ];
+
+            $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+
+
+
+
+            $profile = Http::withoutVerifying()
+                    ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                                    'Content-Type' => 'application/json',])
+                    ->withOptions(["verify"=>false])
+                    ->post($url)->json()['data'];
+
+
+
+
             //    dd($profile);
-               
-               return view('admin.users.edit', compact('roles', 'user'), [
-                   
-                   'userProfile'       => $profile,
-                   // 'userTransactions'  => $transactions,
-               ]);
-               
 
+            return view('admin.users.edit', compact('roles', 'user'), [
+
+                'userProfile'       => $profile,
+                // 'userTransactions'  => $transactions,
+            ]);
         }
     }
 
     public function saveUserJson(Request $request)
     {
-        
         //Dispatching the Job here
         \App\Jobs\MemberProfileUpdate::dispatch($request->code)->onQueue('memberprofile');
 
         //Log::info("Member profile update dispatch for". $request->code);
-        
+
         return redirect()->back()->with('success', 'user data updated successfully');
         //dd("placed this job");
+    }
+
+    public function exportToCSV(Request $request)
+    {
+        $current = Carbon::now()->format('YmdHs');
+
+        $fileName= 'user_list'. '_' .$current;
+
+        $headers = [
+            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0'
+        ,   'Content-type'        => 'text/csv'
+        ,   'Content-Disposition' => 'attachment; filename='. $fileName . '.csv'
+        ,   'Expires'             => '0'
+        ,   'Pragma'              => 'public'
+    ];
+
+        $list = User::all()->toArray();
+
+
+        # add headers for each column in the CSV download
+        array_unshift($list, array_keys($list[0]));
+
+        $callback = function () use ($list) {
+            $FH = fopen('php://output', 'w');
+            foreach ($list as $row) {
+                fputcsv($FH, $row);
+            }
+            fclose($FH);
+        };
+
+        return response()->stream($callback, 200, $headers);
     }
 }
