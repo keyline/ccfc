@@ -55,15 +55,15 @@ class HomeController extends Controller
 
         if (Auth::attempt(['user_code'=>$request->email,'password'=>$request->password])) {
             $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name]);
-
+            //dd($userDetailsInfo);
             //Check if fetching member data has been done or not
             if (!$userDetailsInfo || is_null($userDetailsInfo->current_status)) {
                 $request->session()->put('firstMemberUpdate', ['usercode' => $userInfo->user_code]);
                 return redirect()->route('member.profileupdate', $userInfo->user_code);
             }
 
-            //return redirect('member/dashboard');
-            return redirect()->route('member.profileupdate', $userInfo->user_code);
+            return redirect('member/dashboard');
+            //return redirect()->route('member.profileupdate', $userInfo->user_code);
         }
 
         return back()->withErrors(['password' => ['Password is incorrect']]);
