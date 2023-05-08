@@ -121,6 +121,8 @@ JSON;
 
             $user->email=$memberemail;
 
+            $user->name= $profile['MEMBER_NAME']; // added on 08/05/2023
+
             $user->phone_number_1 = (preg_match('/^[0-9]{10}+$/', $profile['MOBILENO'])) ? $profile['MOBILENO'] : "";
 
             $user->status= $profile['CURENTSTATUS']; //saving member status
