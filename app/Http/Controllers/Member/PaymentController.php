@@ -60,7 +60,7 @@ class PaymentController extends Controller
         
         $user= User::find($status['udf1']);
 
-        if (!empty($user)) {
+        if (!empty($user) && $transaction->successful()) {
             $emailInfo= array(
                 'greeting' => "Dear, {$user->name}",
                 'body'     => "Thank you for making payment of Rs.{$status['amount']}. Please note that payment is subject to realization and will reflect in your account in the next 24 working hours."
