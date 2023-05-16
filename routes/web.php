@@ -601,6 +601,14 @@ Route::group([
     })->name('profileupdate');
 
     Route::POST('/updateme', [HomeController::class , 'updateMyProfile'])->name('updateme');
+
+    //HDFC call route
+    Route::post('paywithhdfc', ['as' => 'paywithhdfc', 'uses' => 'PaymentController@PayWithHdfc']);
+
+    //HDFC Status route
+    //Route::post('payment/status', ['as' => 'paywithhdfc.status', 'uses' => 'PaymentController@status'])
+
+
 });
 
 

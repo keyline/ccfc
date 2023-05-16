@@ -13,6 +13,7 @@ use Tzsk\Payu\Facades\Payu;
 use Tzsk\Pay\Models\PayuTransaction;
 use App\Notifications\PayUEmailNotification;
 use Notification;
+use App\PaymentGateways\PaymentGatewayInterface;
 
 class PaymentController extends Controller
 {
@@ -70,5 +71,11 @@ class PaymentController extends Controller
         }
 
         return view('member.paymentstatus', compact('status'));
+    }
+
+    public function PayWithHdfc(PaymentGatewayInterface $hdfcPaymentService, Request $request)
+    {
+            //$hdfcPaymentService->processPayment(100);
+            dd($request);
     }
 }

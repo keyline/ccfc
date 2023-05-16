@@ -119,7 +119,20 @@
                                             <input type="text" name="amount" placeholder="Enter amount being paid">
                                         </div>
                                         <div class="invoicepayment_paybtn">
-                                            <button type="submit">Pay Now</button>
+                                            <button type="submit">Pay Now (PayU)</button>
+                                        </div>
+                                </form>
+
+                                <form action="{{ route('member.paywithhdfc')}}" method="POST">
+                                    @csrf
+                                    <div class="invoicepayment_box">
+
+                                        <div class="invoicepayment_input">
+
+                                            <input type="text" name="amount" placeholder="Enter amount being paid">
+                                        </div>
+                                        <div class="invoicepayment_paybtn">
+                                            <button type="submit">Pay Now (HDFC)</button>
                                         </div>
                                 </form>
 
