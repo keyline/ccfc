@@ -2,18 +2,10 @@
 //app/PaymentGateways/HdfcPayment.php
 namespace App\PaymentGateways;
 use App\PaymentGateways\PaymentGatewayInterface;
-use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Str;
 
 class HdfcPayment implements PaymentGatewayInterface
 {
-    /**
-     * invoice's unique universal id (uuid)
-     *
-     * @var string
-     */
-    protected $uuid;
-
 
     public function processPayment($amount){
         $data= [
@@ -26,7 +18,7 @@ class HdfcPayment implements PaymentGatewayInterface
             'custMobile'    => $user->mobileNo ?? '8910649429',
             'udf1'          => $user->somedetails ?? 'NA',
             'udf2'          => $user->somedata ?? 'NA',
-            'returnURL'     => route('hdfc.payment.status'),
+            'returnURL'     => route('member.paywithhdfc.status'),
            'productId'      => 'DEFAULT',
            'channelId'      => 0,
            'isMultiSettlement' => 0,

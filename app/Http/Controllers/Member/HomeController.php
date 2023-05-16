@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Storage;
 use File;
 use Response;
 use Auth;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Log;
 
 use pcrov\JsonReader\JsonReader;
 
@@ -139,35 +141,18 @@ class HomeController extends Controller
 
     public function invoice()
     {
-        $user = User::with('userCodeUserDetails')->find(session('LoggedMember'))->first();
+        try {
+            $user = User::with('userCodeUserDetails')->find(session('LoggedMember'))->first();
 
-        // dd($userProfile);
+            $token= "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
 
-        // $user = User::where('id', '=', session('LoggedMember'))->first();
-
-        // $data= ['LoggedMemberInfo' => $user];
-
-        //get member profile
-        //$token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
-        $token= "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
-
-        $fields= [
+            $fields= [
             'MCODE' => $user->user_code
-        ];
+            ];
 
-        $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+            $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
-        //dd(openssl_get_cert_locations());
-
-
-        $profile = Http::withoutVerifying()
-                    ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                                    'Content-Type' => 'application/json',])
-                    ->withOptions(["verify"=>false])
-                    ->post($url)->json()['data'];
-
-
-        $transactionFields= [
+            $transactionFields= [
             'MCODE'     => $user->user_code,
             'FromDate'  => '01-apr-2020',
             'ToDate'    => '01-jun-2021',
@@ -187,6 +172,42 @@ class HomeController extends Controller
             // 'userProfile'       => $profile,
             'userTransactions'  => $transactions,
         ]);
+
+        } catch (RequestException $e) {
+            //throw $th;
+            // Handle the timeout exception
+            Log::error('Request timed out: ' . $e->getMessage());
+            return view('member.dashboard_local', [
+            // 'userData'          => $data,
+            'userProfile'       => $user,
+            // 'userTransactions'  => $transactions,
+            ]);
+        }
+        
+
+        // dd($userProfile);
+
+        // $user = User::where('id', '=', session('LoggedMember'))->first();
+
+        // $data= ['LoggedMemberInfo' => $user];
+
+        //get member profile
+        //$token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+        
+
+        
+
+        //dd(openssl_get_cert_locations());
+
+
+        // $profile = Http::withoutVerifying()
+        //             ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+        //                             'Content-Type' => 'application/json',])
+        //             ->withOptions(["verify"=>false])
+        //             ->post($url)->json()['data'];
+
+
+        
     }
 
     /**
