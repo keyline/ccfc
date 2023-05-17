@@ -606,7 +606,9 @@ Route::group([
     Route::post('paywithhdfc', ['as' => 'paywithhdfc', 'uses' => 'PaymentController@PayWithHdfc']);
 
     //HDFC Status route
-    //Route::post('payment/status', ['as' => 'paywithhdfc.status', 'uses' => 'PaymentController@status'])
+    Route::post('payment/hdfcstatus', ['as' => 'paywithhdfc.status', 'uses' => 'PaymentController@statusForHdfc']);
+
+    Route::get('payment/others/status', ['as' => 'paymentstatusotherpgs', 'uses' => 'PaymentController@showPaymentStatus']);
 
 
 });

@@ -75,7 +75,36 @@ class PaymentController extends Controller
 
     public function PayWithHdfc(PaymentGatewayInterface $hdfcPaymentService, Request $request)
     {
-            $hdfcPaymentService->processPayment(100);
+            $data= $hdfcPaymentService->processPayment(100);
+            //dd($data);
+            return view('member.hdfcredirectform', $data);
             //dd($request);
     }
+
+    public function statusForHdfc(PaymentGatewayInterface $hdfcPaymentService, Request $request)
+    {
+        //respData;
+        //dd($_POST);
+        $paymentStatus = $request->input('respData');
+        $status= $hdfcPaymentService->verifyPayment($paymentStatus);
+        //dd($status);
+        if(!empty($status)){
+            if(array_key_exists('error', $status)){
+
+
+            }else{
+                //send payment notification to user
+            }
+            return view('member.paymentstatusotherpgs', compact('status'));
+        }
+    }
+
+    public function showPaymentStatus(Request $request)
+	{
+		$data = $request->session()->get('data');
+
+		return view('member.paymentstatusotherpgs', compact('data'));
+
+
+	}
 }
