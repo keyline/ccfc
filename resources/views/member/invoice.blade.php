@@ -146,7 +146,7 @@
                                             <input type="text" name="amount" id="amount" placeholder="Enter amount being paid">
                                         </div>
                                         <div class="invoicepayment_paybtn">
-                                            <button type="submit" >Pay Now (AxisPG)</button>
+                                            <button type="submit" id ="rzp-button1">Pay Now (AxisPG)</button>
                                         </div>
                                 </form>
 

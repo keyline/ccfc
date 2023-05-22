@@ -612,9 +612,9 @@ Route::group([
 
 
     #Axis-Razor Pay staus route
-    Route::post('payment/axisstatus', ['as'=> 'axisstatus', 'uses'=>'App\Http\Controllers\PaymentController@callback']);
+    Route::post('payment/axisstatus', ['as'=> 'axisstatus', 'uses'=>'PaymentController@callback']);
     ##Axis-Razor Pay checkout route
-    Route::post('payment/axischeckout', [ 'as' => 'axischeckout', 'uses'=>'App\Http\Controllers\PaymentController@checkout']);
+    Route::post('payment/axischeckout', [ 'as' => 'axischeckout', 'uses'=>'PaymentController@checkout']);
 
 
 });

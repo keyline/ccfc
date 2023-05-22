@@ -15,6 +15,8 @@ use App\Notifications\PayUEmailNotification;
 use Notification;
 use App\PaymentGateways\PaymentGatewayInterface;
 use Razorpay\Api\Api;
+use Razorpay\Api\Errors\SignatureVerificationError;
+use Illuminate\Support\Str;
 
 class PaymentController extends Controller
 {
@@ -100,38 +102,67 @@ class PaymentController extends Controller
         }
     }
 
-    public function showPaymentStatus(Request $request)
-	{
-		$data = $request->session()->get('data');
-
-		return view('member.paymentstatusotherpgs', compact('data'));
-
-
-	}
-
     public function callback(Request $request)
     {
+        $input = $request->all();
+
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
 
         // Process the payment callback logic here
+        $payment = $api->payment->fetch($input['razorpay_payment_id']);
 
-        return response()->json(['success' => true]);
+        if(count($input)  && !empty($input['razorpay_payment_id'])) {
+
+            try
+                {
+                    // Please note that the razorpay order ID must
+                    // come from a trusted source (session here, but
+                    // could be database or something else)
+                    $attributes = array(
+                        'razorpay_order_id' => $payment->order_id,
+                        'razorpay_payment_id' => $input['razorpay_payment_id'],
+                        'razorpay_signature' => $input['razorpay_signature']
+                    );
+
+                    $api->utility->verifyPaymentSignature($attributes);
+
+                    $status= ['status' => 'success', 'transactionid'=> $input['razorpay_payment_id']];
+
+                    
+
+                    
+                }
+                catch(SignatureVerificationError $e)
+                {
+                    $status= ['status' => 'Failed', 'message' => $e->getMessage()];
+
+                    
+                }
+
+        }
+
+        return view('member.paymentstatusotherpgs', compact('status'));
+
+        //Session::put('success', 'Payment successful');
+        //dd([$payment, $input]);
+        //return redirect()->back();
+
+        //return response()->json(['success' => true]);
     }
 
     public function checkout(Request $request)
     {
-        $api = new Api(env('RAZORPAY_KEY'), config('RAZORPAY_SECRET'));
+        $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
 
         $order = $api->order->create([
-            'receipt' => 'order_receipt', // Replace with your own unique identifier for the order
-            'amount' => $request->axis_amount, // Replace with the actual amount from your form or request
+            'receipt' => 'ord_axis_' . Str::random(10), // Replace with your own unique identifier for the order
+            'amount' => $request->amount * 100, // Replace with the actual amount from your form or request
             'currency' => 'INR', // Replace with your desired currency
             'payment_capture' => 1,
         ]);
-
         // Store the order ID or other necessary details in your database for future reference
 
-        return view('payment.checkout', ['order' => $order]);
+        return view('member.axisredirectform', ['order' => $order]);
     }
 
 }
