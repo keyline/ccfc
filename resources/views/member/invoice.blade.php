@@ -136,6 +136,21 @@
                                         </div>
                                 </form>
 
+                                <form action="{{ route('member.axischeckout')}}" method="POST">
+                                @csrf
+                                
+                                <div class="invoicepayment_box">
+
+                                        <div class="invoicepayment_input">
+
+                                            <input type="text" name="amount" id="amount" placeholder="Enter amount being paid">
+                                        </div>
+                                        <div class="invoicepayment_paybtn">
+                                            <button type="submit" >Pay Now (AxisPG)</button>
+                                        </div>
+                                </form>
+
+
                             </div>
 
                         </div>

@@ -611,6 +611,12 @@ Route::group([
     Route::get('payment/others/status', ['as' => 'paymentstatusotherpgs', 'uses' => 'PaymentController@showPaymentStatus']);
 
 
+    #Axis-Razor Pay staus route
+    Route::post('payment/axisstatus', ['as'=> 'axisstatus', 'uses'=>'App\Http\Controllers\PaymentController@callback']);
+    ##Axis-Razor Pay checkout route
+    Route::post('payment/axischeckout', [ 'as' => 'axischeckout', 'uses'=>'App\Http\Controllers\PaymentController@checkout']);
+
+
 });
 
 
