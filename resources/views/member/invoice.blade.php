@@ -123,31 +123,19 @@
                                         </div>
                                 </form>
 
-                                <form action="{{ route('member.axisstatus')}}" method="POST">
+                                <form action="{{ route('member.axischeckout')}}" method="POST">
                                 @csrf
-                                <script
-                                    src="https://checkout.razorpay.com/v1/checkout.js"
-                                    data-key="{{ env('RAZORPAY_KEY') }}"
-                                    data-amount="$('input[name='axis_amount']').val()" {{-- Replace with your actual amount --}}
-                                    data-currency="INR" {{-- Replace with your desired currency --}}
-                                    data-buttontext="Pay Now"
-                                    data-name="CALCUTTA CRICKET & FOOTBALL CLUB"
-                                    data-description="Member Payment"
-                                    data-image="{{ asset('path/to/your/logo.png') }}" {{-- Replace with your logo image URL --}}
-                                    data-prefill.name="John Doe"
-                                    data-prefill.email="john.doe@example.com"
-                                    data-theme.color="#F37254" {{-- Replace with your desired color --}}
-                                ></script>
+                                
                                 <div class="invoicepayment_box">
 
                                         <div class="invoicepayment_input">
 
-                                            <input type="text" name="axis_amount" placeholder="Enter amount being paid">
+                                            <input type="text" name="amount" id="amount" placeholder="Enter amount being paid">
                                         </div>
                                         <div class="invoicepayment_paybtn">
-                                            <button type="submit">Pay Now</button>
+                                            <button type="submit" >Pay Now (AxisPG)</button>
                                         </div>
-                            </form>
+                                </form>
 
 
                             </div>
