@@ -601,6 +601,12 @@ Route::group([
     })->name('profileupdate');
 
     Route::POST('/updateme', [HomeController::class , 'updateMyProfile'])->name('updateme');
+    #Axis-Razor Pay staus route
+    Route::post('payment/axisstatus', ['as'=> 'axisstatus', 'uses'=>'App\Http\Controllers\PaymentController@callback']);
+    ##Axis-Razor Pay checkout route
+    Route::post('payment/axischeckout', [ 'as' => 'axischeckout', 'uses'=>'App\Http\Controllers\PaymentController@checkout']);
+
+
 });
 
 

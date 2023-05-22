@@ -13,6 +13,7 @@ use Tzsk\Payu\Facades\Payu;
 use Tzsk\Pay\Models\PayuTransaction;
 use App\Notifications\PayUEmailNotification;
 use Notification;
+use Razorpay\Api\Api;
 
 class PaymentController extends Controller
 {
@@ -71,4 +72,30 @@ class PaymentController extends Controller
 
         return view('member.paymentstatus', compact('status'));
     }
+
+    public function callback(Request $request)
+    {
+        $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
+
+        // Process the payment callback logic here
+
+        return response()->json(['success' => true]);
+    }
+
+    public function checkout(Request $request)
+    {
+        $api = new Api(env('RAZORPAY_KEY'), config('RAZORPAY_SECRET'));
+
+        $order = $api->order->create([
+            'receipt' => 'order_receipt', // Replace with your own unique identifier for the order
+            'amount' => $request->axis_amount, // Replace with the actual amount from your form or request
+            'currency' => 'INR', // Replace with your desired currency
+            'payment_capture' => 1,
+        ]);
+
+        // Store the order ID or other necessary details in your database for future reference
+
+        return view('payment.checkout', ['order' => $order]);
+    }
+
 }
