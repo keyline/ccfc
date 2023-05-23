@@ -17,10 +17,14 @@ use Log;
 
 class MemberProfileUpdate implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     public $user_code;
-    private $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+    //private $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+    private $token= "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
 
 
     /**
@@ -51,7 +55,7 @@ class MemberProfileUpdate implements ShouldQueue
         'headers'=> ['Authorization' =>'Bearer '. $this->token,'Accept'     => 'application/json'],
             'query' => [
                 'MCODE' => $user->user_code,
-                
+
             ]
         ]);
             // echo $res->getStatusCode();
@@ -67,7 +71,7 @@ class MemberProfileUpdate implements ShouldQueue
 JSON;
 
             $reader = new JsonReader();
-       
+
             $reader->json($teststr);
 
 
@@ -82,7 +86,7 @@ JSON;
             $memberemail=$reader->value();
 
 
-       
+
             // var_dump($reader->value());
 
 
@@ -93,11 +97,11 @@ JSON;
             // $fields= [
             //      'MCODE' => $request->code
             //    ];
-   
+
             // $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
-       
-          
+
+
 
             // $profile = Http::withoutVerifying()
             //        ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
@@ -117,6 +121,8 @@ JSON;
 
             $user->email=$memberemail;
 
+            $user->name= $profile['MEMBER_NAME']; //added on 08/05/2023
+
             $user->phone_number_1 = (preg_match('/^[0-9]{10}+$/', $profile['MOBILENO'])) ? $profile['MOBILENO'] : "";
 
             $user->status= $profile['CURENTSTATUS']; //saving member status
@@ -124,7 +130,7 @@ JSON;
 
             if ($user->save()) {
                 $userInformation = UserDetail::where('user_code_id', $user->id)->first();
-            
+
                 // $memberbase64 = "data:image/png". ";base64," . base64_encode($profile['MemberImage']);
 
                 $memberbase64 =$profile['MemberImage'];
@@ -152,7 +158,7 @@ JSON;
                         } else {
                             // break;
                         }
-                
+
                         //Save the second child
                         if (!empty($profile['children'][$i]) && $i == 1) {
                             $child2_name = $profile['children'][$i]['CHILDREN1_NAME'];
@@ -165,7 +171,7 @@ JSON;
                         } else {
                             // break;
                         }
-                
+
                         //Save the Third child
                         if (!empty($profile['children'][$i]) && $i == 2) {
                             $child3_name = $profile['children'][$i]['CHILDREN1_NAME'];
@@ -292,7 +298,7 @@ JSON;
                     $userInformation->business_phone_2= $profile['PHONE2'];
                     $userInformation->business_email= $profile['BUSINESS_EMAIL'];
                     $userInformation->spouse_name= $profile['SPOUSE_NAME'];
-                
+
                     $userInformation->spouse_dob=date("d-m-Y", strtotime($profile['SPOUSE_DOB']));
 
                     $userInformation->spouse_sex= $profile['SEX'];

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Member;
 
+use Illuminate\Support\Facades\App;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Storage;
 use File;
 use Response;
 use Auth;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Log;
 
 use pcrov\JsonReader\JsonReader;
 
@@ -53,17 +57,17 @@ class HomeController extends Controller
 
         if (Auth::attempt(['user_code'=>$request->email,'password'=>$request->password])) {
             $request->session()->put('LoggedMember', ['id' => $userInfo->id, 'name'=> $userInfo->name]);
-
+            //dd($userDetailsInfo);
             //Check if fetching member data has been done or not
             if (!$userDetailsInfo || is_null($userDetailsInfo->current_status)) {
                 $request->session()->put('firstMemberUpdate', ['usercode' => $userInfo->user_code]);
                 return redirect()->route('member.profileupdate', $userInfo->user_code);
             }
-            
-            //return redirect('member/dashboard');
-            return redirect()->route('member.profileupdate', $userInfo->user_code);
+
+            return redirect('member/dashboard');
+            //return redirect()->route('member.profileupdate', $userInfo->user_code);
         }
-        
+
         return back()->withErrors(['password' => ['Password is incorrect']]);
     }
 
@@ -77,8 +81,6 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-            
-
         // $user = User::where('id', '=', session('LoggedMember'))->first();
 
         $user = User::with('userCodeUserDetails')->find(session('LoggedMember'));
@@ -88,16 +90,16 @@ class HomeController extends Controller
         // $userdetails = $user->userCodeUserDetails()->get();
 
         // dd($userdetails);
-       
+
         // $data= ['LoggedMemberInfo' => $userdetails];
-        
+
         //get member profile
         // $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
 
         // $fields= [
         //     'MCODE' => $user->user_code
         // ];
-        
+
         // $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
         //dd(openssl_get_cert_locations());
@@ -123,12 +125,12 @@ class HomeController extends Controller
         //                             'Content-Type' => 'application/json',])
         //             ->withOptions(["verify"=>false])
         //             ->post($tansactionUrl)->json()['data'];
-        
+
         //dd($transactions);
 
-        
 
-           
+
+
         return view('member.dashboard_local', [
             // 'userData'          => $data,
             'userProfile'       => $user,
@@ -139,34 +141,18 @@ class HomeController extends Controller
 
     public function invoice()
     {
-        $user = User::with('userCodeUserDetails')->find(session('LoggedMember'))->first();
+        try {
+            $user = User::with('userCodeUserDetails')->find(session('LoggedMember'))->first();
 
-        // dd($userProfile);
+            $token= "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
 
-        // $user = User::where('id', '=', session('LoggedMember'))->first();
-
-        // $data= ['LoggedMemberInfo' => $user];
-        
-        //get member profile
-        $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
-
-        $fields= [
+            $fields= [
             'MCODE' => $user->user_code
-        ];
-        
-        $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+            ];
 
-        //dd(openssl_get_cert_locations());
+            $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
-
-        $profile = Http::withoutVerifying()
-                    ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                                    'Content-Type' => 'application/json',])
-                    ->withOptions(["verify"=>false])
-                    ->post($url)->json()['data'];
-
-
-        $transactionFields= [
+            $transactionFields= [
             'MCODE'     => $user->user_code,
             'FromDate'  => '01-apr-2020',
             'ToDate'    => '01-jun-2021',
@@ -179,13 +165,49 @@ class HomeController extends Controller
                                     'Content-Type' => 'application/json',])
                     ->withOptions(["verify"=>false])
                     ->post($tansactionUrl)->json()['data'];
-        
-                   
+
+
         return view('member.invoice', [
             'userData'          => $user,
             // 'userProfile'       => $profile,
             'userTransactions'  => $transactions,
         ]);
+
+        } catch (RequestException $e) {
+            //throw $th;
+            // Handle the timeout exception
+            Log::error('Request timed out: ' . $e->getMessage());
+            return view('member.dashboard_local', [
+            // 'userData'          => $data,
+            'userProfile'       => $user,
+            // 'userTransactions'  => $transactions,
+            ]);
+        }
+        
+
+        // dd($userProfile);
+
+        // $user = User::where('id', '=', session('LoggedMember'))->first();
+
+        // $data= ['LoggedMemberInfo' => $user];
+
+        //get member profile
+        //$token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+        
+
+        
+
+        //dd(openssl_get_cert_locations());
+
+
+        // $profile = Http::withoutVerifying()
+        //             ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+        //                             'Content-Type' => 'application/json',])
+        //             ->withOptions(["verify"=>false])
+        //             ->post($url)->json()['data'];
+
+
+        
     }
 
     /**
@@ -201,16 +223,16 @@ class HomeController extends Controller
     public function download(Request $request, $month, $year, $fileName)
     {
         $month =strtoupper($month);
-        
+
         //$pathToFile = storage_path("app\\" . SearchInvoicePdf::$basepath . implode("\\", ["{$month}_{$year}", $fileName]));
 
         //$base_path_mod = str_replace('\\', '/', $pathToFile);
-        
+
         //return response()->download($pathToFile);
         // Download file with custom headers
         $testPath= SearchInvoicePdf::$basepath . implode("/", ["{$month}_{$year}", $fileName]);
-        
-        
+
+
         if (Storage::disk('local')->exists($testPath)) {
             $path= Storage::disk('local')->path($testPath);
 
@@ -228,7 +250,8 @@ class HomeController extends Controller
     {
         $user = User::where('user_code', '=', $request->user_code)->first();
 
-        $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+        //$token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
+        $token="N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
 
 
         $client = new Client(['verify' => false]);
@@ -236,7 +259,7 @@ class HomeController extends Controller
         'headers'=> ['Authorization' =>'Bearer '. $token,'Accept'     => 'application/json'],
             'query' => [
                 'MCODE' => $user->user_code,
-                
+
             ]
         ]);
         // echo $res->getStatusCode();
@@ -252,7 +275,7 @@ class HomeController extends Controller
 JSON;
 
         $reader = new JsonReader();
-       
+
         $reader->json($teststr);
 
 
@@ -267,7 +290,7 @@ JSON;
         $memberemail=$reader->value();
 
 
-       
+
         // var_dump($reader->value());
 
 
@@ -286,7 +309,7 @@ JSON;
 
         if ($user->save()) {
             $userInformation = UserDetail::where('user_code_id', $user->id)->first();
-            
+
             // $memberbase64 = "data:image/png". ";base64," . base64_encode($profile['MemberImage']);
 
             $memberbase64 =$profile['MemberImage'];
@@ -314,7 +337,7 @@ JSON;
                     } else {
                         // break;
                     }
-                
+
                     //Save the second child
                     if (!empty($profile['children'][$i]) && $i == 1) {
                         $child2_name = $profile['children'][$i]['CHILDREN1_NAME'];
@@ -327,7 +350,7 @@ JSON;
                     } else {
                         // break;
                     }
-                
+
                     //Save the Third child
                     if (!empty($profile['children'][$i]) && $i == 2) {
                         $child3_name = $profile['children'][$i]['CHILDREN1_NAME'];
@@ -453,7 +476,7 @@ JSON;
                 $userInformation->business_phone_2= $profile['PHONE2'];
                 $userInformation->business_email= $profile['BUSINESS_EMAIL'];
                 $userInformation->spouse_name= $profile['SPOUSE_NAME'];
-                
+
                 $userInformation->spouse_dob=date("d-m-Y", strtotime($profile['SPOUSE_DOB']));
 
                 $userInformation->spouse_sex= $profile['SEX'];

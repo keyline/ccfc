@@ -602,6 +602,22 @@ Route::group([
     })->name('profileupdate');
 
     Route::POST('/updateme', [HomeController::class , 'updateMyProfile'])->name('updateme');
+
+    //HDFC call route
+    Route::post('paywithhdfc', ['as' => 'paywithhdfc', 'uses' => 'PaymentController@PayWithHdfc']);
+
+    //HDFC Status route
+    Route::post('payment/hdfcstatus', ['as' => 'paywithhdfc.status', 'uses' => 'PaymentController@statusForHdfc']);
+
+    Route::get('payment/others/status', ['as' => 'paymentstatusotherpgs', 'uses' => 'PaymentController@showPaymentStatus']);
+
+
+    #Axis-Razor Pay staus route
+    Route::post('payment/axisstatus', ['as'=> 'axisstatus', 'uses'=>'PaymentController@callback']);
+    ##Axis-Razor Pay checkout route
+    Route::post('payment/axischeckout', [ 'as' => 'axischeckout', 'uses'=>'PaymentController@checkout']);
+
+
 });
 
 
