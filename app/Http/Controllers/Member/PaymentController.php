@@ -115,6 +115,12 @@ class PaymentController extends Controller
 
             }else{
                 //send payment notification to user
+                $user= User::find($status['user']);
+                $emailInfo= array(
+                'greeting' => "Dear, {$user->name}",
+                'body'     => "Thank you for making payment of Rs.{$status['amount']}. Please note that payment is subject to realization and will reflect in your account in the next 24 working hours."
+                );
+                Notification::send($user, new PayUEmailNotification($emailInfo));
             }
             return view('member.paymentstatusotherpgs', compact('status'));
         }
@@ -154,6 +160,19 @@ class PaymentController extends Controller
 
                             ]
                             );
+                    //find user
+                    $user= User::find($payment->notes->udf1);
+
+                    $amount= number_format($payment->amount/100, 2, '.', '');
+
+                    $emailInfo= array(
+                        'greeting' => "Dear, {$user->name}",
+                        'body'     => "Thank you for making payment of Rs.{ $amount }. Please note that payment is subject to realization and will reflect in your account in the next 24 working hours."
+                    );
+
+                    Notification::send($user, new PayUEmailNotification($emailInfo));
+                    
+                    
 
                     $status= ['status' => 'success', 'transactionid'=> $input['razorpay_payment_id']];
 

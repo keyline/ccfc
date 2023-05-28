@@ -115,6 +115,7 @@ class HdfcPayment implements PaymentGatewayInterface
         $parsedtxnstatus = $verificationResult->trans_status;
         $responseMessage = $verificationResult->resp_message;
 		$pgTransactionRef= $verificationResult->pg_ref_id;
+		$parsedUser= $verificationResult->udf1;
             		
 		$orderid=explode("_",$parsedtxnid);
 		$orderid=$orderid[0];
@@ -127,6 +128,7 @@ class HdfcPayment implements PaymentGatewayInterface
 					$data['status']= $status_msg;
 					$data['amount']= $parsedtxnamount;
 					$data['transactionid']= $parsedtxnid;
+					$data['user'] = $parsedUser;
 					return $data;
 					//$this->model_checkout_order->addOrderHistory($orderid, $this->config->get('payment_onepay_order_status_id'),'Payment Successful',true);
 					//$this->response->redirect($this->url->link('checkout/success', '', true));			

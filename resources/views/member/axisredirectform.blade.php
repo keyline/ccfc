@@ -86,7 +86,7 @@
     ></script>
             
 
-            <button type="submit">Click here</button>
+            <button type="submit" id="axis-pay">Click here</button>
         </form>
         <script>
             // Total seconds to wait
@@ -94,6 +94,7 @@
 
             function submitForm() {
                 //document.forms[0].submit();
+                document.getElementById("axis-pay").click();
             }
 
             function countdown() {
@@ -101,6 +102,7 @@
                 if (seconds <= 0) {
                     // submit the form
                     //submitForm();
+                    document.getElementById("axis-pay").click();
                 } else {
                     // Update remaining seconds
                     document.getElementById("countdown").innerHTML = seconds;
