@@ -79,13 +79,14 @@
         data-name="CALCUTTA CRICKET & FOOTBALL CLUB"
         data-description=""
         data-image="{{ asset('img/logo.png') }}"
-        data-prefill.name="John Doe"
-        data-prefill.email="john.doe@example.com"
+        data-prefill.name="{{ $order->notes->name }}"
+        data-prefill.email="{{ $order->notes->email }}"
+        data-prefill.contact="{{ $order->notes->contact }}"
         data-theme.color="#F37254"
     ></script>
             
 
-            <button type="submit">Click here</button>
+            <button type="submit" id="axis-pay">Click here</button>
         </form>
         <script>
             // Total seconds to wait
@@ -93,6 +94,7 @@
 
             function submitForm() {
                 //document.forms[0].submit();
+                document.getElementById("axis-pay").click();
             }
 
             function countdown() {
@@ -100,6 +102,7 @@
                 if (seconds <= 0) {
                     // submit the form
                     //submitForm();
+                    document.getElementById("axis-pay").click();
                 } else {
                     // Update remaining seconds
                     document.getElementById("countdown").innerHTML = seconds;

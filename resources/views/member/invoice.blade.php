@@ -110,6 +110,40 @@
                                 @endif
                                 @endforeach
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
+                                <div class="invoice_outstading_payment">
+									<form action="" method="post" id="payment-form">
+                                        @csrf
+										<div class="invoice_input_bank">
+											<div class="invoice_input_feild">
+												<input type="text" name="amount" placeholder="Enter amount being paid">
+											</div>
+											<div class="invoice_btn_bank">
+												<button type="submit" class="pg-btns" data-provider="payu" data-href="{{ route('member.payment') }}">Pay Now (PayU)</button>
+												<button type="submit" class="pg-btns" data-provider="hdfc" data-href="{{ route('member.paywithhdfc') }}">Pay Now (HDFC)</button>
+												<button type="submit" class="pg-btns" data-provider="axis" data-href="{{ route('member.axischeckout') }}">Pay Now (AxisPG)</button>
+											</div>
+										</div>
+									</form>
+								</div>
+                                <script>
+                                    let buttons = document.querySelectorAll('.pg-btns');
+                                    var displayBox = document.querySelector('.invoice_input_feild');
+
+                                    // wire displayGreeting function to each button with .js-say-hi class
+                                        for (var i=0; i<buttons.length; i++) {
+                                        buttons[i].addEventListener('click', changeFrmAction)
+                                        }
+
+                                        function changeFrmAction(event) {
+                                            event.preventDefault();
+  let buttonNumber = event.target.getAttribute("data-href");
+  let myForm = document.getElementById('payment-form');
+  myForm.action= buttonNumber;
+  myForm.submit();
+  //displayBox.textContent += 'hello from button ' + buttonNumber + '! ';  
+}
+                                    </script>
+                                <div style="display: none">
                                 <form action="{{ route('member.payment')}}" method="POST">
                                     @csrf
                                     <div class="invoicepayment_box">
@@ -149,6 +183,7 @@
                                             <button type="submit" id ="rzp-button1">Pay Now (AxisPG)</button>
                                         </div>
                                 </form>
+                            </div>
 
 
                             </div>
