@@ -5,11 +5,15 @@ use App\PaymentGateways\PaymentGatewayInterface;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Carbon;
 
 class HdfcPayment implements PaymentGatewayInterface
 {
+	
 
-    public function processPayment($amount){
+    public function processPayment($amount, $user){
 
         if (env('HDFC_MODE') == 'LIVE') {
     		$url = 'https://pay.1paypg.in/payone/';
@@ -22,10 +26,10 @@ class HdfcPayment implements PaymentGatewayInterface
         $data['txnId']              = Str::random(10);
         $data['amount']             = sprintf("%.2f", $amount);
         $data['dateTime']           = date('Y-m-d h:i:s');
-        $data['custMail']           = $user->email ?? 'test@test.com';
-        $data['custMobile']         = $user->mobileNo ?? '9876543210';
-        $data['udf1']               = $user->somedetails ?? 'NA';
-        $data['udf2']               = $user->somedata ?? 'NA';
+        $data['custMail']           = $user->email ?? '';
+        $data['custMobile']         = $user->phone_number_1 ?? '';
+        $data['udf1']               = $user->id ?? 'NA';
+        $data['udf2']               = $user->user_code ?? 'NA';
         $data['returnURL']          = route('member.paywithhdfc.status');
         $data['productId']          = 'DEFAULT';
         $data['channelId']          = 0;
@@ -45,6 +49,10 @@ class HdfcPayment implements PaymentGatewayInterface
 
 
         $data['action']             = $url;
+
+		$this->storePayment($data);
+
+		Session::put('hdfcTransactionId', $data['txnId']);
 
         //return view('member.hdfcredirectform', $data);
 		return $data;
@@ -110,7 +118,7 @@ class HdfcPayment implements PaymentGatewayInterface
             		
 		$orderid=explode("_",$parsedtxnid);
 		$orderid=$orderid[0];
-
+		$this->updatePaymentStatus($verificationResult, json_decode($this->get_decrypt($resData), true));
         if (($responseMessage === 'Transaction Successful.') && ($parsedtxnstatus !== 'NA')) {
 		// if(($txnid == $parsedtxnid )&& ($txnamount == $parsedtxnamount) && ($merchantid == $parsedmerchantid)){
 			$vmessage = "Verified Transaction";
@@ -167,4 +175,47 @@ class HdfcPayment implements PaymentGatewayInterface
 					// }
 		}
     }
+
+	private function storePayment($params=[])
+	{
+		if(!empty($params)){
+
+		
+		DB::table('payu_transactions')->insert([
+    	'paid_for_id' => $params['udf1'],
+    	'paid_for_type' => 'App\Models\User',
+    	'transaction_id' => $params['txnId'],
+		'gateway'		=> 'HDFC VAS',
+		'body'			=> serialize($params),
+		'destination'	=> route('member.paywithhdfc.status'),
+		'hash'			=> $params['enc'],
+		'response'		=> '',
+		'status'		=> 'pending',
+		'created_at'	=> Carbon::now('Asia/Kolkata'),
+		'updated_at'	=> Carbon::now('Asia/Kolkata'),
+
+		]);
+	}
+
+	}
+
+	private function updatePaymentStatus($params=[], $response)
+	{
+		if(!empty($params))
+		{
+			DB::table('payu_transactions')
+				->where('transaction_id', Session::get('hdfcTransactionId'))
+				->update(
+					[
+						'response' => $response,
+						'status'	=> ($params->trans_status =='Ok') ? 'successful' : (($params->trans_status == 'To') ? 'failed' : 'invalid'),
+						'updated_at' => Carbon::now('Asia/Kolkata'),
+
+					]
+					);
+		}
+
+	}
+
+	
 }

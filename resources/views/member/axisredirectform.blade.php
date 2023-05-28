@@ -79,8 +79,9 @@
         data-name="CALCUTTA CRICKET & FOOTBALL CLUB"
         data-description=""
         data-image="{{ asset('img/logo.png') }}"
-        data-prefill.name="John Doe"
-        data-prefill.email="john.doe@example.com"
+        data-prefill.name="{{ $order->notes->name }}"
+        data-prefill.email="{{ $order->notes->email }}"
+        data-prefill.contact="{{ $order->notes->contact }}"
         data-theme.color="#F37254"
     ></script>
             

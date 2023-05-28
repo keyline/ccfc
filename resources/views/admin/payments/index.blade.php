@@ -48,7 +48,7 @@
                 <tbody>
                     @foreach($payments as $key => $user)
                     @foreach($user as $payment)
-                    
+                    @php $gateway= basename(parse_url($payment->destination, PHP_URL_PATH)); @endphp
                     @php $userDetails= \App\Models\User::select('*')->where('id', '=', $payment->paid_for_id)->first();@endphp
                     
                         <tr data-entry-id="{{ $payment->paid_for_id }}">
@@ -61,16 +61,17 @@
                                 {{ $userDetails->name ?? ''}} {{ $userDetails->user_code ?? '' }}
                             </td>
                             <td>
-                                {{ $payment->response('amount') ?? '' }}
+                                {{ ($gateway == 'status') ? number_format($payment->response('amount'), 2, '.', '') : ($gateway == 'axisstatus' ? number_format($payment->response('amount')/100, 2, '.', '') : number_format($payment->response('txn_amount'), 2, '.', '')) }}
                             </td>
                             <td>
-                                {{ $payment->gateway_name ?? 'PayU Money' }}
+                                {{ ( $gateway == 'status') ? 'PayUMoney' : ($gateway == 'axisstatus' ? 'AXIS' : 'HDFC') }}
+                                
                             </td>
                             <td>
                                 {{ $payment->response('comment') ?? '' }}
                             </td>
                             <td>
-                                {{ $payment->response('status') ?? '' }}
+                                {{ ( $gateway == 'status') ? $payment->response('status') : $payment->status }}
                             </td>
                             <td>{{ $payment->updated_at ?? '' }}</td>
                             <td>
