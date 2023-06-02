@@ -138,13 +138,17 @@ class HdfcPayment implements PaymentGatewayInterface
 					$status_msg = "Sorry!!Your Transaction is Timed Out";
 					$data['status']= $status_msg;
 					$data['transactionid']=$pgTransactionRef;
+					$data['amount']= $parsedtxnamount;
 					$data['error'] = true;
+					$data['user'] = $parsedUser;
 				}
 				else{
 					$status_msg = "Transaction Failed";
 					$data['status']= $status_msg;
 					$data['transactionid']=$pgTransactionRef;
 					$data['error'] = true;
+					$data['user'] = $parsedUser;
+					$data['amount']= $parsedtxnamount;
 				}
 				return $data;
 		}
@@ -158,6 +162,7 @@ class HdfcPayment implements PaymentGatewayInterface
 					$data['error']= true;
 					$data['transactionid']=$pgTransactionRef;
 					$data['status'] = $status_msg;
+					$data['amount']= $parsedtxnamount;
 					return $data;
 					//return redirect()->route('member.paymentstatusotherpgs')->with('data', $data);
 					// }
@@ -210,7 +215,7 @@ class HdfcPayment implements PaymentGatewayInterface
 				->update(
 					[
 						'response' => $response,
-						'status'	=> ($params->trans_status =='Ok') ? 'successful' : (($params->trans_status == 'To') ? 'failed' : 'invalid'),
+						'status'	=> ($params->trans_status =='Ok') ? 'successful' : (($params->trans_status === 'To' || $params->trans_status === 'F') ? 'failed' : 'invalid'),
 						'updated_at' => Carbon::now('Asia/Kolkata'),
 
 					]

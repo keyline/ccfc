@@ -135,6 +135,8 @@ class PaymentController extends Controller
         // Process the payment callback logic here
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
 
+        $amount= number_format($payment->amount/100, 2, '.', '');
+
         if(count($input)  && !empty($input['razorpay_payment_id'])) {
 
             try
@@ -163,7 +165,7 @@ class PaymentController extends Controller
                     //find user
                     $user= User::find($payment->notes->udf1);
 
-                    $amount= number_format($payment->amount/100, 2, '.', '');
+                    
 
                     $emailInfo= array(
                         'greeting' => "Dear, {$user->name}",
@@ -174,7 +176,7 @@ class PaymentController extends Controller
                     
                     
 
-                    $status= ['status' => 'success', 'transactionid'=> $input['razorpay_payment_id']];
+                    $status= ['status' => 'success', 'transactionid'=> $input['razorpay_payment_id'], 'amount' => $amount];
 
 
 
@@ -184,7 +186,7 @@ class PaymentController extends Controller
                 }
                 catch(SignatureVerificationError $e)
                 {
-                    $status= ['status' => 'Failed', 'message' => $e->getMessage()];
+                    $status= ['status' => 'Failed', 'message' => $e->getMessage(), 'amount' => $amount];
 
                     DB::table('payu_transactions')
 				        ->where('transaction_id', Session::get('axisTransactionId'))
