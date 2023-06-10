@@ -53,6 +53,7 @@ class HdfcPayment implements PaymentGatewayInterface
 		$this->storePayment($data);
 
 		Session::put('hdfcTransactionId', $data['txnId']);
+		Session::put('hdfcTransactionAmount', $data['amount']);
 
         //return view('member.hdfcredirectform', $data);
 		return $data;
@@ -87,9 +88,9 @@ class HdfcPayment implements PaymentGatewayInterface
 
     public function verifyPayment($response){
         if (env('HDFC_MODE') == 'LIVE') {
-    		$url = 'https://pay.1paypg.in/payone/';
+    		$url = 'https://pay.1paypg.in/payone/getTxnDetails';
 		} elseif (env('HDFC_MODE') == 'TEST') {
-			$url = 'https://onepaypgtest.in/onepayVAS/payprocessorV2';
+			$url = 'https://onepaypgtest.in/onepayVAS/';
 		}
 
         if (isset($response)) {
@@ -109,6 +110,9 @@ class HdfcPayment implements PaymentGatewayInterface
 
         //$verificationResult = $this->verify(array('respData'=>$resData,'url'=>$url));
     	$verificationResult= json_decode($this->get_decrypt($resData));
+		//Staus Query API call
+		$verificationResult= $this->statusQueryAPI(array('respData' => $verificationResult, 'url' => $url));
+		//dd($verificationResult);
         $parsedtxnid = $verificationResult->txn_id;
         $parsedmerchantid = $verificationResult->merchant_id;
         $parsedtxnamount = $verificationResult->txn_amount;
@@ -119,7 +123,7 @@ class HdfcPayment implements PaymentGatewayInterface
             		
 		$orderid=explode("_",$parsedtxnid);
 		$orderid=$orderid[0];
-		$this->updatePaymentStatus($verificationResult, json_decode($this->get_decrypt($resData), true));
+		$this->updatePaymentStatus($verificationResult);
         if (($responseMessage === 'Transaction Successful.') && ($parsedtxnstatus !== 'NA')) {
 		// if(($txnid == $parsedtxnid )&& ($txnamount == $parsedtxnamount) && ($merchantid == $parsedmerchantid)){
 			$vmessage = "Verified Transaction";
@@ -206,21 +210,58 @@ class HdfcPayment implements PaymentGatewayInterface
 
 	}
 
-	private function updatePaymentStatus($params=[], $response)
+	private function updatePaymentStatus($response=[])
 	{
-		if(!empty($params))
+		if(!empty($response) 
+		&& 
+		Session::get('hdfcTransactionId') === $response->txn_id
+		&&
+		Session::get('hdfcTransactionAmount') === $response->txn_amount
+		)
 		{
 			DB::table('payu_transactions')
 				->where('transaction_id', Session::get('hdfcTransactionId'))
 				->update(
 					[
-						'response' => $response,
-						'status'	=> ($params->trans_status =='Ok') ? 'successful' : (($params->trans_status === 'To' || $params->trans_status === 'F') ? 'failed' : 'invalid'),
+						'response' => json_decode(json_encode($response), true),
+						'status'	=> ($response->trans_status =='Ok') ? 'successful' : (($response->trans_status === 'To' || $response->trans_status === 'F') ? 'failed' : 'invalid'),
 						'updated_at' => Carbon::now('Asia/Kolkata'),
 
 					]
 					);
+		}else{
+			DB::table('payu_transactions')
+				->where('transaction_id', Session::get('hdfcTransactionId'))
+				->update(
+					[
+						'response' 	=> json_decode(json_encode($response), true),
+						'status'   	=> 'failed',
+						'updated_at'=> Carbon::now('Asia/Kolkata'),
+					]
+					);
 		}
+
+	}
+
+	private function statusQueryAPI($data=array()){
+		try {
+			$txnid = $data['respData']->txn_id;
+			$merchantid = $data['respData']->merchant_id;
+			$url = $data['url'] . 'getTxnDetails';
+			$postedFileds=[
+				'merchantId' => $merchantid,
+				'txnId'		 => $txnid
+			];
+
+			$tansactionUrl= $url .'?' . http_build_query($postedFileds);
+
+			$response= Http::post($tansactionUrl);
+
+			return json_decode($response);
+		} catch (\Throwable $th) {
+			throw $th;
+		}
+		
 
 	}
 
