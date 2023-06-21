@@ -26,7 +26,7 @@ class MemberDataCronController extends Controller
                             'MCODE' => $user->user_code,
             
                         ]
-                    ]);
+                    ]); 
             $respones=$res->getBody()->getContents();
             $teststr = <<< JSON
             {$respones}
