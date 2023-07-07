@@ -41,10 +41,21 @@ class UsersController extends Controller
     public function store(StoreUserRequest $request)
     {
         //dd($request);
-        $user = User::create($request->all());
-        $user->roles()->sync($request->input('roles', []));
+        //$user = User::create($request->all());
+        try {
+            
+            $user = User::create($request->all());
 
-        return redirect()->route('admin.users.index');
+            $user->roles()->sync($request->input('roles', []));
+
+            return redirect()->route('admin.users.index');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            //throw $th;
+            
+            //return redirect()->back()->with('error', $ex->getMessage());
+            return redirect()->back()->withErrors(['user_code' => ['Duplicate user code provided']])->withInput($request->except('password'));
+        }
+        
     }
 
     // public function edit(User $user)
