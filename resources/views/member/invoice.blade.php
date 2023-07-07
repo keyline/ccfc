@@ -111,89 +111,113 @@
                                 @endforeach
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
                                 <div class="invoice_outstading_payment">
-									<form action="" method="post" id="payment-form">
+									<form action="" method="POST" id="payment-form">
                                         @csrf
 										<div class="invoice_input_bank">
+											<div class="invocie_paymentlogo">
+												<ul>
+													<li>
+														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="{{ route('member.payment')}}">
+														<label class="form-check-label" for="exampleRadios1">
+															 <img class="img-fluid" src="{{ asset('img/invoice_payu_logo.png') }}" alt="" />
+														</label>
+													</li>
+													<li>
+														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="{{ route('member.paywithhdfc')}}">
+														<label class="form-check-label" for="exampleRadio2">
+															 <img class="img-fluid" src="{{ asset('img/invoice_hdfc_logo.jpg') }}" alt="" />
+														</label>
+													</li>
+													<li>
+														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="{{ route('member.axischeckout')}}">
+														<label class="form-check-label" for="exampleRadios3">
+															 <img class="img-fluid" src="{{ asset('img/invoice_axis_logo.jpg') }}" alt="" />
+														</label>
+													</li>
+												</ul>
+											</div>
 											<div class="invoice_input_feild">
 												<input type="text" name="amount" placeholder="Enter amount being paid">
+												<button type="submit" class="btn btn-primary">Pay Now</button>
 											</div>
+<!--
 											<div class="invoice_btn_bank">
 												<button type="submit" class="pg-btns" data-provider="payu" data-href="{{ route('member.payment') }}">Pay Now (PayU)</button>
 												<button type="submit" class="pg-btns" data-provider="hdfc" data-href="{{ route('member.paywithhdfc') }}">Pay Now (HDFC)</button>
 												<button type="submit" class="pg-btns" data-provider="axis" data-href="{{ route('member.axischeckout') }}">Pay Now (AxisPG)</button>
 											</div>
+-->	
+                                        <pre id="log"></pre>
 										</div>
 									</form>
 								</div>
-                                <script>
-                                    let buttons = document.querySelectorAll('.pg-btns');
-                                    var displayBox = document.querySelector('.invoice_input_feild');
-
-                                    // wire displayGreeting function to each button with .js-say-hi class
-                                        for (var i=0; i<buttons.length; i++) {
-                                        buttons[i].addEventListener('click', changeFrmAction)
-                                        }
-
-                                        function changeFrmAction(event) {
-                                            event.preventDefault();
-  let buttonNumber = event.target.getAttribute("data-href");
-  let myForm = document.getElementById('payment-form');
-  myForm.action= buttonNumber;
-  myForm.submit();
-  //displayBox.textContent += 'hello from button ' + buttonNumber + '! ';  
-}
-                                    </script>
-                                <div style="display: none">
-                                <form action="{{ route('member.payment')}}" method="POST">
-                                    @csrf
-                                    <div class="invoicepayment_box">
-
-                                        <div class="invoicepayment_input">
-
-                                            <input type="text" name="amount" placeholder="Enter amount being paid">
-                                        </div>
-                                        <div class="invoicepayment_paybtn">
-                                            <button type="submit">Pay Now (PayU)</button>
-                                        </div>
-                                </form>
-
-                                <form action="{{ route('member.paywithhdfc')}}" method="POST">
-                                    @csrf
-                                    <div class="invoicepayment_box">
-
-                                        <div class="invoicepayment_input">
-
-                                            <input type="text" name="amount" placeholder="Enter amount being paid">
-                                        </div>
-                                        <div class="invoicepayment_paybtn">
-                                            <button type="submit">Pay Now (HDFC)</button>
-                                        </div>
-                                </form>
-
-                                <form action="{{ route('member.axischeckout')}}" method="POST">
-                                @csrf
                                 
-                                <div class="invoicepayment_box">
-
-                                        <div class="invoicepayment_input">
-
-                                            <input type="text" name="amount" id="amount" placeholder="Enter amount being paid">
-                                        </div>
-                                        <div class="invoicepayment_paybtn">
-                                            <button type="submit" id ="rzp-button1">Pay Now (AxisPG)</button>
-                                        </div>
-                                </form>
-                            </div>
+                                
 
 
-                            </div>
+                            
+        <script>
+        
+        
+    const form = document.getElementById("payment-form");
+    const log = document.querySelector("#log");
 
-                        </div>
-                    </div>
+    form.addEventListener(
+        "submit",
+        (event) => {
+            debugger;
+            event.preventDefault();
+            let errorMsg = new Array();
+            let messageHtml = "";
+            const data = new FormData(form);
+            let amountInput = data.get('amount');
+            let route = getCheckedPG('exampleRadios');
+            //console.log(typeof(route));
+            if (route === null ) {
+                errorMsg.push("Please check one of payment gateway before making payment");
+            }
+            //console.log(checkAmount(amountInput));
+            if (! checkAmount(amountInput)) {
+                errorMsg.push("Amount not valid!");
+            }
 
-                </div>
+            if(Array.isArray(errorMsg) && !errorMsg.length){
+                form.action= route;
+                form.submit();
+            }
 
-        </div>
+            errorMsg.forEach(function (message) {
+                 messageHtml += "<li>" + message + "</li>";
+            });
+
+            log.innerHTML = messageHtml;
+            
+            
+            
+        },
+        false
+    );
+
+
+function getCheckedPG(groupName) {
+    
+    var radios = document.getElementsByName(groupName);
+    for (i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            return radios[i].value;
+        }
+    }
+    return null;
+}
+
+function checkAmount(amount) {
+    
+    const amountRegex = /^(?!0)\d+$/;
+    return amountRegex.test(amount);
+}
+            </script>
+            </div>
+            </div>
         </section>
 
         <section class="member_details_section">
@@ -299,6 +323,7 @@
 
 
         @include('common.footer')
+        
         <!-- ?php include 'assets/inc/footer.php';?> -->
 
 

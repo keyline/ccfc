@@ -378,6 +378,18 @@
     .testimonial-modal .modal-dialog{
         max-width: 500px;
     }
+.invocie_paymentlogo ul li {
+    width: 100%;
+    padding: 10px 0;
+}
+.invocie_paymentlogo ul {
+    align-items: flex-start;
+    flex-direction: column;
+}
+.invocie_paymentlogo ul img {
+    max-width: 120px;
+    max-height: 35px;
+}
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
