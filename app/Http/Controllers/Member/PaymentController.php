@@ -32,7 +32,8 @@ class PaymentController extends Controller
         
         if ($user) {
             $validated = $request->validate([
-        'amount' => 'required|numeric|min:1'
+        'amount' => 'required|numeric|min:1',
+        'exampleRadios' => 'required',
     ]);
 
             $customer = Customer::make()
@@ -86,7 +87,8 @@ class PaymentController extends Controller
             if($user)
             {
                 $validated = $request->validate([
-        'amount' => 'required|numeric|min:1'
+        'amount' => 'required|numeric|min:1',
+        'exampleRadios' => 'required',
     ]);
 
     $data= $hdfcPaymentService->processPayment($request->amount, $user);
@@ -219,7 +221,8 @@ class PaymentController extends Controller
         if($user)
         {
             $validated = $request->validate([
-        'amount' => 'required|numeric|min:1'
+        'amount' => 'required|numeric|min:1',
+        'exampleRadios' => 'required',
     ]);
 
     $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));

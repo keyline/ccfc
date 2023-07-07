@@ -3486,6 +3486,30 @@ p.member_list_text {
 
 
 
+.invocie_paymentlogo ul {
+    margin-left: 0;
+    list-style: none;
+    display: flex;
+    padding-left: 20px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.invocie_paymentlogo ul li {
+    width: 33.333%;
+}
+.invocie_paymentlogo ul img {
+    max-width: 100px;
+    max-height: 25px;
+    position: relative;
+    top: -4px;
+}
+.invoice_input_feild button.btn.btn-primary {
+    margin-top: -7px;
+    background: var(--primaryColor);
+    border: none;
+    height: 40px;
+}
+
 
 
 
