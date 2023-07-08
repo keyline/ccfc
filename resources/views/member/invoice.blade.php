@@ -105,11 +105,13 @@
                             </div>
                             @endif
                                 @foreach($userTransactions as $user)
+                                
                                 @if($loop->first)
                                 <h3>Total current outstanding : INR. {{ $user['Balance'] }}</h3>
                                 @endif
                                 @endforeach
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
+                                @if($userData->user_code === 'G168')
                                 <div class="invoice_outstading_payment">
 									<form action="" method="POST" id="payment-form">
                                         @csrf
@@ -151,14 +153,9 @@
 										</div>
 									</form>
 								</div>
-                                
-                                
 
-
-                            
-        <script>
-        
-        
+        <script type="text/javascript">
+     
     const form = document.getElementById("payment-form");
     const log = document.querySelector("#log");
 
@@ -216,6 +213,22 @@ function checkAmount(amount) {
     return amountRegex.test(amount);
 }
             </script>
+            @else
+                <div class="invoice_outstading_payment">
+                    <form action="{{ route('member.payment')}}" method="POST">
+                                    @csrf
+                                    <div class="invoicepayment_box">
+
+                                        <div class="invoicepayment_input">
+
+                                            <input type="text" name="amount" placeholder="Enter amount being paid">
+                                        </div>
+                                        <div class="invoicepayment_paybtn">
+                                            <button type="submit">Pay Now</button>
+                                        </div>
+                                </form>
+                </div>
+                @endif  
             </div>
             </div>
         </section>
