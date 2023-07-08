@@ -16,7 +16,7 @@ class HdfcPayment implements PaymentGatewayInterface
     public function processPayment($amount, $user){
 
         if (env('HDFC_MODE') == 'LIVE') {
-    		$url = 'https://pay.1paypg.in/payone/';
+    		$url = 'https://pay.1paypg.in/onepayVAS/payprocessorV2';
 		} elseif (env('HDFC_MODE') == 'TEST') {
 			$url = 'https://onepaypgtest.in/onepayVAS/payprocessorV2';
 		}
@@ -88,7 +88,7 @@ class HdfcPayment implements PaymentGatewayInterface
 
     public function verifyPayment($response){
         if (env('HDFC_MODE') == 'LIVE') {
-    		$url = 'https://pay.1paypg.in/payone/getTxnDetails';
+    		$url = 'https://pay.1paypg.in/onepayVAS/';
 		} elseif (env('HDFC_MODE') == 'TEST') {
 			$url = 'https://onepaypgtest.in/onepayVAS/';
 		}
