@@ -1,149 +1,51 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
-use GuzzleHttp\Client;
-use pcrov\JsonReader\JsonReader;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserDetail;
-use Illuminate\Support\Facades\Redis;
-use Log;
+use GuzzleHttp\Client;
+use pcrov\JsonReader\JsonReader;
 
-class MemberProfileUpdate implements ShouldQueue
+class MemberDataCronController extends Controller
 {
-    use Dispatchable;
-    use InteractsWithQueue;
-    use Queueable;
-    use SerializesModels;
-
-    public $user_code;
-    //private $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
     private $token= "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
 
-
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct($usercode)
+    public function index()
     {
-        $this->user_code= $usercode;
-    }
-
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
-    public function handle()
-    {
-        // Allow only 2 emails every 1 second
-
-        Redis::throttle('any_key')->allow(5)->every(1)->then(function () {
-            //Handle code
-            $user = User::where('user_code', '=', $this->user_code)->first();
-
-            $client = new Client(['verify' => false]);
-            $res = $client->request('POST', 'https://ccfcmemberdata.in/Api/MemberProfile', [
-        'headers'=> ['Authorization' =>'Bearer '. $this->token,'Accept'     => 'application/json'],
-            'query' => [
-                'MCODE' => $user->user_code,
-
-            ]
-        ]);
-            // echo $res->getStatusCode();
-            // 200
-            // echo $res->getHeader('content-type');
-            // 'application/json; charset=utf8'
+        $users = User::where('id' , '!=' , '1' )->limit(10)->get();
+        $userCount =    count($users);
+            foreach($users as $key => $user){
+                // echo '<pre>';
+                // echo $user->id . '.' . $user->name;
+                $client = new Client(['verify' => false]);
+                $res = $client->request('POST', 'https://ccfcmemberdata.in/Api/MemberProfile', [
+                    'headers'=> ['Authorization' =>'Bearer '. $this->token,'Accept'     => 'application/json'],
+                        'query' => [
+                            'MCODE' => $user->user_code,
+            
+                        ]
+                    ]); 
             $respones=$res->getBody()->getContents();
-
             $teststr = <<< JSON
-
-{$respones}
-
-JSON;
-
+            {$respones}
+            JSON;
             $reader = new JsonReader();
-
             $reader->json($teststr);
-
-
-            // while ($reader->read("EMAIL")) {
-//     var_dump($reader->value());
-            // }
-            // $reader->close();
-
-
             $reader->read('EMAIL');
-
             $memberemail=$reader->value();
-
-
-
-            // var_dump($reader->value());
-
-
             $reader->close();
-
-            // dd($memberemail);
-
-            // $fields= [
-            //      'MCODE' => $request->code
-            //    ];
-
-            // $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
-
-
-
-
-            // $profile = Http::withoutVerifying()
-            //        ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-            //                        'Content-Type' => 'application/json',])
-            //        ->withOptions(["verify"=>false])
-            //        ->post($url)->collect();
-
             $profileArr=json_decode($respones, true);
-
             $profile=$profileArr['data'];
-
-
-
-            //    dd($profile);
-            //Saving data into user table
-            // $user->email= ($profile['EMAIL'] != "") ? $profile['EMAIL'] : "";
-
             $user->email=$memberemail;
-
-            $user->name= $profile['MEMBER_NAME']; //added on 08/05/2023
-
+            $user->name= $profile['MEMBER_NAME'];
             $user->phone_number_1 = (preg_match('/^[0-9]{10}+$/', $profile['MOBILENO'])) ? $profile['MOBILENO'] : "";
-
-            $user->status= $profile['CURENTSTATUS']; //saving member status
-
-
+            $user->status= $profile['CURENTSTATUS'];
             if ($user->save()) {
                 $userInformation = UserDetail::where('user_code_id', $user->id)->first();
-
-                // $memberbase64 = "data:image/png". ";base64," . base64_encode($profile['MemberImage']);
-
                 $memberbase64 =$profile['MemberImage'];
-
-
-                // dd($memberbase64);
-
-                // $spousebase64 = "data:image/png". ";base64," . base64_encode($profile['SpouseImage']);
-
                 $spousebase64 = $profile['SpouseImage'];
-
-                // dd($profile['children']);
-
                 if (!empty($profile['children'])) {
                     for ($i=0; $i< count($profile['children']); ++$i) {
                         //save the first child
@@ -188,6 +90,7 @@ JSON;
                 }
 
                 if (!$userInformation) {
+                    
                     $user->userCodeUserDetails()->create([
                     'member_type_code'=>$profile['MEMBERTYPECODE'],
                     'member_type'=>$profile['MEMBERTYPE'],
@@ -254,7 +157,6 @@ JSON;
                     'children2_phone2'=>isset($child2_phone2) ? $child2_phone2 : '',
                     'children2_mobileno'=>isset($child2_mobile) ? $child2_mobile : '',
 
-
                     'children3_name'=>isset($child3_name) ? $child3_name : '',
                     'children3_dob'=>isset($child3_dob) ? $child3_dob : '',
                     'children3_sex'=>isset($child3_sex) ? $child3_sex : '',
@@ -262,8 +164,7 @@ JSON;
                     'children3_phone2'=>isset($child3_phone2) ? $child3_phone2 : '',
                     'children3_mobileno'=>isset($child3_mobile) ? $child3_mobile : '',
 
-                    ])->id;
-                //Log::info("User Created for : " . $user->user_code);
+                    ])->id;                   
                 } else {
                     $userInformation->member_type_code= $profile['MEMBERTYPECODE'];
                     $userInformation->member_type= $profile['MEMBERTYPE'];
@@ -350,14 +251,10 @@ JSON;
                     $userInformation->children3_phone2 = isset($child3_phone2) ? $child3_phone2 : '';
                     $userInformation->children3_mobileno = isset($child3_mobile) ? $child3_mobile : '';
 
-                    $userInformation->save();
-
-                    //Log::info("Updated saved for: ". $userInformation->user_code_id);
+                    $userInformation->save();                   
                 }
             }
-        }, function () {
-            // Could not obtain lock; this job will be re-queued
-            return $this->release(2);
-        });
+        }
+       echo 'Cron is completed successfully...';
     }
 }

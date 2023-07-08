@@ -14,6 +14,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        //this is my code 
+        //this is to generate conflict
     }
 
     /**

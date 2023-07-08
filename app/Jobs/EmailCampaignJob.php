@@ -16,7 +16,10 @@ use Log;
 
 class EmailCampaignJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     protected $campaignid;
 
@@ -55,22 +58,12 @@ class EmailCampaignJob implements ShouldQueue
      */
     public function handle()
     {
-        
         //code...
-        
+
         //send email operation
         try {
             //code...
-            // Allow only 2 emails every 1 second
-            Redis::throttle('any_key')->allow(10)->every(1)->then(function () {
-                Mail::to($this->user->email, $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
-                Log::info('Emailed order ' . $this->user->email . "|". $this->campaignid);
-            }, function () {
-                // Could not obtain lock; this job will be re-queued
-                return $this->release(2);
-            });
-
-            
+            Mail::to($this->user->email, $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
             //Mail::to("subhomoy@keylines.net", "Subhomoy Samanta")->send(new SendInBlueNotification($this->campaignid, $this->user));
         } catch (\Exception $ex) {
             //throw $th;

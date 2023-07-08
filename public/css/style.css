@@ -3368,7 +3368,7 @@ p.member_list_text {
 }
 
 .invoicepayment_section h3 {
-    text-align: center;
+    text-align: left;
     font-size: 22px;
     font-weight: 600;
     font-family: 'IBM Plex Serif', serif;
@@ -3377,10 +3377,36 @@ p.member_list_text {
 }
 
 .invoicepayment_section p {
-    text-align: center;
+    text-align: left;
     font-size: 14px;
     font-family: 'IBM Plex Serif', serif;
     color: #444;
+}
+
+.invoice_input_bank .invoice_input_feild input[type="text"] {
+    border-radius: 6px;
+    height: 40px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    border-width: 1px;
+}
+
+.invoice_outstading_payment .invoice_btn_bank {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.invoice_outstading_payment .invoice_btn_bank button {
+    background: var(--primaryColor);
+    margin-right: 10px;
+    border: 0;
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 13px;
+    border-radius: 50px;
+    margin-bottom: 10px;
 }
 
 .invoicepayment_section .invoicepayment_box {
@@ -3459,6 +3485,30 @@ p.member_list_text {
 
 
 
+
+.invocie_paymentlogo ul {
+    margin-left: 0;
+    list-style: none;
+    display: flex;
+    padding-left: 20px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.invocie_paymentlogo ul li {
+    width: 33.333%;
+}
+.invocie_paymentlogo ul img {
+    max-width: 100px;
+    max-height: 25px;
+    position: relative;
+    top: -4px;
+}
+.invoice_input_feild button.btn.btn-primary {
+    margin-top: -7px;
+    background: var(--primaryColor);
+    border: none;
+    height: 40px;
+}
 
 
 

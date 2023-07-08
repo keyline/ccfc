@@ -20,6 +20,7 @@
 <body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page">
     @yield('content')
     @yield('scripts')
+    @yield('footer-scripts')
 </body>
 
 </html>
