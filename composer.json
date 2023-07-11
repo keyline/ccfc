@@ -16,6 +16,7 @@
         "infyomlabs/laravel-payumoney": "^1.3.0",
         "laravel/dusk": "^6.11",
         "laravel/framework": "^8.70.1",
+        "laravel/horizon": "^5.17",
         "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
