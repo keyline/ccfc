@@ -10,9 +10,9 @@ return [
 
     'gateways' => [
         'money' => new PayuMoney([
-            'mode' => env('PAYU_MONEY_MODE', Gateway::TEST_MODE),
-            'key' => env('PAYU_MONEY_KEY', 'JsaZRQ'),//Bg6kFX
-            'salt' => env('PAYU_MONEY_SALT', 'g2U72sm8'),//iUf3jtDm
+            'mode' => env('PAYU_MONEY_MODE', Gateway::LIVE_MODE),
+            'key' => env('PAYU_MONEY_KEY', 'Bg6kFX'),//Bg6kFX
+            'salt' => env('PAYU_MONEY_SALT', 'iUf3jtDm'),//iUf3jtDm
             'auth' => env('PAYU_MONEY_AUTH', 'default'),
         ]),
 

@@ -105,11 +105,13 @@
                             </div>
                             @endif
                                 @foreach($userTransactions as $user)
+                                
                                 @if($loop->first)
                                 <h3>Total current outstanding : INR. {{ $user['Balance'] }}</h3>
                                 @endif
                                 @endforeach
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
+                                @if($userData->user_code === 'G168')
                                 <div class="invoice_outstading_payment">
 									<form action="" method="POST" id="payment-form">
                                         @csrf
@@ -117,19 +119,19 @@
 											<div class="invocie_paymentlogo">
 												<ul>
 													<li>
-														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="{{ route('member.payment')}}">
+														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios1" value="{{ route('member.payment')}}">
 														<label class="form-check-label" for="exampleRadios1">
 															 <img class="img-fluid" src="{{ asset('img/invoice_payu_logo.png') }}" alt="" />
 														</label>
 													</li>
 													<li>
-														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="{{ route('member.paywithhdfc')}}">
+														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios2" value="{{ route('member.paywithhdfc')}}">
 														<label class="form-check-label" for="exampleRadio2">
 															 <img class="img-fluid" src="{{ asset('img/invoice_hdfc_logo.jpg') }}" alt="" />
 														</label>
 													</li>
 													<li>
-														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="{{ route('member.axischeckout')}}">
+														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios3" value="{{ route('member.axischeckout')}}">
 														<label class="form-check-label" for="exampleRadios3">
 															 <img class="img-fluid" src="{{ asset('img/invoice_axis_logo.jpg') }}" alt="" />
 														</label>
@@ -151,14 +153,9 @@
 										</div>
 									</form>
 								</div>
-                                
-                                
 
-
-                            
-        <script>
-        
-        
+        <script type="text/javascript">
+     
     const form = document.getElementById("payment-form");
     const log = document.querySelector("#log");
 
@@ -171,7 +168,7 @@
             let messageHtml = "";
             const data = new FormData(form);
             let amountInput = data.get('amount');
-            let route = getCheckedPG('exampleRadios');
+            let route = getCheckedPG('paymentGatewayOptions');
             //console.log(typeof(route));
             if (route === null ) {
                 errorMsg.push("Please check one of payment gateway before making payment");
@@ -216,6 +213,24 @@ function checkAmount(amount) {
     return amountRegex.test(amount);
 }
             </script>
+            @else
+                <div class="invoice_outstading_payment">
+                    <form action="{{ route('member.payment')}}" method="POST">
+                                    @csrf
+                                    <div class="invoicepayment_box">
+
+                                        <div class="invoicepayment_input">
+
+                                            <input type="text" name="amount" placeholder="Enter amount being paid">
+                                            <!-- adding a shadow input for keeping a parity with new multiple PG'S -->
+                                            <input type="hidden" name="paymentGatewayOptions" value="payu">
+                                        </div>
+                                        <div class="invoicepayment_paybtn">
+                                            <button type="submit">Pay Now</button>
+                                        </div>
+                                </form>
+                </div>
+                @endif  
             </div>
             </div>
         </section>

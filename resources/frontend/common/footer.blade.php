@@ -5,7 +5,7 @@
                <div class="row">
                    <div class="col-md-4 p-0">
                        <div class="foot_copyright">
-                           <div class="copyright">Copyright © 2022 The CC&FC Club at Kolkata All Rights Reserved.</div>
+                           <div class="copyright">Copyright © {{ now()->year }} The CC&FC Club at Kolkata All Rights Reserved.</div>
                        </div>
                    </div>
                    <div class="col-md-4 p-0">
