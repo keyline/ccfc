@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "laraveldaily/laravel-charts": "^0.1.24",
+        "predis/predis": "^2.2",
         "razorpay/razorpay": "^2.8",
         "spatie/laravel-medialibrary": "^9.11.2",
         "tzsk/payu": "^6.0",

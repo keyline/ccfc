@@ -198,9 +198,13 @@ return [
     'environments' => [
         'production' => [
             'supervisor-1' => [
+                'connection' => 'redis',
+                'queue' => ['default', 'sendinblueemail', 'memberprofile'],
+                'balance' => 'auto',
                 'maxProcesses' => 10,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
+                'tries' => 3,
             ],
         ],
 
