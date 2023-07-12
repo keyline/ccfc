@@ -19,6 +19,11 @@
                 {{ session()->get('message') }}
             </p>
             @endif
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
 
             <form action="{{ route('login') }}" method="POST">
                 @csrf
