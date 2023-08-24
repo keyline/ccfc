@@ -135,10 +135,12 @@
                                                                 href="mailto:{{$recip->email}}"><i
                                                                     class="zmdi zmdi-email"></i>
                                                                 {{$recip->email}}</a></p>
-                                                        <p class="clubdetails_info"><a href="{{$recip->website}}"
+                                                        @if(!empty($recip->website))        
+                                                        <p class="clubdetails_info"><a href="https://{{$recip->website}}"
                                                                 target="_blank" rel="nofollow"><i
                                                                     class="zmdi zmdi-wifi-alt"></i>
                                                                 {{$recip->website}}</a></p>
+                                                        @endif        
                                                     </div>
                                                 </div>
                                             </div>
