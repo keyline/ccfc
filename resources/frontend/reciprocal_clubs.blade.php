@@ -259,7 +259,7 @@
                                                                     class="zmdi zmdi-email"></i>
                                                                 {{$recip->email}}</a></p>
                                                         @if(!empty($recip->website))        
-                                                        <p class="clubdetails_info"><a href="{{ url($recip->website) }}"
+                                                        <p class="clubdetails_info"><a href="https://{{ $recip->website }}"
                                                                 target="_blank" rel="nofollow"><i
                                                                     class="zmdi zmdi-wifi-alt"></i>
                                                                 {{$recip->website}}</a></p>
