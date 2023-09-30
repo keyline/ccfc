@@ -209,7 +209,8 @@ function getCheckedPG(groupName) {
 
 function checkAmount(amount) {
     
-    const amountRegex = /^(?!0)\d+$/;
+    //const amountRegex = /^(?!0)\d+$/;
+    const amountRegex =/^\d+(\.\d{1,2})?$/;
     return amountRegex.test(amount);
 }
             </script>
