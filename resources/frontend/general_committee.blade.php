@@ -83,8 +83,9 @@
                 <div class="multiuse_tab_content_section">
                     <div class="container">
                         <div class="row">
-                            @foreach($committeeMemberMappings->where("committee_id","1") as
+                            @foreach($committeeMemberMappings as
                             $committeeMember)
+                            
                             @foreach($userDetails->where("user_code_id",$committeeMember->member->id) as
                             $key =>$userDetail)
 
