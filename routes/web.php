@@ -107,9 +107,17 @@ Route::get('/reciprocal_clubs', function () {
 Route::get('/general_committee', function () {
     $contentPages = ContentPage::all();
     // $members = Member::with(['select_member', 'select_title', 'select_sport'])->get();
-    $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
+    //$committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
+    //dd($committeeMemberMappings->member());
     // $committeeNames = CommitteeName::all();
+    $committeeMemberMappings = CommitteeMemberMapping::join('committee_names', 'committee_names.id', '=', 'committee_member_mappings.committee_id')
+                            ->join('users', 'users.id', '=', 'committee_member_mappings.member_id')
+                            ->where('committee_names.id', '=', '1')
+                            ->orderBy('committee_member_mappings.member_order', 'ASC')
+                            ->get();
+
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
+
     $galleries = Gallery::with(['media'])->get();
     return view('general_committee', compact(['contentPages','committeeMemberMappings','userDetails','galleries']));
 });
@@ -118,7 +126,14 @@ Route::get('/general_committee', function () {
 
 Route::get('/balloting_committee', function () {
     $contentPages = ContentPage::all();
-    $committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
+    //$committeeMemberMappings = CommitteeMemberMapping::with(['committee', 'member'])->get();
+
+    $committeeMemberMappings = CommitteeMemberMapping::join('committee_names', 'committee_names.id', '=', 'committee_member_mappings.committee_id')
+                                ->join('users', 'users.id', '=', 'committee_member_mappings.member_id')
+                                ->where('committee_names.id', '=', '2')
+                                ->orderBy('committee_member_mappings.member_order', 'ASC')
+                                ->get();
+
     $userDetails = UserDetail::with(['user_code', 'media'])->get();
     $galleries = Gallery::with(['media'])->get();
     return view('balloting_committee', compact(['contentPages','committeeMemberMappings','userDetails','galleries']));
@@ -449,10 +464,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('/saveUserJson/{code}', [UsersController::class, 'saveUserJson'])->name('saveUserJson');
 
     Route::get('/auto-memberprofileupdate', function () {
-        $query= \App\Models\User::query();
+        $query = \App\Models\User::query();
         $query->where('email', '=', '');
         $query->where('id', '<>', 1);
-        $users= $query->get();
+        $users = $query->get();
         foreach ($users as $user) {
             \App\Jobs\MemberProfileUpdate::dispatch($user->user_code)->onQueue('memberprofile');
         }
@@ -507,7 +522,7 @@ Route::post('/member/update-password', 'ChangePasswordResetController@update_pas
 
 
 // Route::get('/change_password', function () {
-        //     return view('change_password');
+//     return view('change_password');
 // })->name('change_password');
 
 
@@ -618,9 +633,9 @@ Route::group([
 
 
     #Axis-Razor Pay staus route
-    Route::post('payment/axisstatus', ['as'=> 'axisstatus', 'uses'=>'PaymentController@callback']);
+    Route::post('payment/axisstatus', ['as' => 'axisstatus', 'uses' => 'PaymentController@callback']);
     ##Axis-Razor Pay checkout route
-    Route::post('payment/axischeckout', [ 'as' => 'axischeckout', 'uses'=>'PaymentController@checkout']);
+    Route::post('payment/axischeckout', [ 'as' => 'axischeckout', 'uses' => 'PaymentController@checkout']);
 
 
 });
@@ -678,7 +693,7 @@ Route::get('/new_member', function () {
 // });
 
 // Route::get('/amenities_services', function () {
-    //     return view('amenities_services');
+//     return view('amenities_services');
 // });
 
 
@@ -699,38 +714,38 @@ Route::resource('reciprocal-clubs/create', ReciprocalClubsController::class);
 
 
 // Route::get('/trophies', function () {
-    //     return view('trophies');
+//     return view('trophies');
 // });
 
 // Route::get('/famous_sportsmen', function () {
-    //     return view('famous_sportsmen');
+//     return view('famous_sportsmen');
 // });
 
 // Route::get('/reciprocal_clubs', function () {
-    //     return view('reciprocal_clubs');
+//     return view('reciprocal_clubs');
 // });
 // Route::get('/general_committee', function () {
-    //     return view('general_committee');
+//     return view('general_committee');
 // });
 
 // Route::get('/balloting_committee', function () {
-    //     return view('balloting_committee');
+//     return view('balloting_committee');
 // });
 
 // Route::get('/sub_committees', function () {
-    //     return view('sub_committees');
+//     return view('sub_committees');
 // });
 
 // Route::get('/president_corner', function () {
-    //     return view('president_corner');
+//     return view('president_corner');
 // });
 
 // Route::get('/annual_report', function () {
-    //     return view('annual_report');
+//     return view('annual_report');
 // });
 
 // Route::get('/events_members_only', function () {
-    //     return view('events_members_only');
+//     return view('events_members_only');
 // });
 
 Route::get('/new_member', function () {
@@ -738,7 +753,7 @@ Route::get('/new_member', function () {
 });
 
 // Route::get('/rules_regulation', function () {
-    //     return view('rules_regulation');
+//     return view('rules_regulation');
 // });
 
 
@@ -746,17 +761,17 @@ Route::get('/member-login', function () {
     return view('member-login');
 });
 // Route::get('/sports', function () {
-    //     return view('sports');
+//     return view('sports');
 // });
 
 // Route::get('/gallery', function () {
-    //     return view('gallery');
+//     return view('gallery');
 // });
 Route::get('/dashboard-landing', function () {
     return view('dashboard-landing');
 });
 // Route::get('member/invoice', function () {
-    //     return view('member/invoice');
+//     return view('member/invoice');
 // });
 
 
@@ -790,7 +805,7 @@ Route::get('/dashboard-landing', function () {
 //contact
 
 // Route::get('admin/contactus', function () {
-    //     return view('admin.contact.index');
+//     return view('admin.contact.index');
 // });
 
 // Route::get('password/reset/{token}/{email}/{user_code}', 'Auth\ResetPasswordController@showResetForm')

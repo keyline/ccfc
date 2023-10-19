@@ -101,7 +101,7 @@
                                                                     <i class="zmdi zmdi-chevron-right"></i></span>
                                                             </a>
                                                             <ul class="submenu dropdown-menu">
-                                                                <!-- <li class="nav-item">
+                                                                <li class="nav-item">
                                                                     <a class="nav-link" href="javascript:void(0)">
                                                                         Committees <span class="submenu_arrow"><i
                                                                                 class="zmdi zmdi-chevron-right"></i></span>
@@ -110,16 +110,16 @@
                                                                         <li><a href="{{ asset('general_committee') }}">General</a></li>
                                                                         <li><a href="{{ asset('balloting_committee') }}">Balloting
                                                                         </a></li>
-                                                                        <li><a href="{{ asset('sub_committees') }}">Sub-Committees</a>
+                                                                        <!-- <li><a href="{{ asset('sub_committees') }}">Sub-Committees</a> -->
                                                                         </a>
                                                                         </li>
                                                                     </ul>
-                                                                </li> -->
-                                                                <li class="nav-item">
+                                                                </li>
+                                                                <!-- <li class="nav-item">
                                                                     <a class="nav-link"
                                                                         href="{{ asset('president_corner') }}">President's
                                                                         Corner</a>
-                                                                </li>
+                                                                </li> -->
                                                                 <li class="nav-item">
                                                                     <a class="nav-link"
                                                                         href="{{ asset('annual_report') }}">Annual
