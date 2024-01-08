@@ -86,6 +86,7 @@
                                 <ul>
                                     <?php
                                     $ec_member_type = json_decode($campaign->ec_member_type);
+                                    //dd($ec_member_type);
                                     if(count($ec_member_type)>0){ for($emt=0;$emt<count($ec_member_type);$emt++){
                                     ?>
                                         <li><?=$ec_member_type[$emt]?></li>
