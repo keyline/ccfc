@@ -91,6 +91,8 @@ class SendInBlueNotification extends Mailable
                     $mime = 'text/plain';
                 } elseif ($fileType == 'csv') {
                     $mime = 'text/csv';
+                } elseif ($fileType == 'mp4') {
+                    $mime= 'video/mp4';
                 } else {
                     # code...
                     //generic mime type

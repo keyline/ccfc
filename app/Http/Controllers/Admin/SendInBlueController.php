@@ -62,7 +62,13 @@ class SendInBlueController extends Controller
         $emailCampaign->ec_title            = $request->input('ec_title');
         $emailCampaign->ec_body             = $request->input('ec_body');
         $emailCampaign->ec_is_despatched    = $request->input('ec_is_despatched');
-        if ($request->file()) {            
+        if ($request->file()) {
+            $originalExtension = $request->file->getClientOriginalExtension();
+            $extensionParts = explode('.', $originalExtension);
+            if (count($extensionParts) > 2) {
+                // The file has a double extension
+                return response()->json(['error' => 'File has a double extension'], 400);
+            }
             $fileName = time().'_'.$request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('campaign_attachments', $fileName, 'local');
             $filepathWithName = $filePath;            
