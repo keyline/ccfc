@@ -48,6 +48,9 @@ class UsersController extends Controller
 
             $user->roles()->sync($request->input('roles', []));
 
+            //Dispatching the Job here
+            \App\Jobs\MemberProfileUpdate::dispatch($user->user_code)->onQueue('memberprofile');
+
             return redirect()->route('admin.users.index');
         } catch (\Illuminate\Database\QueryException $ex) {
             //throw $th;

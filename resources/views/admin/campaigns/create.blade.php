@@ -53,7 +53,7 @@
             <div class="form-group">
 
             <div class="form-group">
-                <label for="attachment" class="form-label">Attachment</label>
+                <label for="attachment" class="form-label">Attachment(csv|mp4|txt|xlsx|xls|pdf|jpg|png|gif)</label>
             
             <input class="form-control" type="file" id="attachment" name="file">
             
