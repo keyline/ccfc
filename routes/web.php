@@ -798,3 +798,9 @@ Route::get('/dashboard-landing', function () {
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')
 ->name('password.update');
 Route::get('maintenace');
+Route::get('showme/documents', function(){
+    return view('document-viewer');
+});
+Route::get('showme/archive', function(){
+    return view('document-archive');
+});
