@@ -29,6 +29,7 @@ class UpdateTenderuploadsRequest extends FormRequest
             'tender_description' => 'nullable|string|max:100',
             'tender_files' => 'required|array',
             //'tender_files.*' => 'file|mimes:pdf|max:2048', // Max file size 2MB per file
+            'folder_year'  => 'required' ,
         ];
     }
 
@@ -44,10 +45,11 @@ class UpdateTenderuploadsRequest extends FormRequest
             //'tender_files.*.file' => 'The file must be a file.',
             //'tender_files.*.mimes' => 'The file must be a PDF.',
             //'tender_files.*.max' => 'The file size of each PDF must be less than 2MB.',
+            'folder_year'       => 'Please select a year',
         ];
     }
 
-    public function withValidator($validator)
+    /*public function withValidator($validator)
     {
         $validator->after(function ($validator) {
             if ($validator->errors()->any()) {
@@ -55,5 +57,5 @@ class UpdateTenderuploadsRequest extends FormRequest
                 dd($this->all());
             }
         });
-    }
+    }*/
 }

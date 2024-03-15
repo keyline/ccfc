@@ -39,7 +39,7 @@ class TenderDocument extends Model
 
     public function folder()
     {
-        return $this->belongsTo(DocumentOrganizer::class);
+        return $this->belongsTo(DocumentOrganizer::class, 'ctd_cdo_id');
     }
 
     public function addTenderFile(TenderFile $file)
@@ -60,5 +60,6 @@ class TenderDocument extends Model
     {
         return $this->files; //collection with TenderFile models
     }
+
 
 }

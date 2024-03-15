@@ -117,13 +117,14 @@ class TenderFileUploadController extends Controller
         }
 
         //return back()->with('success', 'Files has been uploaded.');
+        //Automatic archival for previous year
         if($request->input('folder_year') !== '1')
         {
             $myTime = Carbon::now();
 
             $document->update([
             'ctd_archive_status' => '0',
-            'ctd_deleted_at'    => $myTime->toDateTimeString()
+            'ctd_archived_at'    => $myTime->toDateTimeString()
             ]);
 
         }
@@ -155,7 +156,8 @@ class TenderFileUploadController extends Controller
     {
         abort_if(Gate::denies('tenderupload_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $document= TenderDocument::find($id);
-        return view('admin.tendersupload.edit', compact('document'));
+        $folders= DocumentOrganizer::all();
+        return view('admin.tendersupload.edit', compact('document', 'folders'));
     }
 
     /**
@@ -169,30 +171,55 @@ class TenderFileUploadController extends Controller
     {
         //$document= TenderDocument::find($id);
         //dd($request->all());
-        $folders = DocumentOrganizer::all();
-        $folders->load(['documents' => function ($query) use ($id) {
+        //$folders = DocumentOrganizer::find($request->input('folder_year', []));
+        //$folders = DocumentOrganizer::with('documents')->get();
+
+        /*$folders->load(['documents' => function ($query) use ($id) {
                     $query->where('ctd_id', $id);
-        }]);
+        }]);*/
         
         //$folderName= $folderWithDocuments[0]->cdo_name;
         //$document= $folderWithDocuments->documents()->get();
         //$documentWithFiles= TenderDocument::find($document->ctd_id);
+        //dd($folders);
+        //$selectedFolder= $folders[0];
         
-        $document= $folders[0]->documents->first();
-        
-        $documentWithFiles= TenderDocument::find($document->ctd_id);
+        //$document= $selectedFolder->documents->first();
 
+        
+        
+        //$documentWithFiles= TenderDocument::find($document->ctd_id);
+
+        // Retrieve documents with their respective folders
+        //haha! i got everthing organized in this collection
+        $documents = TenderDocument::with(['folder', 'files'])
+                        ->whereIn('ctd_id', [$id])
+                        ->get();
+        //dd($documents->first()->folder->cdo_name);                
+        //dd($documents->first()->folder->isCurrentFinancialYear());
+        //if user going to made an folder switch over request
+        if( !empty($request->input('folder_year', [])) )
+        {
+            $folderSwitchOverId= $request->input('folder_year', []);
+            $folderCurrentId= $documents->first()->folder->cdo_id;
+            $currentDocument= $documents->first();
+            $this->updateDocumentToFolder($folderSwitchOverId, $currentDocument);    
+
+        }else{
+            dd($request);
+        }
+        //dd($documentWithFiles);
         //dd($documentWithFiles->files);
         //dd($folders[0]->cdo_name);
-        if (count($documentWithFiles->files) > 0) {
-            foreach ($documentWithFiles->getFiles() as $media) {
+        if (count($documents->first()->files) > 0) {
+            foreach ($documents->first()->getFiles() as $media) {
                 if (!in_array($media->cfm_original_name, $request->input('tender_files', []))) {
                     $media->disconnectFromDocument($document);
                 }
             }
         }
 
-        $media = $documentWithFiles->files->pluck('cfm_original_name')->toArray();
+        $media = $documents->first()->files->pluck('cfm_original_name')->toArray();
 
         foreach ($request->input('tender_files', []) as $file) {
         if (count($media) === 0 || !in_array($file, $media)) {
@@ -210,10 +237,10 @@ class TenderFileUploadController extends Controller
             $sizeInMB = $sizeInKB / 1024; // Convert kilobytes to megabytes
             // Handle each file individually, e.g., store in storage
             // Move the file to the desired location within storage
-            $path = $file->storeAs("tender_documents/{$folders[0]->cdo_name}", $hashedName);
+            $path = $file->storeAs("tender_documents/{$documents->first()->folder->cdo_name}", $hashedName);
             $myTime = Carbon::now();
 
-            $documentWithFiles->files()->create([
+            $documents->first()->files()->create([
                 'cfm_original_name' => $originaName,
                 'cfm_unique_name'   => $hashedName,
                 'cfm_physical_path' => $path,
@@ -228,16 +255,36 @@ class TenderFileUploadController extends Controller
         
     }
 
-    //Checking archived status
-    $myTime = Carbon::now();
+        //Checking archived status
+        //Manual Archival for current year documents
+        $myTime = Carbon::now();
         if($request->input('tender_archive', []))
         {
             
-            $documentWithFiles->update([
+            $documents->first()->update([
             'ctd_archive_status' => '0',
-            'ctd_deleted_at'    => $myTime->toDateTimeString()
+            'ctd_archived_at'    => $myTime->toDateTimeString()
             ]);
         }
+
+        /*
+        //automatic update archive status if folder name is current year
+        if($documents->first()->folder->isCurrentFinancialYear())
+        {
+            //removal of archive status
+            $documents->first()->update([
+            'ctd_archive_status' => '1',
+            'ctd_archived_at'    => null
+            ]);
+
+        }else{
+            //add archival status
+            $documents->first()->update([
+            'ctd_archive_status' => '0',
+            'ctd_archived_at'    => $myTime->toDateTimeString()
+            ]);
+        }*/
+        
         
 
         return redirect()->route('admin.tenderuploads.index');
@@ -301,6 +348,17 @@ class TenderFileUploadController extends Controller
         );
 
         return $file;
+    }
+
+    public function updateDocumentToFolder($latestFolderId, TenderDocument $document)
+    {
+        
+
+        // Update the document's folder
+        $updated= $document->update(['ctd_cdo_id' => $latestFolderId]);
+
+        // Redirect or return a response
+        return $updated;
     }
 
 }
