@@ -252,14 +252,22 @@ class TenderFileUploadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('tenderupload_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $document= TenderDocument::find($id);
+
+        foreach ($document->getFiles() as $file) {
+            $document->removeTenderFile($file);
+        }
+
+        $document->delete();
+
+        return back();
     }
     
     public function massDestroy(Request $request)
     {
-        Sportstype::whereIn('id', request('ids'))->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
+        
     }
 
     public function storeMedia(Request $request)

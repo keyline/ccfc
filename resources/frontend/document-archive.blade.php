@@ -42,12 +42,13 @@
 							<div class="tenterachive_section">
 								<div class="accordion" id="accordionExample">
 									@foreach($folders as $folder)
+									@if(count($folder->documents) > 0)
 									<div class="card">
-										<div class="card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true">     
+										<div class="card-header" data-toggle="collapse" data-target="#collapse{{ $folder->cdo_id }}" aria-expanded="{{ ($loop->first) ? 'true' : 'false'}}">     
 											<span class="title">Year {{ $folder->cdo_name}}</span>
 											<span class="accicon"><i class="zmdi zmdi-chevron-down"></i></span>
 										</div>
-										<div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+										<div id="collapse{{ $folder->cdo_id }}" class="collapse{{ ($loop->first) ? ' show' : '' }}" data-parent="#accordionExample">
 											<div class="card-body">
 												<div class="investor_section_inner">
 													@foreach($folder->documents as $document)
@@ -64,6 +65,7 @@
 											</div>
 										</div>
 									</div>
+									@endif
 									@endforeach
 									<!-- <div class="card">
 										<div class="card-header collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">     

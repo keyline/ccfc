@@ -39,6 +39,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.tenderupload.fields.tender_files_helper') }}</span>
             </div>
+            @if($document->ctd_cdo_id == '1')
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" id="tender_archive" name="tender_archive" value="{{ $document->ctd_archive_status }}" {{ ! $document->ctd_archive_status ? 'checked' : '' }}>
               <label class="form-check-label" for="exampleCheck1">{{ trans('cruds.tenderupload.fields.tender_archive_status') }}</label>
@@ -46,6 +47,7 @@
                   <span class="text-danger">{{ $errors->first('tender_archive_status') }}</span>
                 @endif
             </div>
+            @endif
             <!-- <div class="form-group">
                 
                 <input class="form-check-input" type="checkbox" name="tender_archive" value="{{ $document->ctd_archive_status }}" id="archiveStatusCheckbox" {{ ! $document->ctd_archive_status ? 'checked' : '' }}>
