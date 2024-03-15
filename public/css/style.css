@@ -3653,6 +3653,7 @@ border-radius: 10px;
     .investor_section_inner ul li {
         width: 25%;
     }
+	
 }
 
 @media screen and (max-width: 767px) {
@@ -3680,4 +3681,5 @@ border-radius: 10px;
         width: 25%;
     }
 	.investor_section_inner ul li a{padding: 12px}
+	.tender_topachive_btn{margin-bottom: 25px; text-align: center;}
 }
