@@ -111,7 +111,7 @@
             @foreach($document->getFiles() as $file)
                 var mockFile = { name: "{{ $file->cfm_original_name }}", size: {{ $file->cfm_file_size }}, type: "{{ $file->cfm_mime_type }}" };
                 thisDropzone.options.addedfile.call(thisDropzone, mockFile);
-                thisDropzone.options.thumbnail.call(thisDropzone, mockFile, "{{ $file->cfm_physical_path }}");
+                thisDropzone.options.thumbnail.call(thisDropzone, mockFile, "{{ asset('img/pdf/quarterly_icon.png') }}");
                 mockFile.previewElement.classList.add('dz-complete')
                 $('form').append('<input type="hidden" name="tender_files[]" value="' + "{{ $file->cfm_original_name }}" + '">')
             @endforeach
