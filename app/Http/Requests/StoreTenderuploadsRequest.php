@@ -39,7 +39,7 @@ class StoreTenderuploadsRequest extends FormRequest
         ];
     }
 
-    public function withValidator($validator)
+    /*public function withValidator($validator)
     {
         $validator->after(function ($validator) {
             if ($validator->errors()->any()) {
@@ -47,5 +47,5 @@ class StoreTenderuploadsRequest extends FormRequest
                 dd($this->all());
             }
         });
-    }
+    }*/
 }

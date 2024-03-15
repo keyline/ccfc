@@ -43,6 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php $counter = 1 @endphp
                     @foreach($uploadedTenders as $folder)
                         @if($folder->documents)
                         @foreach($folder->documents as $tender)
@@ -51,7 +52,7 @@
 
                         </td>
                         <td>
-                            {{ $tender->ctd_id ?? '' }}
+                            {{ $counter ?? '' }}
                         </td>
                         <td>
                             {{ $tender->ctd_title ?? '' }}
@@ -66,7 +67,7 @@
                             @if($tenderFiles= $tender->getfiles())
                                 <div class="tender_pdf">
                                     @foreach($tenderFiles AS $file)
-                                    <a href="{{ $file->cfm_original_name }}" target="_blank" style="display: inline-block">
+                                    <a href="{{ route('download.tender', ['file' => $file->cfm_id] ) }}" target="_blank" style="display: inline-block">
                                         <img src="{{ asset('img/pdf/quarterly_icon.png') }}">
                                     </a>
                                     @endforeach
@@ -103,8 +104,10 @@
                         </td>
 
                     </tr>
+                    @php $counter++ @endphp
                     @endforeach
                     @endif
+                    
                     @endforeach
                     
                 </tbody>

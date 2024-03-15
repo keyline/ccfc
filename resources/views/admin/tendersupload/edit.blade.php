@@ -12,6 +12,19 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+              <label for="myDropdown" class="mb-2">Select an year:</label>
+              <select class="custom-select" name="folder_year">
+                @foreach($folders as $folder)
+              
+              
+              <option value="{{ $folder->cdo_id }}" {{ ($document->ctd_cdo_id == $folder->cdo_id ? 'selected' : '') }}>
+            {{ $folder->cdo_name }}
+        </option>
+              
+              @endforeach
+            </select>
+            
+            <div class="form-group">
                 <label class="required" for="tender_title">{{ trans('cruds.tenderupload.fields.tender_title') }}</label>
                 <input class="form-control {{ $errors->has('sport_name') ? 'is-invalid' : '' }}" type="text"
                     name="tender_title" id="tender_title" value="{{ old('tender_title', $document->ctd_title) }}" required>
@@ -82,7 +95,7 @@
   var uploadedDocumentMap = {}
   Dropzone.options.documentDropzone = {
     url: '{{route('admin.tenderuploads.storeMedia')}}',
-    maxFilesize: 10, // MB
+    maxFilesize: 5, // MB
     addRemoveLinks: true,
     acceptedFiles: '.pdf, .pdfs',
     maxFiles: 5,

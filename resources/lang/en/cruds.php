@@ -670,7 +670,7 @@ return [
                 'description_helper'        => '',
                 'tender_year'         => 'Year',
                 'tender_files'        => 'Files',
-                'tender_files_helper' => ' ',
+                'tender_files_helper' => '*(File upload in between 5MB each document)',
                 'tender_archive_status' => 'Is Archived',
                 'tender_archive_helper' => ' ',
                 'tender_download'      => 'Download' ,

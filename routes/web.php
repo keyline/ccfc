@@ -813,10 +813,15 @@ Route::get('tenders', function(){
 Route::get('archives', function(){
     //$archivedTenders= DocumentOrganizer::find(1)->documents()->where('ctd_archive_status', '0')->get();
     //$folder = DocumentOrganizer::where('cdo_id', $archivedTenders[0]->ctd_cdo_id)->first();
-    $folders = DocumentOrganizer::all();
+    /*$folders = DocumentOrganizer::all();
         $folders->load(['documents' => function ($query) {
                     $query->where('ctd_archive_status', '0');
-        }]);
+        }]);*/
+        $folders = DocumentOrganizer::whereHas('documents', function ($query) {
+    $query->where('ctd_archive_status', '0');
+})->with(['documents' => function ($query) {
+    $query->where('ctd_archive_status', '0')->with('files');
+}])->get();
         //dd($folders);
     return view('document-archive', compact(['folders']));
 })->name('showme.archives');
