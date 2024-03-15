@@ -25,8 +25,8 @@ class UpdateTenderuploadsRequest extends FormRequest
     public function rules()
     {
         return [
-            'tender_title' => 'required|string|max:255',
-            'tender_description' => 'nullable|string',
+            'tender_title' => 'required|string|max:40',
+            'tender_description' => 'nullable|string|max:100',
             'tender_files' => 'required|array',
             //'tender_files.*' => 'file|mimes:pdf|max:2048', // Max file size 2MB per file
         ];
