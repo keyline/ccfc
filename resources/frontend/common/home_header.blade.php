@@ -195,6 +195,16 @@
                                                             </ul>
                                                         </li>
                                                         <li class="nav-item">
+                                                            <a class="nav-link" href="javascript:void(0)">
+                                                                Tender <span class="submenu_arrow"><i class="zmdi zmdi-chevron-right"></i></span>
+                                                            </a>
+                                                            <ul class="submenu dropdown-menu">
+                                                                <li><a href="{{ asset('tenders') }}">Latest</a></li>
+                                                                <li><a href="{{ asset('archives') }}">Archive</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        
+                                                        <li class="nav-item">
                                                             <a class="nav-link"
                                                                 href="{{ asset('gallery') }}">Gallery</a>
                                                         </li>

@@ -652,4 +652,36 @@ return [
             'deleted_at_helper'   => ' ',
         ],
     ],
+
+    'tenderManagement' => [
+        'title'          => 'Tender Management',
+        'title_singular' => 'Tender Management',
+    ],
+
+    'tenderupload' => [
+            'title'              => 'Upload Document',
+            'title_singular'     => 'Tender Document',
+            'fields'             => [
+                'id'                  => 'ID',
+                'id_helper'           => ' ',
+                'tender_title'        => 'Title',
+                'tender_name_helper'         => ' ',
+                'tender_description'  => 'Description',
+                'description_helper'        => '',
+                'tender_year'         => 'Year',
+                'tender_files'        => 'Files',
+                'tender_files_helper' => ' ',
+                'tender_archive_status' => 'Is Archived',
+                'tender_archive_helper' => ' ',
+                'tender_download'      => 'Download' ,
+                'tender_download_helper' =>  ' ',
+                'created_at'          => 'Created at',
+                'created_at_helper'   => ' ',
+                'updated_at'          => 'Updated at',
+                'updated_at_helper'   => ' ',
+                'deleted_at'          => 'Deleted at',
+                'deleted_at_helper'   => ' ',
+            ],
+
+        ],
 ];
