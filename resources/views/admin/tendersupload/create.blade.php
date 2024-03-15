@@ -10,6 +10,17 @@
         <form method="POST" action="{{ route('admin.tenderuploads.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+              <label for="myDropdown" class="mb-2">Select an year:</label>
+              <select class="custom-select" name="folder_year">
+                @foreach($folders as $folder)
+              
+              <option value="{{ $folder->cdo_id }}">{{ $folder->cdo_name}}</option>
+              
+              @endforeach
+            </select>
+              
+            </div>
+            <div class="form-group">
                 <label class="required" for="tender_title">{{ trans('cruds.tenderupload.fields.tender_title') }}</label>
                 <input class="form-control {{ $errors->has('sport_name') ? 'is-invalid' : '' }}" type="text"
                     name="tender_title" id="tender_title" value="{{ old('tender_title', '') }}" required>

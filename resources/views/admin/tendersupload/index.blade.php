@@ -35,12 +35,17 @@
                             {{ trans('cruds.tenderupload.fields.tender_year') }}
                         </th>
                         <th>
+                            {{ trans('cruds.tenderupload.fields.tender_files') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($uploadedTenders as $key => $tender)
+                    @foreach($uploadedTenders as $folder)
+                        @if($folder->documents)
+                        @foreach($folder->documents as $tender)
                     <tr data-entry-id="{{ $tender->ctd_id }}">
                         <td>
 
@@ -53,6 +58,9 @@
                         </td>
                         <td>
                             {{ $tender->ctd_description ?? '' }}
+                        </td>
+                        <td>
+                            {{ $folder->cdo_name }}
                         </td>
                         <td>
                             @if($tenderFiles= $tender->getfiles())
@@ -88,6 +96,9 @@
 
                     </tr>
                     @endforeach
+                    @endif
+                    @endforeach
+                    
                 </tbody>
             </table>
         </div>

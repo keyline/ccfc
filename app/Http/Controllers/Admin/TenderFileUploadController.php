@@ -29,7 +29,11 @@ class TenderFileUploadController extends Controller
         abort_if(Gate::denies('tenderupload_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         //$uploadedTenders = Sportstype::with(['media'])->get();
-        $uploadedTenders= DocumentOrganizer::find(1)->documents;
+        //$uploadedTenders= DocumentOrganizer::find(1)->documents;
+        $uploadedTenders= DocumentOrganizer::all();
+
+
+        //dd($uploadedTenders);
 
         return view('admin.tendersupload.index', compact('uploadedTenders'));
     }
@@ -43,7 +47,9 @@ class TenderFileUploadController extends Controller
     {
         abort_if(Gate::denies('tenderupload_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.tendersupload.create');
+        $folders= DocumentOrganizer::all();
+
+        return view('admin.tendersupload.create', compact('folders'));
     }
 
     /**
@@ -55,7 +61,8 @@ class TenderFileUploadController extends Controller
     public function store(StoreTenderuploadsRequest $request)
     {
         //Get the folder for current Year
-        $folder= DocumentOrganizer::find(1);
+        //dd($request->all());
+        $folder= DocumentOrganizer::find($request->input('folder_year'));
         if($request->input('tender_files', false))
         {
             // Check if the 'pdfs' directory exists, if not, create it
@@ -110,6 +117,16 @@ class TenderFileUploadController extends Controller
         }
 
         //return back()->with('success', 'Files has been uploaded.');
+        if($request->input('folder_year') !== '1')
+        {
+            $myTime = Carbon::now();
+
+            $document->update([
+            'ctd_archive_status' => '0',
+            'ctd_deleted_at'    => $myTime->toDateTimeString()
+            ]);
+
+        }
         return redirect()->route('admin.tenderuploads.index');
 
         }
@@ -124,7 +141,8 @@ class TenderFileUploadController extends Controller
      */
     public function show($id)
     {
-        //
+        $document= TenderDocument::find($id);
+        return view('admin.tendersupload.show', compact('document'));
     }
 
     /**

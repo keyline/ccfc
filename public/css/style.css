@@ -3588,11 +3588,11 @@ border-radius: 10px;
     flex-wrap: wrap;
     list-style: none;
     padding-left: 0;
-    justify-content: space-evenly;
+    justify-content:flex-start;
 }
 
 .investor_section_inner ul li {
-    width: 18%;
+    width: 10%;
     border: 1px solid #ddd;
     margin: 0 0px 25px;
     background: #f9f9f9;
@@ -3622,7 +3622,7 @@ border-radius: 10px;
 .tender_topachive_btn a {
     background: var(--secondaryColor);
     color: #fff;
-    padding: 5px 28px;
+    padding: 5px 28px 7px;
     border-radius: 50px;
     text-transform: uppercase;
     font-family: 'IBM Plex Serif', serif;
@@ -3637,6 +3637,13 @@ border-radius: 10px;
 .tender_topachive_btn a:hover {
     text-decoration: none;
 }
+.tender_achive_innertitle h3 {
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    color: var(--primaryColor);
+}
 
 @media (min-width: 768px) and (max-width: 1100px) {
     .tender_pdf a {
@@ -3644,7 +3651,7 @@ border-radius: 10px;
     }
 
     .investor_section_inner ul li {
-        width: 46%;
+        width: 25%;
     }
 }
 
@@ -3670,6 +3677,7 @@ border-radius: 10px;
     }
 
     .investor_section_inner ul li {
-        width: 46%;
+        width: 25%;
     }
+	.investor_section_inner ul li a{padding: 12px}
 }
