@@ -95,7 +95,7 @@
   var uploadedDocumentMap = {}
   Dropzone.options.documentDropzone = {
     url: '{{route('admin.tenderuploads.storeMedia')}}',
-    maxFilesize: 10, // MB
+    maxFilesize: 5, // MB
     addRemoveLinks: true,
     acceptedFiles: '.pdf, .pdfs',
     maxFiles: 5,
