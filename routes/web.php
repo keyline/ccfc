@@ -23,6 +23,9 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Models\circular;
 use App\Models\Contactlist;
 use App\Models\Events;
+use App\Http\Controllers\Admin\TenderFileUploadController;
+use App\Models\DocumentOrganizer;
+use App\Http\Controllers\TenderDownloadController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
 
@@ -468,6 +471,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     });
 
     Route::get('/exporttocsv', 'UsersController@exportToCSV')->name('users.exporttocsv');
+
+    Route::delete('tenderuploads/destroy', 'TenderFileUploadController@massDestroy')->name('tenderuploads.massDestroy');
+    Route::resource('tenderuploads', 'TenderFileUploadController');
+    Route::post('tenderuploads/media', [TenderFileUploadController::class, 'storeMedia'])->name('tenderuploads.storeMedia');
+    
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
@@ -798,9 +806,19 @@ Route::get('/dashboard-landing', function () {
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')
 ->name('password.update');
 Route::get('maintenace');
-Route::get('showme/documents', function(){
-    return view('document-viewer');
-});
-Route::get('showme/archive', function(){
-    return view('document-archive');
-});
+Route::get('tenders', function(){
+    $uploadedTenders= DocumentOrganizer::find(1)->documents()->where('ctd_archive_status', '1')->get();
+    return view('document-viewer', compact(['uploadedTenders']));
+})->name('showme.tenders');
+Route::get('archives', function(){
+    //$archivedTenders= DocumentOrganizer::find(1)->documents()->where('ctd_archive_status', '0')->get();
+    //$folder = DocumentOrganizer::where('cdo_id', $archivedTenders[0]->ctd_cdo_id)->first();
+    $folders = DocumentOrganizer::all();
+        $folders->load(['documents' => function ($query) {
+                    $query->where('ctd_archive_status', '0');
+        }]);
+        //dd($folders);
+    return view('document-archive', compact(['folders']));
+})->name('showme.archives');
+
+Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
