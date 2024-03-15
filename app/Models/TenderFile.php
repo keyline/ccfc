@@ -40,7 +40,7 @@ class TenderFile extends Model
 
     public function fileable(): MorphTo
     {
-        return $this->morphTo('fileable', 'cfm_fileable_type', 'cfm_fileable_id');
+        return $this->morphTo('fileable', 'fileable_type', 'fileable_id');
     }
 
     public function connectWithDocument(TenderDocument $document)
