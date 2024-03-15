@@ -52,9 +52,10 @@
 										</tr>
 									  </thead>
 									  <tbody>
+										@php $counter = 1 @endphp
 										@foreach($uploadedTenders as $key => $tender)
 										<tr>
-										  <th scope="row">{{ $tender->ctd_id }}</th>
+										  <th scope="row">{{ $counter }}</th>
 										  <td class="w-resp_5">{{ $tender->ctd_title ?? '' }}</td>
 										  <td class="w-resp_10">{{ $tender->ctd_description ?? '' }}</td>
 										  <td class="w-resp_15">
@@ -75,6 +76,7 @@
 												  </div>
 											</td>
 										</tr>
+										@php $counter++ @endphp
 										@endforeach
 										
 									  </tbody>
