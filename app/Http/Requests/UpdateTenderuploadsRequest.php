@@ -37,9 +37,10 @@ class UpdateTenderuploadsRequest extends FormRequest
         return [
             'tender_title.required' => 'Please enter a title.',
             'tender_title.string' => 'Title must be a string.',
-            'tender_title.max' => 'Title may not be greater than 255 characters.',
+            'tender_title.max' => 'Title may not be greater than 40 characters.',
             'tender_description.string' => 'Description must be a string.',
             'tender_files.required' => 'Please upload at least one PDF file.',
+            'tender_descrption.max' => 'Title may not be greater than 100 characters.',
             //'tender_files.*.file' => 'The file must be a file.',
             //'tender_files.*.mimes' => 'The file must be a PDF.',
             //'tender_files.*.max' => 'The file size of each PDF must be less than 2MB.',
