@@ -24,13 +24,18 @@
             <section class="history-page">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="title-sec">
                                 <div class="title">
                                     Tender Archive
                                 </div>
                             </div>
                         </div>
+						<div class="col-lg-6">
+							<div class="tender_topachive_btn">
+								<a href="{{ asset('tenders') }}">Latest</a>
+							</div>
+						</div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -45,13 +50,16 @@
 										<div id="collapseOne" class="collapse show" data-parent="#accordionExample">
 											<div class="card-body">
 												<div class="investor_section_inner">
+													@foreach($folder->documents as $document)
+													<div class="tender_achive_innertitle"><h3>{{ $document->ctd_title }}</h3></div>
 													<ul>
-														@foreach($folder->documents as $document)
+														
 															@foreach($document->getFiles() as $file)
-															<li style="margin-right:5px;"><a href="{{ route('download.tender', ['file' => $file->cfm_id] )}}" target="_blank"><img src="{{ asset('img/pdf/quarterly_icon.png') }}" alt="pdf" /> <h4>{{ $file->cfm_original_name }}</h4></a></li>
+															<li style="margin-right:10px;"><a href="{{ route('download.tender', ['file' => $file->cfm_id] )}}" target="_blank"><img src="{{ asset('img/pdf/quarterly_icon.png') }}" alt="pdf" /> <!--<h4>{{ $file->cfm_original_name }}</h4>--></a></li>
 															@endforeach
-														@endforeach
+														
 												  </ul>
+												  @endforeach
 												</div>
 											</div>
 										</div>

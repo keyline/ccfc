@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.sportstype.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.tenderupload.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.sportstypes.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.tenderuploads.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,44 +17,39 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.sportstype.fields.id') }}
+                            {{ trans('cruds.tenderupload.fields.id') }}
                         </th>
                         <td>
-                            {{ $sportstype->id }}
+                            {{ $document->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.sportstype.fields.sport_name') }}
+                            {{ trans('cruds.tenderupload.fields.tender_title') }}
                         </th>
                         <td>
-                            {{ $sportstype->sport_name }}
+                            {{ $document->ctd_title }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.sportstype.fields.icon') }}
+                            {{ trans('cruds.tenderupload.fields.tender_archive_status') }}
                         </th>
                         <td>
-                            @if($sportstype->icon)
-                                <a href="{{ $sportstype->icon->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $sportstype->icon->getUrl('thumb') }}">
-                                </a>
+                            {{ (! $document->ctd_archive_status) ? 'Archived' : 'Not Archived' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.tenderupload.fields.tender_files') }}
+                        </th>
+                        <td>
+                            @if($document->getFiles())
+                                {{ count($document->getFiles()) }}
                             @endif
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.sportstype.fields.featured_image') }}
-                        </th>
-                        <td>
-                            @if($sportstype->featured_image)
-                                <a href="{{ $sportstype->featured_image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $sportstype->featured_image->getUrl('thumb') }}">
-                                </a>
-                            @endif
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
             <div class="form-group">

@@ -19,6 +19,7 @@ class StoreTenderuploadsRequest extends FormRequest
             'tender_title' => 'required|string|max:255',
             'tender_description' => 'nullable|string',
             'tender_files' => 'required|array',
+            'folder_year'  => 'required' ,
             //'tender_files.*' => 'file|mimes:pdf|max:2048', // Max file size 2MB per file
         ];
     }
@@ -34,6 +35,7 @@ class StoreTenderuploadsRequest extends FormRequest
             //'tender_files.*.file' => 'The file must be a file.',
             //'tender_files.*.mimes' => 'The file must be a PDF.',
             //'tender_files.*.max' => 'The file size of each PDF must be less than 2MB.',
+            'folder_year'       => 'Please select a year',
         ];
     }
 
