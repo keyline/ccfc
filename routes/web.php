@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Models\circular;
 use App\Models\Contactlist;
 use App\Models\Events;
+use App\Mail\MyTestEmail;
+use Illuminate\Support\Facades\Mail;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
 
@@ -813,3 +815,11 @@ Route::get('/dashboard-landing', function () {
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')
 ->name('password.update');
 Route::get('maintenace');
+Route::get('/testemail', function () {
+    //$name = "Funny Coder";
+
+    $data = ['name' => 'Sudip Kulavi', 'link' => 'https://ccfc1792.com', 'subject' => 'This is test email'];
+
+    // The email sending is done using the to method on the Mail facade
+    Mail::to('system@keylines.net')->send(new MyTestEmail($data));
+});
