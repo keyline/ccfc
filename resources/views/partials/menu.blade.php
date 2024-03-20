@@ -13,7 +13,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route("admin.home") }}">
+                    <a class="nav-link" href="{{ route('admin.home') }}">
                         <i class="fas fa-fw fa-tachometer-alt nav-icon">
                         </i>
                         <p>
@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 @can('billing_access')
-                <li class="nav-item has-treeview {{ request()->is("admin/payments*") ? "menu-open" : "" }}">
+                <li class="nav-item has-treeview {{ request()->is('admin/payments*') ? 'menu-open' : '' }}">
                     <a class="nav-link nav-dropdown-toggle" href="#">
                         <i class="fa-fw nav-icon fas fa-dollar-sign">
 
@@ -35,8 +35,8 @@
                     <ul class="nav nav-treeview">
                         @can('payment_access')
                         <li class="nav-item">
-                            <a href="{{ route("admin.payments.index") }}"
-                                class="nav-link {{ request()->is("admin/payments") || request()->is("admin/payments/*") ? "active" : "" }}">
+                            <a href="{{ route('admin.payments.index') }}"
+                                class="nav-link {{ request()->is('admin/payments') || request()->is('admin/payments/*') ? 'active' : '' }}">
                                 <i class="fa-fw nav-icon fas fa-money-bill">
 
                                 </i>
@@ -51,7 +51,7 @@
                 @endcan
                 @can('content_management_access')
                 <li
-                    class="nav-item has-treeview {{ request()->is("admin/event-details*") ? "menu-open" : "" }} {{ request()->is("admin/newss*") ? "menu-open" : "" }} {{ request()->is("admin/reciprocal-clubs*") ? "menu-open" : "" }} {{ request()->is("admin/sportsmen*") ? "menu-open" : "" }} {{ request()->is("admin/past-presidents*") ? "menu-open" : "" }} {{ request()->is("admin/trophies*") ? "menu-open" : "" }} {{ request()->is("admin/amenities-services*") ? "menu-open" : "" }} {{ request()->is("admin/*") ? "menu-open" : "" }}">
+                    class="nav-item has-treeview {{ request()->is('admin/event-details*') ? 'menu-open' : '' }} {{ request()->is('admin/newss*') ? 'menu-open'  : '' }} {{ request()->is('admin/reciprocal-clubs*') ? 'menu-open' : '' }} {{ request()->is('admin/sportsmen*') ? 'menu-open' : '' }} {{ request()->is('admin/past-presidents*') ? 'menu-open' : '' }} {{ request()->is('admin/trophies*') ? 'menu-open' : '' }} {{ request()->is('admin/amenities-services*') ? 'menu-open' : '' }} {{ request()->is('admin/*') ? 'menu-open' : '' }}">
                     <a class="nav-link nav-dropdown-toggle" href="#">
                         <i class="fa-fw nav-icon fas fa-book">
 
@@ -472,7 +472,7 @@
                 @endif
 
                 <li class="nav-item">
-                    <a href="{{ route("admin.list-campaign") }}" class="nav-link">
+                    <a href="{{ route('admin.list-campaign') }}" class="nav-link">
                         <p>
                             <i class="fas fa-fw fa-sign-out-alt nav-icon">
 
@@ -503,6 +503,40 @@
                         </p>
                     </a>
                 </li>
+                <!-- Begin Tender Document Upload -->
+                @can('tender_management_access')
+                    <li
+                    class="nav-item has-treeview {{ request()->is('admin/tenderuploads*') ? 'menu-open' : '' }}">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="fa-fw nav-icon fas fa-gamepad">
+
+                        </i>
+                        <p>
+                            {{ trans('cruds.tenderManagement.title') }}
+                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @can('tenderupload_access')
+                        <li class="nav-item">
+                            <a href="{{ route('admin.tenderuploads.index') }}"
+                                class="nav-link {{ request()->is('admin/tenderuploads') || request()->is('admin/tenderuploads/*') ? 'active' : '' }}">
+                                <i class="fa-fw nav-icon fas fa-football-ball">
+
+                                </i>
+                                <p>
+                                    {{ trans('cruds.tenderupload.title') }}
+                                </p>
+                            </a>
+                        </li>
+                        @endcan
+                       
+                    </ul>
+                </li>
+
+                
+                @endcan
+                <!-- End Tender Document Upload -->
 
                 <li class="nav-item">
                     <a href="#" class="nav-link"
