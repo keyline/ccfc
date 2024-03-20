@@ -266,7 +266,10 @@ class TenderFileUploadController extends Controller
             'ctd_archived_at'    => $myTime->toDateTimeString()
             ]);
         }
-
+        $documents->first()->update([
+            'ctd_title' => $request->input('tender_title'),
+            'ctd_description' => $request->input('tender_description'),
+        ]);
         /*
         //automatic update archive status if folder name is current year
         if($documents->first()->folder->isCurrentFinancialYear())

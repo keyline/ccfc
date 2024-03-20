@@ -63,7 +63,7 @@
 													@if($tenderFiles= $tender->getfiles())
 														<div class="tender_pdf">
 															@foreach($tenderFiles AS $file)
-															<a href="{{ route('download.tender', ['file' => $file->cfm_id]) }} "> <img src="{{ asset('img/pdf/quarterly_icon.png') }}" alt="{{ $file->cfm_original_name }}" /></a>
+															<a href="{{ route('download.tender', ['file' => $file->cfm_id]) }} " target="_blank"> <img src="{{ asset('img/pdf/quarterly_icon.png') }}" alt="{{ $file->cfm_original_name }}" /></a>
 															@endforeach
 														</div>
 													@endif

@@ -19,14 +19,19 @@ class TenderDownloadController extends Controller
     
         //dd($document->cfm_physical_path);
         // Assuming the file is stored in the 'local' disk
-        $file = Storage::disk('local')->get($document->cfm_physical_path);
+        //$filePath = Storage::disk('local')->get($document->cfm_physical_path);
+        $filePath= storage_path('app/' . $document->cfm_physical_path);
         
         $mimeType = Storage::disk('local')->mimeType($document->cfm_physical_path);
+        if (!file_exists($filePath)) {
+        throw new FileNotFoundException($filePath);
+    }
         //dd($mimeType);
-        return response($file, 200, [
+        return response()->file($filePath);
+        /*return response($file, 200, [
             'Content-Type' => $mimeType,
             'Content-Disposition' => 'attachment; filename="' . $document->cfm_original_name . '"',
-        ]);
+        ]);*/
         } catch (FileNotFoundException $th) {
             //throw $th;
             return response()->view('errors.404', [], 404);
