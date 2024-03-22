@@ -25,8 +25,8 @@ class UpdateTenderuploadsRequest extends FormRequest
     public function rules()
     {
         return [
-            'tender_title' => 'required|string|max:40',
-            'tender_description' => 'nullable|string|max:100',
+            'tender_title' => 'required|string|max:500',
+            'tender_description' => 'required|string|max:1200',
             'tender_files' => 'required|array',
             //'tender_files.*' => 'file|mimes:pdf|max:2048', // Max file size 2MB per file
             'folder_year'  => 'required' ,
@@ -38,8 +38,10 @@ class UpdateTenderuploadsRequest extends FormRequest
         return [
             'tender_title.required' => 'Please enter a title.',
             'tender_title.string' => 'Title must be a string.',
-            'tender_title.max' => 'Title may not be greater than 40 characters.',
+            'tender_title.max' => 'Title may not be greater than 500 characters.',
+            'tender_description.required' => 'Please enter a decription ',
             'tender_description.string' => 'Description must be a string.',
+            'tender_description.max' => 'Description may not be greater than 1200 characters',
             'tender_files.required' => 'Please upload at least one PDF file.',
             'tender_descrption.max' => 'Title may not be greater than 100 characters.',
             //'tender_files.*.file' => 'The file must be a file.',
