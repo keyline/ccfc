@@ -20,8 +20,6 @@ use App\Http\Requests\MassDestroyUserDetailRequest;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-
-
 class UserDetailsController extends Controller
 {
     use MediaUploadingTrait;
@@ -30,7 +28,10 @@ class UserDetailsController extends Controller
     {
         abort_if(Gate::denies('user_detail_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $userDetails = UserDetail::with(['user_code', 'media'])->get();
+        // $userDetails = UserDetail::with(['user_code', 'media'])->get();
+
+        $userDetails = UserDetail::with(['user_code'])->get();
+
 
         return view('admin.userDetails.index', compact('userDetails'));
     }
@@ -63,7 +64,7 @@ class UserDetailsController extends Controller
         return redirect()->route('admin.user-details.index');
     }
 
-    public function edit(UserDetail $userDetail,$id)
+    public function edit(UserDetail $userDetail)
     {
         // abort_if(Gate::denies('user_detail_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -71,24 +72,24 @@ class UserDetailsController extends Controller
 
         $userDetail->load('user_code');
 
-        // return view('admin.userDetails.edit', compact('userDetail', 'user_codes'));
+        return view('admin.userDetails.edit', compact('userDetail', 'user_codes'));
 
 
-        $userDetail = UserDetail::find($id);
-        return view('admin.userDetails.edit',compact('userDetail', 'user_codes'));
+        //$userDetail = UserDetail::find($id);
+        //      return view('admin.userDetails.edit', compact('userDetail', 'user_codes'));
     }
 
 
     public function update(Request $request, $id)
     {
-        $userDetail = UserDetail::find($id);        
-        
+        $userDetail = UserDetail::find($id);
 
-        if($request->hasfile('userimage')){
+
+        if($request->hasfile('userimage')) {
 
             $destination = 'uploads/userimg/'.$userDetail->member_image_2;
 
-            if(File::exists($destination)){
+            if(File::exists($destination)) {
 
                 File::delete($destination);
             }
@@ -99,14 +100,14 @@ class UserDetailsController extends Controller
 
             $filename = time().'.'.$extention;
 
-            $file->move('uploads/userimg/',$filename);
+            $file->move('uploads/userimg/', $filename);
 
             $userDetail->member_image_2 = $filename;
         }
 
         $userDetail->update();
 
-        return redirect()->back()->with('status','Update successfully');
+        return redirect()->back()->with('status', 'Update successfully');
     }
 
 
@@ -119,10 +120,10 @@ class UserDetailsController extends Controller
 
     //     $userDetail->load('user_code');
 
-        
+
     //     $user = User::where('id', '=', session('LoggedMember'))->first();
 
-        
+
 
     //     $token= "YyHqs47HJOhJUM5Kf1pi5Jz_N8Ss573cxqE2clymSK5G4QLGWsfcxZY8HIKAVvM4vSRsXxCCde4lNfrPvvh93hlLbffZiTwqd_mAu1kAKN6YZWSKd6RDiya8lX50yRIUgaDfeITNUwGWWil3aUlOl3Is-6FFL1Dk8PcJT2iezWOPRYXNVg0TwG1H85v-QT17f1z2Vwr3nhBEfFsUbij0CLRKJwXEoMN4yovVY0QakIHxikwt2lvgibtMnJNZOawklBkpQtC87PcXuG-aGtCqATl0UgjwYr61_oIpRmbuiEk";
 
@@ -130,20 +131,20 @@ class UserDetailsController extends Controller
     //         'MCODE' => $user->user_code
     //       ];
 
-        
+
 
     //     $url= "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
 
-    
+
     //     $profile = Http::withoutVerifying()
     //         ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
     //                         'Content-Type' => 'application/json',])
     //         ->withOptions(["verify"=>false])
     //         ->post($url)->json()['data'];
 
-            
+
     //         return view('admin.userDetails.edit', compact('userDetail', 'user_codes'), [
-                
+
     //             'userProfile'       => $profile,
     //             // 'userTransactions'  => $transactions,
     //         ]);

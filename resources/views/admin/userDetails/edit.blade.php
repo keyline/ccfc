@@ -4,7 +4,7 @@
 
 <div class="card">
     <div class="card-header">
-        <a href="{{ route("admin.user-details.index") }}" class="btn btn-primary float-end">Back</a>
+        <a href="{{ route('admin.users.show', $userDetail->user_code_id) }}" class="btn btn-primary float-end">Back</a>
 
     </div>
     <div class="col-lg-12">

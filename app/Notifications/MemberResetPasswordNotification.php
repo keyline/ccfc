@@ -45,7 +45,7 @@ class MemberResetPasswordNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Welcome to CCFC. Please click the link below to setup your password.')
-                    ->action('Reset Password', url(config('app.url').route('password.reset', [$this->token, $notifiable->email, $notifiable->user_code], false)))
+                    ->action('Reset Password', url(config('app.url').route('password.reset', ['token' =>$this->token, 'email' =>$notifiable->email, 'usercode' => $notifiable->user_code], false)))
                     ->line('Thank you for using our application!');
     }
 

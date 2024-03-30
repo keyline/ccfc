@@ -47,8 +47,9 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token = null)
     {
+        
         return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email, 'user_code' => $request->user_code]
+            ['token' => $token, 'email' => $request->email, 'user_code' => $request->usercode]
         );
     }
 
@@ -96,8 +97,9 @@ class ResetPasswordController extends Controller
                                     ->where('user_code', $user->user_code)
                                     ->delete();
                                     
-            return redirect()->route('member.login');
+            return redirect()->route('member.login')->with('message', 'Password updated successfully.');
         } else {
+            return redirect()->back()->with('error', "Token mismatch!");
         }
     }
 }
