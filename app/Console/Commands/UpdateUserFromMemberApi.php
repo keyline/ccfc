@@ -53,7 +53,10 @@ class UpdateUserFromMemberApi extends Command
             $users = User::where('id', '!=', '1')->limit(10)->get();
             $userCount = count($users);
             foreach ($users as $user) {
-                $response = $client->request('POST', 'https://ccfcmemberdata.in/Api/MemberProfile', [
+
+                \App\Jobs\MemberProfileUpdate::dispatch($user->user_code)->onQueue('memberprofile');
+
+                /*$response = $client->request('POST', 'https://ccfcmemberdata.in/Api/MemberProfile', [
                     'headers' => ['Authorization' => 'Bearer '. $this->token,'Accept'     => 'application/json'],
                         'query' => [
                             'MCODE' => $user->user_code,
@@ -78,7 +81,8 @@ class UpdateUserFromMemberApi extends Command
                     $user->status = $profile['CURENTSTATUS'];
 
                     if ($user->save()) {
-                        $this->info('Cron: User table updated with Mcode: '. $user->user_code);
+                        $this->info('Cr
+                        on: User table updated with Mcode: '. $user->user_code);
                         $userInformation = UserDetail::where('user_code_id', $user->id)->first();
                         $memberbase64 = $profile['MemberImage'];
                         $spousebase64 = $profile['SpouseImage'];
@@ -296,7 +300,7 @@ class UpdateUserFromMemberApi extends Command
                     $this->error('Failed to fetch data from API with user code: ' . $user->user_code);
                     throw new Exception("Not getting response from API", 1);
 
-                }
+                }*/
             }
         } catch (\Exception $e) {
             //throw $th;
