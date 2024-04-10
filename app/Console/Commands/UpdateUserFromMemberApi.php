@@ -50,7 +50,7 @@ class UpdateUserFromMemberApi extends Command
         //return 0;
         $client = new Client(['verify' => false]);
         try {
-            $users = User::where('id', '!=', '1')->limit(10)->get();
+            $users = User::where('id', '!=', '1')->get();
             $userCount = count($users);
             foreach ($users as $user) {
 
