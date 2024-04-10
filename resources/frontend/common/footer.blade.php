@@ -3,12 +3,12 @@
        <section class="footer_top">
            <div class="container">
                <div class="row">
-                   <div class="col-md-4 p-0">
+                   <div class="col-md-6 p-0">
                        <div class="foot_copyright">
                            <div class="copyright">Copyright © {{ now()->year }} The CC&FC Club at Kolkata All Rights Reserved.</div>
                        </div>
                    </div>
-                   <div class="col-md-4 p-0">
+                   <!-- <div class="col-md-4 p-0">
                        <div class="foot_social">
                            <div class="footer_social_inner">
                                <ul>
@@ -46,8 +46,8 @@
                                </ul>
                            </div>
                        </div>
-                   </div>
-                   <div class="col-md-4 p-0 foot_webcomp">
+                   </div> -->
+                   <div class="col-md-6 p-0 foot_webcomp">
                        <div class="foot_copyright">
                            <div class="foot_webcompany">
                                Designed & Developed by<a href="https://keylines.net/" class="keyline"> KEYLINE</a>
