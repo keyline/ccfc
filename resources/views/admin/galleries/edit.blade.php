@@ -79,7 +79,7 @@
 var uploadedImagesMap = {}
 Dropzone.options.imagesDropzone = {
     url: '{{route('admin.galleries.storeMedia')}}',
-    maxFilesize: 2, // MB
+    maxFilesize: 50000000, // 50 MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     addRemoveLinks: false,
     previewTemplate: '<div class="dz-preview dz-file-preview"><div class="dz-image"><img data-dz-thumbnail /></div><div class="dz-details"><div class="dz-size"><span data-dz-size></span></div><div class="dz-filename"><span data-dz-name></span></div></div><div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div><div class="dz-error-message"><span data-dz-errormessage></span></div><div class="dz-success-mark"></div><div class="dz-error-mark"></div><input type="checkbox" class="dz-checkbox" /></div>',
