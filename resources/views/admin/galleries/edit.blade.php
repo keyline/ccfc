@@ -39,6 +39,7 @@
                 <span class="help-block">{{ trans('cruds.gallery.fields.gallery_type_helper') }}</span>
             </div>
             <button id="removeChecked">Delete Selected</button>
+            <button id="allChecked">Select All</button>
             <div class="form-group">
                 <label for="images">{{ trans('cruds.gallery.fields.images') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('images') ? 'is-invalid' : '' }}" id="images-dropzone">
@@ -74,7 +75,7 @@
 
 @section('scripts')
 <script>
-let existingImages=[];
+
 var uploadedImagesMap = {}
 Dropzone.options.imagesDropzone = {
     url: '{{route('admin.galleries.storeMedia')}}',
@@ -99,13 +100,14 @@ Dropzone.options.imagesDropzone = {
         
     },
     init: function() {
+        var clicked= false;
         var _this=this;
-        var existingFiles = []; // Track existing file previews
+        
         @if(isset($gallery) && $gallery->images)
         var files = {!! json_encode($gallery->images) !!}
         for (var i in files) {
             var file = files[i]
-            existingFiles.push(file);
+            
             _this.options.addedfile.call(_this, file)
             _this.options.thumbnail.call(_this, file, file.original_url)
             file.previewElement.classList.add('dz-success')
@@ -147,16 +149,16 @@ const names=[];
 // Iterate over each file entry in the fileData object
 for (const key in fileObjects) {
     if (fileObjects.hasOwnProperty(key)) {
-        const { previewElement, name } = fileObjects[key]; // Destructure previewElement from each file entry
+        const { previewElement, file_name } = fileObjects[key]; // Destructure previewElement from each file entry
         previewElements.push(previewElement); // Push previewElement into the array
-        names.push(name);
+        names.push(file_name);
     }
 }
     
 
 console.log({"fileData": name});
-console.log({"Matching Preview": previewElements[0]});
-console.log({"parentNode": previewElements[0]['parentNode']});
+//console.log({"Matching Preview": previewElements[0]});
+//console.log({"parentNode": previewElements[0]['parentNode']});
        
 
         
@@ -166,7 +168,7 @@ console.log({"parentNode": previewElements[0]['parentNode']});
             // Get the preview element associated with the file
             //var previewElement = filteredByValue.previewElement;
             
-_this.removeFile(fileObjects);
+            _this.removeFile(fileObjects);
 
 
 
@@ -194,6 +196,41 @@ _this.removeFile(fileObjects);
 
 // Event listener for "Delete Selected" button click
 //document.getElementById('removeChecked').addEventListener('click', removeCheckedFiles);
+document.getElementById('allChecked').addEventListener('click', function(e){
+            e.preventDefault();
+            // Select all checkhour checkboxes
+            var checkImages = document.querySelectorAll('.dz-checkbox');
+            var isChecked = this.textContent === 'Select All';
+
+            // Update the text content of the button based on isChecked
+            this.textContent = isChecked ? 'Deselect All' : 'Select All';
+            // Toggle the checked property for each checkhour checkbox
+            checkImages.forEach(function(checkImage) {
+                checkImage.checked = isChecked;
+            });
+
+            // Toggle the text content of the checkall label
+            this.textContent = clicked ? 'Select All' : 'Deselect All';
+
+            // Toggle the state of clicked variable
+            clicked = !clicked;
+}.bind(this));
+
+document.querySelectorAll('.dz-checkbox').forEach(function(checkbox){
+    checkbox.addEventListener('change', function (e) {
+    // Select the checkall button
+        var checkAllButton = document.getElementById('allChecked');
+
+    var checkImageCheckboxes = document.querySelectorAll('.dz-checkbox');
+    // Check if all checkhour checkboxes are checked
+                var allChecked = Array.from(checkImageCheckboxes).every(function(checkbox) {
+                    return checkbox.checked;
+                });
+
+                // Update the text content of the checkall button based on allChecked
+                checkAllButton.textContent = allChecked ? 'Deselect All' : 'Select All';
+}.bind(this));
+}.bind(this));
 
     },
     error: function(file, response) {
