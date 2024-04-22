@@ -5,7 +5,22 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <style>
+        .zoomable {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.zoomable__img {
+  transform-origin: var(--zoom-pos-x, 0%) var(--zoom-pos-y, 0%);
+  transition: transform 0.15s linear;
+}
+.zoomable--zoomed .zoomable__img {
+  cursor: zoom-in;
+  transform: scale(var(--zoom, 2));
+}
+    </style>
     <!-- ?php include 'assets/inc/header.php';?> -->
 
     <!-- header -->
@@ -63,7 +78,7 @@
             </section>
             <!-- ********|| BANNER PART END ||******** -->
 
-
+            
 
             <!-- ********|| ACTIVITIES START ||******** -->
             <section class="history-sec">
@@ -277,7 +292,7 @@
             <!-- ******** Dining Room Modal ******* -->
             <div class="modal fade" id="activities-dinning" tabindex="-1" role="dialog"
                 aria-labelledby="ModalCarouselLabel">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
 
                     <div class="modal-content">
                         <div class="modal-header">
@@ -292,8 +307,11 @@
                                 @foreach($galleries->where("id","6") as $key => $gallery)
                                 @foreach($gallery->images as $key => $media)
                                 <div class="carousel-item  {{ $loop->first ? ' active' : '' }} ">
-
-                                    <img src="{{$media->getUrl('')}}" alt="Menu">
+                                    <div class="container">
+                                        <div class="zoomable">
+                                            <img class="zoomable__img" src="{{$media->getUrl('')}}" alt="Menu"/>
+                                        </div>
+                                    </div> 
                                 </div>
                                 @endforeach
                                 @endforeach
@@ -339,7 +357,7 @@
         <!-- ******** Club Kitchen Modal ******* -->
         <div class="modal fade" id="activities-clubkitchen" tabindex="-1" role="dialog"
             aria-labelledby="ModalCarouselLabel">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
 
                 <div class="modal-content">
                     <div class="modal-header">
@@ -354,7 +372,11 @@
 
                             <div class="carousel-item {{ $loop->first ? ' active' : '' }}">
 
-                                <img src="{{$media->getUrl('')}}" alt="Menu">
+                                <div class="container">
+                                    <div class="zoomable">
+                                        <img class="zoomable__img" src="{{$media->getUrl('')}}" alt="Menu"/>
+                                    </div>
+                                </div> 
                             </div>
                             @endforeach
                             @endforeach
@@ -431,7 +453,7 @@
 
         <div class="modal fade" id="activities-counter" tabindex="-1" role="dialog"
             aria-labelledby="ModalCarouselLabel">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
 
                 <div class="modal-content">
                     <div class="modal-header">
@@ -470,7 +492,7 @@
 
 
         <div class="modal fade" id="activities-dinning1" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
 
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -528,7 +550,164 @@
 
         <!-- Modal -->
 
+<script>
+    /*
+ * Constants
+ */
 
+const Default = {
+    initialZoom: 2,
+    minZoom: 1.25,
+    maxZoom: 4,
+    zoomSpeed: 0.01
+};
+
+/*
+ * Class definition
+ */
+
+class Zoomable {
+    constructor(element, config) {
+        this.element = element;
+        this.config = this._mergeConfig(config);
+
+        const { initialZoom, minZoom, maxZoom } = this.config;
+
+        this.zoomed = false;
+        this.initialZoom = Math.max(Math.min(initialZoom, maxZoom), minZoom);
+        this.zoom = this.initialZoom;
+
+        this.img = element.querySelector(".zoomable__img");
+        this.img.draggable = false;
+        this.element.style.setProperty("--zoom", this.initialZoom);
+
+        this._addEventListeners();
+    }
+
+    static get Default() {
+        return Default;
+    }
+
+    _addEventListeners() {
+        this.element.addEventListener("mouseover", () =>
+            this._handleMouseover()
+        );
+        this.element.addEventListener("mousemove", (evt) =>
+            this._handleMousemove(evt)
+        );
+        this.element.addEventListener("mouseout", () => this._handleMouseout());
+        this.element.addEventListener("wheel", (evt) => this._handleWheel(evt));
+
+        this.element.addEventListener("touchstart", (evt) =>
+            this._handleTouchstart(evt)
+        );
+        this.element.addEventListener("touchmove", (evt) =>
+            this._handleTouchmove(evt)
+        );
+        this.element.addEventListener("touchend", () => this._handleTouchend());
+    }
+
+    _handleMouseover() {
+        if (this.zoomed) {
+            return;
+        }
+
+        this.element.classList.add("zoomable--zoomed");
+
+        this.zoomed = true;
+    }
+
+    _handleMousemove(evt) {
+        if (!this.zoomed) {
+            return;
+        }
+
+        const elPos = this.element.getBoundingClientRect();
+
+        const percentageX = `${
+            ((evt.clientX - elPos.left) * 100) / elPos.width
+        }%`;
+        const percentageY = `${
+            ((evt.clientY - elPos.top) * 100) / elPos.height
+        }%`;
+
+        this.element.style.setProperty("--zoom-pos-x", percentageX);
+        this.element.style.setProperty("--zoom-pos-y", percentageY);
+    }
+
+    _handleMouseout() {
+        if (!this.zoomed) {
+            return;
+        }
+
+        this.element.style.setProperty("--zoom", this.initialZoom);
+        this.element.classList.remove("zoomable--zoomed");
+
+        this.zoomed = false;
+    }
+
+    _handleWheel(evt) {
+        if (!this.zoomed) {
+            return;
+        }
+
+        evt.preventDefault();
+
+        const newZoom = this.zoom + evt.deltaY * (this.config.zoomSpeed * -1);
+        const { minZoom, maxZoom } = this.config;
+
+        this.zoom = Math.max(Math.min(newZoom, maxZoom), minZoom);
+        this.element.style.setProperty("--zoom", this.zoom);
+    }
+
+    _handleTouchstart(evt) {
+        evt.preventDefault();
+
+        this._handleMouseover();
+    }
+
+    _handleTouchmove(evt) {
+        if (!this.zoomed) {
+            return;
+        }
+
+        const elPos = this.element.getBoundingClientRect();
+
+        let percentageX =
+            ((evt.touches[0].clientX - elPos.left) * 100) / elPos.width;
+        let percentageY =
+            ((evt.touches[0].clientY - elPos.top) * 100) / elPos.height;
+
+        percentageX = Math.max(Math.min(percentageX, 100), 0);
+        percentageY = Math.max(Math.min(percentageY, 100), 0);
+
+        this.element.style.setProperty("--zoom-pos-x", `${percentageX}%`);
+        this.element.style.setProperty("--zoom-pos-y", `${percentageY}%`);
+    }
+
+    _handleTouchend(evt) {
+        this._handleMouseout();
+    }
+
+    _mergeConfig(config) {
+        return {
+            ...this.constructor.Default,
+            ...(typeof config === "object" ? config : {})
+        };
+    }
+}
+
+/*
+ * Implementation
+ */
+
+const zoomables = document.querySelectorAll(".zoomable");
+
+for (const el of zoomables) {
+    new Zoomable(el);
+}
+
+</script>
 
 
         </body>
