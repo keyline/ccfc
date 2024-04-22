@@ -156,6 +156,8 @@
                                                                         <li><a href="{{ asset('club-bar') }}">Bar</a></li>
                                                                         <li><a href="{{ asset('swimming-pool') }}">Swimming
                                                                                 Pool</a></li>
+                                                                        <li><a href="{{ asset('day-spa') }}">Day
+                                                                                Spa</a></li>
                                                                     </ul>
                                                                 </li>
                                                                 <li><a class="nav-link"
