@@ -197,6 +197,7 @@ console.log({"fileData": name});
 // Event listener for "Delete Selected" button click
 //document.getElementById('removeChecked').addEventListener('click', removeCheckedFiles);
 document.getElementById('allChecked').addEventListener('click', function(e){
+    debugger;
             e.preventDefault();
             // Select all checkhour checkboxes
             var checkImages = document.querySelectorAll('.dz-checkbox');
@@ -214,7 +215,7 @@ document.getElementById('allChecked').addEventListener('click', function(e){
 
             // Toggle the state of clicked variable
             clicked = !clicked;
-}.bind(this));
+});
 
 document.querySelectorAll('.dz-checkbox').forEach(function(checkbox){
     checkbox.addEventListener('change', function (e) {
@@ -228,7 +229,7 @@ document.querySelectorAll('.dz-checkbox').forEach(function(checkbox){
                 });
 
                 // Update the text content of the checkall button based on allChecked
-                checkAllButton.textContent = allChecked ? 'Deselect All' : 'Select All';
+                checkAllButton.innerHTML = allChecked ? 'Deselect All' : 'Select All';
 }.bind(this));
 }.bind(this));
 
