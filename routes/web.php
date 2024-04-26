@@ -188,6 +188,16 @@ Route::get('/club-bar', function () {
     return view('club-bar', compact(['contentPages', 'galleries', 'contentBlocks']));
 });
 
+/* added day-spa page on 22/04/24 by <shuvadeep@keylines.net> */
+
+Route::get('/day-spa', function () {
+    $contentPages = ContentPage::all();
+    $galleries = Gallery::with(['media'])->get();
+    $contentBlocks = ContentBlock::with(['source_page'])->get();
+    return view('day-spa', compact(['contentPages', 'galleries', 'contentBlocks']));
+});
+
+
 Route::get('/maintains-new', function () {
     $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();

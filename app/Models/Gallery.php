@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-use \DateTimeInterface;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+
+
+use Spatie\Image\Enums\BorderType;
 
 class Gallery extends Model implements HasMedia
 {
@@ -25,7 +28,7 @@ class Gallery extends Model implements HasMedia
         'History' => 'Active',
         'Banner' => 'Inactive',
     ];
-    
+
 
     public $table = 'galleries';
 
@@ -51,7 +54,9 @@ class Gallery extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
-        
+
+
+
     }
 
     public function getImagesAttribute()

@@ -50,7 +50,7 @@
                    <div class="col-md-6 p-0 foot_webcomp">
                        <div class="foot_copyright">
                            <div class="foot_webcompany">
-                               Designed & Developed by<a href="https://keylines.net/" class="keyline"> KEYLINE</a>
+                               Designed & Developed by<a href="https://keylines.net/" class="keyline" target="_blank"> KEYLINE</a>
                            </div>
                        </div>
                    </div>
