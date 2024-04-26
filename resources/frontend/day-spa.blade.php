@@ -139,7 +139,263 @@
                                 <p class="spa-time"><i class="zmdi zmdi-smartphone-android"></i> <a href="tel:+916290930014"> +91 6290930014</a></p>
                             </div>
                         </div>
-            
+
+                        <div class="col-lg-12 d-block d-lg-none">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="gym-inner">
+                                        <div class="title-sec">
+                                            <div class="title text-left">
+                                                <!-- <a href="javascript: void(0)" style="color: #d24f50"><img src="{{ asset('img/hand-point.png') }}" alt=""> Spa Rate Chart (Members must be logged in to view full rate chart)</a>  -->
+                                                <span class="title text-left">Spa Rate Chart:
+                                                @if (auth()->check()) @else {{'(Members must be logged in to view full rate chart)'}} @endif
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (auth()->check())
+                            <div class="row">
+                            <div class="col-lg-6">
+                                
+                                <div class="gym-inner">
+                                    <div class="table-box table-responsive">
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <th>Sl. No.</th>
+                                                <th>ITEMS</th>
+                                                <th>TIME (MINS)</th>
+                                                <th>MEMBERS’ RATE (INR)</th>
+                                                <th>MEMBERS’ GUEST RATE (INR)</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>SWEDISH STRESS RELIEF</td>
+                                                    <td>45+15</td>
+                                                    <td>1500</td>
+                                                    <td>1875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>DEEP TISSUE</td>
+                                                    <td>45+15</td>
+                                                    <td>1500</td>
+                                                    <td>1875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>VEDIC ABHYANGAM</td>
+                                                    <td>45+15</td>
+                                                    <td>1200</td>
+                                                    <td>1500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>POTLI</td>
+                                                    <td>45+15</td>
+                                                    <td>2000</td>
+                                                    <td>2500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>NORMAL SWEDISH</td>
+                                                    <td>45+15</td>
+                                                    <td>1000</td>
+                                                    <td>1250</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>NORMAL SWEDISH WITH OIL</td>
+                                                    <td>45+15</td>
+                                                    <td>1200</td>
+                                                    <td>1500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>HEAD MASSAGE</td>
+                                                    <td>30</td>
+                                                    <td>500</td>
+                                                    <td>625</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>FOOT MASSAGE</td>
+                                                    <td>30</td>
+                                                    <td>500</td>
+                                                    <td>625</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td>ARM MASSAGE</td>
+                                                    <td>30</td>
+                                                    <td>500</td>
+                                                    <td>625</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td>BACK & SHOULDER MASSAGE</td>
+                                                    <td>30</td>
+                                                    <td>700</td>
+                                                    <td>875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td>FACE CLEAN-UP</td>
+                                                    <td>45</td>
+                                                    <td>1200</td>
+                                                    <td>1500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td>FACIAL</td>
+                                                    <td>60</td>
+                                                    <td>1500</td>
+                                                    <td>1875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td>FACIAL WITH PACK</td>
+                                                    <td>60</td>
+                                                    <td>2000</td>
+                                                    <td>2500</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="gym-inner">
+                                    <div class="table-box table-responsive">
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <th>Sl. No.</th>
+                                                <th>ITEMS</th>
+                                                <th>MEMBERS’ RATE (INR)</th>
+                                                <th>MEMBERS’ GUEST RATE (INR)</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>FULL BACK (WAXING)</td>
+                                                    <td>1000</td>
+                                                    <td>1250</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>HALF BACK (WAXING)</td>
+                                                    <td>700</td>
+                                                    <td>875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>TUMMY (WAXING)</td>
+                                                    <td>700</td>
+                                                    <td>875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>CHEST (WAXING)</td>
+                                                    <td>1000</td>
+                                                    <td>1250</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>FULL BODY (WAXING)</td>
+                                                    <td>3000</td>
+                                                    <td>3750</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>BIKINI WAX (WAXING)</td>
+                                                    <td>3000</td>
+                                                    <td>3750</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>FEET (WAXING)</td>
+                                                    <td>200</td>
+                                                    <td>250</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>UPPER LIP/NOSE (WAXING)</td>
+                                                    <td>100</td>
+                                                    <td>125</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td>CHIN (WAXING)</td>
+                                                    <td>150</td>
+                                                    <td>188</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td>FULL FACE (WAXING)</td>
+                                                    <td>500</td>
+                                                    <td>625</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td>UNDER ARMS (WAXING)</td>
+                                                    <td>300</td>
+                                                    <td>375</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td>FULL ARMS (LADIES/GENTS) (WAXING)</td>
+                                                    <td>600/700</td>
+                                                    <td>750/875</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td>HALF ARMS (LADIES/GENTS) (WAXING)</td>
+                                                    <td>400/500</td>
+                                                    <td>500/625</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td>FULL LEGS (LADIES/GENTS) (WAXING)</td>
+                                                    <td>700/800</td>
+                                                    <td>875/1000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td>HALF LEGS (LADIES/GENTS) (WAXING)</td>
+                                                    <td>500/600</td>
+                                                    <td>625/750</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td>EYEBROWS & FOREHEAD & CHIN (THREADING)</td>
+                                                    <td>100 (EACH)</td>
+                                                    <td>125</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td>UPPER LIP (THREADING)</td>
+                                                    <td>80</td>
+                                                    <td>100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td>FULL FACE (THREADING)</td>
+                                                    <td>400</td>
+                                                    <td>500</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            @else
+                            
+                            @endif
+                        </div>
+
                         <div class="col-lg-4">
                             <div class="clubbar_sidebar">
                                 @foreach($galleries->where("id","39") as $key => $gallery)
@@ -166,20 +422,26 @@
                         </div>
             
                     </div>
-                    <div class="row">
+                    <div class="row d-none d-lg-block">
                         <div class="col-lg-12">
-                            <div class="gym-inner">
-                                <div class="title-sec">
-                                    <div class="title text-left">
-                                        <!-- <a href="javascript: void(0)" style="color: #d24f50"><img src="{{ asset('img/hand-point.png') }}" alt=""> Spa Rate Chart (Members must be logged in to view full rate chart)</a>  -->
-                                        <span class="title text-left">Spa Rate Chart:
-                                        @if (auth()->check()) @else {{'(Members must be logged in to view full rate chart)'}} @endif
-                                        </span>
+                            <div class="row">
+                            <div class="col-lg-12">
+                                <div class="gym-inner">
+                                    <div class="title-sec">
+                                        <div class="title text-left">
+                                            <!-- <a href="javascript: void(0)" style="color: #d24f50"><img src="{{ asset('img/hand-point.png') }}" alt=""> Spa Rate Chart (Members must be logged in to view full rate chart)</a>  -->
+                                            <span class="title text-left">Spa Rate Chart:
+                                            @if (auth()->check()) @else {{'(Members must be logged in to view full rate chart)'}} @endif
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            </div>
                         </div>
                         @if (auth()->check())
+                        <div class="col-lg-12">
+                        <div class="row">
                         <div class="col-lg-6">
                             
                             <div class="gym-inner">
@@ -412,6 +674,8 @@
                                     </table>
                                 </div>
                             </div>
+                        </div>
+                        </div>
                         </div>
                         @else
                         
