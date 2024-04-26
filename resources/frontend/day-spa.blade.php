@@ -294,7 +294,7 @@
                                 <div class="table-box table-responsive">
                                     <table class="table table-striped table-bordered">
                                         <thead>
-                                            <th>Sr. No.</th>
+                                            <th>Sl. No.</th>
                                             <th>ITEMS</th>
                                             <th>MEMBERS’ RATE (INR)</th>
                                             <th>MEMBERS’ GUEST RATE (INR)</th>
