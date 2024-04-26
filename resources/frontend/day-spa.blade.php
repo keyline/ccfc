@@ -172,7 +172,9 @@
                                 <div class="title-sec">
                                     <div class="title text-left">
                                         <!-- <a href="javascript: void(0)" style="color: #d24f50"><img src="{{ asset('img/hand-point.png') }}" alt=""> Spa Rate Chart (Members must be logged in to view full rate chart)</a>  -->
-                                        <span style="color: #d24f50">Spa Rate Chart (Members must be logged in to view full rate chart)</span>
+                                        <span style="color: #d24f50">Spa Rate Chart 
+                                        @if (auth()->check()) @else {{'(Members must be logged in to view full rate chart)'}} @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +186,7 @@
                                 <div class="table-box table-responsive">
                                     <table class="table table-striped table-bordered">
                                         <thead>
-                                            <th>Sr. No.</th>
+                                            <th>Sl. No.</th>
                                             <th>ITEMS</th>
                                             <th>TIME (MINS)</th>
                                             <th>MEMBERS’ RATE (INR)</th>
