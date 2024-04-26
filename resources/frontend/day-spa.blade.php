@@ -172,7 +172,7 @@
                                 <div class="title-sec">
                                     <div class="title text-left">
                                         <!-- <a href="javascript: void(0)" style="color: #d24f50"><img src="{{ asset('img/hand-point.png') }}" alt=""> Spa Rate Chart (Members must be logged in to view full rate chart)</a>  -->
-                                        <span style="color: #d24f50">Spa Rate Chart 
+                                        <span class="title text-left">Spa Rate Chart:
                                         @if (auth()->check()) @else {{'(Members must be logged in to view full rate chart)'}} @endif
                                         </span>
                                     </div>
