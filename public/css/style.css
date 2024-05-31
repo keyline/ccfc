@@ -851,7 +851,12 @@ nav.navbar .navbar-nav>li.active>a.nav-link {
 .advise {
     padding: 20px 60px 0;
 }
-
+.sticky-section{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: #FFF;
+}
 .advise .advise-img {
     margin-bottom: 20px;
     text-align: center;
@@ -3684,7 +3689,18 @@ border-radius: 10px;
     }
 	
 }
-
+@media screen and (max-width: 991px) {
+    .sticky-section{
+        position: static;
+        background: #FFF;
+    }
+    .advise .advise-img{
+        margin-bottom: 0;
+    }
+    .fancybox-image, .fancybox-spaceball{
+        padding: 0 15px;
+    }
+}
 @media screen and (max-width: 767px) {
     th.w-resp_3 {
         width: 3%;

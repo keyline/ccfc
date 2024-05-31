@@ -61,11 +61,11 @@
             <!-- ********|| BANNER PART END ||******** -->
 
             <!-- ********|| ADVISE START ||******** -->
-            <section class="advise">
+            <section class="advise sticky-section">
 
 
                 <div class="container">
-                    <div class="row">
+                    <div class="row justify-content-center">
 
                         @foreach($galleries->where("id","2") as $key => $gallery)
 
@@ -73,7 +73,7 @@
 
                         <div class="col-lg-6">
                             <div class="advise-img">
-                                <a href="{{$media->getUrl('')}}" class="item-inner" data-fancybox="image">
+                                <a href="{{$media->getUrl('')}}" class="item-inner" data-fancybox="image-2">
                                     <img class="img-fluid" src="{{$media->getUrl('')}}" alt="" />
                                 </a>
                             </div>
