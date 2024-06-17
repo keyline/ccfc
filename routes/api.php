@@ -37,14 +37,14 @@ use App\Http\Controllers\Api\V2\Member\ApiController;
 
 
 //we can send multiple parameter to middleware like `api.versions:1,2`
-Route::prefix('v1')->middleware('api.versions:1')->group(function () {
+Route::prefix('v1')->group(function () {
     //Version 1 routes
     //https://ccfccms.test/api/v1/member/list
     Route::get('member/list', [AuthController::class, 'index'])->name('api.v1.member.list.show');
 
 });
 
-Route::prefix('v2')->middleware('api.versions:2')->group(function () {
+Route::prefix('v2')->group(function () {
 
     // Other Version 2 routes
     //https://ccfccms.test/api/v2/member/auth
