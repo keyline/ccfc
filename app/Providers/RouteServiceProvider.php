@@ -28,6 +28,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\\Http\\Controllers';
 
+    //protected $apiNamespace = 'App\\Http\\Controllers\\Api';
+
     /**
      * Define your route model bindings, pattern filters, etc.
      */
@@ -37,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::prefix('api')
-                ->middleware('api')
+                ->middleware('api.versions:1,2')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 

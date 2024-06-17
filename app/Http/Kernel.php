@@ -29,6 +29,8 @@ class Kernel extends HttpKernel
         '2fa'              => \App\Http\Middleware\TwoFactorMiddleware::class,
         'admin'            => \App\Http\Middleware\IsAdminMiddleware::class,
         'member'           => \App\Http\Middleware\MemberAuthMiddleware::class,
+        'api.versions'      => \App\Http\Middleware\ApiVersionMiddleware::class,
+
     ];
 
     protected $middlewareGroups = [

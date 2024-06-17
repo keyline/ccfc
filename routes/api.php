@@ -3,9 +3,14 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\V1\Member\AuthController;
+
+use App\Http\Middleware\ApiVersionMiddleware;
+
+use App\Http\Controllers\Api\V2\Member\ApiController;
+
 // use App\Http\Controllers\Api\V2\Member\ApiController;
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
+/*Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Users
     Route::apiResource('users', 'UsersApiController');
 
@@ -24,24 +29,35 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Past President
     Route::post('past-presidents/media', 'PastPresidentApiController@storeMedia')->name('past-presidents.storeMedia');
     Route::apiResource('past-presidents', 'PastPresidentApiController');
+});*/
+
+
+
+
+
+
+//we can send multiple parameter to middleware like `api.versions:1,2`
+Route::prefix('v1')->middleware('api.versions:1')->group(function () {
+    //Version 1 routes
+    //https://ccfccms.test/api/v1/member/list
+    Route::get('member/list', [AuthController::class, 'index'])->name('api.v1.member.list.show');
+
+});
+
+Route::prefix('v2')->middleware('api.versions:2')->group(function () {
+
+    // Other Version 2 routes
+    //https://ccfccms.test/api/v2/member/auth
+    Route::post('member/auth', [ApiController::class,'signinWithMobile'])->name('api.v2.member.auth.signinwithmobile');
+
+
 });
 
 
-
-
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Member',], function () {
-    Route::post('member/auth', 'AuthController@login')->name('member.auth');
-});
-
-
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Member', 'middleware' => ['auth:api']], function () {
-    Route::get('list', 'AuthController@index');
-});
-
-Route::fallback(function () {
+/*Route::fallback(function () {
     return response()->json([
         'message' => 'Page Not Found. If error persists, contact shuvadeep@keylines.net'], 404);
-});
+});*/
 
 
 // Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2\Member',], function () {
