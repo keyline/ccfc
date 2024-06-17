@@ -12,7 +12,6 @@ use Helper;
 
 class ApiController extends Controller
 {
-    
     public function signinWithMobile(Request $request){
         $apiStatus          = TRUE;
         $apiMessage         = '';
@@ -20,7 +19,7 @@ class ApiController extends Controller
         $apiExtraField      = '';
         $apiExtraData       = '';
         $requestData        = $request->all();
-        Helper::pr($requestData);
+        // Helper::pr($requestData);
         // if($requestData['key'] == env('PROJECT_KEY')){
         //     $id         = $requestData['id'];
         //     $otp        = $requestData['otp1'].$requestData['otp2'].$requestData['otp3'].$requestData['otp4'];
