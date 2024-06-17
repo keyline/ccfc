@@ -867,6 +867,6 @@ Route::get('/download/tender/{file}', [TenderDownloadController::class, 'downloa
 /* api */
     Route::prefix('/subhomoy')->namespace('App\Http\Controllers\Api\V2\Member')->group(function () {
         // Route::match(['post', 'get'], 'signinWithMobile', 'ApiController@signinWithMobile');
-        Route::post('signinWithMobile', 'ApiController@signinWithMobile')->name('signinWithMobile');
+        Route::post('signinWithMobile', 'ApiController@signinWithMobile');
     });
 /* api */
