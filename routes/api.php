@@ -45,5 +45,5 @@ Route::fallback(function () {
 
 
 Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2\Member',], function () {
-    Route::post('member/signin-with-mobile', 'ApiController@signinWithMobile')->name('signinWithMobile');
+    Route::post('member/signin-with-mobile', 'ApiController@signinWithMobile')->name('member.signinWithMobile');
 });
