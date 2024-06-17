@@ -43,9 +43,4 @@ Route::fallback(function () {
         'message' => 'Page Not Found. If error persists, contact shuvadeep@keylines.net'], 404);
 });
 
-/* api */
-    Route::prefix('/apiv2')->namespace('App\Http\Controllers\Api')->group(function () {
-        // Route::match(['post', 'get'], 'signinWithMobile', 'ApiController@signinWithMobile');
-        Route::post('signinWithMobile', 'ApiController@signinWithMobile')->name('signinWithMobile');
-    });
-/* api */
+

@@ -862,3 +862,10 @@ Route::get('archives', function () {
 })->name('showme.archives');
 
 Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
+
+/* api */
+    Route::prefix('/apiv2')->namespace('App\Http\Controllers\Api')->group(function () {
+        // Route::match(['post', 'get'], 'signinWithMobile', 'ApiController@signinWithMobile');
+        Route::post('signinWithMobile', 'ApiController@signinWithMobile')->name('signinWithMobile');
+    });
+/* api */
