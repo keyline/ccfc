@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\TenderFileUploadController;
 use App\Models\DocumentOrganizer;
 use App\Http\Controllers\TenderDownloadController;
+use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
 
@@ -862,3 +863,10 @@ Route::get('archives', function () {
 })->name('showme.archives');
 
 Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
+
+/* api */
+    Route::prefix('/subhomoy')->namespace('App\Http\Controllers\Api\V2\Member')->group(function () {
+        // Route::match(['post', 'get'], 'signinWithMobile', 'ApiController@signinWithMobile');
+        Route::post('signinWithMobile', 'ApiController@signinWithMobile')->name('signinWithMobile');
+    });
+/* api */
