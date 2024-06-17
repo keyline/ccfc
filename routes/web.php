@@ -862,3 +862,7 @@ Route::get('archives', function () {
 })->name('showme.archives');
 
 Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
+
+/* api */
+    
+/* api */
