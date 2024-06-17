@@ -865,8 +865,9 @@ Route::get('archives', function () {
 Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
 
 /* api */
-    Route::prefix('/subhomoy')->namespace('App\Http\Controllers\Api\V2\Member')->group(function () {
-        // Route::match(['post', 'get'], 'signinWithMobile', 'ApiController@signinWithMobile');
-        Route::post('signinWithMobile', 'ApiController@signinWithMobile');
-    });
+    // Route::prefix('/subhomoy')->namespace('App\Http\Controllers\Api\V2\Member')->group(function () {
+    //     // Route::match(['post', 'get'], 'signinWithMobile', 'ApiController@signinWithMobile');
+    //     Route::post('signinWithMobile', 'ApiController@signinWithMobile');
+    // });
+Route::get('/subhomoy/signinWithMobile', [App\Http\Controllers\Api\V2\Member\ApiController::class, 'signinWithMobile'])->name('signinWithMobile');
 /* api */
