@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\V1\Member\AuthController;
+use App\Http\Controllers\Api\ApiController;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Users
@@ -41,3 +42,10 @@ Route::fallback(function () {
     return response()->json([
         'message' => 'Page Not Found. If error persists, contact shuvadeep@keylines.net'], 404);
 });
+
+/* api */
+    Route::prefix('/apiv2')->namespace('App\Http\Controllers\Api')->group(function () {
+        // Route::match(['post', 'get'], 'signinWithMobile', 'ApiController@signinWithMobile');
+        Route::post('signinWithMobile', 'ApiController@signinWithMobile')->name('signinWithMobile');
+    });
+/* api */
