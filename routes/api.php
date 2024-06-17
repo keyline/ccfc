@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\V1\Member\AuthController;
-use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\V2\Member\ApiController;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Users
@@ -44,3 +44,6 @@ Route::fallback(function () {
 });
 
 
+Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2\Member',], function () {
+    Route::post('member/signin-with-mobile', 'ApiController@signinWithMobile')->name('signinWithMobile');
+});
