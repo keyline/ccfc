@@ -38,7 +38,7 @@ class ApiController extends Controller
                 $device_token               = $requestData['device_token'];
                 $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
                 if($checkUser){
-                    if($checkUser->status != 'ACTIVE'){
+                    if($checkUser->status == 'ACTIVE'){
                         $mobile_otp = rand(100000,999999);
                         $postData = [
                             'remember_token'        => $mobile_otp
