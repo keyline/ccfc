@@ -29,14 +29,7 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            echo $headerData['key'][0];
-            // Helper::pr($headerData['Key']);
-            echo '<br>';
-            Helper::pr($headerData);
-            
-            echo env('PROJECTKEY');
-            die;
-            if($headerData['Key'] == env('PROJECTKEY')){
+            if($headerData['key'][0] == env('PROJECTKEY')){
                 $phone                      = $requestData['phone'];
                 $device_token               = $requestData['device_token'];
                 $checkUser                  = $this->common_model->find_data('users', 'row', ['phone_number_1' => $phone]);
