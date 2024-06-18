@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\TenderFileUploadController;
 use App\Models\DocumentOrganizer;
 use App\Http\Controllers\TenderDownloadController;
-use App\Http\Controllers\Api\V2\Member\ApiController;
+// use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
 
@@ -865,7 +865,7 @@ Route::get('archives', function () {
 Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
 
 /* api */
-    Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2\Member',], function () {
-        Route::post('member/signin-with-mobile', 'ApiController@signinWithMobile')->name('member.signinWithMobile');
-    });
+    // Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2\Member',], function () {
+    //     Route::post('member/signin-with-mobile', 'ApiController@signinWithMobile')->name('member.signinWithMobile');
+    // });
 /* api */
