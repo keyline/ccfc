@@ -29,10 +29,10 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            echo $headerData['key'][0];
-            echo '<br>';
-            echo env('PROJECT_KEY');
-            die;
+            // echo $headerData['key'][0];
+            // echo '<br>';
+            // echo env('PROJECT_KEY');
+            // die;
             if($headerData['key'][0] == env('PROJECT_KEY')){
                 $phone                      = $requestData['phone'];
                 $device_token               = $requestData['device_token'];
