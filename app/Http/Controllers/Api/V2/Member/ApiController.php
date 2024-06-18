@@ -36,14 +36,14 @@ class ApiController extends Controller
             if($headerData['key'][0] == env('PROJECT_KEY')){
                 $phone                      = $requestData['phone'];
                 $device_token               = $requestData['device_token'];
-                $checkUser                  = $this->common_model->find_data('users', 'row', ['phone_number_1' => $phone]);
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
                 if($checkUser){
                     if($checkUser->status != 'ACTIVE'){
                         $mobile_otp = rand(100000,999999);
                         $postData = [
                             'remember_token'        => $mobile_otp
                         ];
-                        $this->common_model->save_data('users', $postData, $checkUser->id, 'id');
+                        User::where('id', '=', $checkUser->id)->update($postData);
                         /* send sms */
                             // $message = "Dear ".(($checkUser)?$checkUser->name:'ECOEX').", ".$mobile_otp." is your verification OTP for registration at ECOEX PORTAL. Do not share this OTP with anyone for security reasons.";
                             // $mobileNo = (($checkUser)?$checkUser->mobileNo:'');
