@@ -122,7 +122,7 @@ class ApiController extends Controller
                                 'fcm_token'             => $fcm_token,
                                 'app_access_token'      => $app_access_token,
                             ];
-                            User::where('id', '=', $checkUser->id)->update(['otp' => '']);
+                            User::where('id', '=', $checkUser->id)->update(['remember_token' => '']);
                             $apiStatus                          = TRUE;
                             $apiMessage                         = 'SignIn Successfully !!!';
                         } else {
