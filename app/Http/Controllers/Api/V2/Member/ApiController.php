@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Libraries\CreatorJwt;
+use App\Libraries\JWT;
 
 use Auth;
 use App\Helpers\Helper;
@@ -23,127 +25,40 @@ class ApiController extends Controller
             $requestData        = $this->extract_json(file_get_contents('php://input'));
             $requiredFields     = ['phone', 'device_token'];
             $headerData         = $request->header();
-            Helper::pr($requestData,0);
-            Helper::pr($headerData,0);
-            die;
             if (!$this->validateArray($requiredFields, $requestData)){
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            if($headerData['Key'] == 'Key: '.getenv('app.PROJECTKEY')){
-                $email                      = $requestData['email'];
-                $password                   = $requestData['password'];
+            if($headerData['Key'] == env('PROJECTKEY')){
+                $phone                      = $requestData['phone'];
                 $device_token               = $requestData['device_token'];
-                $fcm_token                  = $requestData['fcm_token'];
-                $device_type                = trim($headerData['Source'], "Source: ");
-                $checkUser                  = $this->common_model->find_data('ecoex_admin_user', 'row', ['email' => $email, 'user_type!=' => 'MA']);
+                $checkUser                  = $this->common_model->find_data('users', 'row', ['phone_number_1' => $phone]);
                 if($checkUser){
-                    if($checkUser->status != 3){
-                        if($checkUser->status >= 1){
-                            if(md5($password) == $checkUser->password){
-                                $getCompany         = [];
-
-                                $objOfJwt           = new CreatorJwt();
-                                $app_access_token   = $objOfJwt->GenerateToken($checkUser->id, $checkUser->email, $checkUser->mobileNo);
-                                $user_id            = $checkUser->id;
-                                $fields             = [
-                                    'user_id'               => $user_id,
-                                    'device_type'           => $device_type,
-                                    'device_token'          => $device_token,
-                                    'fcm_token'             => $fcm_token,
-                                    'app_access_token'      => $app_access_token,
-                                ];
-                                $checkUserTokenExist                  = $this->common_model->find_data('ecomm_user_devices', 'row', ['app_access_token' => $app_access_token]);
-                                if(!$checkUserTokenExist){
-                                    $this->common_model->save_data('ecomm_user_devices', $fields, '', 'id');
-                                } else {
-                                    $this->common_model->save_data('ecomm_user_devices', $fields, $checkUserTokenExist->id, 'id');
-                                }
-                                /* login log capture */
-                                    $source = explode("Source: ", $headerData['Source']);
-                                    $fields1 = [
-                                        'user_id'       => $checkUser->id,
-                                        'name'          => $checkUser->name,
-                                        'email'         => $checkUser->email,
-                                        'type'          => 'SIGN IN',
-                                        'ip_address'    => $this->request->getIPAddress(),
-                                        'browser_used'  => $source[1],
-                                        'platform'      => 'App',
-                                    ];
-                                    $this->common_model->save_data('ecoex_login_logs', $fields1, '', 'id');
-                                /* login log capture */
-
-                                $userActivityData = [
-                                    'user_email'        => $checkUser->email,
-                                    'user_name'         => $checkUser->name,
-                                    'activity_type'     => 1,
-                                    'user_type'         => $checkUser->user_type,
-                                    'ip_address'        => $this->request->getIPAddress(),
-                                    'activity_details'  => $checkUser->user_type.' Sign In Success',
-                                ];
-                                $this->common_model->save_data('user_activities', $userActivityData, '','activity_id');
-                                $apiResponse = [
-                                    'user_id'               => $user_id,
-                                    'company_name'          => $checkUser->name,
-                                    'email'                 => $checkUser->email,
-                                    'phone'                 => $checkUser->mobileNo,
-                                    'type'                  => $checkUser->user_type,
-                                    'device_type'           => $device_type,
-                                    'device_token'          => $device_token,
-                                    'fcm_token'             => $fcm_token,
-                                    'app_access_token'      => $app_access_token,
-                                ];
-                                $apiStatus                          = TRUE;
-                                $apiMessage                         = 'SignIn Successfully !!!';
-                            } else {
-                                $userActivityData = [
-                                    'user_email'        => $email,
-                                    'user_name'         => $checkUser->name,
-                                    'user_type'         => $checkUser->user_type,
-                                    'ip_address'        => $this->request->getIPAddress(),
-                                    'activity_type'     => 0,
-                                    'activity_details'  => 'Invalid Password',
-                                ];
-                                $this->common_model->save_data('user_activities', $userActivityData, '','activity_id');
-                                $apiStatus                          = FALSE;
-                                $apiMessage                         = 'Invalid Password !!!';
-                            }
-                        } else {
-                            $userActivityData = [
-                                'user_email'        => $checkUser->email,
-                                'user_name'         => $checkUser->name,
-                                'user_type'         => $checkUser->user_type,
-                                'ip_address'        => $this->request->getIPAddress(),
-                                'activity_type'     => 0,
-                                'activity_details'  => 'Admin Not Verified Yet',
-                            ];
-                            $this->common_model->save_data('user_activities', $userActivityData, '','activity_id');
-                            $apiStatus                              = FALSE;
-                            $apiMessage                             = 'You Account Is Not Verified Yet !!!';
-                        }
-                    } else {
-                        $userActivityData = [
-                            'user_email'        => $email,
-                            'user_name'         => $checkUser->name,
-                            'user_type'         => $checkUser->user_type,
-                            'ip_address'        => $this->request->getIPAddress(),
-                            'activity_type'     => 0,
-                            'activity_details'  => 'Sorry ! Account Is Deleted',
+                    if($checkUser->status != 'ACTIVE'){
+                        $mobile_otp = rand(100000,999999);
+                        $postData = [
+                            'remember_token'        => $mobile_otp
                         ];
-                        $this->common_model->save_data('user_activities', $userActivityData, '','activity_id');
-                        $apiStatus                          = FALSE;
-                        $apiMessage                         = 'Sorry ! Account Is Deleted !!!';
+                        $this->common_model->save_data('users', $postData, $checkUser->id, 'id');
+                        /* send sms */
+                            // $message = "Dear ".(($checkUser)?$checkUser->name:'ECOEX').", ".$mobile_otp." is your verification OTP for registration at ECOEX PORTAL. Do not share this OTP with anyone for security reasons.";
+                            // $mobileNo = (($checkUser)?$checkUser->mobileNo:'');
+                            // $this->sendSMS($mobileNo,$message);
+                        /* send sms */
+                        $mailData                   = [
+                            'id'    => $checkUser->id,
+                            'email' => $checkUser->email,
+                            'phone' => $checkUser->phone_number_1,
+                            'otp'   => $mobile_otp,
+                        ];
+                        $apiResponse                        = $mailData;
+                        $apiStatus                          = TRUE;
+                        $apiMessage                         = 'Please Enter OTP !!!';                        
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'You Account Is Not Active Yet !!!';
                     }
                 } else {
-                    $userActivityData = [
-                        'user_email'        => $email,
-                        'user_name'         => '',
-                        'user_type'         => '',
-                        'ip_address'        => $this->request->getIPAddress(),
-                        'activity_type'     => 0,
-                        'activity_details'  => 'We Don\'t Recognize Your Email Address',
-                    ];
-                    $this->common_model->save_data('user_activities', $userActivityData, '','activity_id');
                     $apiStatus                              = FALSE;
                     $apiMessage                             = 'We Don\'t Recognize You !!!';
                 }
