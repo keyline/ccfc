@@ -90,6 +90,7 @@ class ApiController extends Controller
                 $otp                        = $requestData['otp'];
                 $device_token               = $requestData['device_token'];
                 $fcm_token                  = $requestData['fcm_token'];
+                $device_type                = $headerData['source'][0];
                 $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
