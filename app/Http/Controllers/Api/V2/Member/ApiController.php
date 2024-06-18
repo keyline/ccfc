@@ -114,7 +114,7 @@ class ApiController extends Controller
 
                             $apiResponse = [
                                 'user_id'               => $user_id,
-                                'company_name'          => $checkUser->name,
+                                'name'                  => $checkUser->name,
                                 'email'                 => $checkUser->email,
                                 'phone'                 => $checkUser->phone_number_1,
                                 'device_type'           => $device_type,
