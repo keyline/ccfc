@@ -279,21 +279,86 @@ class ApiController extends Controller
             $apiExtraData       = '';
             $this->isJSON(file_get_contents('php://input'));
             $requestData        = $this->extract_json(file_get_contents('php://input'));
-            $requiredFields     = ['phone', 'otp', 'device_token'];
+            $requiredFields     = ['id', 'otp'];
             $headerData         = $request->header();
             if (!$this->validateArray($requiredFields, $requestData)){
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
             if($headerData['key'][0] == env('PROJECT_KEY')){
-                $phone                      = $requestData['phone'];
+                $id                         = $requestData['id'];
                 $otp                        = $requestData['otp'];
-                $device_token               = $requestData['device_token'];
-                $fcm_token                  = $requestData['fcm_token'];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                $checkUser                  = User::where('id', '=', $id)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
-                                              
+                        if($otp == $checkUser->remember_token){
+                            $apiResponse = [
+                                'id'                    => $id,
+                                'name'                  => $checkUser->name,
+                                'email'                 => $checkUser->email,
+                                'phone'                 => $checkUser->phone_number_1
+                            ];
+                            User::where('id', '=', $id)->update(['remember_token' => '']);
+                            $apiStatus                          = TRUE;
+                            $apiMessage                         = 'OTP Verified Successfully !!!';
+                        } else {
+                            $apiStatus                          = FALSE;
+                            $apiMessage                         = 'OTP Mismatched !!!';
+                        }
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                    }
+                } else {
+                    $apiStatus                              = FALSE;
+                    $apiMessage                             = 'We Don\'t Recognize You !!!';
+                }
+            } else {
+                $apiStatus          = FALSE;
+                $apiMessage         = 'Unauthenticate Request !!!';
+            }
+            $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+        }
+        public function resendOtp(Request $request){
+            $apiStatus          = TRUE;
+            $apiMessage         = '';
+            $apiResponse        = [];
+            $apiExtraField      = '';
+            $apiExtraData       = '';
+            $this->isJSON(file_get_contents('php://input'));
+            $requestData        = $this->extract_json(file_get_contents('php://input'));
+            $requiredFields     = ['id'];
+            $headerData         = $request->header();
+            if (!$this->validateArray($requiredFields, $requestData)){
+                $apiStatus          = FALSE;
+                $apiMessage         = 'All Data Are Not Present !!!';
+            }
+            if($headerData['key'][0] == env('PROJECT_KEY')){
+                $id                         = $requestData['id'];
+                $checkUser                  = User::where('id', '=', $id)->first();
+                if($checkUser){
+                    if($checkUser->status == 'ACTIVE'){
+                        $otp        = rand(100000,999999);
+                        $postData   = [
+                            'remember_token'        => $otp
+                        ];
+                        User::where('id', '=', $checkUser->id)->update($postData);
+                        $mailData                   = [
+                            'id'    => $checkUser->id,
+                            'email' => $checkUser->email,
+                            'otp'   => $otp
+                        ];
+                        // $subject                    = 'CCFC :: Forgot Password OTP';
+                        // $message                    = view('email-template/otp',$mailData);
+                        // echo $message;die;
+                        // $this->sendMail($requestData['email'], $subject, $message);
+
+                        $apiResponse                        = $mailData;
+                        $apiStatus                          = TRUE;
+                        http_response_code(200);
+                        $apiMessage                         = 'OTP Resend Successfully For Validation !!!';
+                        $apiExtraField                      = 'response_code';
+                        $apiExtraData                       = http_response_code();
                     } else {
                         $apiStatus                              = FALSE;
                         $apiMessage                             = 'You Account Is Not Active Yet !!!';
@@ -316,21 +381,54 @@ class ApiController extends Controller
             $apiExtraData       = '';
             $this->isJSON(file_get_contents('php://input'));
             $requestData        = $this->extract_json(file_get_contents('php://input'));
-            $requiredFields     = ['phone', 'otp', 'device_token'];
+            $requiredFields     = ['id', 'password', 'confirm_password'];
             $headerData         = $request->header();
             if (!$this->validateArray($requiredFields, $requestData)){
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
             if($headerData['key'][0] == env('PROJECT_KEY')){
-                $phone                      = $requestData['phone'];
-                $otp                        = $requestData['otp'];
-                $device_token               = $requestData['device_token'];
-                $fcm_token                  = $requestData['fcm_token'];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                $id                         = $requestData['id'];
+                $password                   = $requestData['password'];
+                $confirm_password           = $requestData['confirm_password'];
+                $checkUser                  = User::where('id', '=', $id)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
-                                              
+                        if($requestData['password'] == $requestData['confirm_password']){
+                            if(Hash::check($password, $checkUser->password)){
+                                $apiStatus          = FALSE;
+                                http_response_code(404);
+                                $apiMessage         = 'Password Can\'t Be Same With Existing Password !!!';
+                                $apiExtraField      = 'response_code';
+                            } else {
+                                $fields = [
+                                    'password'            => Hash::make($password)
+                                ];
+                                User::where('id', '=', $id)->update($fields);
+                                
+                                $mailData        = [
+                                    'id'                => $checkUser->id,
+                                    'name'              => $checkUser->name,
+                                    'email'             => $checkUser->email
+                                ];
+                                
+                                // $subject                    = 'CCFC :: Reset Password';
+                                // $message                    = view('email-template/change-password',$mailData);
+                                // // echo $message;die;
+                                // $this->sendMail($getUser->email, $subject, $message);
+                                
+                                $apiStatus                          = TRUE;
+                                http_response_code(200);
+                                $apiMessage                         = 'Password Reset Successfully !!!';
+                                $apiExtraField                      = 'response_code';
+                                $apiExtraData                       = http_response_code();
+                            }
+                        } else {
+                            $apiStatus          = FALSE;
+                            http_response_code(404);
+                            $apiMessage         = 'Password & Confirm Password Not Matched !!!';
+                            $apiExtraField      = 'response_code';
+                        }
                     } else {
                         $apiStatus                              = FALSE;
                         $apiMessage                             = 'You Account Is Not Active Yet !!!';

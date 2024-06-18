@@ -54,5 +54,6 @@ Route::prefix('v2')->group(function () {
     Route::post('member/signinwithpassword', [ApiController::class,'signInWithPassword'])->name('api.v2.member.signinwithpassword.signInWithPassword');
     Route::post('member/forgotpassword', [ApiController::class,'forgotPassword'])->name('api.v2.member.forgotpassword.forgotPassword');
     Route::post('member/verifyotp', [ApiController::class,'verifyOtp'])->name('api.v2.member.verifyotp.verifyOtp');
+    Route::post('member/resendotp', [ApiController::class,'resendOtp'])->name('api.v2.member.resendotp.resendOtp');
     Route::post('member/resetpassword', [ApiController::class,'resetPassword'])->name('api.v2.member.resetpassword.resetPassword');
 });
