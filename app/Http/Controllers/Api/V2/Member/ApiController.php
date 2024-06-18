@@ -29,6 +29,7 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
+            Helper::pr($headerData);
             echo $headerData['Key'];
             echo '<br>';
             echo env('PROJECTKEY');
