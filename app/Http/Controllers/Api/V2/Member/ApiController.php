@@ -13,6 +13,7 @@ use App\Libraries\CreatorJwt;
 use App\Libraries\JWT;
 
 use Auth;
+use Hash;
 use App\Helpers\Helper;
 
 class ApiController extends Controller
@@ -151,22 +152,56 @@ class ApiController extends Controller
             $apiExtraData       = '';
             $this->isJSON(file_get_contents('php://input'));
             $requestData        = $this->extract_json(file_get_contents('php://input'));
-            $requiredFields     = ['phone', 'otp', 'device_token'];
+            $requiredFields     = ['email', 'password', 'device_token'];
             $headerData         = $request->header();
             if (!$this->validateArray($requiredFields, $requestData)){
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
             if($headerData['key'][0] == env('PROJECT_KEY')){
-                $phone                      = $requestData['phone'];
-                $otp                        = $requestData['otp'];
+                $email                      = $requestData['email'];
+                $password                   = $requestData['password'];
                 $device_token               = $requestData['device_token'];
                 $fcm_token                  = $requestData['fcm_token'];
                 $device_type                = $headerData['source'][0];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                $checkUser                  = User::where('email', '=', $email)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
-                        
+                        if(Hash::check($password, $checkUser->password)){
+                            $objOfJwt           = new CreatorJwt();
+                            $app_access_token   = $objOfJwt->GenerateToken($checkUser->id, $checkUser->email, $checkUser->phone_number_1);
+                            echo $app_access_token;die;
+                            $user_id            = $checkUser->id;
+                            $fields             = [
+                                'user_id'               => $user_id,
+                                'device_type'           => $device_type,
+                                'device_token'          => $device_token,
+                                'fcm_token'             => $fcm_token,
+                                'app_access_token'      => $app_access_token,
+                            ];
+                            $checkUserTokenExist                  = UserDevice::where('app_access_token', '=', $app_access_token)->first();
+                            if(!$checkUserTokenExist){
+                                UserDevice::insert($fields);
+                            } else {
+                                UserDevice::where('id', '=', $checkUserTokenExist->id)->update($fields);
+                            }
+                            
+                            $apiResponse = [
+                                'user_id'               => $user_id,
+                                'name'                  => $checkUser->name,
+                                'email'                 => $checkUser->email,
+                                'phone'                 => $checkUser->phone_number_1,
+                                'device_type'           => $device_type,
+                                'device_token'          => $device_token,
+                                'fcm_token'             => $fcm_token,
+                                'app_access_token'      => $app_access_token,
+                            ];
+                            $apiStatus                          = TRUE;
+                            $apiMessage                         = 'SignIn Successfully !!!';
+                        } else {
+                            $apiStatus                          = FALSE;
+                            $apiMessage                         = 'Invalid Password !!!';
+                        }
                     } else {
                         $apiStatus                              = FALSE;
                         $apiMessage                             = 'You Account Is Not Active Yet !!!';
