@@ -225,21 +225,38 @@ class ApiController extends Controller
             $apiExtraData       = '';
             $this->isJSON(file_get_contents('php://input'));
             $requestData        = $this->extract_json(file_get_contents('php://input'));
-            $requiredFields     = ['phone', 'otp', 'device_token'];
+            $requiredFields     = ['email'];
             $headerData         = $request->header();
             if (!$this->validateArray($requiredFields, $requestData)){
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
             if($headerData['key'][0] == env('PROJECT_KEY')){
-                $phone                      = $requestData['phone'];
-                $otp                        = $requestData['otp'];
-                $device_token               = $requestData['device_token'];
-                $fcm_token                  = $requestData['fcm_token'];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                $email                      = $requestData['email'];
+                $checkUser                  = User::where('email', '=', $email)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
-                                              
+                        $otp        = rand(100000,999999);
+                        $postData   = [
+                            'remember_token'        => $otp
+                        ];
+                        User::where('id', '=', $checkUser->id)->update($postData);
+                        $mailData                   = [
+                            'id'    => $checkEmail->id,
+                            'email' => $checkEmail->email,
+                            'otp'   => $otp
+                        ];
+                        // $subject                    = 'CCFC :: Forgot Password OTP';
+                        // $message                    = view('email-template/otp',$mailData);
+                        // echo $message;die;
+                        // $this->sendMail($requestData['email'], $subject, $message);
+
+                        $apiResponse                        = $mailData;
+                        $apiStatus                          = TRUE;
+                        http_response_code(200);
+                        $apiMessage                         = 'OTP Sent To Email & Mobile For Validation !!!';
+                        $apiExtraField                      = 'response_code';
+                        $apiExtraData                       = http_response_code();
                     } else {
                         $apiStatus                              = FALSE;
                         $apiMessage                             = 'You Account Is Not Active Yet !!!';
