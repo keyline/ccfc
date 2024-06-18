@@ -22,7 +22,7 @@ class ApiController extends Controller
             $this->isJSON(file_get_contents('php://input'));
             $requestData        = $this->extract_json(file_get_contents('php://input'));
             $requiredFields     = ['phone', 'device_token'];
-            $headerData         = $this->request->headers();
+            $headerData         = $request->headers();
             Helper::pr($requestData,0);
             Helper::pr($headerData,0);
             die;
