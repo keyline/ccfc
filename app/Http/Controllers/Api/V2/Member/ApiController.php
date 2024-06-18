@@ -5,7 +5,10 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+
 use App\Models\User;
+use App\Models\UserDevice;
+
 use App\Libraries\CreatorJwt;
 use App\Libraries\JWT;
 
@@ -29,10 +32,6 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            // echo $headerData['key'][0];
-            // echo '<br>';
-            // echo env('PROJECT_KEY');
-            // die;
             if($headerData['key'][0] == env('PROJECT_KEY')){
                 $phone                      = $requestData['phone'];
                 $device_token               = $requestData['device_token'];
@@ -78,9 +77,71 @@ class ApiController extends Controller
             $apiResponse        = [];
             $apiExtraField      = '';
             $apiExtraData       = '';
-            $requestData        = $request->all();
-            Helper::pr($requestData);
-            
+            $this->isJSON(file_get_contents('php://input'));
+            $requestData        = $this->extract_json(file_get_contents('php://input'));
+            $requiredFields     = ['phone', 'otp', 'device_token'];
+            $headerData         = $request->header();
+            if (!$this->validateArray($requiredFields, $requestData)){
+                $apiStatus          = FALSE;
+                $apiMessage         = 'All Data Are Not Present !!!';
+            }
+            if($headerData['key'][0] == env('PROJECT_KEY')){
+                $phone                      = $requestData['phone'];
+                $otp                        = $requestData['otp'];
+                $device_token               = $requestData['device_token'];
+                $fcm_token                  = $requestData['fcm_token'];
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                if($checkUser){
+                    if($checkUser->status == 'ACTIVE'){
+                        if($otp == $checkUser->remember_token){
+                            $objOfJwt           = new CreatorJwt();
+                            $app_access_token   = $objOfJwt->GenerateToken($checkUser->id, $checkUser->email, $checkUser->phone_number_1);
+                            echo $app_access_token;die;
+                            $user_id            = $checkUser->id;
+                            $fields             = [
+                                'user_id'               => $user_id,
+                                'device_type'           => $device_type,
+                                'device_token'          => $device_token,
+                                'fcm_token'             => $fcm_token,
+                                'app_access_token'      => $app_access_token,
+                            ];
+                            $checkUserTokenExist                  = UserDevice::where('app_access_token', '=', $app_access_token)->first();
+                            if(!$checkUserTokenExist){
+                                UserDevice::insert($fields);
+                            } else {
+                                UserDevice::where('id', '=', $checkUserTokenExist->id)->update($fields);
+                            }
+
+                            $apiResponse = [
+                                'user_id'               => $user_id,
+                                'company_name'          => $checkUser->name,
+                                'email'                 => $checkUser->email,
+                                'phone'                 => $checkUser->phone_number_1,
+                                'device_type'           => $device_type,
+                                'device_token'          => $device_token,
+                                'fcm_token'             => $fcm_token,
+                                'app_access_token'      => $app_access_token,
+                            ];
+                            User::where('id', '=', $checkUser->id)->update(['otp' => '']);
+                            $apiStatus                          = TRUE;
+                            $apiMessage                         = 'SignIn Successfully !!!';
+                        } else {
+                            $apiStatus                          = FALSE;
+                            $apiMessage                         = 'OTP Mismatched !!!';
+                        }
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                    }
+                } else {
+                    $apiStatus                              = FALSE;
+                    $apiMessage                             = 'We Don\'t Recognize You !!!';
+                }
+            } else {
+                $apiStatus          = FALSE;
+                $apiMessage         = 'Unauthenticate Request !!!';
+            }
+            $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
         public function signInWithPassword(Request $request){
             $apiStatus          = TRUE;
@@ -88,9 +149,37 @@ class ApiController extends Controller
             $apiResponse        = [];
             $apiExtraField      = '';
             $apiExtraData       = '';
-            $requestData        = $request->all();
-            Helper::pr($requestData);
-            
+            $this->isJSON(file_get_contents('php://input'));
+            $requestData        = $this->extract_json(file_get_contents('php://input'));
+            $requiredFields     = ['phone', 'otp', 'device_token'];
+            $headerData         = $request->header();
+            if (!$this->validateArray($requiredFields, $requestData)){
+                $apiStatus          = FALSE;
+                $apiMessage         = 'All Data Are Not Present !!!';
+            }
+            if($headerData['key'][0] == env('PROJECT_KEY')){
+                $phone                      = $requestData['phone'];
+                $otp                        = $requestData['otp'];
+                $device_token               = $requestData['device_token'];
+                $fcm_token                  = $requestData['fcm_token'];
+                $device_type                = $headerData['source'][0];
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                if($checkUser){
+                    if($checkUser->status == 'ACTIVE'){
+                        
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                    }
+                } else {
+                    $apiStatus                              = FALSE;
+                    $apiMessage                             = 'We Don\'t Recognize You !!!';
+                }
+            } else {
+                $apiStatus          = FALSE;
+                $apiMessage         = 'Unauthenticate Request !!!';
+            }
+            $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
     /* signin */
     /* forgot password */
@@ -100,9 +189,36 @@ class ApiController extends Controller
             $apiResponse        = [];
             $apiExtraField      = '';
             $apiExtraData       = '';
-            $requestData        = $request->all();
-            Helper::pr($requestData);
-            
+            $this->isJSON(file_get_contents('php://input'));
+            $requestData        = $this->extract_json(file_get_contents('php://input'));
+            $requiredFields     = ['phone', 'otp', 'device_token'];
+            $headerData         = $request->header();
+            if (!$this->validateArray($requiredFields, $requestData)){
+                $apiStatus          = FALSE;
+                $apiMessage         = 'All Data Are Not Present !!!';
+            }
+            if($headerData['key'][0] == env('PROJECT_KEY')){
+                $phone                      = $requestData['phone'];
+                $otp                        = $requestData['otp'];
+                $device_token               = $requestData['device_token'];
+                $fcm_token                  = $requestData['fcm_token'];
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                if($checkUser){
+                    if($checkUser->status == 'ACTIVE'){
+                                              
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                    }
+                } else {
+                    $apiStatus                              = FALSE;
+                    $apiMessage                             = 'We Don\'t Recognize You !!!';
+                }
+            } else {
+                $apiStatus          = FALSE;
+                $apiMessage         = 'Unauthenticate Request !!!';
+            }
+            $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
         public function verifyOtp(Request $request){
             $apiStatus          = TRUE;
@@ -110,9 +226,36 @@ class ApiController extends Controller
             $apiResponse        = [];
             $apiExtraField      = '';
             $apiExtraData       = '';
-            $requestData        = $request->all();
-            Helper::pr($requestData);
-            
+            $this->isJSON(file_get_contents('php://input'));
+            $requestData        = $this->extract_json(file_get_contents('php://input'));
+            $requiredFields     = ['phone', 'otp', 'device_token'];
+            $headerData         = $request->header();
+            if (!$this->validateArray($requiredFields, $requestData)){
+                $apiStatus          = FALSE;
+                $apiMessage         = 'All Data Are Not Present !!!';
+            }
+            if($headerData['key'][0] == env('PROJECT_KEY')){
+                $phone                      = $requestData['phone'];
+                $otp                        = $requestData['otp'];
+                $device_token               = $requestData['device_token'];
+                $fcm_token                  = $requestData['fcm_token'];
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                if($checkUser){
+                    if($checkUser->status == 'ACTIVE'){
+                                              
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                    }
+                } else {
+                    $apiStatus                              = FALSE;
+                    $apiMessage                             = 'We Don\'t Recognize You !!!';
+                }
+            } else {
+                $apiStatus          = FALSE;
+                $apiMessage         = 'Unauthenticate Request !!!';
+            }
+            $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
         public function resetPassword(Request $request){
             $apiStatus          = TRUE;
@@ -120,9 +263,36 @@ class ApiController extends Controller
             $apiResponse        = [];
             $apiExtraField      = '';
             $apiExtraData       = '';
-            $requestData        = $request->all();
-            Helper::pr($requestData);
-            
+            $this->isJSON(file_get_contents('php://input'));
+            $requestData        = $this->extract_json(file_get_contents('php://input'));
+            $requiredFields     = ['phone', 'otp', 'device_token'];
+            $headerData         = $request->header();
+            if (!$this->validateArray($requiredFields, $requestData)){
+                $apiStatus          = FALSE;
+                $apiMessage         = 'All Data Are Not Present !!!';
+            }
+            if($headerData['key'][0] == env('PROJECT_KEY')){
+                $phone                      = $requestData['phone'];
+                $otp                        = $requestData['otp'];
+                $device_token               = $requestData['device_token'];
+                $fcm_token                  = $requestData['fcm_token'];
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                if($checkUser){
+                    if($checkUser->status == 'ACTIVE'){
+                                              
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                    }
+                } else {
+                    $apiStatus                              = FALSE;
+                    $apiMessage                             = 'We Don\'t Recognize You !!!';
+                }
+            } else {
+                $apiStatus          = FALSE;
+                $apiMessage         = 'Unauthenticate Request !!!';
+            }
+            $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
     /* forgot password */
 }
