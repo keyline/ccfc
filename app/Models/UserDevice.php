@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserDevice extends Model
 {
     use HasFactory;
-    protected $table = 'events';
+    protected $table = 'user_devices';
     public $fillable = [
         'user_id', 'device_type', 'device_token', 'fcm_token', 'app_access_token'
     ];
