@@ -29,7 +29,8 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            echo $headerData['Key'][0];
+            // echo $headerData['Key'][0];
+            Helper::pr($headerData['Key']);
             echo '<br>';
             Helper::pr($headerData);
             
