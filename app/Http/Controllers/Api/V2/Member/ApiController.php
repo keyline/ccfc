@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Country;
 
 use Auth;
-use Helper;
+use App\Helpers\Helper;
 
 class ApiController extends Controller
 {
