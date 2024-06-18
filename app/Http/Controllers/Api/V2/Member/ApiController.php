@@ -242,8 +242,8 @@ class ApiController extends Controller
                         ];
                         User::where('id', '=', $checkUser->id)->update($postData);
                         $mailData                   = [
-                            'id'    => $checkEmail->id,
-                            'email' => $checkEmail->email,
+                            'id'    => $checkUser->id,
+                            'email' => $checkUser->email,
                             'otp'   => $otp
                         ];
                         // $subject                    = 'CCFC :: Forgot Password OTP';
