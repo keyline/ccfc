@@ -49,5 +49,6 @@ Route::prefix('v1')->group(function () {
 Route::prefix('v2')->group(function () {
     // Other Version 2 routes
     //https://ccfccms.test/api/v2/member/auth
-    Route::post('member/signinwithmobile', [ApiController::class,'signinWithMobile'])->name('api.v2.member.auth.signinwithmobile');
+    Route::post('member/auth', [ApiController::class,'signinWithMobile'])->name('api.v2.member.auth.signinwithmobile');
+    Route::post('member/auth2', [ApiController::class,'validateOtp'])->name('api.v2.member.auth2.validateOtp');
 });
