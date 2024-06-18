@@ -96,7 +96,6 @@ class ApiController extends Controller
                         if($otp == $checkUser->remember_token){
                             $objOfJwt           = new CreatorJwt();
                             $app_access_token   = $objOfJwt->GenerateToken($checkUser->id, $checkUser->email, $checkUser->phone_number_1);
-                            echo $app_access_token;die;
                             $user_id            = $checkUser->id;
                             $fields             = [
                                 'user_id'               => $user_id,
