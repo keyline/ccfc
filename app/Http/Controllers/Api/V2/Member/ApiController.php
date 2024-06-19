@@ -774,7 +774,7 @@ class ApiController extends Controller
                                         'subject'       => $subject,
                                         'description'   => $message,
                                     ), function ($message) use ($request) {
-                                        $message->from($requestData['email']);
+                                        $message->from('ccfcsecretary@ccfc1792.com');
                                         $department     = [];
                                         $department     = explode("/", $department);
                                         $senderEmail    = $department[0];
