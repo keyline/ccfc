@@ -467,8 +467,7 @@ class ApiController extends Controller
                                 $profileImage       = '';
                                 if($getUserDetail){
                                     if($getUserDetail->member_image != ''){
-                                        // $member_image = $getUserDetail->member_image;
-                                        $profileImage       = $getUserDetail->member_image;
+                                        $profileImage       = 'data:image/png;base64,'.$getUserDetail->member_image;
                                     }
                                 }
                                 $apiResponse        = [
@@ -476,9 +475,8 @@ class ApiController extends Controller
                                     'name'                                  => $checkUser->name,
                                     'phone'                                 => $checkUser->phone_number_1,
                                     'email'                                 => $checkUser->email,
-                                    'profile_image'                         => 'data:image/png;base64,'.$profileImage
+                                    'profile_image'                         => $profileImage
                                 ];
-
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
@@ -514,20 +512,54 @@ class ApiController extends Controller
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                Helper::pr($headerData);
                 if($headerData['key'][0] == env('PROJECT_KEY')){
-                    $id                         = $requestData['id'];
-                    $checkUser                  = User::where('id', '=', $id)->first();
-                    if($checkUser){
-                        if($checkUser->status == 'ACTIVE'){
-                            
+                    $app_access_token           = $headerData['authorization'][0];
+                    $getTokenValue              = $this->tokenAuth($app_access_token);
+                    if($getTokenValue['status']){
+                        $uId                        = $getTokenValue['data'][1];
+                        $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
+                        $checkUser                  = User::where('id', '=', $uId)->first();
+                        if($checkUser){
+                            if($checkUser->status == 'ACTIVE'){
+                                $getUserDetail                  = UserDetail::where('user_code_id', '=', $uId)->first();
+                                $profileImage       = '';
+                                if($getUserDetail){
+                                    if($getUserDetail->member_image != ''){
+                                        $profileImage       = 'data:image/png;base64,'.$getUserDetail->member_image;
+                                    }
+                                }
+                                $apiResponse        = [
+                                    'member'        => [
+                                        'user_code'                             => $checkUser->user_code,
+                                        'name'                                  => $checkUser->name,
+                                        'phone'                                 => $checkUser->phone_number_1,
+                                        'email'                                 => $checkUser->email,
+                                        'profile_image'                         => $profileImage,
+                                    ],
+                                    'spouse'        => [],
+                                    'children1'     => [],
+                                    'children2'     => [],
+                                    'children3'     => []
+                                ];
+                                $apiStatus          = TRUE;
+                                http_response_code(200);
+                                $apiMessage         = 'Data Available !!!';
+                                $apiExtraField      = 'response_code';
+                                $apiExtraData       = http_response_code();
+                            } else {
+                                $apiStatus                              = FALSE;
+                                $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            }
                         } else {
                             $apiStatus                              = FALSE;
-                            $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            $apiMessage                             = 'We Don\'t Recognize You !!!';
                         }
                     } else {
-                        $apiStatus                              = FALSE;
-                        $apiMessage                             = 'We Don\'t Recognize You !!!';
+                        http_response_code($getTokenValue['data'][2]);
+                        $apiStatus                      = FALSE;
+                        $apiMessage                     = $this->getResponseCode(http_response_code());
+                        $apiExtraField                  = 'response_code';
+                        $apiExtraData                   = http_response_code();
                     }
                 } else {
                     $apiStatus          = FALSE;
