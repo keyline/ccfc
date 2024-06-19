@@ -622,20 +622,35 @@ class ApiController extends Controller
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                Helper::pr($headerData);
                 if($headerData['key'][0] == env('PROJECT_KEY')){
-                    $id                         = $requestData['id'];
-                    $checkUser                  = User::where('id', '=', $id)->first();
-                    if($checkUser){
-                        if($checkUser->status == 'ACTIVE'){
-                            
+                    $app_access_token           = $headerData['authorization'][0];
+                    $getTokenValue              = $this->tokenAuth($app_access_token);
+                    if($getTokenValue['status']){
+                        $uId                        = $getTokenValue['data'][1];
+                        $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
+                        $checkUser                  = User::where('id', '=', $uId)->first();
+                        if($checkUser){
+                            if($checkUser->status == 'ACTIVE'){
+                                
+                                $apiStatus          = TRUE;
+                                http_response_code(200);
+                                $apiMessage         = 'Data Available !!!';
+                                $apiExtraField      = 'response_code';
+                                $apiExtraData       = http_response_code();
+                            } else {
+                                $apiStatus                              = FALSE;
+                                $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            }
                         } else {
                             $apiStatus                              = FALSE;
-                            $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            $apiMessage                             = 'We Don\'t Recognize You !!!';
                         }
                     } else {
-                        $apiStatus                              = FALSE;
-                        $apiMessage                             = 'We Don\'t Recognize You !!!';
+                        http_response_code($getTokenValue['data'][2]);
+                        $apiStatus                      = FALSE;
+                        $apiMessage                     = $this->getResponseCode(http_response_code());
+                        $apiExtraField                  = 'response_code';
+                        $apiExtraData                   = http_response_code();
                     }
                 } else {
                     $apiStatus          = FALSE;
@@ -653,25 +668,41 @@ class ApiController extends Controller
                 $apiExtraData       = '';
                 $headerData         = $request->header();
                 if($headerData['key'][0] == env('PROJECT_KEY')){
-                    $id                         = $requestData['id'];
-                    $checkUser                  = User::where('id', '=', $id)->first();
-                    if($checkUser){
-                        if($checkUser->status == 'ACTIVE'){
-                            $generalSettings = GeneralSetting::find(1);
-                            $apiResponse        = [
-                                'site_name'                            => $checkUser->site_name,
-                                'site_phone'                           => $checkUser->site_phone,
-                                'site_mail'                            => $checkUser->site_mail,
-                                'site_address'                         => $checkUser->site_address,
-                                'site_timings'                         => $checkUser->site_timings,
-                            ];
+                    $app_access_token           = $headerData['authorization'][0];
+                    $getTokenValue              = $this->tokenAuth($app_access_token);
+                    if($getTokenValue['status']){
+                        $uId                        = $getTokenValue['data'][1];
+                        $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
+                        $checkUser                  = User::where('id', '=', $uId)->first();
+                        if($checkUser){
+                            if($checkUser->status == 'ACTIVE'){
+                                $generalSettings    = GeneralSetting::find(1);
+                                $apiResponse        = [
+                                    'site_name'                            => $checkUser->site_name,
+                                    'site_phone'                           => $checkUser->site_phone,
+                                    'site_mail'                            => $checkUser->site_mail,
+                                    'site_address'                         => $checkUser->site_address,
+                                    'site_timings'                         => $checkUser->site_timings,
+                                ];
+                                $apiStatus          = TRUE;
+                                http_response_code(200);
+                                $apiMessage         = 'Data Available !!!';
+                                $apiExtraField      = 'response_code';
+                                $apiExtraData       = http_response_code();
+                            } else {
+                                $apiStatus                              = FALSE;
+                                $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            }
                         } else {
                             $apiStatus                              = FALSE;
-                            $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            $apiMessage                             = 'We Don\'t Recognize You !!!';
                         }
                     } else {
-                        $apiStatus                              = FALSE;
-                        $apiMessage                             = 'We Don\'t Recognize You !!!';
+                        http_response_code($getTokenValue['data'][2]);
+                        $apiStatus                      = FALSE;
+                        $apiMessage                     = $this->getResponseCode(http_response_code());
+                        $apiExtraField                  = 'response_code';
+                        $apiExtraData                   = http_response_code();
                     }
                 } else {
                     $apiStatus          = FALSE;
