@@ -775,10 +775,10 @@ class ApiController extends Controller
                                         'description'   => $message,
                                     ), function ($message) use ($request) {
                                         $message->from('ccfcsecretary@ccfc1792.com');
-                                        $department     = [];
-                                        $department     = explode("/", $department);
-                                        $senderEmail    = $department[0];
-                                        $senderName     = $department[1];
+                                        $departments        = [];
+                                        $departments        = explode("/", $department);
+                                        $senderEmail        = $departments[0];
+                                        $senderName         = $departments[1];
                                         $message->to('subhomoy@keylines.net', 'Admin')->subject($subject);
                                         // $message->to($senderEmail, $senderName)->subject($subject);
                                     });
