@@ -444,4 +444,156 @@ class ApiController extends Controller
             $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
     /* forgot password */
+    /* after login */
+        /* dashboard */
+            public function dashboard(Request $request){
+                $apiStatus          = TRUE;
+                $apiMessage         = '';
+                $apiResponse        = [];
+                $apiExtraField      = '';
+                $apiExtraData       = '';
+                $headerData         = $request->header();
+                pr($headerData);
+                if($headerData['key'][0] == env('PROJECT_KEY')){
+                    $id                         = $requestData['id'];
+                    $checkUser                  = User::where('id', '=', $id)->first();
+                    if($checkUser){
+                        if($checkUser->status == 'ACTIVE'){
+                            
+                        } else {
+                            $apiStatus                              = FALSE;
+                            $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                        }
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'We Don\'t Recognize You !!!';
+                    }
+                } else {
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'Unauthenticate Request !!!';
+                }
+                $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
+        /* dashboard */
+        /* get profile */
+            public function getProfile(Request $request){
+                $apiStatus          = TRUE;
+                $apiMessage         = '';
+                $apiResponse        = [];
+                $apiExtraField      = '';
+                $apiExtraData       = '';
+                $headerData         = $request->header();
+                pr($headerData);
+                if($headerData['key'][0] == env('PROJECT_KEY')){
+                    $id                         = $requestData['id'];
+                    $checkUser                  = User::where('id', '=', $id)->first();
+                    if($checkUser){
+                        if($checkUser->status == 'ACTIVE'){
+                            
+                        } else {
+                            $apiStatus                              = FALSE;
+                            $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                        }
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'We Don\'t Recognize You !!!';
+                    }
+                } else {
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'Unauthenticate Request !!!';
+                }
+                $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
+        /* get profile */
+        /* my card */
+            public function myCard(Request $request){
+                $apiStatus          = TRUE;
+                $apiMessage         = '';
+                $apiResponse        = [];
+                $apiExtraField      = '';
+                $apiExtraData       = '';
+                $headerData         = $request->header();
+                pr($headerData);
+                if($headerData['key'][0] == env('PROJECT_KEY')){
+                    $id                         = $requestData['id'];
+                    $checkUser                  = User::where('id', '=', $id)->first();
+                    if($checkUser){
+                        if($checkUser->status == 'ACTIVE'){
+                            
+                        } else {
+                            $apiStatus                              = FALSE;
+                            $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                        }
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'We Don\'t Recognize You !!!';
+                    }
+                } else {
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'Unauthenticate Request !!!';
+                }
+                $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
+        /* my card */
+        /* get contact us */
+            public function getContactUs(Request $request){
+                $apiStatus          = TRUE;
+                $apiMessage         = '';
+                $apiResponse        = [];
+                $apiExtraField      = '';
+                $apiExtraData       = '';
+                $headerData         = $request->header();
+                pr($headerData);
+                if($headerData['key'][0] == env('PROJECT_KEY')){
+                    $id                         = $requestData['id'];
+                    $checkUser                  = User::where('id', '=', $id)->first();
+                    if($checkUser){
+                        if($checkUser->status == 'ACTIVE'){
+                            
+                        } else {
+                            $apiStatus                              = FALSE;
+                            $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                        }
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'We Don\'t Recognize You !!!';
+                    }
+                } else {
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'Unauthenticate Request !!!';
+                }
+                $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
+        /* get contact us */
+        /* post contact us */
+            public function submitContactUs(Request $request){
+                $apiStatus          = TRUE;
+                $apiMessage         = '';
+                $apiResponse        = [];
+                $apiExtraField      = '';
+                $apiExtraData       = '';
+                $headerData         = $request->header();
+                pr($headerData);
+                if($headerData['key'][0] == env('PROJECT_KEY')){
+                    $id                         = $requestData['id'];
+                    $checkUser                  = User::where('id', '=', $id)->first();
+                    if($checkUser){
+                        if($checkUser->status == 'ACTIVE'){
+                            
+                        } else {
+                            $apiStatus                              = FALSE;
+                            $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                        }
+                    } else {
+                        $apiStatus                              = FALSE;
+                        $apiMessage                             = 'We Don\'t Recognize You !!!';
+                    }
+                } else {
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'Unauthenticate Request !!!';
+                }
+                $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
+        /* post contact us */
+    /* after login */
 }

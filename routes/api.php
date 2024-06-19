@@ -48,12 +48,20 @@ Route::prefix('v1')->group(function () {
 
 Route::prefix('v2')->group(function () {
     // Other Version 2 routes
-    //https://ccfccms.test/api/v2/member/auth
-    Route::post('member/signinwithmobile', [ApiController::class,'signinWithMobile'])->name('api.v2.member.signinwithmobile.signinwithmobile');
-    Route::post('member/validateotp', [ApiController::class,'validateOtp'])->name('api.v2.member.validateotp.validateOtp');
-    Route::post('member/signinwithpassword', [ApiController::class,'signInWithPassword'])->name('api.v2.member.signinwithpassword.signInWithPassword');
-    Route::post('member/forgotpassword', [ApiController::class,'forgotPassword'])->name('api.v2.member.forgotpassword.forgotPassword');
-    Route::post('member/verifyotp', [ApiController::class,'verifyOtp'])->name('api.v2.member.verifyotp.verifyOtp');
-    Route::post('member/resendotp', [ApiController::class,'resendOtp'])->name('api.v2.member.resendotp.resendOtp');
-    Route::post('member/resetpassword', [ApiController::class,'resetPassword'])->name('api.v2.member.resetpassword.resetPassword');
+    /* before login */
+        Route::post('member/signinwithmobile', [ApiController::class,'signinWithMobile'])->name('api.v2.member.signinwithmobile.signinwithmobile');
+        Route::post('member/validateotp', [ApiController::class,'validateOtp'])->name('api.v2.member.validateotp.validateOtp');
+        Route::post('member/signinwithpassword', [ApiController::class,'signInWithPassword'])->name('api.v2.member.signinwithpassword.signInWithPassword');
+        Route::post('member/forgotpassword', [ApiController::class,'forgotPassword'])->name('api.v2.member.forgotpassword.forgotPassword');
+        Route::post('member/verifyotp', [ApiController::class,'verifyOtp'])->name('api.v2.member.verifyotp.verifyOtp');
+        Route::post('member/resendotp', [ApiController::class,'resendOtp'])->name('api.v2.member.resendotp.resendOtp');
+        Route::post('member/resetpassword', [ApiController::class,'resetPassword'])->name('api.v2.member.resetpassword.resetPassword');
+    /* before login */
+    /* after login */
+        Route::get('member/dashboard', [ApiController::class,'dashboard'])->name('api.v2.member.dashboard.dashboard');
+        Route::get('member/getprofile', [ApiController::class,'getProfile'])->name('api.v2.member.getprofile.getProfile');
+        Route::get('member/mycard', [ApiController::class,'myCard'])->name('api.v2.member.mycard.myCard');
+        Route::get('member/getcontactus', [ApiController::class,'getContactUs'])->name('api.v2.member.getcontactus.getContactUs');
+        Route::post('member/submitcontactus', [ApiController::class,'submitContactUs'])->name('api.v2.member.submitcontactus.submitContactUs');
+    /* after login */
 });
