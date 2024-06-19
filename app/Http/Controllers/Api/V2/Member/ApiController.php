@@ -742,7 +742,7 @@ class ApiController extends Controller
                 if($headerData['key'][0] == env('PROJECT_KEY')){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
-
+                    Helper::pr($requestData);
                     $department                 = $requestData['department'];
                     $name                       = $requestData['name'];
                     $email                      = $requestData['email'];
