@@ -6,6 +6,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
+use App\Models\Contact;
+use App\Models\Contactlist;
+use App\Models\GeneralSetting;
 use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserDevice;
@@ -655,7 +658,14 @@ class ApiController extends Controller
                     $checkUser                  = User::where('id', '=', $id)->first();
                     if($checkUser){
                         if($checkUser->status == 'ACTIVE'){
-                            
+                            $generalSettings = GeneralSetting::find(1);
+                            $apiResponse        = [
+                                'site_name'                            => $checkUser->site_name,
+                                'site_phone'                           => $checkUser->site_phone,
+                                'site_mail'                            => $checkUser->site_mail,
+                                'site_address'                         => $checkUser->site_address,
+                                'site_timings'                         => $checkUser->site_timings,
+                            ];
                         } else {
                             $apiStatus                              = FALSE;
                             $apiMessage                             = 'You Account Is Not Active Yet !!!';
