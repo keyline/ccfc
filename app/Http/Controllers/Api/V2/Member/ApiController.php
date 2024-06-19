@@ -767,21 +767,21 @@ class ApiController extends Controller
 
                                 /* mail send */
                                     //  Send mail to admin
-                                    \Mail::send('contactMail', array(
-                                        'name'          => $name,
-                                        'email'         => $postemail,
-                                        'phone'         => $phone,
-                                        'subject'       => $subject,
-                                        'description'   => $message,
-                                    ), function ($message) use ($request) {
-                                        $message->from('ccfcsecretary@ccfc1792.com');
-                                        $departments        = [];
-                                        $departments        = explode("/", $department);
-                                        $senderEmail        = $departments[0];
-                                        $senderName         = $departments[1];
-                                        $message->to('subhomoy@keylines.net', 'Admin')->subject($subject);
-                                        // $message->to($senderEmail, $senderName)->subject($subject);
-                                    });
+                                    // \Mail::send('contactMail', array(
+                                    //     'name'          => $name,
+                                    //     'email'         => $postemail,
+                                    //     'phone'         => $phone,
+                                    //     'subject'       => $subject,
+                                    //     'description'   => $message,
+                                    // ), function ($message) use ($request) {
+                                    //     $message->from('ccfcsecretary@ccfc1792.com');
+                                    //     $departments        = [];
+                                    //     $departments        = explode("/", $department);
+                                    //     $senderEmail        = $departments[0];
+                                    //     $senderName         = $departments[1];
+                                    //     $message->to('subhomoy@keylines.net', 'Admin')->subject($subject);
+                                    //     // $message->to($senderEmail, $senderName)->subject($subject);
+                                    // });
                                 /* mail send */
 
                                 $apiStatus          = TRUE;
