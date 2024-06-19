@@ -476,7 +476,7 @@ class ApiController extends Controller
                                     'name'                                  => $checkUser->name,
                                     'phone'                                 => $checkUser->phone_number_1,
                                     'email'                                 => $checkUser->email,
-                                    'profile_image'                         => $profileImage
+                                    'profile_image'                         => 'data:image/png;base64,'.$profileImage
                                 ];
 
                                 $apiStatus          = TRUE;
