@@ -16,9 +16,11 @@ use App\Models\UserDevice;
 use App\Libraries\CreatorJwt;
 use App\Libraries\JWT;
 
+use App\Helpers\Helper;
+
 use Auth;
 use Hash;
-use App\Helpers\Helper;
+use Mail;
 
 class ApiController extends Controller
 {
@@ -729,21 +731,78 @@ class ApiController extends Controller
                 $apiResponse        = [];
                 $apiExtraField      = '';
                 $apiExtraData       = '';
+                $this->isJSON(file_get_contents('php://input'));
+                $requestData        = $this->extract_json(file_get_contents('php://input'));
+                $requiredFields     = ['department', 'name', 'email', 'phone', 'message'];
                 $headerData         = $request->header();
-                Helper::pr($headerData);
+                if (!$this->validateArray($requiredFields, $requestData)){
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'All Data Are Not Present !!!';
+                }
                 if($headerData['key'][0] == env('PROJECT_KEY')){
-                    $id                         = $requestData['id'];
-                    $checkUser                  = User::where('id', '=', $id)->first();
-                    if($checkUser){
-                        if($checkUser->status == 'ACTIVE'){
-                            
+                    $app_access_token           = $headerData['authorization'][0];
+                    $getTokenValue              = $this->tokenAuth($app_access_token);
+
+                    $department                 = $requestData['department'];
+                    $name                       = $requestData['name'];
+                    $email                      = $requestData['email'];
+                    $phone                      = $requestData['phone'];
+                    $subject                    = "New enquiry from the website";
+                    $message                    = $requestData['message'];
+                    if($getTokenValue['status']){
+                        $uId                        = $getTokenValue['data'][1];
+                        $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
+                        $checkUser                  = User::where('id', '=', $uId)->first();
+                        if($checkUser){
+                            if($checkUser->status == 'ACTIVE'){
+                                $postData           = [
+                                    'name'          => $name,
+                                    'email'         => $email,
+                                    'phone'         => $phone,
+                                    'message'       => $message,
+                                    'created_at'    => date('Y-m-d H:i:s'),
+                                    'updated_at'    => date('Y-m-d H:i:s'),
+                                ];
+                                Contact::insert($postData);
+
+                                /* mail send */
+                                    //  Send mail to admin
+                                    \Mail::send('contactMail', array(
+                                        'name'          => $name,
+                                        'email'         => $email,
+                                        'phone'         => $phone,
+                                        'subject'       => $subject,
+                                        'description'   => $message,
+                                    ), function ($message) use ($request) {
+                                        $message->from($email);
+                                        $department     = [];
+                                        $department     = explode("/", $department);
+                                        $senderEmail    = $department[0];
+                                        $senderName     = $department[1];
+                                        $message->to('subhomoy@keylines.net', 'Admin')->subject($subject);
+                                        // $message->to($senderEmail, $senderName)->subject($subject);
+                                    });
+                                /* mail send */
+
+                                $apiStatus          = TRUE;
+                                http_response_code(200);
+                                $apiMessage         = 'Contact Form Submit Successfully !!!';
+                                $apiExtraField      = 'response_code';
+                                $apiExtraData       = http_response_code();
+                            } else {
+                                $apiStatus                              = FALSE;
+                                $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            }
                         } else {
                             $apiStatus                              = FALSE;
-                            $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            $apiMessage                             = 'We Don\'t Recognize You !!!';
                         }
                     } else {
-                        $apiStatus                              = FALSE;
-                        $apiMessage                             = 'We Don\'t Recognize You !!!';
+                        http_response_code($getTokenValue['data'][2]);
+                        $apiStatus                      = FALSE;
+                        $apiMessage                     = $this->getResponseCode(http_response_code());
+                        $apiExtraField                  = 'response_code';
+                        $apiExtraData                   = http_response_code();
                     }
                 } else {
                     $apiStatus          = FALSE;
