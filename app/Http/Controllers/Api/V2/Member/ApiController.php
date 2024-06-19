@@ -742,10 +742,10 @@ class ApiController extends Controller
                 if($headerData['key'][0] == env('PROJECT_KEY')){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
-                    Helper::pr($requestData);
+
                     $department                 = $requestData['department'];
                     $name                       = $requestData['name'];
-                    $email                      = $requestData['email'];
+                    $postemail                  = $requestData['email'];
                     $phone                      = $requestData['phone'];
                     $subject                    = "New enquiry from the website";
                     $message                    = $requestData['message'];
@@ -757,7 +757,7 @@ class ApiController extends Controller
                             if($checkUser->status == 'ACTIVE'){
                                 $postData           = [
                                     'name'          => $name,
-                                    'email'         => $email,
+                                    'email'         => $postemail,
                                     'phone'         => $phone,
                                     'message'       => $message,
                                     'created_at'    => date('Y-m-d H:i:s'),
@@ -769,12 +769,12 @@ class ApiController extends Controller
                                     //  Send mail to admin
                                     \Mail::send('contactMail', array(
                                         'name'          => $name,
-                                        'email'         => $email,
+                                        'email'         => $postemail,
                                         'phone'         => $phone,
                                         'subject'       => $subject,
                                         'description'   => $message,
                                     ), function ($message) use ($request) {
-                                        $message->from($email);
+                                        $message->from($postemail);
                                         $department     = [];
                                         $department     = explode("/", $department);
                                         $senderEmail    = $department[0];
