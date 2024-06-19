@@ -453,7 +453,7 @@ class ApiController extends Controller
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                pr($headerData);
+                Helper::pr($headerData);
                 if($headerData['key'][0] == env('PROJECT_KEY')){
                     $id                         = $requestData['id'];
                     $checkUser                  = User::where('id', '=', $id)->first();
@@ -483,7 +483,7 @@ class ApiController extends Controller
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                pr($headerData);
+                Helper::pr($headerData);
                 if($headerData['key'][0] == env('PROJECT_KEY')){
                     $id                         = $requestData['id'];
                     $checkUser                  = User::where('id', '=', $id)->first();
@@ -513,7 +513,7 @@ class ApiController extends Controller
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                pr($headerData);
+                Helper::pr($headerData);
                 if($headerData['key'][0] == env('PROJECT_KEY')){
                     $id                         = $requestData['id'];
                     $checkUser                  = User::where('id', '=', $id)->first();
@@ -543,7 +543,7 @@ class ApiController extends Controller
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                pr($headerData);
+                Helper::pr($headerData);
                 if($headerData['key'][0] == env('PROJECT_KEY')){
                     $id                         = $requestData['id'];
                     $checkUser                  = User::where('id', '=', $id)->first();
@@ -573,7 +573,7 @@ class ApiController extends Controller
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                pr($headerData);
+                Helper::pr($headerData);
                 if($headerData['key'][0] == env('PROJECT_KEY')){
                     $id                         = $requestData['id'];
                     $checkUser                  = User::where('id', '=', $id)->first();
