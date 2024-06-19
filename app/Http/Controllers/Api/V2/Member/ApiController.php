@@ -678,11 +678,11 @@ class ApiController extends Controller
                             if($checkUser->status == 'ACTIVE'){
                                 $generalSettings    = GeneralSetting::find(1);
                                 $apiResponse        = [
-                                    'site_name'                            => $checkUser->site_name,
-                                    'site_phone'                           => $checkUser->site_phone,
-                                    'site_mail'                            => $checkUser->site_mail,
-                                    'site_address'                         => $checkUser->site_address,
-                                    'site_timings'                         => $checkUser->site_timings,
+                                    'site_name'                            => $generalSettings->site_name,
+                                    'site_phone'                           => $generalSettings->site_phone,
+                                    'site_mail'                            => $generalSettings->site_mail,
+                                    'site_address'                         => $generalSettings->site_address,
+                                    'site_timings'                         => $generalSettings->site_timings,
                                 ];
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
