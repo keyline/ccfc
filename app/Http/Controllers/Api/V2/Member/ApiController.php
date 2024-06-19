@@ -677,12 +677,23 @@ class ApiController extends Controller
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
                                 $generalSettings    = GeneralSetting::find(1);
+                                $depatments         = [];
+                                $contactlists       = Contactlist::all();
+                                if($contactlists){
+                                    foreach($contactlists as $contactlist){
+                                        $depatments[]         = [
+                                            'label' => $contactlist->department_name,
+                                            'value' => $contactlist->department_email . '/' . $contactlist->department_name
+                                        ];
+                                    }
+                                }
                                 $apiResponse        = [
-                                    'site_name'                            => $generalSettings->site_name,
-                                    'site_phone'                           => $generalSettings->site_phone,
-                                    'site_mail'                            => $generalSettings->site_mail,
-                                    'site_address'                         => $generalSettings->site_address,
-                                    'site_timings'                         => $generalSettings->site_timings,
+                                    'site_name'                             => $generalSettings->site_name,
+                                    'site_phone'                            => $generalSettings->site_phone,
+                                    'site_mail'                             => $generalSettings->site_mail,
+                                    'site_address'                          => $generalSettings->site_address,
+                                    'site_timings'                          => $generalSettings->site_timings,
+                                    'depatments'                            => $depatments,
                                 ];
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
