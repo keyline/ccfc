@@ -642,7 +642,7 @@ class ApiController extends Controller
                                     }
                                 }
                                 echo app_path();
-                                // include('\public_html\app\functions\phpqrcode\qrlib.php');
+                                include(app_path() . '/functions/phpqrcode/qrlib.php');die;
 
                                 $apiResponse        = [
                                     'user_code'                             => $checkUser->user_code,
