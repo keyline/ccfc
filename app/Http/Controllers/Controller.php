@@ -124,7 +124,7 @@ class Controller extends BaseController
                 // $upload_path = 'public/storage/';
                 $upload_path = storage_path();
             } else {
-                $upload_path = 'public/storage/' . $uploadedpath . '/';
+                $upload_path = storage_path() . $uploadedpath . '/';
             }
             if ($status) {
                 move_uploaded_file($temp, $upload_path . $newFilename);

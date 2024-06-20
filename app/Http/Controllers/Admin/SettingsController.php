@@ -20,6 +20,7 @@ class SettingsController extends Controller
     }
     public function generalSetting(Request $request)
     {
+        $setting = GeneralSetting::find(1);
         /* site logo */
             $imageFile      = $request->file('site_logo');
             if($imageFile != ''){
@@ -31,7 +32,7 @@ class SettingsController extends Controller
                     return redirect()->back()->with(['error_message' => $uploadedFile['message']]);
                 }
             } else {
-                $site_logo = $row->site_logo;
+                $site_logo = $setting->site_logo;
             }
         /* site logo */
         /* site footer logo */
@@ -45,7 +46,7 @@ class SettingsController extends Controller
                     return redirect()->back()->with(['error_message' => $uploadedFile['message']]);
                 }
             } else {
-                $site_footer_logo = $row->site_footer_logo;
+                $site_footer_logo = $setting->site_footer_logo;
             }
         /* site footer logo */
         /* site favicon */
@@ -59,7 +60,7 @@ class SettingsController extends Controller
                     return redirect()->back()->with(['error_message' => $uploadedFile['message']]);
                 }
             } else {
-                $site_favicon = $row->site_favicon;
+                $site_favicon = $setting->site_favicon;
             }
         /* site favicon */
         $postData = [
@@ -81,7 +82,7 @@ class SettingsController extends Controller
             'site_footer_logo'              => $site_footer_logo,
             'site_favicon'                  => $site_favicon
         ];
-        Helper::pr($postData);
+        // Helper::pr($postData);
         GeneralSetting::where('id', '=', 1)->update($postData);
         return redirect()->to('admin/create/settinglist')->with('status','General Settings Updated Successfully');
     }
