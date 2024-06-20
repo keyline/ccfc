@@ -1,0 +1,21 @@
+@extends('layouts.admin')
+@section('content')
+@can('content_block_create')
+<div style="margin-bottom: 10px;" class="row">
+    <div class="col-lg-12">
+        <h3>Settings</h3>
+    </div>
+</div>
+@endcan
+@if (session('status'))
+    <h6 class="alert alert-success">{{ session('status') }}</h6>
+@endif
+<div class="card">
+    <div class="card-body">
+        
+    </div>
+</div>
+@endsection
+@section('scripts')
+
+@endsection

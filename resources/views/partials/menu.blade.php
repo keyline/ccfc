@@ -539,9 +539,9 @@
                 <!-- End Tender Document Upload -->
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/settings') }}" class="nav-link">
+                    <a href="{{ url('admin/settings/list') }}" class="nav-link">
                         <p>
-                            <i class="fa-fw nav-icon far fa-cogs">
+                            <i class="fa-fw nav-icon fa fa-cogs">
 
                             </i>
                             <p>Settings</p>

@@ -864,8 +864,4 @@ Route::get('archives', function () {
 
 Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
 
-/* api */
-    // Route::group(['prefix' => 'v2', 'as' => 'api.', 'namespace' => 'Api\V2\Member',], function () {
-    //     Route::post('member/signin-with-mobile', 'ApiController@signinWithMobile')->name('member.signinWithMobile');
-    // });
-/* api */
+Route::get('settings/list', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings.list');
