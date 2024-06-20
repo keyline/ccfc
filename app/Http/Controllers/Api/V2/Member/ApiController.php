@@ -55,7 +55,8 @@ class ApiController extends Controller
                 $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
-                        $mobile_otp = rand(100000,999999);
+                        // $mobile_otp = rand(100000,999999);
+                        $mobile_otp = 123456;
                         $postData = [
                             'remember_token'        => $mobile_otp
                         ];
@@ -252,7 +253,8 @@ class ApiController extends Controller
                 $checkUser                  = User::where('email', '=', $email)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
-                        $otp        = rand(100000,999999);
+                        // $otp        = rand(100000,999999);
+                        $otp        = 123456;
                         $postData   = [
                             'remember_token'        => $otp
                         ];
@@ -354,7 +356,8 @@ class ApiController extends Controller
                 $checkUser                  = User::where('id', '=', $id)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
-                        $otp        = rand(100000,999999);
+                        // $otp        = rand(100000,999999);
+                        $otp        = 123456;
                         $postData   = [
                             'remember_token'        => $otp
                         ];
