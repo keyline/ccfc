@@ -400,6 +400,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('create/update-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'update']);
     Route::get('create/delete-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'destroy']);
 
+    Route::get('create/setting', [App\Http\Controllers\Admin\SettingsController::class, 'index']);
+
     // Members
     Route::delete('members/destroy', 'MembersController@massDestroy')->name('members.massDestroy');
     Route::resource('members', 'MembersController');
@@ -865,4 +867,3 @@ Route::get('archives', function () {
 
 Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
 
-Route::get('create/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings');
