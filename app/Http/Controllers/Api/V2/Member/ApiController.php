@@ -641,8 +641,8 @@ class ApiController extends Controller
                                         $profileImage       = 'data:image/png;base64,'.$getUserDetail->member_image;
                                     }
                                 }
-                                
 
+                                $qrcode_image       = '';
                                 $apiResponse        = [
                                     'user_code'                             => $checkUser->user_code,
                                     'name'                                  => $checkUser->name,
