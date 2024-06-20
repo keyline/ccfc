@@ -400,7 +400,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('create/update-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'update']);
     Route::get('create/delete-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'destroy']);
 
-    Route::get('create/setting', [App\Http\Controllers\Admin\SettingsController::class, 'index']);
+    Route::get('create/settinglist', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settinglist');
 
     // Members
     Route::delete('members/destroy', 'MembersController@massDestroy')->name('members.massDestroy');
