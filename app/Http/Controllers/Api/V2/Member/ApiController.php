@@ -642,7 +642,7 @@ class ApiController extends Controller
                                     }
                                 }
                                 
-                                include(app_path() . '/functions/phpqrcode/qrlib.php');
+                                // include(app_path() . '/functions/phpqrcode/qrlib.php');
                                 // include(app_path() . '/functions/phpqrcode/qrconst.php');
                                 // include(app_path() . '/functions/phpqrcode/qrconfig.php');
                                 // include(app_path() . '/functions/phpqrcode/qrtools.php');
