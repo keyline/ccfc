@@ -643,6 +643,17 @@ class ApiController extends Controller
                                 }
                                 
                                 include(app_path() . '/functions/phpqrcode/qrlib.php');
+                                include(app_path() . '/functions/phpqrcode/qrconst.php');
+                                include(app_path() . '/functions/phpqrcode/qrconfig.php');
+                                include(app_path() . '/functions/phpqrcode/qrtools.php');
+                                include(app_path() . '/functions/phpqrcode/qrspec.php');
+                                include(app_path() . '/functions/phpqrcode/qrimage.php');
+                                include(app_path() . '/functions/phpqrcode/qrinput.php');
+                                include(app_path() . '/functions/phpqrcode/qrbitstream.php');
+                                include(app_path() . '/functions/phpqrcode/qrsplit.php');
+                                include(app_path() . '/functions/phpqrcode/qrrscode.php');
+                                include(app_path() . '/functions/phpqrcode/qrmask.php');
+                                include(app_path() . '/functions/phpqrcode/qrencode.php');
                                 $text               = $checkUser->user_code;
                                 echo $qrcode_image       = QRcode::png($text);die;
 
