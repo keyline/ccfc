@@ -15,7 +15,7 @@ use App\Models\UserDevice;
 
 use App\Libraries\CreatorJwt;
 use App\Libraries\JWT;
-use App\Libraries\phpqrcode/qrlib.php;
+use App\Libraries\phpqrcode\qrlib.php;
 
 use App\Helpers\Helper;
 
