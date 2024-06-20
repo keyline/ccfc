@@ -864,4 +864,4 @@ Route::get('archives', function () {
 
 Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
 
-Route::get('settings/list', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings.list');
+Route::get('create/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings');
