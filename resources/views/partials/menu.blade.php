@@ -539,6 +539,17 @@
                 <!-- End Tender Document Upload -->
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/settings') }}" class="nav-link">
+                        <p>
+                            <i class="fa-fw nav-icon far fa-cogs">
+
+                            </i>
+                            <p>Settings</p>
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="#" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
