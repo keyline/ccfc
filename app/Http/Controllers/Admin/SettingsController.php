@@ -20,6 +20,48 @@ class SettingsController extends Controller
     }
     public function generalSetting(Request $request)
     {
+        /* site logo */
+            $imageFile      = $request->file('site_logo');
+            if($imageFile != ''){
+                $imageName      = $imageFile->getClientOriginalName();
+                $uploadedFile   = $this->upload_single_file('site_logo', $imageName, '', 'image');
+                if($uploadedFile['status']){
+                    $site_logo = $uploadedFile['newFilename'];
+                } else {
+                    return redirect()->back()->with(['error_message' => $uploadedFile['message']]);
+                }
+            } else {
+                $site_logo = $row->site_logo;
+            }
+        /* site logo */
+        /* site footer logo */
+            $imageFile      = $request->file('site_footer_logo');
+            if($imageFile != ''){
+                $imageName      = $imageFile->getClientOriginalName();
+                $uploadedFile   = $this->upload_single_file('site_footer_logo', $imageName, '', 'image');
+                if($uploadedFile['status']){
+                    $site_footer_logo = $uploadedFile['newFilename'];
+                } else {
+                    return redirect()->back()->with(['error_message' => $uploadedFile['message']]);
+                }
+            } else {
+                $site_footer_logo = $row->site_footer_logo;
+            }
+        /* site footer logo */
+        /* site favicon */
+            $imageFile      = $request->file('site_favicon');
+            if($imageFile != ''){
+                $imageName      = $imageFile->getClientOriginalName();
+                $uploadedFile   = $this->upload_single_file('site_favicon', $imageName, '', 'image');
+                if($uploadedFile['status']){
+                    $site_favicon = $uploadedFile['newFilename'];
+                } else {
+                    return redirect()->back()->with(['error_message' => $uploadedFile['message']]);
+                }
+            } else {
+                $site_favicon = $row->site_favicon;
+            }
+        /* site favicon */
         $postData = [
             'site_name'                     => $request->site_name,
             'site_phone'                    => $request->site_phone,
@@ -35,6 +77,9 @@ class SettingsController extends Controller
             'instagram_profile'             => $request->instagram_profile,
             'linkedin_profile'              => $request->linkedin_profile,
             'youtube_profile'               => $request->youtube_profile,
+            'site_logo'                     => $site_logo,
+            'site_footer_logo'              => $site_footer_logo,
+            'site_favicon'                  => $site_favicon
         ];
         GeneralSetting::where('id', '=', 1)->update($postData);
         return redirect()->to('admin/create/settinglist')->with('status','General Settings Updated Successfully');

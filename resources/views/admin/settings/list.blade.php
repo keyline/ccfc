@@ -10,6 +10,9 @@
 @if (session('status'))
     <h6 class="alert alert-success">{{ session('status') }}</h6>
 @endif
+@if (session('error_message'))
+    <h6 class="alert alert-danger">{{ session('error_message') }}</h6>
+@endif
 <div class="card">
     <div class="card-body">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
