@@ -644,7 +644,7 @@ class ApiController extends Controller
                                 
                                 include(app_path() . '/functions/phpqrcode/qrlib.php');
                                 $text               = $checkUser->user_code;
-                                $qrcode_image       = QRcode::png($text);
+                                echo $qrcode_image       = QRcode::png($text);die;
 
                                 $apiResponse        = [
                                     'user_code'                             => $checkUser->user_code,
