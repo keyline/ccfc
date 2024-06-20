@@ -28,16 +28,239 @@
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                General
+                <!-- general settings Form -->
+                <form method="POST" action="{{ url('admin/create/general-settings') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row mb-3">
+                      <label for="site_name" class="col-md-4 col-lg-3 col-form-label">Site Name</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="site_name" type="text" class="form-control" id="site_name" value="<?=$setting->site_name?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="site_phone" class="col-md-4 col-lg-3 col-form-label">Site Phone</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="site_phone" type="text" class="form-control" id="site_phone" value="<?=$setting->site_phone?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="site_mail" class="col-md-4 col-lg-3 col-form-label">Site Email</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="site_mail" type="email" class="form-control" id="site_mail" value="<?=$setting->site_mail?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="system_email" class="col-md-4 col-lg-3 col-form-label">System Email</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="system_email" type="email" class="form-control" id="system_email" value="<?=$setting->system_email?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="site_url" class="col-md-4 col-lg-3 col-form-label">Site URL</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="site_url" type="url" class="form-control" id="site_url" value="<?=$setting->site_url?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="site_address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                      <div class="col-md-8 col-lg-9">
+                        <textarea name="site_address" class="form-control" id="site_address" rows="5"><?=$setting->site_address?></textarea>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="site_timings" class="col-md-4 col-lg-3 col-form-label">Timings</label>
+                      <div class="col-md-8 col-lg-9">
+                        <textarea name="site_timings" class="form-control" id="site_timings" rows="5"><?=$setting->site_timings?></textarea>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="theme_color" class="col-md-4 col-lg-3 col-form-label">Theme Color</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="theme_color" type="color" class="form-control" id="theme_color" value="<?=$setting->theme_color?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="font_color" class="col-md-4 col-lg-3 col-form-label">Font Color</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="font_color" type="color" class="form-control" id="font_color" value="<?=$setting->font_color?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="twitter_profile" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="twitter_profile" type="text" class="form-control" id="twitter_profile" value="<?=$setting->twitter_profile?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="facebook_profile" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="facebook_profile" type="text" class="form-control" id="facebook_profile" value="<?=$setting->facebook_profile?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="instagram_profile" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="instagram_profile" type="text" class="form-control" id="instagram_profile" value="<?=$setting->instagram_profile?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="linkedin_profile" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="linkedin_profile" type="text" class="form-control" id="linkedin_profile" value="<?=$setting->linkedin_profile?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="youtube_profile" class="col-md-4 col-lg-3 col-form-label">Youtube Profile</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="youtube_profile" type="text" class="form-control" id="youtube_profile" value="<?=$setting->youtube_profile?>">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="site_logo" class="col-md-4 col-lg-3 col-form-label">Logo</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="file" name="site_logo" class="form-control" id="site_logo">
+                        <small class="text-info">* Only jpg, jpeg, png, ico files are allowed</small><br>
+                        <?php if($setting->site_logo != ''){?>
+                          <img src="<?=env('UPLOADS_URL').$setting->site_logo?>" alt="<?=$setting->site_name?>">
+                        <?php } else {?>
+                          <img src="<?=env('NO_IMAGE')?>" alt="<?=$setting->site_name?>" class="img-thumbnail" style="width: 150px; height: 150px; margin-top: 10px;">
+                        <?php }?>
+                        
+                        <div class="pt-2">
+                          <a href="javascript:void(0);" class="btn btn-danger btn-sm" title="Remove Image"><i class="bi bi-trash"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="site_footer_logo" class="col-md-4 col-lg-3 col-form-label">Footer Logo</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="file" name="site_footer_logo" class="form-control" id="site_footer_logo">
+                        <small class="text-info">* Only jpg, jpeg, png, ico files are allowed</small><br>
+                        <?php if($setting->site_footer_logo != ''){?>
+                          <img src="<?=env('UPLOADS_URL').$setting->site_footer_logo?>" alt="<?=$setting->site_name?>">
+                        <?php } else {?>
+                          <img src="<?=env('NO_IMAGE')?>" alt="<?=$setting->site_name?>" class="img-thumbnail" style="width: 150px; height: 150px; margin-top: 10px;">
+                        <?php }?>
+                        
+                        <div class="pt-2">
+                          <a href="javascript:void(0);" class="btn btn-danger btn-sm" title="Remove Image"><i class="bi bi-trash"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="site_favicon" class="col-md-4 col-lg-3 col-form-label">Favicon</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="file" name="site_favicon" class="form-control" id="site_favicon">
+                        <small class="text-info">* Only jpg, jpeg, png, ico files are allowed</small><br>
+                        <?php if($setting->site_favicon != ''){?>
+                          <img src="<?=env('UPLOADS_URL').$setting->site_favicon?>" alt="<?=$setting->site_name?>">
+                        <?php } else {?>
+                          <img src="<?=env('NO_IMAGE')?>" alt="<?=$setting->site_name?>" class="img-thumbnail" style="width: 150px; height: 150px; margin-top: 10px;">
+                        <?php }?>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+              <!-- End general settings Form -->
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                SMS
+                <!-- sms settings Form -->
+                <form method="POST" action="{{ url('admin/create/sms-settings') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row mb-3">
+                      <label for="sms_authentication_key" class="col-md-4 col-lg-3 col-form-label">Authentication Key</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="sms_authentication_key" class="form-control" id="sms_authentication_key" value="<?=$setting->sms_authentication_key?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="sms_sender_id" class="col-md-4 col-lg-3 col-form-label">Sender ID</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="sms_sender_id" class="form-control" id="sms_sender_id" value="<?=$setting->sms_sender_id?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="sms_base_url" class="col-md-4 col-lg-3 col-form-label">Base URL</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="sms_base_url" class="form-control" id="sms_base_url" value="<?=$setting->sms_base_url?>">
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                <!-- End sms settings Form -->
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                Email
+                <!-- email settings Form -->
+                <form method="POST" action="{{ url('admin/create/email-settings') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row mb-3">
+                      <label for="from_email" class="col-md-4 col-lg-3 col-form-label">From Email</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="from_email" class="form-control" id="from_email" value="<?=$setting->from_email?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="from_name" class="col-md-4 col-lg-3 col-form-label">From Name</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="from_name" class="form-control" id="from_name" value="<?=$setting->from_name?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="smtp_host" class="col-md-4 col-lg-3 col-form-label">SMTP Host</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="smtp_host" class="form-control" id="smtp_host" value="<?=$setting->smtp_host?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="smtp_username" class="col-md-4 col-lg-3 col-form-label">SMTP Username</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="smtp_username" class="form-control" id="smtp_username" value="<?=$setting->smtp_username?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="smtp_password" class="col-md-4 col-lg-3 col-form-label">SMTP Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="smtp_password" class="form-control" id="smtp_password" value="<?=$setting->smtp_password?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="smtp_port" class="col-md-4 col-lg-3 col-form-label">SMTP Port</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="smtp_port" class="form-control" id="smtp_port" value="<?=$setting->smtp_port?>">
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+              <!-- End email settings Form -->
             </div>
             <div class="tab-pane fade" id="pills-seo" role="tabpanel" aria-labelledby="pills-seo-tab">
-                SEO
+                <!-- seo settings Form -->
+                <form method="POST" action="{{ url('admin/create/seo-settings') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row mb-3">
+                      <label for="meta_title" class="col-md-4 col-lg-3 col-form-label">Meta Title</label>
+                      <div class="col-md-8 col-lg-9">
+                        <textarea type="text" name="meta_title" class="form-control" id="meta_title" rows="5"><?=$setting->meta_title?></textarea>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="meta_description" class="col-md-4 col-lg-3 col-form-label">Meta Description</label>
+                      <div class="col-md-8 col-lg-9">
+                        <textarea type="text" name="meta_description" class="form-control" id="meta_description" rows="5"><?=$setting->meta_description?></textarea>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                <!-- End seo settings Form -->
             </div>
         </div>
     </div>

@@ -401,6 +401,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/delete-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'destroy']);
 
     Route::get('create/settinglist', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settinglist');
+    Route::post('create/general-settings', [App\Http\Controllers\Admin\SettingsController::class, 'generalSetting']);
+    Route::post('create/email-settings', [App\Http\Controllers\Admin\SettingsController::class, 'emailSetting']);
+    Route::post('create/sms-settings', [App\Http\Controllers\Admin\SettingsController::class, 'smsSetting']);
+    Route::post('create/seo-settings', [App\Http\Controllers\Admin\SettingsController::class, 'seoSetting']);
 
     // Members
     Route::delete('members/destroy', 'MembersController@massDestroy')->name('members.massDestroy');
