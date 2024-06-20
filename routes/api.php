@@ -58,6 +58,7 @@ Route::prefix('v2')->group(function () {
         Route::post('member/resetpassword', [ApiController::class,'resetPassword'])->name('api.v2.member.resetpassword.resetPassword');
     /* before login */
     /* after login */
+        Route::get('member/logout', [ApiController::class,'logOut'])->name('api.v2.member.logout.logOut');
         Route::get('member/dashboard', [ApiController::class,'dashboard'])->name('api.v2.member.dashboard.dashboard');
         Route::get('member/getprofile', [ApiController::class,'getProfile'])->name('api.v2.member.getprofile.getProfile');
         Route::get('member/mycard', [ApiController::class,'myCard'])->name('api.v2.member.mycard.myCard');
