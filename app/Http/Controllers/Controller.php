@@ -121,7 +121,8 @@ class Controller extends BaseController
             $temp = $_FILES[$fieldName]["tmp_name"];
             if ($uploadedpath == '') {
                 // echo storage_path();die;
-                $upload_path = 'public/storage/';
+                // $upload_path = 'public/storage/';
+                $upload_path = storage_path();
             } else {
                 $upload_path = 'public/storage/' . $uploadedpath . '/';
             }
