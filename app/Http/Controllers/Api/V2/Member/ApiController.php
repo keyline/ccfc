@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace App\Http\Controllers\Api\V2\Member;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +17,6 @@ use App\Models\UserDevice;
 use App\Libraries\CreatorJwt;
 use App\Libraries\JWT;
 
-declare(strict_types=1);
 
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
