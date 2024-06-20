@@ -16,6 +16,15 @@ use App\Models\UserDevice;
 use App\Libraries\CreatorJwt;
 use App\Libraries\JWT;
 
+declare(strict_types=1);
+
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
+
+// require_once('./../vendor/autoload.php');
+
+
+
 
 use App\Helpers\Helper;
 
@@ -642,7 +651,17 @@ class ApiController extends Controller
                                     }
                                 }
 
-                                $qrcode_image       = '';
+                                $options = new QROptions(
+                                  [
+                                    'eccLevel' => QRCode::ECC_L,
+                                    'outputType' => QRCode::OUTPUT_MARKUP_SVG,
+                                    'version' => 5,
+                                  ]
+                                );
+
+                                $qrcode = (new QRCode($options))->render('https://twilio.com');
+                                echo $qrcode_image       = $qrcode;die;
+                                
                                 $apiResponse        = [
                                     'user_code'                             => $checkUser->user_code,
                                     'name'                                  => $checkUser->name,
