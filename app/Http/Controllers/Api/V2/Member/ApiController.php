@@ -659,9 +659,9 @@ class ApiController extends Controller
                                   ]
                                 );
 
-                                $qrcode = (new QRCode($options))->render('https://twilio.com');
-                                echo $qrcode_image       = $qrcode;die;
-                                
+                                $qrcode             = (new QRCode($options))->render($checkUser->user_code);
+                                $qrcode_image       = $qrcode;
+
                                 $apiResponse        = [
                                     'user_code'                             => $checkUser->user_code,
                                     'name'                                  => $checkUser->name,
