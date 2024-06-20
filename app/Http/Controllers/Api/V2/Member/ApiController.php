@@ -53,7 +53,7 @@ class ApiController extends Controller
             }
             // echo $headerData['key'][0];
             // echo '<br>';
-            // echo env('PROJECT_KEY');
+            // echo $project_key;
             // echo '<br>';
             // Helper::pr($headerData);
             if($headerData['key'][0] == $project_key){
@@ -97,6 +97,7 @@ class ApiController extends Controller
             $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
         public function validateOtp(Request $request){
+            $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
             $apiStatus          = TRUE;
             $apiMessage         = '';
             $apiResponse        = [];
@@ -110,7 +111,7 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            if($headerData['key'][0] == env('PROJECT_KEY')){
+            if($headerData['key'][0] == $project_key){
                 $phone                      = $requestData['phone'];
                 $otp                        = $requestData['otp'];
                 $device_token               = $requestData['device_token'];
@@ -169,6 +170,7 @@ class ApiController extends Controller
             $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
         public function signInWithPassword(Request $request){
+            $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
             $apiStatus          = TRUE;
             $apiMessage         = '';
             $apiResponse        = [];
@@ -182,7 +184,7 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            if($headerData['key'][0] == env('PROJECT_KEY')){
+            if($headerData['key'][0] == $project_key){
                 $email                      = $requestData['email'];
                 $password                   = $requestData['password'];
                 $device_token               = $requestData['device_token'];
@@ -242,6 +244,7 @@ class ApiController extends Controller
     /* signin */
     /* forgot password */
         public function forgotPassword(Request $request){
+            $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
             $apiStatus          = TRUE;
             $apiMessage         = '';
             $apiResponse        = [];
@@ -255,7 +258,7 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            if($headerData['key'][0] == env('PROJECT_KEY')){
+            if($headerData['key'][0] == $project_key){
                 $email                      = $requestData['email'];
                 $checkUser                  = User::where('email', '=', $email)->first();
                 if($checkUser){
@@ -297,6 +300,7 @@ class ApiController extends Controller
             $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
         public function verifyOtp(Request $request){
+            $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
             $apiStatus          = TRUE;
             $apiMessage         = '';
             $apiResponse        = [];
@@ -310,7 +314,7 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            if($headerData['key'][0] == env('PROJECT_KEY')){
+            if($headerData['key'][0] == $project_key){
                 $id                         = $requestData['id'];
                 $otp                        = $requestData['otp'];
                 $checkUser                  = User::where('id', '=', $id)->first();
@@ -345,6 +349,7 @@ class ApiController extends Controller
             $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
         public function resendOtp(Request $request){
+            $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
             $apiStatus          = TRUE;
             $apiMessage         = '';
             $apiResponse        = [];
@@ -358,7 +363,7 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            if($headerData['key'][0] == env('PROJECT_KEY')){
+            if($headerData['key'][0] == $project_key){
                 $id                         = $requestData['id'];
                 $checkUser                  = User::where('id', '=', $id)->first();
                 if($checkUser){
@@ -400,6 +405,7 @@ class ApiController extends Controller
             $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
         }
         public function resetPassword(Request $request){
+            $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
             $apiStatus          = TRUE;
             $apiMessage         = '';
             $apiResponse        = [];
@@ -413,7 +419,7 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            if($headerData['key'][0] == env('PROJECT_KEY')){
+            if($headerData['key'][0] == $project_key){
                 $id                         = $requestData['id'];
                 $password                   = $requestData['password'];
                 $confirm_password           = $requestData['confirm_password'];
@@ -473,13 +479,14 @@ class ApiController extends Controller
     /* after login */
         /* dashboard */
             public function dashboard(Request $request){
+                $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
                 $apiStatus          = TRUE;
                 $apiMessage         = '';
                 $apiResponse        = [];
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                if($headerData['key'][0] == env('PROJECT_KEY')){
+                if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
                     if($getTokenValue['status']){
@@ -531,13 +538,14 @@ class ApiController extends Controller
         /* dashboard */
         /* get profile */
             public function getProfile(Request $request){
+                $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
                 $apiStatus          = TRUE;
                 $apiMessage         = '';
                 $apiResponse        = [];
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                if($headerData['key'][0] == env('PROJECT_KEY')){
+                if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
                     if($getTokenValue['status']){
@@ -638,13 +646,14 @@ class ApiController extends Controller
         /* get profile */
         /* my card */
             public function myCard(Request $request){
+                $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
                 $apiStatus          = TRUE;
                 $apiMessage         = '';
                 $apiResponse        = [];
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                if($headerData['key'][0] == env('PROJECT_KEY')){
+                if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
                     if($getTokenValue['status']){
@@ -709,13 +718,14 @@ class ApiController extends Controller
         /* my card */
         /* get contact us */
             public function getContactUs(Request $request){
+                $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
                 $apiStatus          = TRUE;
                 $apiMessage         = '';
                 $apiResponse        = [];
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                if($headerData['key'][0] == env('PROJECT_KEY')){
+                if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
                     if($getTokenValue['status']){
@@ -772,6 +782,7 @@ class ApiController extends Controller
         /* get contact us */
         /* post contact us */
             public function submitContactUs(Request $request){
+                $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
                 $apiStatus          = TRUE;
                 $apiMessage         = '';
                 $apiResponse        = [];
@@ -785,7 +796,7 @@ class ApiController extends Controller
                     $apiStatus          = FALSE;
                     $apiMessage         = 'All Data Are Not Present !!!';
                 }
-                if($headerData['key'][0] == env('PROJECT_KEY')){
+                if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
 
