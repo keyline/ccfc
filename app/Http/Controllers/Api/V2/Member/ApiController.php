@@ -641,8 +641,8 @@ class ApiController extends Controller
                                         $profileImage       = 'data:image/png;base64,'.$getUserDetail->member_image;
                                     }
                                 }
-
-                                include('\public_html\app\functions\phpqrcode\qrlib.php');
+                                echo app_path();
+                                // include('\public_html\app\functions\phpqrcode\qrlib.php');
 
                                 $apiResponse        = [
                                     'user_code'                             => $checkUser->user_code,
