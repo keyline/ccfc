@@ -4,6 +4,8 @@ use App\Models\GeneralSetting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use App\Helpers\Helper;
+
 class SettingsController extends Controller
 {
     /**
@@ -14,6 +16,7 @@ class SettingsController extends Controller
     public function index()
     {
         $settings = GeneralSetting::find(1);
+        Helper::pr($settings);
         return view('admin.settings.list',compact('settings'));
     }
     /**
