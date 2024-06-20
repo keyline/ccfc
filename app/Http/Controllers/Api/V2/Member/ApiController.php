@@ -49,8 +49,10 @@ class ApiController extends Controller
                 $apiStatus          = FALSE;
                 $apiMessage         = 'All Data Are Not Present !!!';
             }
-            
+            echo $headerData['key'][0];
+            echo '<br>';
             echo env('PROJECT_KEY');
+            echo '<br>';
             Helper::pr($headerData);
             if($headerData['key'][0] == env('PROJECT_KEY')){
                 $phone                      = $requestData['phone'];
