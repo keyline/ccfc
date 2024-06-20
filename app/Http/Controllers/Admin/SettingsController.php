@@ -16,7 +16,6 @@ class SettingsController extends Controller
     public function index()
     {
         $settings = GeneralSetting::find(1);
-        Helper::pr($settings);
         return view('admin.settings.list',compact('settings'));
     }
     /**
