@@ -818,6 +818,10 @@ class ApiController extends Controller
                                     //     $message->to('subhomoy@keylines.net', 'Admin')->subject($subject);
                                     //     // $message->to($senderEmail, $senderName)->subject($subject);
                                     // });
+                                    $departments        = explode("/", $department);
+                                    $senderEmail        = $departments[0];
+                                    $senderName         = $departments[1];
+                                    $this->sendMail('subhomoy@keylines.net', $senderEmail, $senderName, $subject, $message);
                                 /* mail send */
 
                                 $apiStatus          = TRUE;
