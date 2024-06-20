@@ -15,6 +15,7 @@ use App\Models\UserDevice;
 
 use App\Libraries\CreatorJwt;
 use App\Libraries\JWT;
+use App\Libraries\phpqrcode/qrlib.php;
 
 use App\Helpers\Helper;
 
@@ -640,11 +641,13 @@ class ApiController extends Controller
                                         $profileImage       = 'data:image/png;base64,'.$getUserDetail->member_image;
                                     }
                                 }
+
                                 $apiResponse        = [
                                     'user_code'                             => $checkUser->user_code,
                                     'name'                                  => $checkUser->name,
                                     'phone'                                 => $checkUser->phone_number_1,
                                     'email'                                 => $checkUser->email,
+                                    'qrcode_image'                          => $profileImage,
                                     'profile_image'                         => $profileImage
                                 ];
                                 $apiStatus          = TRUE;
