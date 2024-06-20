@@ -32,7 +32,7 @@ class SettingsController extends Controller
             'meta_description'  => $request->meta_description,
         ];
         GeneralSetting::where('id', '=', 1)->update($postData);
-        return redirect()->to('admin/settings/list')->with('status','SEO Settings Updated Successfully');
+        return redirect()->to('admin/create/settinglist')->with('status','SEO Settings Updated Successfully');
     }
     
 }
