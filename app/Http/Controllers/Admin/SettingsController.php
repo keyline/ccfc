@@ -81,6 +81,7 @@ class SettingsController extends Controller
             'site_footer_logo'              => $site_footer_logo,
             'site_favicon'                  => $site_favicon
         ];
+        Helper::pr($postData);
         GeneralSetting::where('id', '=', 1)->update($postData);
         return redirect()->to('admin/create/settinglist')->with('status','General Settings Updated Successfully');
     }
