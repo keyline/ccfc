@@ -64,13 +64,13 @@
                     <div class="row mb-3">
                       <label for="site_address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="site_address" class="form-control" id="site_address" rows="5"><?=$setting->site_address?></textarea>
+                        <textarea name="site_address" class="form-control ckeditor" id="site_address" rows="5"><?=$setting->site_address?></textarea>
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="site_timings" class="col-md-4 col-lg-3 col-form-label">Timings</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="site_timings" class="form-control" id="site_timings" rows="5"><?=$setting->site_timings?></textarea>
+                        <textarea name="site_timings" class="form-control ckeditor" id="site_timings" rows="5"><?=$setting->site_timings?></textarea>
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -265,6 +265,7 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 @endsection
 @section('scripts')
 
