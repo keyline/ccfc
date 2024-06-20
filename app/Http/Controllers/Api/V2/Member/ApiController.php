@@ -633,7 +633,20 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                
+                                $getUserDetail                  = UserDetail::select('member_image')->where('user_code_id', '=', $uId)->first();
+                                $profileImage       = '';
+                                if($getUserDetail){
+                                    if($getUserDetail->member_image != ''){
+                                        $profileImage       = 'data:image/png;base64,'.$getUserDetail->member_image;
+                                    }
+                                }
+                                $apiResponse        = [
+                                    'user_code'                             => $checkUser->user_code,
+                                    'name'                                  => $checkUser->name,
+                                    'phone'                                 => $checkUser->phone_number_1,
+                                    'email'                                 => $checkUser->email,
+                                    'profile_image'                         => $profileImage
+                                ];
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
