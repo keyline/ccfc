@@ -119,7 +119,7 @@
                       </div>
                     </div>
 
-                    <div class="row mb-3">
+                    <!-- <div class="row mb-3">
                       <label for="site_logo" class="col-md-4 col-lg-3 col-form-label">Logo</label>
                       <div class="col-md-8 col-lg-9">
                         <input type="file" name="site_logo" class="form-control" id="site_logo">
@@ -162,7 +162,7 @@
                           <img src="<?=env('NO_IMAGE')?>" alt="<?=$setting->site_name?>" class="img-thumbnail" style="width: 150px; height: 150px; margin-top: 10px;">
                         <?php }?>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
