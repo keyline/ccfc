@@ -34,9 +34,10 @@ use Mail;
 
 class ApiController extends Controller
 {
-    $PROJECT_KEY = 'facb6e0a6fcbe200dca2fb60dec75be7';
+
     /* signin */
         public function signinWithMobile(Request $request){
+            $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
             $apiStatus          = TRUE;
             $apiMessage         = '';
             $apiResponse        = [];
@@ -55,7 +56,7 @@ class ApiController extends Controller
             // echo env('PROJECT_KEY');
             // echo '<br>';
             // Helper::pr($headerData);
-            if($headerData['key'][0] == $PROJECT_KEY){
+            if($headerData['key'][0] == $project_key){
                 $phone                      = $requestData['phone'];
                 $device_token               = $requestData['device_token'];
                 $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
