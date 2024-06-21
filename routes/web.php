@@ -28,8 +28,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\TenderFileUploadController;
 use App\Models\DocumentOrganizer;
 use App\Http\Controllers\TenderDownloadController;
-use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\CookingCategoryController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\CookingCategoryController;
 // use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
@@ -407,7 +407,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('create/sms-settings', [App\Http\Controllers\Admin\SettingsController::class, 'smsSetting']);
     Route::post('create/seo-settings', [App\Http\Controllers\Admin\SettingsController::class, 'seoSetting']);
 
-    Route::get('create/cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'list'])->name('cookingcategorylist');
+    Route::get('create/cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'index'])->name('cookingcategorylist');
     Route::get('create/add-cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'add']);
     Route::post('create/add-cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'add']);
     Route::get('create/edit-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'edit']);

@@ -14,7 +14,7 @@ class CookingCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function list()
+    public function index()
     {
         $setting    = GeneralSetting::find(1);
         $rows       = CookingCategory::where('status', '!=', 3)->orderBy('id', 'DESC')->get();
