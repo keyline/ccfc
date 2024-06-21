@@ -23,7 +23,7 @@ class CookingCategoryController extends Controller
         $rows       = CookingCategory::where('status', '!=', 3)->orderBy('id', 'DESC')->get();
         return view('admin.cooking-category.list',compact('setting', 'rows'));
     }
-    public function add()
+    public function add(Request $request)
     {
         $setting    = GeneralSetting::find(1);
         $row        = [];
@@ -46,7 +46,7 @@ class CookingCategoryController extends Controller
         }
         return view('admin.cooking-category.add-edit',compact('setting', 'row'));
     }
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $setting    = GeneralSetting::find(1);
         $row        = CookingCategory::where('id', '=', $id)->first();
