@@ -26,7 +26,7 @@ class CookingItemController extends Controller
         $rows       = DB::table('cooking_items')
                         ->select('cooking_items.*', 'cooking_categories.name as category_name')
                         ->join('cooking_categories','cooking_categories.id','=','cooking_items.category_id')
-                        ->where(['cooking_items.status !=' => 3])
+                        ->where(['cooking_items.status' => 1])
                         ->get();
         return view('admin.cooking-item.list',compact('setting', 'rows'));
     }
