@@ -34,7 +34,7 @@
             <select class="form-control" name="category_id" id="category_id">
               <option value="" selected>Select Category</option>
               <?php if($cats){ foreach($cats as $cat){?>
-                <option value="<?=$cat->id?>"><?=$cat->name?> (<?=$cat->for_cat?>)</option>
+                <option value="<?=$cat->id?>" <?=(($category_id == $cat->id)?'selected':'')?>><?=$cat->name?> (<?=$cat->for_cat?>)</option>
               <?php } } ?>
             </select>
           </div>
