@@ -36,8 +36,8 @@
             <td><?=$row->for_cat?></td>
             <td><?=$row->name?></td>
             <td>
-              <a href="<?=url('admin/edit-cookingcategorylist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
-              <a href="<?=url('admin/delete-cookingcategorylist/' . $row->id)?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+              <a href="<?=url('admin/create/edit-cookingcategorylist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+              <a href="<?=url('admin/create/delete-cookingcategorylist/' . $row->id)?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
             </td>
           </tr>
         <?php } } ?>
