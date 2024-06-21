@@ -539,7 +539,7 @@
                 <!-- End Tender Document Upload -->
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/create/settings') }}" class="nav-link">
+                    <a href="{{ url('admin/create/settinglist') }}" class="nav-link">
                         <p>
                             <i class="fa-fw nav-icon fa fa-cogs">
 
