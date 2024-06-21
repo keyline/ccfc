@@ -549,7 +549,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?=url('create/cookingcategorylist')?>"
+                            <a href="<?=url('admin/create/cookingcategorylist')?>"
                                 class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-football-ball"></i>
                                 <p>
@@ -558,7 +558,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=url('create/cookingcategorylist')?>"
+                            <a href="<?=url('admin/create/cookingcategorylist')?>"
                                 class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-football-ball"></i>
                                 <p>
