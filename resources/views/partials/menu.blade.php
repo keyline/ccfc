@@ -558,7 +558,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=url('admin/create/cookingcategorylist')?>"
+                            <a href="<?=url('admin/create/cookingitemlist')?>"
                                 class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-football-ball"></i>
                                 <p>

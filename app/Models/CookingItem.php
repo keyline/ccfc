@@ -1,14 +1,14 @@
 <?php
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
-class CookingCategory extends Model{
+class CookingItem extends Model{
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'cooking_categories'
+        'cooking_items'
     ];
 
     /**

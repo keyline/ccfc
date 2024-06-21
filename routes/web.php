@@ -30,6 +30,7 @@ use App\Models\DocumentOrganizer;
 use App\Http\Controllers\TenderDownloadController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\CookingCategoryController;
+use App\Http\Controllers\Admin\CookingItemController;
 // use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
@@ -413,6 +414,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/edit-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'edit']);
     Route::post('create/edit-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'edit']);
     Route::get('create/delete-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'destroy']);
+
+    Route::get('create/cookingitemlist', [App\Http\Controllers\Admin\CookingItemController::class, 'index'])->name('cookingitemlist');
+    Route::get('create/add-cookingitemlist', [App\Http\Controllers\Admin\CookingItemController::class, 'add']);
+    Route::post('create/add-cookingitemlist', [App\Http\Controllers\Admin\CookingItemController::class, 'add']);
+    Route::get('create/edit-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'edit']);
+    Route::post('create/edit-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'edit']);
+    Route::get('create/delete-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'destroy']);
 
     // Members
     Route::delete('members/destroy', 'MembersController@massDestroy')->name('members.massDestroy');

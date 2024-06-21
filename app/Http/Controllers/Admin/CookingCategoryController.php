@@ -39,7 +39,8 @@ class CookingCategoryController extends Controller
                     'name'                  => $postData['name'],
                 ];
                 CookingCategory::insert($fields);
-                return redirect("admin/create/cookingcategorylist")->with('success_message', 'Cooking Category Inserted Successfully !!!');
+                $for_cat = $postData['for_cat'];
+                return redirect("admin/create/cookingcategorylist")->with('success_message', 'Cooking Category Inserted Successfully For ' . $for_cat . ' !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
             }
@@ -62,7 +63,8 @@ class CookingCategoryController extends Controller
                     'name'                  => $postData['name'],
                 ];
                 CookingCategory::where('id', '=', $id)->update($fields);
-                return redirect("admin/create/cookingcategorylist")->with('success_message', 'Cooking Category Updated Successfully !!!');
+                $for_cat = $postData['for_cat'];
+                return redirect("admin/create/cookingcategorylist")->with('success_message', 'Cooking Category Updated Successfully For ' . $for_cat . ' !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
             }
