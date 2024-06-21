@@ -538,14 +538,42 @@
                 @endcan
                 <!-- End Tender Document Upload -->
 
-                
+                <!-- start mobile app -->
+                <li class="nav-item has-treeview {{ request()->is('admin/tenderuploads*') ? 'menu-open' : '' }}">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="fa-fw nav-icon fas fa-gamepad"></i>
+                        <p>
+                            Mobile App
+                            <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?=url('create/cookingcategorylist')?>"
+                                class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <p>
+                                    Whats Cooking Categories
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=url('create/cookingcategorylist')?>"
+                                class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <p>
+                                    Whats Cooking Items
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- End mobile app -->
 
                 <li class="nav-item">
                     <a href="{{ url('admin/create/settinglist') }}" class="nav-link">
                         <p>
-                            <i class="fa-fw nav-icon fa fa-cogs">
-
-                            </i>
+                            <i class="fa-fw nav-icon fa fa-cogs"></i>
                             <p>Settings</p>
                         </p>
                     </a>
@@ -555,9 +583,7 @@
                     <a href="#" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
-                            <i class="fas fa-fw fa-sign-out-alt nav-icon">
-
-                            </i>
+                            <i class="fas fa-fw fa-sign-out-alt nav-icon"></i>
                             <p>{{ trans('global.logout') }}</p>
                         </p>
                     </a>
