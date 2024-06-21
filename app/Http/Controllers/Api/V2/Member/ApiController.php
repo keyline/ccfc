@@ -721,7 +721,7 @@ class ApiController extends Controller
                                 $options = new QROptions(
                                   [
                                     'eccLevel' => QRCode::ECC_L,
-                                    'outputType' => QRCode::OUTPUT_MARKUP_PNG,
+                                    'outputType' => QRCode::OUTPUT_IMAGE_PNG,
                                     'version' => 5,
                                   ]
                                 );
