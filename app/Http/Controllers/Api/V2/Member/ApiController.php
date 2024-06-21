@@ -252,7 +252,7 @@ class ApiController extends Controller
             $apiExtraData       = '';
             $this->isJSON(file_get_contents('php://input'));
             $requestData        = $this->extract_json(file_get_contents('php://input'));
-            $requiredFields     = ['email'];
+            $requiredFields     = ['email', 'member_code'];
             $headerData         = $request->header();
             if (!$this->validateArray($requiredFields, $requestData)){
                 $apiStatus          = FALSE;
@@ -260,7 +260,8 @@ class ApiController extends Controller
             }
             if($headerData['key'][0] == $project_key){
                 $email                      = $requestData['email'];
-                $checkUser                  = User::where('email', '=', $email)->first();
+                $member_code                = $requestData['member_code'];
+                $checkUser                  = User::where('email', '=', $email)->where('user_code', '=', $email)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
                         // $otp        = rand(100000,999999);
