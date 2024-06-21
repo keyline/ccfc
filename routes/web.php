@@ -411,7 +411,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/add-cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'add']);
     Route::post('create/add-cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'add']);
     Route::get('create/edit-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'edit']);
-    Route::put('create/update-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'edit']);
+    Route::post('create/edit-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'edit']);
     Route::get('create/delete-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'destroy']);
 
     // Members
