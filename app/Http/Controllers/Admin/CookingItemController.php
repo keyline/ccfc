@@ -51,7 +51,7 @@ class CookingItemController extends Controller
                     'rate'                  => $postData['rate'],
                 ];
                 CookingItem::insert($fields);
-                $for_cat = $postData['for_cat'];
+                $for_cat = (($getCategory)?$getCategory->for_cat:'');
                 return redirect("admin/create/cookingitemlist")->with('success_message', 'Cooking Item Inserted Successfully For ' . $for_cat . ' !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
@@ -80,7 +80,7 @@ class CookingItemController extends Controller
                     'rate'                  => $postData['rate'],
                 ];
                 CookingItem::where('id', '=', $id)->update($fields);
-                $for_cat = $postData['for_cat'];
+                $for_cat = (($getCategory)?$getCategory->for_cat:'');
                 return redirect("admin/create/cookingitemlist")->with('success_message', 'Cooking Item Updated Successfully For ' . $for_cat . ' !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
