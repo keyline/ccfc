@@ -261,7 +261,7 @@ class ApiController extends Controller
             if($headerData['key'][0] == $project_key){
                 $email                      = $requestData['email'];
                 $member_code                = $requestData['member_code'];
-                $checkUser                  = User::where('email', '=', $email)->where('user_code', '=', $email)->first();
+                $checkUser                  = User::where('email', '=', $email)->where('user_code', '=', $member_code)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
                         // $otp        = rand(100000,999999);
