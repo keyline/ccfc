@@ -7,8 +7,8 @@
     </div>
 </div>
 @endcan
-@if (session('status'))
-    <h6 class="alert alert-success">{{ session('status') }}</h6>
+@if (session('success_message'))
+    <h6 class="alert alert-success">{{ session('success_message') }}</h6>
 @endif
 @if (session('error_message'))
     <h6 class="alert alert-danger">{{ session('error_message') }}</h6>
