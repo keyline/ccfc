@@ -29,8 +29,8 @@
         <div class="row mb-3">
           <label for="for_cat" class="col-md-4 col-lg-3 col-form-label">Category For</label>
           <div class="col-md-8 col-lg-9">
-            <input type="radio" name="for_cat" class="form-control" id="for_cat1" value="FOOD & BEVERAGES" <?=(($for_cat == 'FOOD & BEVERAGES')?'checked':'')?> required><label for="for_cat1">FOOD & BEVERAGES</label>
-            <input type="radio" name="for_cat" class="form-control" id="for_cat2" value="CLUB KITCHEN" <?=(($for_cat == 'CLUB KITCHEN')?'checked':'')?> required><label for="for_cat1">CLUB KITCHEN</label>
+            <input type="radio" name="for_cat" id="for_cat1" value="FOOD & BEVERAGES" <?=(($for_cat == 'FOOD & BEVERAGES')?'checked':'')?> required><label for="for_cat1">FOOD & BEVERAGES</label>
+            <input type="radio" name="for_cat" id="for_cat2" value="CLUB KITCHEN" <?=(($for_cat == 'CLUB KITCHEN')?'checked':'')?> required><label for="for_cat1">CLUB KITCHEN</label>
           </div>
         </div>
         <div class="row mb-3">
