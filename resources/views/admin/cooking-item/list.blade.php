@@ -3,7 +3,7 @@
 @can('content_block_create')
 <div style="margin-bottom: 10px;" class="row">
     <div class="col-lg-12">
-        <h3>Whats Cooking Category</h3>
+        <h3>Whats Cooking Item</h3>
     </div>
 </div>
 @endcan
