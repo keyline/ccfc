@@ -1218,13 +1218,20 @@ class ApiController extends Controller
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
                                 
-                                $apiResponse        = [
-                                    'user_code'                             => $checkUser->user_code,
-                                    'name'                                  => $checkUser->name,
-                                    'phone'                                 => $checkUser->phone_number_1,
-                                    'email'                                 => $checkUser->email,
-                                    'profile_image'                         => $profileImage
-                                ];
+                                $staticPage       = DB::table('content_category_content_page')
+                                                ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
+                                                ->join('content_categories','content_categories.id','=','content_category_content_page.content_category_id')
+                                                ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
+                                                ->where(['content_categories.slug' => 'day spa'])
+                                                ->first();
+                                if($staticPage){
+                                    $apiResponse    = [
+                                        'category_name' => $staticPage->category_name,
+                                        'title'         => $staticPage->title,
+                                        'page_text'     => $staticPage->page_text,
+                                    ];
+                                }
+
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
