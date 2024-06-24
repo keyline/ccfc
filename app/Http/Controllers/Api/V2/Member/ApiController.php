@@ -1083,7 +1083,6 @@ class ApiController extends Controller
                     $apiStatus          = FALSE;
                     $apiMessage         = 'All Data Are Not Present !!!';
                 }
-                Helper::pr($headerData);
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
@@ -1097,7 +1096,25 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                
+                                if($new_password == $confirm_password){
+                                    if(Hash::check($checkUser->password, $old_password)){
+                                        if($old_password != $new_password){
+                                            $fields = [
+                                                'password'            => Hash::make($new_password)
+                                            ];
+                                            User::where('id', '=', $uId)->update($fields);
+                                        } else {
+                                            $apiStatus                              = FALSE;
+                                            $apiMessage                             = 'Password Can\'t Be Same With Existing Password !!!';
+                                        }
+                                    } else {
+                                        $apiStatus                              = FALSE;
+                                        $apiMessage                             = 'Old Password Does Not Matched !!!';
+                                    }
+                                } else {
+                                    $apiStatus                              = FALSE;
+                                    $apiMessage                             = 'New & Confirm Password Does Not Matched !!!';
+                                }
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
