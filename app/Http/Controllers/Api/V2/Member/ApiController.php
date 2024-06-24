@@ -1097,7 +1097,7 @@ class ApiController extends Controller
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
                                 if($new_password == $confirm_password){
-                                    if(Hash::check($checkUser->password, $old_password)){
+                                    if(!Hash::check($checkUser->password, $old_password)){
                                         if($old_password != $new_password){
                                             $fields = [
                                                 'password'            => Hash::make($new_password)
