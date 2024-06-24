@@ -33,6 +33,7 @@ use App\Helpers\Helper;
 use Auth;
 use Hash;
 use Mail;
+Use DB;
 
 class ApiController extends Controller
 {
@@ -1013,7 +1014,6 @@ class ApiController extends Controller
                     $apiStatus          = FALSE;
                     $apiMessage         = 'All Data Are Not Present !!!';
                 }
-                Helper::pr($headerData);
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
@@ -1025,6 +1025,20 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
+
+                                $staticPage       = DB::table('content_category_content_page')
+                                                ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
+                                                ->join('content_categories','content_categories.id','=','content_category_content_page.content_category_id')
+                                                ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
+                                                ->where(['content_categories.slug' => $page_slug])
+                                                ->first();
+                                if($staticPage){
+                                    $apiResponse    = [
+                                        'category_name' => $staticPage->category_name,
+                                        'title'         => $staticPage->title,
+                                        'page_text'     => $staticPage->page_text,
+                                    ];
+                                }
                                 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
