@@ -1103,6 +1103,13 @@ class ApiController extends Controller
                                                 'password'            => Hash::make($new_password)
                                             ];
                                             User::where('id', '=', $uId)->update($fields);
+
+
+                                            $apiStatus          = TRUE;
+                                            http_response_code(200);
+                                            $apiMessage         = 'Password Updated Successfully !!!';
+                                            $apiExtraField      = 'response_code';
+                                            $apiExtraData       = http_response_code();
                                         } else {
                                             $apiStatus                              = FALSE;
                                             $apiMessage                             = 'Password Can\'t Be Same With Existing Password !!!';
@@ -1115,11 +1122,6 @@ class ApiController extends Controller
                                     $apiStatus                              = FALSE;
                                     $apiMessage                             = 'New & Confirm Password Does Not Matched !!!';
                                 }
-                                $apiStatus          = TRUE;
-                                http_response_code(200);
-                                $apiMessage         = 'Data Available !!!';
-                                $apiExtraField      = 'response_code';
-                                $apiExtraData       = http_response_code();
                             } else {
                                 $apiStatus                              = FALSE;
                                 $apiMessage                             = 'You Account Is Not Active Yet !!!';
