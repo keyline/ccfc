@@ -9,6 +9,8 @@ use Illuminate\Validation\Rule;
 
 use App\Models\Contact;
 use App\Models\Contactlist;
+use App\Models\CookingCategory;
+use App\Models\CookingItem;
 use App\Models\GeneralSetting;
 use App\Models\User;
 use App\Models\UserDetail;
@@ -936,7 +938,6 @@ class ApiController extends Controller
                     $apiStatus          = FALSE;
                     $apiMessage         = 'All Data Are Not Present !!!';
                 }
-                Helper::pr($headerData);
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
@@ -948,7 +949,27 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                
+                                $getCookingCats     = CookingCategory::select('id', 'name')->where('for_cat', '=', $for_cat)->where('status', '=', 1)->get();
+                                if($getCookingCats){
+                                    foreach($getCookingCats as $getCookingCat){
+                                        $getCookingItems        = CookingItem::select('id', 'name', 'rate')->where('for_cat', '=', $for_cat)->where('status', '=', 1)->where('category_id', '=', $getCookingCat->id)->get();
+                                        $category_items         = [];
+                                        if($getCookingItems){
+                                            foreach($getCookingItems as $getCookingItem){
+                                                $category_items[]         = [
+                                                    'category_item_id'      => $getCookingItem->id,
+                                                    'category_item_name'    => $getCookingItem->name,
+                                                    'category_item_rate'    => $getCookingItem->rate,
+                                                ];
+                                            }
+                                        }
+                                        $apiResponse[]          = [
+                                            'category_name'     => $getCookingCat->name,
+                                            'category_items'    => $category_items
+                                        ];
+                                    }
+                                }
+
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
