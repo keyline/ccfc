@@ -895,7 +895,7 @@ class ApiController extends Controller
                                     $departments        = explode("/", $department);
                                     $senderEmail        = $departments[0];
                                     $senderName         = $departments[1];
-                                    $this->sendMail('subhomoy@keylines.net', $senderEmail, $senderName, $subject, $message);
+                                    // $this->sendMail('subhomoy@keylines.net', $senderEmail, $senderName, $subject, $message);
                                 /* mail send */
 
                                 $apiStatus          = TRUE;
