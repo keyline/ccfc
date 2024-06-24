@@ -12,6 +12,7 @@ use App\Models\Contactlist;
 use App\Models\CookingCategory;
 use App\Models\CookingItem;
 use App\Models\GeneralSetting;
+use App\Models\SpaBookingTracking;
 use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserDevice;
@@ -1267,7 +1268,6 @@ class ApiController extends Controller
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                Helper::pr($headerData);
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
@@ -1277,17 +1277,18 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                
-                                $apiResponse        = [
-                                    'user_code'                             => $checkUser->user_code,
-                                    'name'                                  => $checkUser->name,
-                                    'phone'                                 => $checkUser->phone_number_1,
-                                    'email'                                 => $checkUser->email,
-                                    'profile_image'                         => $profileImage
+                                $postData = [
+                                    'user_id'       => $checkUser->id,
+                                    'member_code'   => $checkUser->user_code,
+                                    'name'          => $checkUser->name,
+                                    'email'         => $checkUser->email,
+                                    'phone'         => $checkUser->phone_number_1
                                 ];
+                                SpaBookingTracking::insert($postData);
+                                
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
-                                $apiMessage         = 'Data Available !!!';
+                                $apiMessage         = 'Spa Booking Activity Submitted !!!';
                                 $apiExtraField      = 'response_code';
                                 $apiExtraData       = http_response_code();
                             } else {
