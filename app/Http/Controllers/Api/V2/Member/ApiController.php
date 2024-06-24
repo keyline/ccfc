@@ -11,6 +11,7 @@ use App\Models\Contact;
 use App\Models\Contactlist;
 use App\Models\CookingCategory;
 use App\Models\CookingItem;
+use App\Models\DeleteAccountRequest;
 use App\Models\GeneralSetting;
 use App\Models\SpaBookingTracking;
 use App\Models\User;
@@ -1154,7 +1155,6 @@ class ApiController extends Controller
                 $apiExtraField      = '';
                 $apiExtraData       = '';
                 $headerData         = $request->header();
-                Helper::pr($headerData);
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
@@ -1164,17 +1164,20 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                
-                                $apiResponse        = [
-                                    'user_code'                             => $checkUser->user_code,
-                                    'name'                                  => $checkUser->name,
-                                    'phone'                                 => $checkUser->phone_number_1,
-                                    'email'                                 => $checkUser->email,
-                                    'profile_image'                         => $profileImage
+                                $postData = [
+                                    'user_type'             => 'user',
+                                    'entity_name'           => $checkUser->name,
+                                    'email'                 => $checkUser->email,
+                                    'is_email_verify'       => 1,
+                                    'phone'                 => $checkUser->phone_number_1,
+                                    'is_phone_verify'       => 1,
+                                    'comments'              => "",
                                 ];
+                                DeleteAccountRequest::insert($postData);
+
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
-                                $apiMessage         = 'Data Available !!!';
+                                $apiMessage         = 'Delete Account Request Submitted Successfully. Wait For Admin Approval !!!';
                                 $apiExtraField      = 'response_code';
                                 $apiExtraData       = http_response_code();
                             } else {
