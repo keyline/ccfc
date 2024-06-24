@@ -64,5 +64,12 @@ Route::prefix('v2')->group(function () {
         Route::get('member/mycard', [ApiController::class,'myCard'])->name('api.v2.member.mycard.myCard');
         Route::get('member/getcontactus', [ApiController::class,'getContactUs'])->name('api.v2.member.getcontactus.getContactUs');
         Route::post('member/submitcontactus', [ApiController::class,'submitContactUs'])->name('api.v2.member.submitcontactus.submitContactUs');
+
+        Route::post('member/whatscooking', [ApiController::class,'whatsCooking'])->name('api.v2.member.whatscooking.whatsCooking');
+        Route::post('member/staticpages', [ApiController::class,'staticPages'])->name('api.v2.member.staticpages.staticPages');
+        Route::post('member/changepassword', [ApiController::class,'changePassword'])->name('api.v2.member.changepassword.changePassword');
+        Route::get('member/deleteaccount', [ApiController::class,'deleteAccount'])->name('api.v2.member.deleteaccount.deleteAccount');
+        Route::get('member/spabooking', [ApiController::class,'spaBooking'])->name('api.v2.member.spabooking.spaBooking');
+        Route::get('member/spabooking-tracking', [ApiController::class,'spaBookingTracking'])->name('api.v2.member.spabooking-tracking.spaBookingTracking');
     /* after login */
 });
