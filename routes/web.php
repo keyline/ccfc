@@ -68,6 +68,16 @@ Route::get('/history', function () {
     return view('history', compact(['contentPages', 'galleries']));
 });
 
+Route::get('/terms', function () {
+    $contentPages = ContentPage::find(20);
+    return view('terms', compact(['contentPages']));
+});
+
+Route::get('/privacy', function () {
+    $contentPages = ContentPage::find(21);
+    return view('privacy', compact(['contentPages']));
+});
+
 Route::get('/food_beverages', function () {
     $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
