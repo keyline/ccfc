@@ -541,7 +541,7 @@
                 <!-- start mobile app -->
                 <li class="nav-item has-treeview {{ request()->is('admin/tenderuploads*') ? 'menu-open' : '' }}">
                     <a class="nav-link nav-dropdown-toggle" href="#">
-                        <i class="fa-fw nav-icon fas fa-gamepad"></i>
+                        <i class="fa-fw nav-icon fas fa-mobile"></i>
                         <p>
                             Mobile App
                             <i class="right fa fa-fw fa-angle-left nav-icon"></i>
@@ -551,7 +551,7 @@
                         <li class="nav-item">
                             <a href="<?=url('admin/create/cookingcategorylist')?>"
                                 class="nav-link">
-                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Whats Cooking Categories
                                 </p>
@@ -560,7 +560,7 @@
                         <li class="nav-item">
                             <a href="<?=url('admin/create/cookingitemlist')?>"
                                 class="nav-link">
-                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Whats Cooking Items
                                 </p>
@@ -569,7 +569,7 @@
                         <li class="nav-item">
                             <a href="<?=url('admin/create/dayspeciallist')?>"
                                 class="nav-link">
-                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Day Specials
                                 </p>
@@ -578,7 +578,7 @@
                         <li class="nav-item">
                             <a href="<?=url('admin/create/spabookingtrackinglist')?>"
                                 class="nav-link">
-                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Spa Booking Trackings
                                 </p>
@@ -587,7 +587,7 @@
                         <li class="nav-item">
                             <a href="<?=url('admin/create/deleteaccountrequests')?>"
                                 class="nav-link">
-                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Delete Account Requests
                                 </p>
