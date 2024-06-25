@@ -40,10 +40,10 @@
               if($row->status == 0){
                 echo '<h6 class="badge badge-warning">Pending</h6>';
               } elseif($row->status == 1){
-                echo '<h6 class="text-success">Approved</h6>';
+                echo '<p><h6 class="text-success">Approved</h6></p>';
                 echo '<small class="badge badge-success">' . $approve_date . '</small>';
               } elseif($row->status == 3){
-                echo '<h6 class="badge badge-danger">Rejected</h6>';
+                echo '<p><h6 class="badge badge-danger">Rejected</h6></p>';
                 echo '<small class="badge badge-danger">' . $approve_date . '</small>';
               }
             ?></td>
