@@ -149,6 +149,6 @@ class SettingsController extends Controller
             $msg = 'Rejected';
         }
         DeleteAccountRequest::where('id', '=', $id)->update($fields);
-        return redirect("admin/create/cookingcategorylist")->with('success_message', 'Delete Account Request ' . $msg . ' Successfully !!!');
+        return redirect("admin/create/deleteaccountrequests")->with('success_message', 'Delete Account Request ' . $msg . ' Successfully !!!');
     }
 }
