@@ -27,6 +27,7 @@
           <th>Menu Date</th>
           <th>Title</th>
           <th>Description</th>
+          <th>Image</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -37,6 +38,11 @@
             <td><?=$row->menu_date?></td>
             <td><?=$row->title?></td>
             <td><?=$row->description?></td>
+            <td>
+              <?php if($image_name != ''){?>
+                <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>">
+              <?php }?>
+            </td>
             <td>
               <a href="<?=url('admin/create/edit-dayspeciallist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
             </td>
