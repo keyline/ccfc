@@ -20,10 +20,14 @@
       $menu_date        = $row->menu_date;
       $title            = $row->title;
       $description      = $row->description;
+      $image_name       = $row->image_name;
+      $image_link       = $row->image_link;
     } else {
       $menu_date        = '';
       $title            = '';
       $description      = '';
+      $image_name       = '';
+      $image_link       = '';
     }
     ?>
     <form method="POST" action="" enctype="multipart/form-data">
@@ -50,6 +54,9 @@
           <label for="image_name" class="col-md-4 col-lg-3 col-form-label">Images</label>
           <div class="col-md-8 col-lg-9">
             <input type="file" name="image_name" class="form-control" id="image_name" <?=((empty($row))?'required':'')?>>
+            <?php if($image_name != ''){?>
+              <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>">
+            <?php }?>
           </div>
         </div>
         <div class="text-center">

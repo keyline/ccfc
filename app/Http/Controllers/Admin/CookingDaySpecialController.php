@@ -56,7 +56,7 @@ class CookingDaySpecialController extends Controller
                     'description'                   => $postData['description'],
                     'image_name'                    => $image_name,
                 ];
-                Helper::pr($fields);
+                // Helper::pr($fields);
                 CookingDaySpecial::insert($fields);
                 $menu_date = $postData['menu_date'];
                 return redirect("admin/create/dayspeciallist")->with('success_message', 'Cooking Day Special Inserted Successfully For ' . $menu_date . ' !!!');
