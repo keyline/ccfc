@@ -39,8 +39,8 @@
             <td><?=$row->title?></td>
             <td><?=$row->description?></td>
             <td>
-              <?php if($image_name != ''){?>
-                <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>">
+              <?php if($row->image_name != ''){?>
+                <img src="<?=env('UPLOADS_URL').$row->image_name?>" alt="<?=$row->title?>">
               <?php }?>
             </td>
             <td>
