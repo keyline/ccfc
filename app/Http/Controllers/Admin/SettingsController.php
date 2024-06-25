@@ -71,6 +71,7 @@ class SettingsController extends Controller
             'site_url'                      => $request->site_url,
             'site_address'                  => $request->site_address,
             'site_timings'                  => $request->site_timings,
+            'spa_timings'                   => $request->spa_timings,
             'theme_color'                   => $request->theme_color,
             'font_color'                    => $request->font_color,
             'twitter_profile'               => $request->twitter_profile,

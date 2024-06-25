@@ -1099,13 +1099,12 @@ class ApiController extends Controller
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
                                 if($new_password == $confirm_password){
-                                    if(!Hash::check($checkUser->password, $old_password)){
+                                    if(Hash::check($old_password, $checkUser->password)){
                                         if($old_password != $new_password){
                                             $fields = [
                                                 'password'            => Hash::make($new_password)
                                             ];
                                             User::where('id', '=', $uId)->update($fields);
-
 
                                             $apiStatus          = TRUE;
                                             http_response_code(200);
@@ -1220,8 +1219,8 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                
-                                $staticPage       = DB::table('content_category_content_page')
+                                $generalSettings    = GeneralSetting::find(1);
+                                $staticPage         = DB::table('content_category_content_page')
                                                 ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
                                                 ->join('content_categories','content_categories.id','=','content_category_content_page.content_category_id')
                                                 ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
@@ -1229,9 +1228,10 @@ class ApiController extends Controller
                                                 ->first();
                                 if($staticPage){
                                     $apiResponse    = [
-                                        'category_name' => $staticPage->category_name,
-                                        'title'         => $staticPage->title,
-                                        'page_text'     => $staticPage->page_text,
+                                        'category_name'     => $staticPage->category_name,
+                                        'title'             => $staticPage->title,
+                                        'page_text'         => $staticPage->page_text,
+                                        'spa_timings'       => $generalSettings->spa_timings,
                                     ];
                                 }
 
