@@ -1113,11 +1113,11 @@ class ApiController extends Controller
                                             $apiExtraData       = http_response_code();
                                         } else {
                                             $apiStatus                              = FALSE;
-                                            $apiMessage                             = 'Password Can\'t Be Same With Existing Password !!!';
+                                            $apiMessage                             = 'New Password Can\'t Be Same With Existing Password !!!';
                                         }
                                     } else {
                                         $apiStatus                              = FALSE;
-                                        $apiMessage                             = 'Old Password Does Not Matched !!!';
+                                        $apiMessage                             = 'Old Password Is Incorrect !!!';
                                     }
                                 } else {
                                     $apiStatus                              = FALSE;
