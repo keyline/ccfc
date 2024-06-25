@@ -25,8 +25,8 @@
         <tr>
           <th>#</th>
           <th>Menu Date</th>
-          <th>Title</th>
-          <th>Description</th>
+          <!-- <th>Title</th>
+          <th>Description</th> -->
           <th>Image</th>
           <th>Action</th>
         </tr>
@@ -36,8 +36,8 @@
           <tr>
             <td><?=$sl++?></td>
             <td><?=date_format(date_create($row->menu_date), "d-m-Y")?></td>
-            <td><?=$row->title?></td>
-            <td><?=$row->description?></td>
+            <!-- <td><?=$row->title?></td>
+            <td><?=$row->description?></td> -->
             <td>
               <?php if($row->image_name != ''){?>
                 <img src="<?=env('UPLOADS_URL').$row->image_name?>" alt="<?=$row->title?>" style="width: 75px; height: 75px;" class="img-thumbnail">
