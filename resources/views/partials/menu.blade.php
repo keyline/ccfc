@@ -566,6 +566,33 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?=url('admin/create/dayspecial')?>"
+                                class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <p>
+                                    Day Specials
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=url('admin/create/spabookingtrackinglist')?>"
+                                class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <p>
+                                    Spa Booking Trackings
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=url('admin/create/deleteaccountrequests')?>"
+                                class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-football-ball"></i>
+                                <p>
+                                    Delete Account Requests
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <!-- End mobile app -->

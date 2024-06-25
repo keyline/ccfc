@@ -1231,8 +1231,11 @@ class ApiController extends Controller
                                         'category_name'     => $staticPage->category_name,
                                         'title'             => $staticPage->title,
                                         'page_text'         => $staticPage->page_text,
-                                        'spa_timings'       => $generalSettings->spa_timings,
-                                        'spa_booking_phone' => $generalSettings->spa_booking_phone,
+                                        'spa_booking'       => [
+                                            'days'      => $generalSettings->spa_booking_days,
+                                            'timings'   => $generalSettings->spa_booking_timings,
+                                            'phone'     => $generalSettings->spa_booking_phone,
+                                        ]
                                     ];
                                 }
 

@@ -77,9 +77,15 @@
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="spa_timings" class="col-md-4 col-lg-3 col-form-label">Spa Timings</label>
+                      <label for="spa_booking_days" class="col-md-4 col-lg-3 col-form-label">Spa Booking Days</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="spa_timings" class="form-control ckeditor" id="spa_timings" rows="5"><?=$setting->spa_timings?></textarea>
+                        <input name="spa_booking_days" type="text" class="form-control" id="spa_booking_days" value="<?=$setting->spa_booking_days?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="spa_booking_timings" class="col-md-4 col-lg-3 col-form-label">Spa Booking Timings</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="spa_booking_timings" type="text" class="form-control" id="spa_booking_timings" value="<?=$setting->spa_booking_timings?>">
                       </div>
                     </div>
                     <div class="row mb-3">
