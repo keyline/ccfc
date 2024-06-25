@@ -46,6 +46,12 @@
             <textarea name="description" class="form-control ckeditor" id="description"><?=$description?></textarea>
           </div>
         </div>
+        <div class="row mb-3">
+          <label for="image_name" class="col-md-4 col-lg-3 col-form-label">Images</label>
+          <div class="col-md-8 col-lg-9">
+            <input type="file" name="image_name" class="form-control" id="image_name" <?=((empty($row))?'required':'')?>>
+          </div>
+        </div>
         <div class="text-center">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
