@@ -55,7 +55,7 @@
           <div class="col-md-8 col-lg-9">
             <input type="file" name="image_name" class="form-control" id="image_name" <?=((empty($row))?'required':'')?>>
             <?php if($image_name != ''){?>
-              <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>">
+              <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>" style="width: 100px; height: 100px;" class="img-thumbnail">
             <?php }?>
           </div>
         </div>

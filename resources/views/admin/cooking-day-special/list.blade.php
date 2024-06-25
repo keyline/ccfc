@@ -40,7 +40,7 @@
             <td><?=$row->description?></td>
             <td>
               <?php if($row->image_name != ''){?>
-                <img src="<?=env('UPLOADS_URL').$row->image_name?>" alt="<?=$row->title?>">
+                <img src="<?=env('UPLOADS_URL').$row->image_name?>" alt="<?=$row->title?>" style="width: 75px; height: 75px;" class="img-thumbnail">
               <?php }?>
             </td>
             <td>
