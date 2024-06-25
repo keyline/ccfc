@@ -69,12 +69,12 @@ Route::get('/history', function () {
 });
 
 Route::get('/terms', function () {
-    $contentPages = ContentPage::find(20);
+    $contentPages = ContentPage::where('id', '=', 20)->first();
     return view('terms', compact(['contentPages']));
 });
 
 Route::get('/privacy', function () {
-    $contentPages = ContentPage::find(21);
+    $contentPages = ContentPage::where('id', '=', 21)->first();
     return view('privacy', compact(['contentPages']));
 });
 

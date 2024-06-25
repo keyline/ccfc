@@ -35,11 +35,9 @@
                     <div class="row">
                         <div class="col-lg-9">
                             <div class="history-inner">
-                                @foreach($contentPages->where("id","1") as $contentPage)
-                                    <div class="history-content text-justify">
-                                        {!! $contentPage->page_text !!}
-                                    </div>
-                                @endforeach
+                                <div class="history-content text-justify">
+                                    <?=(($contentPage)?$contentPage->page_text:'')?>
+                                </div>
                             </div>
                         </div>
                     </div>
