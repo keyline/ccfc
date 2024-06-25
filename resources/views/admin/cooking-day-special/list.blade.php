@@ -35,7 +35,7 @@
         <?php if($rows){ $sl=1; foreach($rows as $row){?>
           <tr>
             <td><?=$sl++?></td>
-            <td><?=$row->menu_date?></td>
+            <td><?=date_format(date_create($row->menu_date), "d-m-Y")?></td>
             <td><?=$row->title?></td>
             <td><?=$row->description?></td>
             <td>
