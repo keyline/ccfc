@@ -38,13 +38,13 @@
             <td><?php
               $approve_date = (($row->approve_date != '')?date_format(date_create($row->created_at), "d-m-Y h:i A"):'');
               if($row->status == 0){
-                echo '<h6 class="text-warning">Pending</h6>';
+                echo '<h6 class="badge badge-warning">Pending</h6>';
               } elseif($row->status == 1){
                 echo '<h6 class="text-success">Approved</h6>';
-                echo '<small class="text-success">' + $approve_date + '</small>';
+                echo '<small class="badge badge-success">' + $approve_date + '</small>';
               } elseif($row->status == 3){
-                echo '<h6 class="text-danger">Rejected</h6>';
-                echo '<small class="text-danger">' + $approve_date + '</small>';
+                echo '<h6 class="badge badge-danger">Rejected</h6>';
+                echo '<small class="badge badge-danger">' + $approve_date + '</small>';
               }
             ?></td>
             <td>
