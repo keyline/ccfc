@@ -120,7 +120,7 @@ class Controller extends BaseController
             $newFilename = time() . $imge;
             $temp = $_FILES[$fieldName]["tmp_name"];
             if ($uploadedpath == '') {
-                // echo storage_path();die;
+                echo storage_path();die;
                 // $upload_path = 'public/storage/';
                 $upload_path = storage_path();
             } else {

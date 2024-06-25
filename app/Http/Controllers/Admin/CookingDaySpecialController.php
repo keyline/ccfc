@@ -77,10 +77,25 @@ class CookingDaySpecialController extends Controller
                 'title'                             => 'required',
             ];
             if($this->validate($request, $rules)){
+                /* image */
+                    $imageFile      = $request->file('image_name');
+                    if($imageFile != ''){
+                        $imageName      = $imageFile->getClientOriginalName();
+                        $uploadedFile   = $this->upload_single_file('image_name', $imageName, '', 'image');
+                        if($uploadedFile['status']){
+                            $image_name = $uploadedFile['newFilename'];
+                        } else {
+                            return redirect()->back()->with(['error_message' => $uploadedFile['message']]);
+                        }
+                    } else {
+                        $image_name = $row->image_name;
+                    }
+                /* image */
                 $fields = [
                     'menu_date'                     => $postData['menu_date'],
                     'title'                         => $postData['title'],
                     'description'                   => $postData['description'],
+                    'image_name'                    => $image_name,
                 ];
                 CookingDaySpecial::where('id', '=', $id)->update($fields);
                 $menu_date = $postData['menu_date'];
