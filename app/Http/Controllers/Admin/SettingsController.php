@@ -3,6 +3,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\GeneralSetting;
 use App\Models\DeleteAccountRequest;
 use App\Models\SpaBookingTracking;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -132,5 +134,21 @@ class SettingsController extends Controller
     {
         $deleteAccountRequests = DeleteAccountRequest::orderBy('id', 'DESC')->get();
         return view('admin.settings.delete-account-request-list',compact('deleteAccountRequests'));
+    }
+    public function deleteAccountRequestsAction($id, $status)
+    {
+        $fields = [
+            'status'               => $status,
+            'approve_date'         => date('Y-m-d H:i:s'),
+        ];
+        if($status == 1){
+            $getDeleteRequest = DeleteAccountRequest::where('id', '=', $id)->first();
+            User::where('email', '=', $getDeleteRequest->email)->update(['status' => 'DELETED']);
+            $msg = 'Approved';
+        } else {
+            $msg = 'Rejected';
+        }
+        DeleteAccountRequest::where('id', '=', $id)->update($fields);
+        return redirect("admin/create/cookingcategorylist")->with('success_message', 'Delete Account Request ' . $msg . ' Successfully !!!');
     }
 }
