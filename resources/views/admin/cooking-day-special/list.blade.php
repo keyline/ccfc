@@ -16,7 +16,7 @@
 <div class="card">
   <div class="card-header">
     <h5>
-      <a href="<?=url('admin/create/add-cookingcategorylist/')?>" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> Add New</a>
+      <a href="<?=url('admin/create/add-dayspeciallist/')?>" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> Add New</a>
     </h5>
   </div>
   <div class="card-body">
