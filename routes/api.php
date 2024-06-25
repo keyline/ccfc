@@ -66,6 +66,7 @@ Route::prefix('v2')->group(function () {
         Route::post('member/submitcontactus', [ApiController::class,'submitContactUs'])->name('api.v2.member.submitcontactus.submitContactUs');
 
         Route::post('member/whatscooking', [ApiController::class,'whatsCooking'])->name('api.v2.member.whatscooking.whatsCooking');
+        Route::post('member/dayspecial', [ApiController::class,'daySpecial'])->name('api.v2.member.dayspecial.daySpecial');
         Route::post('member/staticpages', [ApiController::class,'staticPages'])->name('api.v2.member.staticpages.staticPages');
         Route::post('member/changepassword', [ApiController::class,'changePassword'])->name('api.v2.member.changepassword.changePassword');
         Route::get('member/deleteaccount', [ApiController::class,'deleteAccount'])->name('api.v2.member.deleteaccount.deleteAccount');
