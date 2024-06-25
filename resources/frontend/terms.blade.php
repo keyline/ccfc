@@ -1,3 +1,7 @@
+<?php
+use App\Models\ContentPage;
+$contentPage = ContentPage::where('id', '=', 20)->first();
+?>
 <!doctype html>
 <html lang="en">
 

@@ -68,14 +68,12 @@ Route::get('/history', function () {
     return view('history', compact(['contentPages', 'galleries']));
 });
 
-Route::get('/terms', function () {
-    $contentPage = ContentPage::where('id', '=', 20)->first();
-    return view('terms', compact(['contentPage']));
+Route::get('/terms', function () {    
+    return view('terms');
 });
 
 Route::get('/privacy', function () {
-    $contentPage = ContentPage::where('id', '=', 21)->first();
-    return view('privacy', compact(['contentPage']));
+    return view('privacy');
 });
 
 Route::get('/food_beverages', function () {
