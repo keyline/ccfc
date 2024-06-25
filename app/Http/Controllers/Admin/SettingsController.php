@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Models\GeneralSetting;
+use App\Models\DeleteAccountRequest;
+use App\Models\SpaBookingTracking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -121,5 +123,14 @@ class SettingsController extends Controller
         GeneralSetting::where('id', '=', 1)->update($postData);
         return redirect()->to('admin/create/settinglist')->with('status','SEO Settings Updated Successfully');
     }
-    
+    public function spaBookingTrackingList()
+    {
+        $spaBookings = SpaBookingTracking::orderBy('id', 'DESC')->get();
+        return view('admin.settings.spa-booking-tracking-list',compact('spaBookings'));
+    }
+    public function deleteAccountRequests()
+    {
+        $deleteAccountRequests = DeleteAccountRequest::orderBy('id', 'DESC')->get();
+        return view('admin.settings.delete-account-request-list',compact('deleteAccountRequests'));
+    }
 }
