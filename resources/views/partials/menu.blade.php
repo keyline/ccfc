@@ -567,7 +567,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=url('admin/create/dayspecial')?>"
+                            <a href="<?=url('admin/create/dayspeciallist')?>"
                                 class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-football-ball"></i>
                                 <p>

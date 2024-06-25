@@ -31,6 +31,7 @@ use App\Http\Controllers\TenderDownloadController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\CookingCategoryController;
 use App\Http\Controllers\Admin\CookingItemController;
+use App\Http\Controllers\Admin\CookingDaySpecialController;
 // use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
@@ -430,7 +431,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('create/edit-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'edit']);
     Route::get('create/delete-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'destroy']);
 
-    Route::get('create/dayspecial', [App\Http\Controllers\Admin\CookingItemController::class, 'daySpecial'])->name('dayspecial');
+    Route::get('create/dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'index'])->name('dayspeciallist');
+    Route::get('create/add-dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'add']);
+    Route::post('create/add-dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'add']);
+    Route::get('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
+    Route::post('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
+    Route::get('create/delete-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'destroy']);
+    
     Route::get('create/deleteaccountrequests', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequests'])->name('deleteaccountrequests');
     Route::get('create/action-deleteaccountrequests/{id}/{id2}', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequestsAction']);
     Route::get('create/spabookingtrackinglist', [App\Http\Controllers\Admin\SettingsController::class, 'spaBookingTrackingList'])->name('spabookingtrackinglist');
