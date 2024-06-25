@@ -83,6 +83,12 @@
                       </div>
                     </div>
                     <div class="row mb-3">
+                      <label for="spa_booking_phone" class="col-md-4 col-lg-3 col-form-label">Spa Booking Phone</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="spa_booking_phone" type="text" class="form-control" id="spa_booking_phone" value="<?=$setting->spa_booking_phone?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
                       <label for="theme_color" class="col-md-4 col-lg-3 col-form-label">Theme Color</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="theme_color" type="color" class="form-control" id="theme_color" value="<?=$setting->theme_color?>">
