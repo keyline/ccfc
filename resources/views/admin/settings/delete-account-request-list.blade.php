@@ -48,8 +48,10 @@
               }
             ?></td>
             <td>
-              <a href="<?=url('admin/action-deleteaccountrequests/' . $row->id.'/1')?>" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Approve</a>
-              <a href="<?=url('admin/action-deleteaccountrequests/' . $row->id.'/3')?>" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Reject</a>
+              <?php if($row->status == 0){?>
+                <a href="<?=url('admin/action-deleteaccountrequests/' . $row->id.'/1')?>" class="btn btn-success btn-sm" onclick="return confirm('Do you want to approve this request ?');"><i class="fa fa-check"></i> Approve</a>
+                <a href="<?=url('admin/action-deleteaccountrequests/' . $row->id.'/3')?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to reject this request ?');"><i class="fa fa-times"></i> Reject</a>
+              <?php }?>
             </td>
           </tr>
         <?php } } ?>
