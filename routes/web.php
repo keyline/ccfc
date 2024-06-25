@@ -69,13 +69,13 @@ Route::get('/history', function () {
 });
 
 Route::get('/terms', function () {
-    $contentPages = ContentPage::where('id', '=', 20)->first();
-    return view('terms', compact(['contentPages']));
+    $contentPage = ContentPage::where('id', '=', 20)->first();
+    return view('terms', compact(['contentPage']));
 });
 
 Route::get('/privacy', function () {
-    $contentPages = ContentPage::where('id', '=', 21)->first();
-    return view('privacy', compact(['contentPages']));
+    $contentPage = ContentPage::where('id', '=', 21)->first();
+    return view('privacy', compact(['contentPage']));
 });
 
 Route::get('/food_beverages', function () {
