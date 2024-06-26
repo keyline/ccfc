@@ -540,7 +540,7 @@
 
                 <!-- start mobile app -->
                 <li class="nav-item has-treeview {{ request()->is('admin/tenderuploads*') ? 'menu-open' : '' }}">
-                    <a class="nav-link nav-dropdown-toggle" href="#">
+                    <a class="nav-link nav-dropdown-toggle" href="javascript:void(0);">
                         <i class="fa-fw nav-icon fas fa-mobile"></i>
                         <p>
                             Mobile App
@@ -549,8 +549,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?=url('admin/create/cookingcategorylist')?>"
-                                class="nav-link">
+                            <a href="<?=url('admin/create/cookingcategorylist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Whats Cooking Categories
@@ -558,8 +557,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=url('admin/create/cookingitemlist')?>"
-                                class="nav-link">
+                            <a href="<?=url('admin/create/cookingitemlist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Whats Cooking Items
@@ -567,8 +565,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=url('admin/create/dayspeciallist')?>"
-                                class="nav-link">
+                            <a href="<?=url('admin/create/dayspeciallist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Day Specials
@@ -576,8 +573,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=url('admin/create/spabookingtrackinglist')?>"
-                                class="nav-link">
+                            <a href="<?=url('admin/create/spabookingtrackinglist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Spa Booking Trackings
@@ -585,11 +581,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?=url('admin/create/deleteaccountrequests')?>"
-                                class="nav-link">
+                            <a href="<?=url('admin/create/deleteaccountrequests')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Delete Account Requests
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=url('admin/create/mustreadlist')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Must Reads
                                 </p>
                             </a>
                         </li>
