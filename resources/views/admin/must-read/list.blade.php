@@ -38,7 +38,7 @@
             <td><?=$row->title?></td>
             <td><?=$row->description?></td>
             <td><?=(($row->is_popup)?'YES':'NO')?></td>
-            <td><?=(($row->is_popup)?date_format(date_create($row->popup_validity_date), "d-m-Y") . '' . date_format(date_create($row->popup_validity_time), "h:i A"):'')?></td>
+            <td><?=(($row->is_popup)?date_format(date_create($row->popup_validity_date), "d-m-Y") . ' ' . date_format(date_create($row->popup_validity_time), "h:i A"):'')?></td>
             <td>
               <a href="<?=url('admin/create/edit-mustreadlist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
               <a href="<?=url('admin/create/delete-mustreadlist/' . $row->id)?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>

@@ -55,7 +55,7 @@
         <div class="row mb-3 is-popup-yes" style="display: none;">
           <label for="popup_validity_date" class="col-md-4 col-lg-3 col-form-label">Validity Date</label>
           <div class="col-md-8 col-lg-9">
-            <input type="date" name="popup_validity_date" class="form-control" id="popup_validity_date" value="<?=$popup_validity_date?>">
+            <input type="date" name="popup_validity_date" class="form-control" id="popup_validity_date" value="<?=$popup_validity_date?>" min="<?=date('Y-m-d')?>">
           </div>
         </div>
         <div class="row mb-3 is-popup-yes" style="display: none;">
