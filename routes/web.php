@@ -274,7 +274,7 @@ Route::get('/gallery', function () {
 Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-us');
 Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-us.store');
 
-
+Route::get('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks'])->name('deleteaccountlinks');
 
 // Route::redirect('/', '/login');
 
@@ -440,7 +440,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/delete-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'destroy']);
     
     Route::get('create/deleteaccountrequests', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequests'])->name('deleteaccountrequests');
-    Route::get('create/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks'])->name('deleteaccountlinks');
     Route::get('create/action-deleteaccountrequests/{id}/{id2}', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequestsAction']);
     Route::get('create/spabookingtrackinglist', [App\Http\Controllers\Admin\SettingsController::class, 'spaBookingTrackingList'])->name('spabookingtrackinglist');
 
