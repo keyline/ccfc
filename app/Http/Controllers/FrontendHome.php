@@ -15,7 +15,7 @@ class FrontendHome extends Controller
     }
     public function deleteAccountLinks()
     {
-        return view('frontend.delete-account');
+        return view('delete-account');
     }
 }
 
