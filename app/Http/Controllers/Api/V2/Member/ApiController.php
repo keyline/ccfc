@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
+use App\Models\circular;
 use App\Models\Contact;
 use App\Models\Contactlist;
 use App\Models\CookingCategory;
@@ -1393,19 +1394,28 @@ class ApiController extends Controller
                 //     $apiStatus          = FALSE;
                 //     $apiMessage         = 'All Data Are Not Present !!!';
                 // }
-                Helper::pr($headerData);
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
-
-                    $menu_date                    = $requestData['menu_date'];
                     if($getTokenValue['status']){
                         $uId                        = $getTokenValue['data'][1];
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                
+                                $notices          = circular::orderBy('id', 'DESC')->get();
+                                if($notices){
+                                    foreach($notices as $notice){
+                                        $apiResponse[] = [
+                                            'title'                 => 'CIRCULAR',
+                                            'details_1'             => $notice->details_1,
+                                            'day'                   => $notice->day,
+                                            'month'                 => $notice->month,
+                                            'circular_image'        => env('UPLOADS_URL').'circulatimg/'.$notice->circular_image,
+                                            'posted_by'             => 'CCFC',
+                                        ];
+                                    }
+                                }
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
