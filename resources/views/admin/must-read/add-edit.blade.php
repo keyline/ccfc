@@ -77,12 +77,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
   $(function(){
+    var is_popup = '<?=$is_popup?>';
+    if(is_popup == 1) {
+      $('.is-popup-yes').show();
+      $('#popup_validity_date').attr('required', true);
+      $('#popup_validity_time').attr('required', true);
+    } else {
+      $('.is-popup-yes').hide();
+      $('#popup_validity_date').attr('required', false);
+      $('#popup_validity_time').attr('required', false);
+    }
 
     $('input[name="is_popup"]').click(function() {
        if($(this).val() == 1) {
-          $('.is-popup-yes').show();           
+          $('.is-popup-yes').show();
+          $('#popup_validity_date').attr('required', true);
+          $('#popup_validity_time').attr('required', true);
        } else {
-          $('.is-popup-yes').hide();   
+          $('.is-popup-yes').hide();
+          $('#popup_validity_date').attr('required', false);
+          $('#popup_validity_time').attr('required', false);
        }
      });
   })

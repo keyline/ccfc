@@ -45,7 +45,6 @@ class MustReadController extends Controller
                 ];
                 // Helper::pr($fields);
                 MustRead::insert($fields);
-                $menu_date = $postData['menu_date'];
                 return redirect("admin/create/mustreadlist")->with('success_message', 'Must Read Content Inserted Successfully !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
@@ -73,7 +72,6 @@ class MustReadController extends Controller
                     'popup_validity_time'                   => date_format(date_create($postData['popup_validity_time']), "H:i:s"),
                 ];
                 MustRead::where('id', '=', $id)->update($fields);
-                $menu_date = $postData['menu_date'];
                 return redirect("admin/create/mustreadlist")->with('success_message', 'Must Read Content Updated Successfully !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
