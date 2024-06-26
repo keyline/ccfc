@@ -87,39 +87,39 @@ class Helper{
           return "Just Now";    
         } else if ($minutes <= 60){    
           if ($minutes == 1){    
-            return "1 minute ago";    
+            return "1 Minute Ago";    
           } else {    
-            return "$minutes minutes ago";    
+            return "$minutes Minutes Ago";    
           }    
         } else if ($hours <= 24){    
           if ($hours == 1){    
-            return "an hour ago";    
+            return "An Hour Ago";    
           } else {    
-            return "$hours hrs ago";    
+            return "$hours Hrs Ago";    
           }    
         } else if ($days <= 7){    
           if ($days == 1){    
-            return "yesterday";    
+            return "Yesterday";    
           } else {    
-            return "$days days ago";    
+            return "$days Days Ago";    
           }    
         } else if ($weeks <= 4.3){    
           if ($weeks == 1){    
-            return "a week ago";    
+            return "A Week Ago";    
           } else {    
-            return "$weeks weeks ago";    
+            return "$weeks Weeks Ago";    
           }    
         } else if ($months <= 12){    
           if ($months == 1){    
-            return "a month ago";    
+            return "A Month Ago";    
           } else {    
-            return "$months months ago";    
+            return "$months Months Ago";    
           }    
         } else {          
           if ($years == 1){    
-            return "one year ago";    
+            return "One Year Ago";    
           } else {    
-            return "$years years ago";    
+            return "$years Years Ago";    
           }
         }
     }
