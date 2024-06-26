@@ -27,7 +27,8 @@
           <th>Title</th>
           <th>Description</th>
           <th>Is Popup</th>
-          <th>Popup Date/Time</th>
+          <th>Popup Validity Date/Time</th>
+          <th>Created Date/Time</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -39,6 +40,7 @@
             <td><?=$row->description?></td>
             <td><?=(($row->is_popup)?'<span class="badge badge-success">YES</span>':'<span class="badge badge-danger">NO</span>')?></td>
             <td><?=(($row->is_popup)?date_format(date_create($row->popup_validity_date), "d-m-Y") . ' ' . date_format(date_create($row->popup_validity_time), "h:i A"):'')?></td>
+            <td><?=(($row->created_at != '')?date_format(date_create($row->created_at), "d-m-Y h:i A"):'')?></td>
             <td>
               <a href="<?=url('admin/create/edit-mustreadlist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
               <a href="<?=url('admin/create/delete-mustreadlist/' . $row->id)?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
