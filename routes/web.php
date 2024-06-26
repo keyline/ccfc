@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\CookingCategoryController;
 use App\Http\Controllers\Admin\CookingItemController;
 use App\Http\Controllers\Admin\CookingDaySpecialController;
+use App\Http\Controllers\Admin\MustReadController;
 // use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
@@ -442,6 +443,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/deleteaccountrequests', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequests'])->name('deleteaccountrequests');
     Route::get('create/action-deleteaccountrequests/{id}/{id2}', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequestsAction']);
     Route::get('create/spabookingtrackinglist', [App\Http\Controllers\Admin\SettingsController::class, 'spaBookingTrackingList'])->name('spabookingtrackinglist');
+
+    Route::get('create/mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'index'])->name('mustreadlist');
+    Route::get('create/add-mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'add']);
+    Route::post('create/add-mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'add']);
+    Route::get('create/edit-mustreadlist/{id}', [App\Http\Controllers\Admin\MustReadController::class, 'edit']);
+    Route::post('create/edit-mustreadlist/{id}', [App\Http\Controllers\Admin\MustReadController::class, 'edit']);
+    Route::get('create/delete-mustreadlist/{id}', [App\Http\Controllers\Admin\MustReadController::class, 'destroy']);
 
     // Members
     Route::delete('members/destroy', 'MembersController@massDestroy')->name('members.massDestroy');
