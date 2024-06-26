@@ -15,6 +15,7 @@ use App\Models\CookingDaySpecial;
 use App\Models\CookingDaySpecialImage;
 use App\Models\DeleteAccountRequest;
 use App\Models\GeneralSetting;
+use App\Models\MustRead;
 use App\Models\SpaBookingTracking;
 use App\Models\User;
 use App\Models\UserDetail;
@@ -1448,7 +1449,6 @@ class ApiController extends Controller
                 //     $apiStatus          = FALSE;
                 //     $apiMessage         = 'All Data Are Not Present !!!';
                 // }
-                Helper::pr($headerData);
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
@@ -1460,7 +1460,19 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                
+                                $mustReads          = MustRead::select('title', 'description', 'is_popup', 'popup_validity_date', 'popup_validity_time', 'created_at')->where('status', '=', 1)->orderBy('id', 'DESC')->get();
+                                if($mustReads){
+                                    foreach($mustReads as $mustRead){
+                                        $apiResponse[] = [
+                                            'title'                 => $mustRead->title,
+                                            'description'           => $mustRead->description,
+                                            'is_popup'              => $mustRead->is_popup,
+                                            'popup_validity_date'   => $mustRead->popup_validity_date,
+                                            'popup_validity_time'   => $mustRead->popup_validity_time,
+                                            'created_at'            => Helper::time_ago($mustRead->created_at),
+                                        ];
+                                    }
+                                }
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';

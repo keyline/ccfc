@@ -43,7 +43,7 @@
             <td><?=(($row->created_at != '')?date_format(date_create($row->created_at), "d-m-Y h:i A"):'')?></td>
             <td>
               <a href="<?=url('admin/create/edit-mustreadlist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
-              <a href="<?=url('admin/create/delete-mustreadlist/' . $row->id)?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+              <a href="<?=url('admin/create/delete-mustreadlist/' . $row->id)?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this item ?');"><i class="fa fa-trash"></i> Delete</a>
             </td>
           </tr>
         <?php } } ?>
