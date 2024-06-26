@@ -1411,7 +1411,7 @@ class ApiController extends Controller
                                             'details_1'             => $notice->details_1,
                                             'day'                   => $notice->day,
                                             'month'                 => $notice->month,
-                                            'circular_image'        => env('UPLOADS_URL').'circulatimg/'.$notice->circular_image,
+                                            'circular_image'        => env('UPLOADS_URL').'circularimg/'.$notice->circular_image,
                                             'posted_by'             => 'CCFC',
                                         ];
                                     }
