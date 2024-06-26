@@ -27,6 +27,7 @@ use App\Mail\MyTestEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\TenderFileUploadController;
 use App\Models\DocumentOrganizer;
+use App\Http\Controllers\FrontendHome;
 use App\Http\Controllers\TenderDownloadController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\CookingCategoryController;
@@ -439,6 +440,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/delete-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'destroy']);
     
     Route::get('create/deleteaccountrequests', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequests'])->name('deleteaccountrequests');
+    Route::get('create/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks'])->name('deleteaccountlinks');
     Route::get('create/action-deleteaccountrequests/{id}/{id2}', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequestsAction']);
     Route::get('create/spabookingtrackinglist', [App\Http\Controllers\Admin\SettingsController::class, 'spaBookingTrackingList'])->name('spabookingtrackinglist');
 

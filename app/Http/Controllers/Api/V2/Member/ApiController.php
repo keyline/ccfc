@@ -23,14 +23,8 @@ use App\Models\UserDevice;
 use App\Libraries\CreatorJwt;
 use App\Libraries\JWT;
 
-
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
-
-// require_once('./../vendor/autoload.php');
-
-
-
 
 use App\Helpers\Helper;
 
@@ -1334,7 +1328,6 @@ class ApiController extends Controller
                 $requestData        = $this->extract_json(file_get_contents('php://input'));
                 $requiredFields     = ['menu_date'];
                 $headerData         = $request->header();
-                Helper::pr($requestData);
                 if (!$this->validateArray($requiredFields, $requestData)){
                     $apiStatus          = FALSE;
                     $apiMessage         = 'All Data Are Not Present !!!';
@@ -1350,8 +1343,12 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                
-
+                                $getCookingDaySpecialMenus = CookingDaySpecial::where('status', '=', 1)->where('menu_date', '=', $menu_date)->get();
+                                if($getCookingDaySpecialMenus){
+                                    foreach($getCookingDaySpecialMenus as $getCookingDaySpecialMenu){
+                                        $apiResponse[] = env('UPLOADS_URL').$getCookingDaySpecialMenu->image_name;
+                                    }
+                                }
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';

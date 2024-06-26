@@ -72,5 +72,7 @@ Route::prefix('v2')->group(function () {
         Route::get('member/deleteaccount', [ApiController::class,'deleteAccount'])->name('api.v2.member.deleteaccount.deleteAccount');
         Route::get('member/spabooking', [ApiController::class,'spaBooking'])->name('api.v2.member.spabooking.spaBooking');
         Route::get('member/spabooking-tracking', [ApiController::class,'spaBookingTracking'])->name('api.v2.member.spabooking-tracking.spaBookingTracking');
+        Route::post('member/clubupdates', [ApiController::class,'clubUpdates'])->name('api.v2.member.clubupdates.clubUpdates');
+        Route::post('member/mustread', [ApiController::class,'mustRead'])->name('api.v2.member.mustread.mustRead');
     /* after login */
 });
