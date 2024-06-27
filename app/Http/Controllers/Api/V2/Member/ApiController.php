@@ -1530,11 +1530,11 @@ class ApiController extends Controller
 
                                 $token = "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
                                 $fields = [
-                                    'MCODE' => $user->user_code
+                                    'MCODE' => $checkUser->user_code
                                 ];
                                 $url = "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
                                 $transactionFields = [
-                                    'MCODE'     => $user->user_code,
+                                    'MCODE'     => $checkUser->user_code,
                                     'FromDate'  => '01-apr-2020',
                                     'ToDate'    => '01-jun-2021',
                                 ];
