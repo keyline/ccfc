@@ -97,6 +97,7 @@ class SettingsController extends Controller
     {
         $postData = [
             'sms_authentication_key'        => $request->sms_authentication_key,
+            'sms_authentication_password'   => $request->sms_authentication_password,
             'sms_sender_id'                 => $request->sms_sender_id,
             'sms_base_url'                  => $request->sms_base_url
         ];

@@ -192,9 +192,15 @@
                 <form method="POST" action="{{ url('admin/create/sms-settings') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
-                      <label for="sms_authentication_key" class="col-md-4 col-lg-3 col-form-label">Authentication Key</label>
+                      <label for="sms_authentication_key" class="col-md-4 col-lg-3 col-form-label">Authentication Key Username</label>
                       <div class="col-md-8 col-lg-9">
                         <input type="text" name="sms_authentication_key" class="form-control" id="sms_authentication_key" value="<?=$setting->sms_authentication_key?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="sms_authentication_password" class="col-md-4 col-lg-3 col-form-label">Authentication Key Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" name="sms_authentication_password" class="form-control" id="sms_authentication_password" value="<?=$setting->sms_authentication_password?>">
                       </div>
                     </div>
                     <div class="row mb-3">

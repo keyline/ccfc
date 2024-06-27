@@ -53,13 +53,15 @@ class Controller extends BaseController
     }
     // send sms
         public function sendSMS($mobileNo,$messageBody){
-            $generalSetting = GeneralSetting::find('1');
-            $authKey        = $generalSetting->sms_authentication_key;        
-            $senderId       = $generalSetting->sms_sender_id;
-            $curl           = curl_init();
+            $generalSetting                     = GeneralSetting::find('1');
+            $sms_authentication_key             = $generalSetting->sms_authentication_key;
+            $sms_authentication_password        = $generalSetting->sms_authentication_password;
+            $sms_sender_id                      = $generalSetting->sms_sender_id;
+            $sms_base_url                       = $generalSetting->sms_base_url;
+            $curl                               = curl_init();
 
             curl_setopt_array($curl, array(
-              CURLOPT_URL => 'http://164.52.195.161/API/SendMsg.aspx?uname=20170518&pass=CCFC186&send=CCFCIN&dest=6289339520&msg=Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%207979.%20Valid%20for%202%20minutes.',
+              CURLOPT_URL => $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $senderId . '&dest=' . $mobileNo . '&msg=' . $messageBody,
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => '',
               CURLOPT_MAXREDIRS => 10,
@@ -75,7 +77,7 @@ class Controller extends BaseController
             $response = curl_exec($curl);
 
             curl_close($curl);
-            echo $response;
+            // echo $response;
         }
     // send sms
     // single file upload
