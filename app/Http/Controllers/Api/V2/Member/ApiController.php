@@ -82,8 +82,8 @@ class ApiController extends Controller
                         User::where('id', '=', $checkUser->id)->update($postData);
                         /* send sms */
                             $message = "Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%20".$mobile_otp.".%20Valid%20for%202%20minutes.";
-                            // $mobileNo = (($checkUser)?$checkUser->mobileNo:'');
-                            $mobileNo = 6289339520;
+                            $mobileNo = (($checkUser)?$checkUser->mobileNo:'');
+                            // $mobileNo = 6289339520;
                             $this->sendSMS($mobileNo,$message);
                         /* send sms */
                         $mailData                   = [
@@ -293,6 +293,13 @@ class ApiController extends Controller
                         // echo $message;die;
                         // $this->sendMail($requestData['email'], $subject, $message);
 
+                        /* send sms */
+                            $message = "Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%20".$otp.".%20Valid%20for%202%20minutes.";
+                            $mobileNo = (($checkUser)?$checkUser->mobileNo:'');
+                            // $mobileNo = 6289339520;
+                            $this->sendSMS($mobileNo,$message);
+                        /* send sms */
+
                         $apiResponse                        = $mailData;
                         $apiStatus                          = TRUE;
                         http_response_code(200);
@@ -397,6 +404,13 @@ class ApiController extends Controller
                         // $message                    = view('email-template/otp',$mailData);
                         // echo $message;die;
                         // $this->sendMail($requestData['email'], $subject, $message);
+
+                        /* send sms */
+                            $message = "Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%20".$otp.".%20Valid%20for%202%20minutes.";
+                            $mobileNo = (($checkUser)?$checkUser->mobileNo:'');
+                            // $mobileNo = 6289339520;
+                            $this->sendSMS($mobileNo,$message);
+                        /* send sms */
 
                         $apiResponse                        = $mailData;
                         $apiStatus                          = TRUE;
