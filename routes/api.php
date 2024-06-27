@@ -74,5 +74,6 @@ Route::prefix('v2')->group(function () {
         Route::get('member/spabooking-tracking', [ApiController::class,'spaBookingTracking'])->name('api.v2.member.spabooking-tracking.spaBookingTracking');
         Route::get('member/clubupdates', [ApiController::class,'clubUpdates'])->name('api.v2.member.clubupdates.clubUpdates');
         Route::get('member/mustread', [ApiController::class,'mustRead'])->name('api.v2.member.mustread.mustRead');
+        Route::get('member/billing', [ApiController::class,'billing'])->name('api.v2.member.billing.billing');
     /* after login */
 });
