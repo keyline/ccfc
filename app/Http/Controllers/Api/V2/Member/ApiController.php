@@ -4,8 +4,16 @@ namespace App\Http\Controllers\Api\V2\Member;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Log;
+
+use GuzzleHttp\Client;
+use App\Helpers\SearchInvoicePdf;
+use Illuminate\Support\Facades\Storage;
+use pcrov\JsonReader\JsonReader;
 
 use App\Models\circular;
 use App\Models\Contact;
@@ -30,6 +38,8 @@ use chillerlan\QRCode\QROptions;
 
 use App\Helpers\Helper;
 
+use File;
+use Response;
 use Auth;
 use Hash;
 use Mail;
@@ -1547,7 +1557,7 @@ class ApiController extends Controller
                                             ->post($tansactionUrl)->json()['data'];
 
                                 Helper::pr($transactions);
-                                
+
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
