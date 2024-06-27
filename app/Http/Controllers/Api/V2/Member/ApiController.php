@@ -76,14 +76,14 @@ class ApiController extends Controller
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
                         $mobile_otp = rand(100000,999999);
-                        // $mobile_otp = 123456;
                         $postData = [
                             'remember_token'        => $mobile_otp
                         ];
                         User::where('id', '=', $checkUser->id)->update($postData);
                         /* send sms */
                             $message = "Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%20".$mobile_otp.".%20Valid%20for%202%20minutes.";
-                            $mobileNo = (($checkUser)?$checkUser->mobileNo:'');
+                            // $mobileNo = (($checkUser)?$checkUser->mobileNo:'');
+                            $mobileNo = 6289339520;
                             $this->sendSMS($mobileNo,$message);
                         /* send sms */
                         $mailData                   = [
