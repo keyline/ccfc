@@ -1556,7 +1556,37 @@ class ApiController extends Controller
                                             ->withOptions(["verify" => false])
                                             ->post($tansactionUrl)->json()['data'];
 
-                                Helper::pr($transactions);
+                                $monthly_billing                = [];
+                                $daily_billing                  = [];
+                                $user_outstanding_balance       = 0;
+                                if($transactions){
+                                    $user_outstanding_balance   = $transactions[0]['Balance'];
+                                    foreach($transactions as $transaction){
+                                        $monthly_billing[] = [
+                                            'month'                 => $transaction->Month,
+                                            'opening_balance'       => $transaction->LastBalance,
+                                            'total_receipts'        => $transaction->paidamount,
+                                            'total_invoice'         => $transaction->debitamount,
+                                            'closing_balance'       => $transaction->Balance,
+                                            'summarized_bill'       => '',
+                                            'detailed_bill'         => '',
+                                        ];
+                                    }
+                                }
+                                $user                           = [
+                                    'name'                              => $checkUser->name,
+                                    'email'                             => $checkUser->email,
+                                    'phone'                             => $checkUser->phone_number_1,
+                                    'user_code'                         => $checkUser->user_code,
+                                    'user_outstanding_balance'          => $user_outstanding_balance,
+                                ];
+
+                                $apiResponse        = [
+                                    'user'              => $user,
+                                    'monthly_billing'   => $monthly_billing,
+                                    'daily_billing'     => $daily_billing,
+                                ];
+                                // Helper::pr($transactions);
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
