@@ -51,6 +51,34 @@ class Controller extends BaseController
 
         return (!$mailLibrary->send()) ? false : true;
     }
+    // send sms
+        public function sendSMS($mobileNo,$messageBody){
+            $siteSetting    = $this->common_model->find_data('general_settings', 'row');
+            $authKey        = $siteSetting->sms_authentication_key;        
+            $senderId       = $siteSetting->sms_sender_id;        
+            
+            $curl           = curl_init();
+
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => 'http://164.52.195.161/API/SendMsg.aspx?uname=20170518&pass=CCFC186&send=CCFCIN&dest=6289339520&msg=Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%207979.%20Valid%20for%202%20minutes.',
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => '',
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 0,
+              CURLOPT_FOLLOWLOCATION => true,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => 'GET',
+              CURLOPT_HTTPHEADER => array(
+                'Cookie: ASP.NET_SessionId=k2tkpfvvk3zuebie42d1k5i5'
+              ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+            echo $response;
+        }
+    // send sms
     // single file upload
     public function upload_single_file($fieldName, $fileName, $uploadedpath, $uploadType)
     {
