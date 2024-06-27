@@ -1562,14 +1562,31 @@ class ApiController extends Controller
                                 if($transactions){
                                     $user_outstanding_balance   = $transactions[0]['Balance'];
                                     foreach($transactions as $transaction){
+                                        /* summarized bill */
+                                            $summarized_bill_link = '-';
+                                            if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $user['Month']))) &&
+                                            !empty(SearchInvoicePdf::getSummaryBillLink($checkUser->user_code,
+                                            $user['Month']))) {
+                                                $summarized_bill_link = SearchInvoicePdf::getSummaryBillLink($checkUser->user_code,  $transaction['Month']);
+                                            }
+                                        /* summarized bill */
+                                        /* detailed bill */
+                                            $detailed_bill_link = '-';
+                                            if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
+                                            $user['Month']))) &&
+                                            !empty(SearchInvoicePdf::getDetailBillLink($checkUser->user_code,
+                                            $user['Month']))){
+                                                $detailed_bill_link = SearchInvoicePdf::getDetailBillLink($checkUser->user_code,  $transaction['Month']);
+                                            }
+                                        /* detailed bill */
                                         $monthly_billing[] = [
                                             'month'                 => $transaction['Month'],
                                             'opening_balance'       => $transaction['LastBalance'],
                                             'total_receipts'        => $transaction['paidamount'],
                                             'total_invoice'         => $transaction['debitamount'],
                                             'closing_balance'       => $transaction['Balance'],
-                                            'summarized_bill'       => '',
-                                            'detailed_bill'         => '',
+                                            'summarized_bill'       => $summarized_bill_link,
+                                            'detailed_bill'         => $detailed_bill_link,
                                         ];
                                     }
                                 }
