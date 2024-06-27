@@ -1443,7 +1443,7 @@ class ApiController extends Controller
                 $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
             }
         /* club updates */
-        /* club updates */
+        /* must read */
             public function mustRead(Request $request){
                 $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
                 $apiStatus          = TRUE;
@@ -1477,6 +1477,7 @@ class ApiController extends Controller
                                             'is_popup'              => $mustRead->is_popup,
                                             'popup_validity_date'   => $mustRead->popup_validity_date,
                                             'popup_validity_time'   => $mustRead->popup_validity_time,
+                                            'popup_validity'        => $mustRead->popup_validity_date.' '.$mustRead->popup_validity_time,
                                             'created_at'            => Helper::time_ago($mustRead->created_at),
                                         ];
                                     }
@@ -1507,7 +1508,7 @@ class ApiController extends Controller
                 }
                 $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
             }
-        /* club updates */
+        /* must read */
 
     /* after login */
     /*
