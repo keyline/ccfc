@@ -1517,14 +1517,7 @@ class ApiController extends Controller
                 $apiResponse        = [];
                 $apiExtraField      = '';
                 $apiExtraData       = '';
-                // $this->isJSON(file_get_contents('php://input'));
-                // $requestData        = $this->extract_json(file_get_contents('php://input'));
-                // $requiredFields     = ['menu_date'];
                 $headerData         = $request->header();
-                // if (!$this->validateArray($requiredFields, $requestData)){
-                //     $apiStatus          = FALSE;
-                //     $apiMessage         = 'All Data Are Not Present !!!';
-                // }
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
