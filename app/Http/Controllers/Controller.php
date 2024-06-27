@@ -61,7 +61,7 @@ class Controller extends BaseController
             $curl                               = curl_init();
 
             curl_setopt_array($curl, array(
-              CURLOPT_URL => $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $senderId . '&dest=' . $mobileNo . '&msg=' . $messageBody,
+              CURLOPT_URL => $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody,
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => '',
               CURLOPT_MAXREDIRS => 10,
