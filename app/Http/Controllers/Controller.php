@@ -53,10 +53,9 @@ class Controller extends BaseController
     }
     // send sms
         public function sendSMS($mobileNo,$messageBody){
-            $siteSetting    = $this->common_model->find_data('general_settings', 'row');
-            $authKey        = $siteSetting->sms_authentication_key;        
-            $senderId       = $siteSetting->sms_sender_id;        
-            
+            $generalSetting = GeneralSetting::find('1');
+            $authKey        = $generalSetting->sms_authentication_key;        
+            $senderId       = $generalSetting->sms_sender_id;
             $curl           = curl_init();
 
             curl_setopt_array($curl, array(
