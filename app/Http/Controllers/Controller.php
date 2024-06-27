@@ -58,10 +58,10 @@ class Controller extends BaseController
             $sms_authentication_password        = $generalSetting->sms_authentication_password;
             $sms_sender_id                      = $generalSetting->sms_sender_id;
             $sms_base_url                       = $generalSetting->sms_base_url;
+            $schtm                              = date('Y-m-d H:i');
             $curl                               = curl_init();
-
             curl_setopt_array($curl, array(
-              CURLOPT_URL => $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody,
+              CURLOPT_URL => $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody . '&priority=1&schtm=' . $schtm,
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => '',
               CURLOPT_MAXREDIRS => 10,
