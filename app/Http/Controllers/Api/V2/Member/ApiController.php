@@ -1563,11 +1563,11 @@ class ApiController extends Controller
                                     $user_outstanding_balance   = $transactions[0]['Balance'];
                                     foreach($transactions as $transaction){
                                         $monthly_billing[] = [
-                                            'month'                 => $transaction->Month,
-                                            'opening_balance'       => $transaction->LastBalance,
-                                            'total_receipts'        => $transaction->paidamount,
-                                            'total_invoice'         => $transaction->debitamount,
-                                            'closing_balance'       => $transaction->Balance,
+                                            'month'                 => $transaction['Month'],
+                                            'opening_balance'       => $transaction['LastBalance'],
+                                            'total_receipts'        => $transaction['paidamount'],
+                                            'total_invoice'         => $transaction['debitamount'],
+                                            'closing_balance'       => $transaction['Balance'],
                                             'summarized_bill'       => '',
                                             'detailed_bill'         => '',
                                         ];
