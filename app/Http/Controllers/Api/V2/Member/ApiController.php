@@ -1564,18 +1564,18 @@ class ApiController extends Controller
                                     foreach($transactions as $transaction){
                                         /* summarized bill */
                                             $summarized_bill_link = '-';
-                                            if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $user['Month']))) &&
+                                            if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $transaction['Month']))) &&
                                             !empty(SearchInvoicePdf::getSummaryBillLink($checkUser->user_code,
-                                            $user['Month']))) {
+                                            $transaction['Month']))) {
                                                 $summarized_bill_link = SearchInvoicePdf::getSummaryBillLink($checkUser->user_code,  $transaction['Month']);
                                             }
                                         /* summarized bill */
                                         /* detailed bill */
                                             $detailed_bill_link = '-';
                                             if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
-                                            $user['Month']))) &&
+                                            $transaction['Month']))) &&
                                             !empty(SearchInvoicePdf::getDetailBillLink($checkUser->user_code,
-                                            $user['Month']))){
+                                            $transaction['Month']))){
                                                 $detailed_bill_link = SearchInvoicePdf::getDetailBillLink($checkUser->user_code,  $transaction['Month']);
                                             }
                                         /* detailed bill */
