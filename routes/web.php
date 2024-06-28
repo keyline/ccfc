@@ -275,8 +275,8 @@ Route::get('/gallery', function () {
 Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-us');
 Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-us.store');
 
-Route::get('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks'])->name('deleteaccountlinks');
-Route::post('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks'])->name('deleteaccountlinks');
+Route::get('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks']);
+Route::post('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks']);
 
 // Route::redirect('/', '/login');
 
