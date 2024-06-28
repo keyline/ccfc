@@ -61,9 +61,9 @@ class Controller extends BaseController
             $schtm                              = date('Y-m-d H:i');
             $curl                               = curl_init();
 
-            echo $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody . '&priority=1&schtm=' . $schtm;die;
+            // echo $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody . '&priority=1&schtm=' . $schtm;die;
             curl_setopt_array($curl, array(
-              CURLOPT_URL => $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody . '&priority=1&schtm=' . $schtm,
+              CURLOPT_URL => $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody . '&priority=1',
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => '',
               CURLOPT_MAXREDIRS => 10,
