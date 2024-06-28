@@ -79,7 +79,7 @@ class Controller extends BaseController
             $response = curl_exec($curl);
 
             curl_close($curl);
-            echo $response;
+            // echo $response;
         }
     // send sms
     // single file upload
