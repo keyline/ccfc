@@ -29,6 +29,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <form method="POST" action="" style="border: 1px solid #48974e73;padding: 15px;border-radius: 5px;">
+                                @csrf
                                 <?php if(session('success_message')){?>
                                     <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show hide-message" role="alert">
                                         <?=session('success_message')?>

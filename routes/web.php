@@ -276,6 +276,7 @@ Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'conta
 Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-us.store');
 
 Route::get('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks'])->name('deleteaccountlinks');
+Route::post('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks'])->name('deleteaccountlinks');
 
 // Route::redirect('/', '/login');
 
