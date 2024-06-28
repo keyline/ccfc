@@ -40,7 +40,7 @@
                                         <?=session('error_message')?>
                                     </div>
                                 <?php }?>
-                                <input type="hidden" name="user_type" id="user_type" value="U">
+                                <input type="hidden" name="user_type" id="user_type" value="user">
                                 <input type="hidden" name="is_email_verify" id="is_email_verify" value="1">
                                 <input type="hidden" name="is_phone_verify" id="is_phone_verify" value="1">
                                 <div class="form-group mb-3">
