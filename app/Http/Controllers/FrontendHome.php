@@ -34,9 +34,9 @@ class FrontendHome extends Controller
                     'is_phone_verify'           => $postData['is_phone_verify'],
                     'comments'                  => $postData['comments'],
                 ];
-                Helper::pr($fields);
+                // Helper::pr($fields);
                 DeleteAccountRequest::insert($fields);
-                return redirect("deleteaccountlinks")->with('success_message', 'Cooking Category Inserted Successfully For ' . $for_cat . ' !!!');
+                return redirect("deleteaccountlinks")->with('success_message', 'Delete Account Request Submitted Successfully !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
             }
