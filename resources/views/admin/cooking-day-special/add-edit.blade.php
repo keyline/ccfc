@@ -58,13 +58,13 @@
             <?php if($image_name != ''){?>
               <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>" style="width: 100px; height: 100px;" class="img-thumbnail">
             <?php }?>
-            <div id="message"></div>
           </div>
         </div>
         <div class="text-center">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
+    <div id="message"></div>
   </div>
 </div>
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
@@ -94,7 +94,8 @@
             // Define your desired width and height
             const maxWidth = 827;
             const maxHeight = 1169;
-            
+            console.log(width);
+            console.log(height);
             if (width <= maxWidth && height <= maxHeight) {
                 $('#message').text('Image is valid and ready to be uploaded.');
                 // You can now proceed with the form submission or any other logic
