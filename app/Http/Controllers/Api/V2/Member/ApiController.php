@@ -1577,7 +1577,7 @@ class ApiController extends Controller
                                     $user_outstanding_balance   = $transactions[0]['Balance'];
                                     foreach($transactions as $transaction){
                                         /* summarized bill */
-                                            $summarized_bill_link = '-';
+                                            $summarized_bill_link = '';
                                             if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $transaction['Month']))) &&
                                             !empty(SearchInvoicePdf::getSummaryBillLink($checkUser->user_code,
                                             $transaction['Month']))) {
@@ -1585,7 +1585,7 @@ class ApiController extends Controller
                                             }
                                         /* summarized bill */
                                         /* detailed bill */
-                                            $detailed_bill_link = '-';
+                                            $detailed_bill_link = '';
                                             if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
                                             $transaction['Month']))) &&
                                             !empty(SearchInvoicePdf::getDetailBillLink($checkUser->user_code,
