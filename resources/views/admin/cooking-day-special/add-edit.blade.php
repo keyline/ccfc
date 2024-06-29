@@ -54,7 +54,7 @@
           <label for="image_name" class="col-md-4 col-lg-3 col-form-label">Images</label>
           <div class="col-md-8 col-lg-9">
             <input type="file" name="image_name" class="form-control" id="image_name" <?=((empty($row))?'required':'')?>>
-            <small class="text-primary">(Width : 827px & height : 1169px)</small>
+            <p><small class="text-primary">(Width : 827px & height : 1169px)</small></p>
             <?php if($image_name != ''){?>
               <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>" style="width: 100px; height: 100px;" class="img-thumbnail">
             <?php }?>
