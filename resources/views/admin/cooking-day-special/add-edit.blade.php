@@ -85,16 +85,19 @@
             if (width === 827 && height === 1169) {
                 document.getElementById('result').textContent = "Image dimensions are valid!";
             } else {
-                document.getElementById('result').textContent = "Invalid image dimensions! Please select an 827x1169 image.";
-                // Release object URL to free up memory
-                URL.revokeObjectURL(img.src);
+              document.getElementById('result').textContent = "Invalid image dimensions! Please select an 827x1169 image.";
+              // Clear the file input
+              event.target.value = "";
             }
+
+            // Release object URL to free up memory
+            URL.revokeObjectURL(img.src);
         };
 
         img.onerror = function() {
-            document.getElementById('result').textContent = "Invalid image file!";
-            // Release object URL to free up memory
-            URL.revokeObjectURL(img.src);
+          document.getElementById('result').textContent = "Invalid image file!";
+          // Clear the file input
+          event.target.value = "";
         };
     } else {
         document.getElementById('result').textContent = "No file selected!";
