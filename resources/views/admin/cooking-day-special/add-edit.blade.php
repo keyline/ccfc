@@ -73,7 +73,6 @@
 <script>
   document.getElementById('imageInput').addEventListener('change', function(event) {
     const file = event.target.files[0];
-    console.log(file);
     if (file) {
         const img = new Image();
         img.src = URL.createObjectURL(file);
@@ -87,14 +86,15 @@
                 document.getElementById('result').textContent = "Image dimensions are valid!";
             } else {
                 document.getElementById('result').textContent = "Invalid image dimensions! Please select an 827x1169 image.";
+                // Release object URL to free up memory
+                URL.revokeObjectURL(img.src);
             }
-
-            // Release object URL to free up memory
-            URL.revokeObjectURL(img.src);
         };
 
         img.onerror = function() {
             document.getElementById('result').textContent = "Invalid image file!";
+            // Release object URL to free up memory
+            URL.revokeObjectURL(img.src);
         };
     } else {
         document.getElementById('result').textContent = "No file selected!";
