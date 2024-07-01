@@ -51,10 +51,11 @@
           </div>
         </div>
         <div class="row mb-3">
-          <label for="imageUpload" class="col-md-4 col-lg-3 col-form-label">Images</label>
+          <label for="imageInput" class="col-md-4 col-lg-3 col-form-label">Images</label>
           <div class="col-md-8 col-lg-9">
-            <input type="file" name="image_name" class="form-control" id="imageUpload" accept="image/*" <?=((empty($row))?'required':'')?>>
+            <input type="file" name="image_name" class="form-control" id="imageInput" accept="image/*" <?=((empty($row))?'required':'')?>>
             <p><small class="text-primary">(Width : 827px & height : 1169px)</small></p>
+            <p id="result"></p>
             <?php if($image_name != ''){?>
               <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>" style="width: 100px; height: 100px;" class="img-thumbnail">
             <?php }?>
@@ -69,46 +70,36 @@
 </div>
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#imageForm').on('submit', function(e) {
-        e.preventDefault(); // Prevent form submission
-        
-        const fileInput = $('#imageUpload')[0];
-        const file = fileInput.files[0];
+<script>
+  document.getElementById('imageInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    console.log(file);
+    if (file) {
         const img = new Image();
-        
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
+        img.src = URL.createObjectURL(file);
         
         img.onload = function() {
-            const width = img.width;
-            const height = img.height;
-            
-            // Define your desired width and height
-            const maxWidth = 827;
-            const maxHeight = 1169;
-            console.log(width);
-            console.log(height);
-            if (width <= maxWidth && height <= maxHeight) {
-                $('#message').text('Image is valid and ready to be uploaded.');
-                // You can now proceed with the form submission or any other logic
+            const width = img.naturalWidth;
+            const height = img.naturalHeight;
+
+            // Validate dimensions
+            if (width === 800 && height === 600) {
+                document.getElementById('result').textContent = "Image dimensions are valid!";
             } else {
-                $('#message').text('Image dimensions are too large. Please upload an image with dimensions ' + maxWidth + 'x' + maxHeight + '.');
+                document.getElementById('result').textContent = "Invalid image dimensions! Please select an 800x600 image.";
             }
+
+            // Release object URL to free up memory
+            URL.revokeObjectURL(img.src);
         };
-        
+
         img.onerror = function() {
-            $('#message').text('Invalid image file.');
+            document.getElementById('result').textContent = "Invalid image file!";
         };
-    });
-});
+    } else {
+        document.getElementById('result').textContent = "No file selected!";
+    }
+  });
 </script>
 @endsection
 @section('scripts')
