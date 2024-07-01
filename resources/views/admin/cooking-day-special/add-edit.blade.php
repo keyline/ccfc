@@ -83,10 +83,10 @@
             const height = img.naturalHeight;
 
             // Validate dimensions
-            if (width === 800 && height === 600) {
+            if (width === 827 && height === 1169) {
                 document.getElementById('result').textContent = "Image dimensions are valid!";
             } else {
-                document.getElementById('result').textContent = "Invalid image dimensions! Please select an 800x600 image.";
+                document.getElementById('result').textContent = "Invalid image dimensions! Please select an 827x1169 image.";
             }
 
             // Release object URL to free up memory
