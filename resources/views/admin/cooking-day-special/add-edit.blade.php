@@ -55,7 +55,8 @@
           <div class="col-md-8 col-lg-9">
             <input type="file" name="image_name" class="form-control" id="imageInput" accept="image/*" <?=((empty($row))?'required':'')?>>
             <p><small class="text-primary">(Width : 827px & height : 1169px)</small></p>
-            <p id="result"></p>
+            <p id="result1" class="text-success"></p>
+            <p id="result2" class="text-danger"></p>
             <?php if($image_name != ''){?>
               <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>" style="width: 100px; height: 100px;" class="img-thumbnail">
             <?php }?>
@@ -65,7 +66,6 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
-    <div id="message"></div>
   </div>
 </div>
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
@@ -83,9 +83,11 @@
 
             // Validate dimensions
             if (width === 827 && height === 1169) {
-                document.getElementById('result').textContent = "Image dimensions are valid!";
+                document.getElementById('result1').textContent = "Image dimensions are valid!";
+                document.getElementById('result2').textContent = "";
             } else {
-              document.getElementById('result').textContent = "Invalid image dimensions! Please select an 827x1169 image.";
+              document.getElementById('result2').textContent = "Invalid image dimensions! Please select an 827x1169 image.";
+              document.getElementById('result1').textContent = "";
               // Clear the file input
               event.target.value = "";
             }
@@ -95,12 +97,14 @@
         };
 
         img.onerror = function() {
-          document.getElementById('result').textContent = "Invalid image file!";
+          document.getElementById('result2').textContent = "Invalid image file!";
+          document.getElementById('result1').textContent = "";
           // Clear the file input
           event.target.value = "";
         };
     } else {
-        document.getElementById('result').textContent = "No file selected!";
+        document.getElementById('result2').textContent = "No file selected!";
+        document.getElementById('result1').textContent = "";
     }
   });
 </script>
