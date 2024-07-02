@@ -658,7 +658,7 @@ class ApiController extends Controller
                                     ],
                                     'spouse'        => [
                                         'name'                                  => (($getUserDetail)?$getUserDetail->spouse_name:''),
-                                        'dob'                                   => (($getUserDetail)?date_format(date_create($getUserDetail->spouse_dob), "d-m-Y"):''),
+                                        'dob'                                   => (($getUserDetail)?(($getUserDetail->spouse_dob != '')?date_format(date_create($getUserDetail->spouse_dob), "d-m-Y"):''):''),
                                         'sex'                                   => (($getUserDetail)?$getUserDetail->spouse_sex:''),
                                         'phone_1'                               => (($getUserDetail)?$getUserDetail->spouse_phone_1:''),
                                         'phone_2'                               => (($getUserDetail)?$getUserDetail->spouse_phone_2:''),
@@ -669,7 +669,7 @@ class ApiController extends Controller
                                     ],
                                     'children1'     => [
                                         'name'                                  => (($getUserDetail)?$getUserDetail->children1_name:''),
-                                        'dob'                                   => (($getUserDetail)?date_format(date_create($getUserDetail->children1_dob), "d-m-Y"):''),
+                                        'dob'                                   => (($getUserDetail)?(($getUserDetail->children1_dob != '')?date_format(date_create($getUserDetail->children1_dob), "d-m-Y"):''):''),
                                         'sex'                                   => (($getUserDetail)?$getUserDetail->children1_sex:''),
                                         'phone_1'                               => (($getUserDetail)?$getUserDetail->children1_phone1:''),
                                         'phone_2'                               => (($getUserDetail)?$getUserDetail->children1_phone2:''),
@@ -677,7 +677,7 @@ class ApiController extends Controller
                                     ],
                                     'children2'     => [
                                         'name'                                  => (($getUserDetail)?$getUserDetail->children2_name:''),
-                                        'dob'                                   => (($getUserDetail)?date_format(date_create($getUserDetail->children2_dob), "d-m-Y"):''),
+                                        'dob'                                   => (($getUserDetail)?(($getUserDetail->children2_dob != '')?date_format(date_create($getUserDetail->children2_dob), "d-m-Y"):''):''),
                                         'sex'                                   => (($getUserDetail)?$getUserDetail->children2_sex:''),
                                         'phone_1'                               => (($getUserDetail)?$getUserDetail->children2_phone1:''),
                                         'phone_2'                               => (($getUserDetail)?$getUserDetail->children2_phone2:''),
@@ -685,7 +685,7 @@ class ApiController extends Controller
                                     ],
                                     'children3'     => [
                                         'name'                                  => (($getUserDetail)?$getUserDetail->children3_name:''),
-                                        'dob'                                   => (($getUserDetail)?date_format(date_create($getUserDetail->children3_dob), "d-m-Y"):''),
+                                        'dob'                                   => (($getUserDetail)?(($getUserDetail->children3_dob != '')?date_format(date_create($getUserDetail->children3_dob), "d-m-Y"):''):''),
                                         'sex'                                   => (($getUserDetail)?$getUserDetail->children3_sex:''),
                                         'phone_1'                               => (($getUserDetail)?$getUserDetail->children3_phone1:''),
                                         'phone_2'                               => (($getUserDetail)?$getUserDetail->children3_phone2:''),
