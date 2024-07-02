@@ -1579,18 +1579,18 @@ class ApiController extends Controller
                                         /* summarized bill */
                                             $summarized_bill_link = '';
                                             if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $transaction['Month']))) &&
-                                            !empty(SearchInvoicePdf::getSummaryBillLink($checkUser->user_code,
+                                            !empty(SearchInvoicePdf::getSummaryBillLinkApp($checkUser->user_code,
                                             $transaction['Month']))) {
-                                                $summarized_bill_link = SearchInvoicePdf::getSummaryBillLink($checkUser->user_code,  $transaction['Month']);
+                                                $summarized_bill_link = SearchInvoicePdf::getSummaryBillLinkApp($checkUser->user_code,  $transaction['Month']);
                                             }
                                         /* summarized bill */
                                         /* detailed bill */
                                             $detailed_bill_link = '';
                                             if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
                                             $transaction['Month']))) &&
-                                            !empty(SearchInvoicePdf::getDetailBillLink($checkUser->user_code,
+                                            !empty(SearchInvoicePdf::getDetailBillLinkApp($checkUser->user_code,
                                             $transaction['Month']))){
-                                                $detailed_bill_link = SearchInvoicePdf::getDetailBillLink($checkUser->user_code,  $transaction['Month']);
+                                                $detailed_bill_link = SearchInvoicePdf::getDetailBillLinkApp($checkUser->user_code,  $transaction['Month']);
                                             }
                                         /* detailed bill */
                                         $monthly_billing[] = [
