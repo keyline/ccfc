@@ -714,6 +714,8 @@ Route::group([
 
 });
 
+Route::get('/invoice/{month}/{year}/{filename}/download', [HomeController::class, 'download'])->name('download');
+
 
 
 // Route::get('/reciprocal_clubs', function () {
