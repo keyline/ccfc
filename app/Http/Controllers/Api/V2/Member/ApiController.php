@@ -1578,6 +1578,7 @@ class ApiController extends Controller
                                                             'Content-Type' => 'application/json',])
                                             ->withOptions(["verify" => false])
                                             ->post($tansactionUrl)->json()['data'];
+                                Helper::pr($transactions);
 
                                 $monthly_billing                = [];
                                 $daily_billing                  = [];
