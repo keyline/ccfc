@@ -1680,7 +1680,7 @@ class ApiController extends Controller
                     $hash                       = $requestData['hash'];
                     $txn_id                     = $requestData['id'];
                     $status                     = $requestData['status'];
-                    $payuResponse               = json_decode($requestData['payuResponse']);
+                    $payuResponse               = $requestData['payuResponse'];
 
                     if($getTokenValue['status']){
                         $uId                        = $getTokenValue['data'][1];
