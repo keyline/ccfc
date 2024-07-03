@@ -1688,31 +1688,34 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $postData = [
-                                    'paid_for_id'           => $uId,
-                                    'paid_for_type'         => 'App\Models\User',
-                                    'transaction_id'        => $txn_id,
-                                    'gateway'               => '',
-                                    'body'                  => '',
-                                    'destination'           => 'https://ccfc.keylines.in/member/payment/status',
-                                    'hash'                  => $hash,
-                                    'response'              => json_encode($payuResponse),
-                                    'status'                => (($status == 'failure')?'failed':'successful'),
-                                    'created_at'            => date('Y-m-d H:i:s'),
-                                    'updated_at'            => date('Y-m-d H:i:s'),
-                                ];
-                                // Helper::pr($postData);
-                                // PayuTransaction::insert($postData);
-                                DB::table('payu_transactions')->insert(
-                                    $postData
-                                );
-                                $user= User::find($uId);
-                                if (!empty($user) && $status != 'failure') {
-                                    $emailInfo= array(
-                                        'greeting' => "Dear, {$user->name}",
-                                        'body'     => "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours."
+                                $checkPayuTransaction = DB::table('payu_transactions')->where('transaction_id','=','$txn_id')->count();
+                                if($checkPayuTransaction <= 0){
+                                    $postData = [
+                                        'paid_for_id'           => $uId,
+                                        'paid_for_type'         => 'App\Models\User',
+                                        'transaction_id'        => $txn_id,
+                                        'gateway'               => '',
+                                        'body'                  => '',
+                                        'destination'           => 'https://ccfc.keylines.in/member/payment/status',
+                                        'hash'                  => $hash,
+                                        'response'              => json_encode($payuResponse),
+                                        'status'                => (($status == 'failure')?'failed':'successful'),
+                                        'created_at'            => date('Y-m-d H:i:s'),
+                                        'updated_at'            => date('Y-m-d H:i:s'),
+                                    ];
+                                    // Helper::pr($postData);
+                                    // PayuTransaction::insert($postData);
+                                    DB::table('payu_transactions')->insert(
+                                        $postData
                                     );
-                                    // Notification::send($user, new PayUEmailNotification($emailInfo));
+                                    $user= User::find($uId);
+                                    if (!empty($user) && $status != 'failure') {
+                                        $emailInfo= array(
+                                            'greeting' => "Dear, {$user->name}",
+                                            'body'     => "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours."
+                                        );
+                                        // Notification::send($user, new PayUEmailNotification($emailInfo));
+                                    }
                                 }
 
                                 $apiStatus          = TRUE;
