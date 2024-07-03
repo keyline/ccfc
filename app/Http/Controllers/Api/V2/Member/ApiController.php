@@ -1646,7 +1646,69 @@ class ApiController extends Controller
                 $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
             }
         /* billing */
+        /* billing */
+            public function payuResponse(Request $request){
+                $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
+                $apiStatus          = TRUE;
+                $apiMessage         = '';
+                $apiResponse        = [];
+                $apiExtraField      = '';
+                $apiExtraData       = '';
+                $this->isJSON(file_get_contents('php://input'));
+                $requestData        = $this->extract_json(file_get_contents('php://input'));
+                $requiredFields     = ['amount', 'hash', 'id', 'status', 'payuResponse'];
+                $headerData         = $request->header();
+                if (!$this->validateArray($requiredFields, $requestData)){
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'All Data Are Not Present !!!';
+                }
+                Helper::pr($requestData);
+                if($headerData['key'][0] == $project_key){
+                    $app_access_token           = $headerData['authorization'][0];
+                    $getTokenValue              = $this->tokenAuth($app_access_token);
 
+                    $amount                     = $requestData['amount'];
+                    $hash                       = $requestData['hash'];
+                    $id                         = $requestData['id'];
+                    $status                     = $requestData['status'];
+                    $payuResponse               = $requestData['payuResponse'];
+
+                    if($getTokenValue['status']){
+                        $uId                        = $getTokenValue['data'][1];
+                        $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
+                        $checkUser                  = User::where('id', '=', $uId)->first();
+                        if($checkUser){
+                            if($checkUser->status == 'ACTIVE'){
+
+                                
+
+                                $apiStatus          = TRUE;
+                                http_response_code(200);
+                                $apiMessage         = 'Data Available !!!';
+                                $apiExtraField      = 'response_code';
+                                $apiExtraData       = http_response_code();
+                            } else {
+                                $apiStatus                              = FALSE;
+                                $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            }
+                        } else {
+                            $apiStatus                              = FALSE;
+                            $apiMessage                             = 'We Don\'t Recognize You !!!';
+                        }
+                    } else {
+                        http_response_code($getTokenValue['data'][2]);
+                        $apiStatus                      = FALSE;
+                        $apiMessage                     = $this->getResponseCode(http_response_code());
+                        $apiExtraField                  = 'response_code';
+                        $apiExtraData                   = http_response_code();
+                    }
+                } else {
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'Unauthenticate Request !!!';
+                }
+                $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
+        /* billing */
     /* after login */
     /*
     Get http response code
