@@ -1706,6 +1706,14 @@ class ApiController extends Controller
                                 DB::table('payu_transactions')->insert(
                                     $postData
                                 );
+                                $user= User::find($uId);
+                                if (!empty($user) && $status != 'failure') {
+                                    $emailInfo= array(
+                                        'greeting' => "Dear, {$user->name}",
+                                        'body'     => "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours."
+                                    );
+                                    // Notification::send($user, new PayUEmailNotification($emailInfo));
+                                }
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
