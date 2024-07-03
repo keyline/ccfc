@@ -1700,7 +1700,10 @@ class ApiController extends Controller
                                     'updated_at'            => date('Y-m-d H:i:s'),
                                 ];
                                 // Helper::pr($postData);
-                                PayuTransaction::insert($postData);
+                                // PayuTransaction::insert($postData);
+                                DB::table('payu_transactions')->insert(
+                                    $postData
+                                );
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
