@@ -1697,7 +1697,7 @@ class ApiController extends Controller
                                     'destination'           => 'https://ccfc.keylines.in/member/payment/status',
                                     'hash'                  => $hash,
                                     // 'response'              => $payuResponse,
-                                    'status'                => $status,
+                                    'status'                => (($status == 'failure')?'failed':'successful'),
                                     'created_at'            => date('Y-m-d H:i:s'),
                                     'updated_at'            => date('Y-m-d H:i:s'),
                                 ];
