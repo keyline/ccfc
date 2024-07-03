@@ -1692,6 +1692,8 @@ class ApiController extends Controller
                                     'paid_for_id'           => $uId,
                                     'paid_for_type'         => 'App\Models\User',
                                     'transaction_id'        => $txn_id,
+                                    'gateway'               => '',
+                                    'body'                  => '',
                                     'destination'           => 'https://ccfc.keylines.in/member/payment/status',
                                     'hash'                  => $hash,
                                     // 'response'              => $payuResponse,
