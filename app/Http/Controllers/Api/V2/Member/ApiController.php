@@ -1680,7 +1680,7 @@ class ApiController extends Controller
                     $hash                       = $requestData['hash'];
                     $txn_id                     = $requestData['id'];
                     $status                     = $requestData['status'];
-                    $payuResponse               = $requestData['payuResponse'];
+                    $payuResponse               = json_decode($requestData['payuResponse']);
 
                     if($getTokenValue['status']){
                         $uId                        = $getTokenValue['data'][1];
@@ -1696,12 +1696,12 @@ class ApiController extends Controller
                                     'body'                  => '',
                                     'destination'           => 'https://ccfc.keylines.in/member/payment/status',
                                     'hash'                  => $hash,
-                                    'response'              => $payuResponse,
+                                    'response'              => json_encode($payuResponse),
                                     'status'                => (($status == 'failure')?'failed':'successful'),
                                     'created_at'            => date('Y-m-d H:i:s'),
                                     'updated_at'            => date('Y-m-d H:i:s'),
                                 ];
-                                // Helper::pr($postData);
+                                Helper::pr($postData);
                                 // PayuTransaction::insert($postData);
                                 DB::table('payu_transactions')->insert(
                                     $postData
