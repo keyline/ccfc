@@ -1701,7 +1701,7 @@ class ApiController extends Controller
                                     'created_at'            => date('Y-m-d H:i:s'),
                                     'updated_at'            => date('Y-m-d H:i:s'),
                                 ];
-                                Helper::pr($postData);
+                                // Helper::pr($postData);
                                 // PayuTransaction::insert($postData);
                                 DB::table('payu_transactions')->insert(
                                     $postData
