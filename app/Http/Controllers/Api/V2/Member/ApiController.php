@@ -30,6 +30,15 @@ use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserDevice;
 
+use Tzsk\Payu\Concerns\Attributes;
+use Tzsk\Payu\Concerns\Customer;
+use Tzsk\Payu\Concerns\Transaction;
+use Tzsk\Payu\Facades\Payu;
+
+use Tzsk\Pay\Models\PayuTransaction;
+use App\Notifications\PayUEmailNotification;
+use Notification;
+
 use App\Libraries\CreatorJwt;
 use App\Libraries\JWT;
 
@@ -1662,14 +1671,14 @@ class ApiController extends Controller
                     $apiStatus          = FALSE;
                     $apiMessage         = 'All Data Are Not Present !!!';
                 }
-                Helper::pr($requestData);
+                
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
 
                     $amount                     = $requestData['amount'];
                     $hash                       = $requestData['hash'];
-                    $id                         = $requestData['id'];
+                    $txn_id                     = $requestData['id'];
                     $status                     = $requestData['status'];
                     $payuResponse               = $requestData['payuResponse'];
 
@@ -1679,12 +1688,28 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-
-                                
+                                $postData = [
+                                    'paid_for_id'           => $uId,
+                                    'paid_for_type'         => 'App\Models\User',
+                                    'transaction_id'        => $txn_id,
+                                    'destination'           => 'https://ccfc.keylines.in/member/payment/status',
+                                    'hash'                  => $hash,
+                                    'response'              => json_encode($payuResponse),
+                                    'status'                => $status,
+                                    'created_at'            => date('Y-m-d H:i:s'),
+                                    'updated_at'            => date('Y-m-d H:i:s'),
+                                ];
+                                Helper::pr($postData);
+                                PayuTransaction::insert($postData);
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
-                                $apiMessage         = 'Data Available !!!';
+                                if($status == 'failure'){
+                                    $apiMessage         = 'Payment Failed !!!';
+                                } else {
+                                    $apiMessage         = 'Payment Successfull !!!';
+                                }
+                                
                                 $apiExtraField      = 'response_code';
                                 $apiExtraData       = http_response_code();
                             } else {

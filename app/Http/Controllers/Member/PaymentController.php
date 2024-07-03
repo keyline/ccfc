@@ -32,9 +32,9 @@ class PaymentController extends Controller
         
         if ($user) {
             $validated = $request->validate([
-        'amount' => 'required|numeric|min:1',
-        'paymentGatewayOptions' => 'required',
-    ]);
+                'amount' => 'required|numeric|min:1',
+                'paymentGatewayOptions' => 'required',
+            ]);
 
             $customer = Customer::make()
                             ->firstName($user->name)
