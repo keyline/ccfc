@@ -1577,7 +1577,7 @@ class ApiController extends Controller
                                             ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
                                                             'Content-Type' => 'application/json',])
                                             ->withOptions(["verify" => false])
-                                            ->post($tansactionUrl)->json();
+                                            ->post($tansactionUrl)->json()['data'];
                                 Helper::pr($transactions);
 
                                 $monthly_billing                = [];
