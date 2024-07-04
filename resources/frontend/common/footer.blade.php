@@ -5,9 +5,32 @@
                <div class="row">
                    <div class="col-md-6 p-0">
                        <div class="foot_copyright">
-                           <div class="copyright">Copyright © {{ now()->year }} The CC&FC Club at Kolkata All Rights Reserved.</div>
+                            <div class="copyright">Copyright © {{ now()->year }} The CC&FC Club at Kolkata All Rights Reserved.
+                                ||
+                                <a href="{{ asset('terms') }}" class="social-icon">
+                                   Terms & Conditions
+                                </a>
+                                ||
+                                <a href="{{ asset('privacy') }}" class="social-icon">
+                                   Privacy Policy
+                                </a>
+                            </div>
                        </div>
                    </div>
+                   <!-- <div class="col-md-4 p-0">
+                       <div class="foot_social">
+                           <div class="footer_social_inner">
+                               <ul>
+                                   <li>
+                                       
+                                   </li>
+                                   <li>
+                                       
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                   </div> -->
                    <!-- <div class="col-md-4 p-0">
                        <div class="foot_social">
                            <div class="footer_social_inner">

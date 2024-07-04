@@ -27,7 +27,14 @@ use App\Mail\MyTestEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\TenderFileUploadController;
 use App\Models\DocumentOrganizer;
+use App\Http\Controllers\FrontendHome;
 use App\Http\Controllers\TenderDownloadController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\CookingCategoryController;
+use App\Http\Controllers\Admin\CookingItemController;
+use App\Http\Controllers\Admin\CookingDaySpecialController;
+use App\Http\Controllers\Admin\MustReadController;
+// use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
 
@@ -62,6 +69,14 @@ Route::get('/history', function () {
     $galleries = Gallery::with(['media'])->get();
     // $data='Data';
     return view('history', compact(['contentPages', 'galleries']));
+});
+
+Route::get('/terms', function () {    
+    return view('terms');
+});
+
+Route::get('/privacy', function () {
+    return view('privacy');
 });
 
 Route::get('/food_beverages', function () {
@@ -260,7 +275,8 @@ Route::get('/gallery', function () {
 Route::get('/contact-us', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-us');
 Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-us.store');
 
-
+Route::get('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks']);
+Route::post('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks']);
 
 // Route::redirect('/', '/login');
 
@@ -397,6 +413,44 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/edit-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'edit']);
     Route::put('create/update-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'update']);
     Route::get('create/delete-contactlist/{id}', [App\Http\Controllers\Admin\ContactlistsController::class, 'destroy']);
+
+    Route::get('create/settinglist', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settinglist');
+    Route::post('create/general-settings', [App\Http\Controllers\Admin\SettingsController::class, 'generalSetting']);
+    Route::post('create/email-settings', [App\Http\Controllers\Admin\SettingsController::class, 'emailSetting']);
+    Route::post('create/sms-settings', [App\Http\Controllers\Admin\SettingsController::class, 'smsSetting']);
+    Route::post('create/seo-settings', [App\Http\Controllers\Admin\SettingsController::class, 'seoSetting']);
+
+    Route::get('create/cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'index'])->name('cookingcategorylist');
+    Route::get('create/add-cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'add']);
+    Route::post('create/add-cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'add']);
+    Route::get('create/edit-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'edit']);
+    Route::post('create/edit-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'edit']);
+    Route::get('create/delete-cookingcategorylist/{id}', [App\Http\Controllers\Admin\CookingCategoryController::class, 'destroy']);
+
+    Route::get('create/cookingitemlist', [App\Http\Controllers\Admin\CookingItemController::class, 'index'])->name('cookingitemlist');
+    Route::get('create/add-cookingitemlist', [App\Http\Controllers\Admin\CookingItemController::class, 'add']);
+    Route::post('create/add-cookingitemlist', [App\Http\Controllers\Admin\CookingItemController::class, 'add']);
+    Route::get('create/edit-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'edit']);
+    Route::post('create/edit-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'edit']);
+    Route::get('create/delete-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'destroy']);
+
+    Route::get('create/dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'index'])->name('dayspeciallist');
+    Route::get('create/add-dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'add']);
+    Route::post('create/add-dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'add']);
+    Route::get('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
+    Route::post('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
+    Route::get('create/delete-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'destroy']);
+    
+    Route::get('create/deleteaccountrequests', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequests'])->name('deleteaccountrequests');
+    Route::get('create/action-deleteaccountrequests/{id}/{id2}', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequestsAction']);
+    Route::get('create/spabookingtrackinglist', [App\Http\Controllers\Admin\SettingsController::class, 'spaBookingTrackingList'])->name('spabookingtrackinglist');
+
+    Route::get('create/mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'index'])->name('mustreadlist');
+    Route::get('create/add-mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'add']);
+    Route::post('create/add-mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'add']);
+    Route::get('create/edit-mustreadlist/{id}', [App\Http\Controllers\Admin\MustReadController::class, 'edit']);
+    Route::post('create/edit-mustreadlist/{id}', [App\Http\Controllers\Admin\MustReadController::class, 'edit']);
+    Route::get('create/delete-mustreadlist/{id}', [App\Http\Controllers\Admin\MustReadController::class, 'destroy']);
 
     // Members
     Route::delete('members/destroy', 'MembersController@massDestroy')->name('members.massDestroy');
@@ -660,6 +714,8 @@ Route::group([
 
 });
 
+Route::get('/invoice/{month}/{year}/{filename}/download', [HomeController::class, 'download'])->name('download');
+
 
 
 // Route::get('/reciprocal_clubs', function () {
@@ -862,3 +918,4 @@ Route::get('archives', function () {
 })->name('showme.archives');
 
 Route::get('/download/tender/{file}', [TenderDownloadController::class, 'download'])->name('download.tender');
+
