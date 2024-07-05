@@ -1605,28 +1605,26 @@ class ApiController extends Controller
                                         /* detailed bill */
                                         /* bill list */
                                             $bill_list = [];
-                                            // $Month      = str_replace(" ", "-", $transaction['Month']);
-                                            // $billFields = [
-                                            //     'mcode'     => $checkUser->user_code,
-                                            //     'month'     => $Month
-                                            // ];
-                                            // $billUrl    = 'https://ccfcmemberdata.in/Api/MemberTransactionMonthly/POST?' . http_build_query($billFields);
-                                            // $bills      = Http::withoutVerifying()
-                                            //             ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                                            //                             'Content-Type' => 'application/json',])
-                                            //             ->withOptions(["verify" => false])
-                                            //             ->post($billUrl)->json()['data'];
-                                            // // Helper::pr($transactions);
-                                            
-                                            // if($bills){
-                                            //     foreach($bills as $bill){
-                                            //         $bill_list[] = [
-                                            //             'BILLDETAILS'   => $bill['BILLDETAILS'],
-                                            //             'AMOUNT'        => number_format($bill['AMOUNT'],2),
-                                            //             'BILLDATE'      => date_format(date_create($bill['BILLDATE']), "d-M-Y")
-                                            //         ];
-                                            //     }
-                                            // }
+                                            $Month      = str_replace(" ", "-", $transaction['Month']);
+                                            $billFields = [
+                                                'mcode'     => $checkUser->user_code,
+                                                'month'     => $Month
+                                            ];
+                                            $billUrl    = 'https://ccfcmemberdata.in/Api/MemberTransactionMonthly/POST?' . http_build_query($billFields);
+                                            $bills      = Http::withoutVerifying()
+                                                        ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                                                                        'Content-Type' => 'application/json',])
+                                                        ->withOptions(["verify" => false])
+                                                        ->post($billUrl)->json()['data'];
+                                            if($bills){
+                                                foreach($bills as $bill){
+                                                    $bill_list[] = [
+                                                        'BILLDETAILS'   => $bill['BILLDETAILS'],
+                                                        'AMOUNT'        => number_format($bill['AMOUNT'],2),
+                                                        'BILLDATE'      => date_format(date_create($bill['BILLDATE']), "d-M-Y")
+                                                    ];
+                                                }
+                                            }
                                         /* bill list */
                                         $monthly_billing[] = [
                                             'month'                 => $transaction['Month'],
