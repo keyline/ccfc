@@ -75,8 +75,8 @@ Route::prefix('v2')->group(function () {
         Route::get('member/clubupdates', [ApiController::class,'clubUpdates'])->name('api.v2.member.clubupdates.clubUpdates');
         Route::get('member/mustread', [ApiController::class,'mustRead'])->name('api.v2.member.mustread.mustRead');
         Route::get('member/billing', [ApiController::class,'billing'])->name('api.v2.member.billing.billing');
-        Route::get('member/billinglist', [ApiController::class,'billingList'])->name('api.v2.member.billinglist.billingList');
-        Route::get('member/billingdetail', [ApiController::class,'billingDetail'])->name('api.v2.member.billingdetail.billingDetail');
+        Route::post('member/billinglist', [ApiController::class,'billingList'])->name('api.v2.member.billinglist.billingList');
+        Route::post('member/billingdetail', [ApiController::class,'billingDetail'])->name('api.v2.member.billingdetail.billingDetail');
         Route::post('member/payuresponse', [ApiController::class,'payuResponse'])->name('api.v2.member.payuresponse.payuResponse');
     /* after login */
 });
