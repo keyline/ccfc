@@ -548,7 +548,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?=url('admin/create/cookingcategorylist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
@@ -561,6 +561,14 @@
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Whats Cooking Items
+                                </p>
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a href="<?=url('admin/create/deleteaccountrequests')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Whats Cooking Reports
                                 </p>
                             </a>
                         </li>

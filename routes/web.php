@@ -433,6 +433,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/edit-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'edit']);
     Route::post('create/edit-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'edit']);
     Route::get('create/delete-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'destroy']);
+    Route::get('create/cookingitemreportlist', [App\Http\Controllers\Admin\CookingItemController::class, 'reportList'])->name('cookingitemreportlist');
 
     Route::get('create/dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'index'])->name('dayspeciallist');
     Route::get('create/add-dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'add']);
