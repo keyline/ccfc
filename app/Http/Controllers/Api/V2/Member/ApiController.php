@@ -1622,8 +1622,8 @@ class ApiController extends Controller
                                                 foreach($bills as $bill){
                                                     $bill_list[] = [
                                                         'BILLDETAILS'   => $bill['BILLDETAILS'],
-                                                        'AMOUNT'        => $bill['AMOUNT'],
-                                                        'BILLDATE'      => date_format(date_create($bill['BILLDATE']), "M d, Y h:i A")
+                                                        'AMOUNT'        => number_format($bill['AMOUNT'],2),
+                                                        'BILLDATE'      => date_format(date_create($bill['BILLDATE']), "d-M-Y")
                                                     ];
                                                 }
                                             }
