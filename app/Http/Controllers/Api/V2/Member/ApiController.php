@@ -1604,6 +1604,30 @@ class ApiController extends Controller
                                                 $detailed_bill_link = SearchInvoicePdf::getDetailBillLinkApp($checkUser->user_code,  $transaction['Month']);
                                             }
                                         /* detailed bill */
+                                        /* bill list */
+                                            $Month = str_replace(" ", "-", $transaction['Month'])
+                                            $transactionFields = [
+                                                'mcode'     => $checkUser->user_code,
+                                                'month'     => $Month
+                                            ];
+                                            $billUrl    = 'https://ccfcmemberdata.in/Api/MemberTransactionMonthly/POST?' . http_build_query($transactionFields);
+                                            $bills      = Http::withoutVerifying()
+                                                        ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                                                                        'Content-Type' => 'application/json',])
+                                                        ->withOptions(["verify" => false])
+                                                        ->post($billUrl)->json()['data'];
+                                            // Helper::pr($transactions);
+                                            $bill_list = [];
+                                            if($bills){
+                                                foreach($bills as $bill){
+                                                    $bill_list[] = [
+                                                        'BILLDETAILS'   => $bill['BILLDETAILS'],
+                                                        'AMOUNT'        => $bill['AMOUNT'],
+                                                        'BILLDATE'      => date_format(date_create($bill['BILLDATE']), "M d, Y h:i A")
+                                                    ];
+                                                }
+                                            }
+                                        /* bill list */
                                         $monthly_billing[] = [
                                             'month'                 => $transaction['Month'],
                                             'opening_balance'       => $transaction['LastBalance'],
@@ -1612,6 +1636,7 @@ class ApiController extends Controller
                                             'closing_balance'       => $transaction['Balance'],
                                             'summarized_bill'       => $summarized_bill_link,
                                             'detailed_bill'         => $detailed_bill_link,
+                                            'bill_list'             => $bill_list,
                                         ];
                                     }
                                 }
@@ -1657,7 +1682,7 @@ class ApiController extends Controller
                 $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
             }
         /* billing */
-        /* billing */
+        /* payu reponse */
             public function payuResponse(Request $request){
                 $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
                 $apiStatus          = TRUE;
@@ -1751,7 +1776,7 @@ class ApiController extends Controller
                 }
                 $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
             }
-        /* billing */
+        /* payu reponse */
     /* after login */
     /*
     Get http response code
