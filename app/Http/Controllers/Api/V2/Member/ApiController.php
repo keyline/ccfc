@@ -1579,7 +1579,7 @@ class ApiController extends Controller
                                                             'Content-Type' => 'application/json',])
                                             ->withOptions(["verify" => false])
                                             ->post($tansactionUrl)->json()['data'];
-                                Helper::pr($transactions);
+                                // Helper::pr($transactions);
 
                                 $monthly_billing                = [];
                                 $daily_billing                  = [];
@@ -1589,20 +1589,20 @@ class ApiController extends Controller
                                     foreach($transactions as $transaction){
                                         /* summarized bill */
                                             $summarized_bill_link = '';
-                                            if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $transaction['Month']))) &&
-                                            !empty(SearchInvoicePdf::getSummaryBillLinkApp($checkUser->user_code,
-                                            $transaction['Month']))) {
-                                                $summarized_bill_link = SearchInvoicePdf::getSummaryBillLinkApp($checkUser->user_code,  $transaction['Month']);
-                                            }
+                                            // if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ", $transaction['Month']))) &&
+                                            // !empty(SearchInvoicePdf::getSummaryBillLinkApp($checkUser->user_code,
+                                            // $transaction['Month']))) {
+                                            //     $summarized_bill_link = SearchInvoicePdf::getSummaryBillLinkApp($checkUser->user_code,  $transaction['Month']);
+                                            // }
                                         /* summarized bill */
                                         /* detailed bill */
                                             $detailed_bill_link = '';
-                                            if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
-                                            $transaction['Month']))) &&
-                                            !empty(SearchInvoicePdf::getDetailBillLinkApp($checkUser->user_code,
-                                            $transaction['Month']))){
-                                                $detailed_bill_link = SearchInvoicePdf::getDetailBillLinkApp($checkUser->user_code,  $transaction['Month']);
-                                            }
+                                            // if(SearchInvoicePdf::isBillUploaded(implode("_", explode(" ",
+                                            // $transaction['Month']))) &&
+                                            // !empty(SearchInvoicePdf::getDetailBillLinkApp($checkUser->user_code,
+                                            // $transaction['Month']))){
+                                            //     $detailed_bill_link = SearchInvoicePdf::getDetailBillLinkApp($checkUser->user_code,  $transaction['Month']);
+                                            // }
                                         /* detailed bill */
                                         /* bill list */
                                             $Month      = str_replace(" ", "-", $transaction['Month']);
