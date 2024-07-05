@@ -1605,12 +1605,12 @@ class ApiController extends Controller
                                             }
                                         /* detailed bill */
                                         /* bill list */
-                                            $Month = str_replace(" ", "-", $transaction['Month'])
-                                            $transactionFields = [
+                                            $Month      = str_replace(" ", "-", $transaction['Month']);
+                                            $billFields = [
                                                 'mcode'     => $checkUser->user_code,
                                                 'month'     => $Month
                                             ];
-                                            $billUrl    = 'https://ccfcmemberdata.in/Api/MemberTransactionMonthly/POST?' . http_build_query($transactionFields);
+                                            $billUrl    = 'https://ccfcmemberdata.in/Api/MemberTransactionMonthly/POST?' . http_build_query($billFields);
                                             $bills      = Http::withoutVerifying()
                                                         ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
                                                                         'Content-Type' => 'application/json',])
