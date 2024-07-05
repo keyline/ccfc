@@ -71,7 +71,7 @@
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="clubman_api_token" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                      <label for="clubman_api_token" class="col-md-4 col-lg-3 col-form-label">Clubman Api Token</label>
                       <div class="col-md-8 col-lg-9">
                         <textarea name="clubman_api_token" class="form-control" id="clubman_api_token" rows="5"><?=$setting->clubman_api_token?></textarea>
                       </div>

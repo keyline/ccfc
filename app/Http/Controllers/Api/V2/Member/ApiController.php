@@ -1891,7 +1891,7 @@ class ApiController extends Controller
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
-                                $apiMessage         = 'Report Submitted Against ' . $billdetails . ' !!!';
+                                $apiMessage         = 'Report Sucessfully Submitted Against ' . $billdetails . ' !!!';
                                 $apiExtraField      = 'response_code';
                                 $apiExtraData       = http_response_code();
                             } else {
