@@ -762,17 +762,30 @@ class ApiController extends Controller
                                   ]
                                 );
 
-                                $qrcode             = (new QRCode($options))->render($checkUser->user_code);
-                                $qrcode_image       = $qrcode;
-
-                                $apiResponse        = [
-                                    'user_code'                             => $checkUser->user_code,
-                                    'name'                                  => $checkUser->name,
-                                    'phone'                                 => $checkUser->phone_number_1,
-                                    'email'                                 => $checkUser->email,
-                                    'qrcode_image'                          => $qrcode_image,
-                                    'profile_image'                         => $profileImage
+                                $qrcodeFields = [
+                                    'mcode'     => $checkUser->user_code
                                 ];
+                                $qrcodeUrl    = 'https://ccfcmemberdata.in/Api/CardInfo/POST?' . http_build_query($qrcodeFields);
+                                $qrcodes      = Http::withoutVerifying()
+                                            ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                                                            'Content-Type' => 'application/json',])
+                                            ->withOptions(["verify" => false])
+                                            ->post($qrcodeUrl)->json()['data'];
+                                $SIXTEEN_DIGIT_CODE = '';
+                                if($qrcodes){
+                                    $SIXTEEN_DIGIT_CODE = $qrcodes[0]['16_DIGIT_CODE'];
+                                    $qrcode             = (new QRCode($options))->render($SIXTEEN_DIGIT_CODE);
+                                    $qrcode_image       = $qrcode;
+                                    $apiResponse        = [
+                                        'user_code'                             => $checkUser->user_code,
+                                        'name'                                  => $checkUser->name,
+                                        'phone'                                 => $checkUser->phone_number_1,
+                                        'email'                                 => $checkUser->email,
+                                        '16_DIGIT_CODE'                         => $SIXTEEN_DIGIT_CODE,
+                                        'qrcode_image'                          => $qrcode_image,
+                                        'profile_image'                         => $profileImage
+                                    ];
+                                }                                
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
