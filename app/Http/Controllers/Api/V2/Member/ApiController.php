@@ -782,15 +782,15 @@ class ApiController extends Controller
                                 ));
                                 $response = curl_exec($curl);
                                 curl_close($curl);
-                                if (curl_errno($ch)) {
-                                    echo 'Error:' . curl_error($ch);
+                                if (curl_errno($curl)) {
+                                    echo 'Error:' . curl_error($curl);
                                 } else {
-                                    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                                    $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
                                     echo 'HTTP Code: ' . $httpCode . "\n";
                                     echo 'Response: ' . $response . "\n";
                                 }
                                 Helper::pr($response);
-                                curl_close($ch);
+                                curl_close($curl);
 
                                 
                                 $qrcodeFields = [
