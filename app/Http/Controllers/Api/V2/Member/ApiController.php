@@ -775,20 +775,21 @@ class ApiController extends Controller
                                   CURLOPT_CUSTOMREQUEST => 'POST',
                                   CURLOPT_HTTPHEADER => array(
                                     'Cache-Control: no-cache',
-                                    'Authorization: ' . $token
+                                    'Accept' => '/',
+                                    'Content-Type' => 'application/json',
+                                    'Authorization: Bearer ' . $token
                                   ),
                                 ));
                                 $response = curl_exec($curl);
                                 curl_close($curl);
+                                if (curl_errno($ch)) {
+                                    echo 'Error:' . curl_error($ch);
+                                } else {
+                                    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                                    echo 'HTTP Code: ' . $httpCode . "\n";
+                                    echo 'Response: ' . $response . "\n";
+                                }
                                 Helper::pr($response);
-                                // if (curl_errno($ch)) {
-                                //     echo 'Error:' . curl_error($ch);
-                                // } else {
-                                //     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                                //     echo 'HTTP Code: ' . $httpCode . "\n";
-                                //     echo 'Response: ' . $response . "\n";
-                                // }
-
                                 curl_close($ch);
 
                                 
