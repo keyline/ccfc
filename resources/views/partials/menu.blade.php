@@ -565,7 +565,7 @@
                             </a>
                         </li> -->
                         <li class="nav-item">
-                            <a href="<?=url('admin/create/deleteaccountrequests')?>" class="nav-link">
+                            <a href="<?=url('admin/create/cookingitemreportlist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Whats Cooking Reports
