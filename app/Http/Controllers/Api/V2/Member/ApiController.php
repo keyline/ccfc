@@ -1773,6 +1773,91 @@ class ApiController extends Controller
                 }
                 $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
             }
+            public function billingDetail(Request $request){
+                $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
+                $apiStatus          = TRUE;
+                $apiMessage         = '';
+                $apiResponse        = [];
+                $apiExtraField      = '';
+                $apiExtraData       = '';
+                $this->isJSON(file_get_contents('php://input'));
+                $requestData        = $this->extract_json(file_get_contents('php://input'));
+                $requiredFields     = ['billdetails'];
+                $headerData         = $request->header();
+                if (!$this->validateArray($requiredFields, $requestData)){
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'All Data Are Not Present !!!';
+                }
+                if($headerData['key'][0] == $project_key){
+                    $app_access_token               = $headerData['authorization'][0];
+                    $getTokenValue                  = $this->tokenAuth($app_access_token);
+                    $billdetails                    = $requestData['billdetails'];
+                    if($getTokenValue['status']){
+                        $uId                        = $getTokenValue['data'][1];
+                        $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
+                        $checkUser                  = User::where('id', '=', $uId)->first();
+                        if($checkUser){
+                            if($checkUser->status == 'ACTIVE'){
+                                // $token = "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
+                                $token = "5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn";
+                                /* bill details */
+                                    $bill_details  = [];
+                                    $Month      = str_replace(" ", "-", $billing_month_year);
+                                    $billFields = [
+                                        'mcode'             => $checkUser->user_code,
+                                        'billdetails'       => $billdetails
+                                    ];
+                                    $billUrl    = 'https://ccfcmemberdata.in/Api/MemberTransDet/POST?' . http_build_query($billFields);
+                                    $bills      = Http::withoutVerifying()
+                                                ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                                                                'Content-Type' => 'application/json',])
+                                                ->withOptions(["verify" => false])
+                                                ->post($billUrl)->json()['data'];
+                                    if($bills){
+                                        foreach($bills as $bill){
+                                            $bill_details[] = [
+                                                'BILLDETAILS'       => $bill['BILLDETAILS'],
+                                                'BILLDATE'          => date_format(date_create($bill['BILLDATE']), "d-M-Y"),
+                                                'ITEMDESC'          => $bill['ITEMDESC'],
+                                                'QTY'               => $bill['QTY'],
+                                                'RATE'              => number_format($bill['RATE'],2),
+                                                'AMOUNT'            => number_format($bill['AMOUNT'],2),
+                                                'TAXAMOUNT'         => number_format($bill['TAXAMOUNT'],2),
+                                                'BILLAMT'           => number_format($bill['BILLAMT'],2),
+                                            ];
+                                        }
+                                    }
+                                /* bill details */
+
+                                $apiResponse        = $bill_details;
+                                // Helper::pr($transactions);
+
+                                $apiStatus          = TRUE;
+                                http_response_code(200);
+                                $apiMessage         = 'Data Available !!!';
+                                $apiExtraField      = 'response_code';
+                                $apiExtraData       = http_response_code();
+                            } else {
+                                $apiStatus                              = FALSE;
+                                $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            }
+                        } else {
+                            $apiStatus                              = FALSE;
+                            $apiMessage                             = 'We Don\'t Recognize You !!!';
+                        }
+                    } else {
+                        http_response_code($getTokenValue['data'][2]);
+                        $apiStatus                      = FALSE;
+                        $apiMessage                     = $this->getResponseCode(http_response_code());
+                        $apiExtraField                  = 'response_code';
+                        $apiExtraData                   = http_response_code();
+                    }
+                } else {
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'Unauthenticate Request !!!';
+                }
+                $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
         /* billing */
         /* payu reponse */
             public function payuResponse(Request $request){
