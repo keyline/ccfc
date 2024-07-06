@@ -1069,11 +1069,11 @@ class ApiController extends Controller
                                     if($itemGroups){
                                         foreach($itemGroups as $itemGroup){
                                             $SUBGROUPS          = [];
-                                            $itemSubGroups      = DB::table('clubman_items')->select('SUBGROUP')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->distinct('SUBGROUP')->orderBy('SUBGROUP', 'ASC')->get();
+                                            $itemSubGroups      = DB::table('clubman_items')->select('SUBGROUP')->where('CATEGORY', '=', 'BEVERAGE')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->distinct('SUBGROUP')->orderBy('SUBGROUP', 'ASC')->get();
                                             if($itemSubGroups){
                                                 foreach($itemSubGroups as $itemSubGroup){
                                                     $ITEMS = [];
-                                                    $items = ClubmanItem::select('ITEMNAME', 'RATE', 'TAX', 'AMOUNT')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->where('SUBGROUP', '=', $itemSubGroup->SUBGROUP)->orderBy('ITEMNAME', 'ASC')->get();
+                                                    $items = ClubmanItem::select('ITEMNAME', 'RATE', 'TAX', 'AMOUNT')->where('CATEGORY', '=', 'BEVERAGE')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->where('SUBGROUP', '=', $itemSubGroup->SUBGROUP)->orderBy('ITEMNAME', 'ASC')->get();
                                                     if($items){
                                                         foreach($items as $item){
                                                             $ITEMS[] = [
