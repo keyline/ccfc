@@ -1001,11 +1001,21 @@ class ApiController extends Controller
                             if($checkUser->status == 'ACTIVE'){
                                 $item_list  = [];
                                 if($for_cat == 'CLUB KITCHEN'){
-                                    $items      = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '!=', 'DON GIOVANNIE')->where('SUBGROUP', '!=', 'RESTURANT')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
-                                    if($items){
-                                        foreach($items as $item){
-                                            $item_list[]  = [
-                                                'GROUPNAME' => $item->GROUPNAME
+                                    $itemGroups      = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '!=', 'DON GIOVANNIE')->where('SUBGROUP', '!=', 'RESTURANT')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
+                                    if($itemGroups){
+                                        foreach($itemGroups as $itemGroup){
+                                            $SUBGROUPS          = [];
+                                            $itemSubGroups      = DB::table('clubman_items')->select('SUBGROUP')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->distinct('SUBGROUP')->orderBy('SUBGROUP', 'ASC')->get();
+                                            if($itemSubGroups){
+                                                foreach($itemSubGroups as $itemSubGroup){
+                                                    $SUBGROUPS[]          = [
+                                                        'SUBGROUP' => $itemSubGroup->SUBGROUP,
+                                                    ];
+                                                }
+                                            }
+                                            $item_list[]        = [
+                                                'GROUPNAME' => $itemGroup->GROUPNAME,
+                                                'SUBGROUP'  => $SUBGROUPS,
                                             ];
                                         }
                                     }
