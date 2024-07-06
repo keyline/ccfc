@@ -1000,7 +1000,7 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $items = DB::table('clubman_items')->select('GROUPNAME')->distinct('GROUPNAME')->get();
+                                $items = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '!=', 'DON GIOVANNIE')->where('SUBGROUP', '!=', 'RESTURANT')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
                                 Helper::pr($items);
                                 
 
