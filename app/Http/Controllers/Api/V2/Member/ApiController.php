@@ -999,7 +999,7 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $item_list  = [];
+                                $item_complete_list  = [];
                                 if($for_cat == 'CLUB KITCHEN'){
                                     $itemGroups      = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '!=', 'DON GIOVANNIE')->where('SUBGROUP', '!=', 'RESTURANT')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
                                     if($itemGroups){
@@ -1008,26 +1008,37 @@ class ApiController extends Controller
                                             $itemSubGroups      = DB::table('clubman_items')->select('SUBGROUP')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->distinct('SUBGROUP')->orderBy('SUBGROUP', 'ASC')->get();
                                             if($itemSubGroups){
                                                 foreach($itemSubGroups as $itemSubGroup){
+                                                    $ITEMS = [];
+                                                    $items = ClubmanItem::select('ITEMNAME', 'RATE', 'TAX', 'AMOUNT')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->where('SUBGROUP', '=', $itemSubGroup->SUBGROUP)->orderBy('ITEMNAME', 'ASC')->get();
+                                                    if($items){
+                                                        foreach($items as $item){
+                                                            $ITEMS[] = [
+                                                                'ITEMNAME'  => $item->ITEMNAME,
+                                                                'RATE'      => $item->RATE,
+                                                                'TAX'       => $item->TAX,
+                                                                'AMOUNT'    => $item->AMOUNT
+                                                            ];
+                                                        }
+                                                    }
                                                     $SUBGROUPS[]          = [
-                                                        'SUBGROUP' => $itemSubGroup->SUBGROUP,
+                                                        'SUBGROUP'  => $itemSubGroup->SUBGROUP,
+                                                        'ITEMS'     => $ITEMS
                                                     ];
                                                 }
                                             }
-                                            $item_list[]        = [
+                                            $item_complete_list[]        = [
                                                 'GROUPNAME' => $itemGroup->GROUPNAME,
-                                                'SUBGROUP'  => $SUBGROUPS,
+                                                'SUBGROUP'  => $SUBGROUPS
                                             ];
                                         }
                                     }
-                                    Helper::pr($item_list);
+                                    // Helper::pr($item_complete_list);
                                 } elseif($for_cat == 'RESTAURANT'){
                                     
                                 } elseif($for_cat == 'BEVERAGE'){
                                     
                                 }
-                                
-                                
-
+                                $apiResponse        = $item_complete_list;
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
