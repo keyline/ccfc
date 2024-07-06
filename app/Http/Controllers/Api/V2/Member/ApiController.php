@@ -1014,9 +1014,9 @@ class ApiController extends Controller
                                                         foreach($items as $item){
                                                             $ITEMS[] = [
                                                                 'ITEMNAME'  => $item->ITEMNAME,
-                                                                'RATE'      => $item->RATE,
-                                                                'TAX'       => $item->TAX,
-                                                                'AMOUNT'    => $item->AMOUNT
+                                                                'RATE'      => number_format($item->RATE,2),
+                                                                'TAX'       => number_format($item->TAX,2),
+                                                                'AMOUNT'    => number_format($item->AMOUNT,2)
                                                             ];
                                                         }
                                                     }
