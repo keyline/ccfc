@@ -59,13 +59,13 @@ class FrontendHome extends Controller
         if($items){
             foreach($items as $item){
                 $postData = [
-                    'CATEGORY'      => $item->CATEGORY,
-                    'GROUPNAME'     => $item->GROUPNAME,
-                    'SUBGROUP'      => $item->SUBGROUP,
-                    'ITEMNAME'      => $item->ITEMNAME,
-                    'RATE'          => $item->RATE,
-                    'TAX'           => $item->TAX,
-                    'AMOUNT'        => $item->AMOUNT
+                    'CATEGORY'      => $item['CATEGORY'],
+                    'GROUPNAME'     => $item['GROUPNAME'],
+                    'SUBGROUP'      => $item['SUBGROUP'],
+                    'ITEMNAME'      => $item['ITEMNAME'],
+                    'RATE'          => $item['RATE'],
+                    'TAX'           => $item['TAX'],
+                    'AMOUNT'        => $item['AMOUNT']
                 ];
                 ClubmanItem::insert($postData);
             }
