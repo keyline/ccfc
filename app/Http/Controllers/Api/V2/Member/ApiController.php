@@ -1067,7 +1067,7 @@ class ApiController extends Controller
                                 } elseif($for_cat == 'BEVERAGE'){
                                     
                                 }
-                                Helper::pr($item_complete_list);
+                                // Helper::pr($item_complete_list);
                                 $apiResponse        = $item_complete_list;
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
