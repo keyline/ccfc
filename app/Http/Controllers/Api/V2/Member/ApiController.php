@@ -1000,28 +1000,9 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $items = ClubmanItem::get();
+                                $items = DB::table('clubman_items')->select('GROUPNAME')->distinct('GROUPNAME')->get();
                                 Helper::pr($items);
-                                // $getCookingCats     = CookingCategory::select('id', 'name')->where('for_cat', '=', $for_cat)->where('status', '=', 1)->get();
-                                // if($getCookingCats){
-                                //     foreach($getCookingCats as $getCookingCat){
-                                //         $getCookingItems        = CookingItem::select('id', 'name', 'rate')->where('for_cat', '=', $for_cat)->where('status', '=', 1)->where('category_id', '=', $getCookingCat->id)->get();
-                                //         $category_items         = [];
-                                //         if($getCookingItems){
-                                //             foreach($getCookingItems as $getCookingItem){
-                                //                 $category_items[]         = [
-                                //                     'category_item_id'      => $getCookingItem->id,
-                                //                     'category_item_name'    => $getCookingItem->name,
-                                //                     'category_item_rate'    => $getCookingItem->rate,
-                                //                 ];
-                                //             }
-                                //         }
-                                //         $apiResponse[]          = [
-                                //             'category_name'     => $getCookingCat->name,
-                                //             'category_items'    => $category_items
-                                //         ];
-                                //     }
-                                // }
+                                
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
