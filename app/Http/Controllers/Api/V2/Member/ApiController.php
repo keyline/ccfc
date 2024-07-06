@@ -992,7 +992,6 @@ class ApiController extends Controller
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
-
                     $for_cat                    = $requestData['for_cat'];
                     if($getTokenValue['status']){
                         $uId                        = $getTokenValue['data'][1];
@@ -1000,8 +999,23 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $items = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '!=', 'DON GIOVANNIE')->where('SUBGROUP', '!=', 'RESTURANT')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
-                                Helper::pr($items);
+                                $item_list  = [];
+                                if($for_cat == 'CLUB KITCHEN'){
+                                    $items      = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '!=', 'DON GIOVANNIE')->where('SUBGROUP', '!=', 'RESTURANT')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
+                                    if($items){
+                                        foreach($items as $item){
+                                            $item_list[]  = [
+                                                'GROUPNAME' => $item->GROUPNAME
+                                            ];
+                                        }
+                                    }
+                                    Helper::pr($item_list);
+                                } elseif($for_cat == 'RESTAURANT'){
+                                    
+                                } elseif($for_cat == 'BEVERAGE'){
+                                    
+                                }
+                                
                                 
 
                                 $apiStatus          = TRUE;
