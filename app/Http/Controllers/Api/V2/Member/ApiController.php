@@ -1799,6 +1799,8 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
+                                $generalSettings    = GeneralSetting::find(1);
+                                $item_reporting_time_in_hrs = $generalSettings->item_reporting_time_in_hrs;
                                 $token = "5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn";
                                 /* bill details */
                                     $bill_details   = [];
@@ -1814,15 +1816,35 @@ class ApiController extends Controller
                                                 ->post($billUrl)->json()['data'];
                                     if($bills){
                                         foreach($bills as $bill){
-                                            $bill_details[] = [
+                                            $BILLDATE           = $bill['BILLDATE'];
+                                            $CURRENT_TIMESTAMP  = date('Y-m-d H:i:s');
+
+                                            // Create DateTime objects from the date and time strings
+                                            $date1 = new DateTime($BILLDATE);
+                                            $date2 = new DateTime($CURRENT_TIMESTAMP);
+
+                                            // Calculate the difference
+                                            $interval = $date1->diff($date2);
+
+                                            // Get the difference in hours
+                                            $hours = ($interval->days * 24) + $interval->h + ($interval->i / 60) + ($interval->s / 3600);
+                                            if($hours <= 72){
+                                                $IS_REPORT = 1;
+                                            } else {
+                                                $IS_REPORT = 0;
+                                            }
+
+
+                                            $bill_details[]     = [
                                                 'BILLDETAILS'       => $bill['BILLDETAILS'],
-                                                'BILLDATE'          => date_format(date_create($bill['BILLDATE']), "d-M-Y"),
+                                                'BILLDATE'          => date_format(date_create($bill['BILLDATE']), "d-M-Y h:i:s a"),
                                                 'ITEMDESC'          => $bill['ITEMDESC'],
                                                 'QTY'               => $bill['QTY'],
                                                 'RATE'              => number_format($bill['RATE'],2),
                                                 'AMOUNT'            => number_format($bill['AMOUNT'],2),
                                                 'TAXAMOUNT'         => number_format($bill['TAXAMOUNT'],2),
                                                 'BILLAMT'           => number_format($bill['BILLAMT'],2),
+                                                'IS_REPORT'         => $IS_REPORT
                                             ];
                                         }
                                     }
@@ -1864,7 +1886,7 @@ class ApiController extends Controller
                 $apiExtraData       = '';
                 $this->isJSON(file_get_contents('php://input'));
                 $requestData        = $this->extract_json(file_get_contents('php://input'));
-                $requiredFields     = ['billdetails', 'comments'];
+                $requiredFields     = ['billdetails', 'itemdesc', 'comments'];
                 $headerData         = $request->header();
                 if (!$this->validateArray($requiredFields, $requestData)){
                     $apiStatus          = FALSE;
@@ -1874,6 +1896,7 @@ class ApiController extends Controller
                     $app_access_token               = $headerData['authorization'][0];
                     $getTokenValue                  = $this->tokenAuth($app_access_token);
                     $billdetails                    = $requestData['billdetails'];
+                    $itemdesc                       = $requestData['itemdesc'];
                     $comments                       = $requestData['comments'];
                     if($getTokenValue['status']){
                         $uId                        = $getTokenValue['data'][1];
@@ -1885,6 +1908,7 @@ class ApiController extends Controller
                                     'user_id'       => $uId,
                                     'user_code'     => $checkUser->user_code,
                                     'billdetails'   => $billdetails,
+                                    'itemdesc'      => $itemdesc,
                                     'comments'      => $comments,
                                 ];
                                 BillReport::insert($postdata);
