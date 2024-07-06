@@ -23,6 +23,7 @@ use App\Models\CookingCategory;
 use App\Models\CookingItem;
 use App\Models\CookingDaySpecial;
 use App\Models\CookingDaySpecialImage;
+use App\Models\ClubmanItem;
 use App\Models\DeleteAccountRequest;
 use App\Models\GeneralSetting;
 use App\Models\MustRead;
@@ -999,7 +1000,8 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-
+                                $items = ClubmanItem::get();
+                                Helper::pr($items);
                                 // $getCookingCats     = CookingCategory::select('id', 'name')->where('for_cat', '=', $for_cat)->where('status', '=', 1)->get();
                                 // if($getCookingCats){
                                 //     foreach($getCookingCats as $getCookingCat){
@@ -1020,15 +1022,6 @@ class ApiController extends Controller
                                 //         ];
                                 //     }
                                 // }
-                                $token          = "5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn";
-                                $item_details   = [];
-                                $billUrl        = 'https://ccfcmemberdata.in/Api/POSItemDet/POST';
-                                $items          = Http::withoutVerifying()
-                                            ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                                                            'Content-Type' => 'application/json',])
-                                            ->withOptions(["verify" => false])
-                                            ->post($billUrl)->json()['data'];
-                                Helper::pr($items);
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);

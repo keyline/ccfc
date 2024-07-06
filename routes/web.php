@@ -278,6 +278,8 @@ Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'stor
 Route::get('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks']);
 Route::post('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks']);
 
+Route::get('/clubmanitemsinsertcron', [App\Http\Controllers\FrontendHome::class, 'clubmanitemsinsertcron']);
+
 // Route::redirect('/', '/login');
 
 // Route::get('/home', function () {
