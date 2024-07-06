@@ -1032,12 +1032,42 @@ class ApiController extends Controller
                                             ];
                                         }
                                     }
-                                    // Helper::pr($item_complete_list);
                                 } elseif($for_cat == 'RESTAURANT'){
-                                    
+                                    $itemGroups      = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'FOOD')->where('SUBGROUP', '=', 'RESTURANT')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
+                                    if($itemGroups){
+                                        foreach($itemGroups as $itemGroup){
+                                            $SUBGROUPS          = [];
+                                            $itemSubGroups      = DB::table('clubman_items')->select('SUBGROUP')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->distinct('SUBGROUP')->orderBy('SUBGROUP', 'ASC')->get();
+                                            if($itemSubGroups){
+                                                foreach($itemSubGroups as $itemSubGroup){
+                                                    $ITEMS = [];
+                                                    $items = ClubmanItem::select('ITEMNAME', 'RATE', 'TAX', 'AMOUNT')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->where('SUBGROUP', '=', $itemSubGroup->SUBGROUP)->orderBy('ITEMNAME', 'ASC')->get();
+                                                    if($items){
+                                                        foreach($items as $item){
+                                                            $ITEMS[] = [
+                                                                'ITEMNAME'  => $item->ITEMNAME,
+                                                                'RATE'      => number_format((float)$item->RATE,2),
+                                                                'TAX'       => number_format((float)$item->TAX,2),
+                                                                'AMOUNT'    => number_format((float)$item->AMOUNT,2)
+                                                            ];
+                                                        }
+                                                    }
+                                                    $SUBGROUPS[]          = [
+                                                        'SUBGROUP'  => $itemSubGroup->SUBGROUP,
+                                                        'ITEMS'     => $ITEMS
+                                                    ];
+                                                }
+                                            }
+                                            $item_complete_list[]        = [
+                                                'GROUPNAME' => $itemGroup->GROUPNAME,
+                                                'SUBGROUP'  => $SUBGROUPS
+                                            ];
+                                        }
+                                    }
                                 } elseif($for_cat == 'BEVERAGE'){
                                     
                                 }
+                                Helper::pr($item_complete_list);
                                 $apiResponse        = $item_complete_list;
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
