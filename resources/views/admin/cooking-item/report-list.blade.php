@@ -25,6 +25,7 @@
           <th>Name</th>
           <th>Member Code</th>
           <th>Bill Details</th>
+          <th>Item Description</th>
           <th>Comments</th>
           <th>Report Date/Time</th>
         </tr>
@@ -36,6 +37,7 @@
             <td><?=$row->name?></td>
             <td><?=$row->user_code?></td>
             <td><?=$row->billdetails?></td>
+            <td><?=$row->itemdesc?></td>
             <td><?=$row->comments?></td>
             <td><?=date_format(date_create($row->created_at), "M d, Y h:i A")?></td>
           </tr>

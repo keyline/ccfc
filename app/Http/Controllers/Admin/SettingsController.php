@@ -75,6 +75,7 @@ class SettingsController extends Controller
             'site_url'                      => $request->site_url,
             'site_address'                  => $request->site_address,
             'clubman_api_token'             => $request->clubman_api_token,
+            'item_reporting_time_in_hrs'    => $request->item_reporting_time_in_hrs,
             'site_timings'                  => $request->site_timings,
             'spa_booking_days'              => $request->spa_booking_days,
             'spa_booking_timings'           => $request->spa_booking_timings,

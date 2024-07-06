@@ -77,6 +77,12 @@
                       </div>
                     </div>
                     <div class="row mb-3">
+                      <label for="item_reporting_time_in_hrs" class="col-md-4 col-lg-3 col-form-label">Item Reporting Time (In Hours)</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="item_reporting_time_in_hrs" type="url" class="form-control" id="item_reporting_time_in_hrs" value="<?=$setting->item_reporting_time_in_hrs?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
                       <label for="site_timings" class="col-md-4 col-lg-3 col-form-label">Club Timings</label>
                       <div class="col-md-8 col-lg-9">
                         <textarea name="site_timings" class="form-control" id="site_timings" rows="5"><?=$setting->site_timings?></textarea>
