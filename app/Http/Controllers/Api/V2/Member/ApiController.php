@@ -2141,7 +2141,7 @@ class ApiController extends Controller
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
                                 $currentDate = date('Y-m-d');
-                                $mustReads          = MustRead::select('title', 'description', 'is_popup', 'popup_validity_date', 'popup_validity_time', 'created_at')->where('status', '=', 1)->where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
+                                $mustReads          = MustRead::select('title', 'description', 'is_popup', 'popup_validity_date', 'popup_validity_time', 'created_at')->where('status', '=', 1)->where('popup_validity_date', '>=', $currentDate)->orderBy('id', 'DESC')->get();
                                 if($mustReads){
                                     foreach($mustReads as $mustRead){
                                         $apiResponse[] = [
