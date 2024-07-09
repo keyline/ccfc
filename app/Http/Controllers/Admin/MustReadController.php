@@ -48,8 +48,8 @@ class MustReadController extends Controller
                 if($postData['is_popup']){
                     $fields = [
                         'is_popup'                              => 0,
-                        'popup_validity_date'                   => '',
-                        'popup_validity_time'                   => '',
+                        'popup_validity_date'                   => date_format(date_create($postData['popup_validity_date']), "Y-m-d"),
+                        'popup_validity_time'                   => date_format(date_create($postData['popup_validity_time']), "H:i:s"),
                     ];
                     MustRead::where('id', '!=', $id)->update($fields);
                 }
@@ -83,8 +83,8 @@ class MustReadController extends Controller
                 if($postData['is_popup']){
                     $fields = [
                         'is_popup'                              => 0,
-                        'popup_validity_date'                   => '',
-                        'popup_validity_time'                   => '',
+                        'popup_validity_date'                   => date_format(date_create($postData['popup_validity_date']), "Y-m-d"),
+                        'popup_validity_time'                   => date_format(date_create($postData['popup_validity_time']), "H:i:s"),
                     ];
                     MustRead::where('id', '!=', $id)->update($fields);
                 }
