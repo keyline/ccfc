@@ -48,11 +48,12 @@ class CircularController extends Controller
      */
     public function store(Request $request)
     {
-        $circular = new circular;
-        $circular->day = $request->input('day');
-        $circular->month = $request->input('month');
-        $circular->details_1 = $request->input('circular_details1');
-        $circular->details_2 = $request->input('circular_details2');
+        $circular               = new circular;
+        $circular->day          = $request->input('day');
+        $circular->month        = $request->input('month');
+        $circular->details_1    = $request->input('circular_details1');
+        $circular->details_2    = $request->input('circular_details2');
+        $event->validity        = $request->input('validity');
 
         if($request->hasfile('circularimage')){
 
@@ -128,10 +129,11 @@ class CircularController extends Controller
     {
         $circular = circular::find($id);
         
-        $circular->day = $request->input('day');
-        $circular->month = $request->input('month');
-        $circular->details_1 = $request->input('circular_details1');
-        $circular->details_2 = $request->input('circular_details2');
+        $circular->day          = $request->input('day');
+        $circular->month        = $request->input('month');
+        $circular->details_1    = $request->input('circular_details1');
+        $circular->details_2    = $request->input('circular_details2');
+        $event->validity        = $request->input('validity');
 
         if($request->hasfile('circularimage')){
 
