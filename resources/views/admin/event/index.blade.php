@@ -86,9 +86,7 @@
                         <td>
                             {!! $value->details_2 !!}
                         </td>
-                        <td>
-                            <?=(($value->validity != '')?date_format(date_create($value->validity), "d-M-Y"):'')?>
-                        </td>
+                        
                         <td>
                             <img src="{{ asset('uploads/enentimg/'.$value->event_image)}}" width="100px" height="100px"
                                 alt="">
@@ -99,7 +97,9 @@
                             <img src="{{ asset('uploads/enentimg/'.$value->event_image_2)}}" width="100px"
                                 height="100px" alt="">
                         </td>
-
+                        <td>
+                            <?=(($value->validity != '')?date_format(date_create($value->validity), "d-M-Y"):'')?>
+                        </td>
                         <td>
                             <a href="{{ url('admin/create/edit-event/'.$value->id)}}"
                                 class="btn btn-primary btn-sm">Edit</a>
