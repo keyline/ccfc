@@ -79,5 +79,6 @@ Route::prefix('v2')->group(function () {
         Route::post('member/billingdetail', [ApiController::class,'billingDetail'])->name('api.v2.member.billingdetail.billingDetail');
         Route::post('member/billingreport', [ApiController::class,'billingReport'])->name('api.v2.member.billingreport.billingReport');
         Route::post('member/payuresponse', [ApiController::class,'payuResponse'])->name('api.v2.member.payuresponse.payuResponse');
+        Route::get('member/notification', [ApiController::class,'notification'])->name('api.v2.member.notification.notification');
     /* after login */
 });
