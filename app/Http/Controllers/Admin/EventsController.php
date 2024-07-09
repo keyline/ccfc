@@ -44,12 +44,13 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        $event = new Events;
-        $event->day = $request->input('day');        
-        $event->month = $request->input('month');
-        $event->event_name = $request->input('event_name');
-        $event->details_1 = $request->input('event_details1');
-        $event->details_2 = $request->input('event_details2');
+        $event              = new Events;
+        $event->day         = $request->input('day');        
+        $event->month       = $request->input('month');
+        $event->event_name  = $request->input('event_name');
+        $event->details_1   = $request->input('event_details1');
+        $event->details_2   = $request->input('event_details2');
+        $event->validity    = $request->input('validity');
 
         if($request->hasfile('enentimage')){
 
@@ -119,13 +120,14 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $event = Events::find($id);
+        $event              = Events::find($id);
         
-        $event->day = $request->input('day');
-        $event->month = $request->input('month');
-        $event->event_name = $request->input('event_name');
-        $event->details_1 = $request->input('event_details1');
-        $event->details_2 = $request->input('event_details2');
+        $event->day         = $request->input('day');
+        $event->month       = $request->input('month');
+        $event->event_name  = $request->input('event_name');
+        $event->details_1   = $request->input('event_details1');
+        $event->details_2   = $request->input('event_details2');
+        $event->validity    = $request->input('validity');
 
         if($request->hasfile('eventimage')){
 

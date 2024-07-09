@@ -48,7 +48,9 @@
                         <th>
                             Event Image
                         </th>
-
+                        <th>
+                            Event Validity
+                        </th>
                         <th>
                             Edit
                         </th>
@@ -84,7 +86,9 @@
                         <td>
                             {!! $value->details_2 !!}
                         </td>
-
+                        <td>
+                            <?=(($value->validity != '')?date_format(date_create($value->validity), "d-M-Y"):'')?>
+                        </td>
                         <td>
                             <img src="{{ asset('uploads/enentimg/'.$value->event_image)}}" width="100px" height="100px"
                                 alt="">

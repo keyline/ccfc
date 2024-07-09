@@ -65,7 +65,10 @@
                 <input type="file" name="event_image_2" class="form-control">
 
             </div>
-
+            <div class="form-group">
+                <label for="validity">Event Validity</label>
+                <input type="date" name="validity" class="form-control" id="validity" required>
+            </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     Save
