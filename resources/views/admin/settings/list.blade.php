@@ -107,6 +107,18 @@
                       </div>
                     </div>
                     <div class="row mb-3">
+                      <label for="gym_booking_phone1" class="col-md-4 col-lg-3 col-form-label">Gym Booking Phone 1</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="gym_booking_phone1" type="text" class="form-control" id="gym_booking_phone1" value="<?=$setting->gym_booking_phone1?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="gym_booking_phone2" class="col-md-4 col-lg-3 col-form-label">Gym Booking Phone 2</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="gym_booking_phone2" type="text" class="form-control" id="gym_booking_phone2" value="<?=$setting->gym_booking_phone2?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
                       <label for="theme_color" class="col-md-4 col-lg-3 col-form-label">Theme Color</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="theme_color" type="color" class="form-control" id="theme_color" value="<?=$setting->theme_color?>">

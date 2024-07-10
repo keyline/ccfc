@@ -36,6 +36,7 @@ use App\Models\SpaBookingTracking;
 use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserDevice;
+use App\Models\Gallery;
 
 use Tzsk\Payu\Concerns\Attributes;
 use Tzsk\Payu\Concerns\Customer;
@@ -1463,21 +1464,66 @@ class ApiController extends Controller
                                                     ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
                                                     ->where(['content_categories.slug' => 'day spa'])
                                                     ->first();
+
                                     if($staticPage){
+                                        $gallery        = Gallery::find(39);
+                                        $sideImages     = [];
+                                        if($gallery){
+                                            $model_id = $gallery->model_id;
+                                            $getImages = DB::table('media')->select('id', 'file_name')->where('model_id', '=', $model_id)->get();
+                                            if($getImages){
+                                                foreach($getImages as $getImage){
+                                                    $sideImages[]     = url('/storage/'.$getImage->id.'/'.$getImage->file_name);
+                                                }
+                                            }
+                                        }
                                         $apiResponse    = [
                                             'category_name'     => $staticPage->category_name,
                                             'title'             => $staticPage->title,
                                             'page_text'         => $staticPage->page_text,
                                             'is_call_button'    => 1,
+                                            'side_images'       => $sideImages,
                                             'booking'           => [
-                                                'days'      => $generalSettings->spa_booking_days,
-                                                'timings'   => $generalSettings->spa_booking_timings,
-                                                'phone'     => $generalSettings->spa_booking_phone,
+                                                'days'              => $generalSettings->spa_booking_days,
+                                                'timings'           => $generalSettings->spa_booking_timings,
+                                                'phone1'            => $generalSettings->spa_booking_phone,
+                                                'phone2'            => '',
                                             ]
                                         ];
                                     }
                                 } elseif($facility_type == 'GYM'){
-                                    
+                                    $staticPage         = DB::table('content_category_content_page')
+                                                    ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
+                                                    ->join('content_categories','content_categories.id','=','content_category_content_page.content_category_id')
+                                                    ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
+                                                    ->where(['content_categories.slug' => 'gymming rejuvenated'])
+                                                    ->first();
+                                    $contentBlock    = ContentBlock::find(4);
+                                    if($staticPage){
+                                        $gallery        = Gallery::find(9);
+                                        $sideImages     = [];
+                                        if($gallery){
+                                            $model_id = $gallery->model_id;
+                                            $getImages = DB::table('media')->select('id', 'file_name')->where('model_id', '=', $model_id)->get();
+                                            if($getImages){
+                                                foreach($getImages as $getImage){
+                                                    $sideImages[]     = url('/storage/'.$getImage->id.'/'.$getImage->file_name);
+                                                }
+                                            }
+                                        }
+                                        $apiResponse    = [
+                                            'category_name'     => $staticPage->category_name,
+                                            'title'             => $staticPage->title,
+                                            'page_text'         => $staticPage->page_text,
+                                            'is_call_button'    => 1,
+                                            'side_images'       => $sideImages,
+                                            'booking'           => [
+                                                'timings'           => (($contentBlock)?$contentBlock->body:''),
+                                                'phone1'            => $generalSettings->gym_booking_phone1,
+                                                'phone2'            => $generalSettings->gym_booking_phone2,
+                                            ]
+                                        ];
+                                    }
                                 } elseif($facility_type == 'SWIMMING'){
                                     $staticPage         = DB::table('content_category_content_page')
                                                     ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
@@ -1487,20 +1533,33 @@ class ApiController extends Controller
                                                     ->first();
                                     $contentBlock    = ContentBlock::find(7);
                                     if($staticPage){
+                                        $gallery        = Gallery::find(12);
+                                        $sideImages     = [];
+                                        if($gallery){
+                                            $model_id = $gallery->model_id;
+                                            $getImages = DB::table('media')->select('id', 'file_name')->where('model_id', '=', $model_id)->get();
+                                            if($getImages){
+                                                foreach($getImages as $getImage){
+                                                    $sideImages[]     = url('/storage/'.$getImage->id.'/'.$getImage->file_name);
+                                                }
+                                            }
+                                        }
                                         $apiResponse    = [
                                             'category_name'     => $staticPage->category_name,
                                             'title'             => $staticPage->title,
                                             'page_text'         => $staticPage->page_text,
-                                            'is_call_button'    => 1,
+                                            'is_call_button'    => 0,
+                                            'side_images'       => $sideImages,
                                             'booking'           => [
-                                                'timings'   => (($contentBlock)?$contentBlock->body:'')
+                                                'timings'           => (($contentBlock)?$contentBlock->body:''),
+                                                'phone1'            => '',
+                                                'phone2'            => '',
                                             ]
                                         ];
                                     }
                                 } elseif($facility_type == 'TENNIS'){
                                     
                                 }
-                                
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);

@@ -80,6 +80,8 @@ class SettingsController extends Controller
             'spa_booking_days'              => $request->spa_booking_days,
             'spa_booking_timings'           => $request->spa_booking_timings,
             'spa_booking_phone'             => $request->spa_booking_phone,
+            'gym_booking_phone1'            => $request->gym_booking_phone1,
+            'gym_booking_phone2'            => $request->gym_booking_phone2,
             'theme_color'                   => $request->theme_color,
             'font_color'                    => $request->font_color,
             'twitter_profile'               => $request->twitter_profile,
