@@ -17,6 +17,7 @@ use pcrov\JsonReader\JsonReader;
 
 use App\Models\BillReport;
 use App\Models\circular;
+use App\Models\Event;
 use App\Models\Contact;
 use App\Models\Contactlist;
 use App\Models\CookingCategory;
@@ -1563,15 +1564,30 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $notices          = circular::orderBy('id', 'DESC')->get();
-                                if($notices){
-                                    foreach($notices as $notice){
+                                // $notices          = circular::orderBy('id', 'DESC')->get();
+                                // if($notices){
+                                //     foreach($notices as $notice){
+                                //         $apiResponse[] = [
+                                //             'title'                 => 'CIRCULAR',
+                                //             'details_1'             => $notice->details_1,
+                                //             'day'                   => $notice->day,
+                                //             'month'                 => $notice->month,
+                                //             'circular_image'        => env('UPLOADS_URL').'circularimg/'.$notice->circular_image,
+                                //             'posted_by'             => 'CCFC',
+                                //         ];
+                                //     }
+                                // }
+                                $events          = Event::orderBy('id', 'DESC')->get();
+                                if($events){
+                                    foreach($events as $event){
                                         $apiResponse[] = [
-                                            'title'                 => 'CIRCULAR',
-                                            'details_1'             => $notice->details_1,
-                                            'day'                   => $notice->day,
-                                            'month'                 => $notice->month,
-                                            'circular_image'        => env('UPLOADS_URL').'circularimg/'.$notice->circular_image,
+                                            'title'                 => $event->event_name,
+                                            'details_1'             => $event->details_1,
+                                            'details_2'             => $event->details_2,
+                                            'day'                   => $event->day,
+                                            'month'                 => $event->month,
+                                            'event_image'           => env('UPLOADS_URL').'enentimg/'.$event->event_image,
+                                            'event_image_2'         => env('UPLOADS_URL').'enentimg/'.$event->event_image_2,
                                             'posted_by'             => 'CCFC',
                                         ];
                                     }
