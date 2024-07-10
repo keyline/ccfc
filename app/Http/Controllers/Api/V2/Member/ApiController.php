@@ -1096,6 +1096,38 @@ class ApiController extends Controller
                                             ];
                                         }
                                     }
+                                } elseif($for_cat == 'ICE CREAM'){
+                                    $itemGroups      = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'ICE CREAM')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
+                                    if($itemGroups){
+                                        foreach($itemGroups as $itemGroup){
+                                            $SUBGROUPS          = [];
+                                            $itemSubGroups      = DB::table('clubman_items')->select('SUBGROUP')->where('CATEGORY', '=', 'ICE CREAM')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->distinct('SUBGROUP')->orderBy('SUBGROUP', 'ASC')->get();
+                                            if($itemSubGroups){
+                                                foreach($itemSubGroups as $itemSubGroup){
+                                                    $ITEMS = [];
+                                                    $items = ClubmanItem::select('ITEMNAME', 'RATE', 'TAX', 'AMOUNT')->where('CATEGORY', '=', 'ICE CREAM')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->where('SUBGROUP', '=', $itemSubGroup->SUBGROUP)->orderBy('ITEMNAME', 'ASC')->get();
+                                                    if($items){
+                                                        foreach($items as $item){
+                                                            $ITEMS[] = [
+                                                                'ITEMNAME'  => $item->ITEMNAME,
+                                                                'RATE'      => number_format((float)$item->RATE,2),
+                                                                'TAX'       => number_format((float)$item->TAX,2),
+                                                                'AMOUNT'    => number_format((float)$item->AMOUNT,2)
+                                                            ];
+                                                        }
+                                                    }
+                                                    $SUBGROUPS[]          = [
+                                                        'SUBGROUP'  => $itemSubGroup->SUBGROUP,
+                                                        'ITEMS'     => $ITEMS
+                                                    ];
+                                                }
+                                            }
+                                            $item_complete_list[]        = [
+                                                'GROUPNAME' => $itemGroup->GROUPNAME,
+                                                'SUBGROUP'  => $SUBGROUPS
+                                            ];
+                                        }
+                                    }
                                 }
                                 // Helper::pr($item_complete_list);
                                 $apiResponse        = $item_complete_list;
