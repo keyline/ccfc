@@ -1537,7 +1537,7 @@ class ApiController extends Controller
                                         $sideImages     = [];
                                         if($gallery){
                                             $model_id = $gallery->model_id;
-                                            $getImages = DB::table('media')->select('id', 'file_name')->where('model_id', '=', $model_id)->where('model_type', '=', 'App\Models\Gallery')->get();
+                                            $getImages = DB::table('media')->select('id', 'file_name')->where(['model_id' => $model_id, 'model_type' => 'App\Models\Gallery'])->get();
                                             Helper::pr($getImages);
                                             if($getImages){
                                                 foreach($getImages as $getImage){
