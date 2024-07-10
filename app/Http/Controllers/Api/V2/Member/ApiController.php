@@ -1564,19 +1564,6 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                // $notices          = circular::orderBy('id', 'DESC')->get();
-                                // if($notices){
-                                //     foreach($notices as $notice){
-                                //         $apiResponse[] = [
-                                //             'title'                 => 'CIRCULAR',
-                                //             'details_1'             => $notice->details_1,
-                                //             'day'                   => $notice->day,
-                                //             'month'                 => $notice->month,
-                                //             'circular_image'        => env('UPLOADS_URL').'circularimg/'.$notice->circular_image,
-                                //             'posted_by'             => 'CCFC',
-                                //         ];
-                                //     }
-                                // }
                                 $currentDate        = date('Y-m-d');
                                 $events             = Events::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
                                 if($events){
@@ -1645,20 +1632,27 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $mustReads          = MustRead::select('title', 'description', 'is_popup', 'popup_validity_date', 'popup_validity_time', 'created_at')->where('status', '=', 1)->orderBy('id', 'DESC')->get();
-                                if($mustReads){
-                                    foreach($mustReads as $mustRead){
-                                        $apiResponse[] = [
-                                            'title'                 => $mustRead->title,
-                                            'description'           => $mustRead->description,
-                                            'is_popup'              => $mustRead->is_popup,
-                                            'popup_validity_date'   => $mustRead->popup_validity_date,
-                                            'popup_validity_time'   => $mustRead->popup_validity_time,
-                                            'popup_validity'        => $mustRead->popup_validity_date.' '.$mustRead->popup_validity_time,
-                                            'created_at'            => Helper::time_ago($mustRead->created_at),
+                                $circulars          = [];
+                                $ruleRegulation     = [];
+                                $currentDate        = date('Y-m-d');
+                                $notices            = circular::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
+                                if($notices){
+                                    foreach($notices as $notice){
+                                        $circulars[] = [
+                                            'title'                 => 'CIRCULAR',
+                                            'details_1'             => $notice->details_1,
+                                            'day'                   => $notice->day,
+                                            'month'                 => $notice->month,
+                                            'circular_image'        => env('UPLOADS_URL').'circularimg/'.$notice->circular_image,
+                                            'posted_by'             => 'CCFC',
                                         ];
                                     }
                                 }
+
+                                $apiResponse        = [
+                                    'circulars'         => $circulars,
+                                    'ruleRegulation'    => $ruleRegulation,
+                                ];
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
