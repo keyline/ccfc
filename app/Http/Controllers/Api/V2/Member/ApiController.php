@@ -1634,20 +1634,38 @@ class ApiController extends Controller
                             if($checkUser->status == 'ACTIVE'){
                                 $circulars          = [];
                                 $ruleRegulation     = [];
-                                $currentDate        = date('Y-m-d');
-                                $notices            = circular::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
-                                if($notices){
-                                    foreach($notices as $notice){
-                                        $circulars[] = [
-                                            'title'                 => 'CIRCULAR',
-                                            'details_1'             => $notice->details_1,
-                                            'day'                   => $notice->day,
-                                            'month'                 => $notice->month,
-                                            'circular_image'        => env('UPLOADS_URL').'circularimg/'.$notice->circular_image,
-                                            'posted_by'             => 'CCFC',
+                                /* circulars */
+                                    $currentDate        = date('Y-m-d');
+                                    $notices            = circular::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
+                                    if($notices){
+                                        foreach($notices as $notice){
+                                            $circulars[] = [
+                                                'title'                 => 'CIRCULAR',
+                                                'details_1'             => $notice->details_1,
+                                                'day'                   => $notice->day,
+                                                'month'                 => $notice->month,
+                                                'circular_image'        => env('UPLOADS_URL').'circularimg/'.$notice->circular_image,
+                                                'posted_by'             => 'CCFC',
+                                            ];
+                                        }
+                                    }
+                                /* circulars */
+                                /* rules & regulations */
+                                    $page_slug          = 'Rules regulation';
+                                    $staticPage         = DB::table('content_category_content_page')
+                                                    ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
+                                                    ->join('content_categories','content_categories.id','=','content_category_content_page.content_category_id')
+                                                    ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
+                                                    ->where(['content_categories.slug' => $page_slug])
+                                                    ->first();
+                                    if($staticPage){
+                                        $ruleRegulation    = [
+                                            'category_name' => $staticPage->category_name,
+                                            'title'         => $staticPage->title,
+                                            'page_text'     => $staticPage->page_text,
                                         ];
                                     }
-                                }
+                                /* rules & regulations */
 
                                 $apiResponse        = [
                                     'circulars'         => $circulars,
