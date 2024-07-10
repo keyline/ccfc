@@ -1534,6 +1534,7 @@ class ApiController extends Controller
                                     $contentBlock    = ContentBlock::find(7);
                                     if($staticPage){
                                         $gallery        = Gallery::find(12);
+                                        echo '<pre>';print_r($gallery);die;
                                         $sideImages     = [];
                                         if($gallery){
                                             echo $model_id = $gallery->model_id;die;
