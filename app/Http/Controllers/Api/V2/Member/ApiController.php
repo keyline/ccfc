@@ -1469,7 +1469,7 @@ class ApiController extends Controller
                                         $gallery        = Gallery::find(39);
                                         $sideImages     = [];
                                         if($gallery){
-                                            $model_id = $gallery->model_id;
+                                            $model_id = $gallery->id;
                                             $getImages = DB::table('media')->select('id', 'file_name')->where('model_id', '=', $model_id)->get();
                                             if($getImages){
                                                 foreach($getImages as $getImage){
@@ -1503,7 +1503,7 @@ class ApiController extends Controller
                                         $gallery        = Gallery::find(9);
                                         $sideImages     = [];
                                         if($gallery){
-                                            $model_id = $gallery->model_id;
+                                            $model_id = $gallery->id;
                                             $getImages = DB::table('media')->select('id', 'file_name')->where('model_id', '=', $model_id)->get();
                                             if($getImages){
                                                 foreach($getImages as $getImage){
@@ -1534,14 +1534,10 @@ class ApiController extends Controller
                                     $contentBlock    = ContentBlock::find(7);
                                     if($staticPage){
                                         $gallery        = Gallery::find(12);
-                                        echo '<pre>';print_r($gallery);die;
                                         $sideImages     = [];
                                         if($gallery){
-                                            echo $model_id = $gallery->model_id;die;
-                                            DB::enableQueryLog();
+                                            $model_id = $gallery->id;
                                             $getImages = DB::table('media')->select('id', 'file_name')->where(['model_id' => $model_id, 'model_type' => 'App\Models\Gallery'])->get();
-
-                                            echo '<pre>';print_r($getImages);die;
                                             if($getImages){
                                                 foreach($getImages as $getImage){
                                                     $sideImages[]     = url('/storage/'.$getImage->id.'/'.$getImage->file_name);
