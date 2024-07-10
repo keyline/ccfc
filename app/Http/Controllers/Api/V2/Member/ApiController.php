@@ -17,7 +17,7 @@ use pcrov\JsonReader\JsonReader;
 
 use App\Models\BillReport;
 use App\Models\circular;
-use App\Models\Event;
+use App\Models\Events;
 use App\Models\Contact;
 use App\Models\Contactlist;
 use App\Models\CookingCategory;
@@ -1577,7 +1577,8 @@ class ApiController extends Controller
                                 //         ];
                                 //     }
                                 // }
-                                $events          = Event::orderBy('id', 'DESC')->get();
+                                $currentDate        = date('Y-m-d');
+                                $events             = Events::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
                                 if($events){
                                     foreach($events as $event){
                                         $apiResponse[] = [
