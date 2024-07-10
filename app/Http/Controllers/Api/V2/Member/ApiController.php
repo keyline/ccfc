@@ -1443,7 +1443,7 @@ class ApiController extends Controller
                     $app_access_token               = $headerData['authorization'][0];
                     $getTokenValue                  = $this->tokenAuth($app_access_token);
                     $facility_type                  = $requestData['facility_type'];
-                    Helper::pr($requestData);
+                    // Helper::pr($requestData);
                     if($getTokenValue['status']){
                         $uId                        = $getTokenValue['data'][1];
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
@@ -1453,7 +1453,25 @@ class ApiController extends Controller
                                 $generalSettings    = GeneralSetting::find(1);
 
                                 if($facility_type == 'SPA'){
-
+                                    $staticPage         = DB::table('content_category_content_page')
+                                                    ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
+                                                    ->join('content_categories','content_categories.id','=','content_category_content_page.content_category_id')
+                                                    ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
+                                                    ->where(['content_categories.slug' => 'day spa'])
+                                                    ->first();
+                                    if($staticPage){
+                                        $apiResponse    = [
+                                            'category_name'     => $staticPage->category_name,
+                                            'title'             => $staticPage->title,
+                                            'page_text'         => $staticPage->page_text,
+                                            'is_call_button'    => 1,
+                                            'spa_booking'       => [
+                                                'days'      => $generalSettings->spa_booking_days,
+                                                'timings'   => $generalSettings->spa_booking_timings,
+                                                'phone'     => $generalSettings->spa_booking_phone,
+                                            ]
+                                        ];
+                                    }
                                 } elseif($facility_type == 'GYM'){
                                     
                                 } elseif($facility_type == 'SWIMMING'){
@@ -1461,24 +1479,7 @@ class ApiController extends Controller
                                 } elseif($facility_type == 'TENNIS'){
                                     
                                 }
-                                $staticPage         = DB::table('content_category_content_page')
-                                                ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
-                                                ->join('content_categories','content_categories.id','=','content_category_content_page.content_category_id')
-                                                ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
-                                                ->where(['content_categories.slug' => 'day spa'])
-                                                ->first();
-                                if($staticPage){
-                                    $apiResponse    = [
-                                        'category_name'     => $staticPage->category_name,
-                                        'title'             => $staticPage->title,
-                                        'page_text'         => $staticPage->page_text,
-                                        'spa_booking'       => [
-                                            'days'      => $generalSettings->spa_booking_days,
-                                            'timings'   => $generalSettings->spa_booking_timings,
-                                            'phone'     => $generalSettings->spa_booking_phone,
-                                        ]
-                                    ];
-                                }
+                                
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
