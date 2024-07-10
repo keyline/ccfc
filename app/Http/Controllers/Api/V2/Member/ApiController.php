@@ -1536,7 +1536,7 @@ class ApiController extends Controller
                                         $gallery        = Gallery::find(12);
                                         $sideImages     = [];
                                         if($gallery){
-                                            echo model_id = $gallery->model_id;die;
+                                            echo $model_id = $gallery->model_id;die;
                                             DB::enableQueryLog();
                                             $getImages = DB::table('media')->select('id', 'file_name')->where(['model_id' => $model_id, 'model_type' => 'App\Models\Gallery'])->get();
 
