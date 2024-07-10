@@ -24,6 +24,10 @@ use App\Models\CookingCategory;
 use App\Models\CookingItem;
 use App\Models\CookingDaySpecial;
 use App\Models\CookingDaySpecialImage;
+use App\Models\ContentBlock;
+use App\Models\ContentCategory;
+use App\Models\ContentPage;
+use App\Models\ContentTag;
 use App\Models\ClubmanItem;
 use App\Models\DeleteAccountRequest;
 use App\Models\GeneralSetting;
@@ -1465,7 +1469,7 @@ class ApiController extends Controller
                                             'title'             => $staticPage->title,
                                             'page_text'         => $staticPage->page_text,
                                             'is_call_button'    => 1,
-                                            'spa_booking'       => [
+                                            'booking'           => [
                                                 'days'      => $generalSettings->spa_booking_days,
                                                 'timings'   => $generalSettings->spa_booking_timings,
                                                 'phone'     => $generalSettings->spa_booking_phone,
@@ -1475,7 +1479,24 @@ class ApiController extends Controller
                                 } elseif($facility_type == 'GYM'){
                                     
                                 } elseif($facility_type == 'SWIMMING'){
-                                    
+                                    $staticPage         = DB::table('content_category_content_page')
+                                                    ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
+                                                    ->join('content_categories','content_categories.id','=','content_category_content_page.content_category_id')
+                                                    ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
+                                                    ->where(['content_categories.slug' => 'swimming pool'])
+                                                    ->first();
+                                    $contentBlock    = ContentBlock::find(7);
+                                    if($staticPage){
+                                        $apiResponse    = [
+                                            'category_name'     => $staticPage->category_name,
+                                            'title'             => $staticPage->title,
+                                            'page_text'         => $staticPage->page_text,
+                                            'is_call_button'    => 1,
+                                            'booking'           => [
+                                                'timings'   => (($contentBlock)?$contentBlock->body:'')
+                                            ]
+                                        ];
+                                    }
                                 } elseif($facility_type == 'TENNIS'){
                                     
                                 }
