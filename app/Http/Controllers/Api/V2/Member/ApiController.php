@@ -1558,7 +1558,38 @@ class ApiController extends Controller
                                         ];
                                     }
                                 } elseif($facility_type == 'TENNIS'){
-                                    
+                                    $staticPage         = DB::table('content_category_content_page')
+                                                    ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
+                                                    ->join('content_categories','content_categories.id','=','content_category_content_page.content_category_id')
+                                                    ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
+                                                    ->where(['content_categories.slug' => 'tennis'])
+                                                    ->first();
+                                    $contentBlock    = ContentBlock::find(8);
+                                    if($staticPage){
+                                        $gallery        = Gallery::find(12);
+                                        $sideImages     = [];
+                                        if($gallery){
+                                            $model_id = $gallery->id;
+                                            $getImages = DB::table('media')->select('id', 'file_name')->where(['model_id' => $model_id, 'model_type' => 'App\Models\Gallery'])->get();
+                                            if($getImages){
+                                                foreach($getImages as $getImage){
+                                                    $sideImages[]     = url('/storage/'.$getImage->id.'/'.$getImage->file_name);
+                                                }
+                                            }
+                                        }
+                                        $apiResponse    = [
+                                            'category_name'     => $staticPage->category_name,
+                                            'title'             => $staticPage->title,
+                                            'page_text'         => $staticPage->page_text,
+                                            'is_call_button'    => 0,
+                                            'side_images'       => $sideImages,
+                                            'booking'           => [
+                                                'timings'           => (($contentBlock)?$contentBlock->body:''),
+                                                'phone1'            => '',
+                                                'phone2'            => '',
+                                            ]
+                                        ];
+                                    }
                                 }
 
                                 $apiStatus          = TRUE;
