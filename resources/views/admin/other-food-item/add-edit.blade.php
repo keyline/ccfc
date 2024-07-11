@@ -3,7 +3,7 @@
 @can('content_block_create')
 <div style="margin-bottom: 10px;" class="row">
     <div class="col-lg-12">
-        <h3><?=((empty($row))?'Add':'Edit')?> Cooking Day Special</h3>
+        <h3><?=((empty($row))?'Add':'Edit')?> Other Food Items</h3>
     </div>
 </div>
 @endcan
@@ -17,17 +17,13 @@
   <div class="card-body">
     <?php
     if($row){
-      $menu_date        = $row->menu_date;
-      $title            = $row->title;
-      $description      = $row->description;
-      $image_name       = $row->image_name;
-      $image_link       = $row->image_link;
+      $name             = $row->name;
+      $validity         = $row->validity;
+      $food_image       = $row->food_image;
     } else {
-      $menu_date        = '';
-      $title            = '';
-      $description      = '';
-      $image_name       = '';
-      $image_link       = '';
+      $name             = '';
+      $validity         = '';
+      $food_image       = '';
     }
     ?>
     <form method="POST" action="" id="imageForm" enctype="multipart/form-data">
