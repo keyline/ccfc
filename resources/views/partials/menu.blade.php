@@ -581,6 +581,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?=url('admin/create/otherfooditemlist')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Other Food Items
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?=url('admin/create/spabookingtrackinglist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>

@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\CookingCategoryController;
 use App\Http\Controllers\Admin\CookingItemController;
 use App\Http\Controllers\Admin\CookingDaySpecialController;
 use App\Http\Controllers\Admin\MustReadController;
+use App\Http\Controllers\Admin\OtherFoodItemController;
 // use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
@@ -443,6 +444,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
     Route::post('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
     Route::get('create/delete-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'destroy']);
+
+    Route::get('create/otherfooditemlist', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'index'])->name('otherfooditemlist');
+    Route::get('create/add-otherfooditemlist', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'add']);
+    Route::post('create/add-otherfooditemlist', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'add']);
+    Route::get('create/edit-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'edit']);
+    Route::post('create/edit-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'edit']);
+    Route::get('create/delete-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'destroy']);
     
     Route::get('create/deleteaccountrequests', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequests'])->name('deleteaccountrequests');
     Route::get('create/action-deleteaccountrequests/{id}/{id2}', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequestsAction']);

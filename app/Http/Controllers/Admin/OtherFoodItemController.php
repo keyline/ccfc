@@ -1,0 +1,112 @@
+<?php
+namespace App\Http\Controllers\Admin;
+use App\Models\GeneralSetting;
+use App\Models\OtherFoodItem;
+
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use App\Helpers\Helper;
+
+class OtherFoodItemController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $setting    = GeneralSetting::find(1);
+        $rows       = OtherFoodItem::where('status', '!=', 3)->orderBy('id', 'DESC')->get();
+        return view('admin.other-food-item.list',compact('setting', 'rows'));
+    }
+    public function add(Request $request)
+    {
+        $setting    = GeneralSetting::find(1);
+        $row        = [];
+        if($request->isMethod('post')){
+            $postData = $request->all();
+            $rules = [
+                'name'                         => 'required',
+                'validity'                     => 'required',
+            ];
+            if($this->validate($request, $rules)){
+                /* image */
+                    $imageFile      = $request->file('food_image');
+                    if($imageFile != ''){
+                        $imageName      = $imageFile->getClientOriginalName();
+                        $uploadedFile   = $this->upload_single_file('food_image', $imageName, '', 'image');
+                        if($uploadedFile['status']){
+                            $food_image = $uploadedFile['newFilename'];
+                        } else {
+                            return redirect()->back()->with(['error_message' => $uploadedFile['message']]);
+                        }
+                    } else {
+                        return redirect()->back()->with(['error_message' => 'Please upload image']);
+                    }
+                /* image */
+                $fields = [
+                    'name'                          => $postData['name'],
+                    'validity'                      => date_format(date_create($postData['validity']), "Y-m-d"),
+                    'food_image'                    => $food_image,
+                ];
+                // Helper::pr($fields);
+                OtherFoodItem::insert($fields);
+                return redirect("admin/create/otherfooditemlist")->with('success_message', 'Other Food Item Inserted Successfully !!!');
+            } else {
+                return redirect()->back()->with('error_message', 'All Fields Required !!!');
+            }
+        }
+        return view('admin.other-food-item.add-edit',compact('setting', 'row'));
+    }
+    public function edit(Request $request, $id)
+    {
+        $setting    = GeneralSetting::find(1);
+        $row        = OtherFoodItem::where('id', '=', $id)->first();
+        if($request->isMethod('post')){
+            $postData = $request->all();
+            $rules = [
+                'name'                         => 'required',
+                'validity'                     => 'required',
+            ];
+            if($this->validate($request, $rules)){
+                /* image */
+                    $imageFile      = $request->file('food_image');
+                    if($imageFile != ''){
+                        $imageName      = $imageFile->getClientOriginalName();
+                        $uploadedFile   = $this->upload_single_file('food_image', $imageName, '', 'image');
+                        if($uploadedFile['status']){
+                            $food_image = $uploadedFile['newFilename'];
+                        } else {
+                            return redirect()->back()->with(['error_message' => $uploadedFile['message']]);
+                        }
+                    } else {
+                        $food_image = $row->food_image;
+                    }
+                /* image */
+                $fields = [
+                    'name'                          => $postData['name'],
+                    'validity'                      => date_format(date_create($postData['validity']), "Y-m-d"),
+                    'food_image'                    => $food_image,
+                ];
+                OtherFoodItem::where('id', '=', $id)->update($fields);
+                return redirect("admin/create/otherfooditemlist")->with('success_message', 'Other Food Item Updated Successfully !!!');
+            } else {
+                return redirect()->back()->with('error_message', 'All Fields Required !!!');
+            }
+        }
+        return view('admin.other-food-item.add-edit',compact('setting', 'row'));
+    }
+    public function destroy($id)
+    {
+        $fields = [
+            'status'               => 3
+        ];
+        OtherFoodItem::where('id', '=', $id)->update($fields);
+        return redirect("admin/create/otherfooditemlist")->with('success_message', 'Cooking Day Special Deleted Successfully !!!');
+    }
+}
