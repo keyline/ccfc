@@ -37,6 +37,7 @@ use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserDevice;
 use App\Models\Gallery;
+use App\Models\OtherFoodItem;
 
 use Tzsk\Payu\Concerns\Attributes;
 use Tzsk\Payu\Concerns\Customer;
@@ -1102,40 +1103,18 @@ class ApiController extends Controller
                                             ];
                                         }
                                     }
-                                } elseif($for_cat == 'ICE CREAM'){
-                                    $itemGroups      = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'ICE CREAM')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
-                                    if($itemGroups){
-                                        foreach($itemGroups as $itemGroup){
-                                            $SUBGROUPS          = [];
-                                            $itemSubGroups      = DB::table('clubman_items')->select('SUBGROUP')->where('CATEGORY', '=', 'ICE CREAM')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->distinct('SUBGROUP')->orderBy('SUBGROUP', 'ASC')->get();
-                                            if($itemSubGroups){
-                                                foreach($itemSubGroups as $itemSubGroup){
-                                                    $ITEMS = [];
-                                                    $items = ClubmanItem::select('ITEMNAME', 'RATE', 'TAX', 'AMOUNT')->where('CATEGORY', '=', 'ICE CREAM')->where('GROUPNAME', '=', $itemGroup->GROUPNAME)->where('SUBGROUP', '=', $itemSubGroup->SUBGROUP)->orderBy('ITEMNAME', 'ASC')->get();
-                                                    if($items){
-                                                        foreach($items as $item){
-                                                            $ITEMS[] = [
-                                                                'ITEMNAME'  => $item->ITEMNAME,
-                                                                'RATE'      => number_format((float)$item->RATE,2),
-                                                                'TAX'       => number_format((float)$item->TAX,2),
-                                                                'AMOUNT'    => number_format((float)$item->AMOUNT,2)
-                                                            ];
-                                                        }
-                                                    }
-                                                    $SUBGROUPS[]          = [
-                                                        'SUBGROUP'  => $itemSubGroup->SUBGROUP,
-                                                        'ITEMS'     => $ITEMS
-                                                    ];
-                                                }
-                                            }
+                                } elseif($for_cat == 'OTHER FOOD'){
+                                    $currentDate        = date('Y-m-d');
+                                    $otherFoodItems         = OtherFoodItem::select('name', 'food_image')->where('status', '=', 1)->where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
+                                    if($otherFoodItems){
+                                        foreach($otherFoodItems as $otherFoodItem){
                                             $item_complete_list[]        = [
-                                                'GROUPNAME' => $itemGroup->GROUPNAME,
-                                                'SUBGROUP'  => $SUBGROUPS
+                                                'name'          => $otherFoodItem->name,
+                                                'food_image'    => env('UPLOADS_URL').$otherFoodItem->food_image
                                             ];
                                         }
                                     }
                                 }
-                                // Helper::pr($item_complete_list);
                                 $apiResponse        = $item_complete_list;
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
