@@ -648,19 +648,12 @@ Route::group([
 
 
     Route::get('/events_members_only', function () {
-        $galleries = Gallery::with(['media'])->get();
-
-        $contentPages = ContentPage::all();
-
-        $event = Events::orderBy('id', 'DESC')->get();
-
+        $galleries          = Gallery::with(['media'])->get();
+        $contentPages       = ContentPage::all();
+        $currentDate        = date('Y-m-d');
+        $event              = Events::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
         return view('events_members_only', compact(['galleries','contentPages','event']));
     })->name('events_members_only');
-
-
-
-
-
 
     Route::get('/1792-newsletter', function () {
         $galleries = Gallery::with(['media'])->get();
@@ -675,14 +668,10 @@ Route::group([
     })->name('1792-newsletter');
 
     Route::get('/notice-circulars', function () {
-        $galleries = Gallery::with(['media'])->get();
-
-        $contentPages = ContentPage::all();
-
-        // $circular = circular::all();
-
-        $circular = circular::orderBy('id', 'DESC')->get();
-
+        $galleries          = Gallery::with(['media'])->get();
+        $contentPages       = ContentPage::all(); 
+        $currentDate        = date('Y-m-d');
+        $circular           = circular::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
         return view('notice-circulars', compact(['galleries','contentPages','circular']));
     })->name('notice-circulars');
 
