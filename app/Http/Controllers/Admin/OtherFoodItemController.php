@@ -53,6 +53,8 @@ class OtherFoodItemController extends Controller
                     'name'                          => $postData['name'],
                     'validity'                      => date_format(date_create($postData['validity']), "Y-m-d"),
                     'food_image'                    => $food_image,
+                    'created_at'                    => date('Y-m-d H:i:s'),
+                    'updated_at'                    => date('Y-m-d H:i:s'),
                 ];
                 // Helper::pr($fields);
                 OtherFoodItem::insert($fields);
@@ -92,6 +94,8 @@ class OtherFoodItemController extends Controller
                     'name'                          => $postData['name'],
                     'validity'                      => date_format(date_create($postData['validity']), "Y-m-d"),
                     'food_image'                    => $food_image,
+                    'created_at'                    => date('Y-m-d H:i:s'),
+                    'updated_at'                    => date('Y-m-d H:i:s'),
                 ];
                 OtherFoodItem::where('id', '=', $id)->update($fields);
                 return redirect("admin/create/otherfooditemlist")->with('success_message', 'Other Food Item Updated Successfully !!!');
