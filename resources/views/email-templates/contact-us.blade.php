@@ -28,11 +28,11 @@ $generalSetting    = GeneralSetting::find(1);
                 <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;"><?=$name?></td> 
             </tr>
              <tr>
-                <td valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;"><a href="#" style="color: #000000; text-decoration: none;">Your Email :</a></td>
+                <td valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;"><a href="#" style="color: #000000; text-decoration: none;">Email :</a></td>
                 <td valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;"><?=$email?></td> 
             </tr>
             <tr>
-                <td valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;"><a href="#" style="color: #000000; text-decoration: none;">Your Phone :</a></td>
+                <td valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;"><a href="#" style="color: #000000; text-decoration: none;">Phone :</a></td>
                 <td valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$phone?></td> 
             </tr>
             <tr>

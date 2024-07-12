@@ -977,7 +977,7 @@ class ApiController extends Controller
                                     $generalSettings    = GeneralSetting::find(1);
                                     $subject            = $generalSettings->site_name.' :: Contact Enquiry';
                                     $message            = view('email-templates.contact-us',$mailData);
-                                    echo $message;die;
+                                    // echo $message;die;
                                     $this->sendMail($generalSettings->system_email, $subject, $message);
                                 /* send email */
 
