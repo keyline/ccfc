@@ -978,7 +978,7 @@ class ApiController extends Controller
                                     $subject            = $generalSettings->site_name.' :: Contact Enquiry';
                                     $message            = view('email-templates.contact-us',$mailData);
                                     // echo $message;die;
-                                    $this->sendMail($generalSettings->system_email, $subject, $message);
+                                    $this->sendMail($senderEmail, $subject, $message);
                                 /* send email */
 
                                 $apiStatus          = TRUE;
@@ -2342,6 +2342,19 @@ class ApiController extends Controller
                                             'body'     => "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours."
                                         );
                                         // Notification::send($user, new PayUEmailNotification($emailInfo));
+                                        
+                                        $mailData                   = [
+                                            'name'                  => $user->name,
+                                            'transaction_id'        => $txn_id,
+                                            'amount'                => $amount
+                                        ];
+                                        /* send email */
+                                            $generalSettings    = GeneralSetting::find(1);
+                                            $subject            = $generalSettings->site_name.' :: Payment Success';
+                                            $message            = view('email-templates.payment-success',$mailData);
+                                            // echo $message;die;
+                                            $this->sendMail($checkUser->email, $subject, $message);
+                                        /* send email */
                                     }
                                 }
 
