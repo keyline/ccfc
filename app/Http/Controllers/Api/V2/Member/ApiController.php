@@ -2228,7 +2228,7 @@ class ApiController extends Controller
                 $apiExtraData       = '';
                 $this->isJSON(file_get_contents('php://input'));
                 $requestData        = $this->extract_json(file_get_contents('php://input'));
-                $requiredFields     = ['billdetails', 'itemdesc', 'comments'];
+                $requiredFields     = ['billdetails', 'itemdesc', 'comments', 'qty', 'bill_date'];
                 $headerData         = $request->header();
                 if (!$this->validateArray($requiredFields, $requestData)){
                     $apiStatus          = FALSE;
@@ -2239,7 +2239,9 @@ class ApiController extends Controller
                     $getTokenValue                  = $this->tokenAuth($app_access_token);
                     $billdetails                    = $requestData['billdetails'];
                     $itemdesc                       = $requestData['itemdesc'];
+                    $qty                            = $requestData['qty'];
                     $comments                       = $requestData['comments'];
+                    $bill_date                      = $requestData['bill_date'];
                     if($getTokenValue['status']){
                         $uId                        = $getTokenValue['data'][1];
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
@@ -2251,9 +2253,29 @@ class ApiController extends Controller
                                     'user_code'     => $checkUser->user_code,
                                     'billdetails'   => $billdetails,
                                     'itemdesc'      => $itemdesc,
+                                    'qty'           => $qty,
                                     'comments'      => $comments,
+                                    'bill_date'     => $bill_date,
                                 ];
                                 BillReport::insert($postdata);
+
+                                $mailData                   = [
+                                    'created_at'        => date('d-m-Y'),
+                                    'billdetails'       => $billdetails,
+                                    'itemdesc'          => $itemdesc,
+                                    'qty'               => $qty,
+                                    'comments'          => $comments,
+                                    'bill_date'         => $bill_date,
+                                    'name'              => $checkUser->name,
+                                    'email'             => $checkUser->email,
+                                ];
+                                /* send email */
+                                    $generalSettings    = GeneralSetting::find(1);
+                                    $subject            = $generalSettings->site_name.' :: Payment Success';
+                                    $message            = view('email-templates.bill-details',$mailData);
+                                    // echo $message;die;
+                                    $this->sendMail($checkUser->email, $subject, $message);
+                                /* send email */
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
@@ -2342,7 +2364,7 @@ class ApiController extends Controller
                                             'body'     => "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours."
                                         );
                                         // Notification::send($user, new PayUEmailNotification($emailInfo));
-                                        
+
                                         $mailData                   = [
                                             'name'                  => $user->name,
                                             'transaction_id'        => $txn_id,
