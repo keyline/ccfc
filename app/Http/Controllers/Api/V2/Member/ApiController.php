@@ -116,7 +116,7 @@ class ApiController extends Controller
                             $subject            = $generalSettings->site_name.' :: OTP For Signin';
                             $message            = view('email-templates.otp',$mailData);
                             // echo $message;die;
-                            $this->sendMail($getUser->email, $subject, $message);
+                            $this->sendMail($generalSettings->system_email, $subject, $message);
                         /* send email */
                         
                         $apiResponse                        = $mailData;
@@ -321,7 +321,7 @@ class ApiController extends Controller
                             $subject            = $generalSettings->site_name.' :: OTP For Signin';
                             $message            = view('email-templates.otp',$mailData);
                             // echo $message;die;
-                            $this->sendMail($getUser->email, $subject, $message);
+                            $this->sendMail($generalSettings->system_email, $subject, $message);
                         /* send email */
                         /* send sms */
                             $message = "Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%20".$otp.".%20Valid%20for%202%20minutes.";
@@ -436,7 +436,7 @@ class ApiController extends Controller
                             $subject            = $generalSettings->site_name.' :: OTP For Signin';
                             $message            = view('email-templates.otp',$mailData);
                             // echo $message;die;
-                            $this->sendMail($getUser->email, $subject, $message);
+                            $this->sendMail($generalSettings->system_email, $subject, $message);
                         /* send email */
                         /* send sms */
                             $message = "Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%20".$otp.".%20Valid%20for%202%20minutes.";
