@@ -48,7 +48,7 @@ class Controller extends BaseController
         if (!empty($file)) :
             $mailLibrary->AddAttachment($file);
         endif;
-
+        Helper::pr($mailLibrary);
         return (!$mailLibrary->send()) ? false : true;
     }
     // send sms
