@@ -114,7 +114,7 @@ class ApiController extends Controller
                         /* send email */
                             $generalSettings    = GeneralSetting::find(1);
                             $subject            = $generalSettings->site_name.' :: OTP For Signin';
-                            $message            = view('email-templates/otp',$mailData);
+                            $message            = view('email-templates.otp',$mailData);
                             echo $message;die;
                             $this->sendMail($getUser->email, $subject, $message);
                         /* send email */
