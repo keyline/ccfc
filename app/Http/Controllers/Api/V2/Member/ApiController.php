@@ -313,13 +313,16 @@ class ApiController extends Controller
                         $mailData                   = [
                             'id'    => $checkUser->id,
                             'email' => $checkUser->email,
-                            'otp'   => $otp
+                            'phone' => $checkUser->phone_number_1,
+                            'otp'   => $otp,
                         ];
-                        // $subject                    = 'CCFC :: Forgot Password OTP';
-                        // $message                    = view('email-template/otp',$mailData);
-                        // echo $message;die;
-                        // $this->sendMail($requestData['email'], $subject, $message);
-
+                        /* send email */
+                            $generalSettings    = GeneralSetting::find(1);
+                            $subject            = $generalSettings->site_name.' :: OTP For Signin';
+                            $message            = view('email-templates.otp',$mailData);
+                            // echo $message;die;
+                            $this->sendMail($getUser->email, $subject, $message);
+                        /* send email */
                         /* send sms */
                             $message = "Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%20".$otp.".%20Valid%20for%202%20minutes.";
                             $mobileNo = (($checkUser)?$checkUser->phone_number_1:'');
@@ -425,13 +428,16 @@ class ApiController extends Controller
                         $mailData                   = [
                             'id'    => $checkUser->id,
                             'email' => $checkUser->email,
-                            'otp'   => $otp
+                            'phone' => $checkUser->phone_number_1,
+                            'otp'   => $otp,
                         ];
-                        // $subject                    = 'CCFC :: Forgot Password OTP';
-                        // $message                    = view('email-template/otp',$mailData);
-                        // echo $message;die;
-                        // $this->sendMail($requestData['email'], $subject, $message);
-
+                        /* send email */
+                            $generalSettings    = GeneralSetting::find(1);
+                            $subject            = $generalSettings->site_name.' :: OTP For Signin';
+                            $message            = view('email-templates.otp',$mailData);
+                            // echo $message;die;
+                            $this->sendMail($getUser->email, $subject, $message);
+                        /* send email */
                         /* send sms */
                             $message = "Dear%20User%2C%0AOTP%20for%20logging%20in%20to%20the%20CC%26FC%20app%20is%20".$otp.".%20Valid%20for%202%20minutes.";
                             $mobileNo = (($checkUser)?$checkUser->phone_number_1:'');
