@@ -18,7 +18,7 @@ use App\Helpers\Helper;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    protected function sendMail($email, $fromEmail = '', $fromName = '', $subject, $message, $file = '')
+    protected function sendMail($email, $subject, $message, $file = '')
     {
         $generalSetting             = GeneralSetting::find('1');
         $mailLibrary                = new PHPMailer(true);
@@ -31,8 +31,8 @@ class Controller extends BaseController
         $mailLibrary->Username      = $generalSetting->smtp_username;
         $mailLibrary->Password      = $generalSetting->smtp_password;
         $mailLibrary->SMTPSecure    = 'ssl';
-        $mailLibrary->From          = (($fromEmail == '')?$generalSetting->from_email:$fromEmail);
-        $mailLibrary->FromName      = (($fromName == '')?$generalSetting->from_name:$fromName);
+        $mailLibrary->From          = $generalSetting->from_email;
+        $mailLibrary->FromName      = $generalSetting->from_name;
         $mailLibrary->AddReplyTo($generalSetting->from_email, $generalSetting->from_name);
         if (is_array($email)) :
             foreach ($email as $eml) :
