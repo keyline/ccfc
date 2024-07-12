@@ -966,6 +966,20 @@ class ApiController extends Controller
                                     $senderName         = $departments[1];
                                     // $this->sendMail('subhomoy@keylines.net', $senderEmail, $senderName, $subject, $message);
                                 /* mail send */
+                                $mailData                   = [
+                                    'name'          => $name,
+                                    'email'         => $postemail,
+                                    'phone'         => $phone,
+                                    'message'       => $message,
+                                    'department'    => $senderName,
+                                ];
+                                /* send email */
+                                    $generalSettings    = GeneralSetting::find(1);
+                                    $subject            = $generalSettings->site_name.' :: Contact Enquiry';
+                                    $message            = view('email-templates.contact-us',$mailData);
+                                    // echo $message;die;
+                                    $this->sendMail($generalSettings->system_email, $subject, $message);
+                                /* send email */
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
