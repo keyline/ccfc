@@ -20,36 +20,47 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     protected function sendMail($email, $subject, $message, $file = '')
     {
-        $generalSetting             = GeneralSetting::find('1');
-        $mailLibrary                = new PHPMailer(true);
-        $mailLibrary->CharSet       = 'UTF-8';
-        $mailLibrary->SMTPDebug     = 0;
-        //$mailLibrary->IsSMTP();
-        $mailLibrary->Host          = $generalSetting->smtp_host;
-        $mailLibrary->SMTPAuth      = true;
-        $mailLibrary->Port          = $generalSetting->smtp_port;
-        $mailLibrary->Username      = $generalSetting->smtp_username;
-        $mailLibrary->Password      = $generalSetting->smtp_password;
-        $mailLibrary->SMTPSecure    = 'tls';
-        $mailLibrary->From          = $generalSetting->from_email;
-        $mailLibrary->FromName      = $generalSetting->from_name;
-        $mailLibrary->AddReplyTo($generalSetting->from_email, $generalSetting->from_name);
-        if (is_array($email)) :
-            foreach ($email as $eml) :
-                $mailLibrary->addAddress($eml);
-            endforeach;
-        else :
-            $mailLibrary->addAddress($email);
-        endif;
-        $mailLibrary->WordWrap      = 5000;
-        $mailLibrary->Subject       = $subject;
-        $mailLibrary->Body          = $message;
-        $mailLibrary->isHTML(true);
-        if (!empty($file)) :
-            $mailLibrary->AddAttachment($file);
-        endif;
-        // Helper::pr($mailLibrary);
-        return (!$mailLibrary->send()) ? false : true;
+        try {
+            $generalSetting             = GeneralSetting::find('1');
+            $mailLibrary                = new PHPMailer(true);
+            $mailLibrary->CharSet       = 'UTF-8';
+            $mailLibrary->SMTPDebug     = 0;
+            //$mailLibrary->IsSMTP();
+            $mailLibrary->Host          = $generalSetting->smtp_host;
+            $mailLibrary->SMTPAuth      = true;
+            $mailLibrary->Port          = $generalSetting->smtp_port;
+            $mailLibrary->Username      = $generalSetting->smtp_username;
+            $mailLibrary->Password      = $generalSetting->smtp_password;
+            $mailLibrary->SMTPSecure    = 'tls';
+            $mailLibrary->From          = $generalSetting->from_email;
+            $mailLibrary->FromName      = $generalSetting->from_name;
+            $mailLibrary->AddReplyTo($generalSetting->from_email, $generalSetting->from_name);
+            if (is_array($email)) :
+                foreach ($email as $eml) :
+                    $mailLibrary->addAddress($eml);
+                endforeach;
+            else :
+                $mailLibrary->addAddress($email);
+            endif;
+            $mailLibrary->WordWrap      = 5000;
+            $mailLibrary->Subject       = $subject;
+            $mailLibrary->Body          = $message;
+            $mailLibrary->isHTML(true);
+            if (!empty($file)) :
+                $mailLibrary->AddAttachment($file);
+            endif;
+            // Helper::pr($mailLibrary);
+            // return (!$mailLibrary->send()) ? false : true;
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            // Log the error message
+            error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+
+            // Print the error message for debugging
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            return false;
+        }
     }
     // send sms
         public function sendSMS($mobileNo,$messageBody){
