@@ -60,7 +60,7 @@ class Controller extends BaseController
             error_log("Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}");
 
             // Print the error message for debugging
-            echo "Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}";
+            echo "Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}";die;
             return false;
         }
     }
