@@ -43,7 +43,7 @@ class Controller extends BaseController
             // else :
             //     $mailLibrary->addAddress($email);
             // endif;
-            $mailLibrary->addAddress('subhomoysamanta1989@gmail.com', 'Subhomoy Samanta');     // Add a recipient
+            $mailLibrary->addAddress('subhomoy@keylines.net', 'Subhomoy Samanta');     // Add a recipient
             $mailLibrary->WordWrap      = 5000;
             $mailLibrary->Subject       = $subject;
             $mailLibrary->Body          = $message;
@@ -60,7 +60,7 @@ class Controller extends BaseController
             error_log("Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}");
 
             // Print the error message for debugging
-            echo "Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}";die;
+            echo "Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}";
             return false;
         }
     }
