@@ -36,14 +36,14 @@ class Controller extends BaseController
             $mailLibrary->From          = $generalSetting->from_email;
             $mailLibrary->FromName      = $generalSetting->from_name;
             $mailLibrary->AddReplyTo($generalSetting->from_email, $generalSetting->from_name);
-            // if (is_array($email)) :
-            //     foreach ($email as $eml) :
-            //         $mailLibrary->addAddress($eml);
-            //     endforeach;
-            // else :
-            //     $mailLibrary->addAddress($email);
-            // endif;
-            $mailLibrary->addAddress('subhomoy@keylines.net', 'Subhomoy Samanta');     // Add a recipient
+            if (is_array($email)) :
+                foreach ($email as $eml) :
+                    $mailLibrary->addAddress($eml);
+                endforeach;
+            else :
+                $mailLibrary->addAddress($email);
+            endif;
+            // $mailLibrary->addAddress('subhomoy@keylines.net', 'Subhomoy Samanta');     // Add a recipient
             $mailLibrary->WordWrap      = 5000;
             $mailLibrary->Subject       = $subject;
             $mailLibrary->Body          = $message;
