@@ -162,8 +162,11 @@ class SettingsController extends Controller
             $subject            = $generalSettings->site_name.' :: test Email '.date('Y-m-d H:i:s');
             $message            = "This is for testing email using smtp.";
             // echo $message;die;
-            $this->sendMail($generalSettings->system_email, $subject, $message);
-            return redirect()->to('admin/create/settinglist')->with('status','Test Email Send Successfully');
+            if($this->sendMail($generalSettings->system_email, $subject, $message)){
+                return redirect()->to('admin/create/settinglist')->with('status','Test Email Send Successfully');
+            } else {
+                return redirect()->to('admin/create/settinglist')->with('error_message','Test Email Not Send Successfully');
+            }
         /* send email */
     }
 }
