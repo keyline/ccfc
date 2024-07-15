@@ -2274,7 +2274,7 @@ class ApiController extends Controller
                                     $subject            = $generalSettings->site_name.' :: Payment Success';
                                     $message            = view('email-templates.bill-details',$mailData);
                                     // echo $message;die;
-                                    $this->sendMail($checkUser->email, $subject, $message);
+                                    $this->sendMail($checkUser->account_email, $subject, $message);
                                 /* send email */
 
                                 $apiStatus          = TRUE;
