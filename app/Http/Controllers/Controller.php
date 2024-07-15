@@ -20,9 +20,10 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     protected function sendMail($email, $subject, $message, $file = '')
     {
+        $mailLibrary                = new PHPMailer(true);
         try {
             $generalSetting             = GeneralSetting::find('1');
-            $mailLibrary                = new PHPMailer(true);
+            
             $mailLibrary->CharSet       = 'UTF-8';
             $mailLibrary->SMTPDebug     = 0;
             //$mailLibrary->IsSMTP();
@@ -51,14 +52,14 @@ class Controller extends BaseController
             endif;
             // Helper::pr($mailLibrary);
             // return (!$mailLibrary->send()) ? false : true;
-            $mail->send();
+            $mailLibrary->send();
             return true;
         } catch (Exception $e) {
             // Log the error message
-            error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+            error_log("Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}");
 
             // Print the error message for debugging
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            echo "Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}";
             return false;
         }
     }
