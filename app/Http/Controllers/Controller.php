@@ -43,7 +43,7 @@ class Controller extends BaseController
             // else :
             //     $mailLibrary->addAddress($email);
             // endif;
-            $mailLibrary->addAddress('subhomoy@keylines.net', 'Subhomoy Samanta');     // Add a recipient
+            $mailLibrary->addAddress('subhomoysamanta1989@gmail.com', 'Subhomoy Samanta');     // Add a recipient
             $mailLibrary->WordWrap      = 5000;
             $mailLibrary->Subject       = $subject;
             $mailLibrary->Body          = $message;
