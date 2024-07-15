@@ -50,7 +50,7 @@ class Controller extends BaseController
             if (!empty($file)) :
                 $mailLibrary->AddAttachment($file);
             endif;
-            // Helper::pr($mailLibrary);
+            Helper::pr($mailLibrary);
             // return (!$mailLibrary->send()) ? false : true;
             $mailLibrary->send();
             return true;
