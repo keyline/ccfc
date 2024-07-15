@@ -59,6 +59,12 @@
                       </div>
                     </div>
                     <div class="row mb-3">
+                      <label for="account_email" class="col-md-4 col-lg-3 col-form-label">Accounts Email</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="account_email" type="email" class="form-control" id="account_email" value="<?=$setting->account_email?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
                       <label for="site_url" class="col-md-4 col-lg-3 col-form-label">Site URL</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="site_url" type="url" class="form-control" id="site_url" value="<?=$setting->site_url?>">

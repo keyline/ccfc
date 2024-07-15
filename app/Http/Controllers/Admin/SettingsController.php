@@ -72,6 +72,7 @@ class SettingsController extends Controller
             'site_phone'                    => $request->site_phone,
             'site_mail'                     => $request->site_mail,
             'system_email'                  => $request->system_email,
+            'account_email'                 => $request->account_email,
             'site_url'                      => $request->site_url,
             'site_address'                  => $request->site_address,
             'clubman_api_token'             => $request->clubman_api_token,
