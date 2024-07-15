@@ -156,4 +156,14 @@ class SettingsController extends Controller
         DeleteAccountRequest::where('id', '=', $id)->update($fields);
         return redirect("admin/create/deleteaccountrequests")->with('success_message', 'Delete Account Request ' . $msg . ' Successfully !!!');
     }
+    public function sendTestEmail(){
+        /* send email */
+            $generalSettings    = GeneralSetting::find(1);
+            $subject            = $generalSettings->site_name.' :: test Email '.date('Y-m-d H:i:s');
+            $message            = "This is for testing email using smtp.";
+            // echo $message;die;
+            $this->sendMail($generalSettings->system_email, $subject, $message);
+            return redirect()->to('admin/create/settinglist')->with('status','Test Email Send Successfully');
+        /* send email */
+    }
 }

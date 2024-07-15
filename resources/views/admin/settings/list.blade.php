@@ -25,9 +25,9 @@
             <li class="nav-item">
                 <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Email</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" id="pills-seo-tab" data-toggle="pill" href="#pills-seo" role="tab" aria-controls="pills-seo" aria-selected="false">SEO</a>
-            </li>
+            </li> -->
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -290,6 +290,7 @@
                     </div>
                 </form>
               <!-- End email settings Form -->
+              <a class="btn btn-success btn-sm" href="<?=url('admin/create/sendtestemail')?>">Test Email</a>
             </div>
             <div class="tab-pane fade" id="pills-seo" role="tabpanel" aria-labelledby="pills-seo-tab">
                 <!-- seo settings Form -->
