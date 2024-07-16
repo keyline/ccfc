@@ -55,9 +55,9 @@ class Controller extends BaseController
                 $mailLibrary->AddAttachment($file);
             endif;
             // Helper::pr($mailLibrary);
-            return (!$mailLibrary->send()) ? false : true;
-            // $mailLibrary->send();
-            // return true;
+            // return (!$mailLibrary->send()) ? false : true;
+            $mailLibrary->send();
+            return true;
         } catch (Exception $e) {
             // Log the error message
             // error_log("Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}");
