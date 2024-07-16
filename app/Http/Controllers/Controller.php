@@ -101,7 +101,7 @@ class Controller extends BaseController
 
         return $response;
     }
-    public function sendCommonPushNotification($token, $title, $body, $type = ''){
+    public function sendCommonPushNotification($token, $title, $body, $type = '', $image = ''){
         try {
             // $credentialsPath = public_path('uploads/ccfc-83373-firebase-adminsdk-qauj0-66a7cd8a2f.json'); // Replace with the path to your service account JSON file
             // echo $credentialsPath;die;
@@ -123,18 +123,34 @@ class Controller extends BaseController
             $accessToken = $this->getAccessToken($credentialsArray);
 
             // Define your message payload
-            $message = [
-                'message' => [
-                    'token' => $token, // Replace with the recipient device token
-                    'data' => [
-                        'type' => $type
-                    ],
-                    'notification' => [
-                        'title' => $title,
-                        'body' => $body
+            if($image != ''){
+                $message = [
+                    'message' => [
+                        'token' => $token, // Replace with the recipient device token
+                        'data' => [
+                            'type' => $type
+                        ],
+                        'notification' => [
+                            'title' => $title,
+                            'body'  => $body,
+                            'image' => $image
+                        ]
                     ]
-                ]
-            ];
+                ];
+            } else {
+                $message = [
+                    'message' => [
+                        'token' => $token, // Replace with the recipient device token
+                        'data' => [
+                            'type' => $type
+                        ],
+                        'notification' => [
+                            'title' => $title,
+                            'body'  => $body
+                        ]
+                    ]
+                ];
+            }
 
             // Send FCM message
             $response = $this->sendFCMMessage($accessToken, $projectId, $message);

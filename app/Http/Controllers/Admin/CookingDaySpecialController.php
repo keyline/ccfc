@@ -59,6 +59,19 @@ class CookingDaySpecialController extends Controller
                 // Helper::pr($fields);
                 CookingDaySpecial::insert($fields);
                 $menu_date = $postData['menu_date'];
+                /* push notification */
+                    $title              = 'A New Day Special Menu Has Been Uploaded Of ' . $postData['menu_date'];
+                    $body               = $postData['title'];
+                    $image              = env('UPLOADS_URL').$image_name;
+                    $type               = 'day_special';
+                    $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+                    $tokens             = [];
+                    if($getUserFCMTokens){
+                        foreach($getUserFCMTokens as $getUserFCMToken){
+                            $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type, $image);
+                        }
+                    }
+                /* push notification */
                 return redirect("admin/create/dayspeciallist")->with('success_message', 'Cooking Day Special Inserted Successfully For ' . $menu_date . ' !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
