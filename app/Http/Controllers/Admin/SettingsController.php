@@ -180,7 +180,7 @@ class SettingsController extends Controller
             $client = new Client();
             $client->setAuthConfig($credentialsPath);
             $client->addScope('https://www.googleapis.com/auth/cloud-platform');
-            $client->setAccessType('offline');
+            $client->setAccessType('online');
 
             $client->fetchAccessTokenWithAssertion();
 
