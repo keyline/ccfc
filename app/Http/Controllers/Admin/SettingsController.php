@@ -177,10 +177,10 @@ class SettingsController extends Controller
     }
     /* send push notification */
         public function sendTestPushNotification(){
-            $token  = 'fMHT0VEyTBWvB3zBONkLFE:APA91bH1RbrQ4aMrHSbqZBXBeYVMuay5MUW1t32UDQ3hxAtprWd_YFpBxOlHwITJOPpnkgTlqZgMu4XY_JrEMX0Y4Y9mg20eMBdAmGV7V1xBuoPuBtjRtrjvRalAvisiIlkPtd60n6RW';
-            $title  = 'Hi push notification';
-            $body   = 'World subhomoy joydeep ccfc ' . date('Y-m-d H:i:s');
-            $this->sendCommonPushNotification($token, $title, $body);
+            $token      = 'fMHT0VEyTBWvB3zBONkLFE:APA91bH1RbrQ4aMrHSbqZBXBeYVMuay5MUW1t32UDQ3hxAtprWd_YFpBxOlHwITJOPpnkgTlqZgMu4XY_JrEMX0Y4Y9mg20eMBdAmGV7V1xBuoPuBtjRtrjvRalAvisiIlkPtd60n6RW';
+            $title      = 'Hi push notification';
+            $body       = 'World subhomoy joydeep ccfc ' . date('Y-m-d H:i:s');
+            $response   = $this->sendCommonPushNotification($token, $title, $body);
             return redirect()->to('admin/create/settinglist')->with('status', "Response: " . $response);
         }
     /* send push notification */
