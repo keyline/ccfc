@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\GeneralSetting;
 use App\Models\CookingDaySpecial;
 use App\Models\CookingDaySpecialImage;
+use App\Models\UserDevice;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
