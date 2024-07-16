@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Events;
+use App\Models\UserDevice;
 
 use Illuminate\Http\Request;
 

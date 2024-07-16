@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\circular;
+use App\Models\UserDevice;
 
 use Illuminate\Http\Request;
 
