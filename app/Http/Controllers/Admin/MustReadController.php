@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Models\GeneralSetting;
 use App\Models\MustRead;
+use App\Models\UserDevice;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -53,6 +54,17 @@ class MustReadController extends Controller
                     ];
                     MustRead::where('id', '!=', $id)->update($fields);
                 }
+                /* push notification */
+                    $title              = 'A new must read content has been uploaded';
+                    $body               = $postData['title'];
+                    $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+                    $tokens             = [];
+                    if($getUserFCMTokens){
+                        foreach($getUserFCMTokens as $getUserFCMToken){
+                            $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body);
+                        }
+                    }
+                /* push notification */
                 return redirect("admin/create/mustreadlist")->with('success_message', 'Must Read Content Inserted Successfully !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
