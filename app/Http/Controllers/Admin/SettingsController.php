@@ -221,11 +221,16 @@ class SettingsController extends Controller
                 if (!$jsonCredentials) {
                     throw new Exception("Firebase credentials not found in environment variables.");
                 }
-                
+
+                $credentialsArray = json_decode($jsonCredentials, true);
+                if (json_last_error() !== JSON_ERROR_NONE) {
+                    throw new Exception('Invalid JSON format in environment variable.');
+                }
+
                 $projectId = 'ccfc-83373'; // Replace with your Firebase project ID
 
                 // Get access token
-                $accessToken = $this->getAccessToken($jsonCredentials);
+                $accessToken = $this->getAccessToken($credentialsArray);
 
                 // Define your message payload
                 $message = [
