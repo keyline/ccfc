@@ -176,11 +176,11 @@ class SettingsController extends Controller
         /* send email */
     }
     /* send push notification */
-        public function getAccessToken($credentialsPath) {
+        public function getAccessToken($credentialsJson) {
             $client = new Client();
-            $client->setAuthConfig($credentialsPath);
+            $client->setAuthConfig($credentialsJson);
             $client->addScope('https://www.googleapis.com/auth/cloud-platform');
-            $client->setAccessType('online');
+            $client->setAccessType('offline');
 
             $client->fetchAccessTokenWithAssertion();
 
@@ -213,12 +213,19 @@ class SettingsController extends Controller
         }
         public function sendTestPushNotification(){
             try {
-                $credentialsPath = public_path('uploads/ccfc-83373-firebase-adminsdk-qauj0-66a7cd8a2f.json'); // Replace with the path to your service account JSON file
+                // $credentialsPath = public_path('uploads/ccfc-83373-firebase-adminsdk-qauj0-66a7cd8a2f.json'); // Replace with the path to your service account JSON file
                 // echo $credentialsPath;die;
+
+                // Get the Firebase credentials from environment variable
+                $jsonCredentials = getenv('FIREBASE_CREDENTIALS');
+                if (!$jsonCredentials) {
+                    throw new Exception("Firebase credentials not found in environment variables.");
+                }
+                
                 $projectId = 'ccfc-83373'; // Replace with your Firebase project ID
 
                 // Get access token
-                $accessToken = $this->getAccessToken($credentialsPath);
+                $accessToken = $this->getAccessToken($jsonCredentials);
 
                 // Define your message payload
                 $message = [
