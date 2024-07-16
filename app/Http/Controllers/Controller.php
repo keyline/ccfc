@@ -15,6 +15,9 @@ use App\Models\UserDetail;
 use App\Models\UserDevice;
 use App\Helpers\Helper;
 
+use Google\Client;
+use Google\Service\FirebaseCloudMessaging;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
