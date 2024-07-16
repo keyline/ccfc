@@ -176,7 +176,7 @@ class SettingsController extends Controller
         /* send email */
     }
     /* send push notification */
-        function getAccessToken($credentialsPath) {
+        public function getAccessToken($credentialsPath) {
             $client = new Client();
             $client->setAuthConfig($credentialsPath);
             $client->addScope('https://www.googleapis.com/auth/cloud-platform');
@@ -187,7 +187,7 @@ class SettingsController extends Controller
             return $client->getAccessToken();
         }
 
-        function sendFCMMessage($accessToken, $projectId, $message) {
+        public function sendFCMMessage($accessToken, $projectId, $message) {
             $url = "https://fcm.googleapis.com/v1/projects/{$projectId}/messages:send";
 
             $headers = [
