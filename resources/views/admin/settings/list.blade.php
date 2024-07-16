@@ -297,6 +297,7 @@
                 </form>
               <!-- End email settings Form -->
               <a class="btn btn-success btn-sm" href="<?=url('admin/create/sendtestemail')?>">Test Email</a>
+              <a class="btn btn-success btn-sm" href="<?=url('admin/create/sendtestpushnotification')?>">Test Push Notification</a>
             </div>
             <div class="tab-pane fade" id="pills-seo" role="tabpanel" aria-labelledby="pills-seo-tab">
                 <!-- seo settings Form -->

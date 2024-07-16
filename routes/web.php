@@ -423,6 +423,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('create/sms-settings', [App\Http\Controllers\Admin\SettingsController::class, 'smsSetting']);
     Route::post('create/seo-settings', [App\Http\Controllers\Admin\SettingsController::class, 'seoSetting']);
     Route::get('create/sendtestemail', [App\Http\Controllers\Admin\SettingsController::class, 'sendTestEmail']);
+    Route::get('create/sendtestpushnotification', [App\Http\Controllers\Admin\SettingsController::class, 'sendTestPushNotification']);
 
     Route::get('create/cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'index'])->name('cookingcategorylist');
     Route::get('create/add-cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'add']);
