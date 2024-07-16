@@ -218,7 +218,7 @@ class SettingsController extends Controller
                 $projectId = 'ccfc-83373'; // Replace with your Firebase project ID
 
                 // Get access token
-                $accessToken = getAccessToken($credentialsPath);
+                $accessToken = $this->getAccessToken($credentialsPath);
 
                 // Define your message payload
                 $message = [
@@ -232,7 +232,7 @@ class SettingsController extends Controller
                 ];
 
                 // Send FCM message
-                $response = sendFCMMessage($accessToken, $projectId, $message);
+                $response = $this->sendFCMMessage($accessToken, $projectId, $message);
 
                 // echo "Response: " . $response;
                 return redirect()->to('admin/create/settinglist')->with('status', "Response: " . $response);
