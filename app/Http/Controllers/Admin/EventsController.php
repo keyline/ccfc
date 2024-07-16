@@ -83,8 +83,17 @@ class EventsController extends Controller
 
         $event->save();
 
-        
-
+        /* push notification */
+            $title              = 'A new event has been uploaded';
+            $body               = $request->input('event_name');
+            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+            $tokens             = [];
+            if($getUserFCMTokens){
+                foreach($getUserFCMTokens as $getUserFCMToken){
+                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body);
+                }
+            }
+        /* push notification */
         return redirect()->back()->with('status','Save successfully');
     }
 

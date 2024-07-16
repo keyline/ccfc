@@ -126,6 +126,9 @@ class Controller extends BaseController
             $message = [
                 'message' => [
                     'token' => $token, // Replace with the recipient device token
+                    'data' => [
+                        'type' => 'must_read'
+                    ],
                     'notification' => [
                         'title' => $title,
                         'body' => $body

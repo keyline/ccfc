@@ -86,7 +86,17 @@ class CircularController extends Controller
         }
 
         $circular->save();
-
+        /* push notification */
+            $title              = 'A new circular has been uploaded';
+            $body               = $request->input('circular_details1');
+            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+            $tokens             = [];
+            if($getUserFCMTokens){
+                foreach($getUserFCMTokens as $getUserFCMToken){
+                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body);
+                }
+            }
+        /* push notification */
         return redirect()->back()->with('status','Save successfully');
         // $circular->circular_image = $request->input('circularimage');
     }
