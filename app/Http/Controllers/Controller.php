@@ -101,7 +101,7 @@ class Controller extends BaseController
 
         return $response;
     }
-    public function sendCommonPushNotification($token, $title, $body){
+    public function sendCommonPushNotification($token, $title, $body, $type = ''){
         try {
             // $credentialsPath = public_path('uploads/ccfc-83373-firebase-adminsdk-qauj0-66a7cd8a2f.json'); // Replace with the path to your service account JSON file
             // echo $credentialsPath;die;
@@ -127,7 +127,7 @@ class Controller extends BaseController
                 'message' => [
                     'token' => $token, // Replace with the recipient device token
                     'data' => [
-                        'type' => 'must_read'
+                        'type' => $type
                     ],
                     'notification' => [
                         'title' => $title,

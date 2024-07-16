@@ -57,11 +57,12 @@ class MustReadController extends Controller
                 /* push notification */
                     $title              = 'A new must read content has been uploaded';
                     $body               = $postData['title'];
+                    $type               = 'must_read';
                     $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
                     $tokens             = [];
                     if($getUserFCMTokens){
                         foreach($getUserFCMTokens as $getUserFCMToken){
-                            $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body);
+                            $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
                         }
                     }
                 /* push notification */

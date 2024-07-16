@@ -89,11 +89,12 @@ class CircularController extends Controller
         /* push notification */
             $title              = 'A new circular has been uploaded';
             $body               = $request->input('circular_details1');
+            $type               = 'circular';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
             $tokens             = [];
             if($getUserFCMTokens){
                 foreach($getUserFCMTokens as $getUserFCMToken){
-                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body);
+                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
                 }
             }
         /* push notification */
