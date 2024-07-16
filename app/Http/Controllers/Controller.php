@@ -60,10 +60,10 @@ class Controller extends BaseController
             return true;
         } catch (Exception $e) {
             // Log the error message
-            error_log("Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}");
+            // error_log("Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}");
 
             // Print the error message for debugging
-            echo "Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}";
+            // echo "Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}";
             return false;
         }
     }
@@ -138,11 +138,12 @@ class Controller extends BaseController
 
             // Send FCM message
             $response = $this->sendFCMMessage($accessToken, $projectId, $message);
-
-            return "Response: " . $response;
+            return true;
+            // return "Response: " . $response;
             // return redirect()->to('admin/create/settinglist')->with('status', "Response: " . $response);
         } catch (Exception $e) {
-            return "Error: " . $e->getMessage();
+            return false;
+            // return "Error: " . $e->getMessage();
             // return redirect()->to('admin/create/settinglist')->with('error_message', "Error: " . $e->getMessage());
         }
     }
