@@ -176,82 +176,12 @@ class SettingsController extends Controller
         /* send email */
     }
     /* send push notification */
-        public function getAccessToken($credentialsJson) {
-            $client = new Client();
-            $client->setAuthConfig($credentialsJson);
-            $client->addScope('https://www.googleapis.com/auth/cloud-platform');
-            $client->setAccessType('offline');
-
-            $client->fetchAccessTokenWithAssertion();
-
-            return $client->getAccessToken();
-        }
-
-        public function sendFCMMessage($accessToken, $projectId, $message) {
-            $url = "https://fcm.googleapis.com/v1/projects/{$projectId}/messages:send";
-
-            $headers = [
-                'Authorization: Bearer ' . $accessToken['access_token'],
-                'Content-Type: application/json',
-            ];
-
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($message));
-
-            $response = curl_exec($ch);
-
-            if ($response === false) {
-                throw new Exception(curl_error($ch));
-            }
-
-            curl_close($ch);
-
-            return $response;
-        }
         public function sendTestPushNotification(){
-            try {
-                // $credentialsPath = public_path('uploads/ccfc-83373-firebase-adminsdk-qauj0-66a7cd8a2f.json'); // Replace with the path to your service account JSON file
-                // echo $credentialsPath;die;
-
-                // Get the Firebase credentials from environment variable
-                $jsonCredentials = getenv('FIREBASE_CREDENTIALS');
-                if (!$jsonCredentials) {
-                    throw new Exception("Firebase credentials not found in environment variables.");
-                }
-
-                $credentialsArray = json_decode($jsonCredentials, true);
-                if (json_last_error() !== JSON_ERROR_NONE) {
-                    throw new Exception('Invalid JSON format in environment variable.');
-                }
-
-                $projectId = 'ccfc-83373'; // Replace with your Firebase project ID
-
-                // Get access token
-                $accessToken = $this->getAccessToken($credentialsArray);
-
-                // Define your message payload
-                $message = [
-                    'message' => [
-                        'token' => 'fMHT0VEyTBWvB3zBONkLFE:APA91bH1RbrQ4aMrHSbqZBXBeYVMuay5MUW1t32UDQ3hxAtprWd_YFpBxOlHwITJOPpnkgTlqZgMu4XY_JrEMX0Y4Y9mg20eMBdAmGV7V1xBuoPuBtjRtrjvRalAvisiIlkPtd60n6RW', // Replace with the recipient device token
-                        'notification' => [
-                            'title' => 'Hi push',
-                            'body' => 'World subhomoy joydeep ccfc ' . date('Y-m-d H:i:s')
-                        ]
-                    ]
-                ];
-
-                // Send FCM message
-                $response = $this->sendFCMMessage($accessToken, $projectId, $message);
-
-                // echo "Response: " . $response;
-                return redirect()->to('admin/create/settinglist')->with('status', "Response: " . $response);
-            } catch (Exception $e) {
-                // echo "Error: " . $e->getMessage();
-                return redirect()->to('admin/create/settinglist')->with('error_message', "Error: " . $e->getMessage());
-            }
+            $token  = 'fMHT0VEyTBWvB3zBONkLFE:APA91bH1RbrQ4aMrHSbqZBXBeYVMuay5MUW1t32UDQ3hxAtprWd_YFpBxOlHwITJOPpnkgTlqZgMu4XY_JrEMX0Y4Y9mg20eMBdAmGV7V1xBuoPuBtjRtrjvRalAvisiIlkPtd60n6RW',
+            $title  = 'Hi push notification',
+            $body   = 'World subhomoy joydeep ccfc ' . date('Y-m-d H:i:s');
+            $this->sendCommonPushNotification();
+            return redirect()->to('admin/create/settinglist')->with('status', "Response: " . $response);
         }
     /* send push notification */
 }
