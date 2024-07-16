@@ -2377,8 +2377,22 @@ class ApiController extends Controller
                                             // echo $message;die;
                                             $this->sendMail($checkUser->email, $subject, $message);
                                         /* send email */
+                                        /* push notification */
+                                            $title              = 'Payment has been completed successfully';
+                                            $body               = "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours.";
+                                            $type               = 'payment';
+                                            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+                                            $tokens             = [];
+                                            if($getUserFCMTokens){
+                                                foreach($getUserFCMTokens as $getUserFCMToken){
+                                                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
+                                                }
+                                            }
+                                        /* push notification */
                                     }
                                 }
+
+                                
 
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
