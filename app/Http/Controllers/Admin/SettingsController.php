@@ -214,7 +214,7 @@ class SettingsController extends Controller
         public function sendTestPushNotification(){
             try {
                 $credentialsPath = public_path('ccfc-83373-firebase-adminsdk-qauj0-66a7cd8a2f.json'); // Replace with the path to your service account JSON file
-                echo $credentialsPath;die;
+                // echo $credentialsPath;die;
                 $projectId = 'ccfc-83373'; // Replace with your Firebase project ID
 
                 // Get access token
