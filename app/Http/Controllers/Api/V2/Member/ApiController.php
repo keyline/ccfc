@@ -2374,7 +2374,6 @@ class ApiController extends Controller
                                             $generalSettings    = GeneralSetting::find(1);
                                             $subject            = $generalSettings->site_name.' :: Payment Success';
                                             $message            = view('email-templates.payment-success',$mailData);
-                                            // echo $message;die;
                                             $this->sendMail($checkUser->email, $subject, $message);
                                         /* send email */
                                         /* push notification */

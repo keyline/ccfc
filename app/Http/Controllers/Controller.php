@@ -28,7 +28,7 @@ class Controller extends BaseController
             $generalSetting             = GeneralSetting::find('1');
             
             $mailLibrary->CharSet       = 'UTF-8';
-            $mailLibrary->SMTPDebug     = 2;
+            $mailLibrary->SMTPDebug     = 0;
             $mailLibrary->IsSMTP();
             $mailLibrary->Host          = $generalSetting->smtp_host;
             $mailLibrary->SMTPAuth      = true;
