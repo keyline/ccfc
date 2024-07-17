@@ -2503,7 +2503,7 @@ class ApiController extends Controller
             $apiExtraData       = '';
             $this->isJSON(file_get_contents('php://input'));
             $requestData        = $this->extract_json(file_get_contents('php://input'));
-            $requiredFields     = ['title', 'body', 'image_link'];
+            $requiredFields     = ['title', 'body', 'type', 'image_link'];
             $headerData         = $request->header();
             if (!$this->validateArray($requiredFields, $requestData)){
                 $apiStatus          = FALSE;
@@ -2515,6 +2515,7 @@ class ApiController extends Controller
                 $getTokenValue              = $this->tokenAuth($app_access_token);
                 $title                      = $requestData['title'];
                 $body                       = $requestData['body'];
+                $type                       = $requestData['type'];
                 $image_link                 = $requestData['image_link'];
                 if($getTokenValue['status']){
                     $uId                        = $getTokenValue['data'][1];
@@ -2523,7 +2524,6 @@ class ApiController extends Controller
                     if($checkUser){
                         if($checkUser->status == 'ACTIVE'){
                             /* push notification */
-                                $type               = '';
                                 $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
                                 $tokens             = [];
                                 if($getUserFCMTokens){
