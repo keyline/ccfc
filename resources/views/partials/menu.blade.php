@@ -597,6 +597,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?=url('admin/create/profileupdaterequests')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Profile Update Requests
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?=url('admin/create/deleteaccountrequests')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
