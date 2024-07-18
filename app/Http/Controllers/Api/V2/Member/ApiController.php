@@ -2551,18 +2551,18 @@ class ApiController extends Controller
                                     } else {
                                         if(($getUserDetails->date_of_birth != $member_dob) && (!empty($member_dob_proof))){
                                             $fields['member_dob_proof']     = '';
-                                            $fields['member_dob']           = $member['date_of_birth'];
+                                            // $fields['member_dob']           = $member['date_of_birth'];
                                         }
                                         if(($getUserDetails->address_1 != $member_address) && ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin) && (!empty($member_address_proof))){
                                             $fields['member_address_proof'] = '';
-                                            $fields['member_address']       = $member['address'];
-                                            $fields['member_city']          = $member['city'];
-                                            $fields['member_state']         = $member['state'];
-                                            $fields['member_pin']           = $member['pin'];
+                                            // $fields['member_address']       = $member['address'];
+                                            // $fields['member_city']          = $member['city'];
+                                            // $fields['member_state']         = $member['state'];
+                                            // $fields['member_pin']           = $member['pin'];
                                         }
                                         if(($getUserDetails->spouse_dob != $spouse_dob) && (!empty($spouse_dob_proof))){
                                             $fields['spouse_dob_proof']     = '';
-                                            $fields['spouse_dob']           = $spouse['dob'];
+                                            // $fields['spouse_dob']           = $spouse['dob'];
                                         }
 
                                         $fields = [
@@ -2573,13 +2573,19 @@ class ApiController extends Controller
                                             'member_phone1'     => $member['phone_1'],
                                             'member_phone2'     => $member['phone_2'],
                                             'member_phone3'     => $member['phone_3'],
+                                            'member_dob'        => $member['date_of_birth'],
                                             'member_since'      => $member['member_since'],
                                             'member_sex'        => $member['sex'],
+                                            'member_address'    => $member['address'],
+                                            'member_city'       => $member['city'],
+                                            'member_state'      => $member['state'],
+                                            'member_pin'        => $member['pin'],
                                             'spouse_name'       => $spouse['name'],
                                             'spouse_email'      => $spouse['email'],
                                             'spouse_phone1'     => $spouse['phone_1'],
                                             'spouse_phone2'     => $spouse['phone_2'],
                                             'spouse_phone3'     => $spouse['phone_3'],
+                                            'spouse_dob'        => $spouse['dob'],
                                             'spouse_sex'        => $spouse['sex'],
                                             'spouse_profession' => $spouse['profession'],
                                             'children1_name'    => $children1['name'],
