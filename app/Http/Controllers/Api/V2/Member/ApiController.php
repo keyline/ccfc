@@ -38,6 +38,7 @@ use App\Models\UserDetail;
 use App\Models\UserDevice;
 use App\Models\Gallery;
 use App\Models\OtherFoodItem;
+use App\Models\MemberProfileUpdateRequest;
 
 use Tzsk\Payu\Concerns\Attributes;
 use Tzsk\Payu\Concerns\Customer;
@@ -2525,13 +2526,88 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                Helper::pr($requestData);
+                                $getUserDetails     = UserDetail::where('user_code_id', '=', $uId)->first();
+                                if($getUserDetails){
+                                    $member_dob                 = date_format(date_create($member['date_of_birth']), "Y-m-d");
+                                    $member_address             = $member['address'];
+                                    $member_city                = $member['city'];
+                                    $member_state               = $member['state'];
+                                    $member_pin                 = $member['pin'];
+                                    $member_dob_proof           = $member['dob_proof'];
+                                    $member_address_proof       = $member['pin'];
 
-                                $apiStatus          = TRUE;
-                                http_response_code(200);
-                                $apiMessage         = 'Profile Update Request Successfully Submitted !!!';
-                                $apiExtraField      = 'response_code';
-                                $apiExtraData       = http_response_code();
+                                    $spouse_dob                 = $spouse['dob'];
+                                    $spouse_dob_proof           = $spouse['dob_proof'];
+
+                                    if(($getUserDetails->date_of_birth != $member_dob) && (empty($member_dob_proof))){
+                                        $apiStatus                              = FALSE;
+                                        $apiMessage                             = 'Please Upload Member DOB Proof !!!';
+                                    } elseif(($getUserDetails->address_1 != $member_address) && ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin) && (empty($member_address_proof))){
+                                        $apiStatus                              = FALSE;
+                                        $apiMessage                             = 'Please Upload Member Address Proof !!!';
+                                    } elseif(($getUserDetails->spouse_dob != $spouse_dob) && (empty($spouse_dob_proof))){
+                                        $apiStatus                              = FALSE;
+                                        $apiMessage                             = 'Please Upload Spouse DOB Proof !!!';
+                                    } else {
+                                        if(($getUserDetails->date_of_birth != $member_dob) && (!empty($member_dob_proof))){
+                                            $fields['member_dob_proof']     = '';
+                                            $fields['member_dob']           = $member['date_of_birth'];
+                                        }
+                                        if(($getUserDetails->address_1 != $member_address) && ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin) && (!empty($member_address_proof))){
+                                            $fields['member_address_proof'] = '';
+                                            $fields['member_address']       = $member['address'];
+                                            $fields['member_city']          = $member['city'];
+                                            $fields['member_state']         = $member['state'];
+                                            $fields['member_pin']           = $member['pin'];
+                                        }
+                                        if(($getUserDetails->spouse_dob != $spouse_dob) && (!empty($spouse_dob_proof))){
+                                            $fields['spouse_dob_proof']     = '';
+                                            $fields['spouse_dob']           = $spouse['dob'];
+                                        }
+
+                                        $fields = [
+                                            'member_id'         => $uId,
+                                            'member_code'       => $checkUser->user_code,
+                                            'member_name'       => $member['name'],
+                                            'member_email'      => $member['email'],
+                                            'member_phone1'     => $member['phone_1'],
+                                            'member_phone2'     => $member['phone_2'],
+                                            'member_phone3'     => $member['phone_3'],
+                                            'member_since'      => $member['member_since'],
+                                            'member_sex'        => $member['sex'],
+                                            'spouse_name'       => $spouse['name'],
+                                            'spouse_email'      => $spouse['email'],
+                                            'spouse_phone1'     => $spouse['phone_1'],
+                                            'spouse_phone2'     => $spouse['phone_2'],
+                                            'spouse_phone3'     => $spouse['phone_3'],
+                                            'spouse_sex'        => $spouse['sex'],
+                                            'spouse_profession' => $spouse['profession'],
+                                            'children1_name'    => $children1['name'],
+                                            'children1_phone1'  => $children1['phone_1'],
+                                            'children1_dob'     => $children1['dob'],
+                                            'children1_sex'     => $children1['sex'],
+                                            'children2_name'    => $children2['name'],
+                                            'children2_phone1'  => $children2['phone_1'],
+                                            'children2_dob'     => $children2['dob'],
+                                            'children2_sex'     => $children2['sex'],
+                                            'children3_name'    => $children3['name'],
+                                            'children3_phone1'  => $children3['phone_1'],
+                                            'children3_dob'     => $children3['dob'],
+                                            'children3_sex'     => $children3['sex'],
+                                        ];
+                                    }
+                                    Helper::pr($fields);
+                                    MemberProfileUpdateRequest::insert($fields);
+
+                                    $apiStatus          = TRUE;
+                                    http_response_code(200);
+                                    $apiMessage         = 'Profile Update Request Successfully Submitted !!!';
+                                    $apiExtraField      = 'response_code';
+                                    $apiExtraData       = http_response_code();
+                                } else {
+                                    $apiStatus                              = FALSE;
+                                    $apiMessage                             = 'User Details Not Available !!!';
+                                }
                             } else {
                                 $apiStatus                              = FALSE;
                                 $apiMessage                             = 'You Account Is Not Active Yet !!!';
