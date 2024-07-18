@@ -2550,19 +2550,26 @@ class ApiController extends Controller
                                         $apiMessage                             = 'Please Upload Spouse DOB Proof !!!';
                                     } else {
                                         if(($getUserDetails->date_of_birth != $member_dob) && (!empty($member_dob_proof))){
-                                            $fields['member_dob_proof']     = '';
-                                            // $fields['member_dob']           = $member['date_of_birth'];
+                                            $proof_type             = $member['dob_proof']['type'];
+                                            if($proof_type == 'image/png'){
+                                                $extn = 'png';
+                                            } else {
+                                                $extn = 'pdf';
+                                            }
+                                            $proof_file             = $member['dob_proof']['base64'];
+                                            $image_array_1          = explode(";", $proof_file);
+                                            $image_array_2          = explode(",", $image_array_1[1]);
+                                            $data                   = base64_decode($image_array_2[1]);
+                                            $member_dob_proof       = $checkUser->user_code . '-member-dob-' . time() . '.' . $extn;
+                                            $file                   = public_path('/uploads/userimg/') . $member_dob_proof;
+                                            file_put_contents($file, $data);
+                                            $fields['member_dob_proof']     = $member_dob_proof;
                                         }
                                         if(($getUserDetails->address_1 != $member_address) && ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin) && (!empty($member_address_proof))){
                                             $fields['member_address_proof'] = '';
-                                            // $fields['member_address']       = $member['address'];
-                                            // $fields['member_city']          = $member['city'];
-                                            // $fields['member_state']         = $member['state'];
-                                            // $fields['member_pin']           = $member['pin'];
                                         }
                                         if(($getUserDetails->spouse_dob != $spouse_dob) && (!empty($spouse_dob_proof))){
                                             $fields['spouse_dob_proof']     = '';
-                                            // $fields['spouse_dob']           = $spouse['dob'];
                                         }
 
                                         $fields = [
