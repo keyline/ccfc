@@ -2547,7 +2547,7 @@ class ApiController extends Controller
                                     if(($getUserDetails->date_of_birth != $member_dob) && (empty($member_dob_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Member DOB Proof !!!';
-                                    } elseif((($member_db_address != $member_address) || ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) || ($getUserDetails->pin != $member_pin)) && (empty($member_address_proof))){
+                                    } elseif((($member_db_address != $member_address) || ($getUserDetails->city != $member_city) || ($getUserDetails->state != $member_state) || ($getUserDetails->pin != $member_pin)) && (empty($member_address_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Member Address Proof !!!';
                                     } elseif(($getUserDetails->spouse_dob != $spouse_dob) && (empty($spouse_dob_proof))){
