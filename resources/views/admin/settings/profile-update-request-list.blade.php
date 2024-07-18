@@ -33,7 +33,7 @@
         <?php if($rows){ $sl=1; foreach($rows as $row){?>
           <tr>
             <td><?=$sl++?></td>
-            <td><?=$row->rows?></td>
+            <td><?=$row->member_name?></td>
             <td><?=$row->member_code?></td>
             <td><?=$row->member_email?></td>
             <td><?=$row->member_phone1?></td>
