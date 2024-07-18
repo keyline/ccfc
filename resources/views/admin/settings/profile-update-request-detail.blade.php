@@ -76,7 +76,7 @@
               <tr>
                   <td valign="middle">DOB Proof :</a></td>
                   <td valign="middle">
-                      <a href="<?=url('uploads/userimg/' . $profileRequestInfo->member_dob_proof)?>" style="color: #c23233; text-decoration: none;">
+                      <a target="_blank" href="<?=url('uploads/userimg/' . $profileRequestInfo->member_dob_proof)?>" style="color: #c23233; text-decoration: none;">
                           View File
                       </a>
                   </td> 
@@ -86,7 +86,7 @@
               <tr>
                   <td valign="middle">Address Proof :</a></td>
                   <td valign="middle">
-                      <a href="<?=url('uploads/userimg/' . $profileRequestInfo->member_address_proof)?>" style="color: #c23233; text-decoration: none;">
+                      <a target="_blank" href="<?=url('uploads/userimg/' . $profileRequestInfo->member_address_proof)?>" style="color: #c23233; text-decoration: none;">
                           View File
                       </a>
                   </td> 
@@ -132,7 +132,7 @@
               <tr>
                   <td valign="middle">DOB Proof :</a></td>
                   <td valign="middle">
-                      <a href="<?=url('uploads/userimg/' . $profileRequestInfo->spouse_dob_proof)?>" style="color: #c23233; text-decoration: none;">
+                      <a target="_blank" href="<?=url('uploads/userimg/' . $profileRequestInfo->spouse_dob_proof)?>" style="color: #c23233; text-decoration: none;">
                           View File
                       </a>
                   </td> 
