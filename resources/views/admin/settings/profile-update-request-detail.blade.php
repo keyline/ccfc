@@ -22,7 +22,7 @@
       <div class="col-md-12">
         <table id="example" class="table table-bordered table-striped table-hover datatable datatable-ContentBlock">
           <tr>
-            <td colspan="2" style="text-align: center;">Member</td>
+            <td colspan="2" style="text-align: center;" class="alert alert-info"><h5>Member</h5></td>
           </tr>
           <tr>
               <td valign="middle"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Name :</a></td>
@@ -74,7 +74,7 @@
           </tr>
 
           <tr>
-            <td colspan="2" style="text-align: center;">Spouse</td>
+            <td colspan="2" style="text-align: center;" class="alert alert-info"><h5>Spouse</h5></td>
           </tr>
           <tr>
               <td valign="middle"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Name :</a></td>
@@ -110,7 +110,7 @@
           </tr>
 
           <tr>
-            <td colspan="2" style="text-align: center;">Children 1</td>
+            <td colspan="2" style="text-align: center;" class="alert alert-info"><h5>Children 1</h5></td>
           </tr>
           <tr>
               <td valign="middle"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Name :</a></td>
@@ -130,7 +130,7 @@
           </tr>
 
           <tr>
-            <td colspan="2" style="text-align: center;">Children 2</td>
+            <td colspan="2" style="text-align: center;" class="alert alert-info"><h5>Children 2</h5></td>
           </tr>
           <tr>
               <td valign="middle"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Name :</a></td>
@@ -150,7 +150,7 @@
           </tr>
 
           <tr>
-            <td colspan="2" style="text-align: center;">Children 3</td>
+            <td colspan="2" style="text-align: center;" class="alert alert-info"><h5>Children 3</h5></td>
           </tr>
           <tr>
               <td valign="middle"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Name :</a></td>
