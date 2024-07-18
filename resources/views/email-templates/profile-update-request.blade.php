@@ -32,23 +32,23 @@ $generalSetting    = GeneralSetting::find(1);
             </tr>
             <tr>
                 <td valign="middle" width="16%" style="" class="table-label"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Department :</a></td>
-                <td valign="middle" width="28%" style="" class="table-value"></td> 
+                <td valign="middle" width="28%" style="" class="table-value">hdfghdf</td> 
             </tr>
              <tr>
                 <td valign="middle" width="16%" style="" class="table-label"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Name :</a></td>
-                <td  valign="middle" width="28%" style="" class="table-value"></td> 
+                <td  valign="middle" width="28%" style="" class="table-value">fdgdf</td> 
             </tr>
              <tr>
                 <td valign="middle" width="16%" style="" class="table-label"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Email :</a></td>
-                <td valign="middle" width="28%" style="" class="table-value"></td> 
+                <td valign="middle" width="28%" style="" class="table-value">fdgdf</td> 
             </tr>
             <tr>
                 <td valign="middle" width="16%" style="" class="table-label"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Phone :</a></td>
-                <td valign="middle" width="28%" style="" class="table-value"></td> 
+                <td valign="middle" width="28%" style="" class="table-value">fdgdf</td> 
             </tr>
             <tr>
                 <td  valign="middle" width="16%" style="" class="table-label"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Comment :</a></td>
-                <td  valign="middle" width="28%" style="" class="table-value"></td> 
+                <td  valign="middle" width="28%" style="" class="table-value">fgfdg</td> 
             </tr>
         </table>
         <p style="font-size:0.9em;">Regards,<br />Thanks</p>
