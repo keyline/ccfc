@@ -203,4 +203,5 @@ class SettingsController extends Controller
         $profileRequestInfo = MemberProfileUpdateRequest::where('id', '=', $id)->first();
         return view('admin.settings.profile-update-request-detail',compact('profileRequestInfo'));
     }
+    
 }
