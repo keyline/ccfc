@@ -2558,8 +2558,8 @@ class ApiController extends Controller
                                             }
                                             $proof_file             = $member['dob_proof']['base64'];
                                             $image_array_1          = explode(";", $proof_file);
-                                            $image_array_2          = explode(",", $image_array_1[1]);
-                                            $data                   = base64_decode($image_array_2[1]);
+                                            $image_array_2          = explode(",", $image_array_1[0]);
+                                            $data                   = base64_decode($image_array_2[0]);
                                             $member_dob_proof       = $checkUser->user_code . '-member-dob-' . time() . '.' . $extn;
                                             $file                   = public_path('/uploads/userimg/') . $member_dob_proof;
                                             file_put_contents($file, $data);
