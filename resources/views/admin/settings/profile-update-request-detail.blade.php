@@ -72,6 +72,26 @@
               <td  valign="middle"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Pincode :</a></td>
               <td  valign="middle"><?=$profileRequestInfo->member_pin?></td> 
           </tr>
+          <?php if($profileRequestInfo->member_dob_proof != ''){?>
+              <tr>
+                  <td valign="middle">DOB Proof :</a></td>
+                  <td valign="middle">
+                      <a href="<?=url('uploads/userimg/' . $profileRequestInfo->member_dob_proof)?>" style="color: #c23233; text-decoration: none;">
+                          View File
+                      </a>
+                  </td> 
+              </tr>
+          <?php }?>
+          <?php if($profileRequestInfo->member_address_proof != ''){?>
+              <tr>
+                  <td valign="middle">Address Proof :</a></td>
+                  <td valign="middle">
+                      <a href="<?=url('uploads/userimg/' . $profileRequestInfo->member_address_proof)?>" style="color: #c23233; text-decoration: none;">
+                          View File
+                      </a>
+                  </td> 
+              </tr>
+          <?php }?>
 
           <tr>
             <td colspan="2" style="text-align: center;" class="alert alert-info"><h5>Spouse</h5></td>
@@ -108,6 +128,16 @@
               <td  valign="middle"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Profession :</a></td>
               <td  valign="middle"><?=$profileRequestInfo->spouse_profession?></td> 
           </tr>
+          <?php if($profileRequestInfo->spouse_dob_proof != ''){?>
+              <tr>
+                  <td valign="middle">DOB Proof :</a></td>
+                  <td valign="middle">
+                      <a href="<?=url('uploads/userimg/' . $profileRequestInfo->spouse_dob_proof)?>" style="color: #c23233; text-decoration: none;">
+                          View File
+                      </a>
+                  </td> 
+              </tr>
+          <?php }?>
 
           <tr>
             <td colspan="2" style="text-align: center;" class="alert alert-info"><h5>Children 1</h5></td>
