@@ -2641,7 +2641,7 @@ class ApiController extends Controller
                                             'children3_sex'     => $children3['sex'],
                                         ];
                                     }
-                                    Helper::pr($fields);
+                                    // Helper::pr($fields);
                                     MemberProfileUpdateRequest::insert($fields);
 
                                     $apiStatus          = TRUE;
