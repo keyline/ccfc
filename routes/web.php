@@ -458,6 +458,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/action-deleteaccountrequests/{id}/{id2}', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequestsAction']);
     Route::get('create/spabookingtrackinglist', [App\Http\Controllers\Admin\SettingsController::class, 'spaBookingTrackingList'])->name('spabookingtrackinglist');
 
+    Route::get('create/profileupdaterequests', [App\Http\Controllers\Admin\SettingsController::class, 'profileUpdateRequests'])->name('profileupdaterequests');
+    Route::get('create/detail-profileupdaterequests/{id}', [App\Http\Controllers\Admin\SettingsController::class, 'profileUpdateRequestsDetail']);
+
     Route::get('create/mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'index'])->name('mustreadlist');
     Route::get('create/add-mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'add']);
     Route::post('create/add-mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'add']);

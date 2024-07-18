@@ -4,7 +4,9 @@ use App\Models\GeneralSetting;
 use App\Models\DeleteAccountRequest;
 use App\Models\SpaBookingTracking;
 use App\Models\User;
+use App\Models\UserDetail;
 use App\Models\UserDevice;
+use App\Models\MemberProfileUpdateRequest;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -191,4 +193,14 @@ class SettingsController extends Controller
             return redirect()->to('admin/create/settinglist')->with('status', "Response: " . $response);
         }
     /* send push notification */
+    public function profileUpdateRequests()
+    {
+        $rows = MemberProfileUpdateRequest::orderBy('id', 'DESC')->get();
+        return view('admin.settings.profile-update-request-list',compact('rows'));
+    }
+    public function profileUpdateRequestsDetail($id)
+    {
+        $profileRequestInfo = MemberProfileUpdateRequest::where('id', '=', $id)->first();
+        return view('admin.settings.profile-update-request-detail',compact('profileRequestInfo'));
+    }
 }
