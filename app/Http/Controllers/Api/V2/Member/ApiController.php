@@ -2547,7 +2547,7 @@ class ApiController extends Controller
                                     if(($getUserDetails->date_of_birth != $member_dob) && (empty($member_dob_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Member DOB Proof !!!';
-                                    } elseif((($member_db_address != $member_address) || ($getUserDetails->city != $member_city) || ($getUserDetails->state != $member_state) || ($getUserDetails->pin != $member_pin)) && (empty($member_address_proof))){
+                                    } elseif((($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin)) && (empty($member_address_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Member Address Proof !!!';
                                     } elseif(($getUserDetails->spouse_dob != $spouse_dob) && (empty($spouse_dob_proof))){
@@ -2570,7 +2570,7 @@ class ApiController extends Controller
                                             file_put_contents($file, $data);
                                             // $fields['member_dob_proof']     = $member_dob_proof_file;
                                         }
-                                        if((($member_db_address != $member_address) || ($getUserDetails->city != $member_city) || ($getUserDetails->state != $member_state) || ($getUserDetails->pin != $member_pin)) && (!empty($member_address_proof))){
+                                        if((($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin)) && (!empty($member_address_proof))){
                                             $proof_type             = $member['address_proof']['type'];
                                             if($proof_type == 'image/png'){
                                                 $extn = 'png';
