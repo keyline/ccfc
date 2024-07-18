@@ -2528,6 +2528,8 @@ class ApiController extends Controller
                             if($checkUser->status == 'ACTIVE'){
                                 $getUserDetails     = UserDetail::where('user_code_id', '=', $uId)->first();
                                 if($getUserDetails){
+                                    $member_db_address          = $getUserDetails->address_1.' '.$getUserDetails->address_2.' '.$getUserDetails->address_3;
+
                                     $member_dob                 = date_format(date_create($member['date_of_birth']), "Y-m-d");
                                     $member_address             = $member['address'];
                                     $member_city                = $member['city'];
@@ -2545,7 +2547,7 @@ class ApiController extends Controller
                                     if(($getUserDetails->date_of_birth != $member_dob) && (empty($member_dob_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Member DOB Proof !!!';
-                                    } elseif(($getUserDetails->address_1 != $member_address) && ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin) && (empty($member_address_proof))){
+                                    } elseif((($member_db_address != $member_address) || ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) || ($getUserDetails->pin != $member_pin)) && (empty($member_address_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Member Address Proof !!!';
                                     } elseif(($getUserDetails->spouse_dob != $spouse_dob) && (empty($spouse_dob_proof))){
@@ -2568,7 +2570,7 @@ class ApiController extends Controller
                                             file_put_contents($file, $data);
                                             // $fields['member_dob_proof']     = $member_dob_proof_file;
                                         }
-                                        if((($getUserDetails->address_1 != $member_address) || ($getUserDetails->city != $member_city) || ($getUserDetails->state != $member_state) || ($getUserDetails->pin != $member_pin)) && (!empty($member_address_proof))){
+                                        if((($member_db_address != $member_address) || ($getUserDetails->city != $member_city) || ($getUserDetails->state != $member_state) || ($getUserDetails->pin != $member_pin)) && (!empty($member_address_proof))){
                                             $proof_type             = $member['address_proof']['type'];
                                             if($proof_type == 'image/png'){
                                                 $extn = 'png';
