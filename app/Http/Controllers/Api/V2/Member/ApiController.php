@@ -2539,6 +2539,9 @@ class ApiController extends Controller
                                     $spouse_dob                 = $spouse['dob'];
                                     $spouse_dob_proof           = $spouse['dob_proof'];
 
+                                    $member_dob_proof_file      = ''; 
+                                    $member_address_proof_file  = ''; 
+                                    $spouse_dob_proof_file      = ''; 
                                     if(($getUserDetails->date_of_birth != $member_dob) && (empty($member_dob_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Member DOB Proof !!!';
@@ -2560,16 +2563,16 @@ class ApiController extends Controller
                                             $image_array_1          = explode(";", $proof_file);
                                             $image_array_2          = explode(",", $image_array_1[0]);
                                             $data                   = base64_decode($image_array_2[0]);
-                                            $member_dob_proof       = $checkUser->user_code . '-member-dob-' . time() . '.' . $extn;
-                                            $file                   = public_path('/uploads/userimg/') . $member_dob_proof;
+                                            $member_dob_proof_file       = $checkUser->user_code . '-member-dob-' . time() . '.' . $extn;
+                                            $file                   = public_path('/uploads/userimg/') . $member_dob_proof_file;
                                             file_put_contents($file, $data);
-                                            $fields['member_dob_proof']     = $member_dob_proof;
+                                            // $fields['member_dob_proof']     = $member_dob_proof_file;
                                         }
                                         if(($getUserDetails->address_1 != $member_address) && ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin) && (!empty($member_address_proof))){
-                                            $fields['member_address_proof'] = '';
+                                            // $fields['member_address_proof'] = '';
                                         }
                                         if(($getUserDetails->spouse_dob != $spouse_dob) && (!empty($spouse_dob_proof))){
-                                            $fields['spouse_dob_proof']     = '';
+                                            // $fields['spouse_dob_proof']     = '';
                                         }
 
                                         $fields = [
@@ -2587,6 +2590,8 @@ class ApiController extends Controller
                                             'member_city'       => $member['city'],
                                             'member_state'      => $member['state'],
                                             'member_pin'        => $member['pin'],
+                                            'member_dob_proof'        => $member_dob_proof_file,
+                                            'member_address_proof'        => $member_address_proof_file,
                                             'spouse_name'       => $spouse['name'],
                                             'spouse_email'      => $spouse['email'],
                                             'spouse_phone1'     => $spouse['phone_1'],
@@ -2595,6 +2600,7 @@ class ApiController extends Controller
                                             'spouse_dob'        => $spouse['dob'],
                                             'spouse_sex'        => $spouse['sex'],
                                             'spouse_profession' => $spouse['profession'],
+                                            'spouse_dob_proof'        => $spouse_dob_proof_file,
                                             'children1_name'    => $children1['name'],
                                             'children1_phone1'  => $children1['phone_1'],
                                             'children1_dob'     => $children1['dob'],
