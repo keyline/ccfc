@@ -16,10 +16,10 @@
 <div class="card">
   <div class="card-body">
     <div class="row">
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
 
-      </div>
-      <div class="col-md-6">
+      </div> -->
+      <div class="col-md-12">
         <table id="example" class="table table-bordered table-striped table-hover datatable datatable-ContentBlock">
           <tr>
             <td colspan="2" style="text-align: center;">Member</td>
@@ -171,38 +171,6 @@
         </table>
       </div>
     </div>
-    <table id="example" class="table table-bordered table-striped table-hover datatable datatable-ContentBlock">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Member Name</th>
-          <th>Member Code</th>
-          <th>Email</th>
-          <th>Phone 1</th>
-          <th>Phone 2</th>
-          <th>Phone 3</th>
-          <th>Request Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php if($rows){ $sl=1; foreach($rows as $row){?>
-          <tr>
-            <td><?=$sl++?></td>
-            <td><?=$row->member_name?></td>
-            <td><?=$row->member_code?></td>
-            <td><?=$row->member_email?></td>
-            <td><?=$row->member_phone1?></td>
-            <td><?=$row->member_phone2?></td>
-            <td><?=$row->member_phone3?></td>
-            <td><?=date_format(date_create($row->created_at), "d-m-Y h:i A")?></td>
-            <td>
-              <a target="_blank" href="<?=url('admin/create/detail-profileupdaterequests/' . $row->id)?>" class="badge badge-info"><i class="fa fa-info-circle"></i> View Details</a>
-            </td>
-          </tr>
-        <?php } } ?>
-      </tbody>
-    </table>
   </div>
 </div>
 @endsection
