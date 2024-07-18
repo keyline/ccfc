@@ -2534,7 +2534,7 @@ class ApiController extends Controller
                                     $member_state               = $member['state'];
                                     $member_pin                 = $member['pin'];
                                     $member_dob_proof           = $member['dob_proof'];
-                                    $member_address_proof       = $member['pin'];
+                                    $member_address_proof       = $member['address_proof'];
 
                                     $spouse_dob                 = $spouse['dob'];
                                     $spouse_dob_proof           = $spouse['dob_proof'];
@@ -2569,9 +2569,35 @@ class ApiController extends Controller
                                             // $fields['member_dob_proof']     = $member_dob_proof_file;
                                         }
                                         if(($getUserDetails->address_1 != $member_address) && ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin) && (!empty($member_address_proof))){
+                                            $proof_type             = $member['address_proof']['type'];
+                                            if($proof_type == 'image/png'){
+                                                $extn = 'png';
+                                            } else {
+                                                $extn = 'pdf';
+                                            }
+                                            $proof_file             = $member['address_proof']['base64'];
+                                            $image_array_1          = explode(";", $proof_file);
+                                            $image_array_2          = explode(",", $image_array_1[0]);
+                                            $data                   = base64_decode($image_array_2[0]);
+                                            $member_address_proof_file       = $checkUser->user_code . '-member-address-' . time() . '.' . $extn;
+                                            $file                   = public_path('/uploads/userimg/') . $member_address_proof_file;
+                                            file_put_contents($file, $data);
                                             // $fields['member_address_proof'] = '';
                                         }
                                         if(($getUserDetails->spouse_dob != $spouse_dob) && (!empty($spouse_dob_proof))){
+                                            $proof_type             = $spouse['dob_proof']['type'];
+                                            if($proof_type == 'image/png'){
+                                                $extn = 'png';
+                                            } else {
+                                                $extn = 'pdf';
+                                            }
+                                            $proof_file             = $spouse['dob_proof']['base64'];
+                                            $image_array_1          = explode(";", $proof_file);
+                                            $image_array_2          = explode(",", $image_array_1[0]);
+                                            $data                   = base64_decode($image_array_2[0]);
+                                            $spouse_dob_proof_file       = $checkUser->user_code . '-spouse-dob-' . time() . '.' . $extn;
+                                            $file                   = public_path('/uploads/userimg/') . $spouse_dob_proof_file;
+                                            file_put_contents($file, $data);
                                             // $fields['spouse_dob_proof']     = '';
                                         }
 
@@ -2591,7 +2617,7 @@ class ApiController extends Controller
                                             'member_state'      => $member['state'],
                                             'member_pin'        => $member['pin'],
                                             'member_dob_proof'        => $member_dob_proof_file,
-                                            'member_address_proof'        => $member_address_proof_file,
+                                            'member_address_proof'    => $member_address_proof_file,
                                             'spouse_name'       => $spouse['name'],
                                             'spouse_email'      => $spouse['email'],
                                             'spouse_phone1'     => $spouse['phone_1'],
@@ -2600,7 +2626,7 @@ class ApiController extends Controller
                                             'spouse_dob'        => $spouse['dob'],
                                             'spouse_sex'        => $spouse['sex'],
                                             'spouse_profession' => $spouse['profession'],
-                                            'spouse_dob_proof'        => $spouse_dob_proof_file,
+                                            'spouse_dob_proof'  => $spouse_dob_proof_file,
                                             'children1_name'    => $children1['name'],
                                             'children1_phone1'  => $children1['phone_1'],
                                             'children1_dob'     => $children1['dob'],
