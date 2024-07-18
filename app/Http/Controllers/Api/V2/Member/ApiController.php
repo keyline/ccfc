@@ -2568,7 +2568,7 @@ class ApiController extends Controller
                                             file_put_contents($file, $data);
                                             // $fields['member_dob_proof']     = $member_dob_proof_file;
                                         }
-                                        if(($getUserDetails->address_1 != $member_address) && ($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin) && (!empty($member_address_proof))){
+                                        if((($getUserDetails->address_1 != $member_address) || ($getUserDetails->city != $member_city) || ($getUserDetails->state != $member_state) || ($getUserDetails->pin != $member_pin)) && (!empty($member_address_proof))){
                                             $proof_type             = $member['address_proof']['type'];
                                             if($proof_type == 'image/png'){
                                                 $extn = 'png';
