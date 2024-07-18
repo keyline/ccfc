@@ -2642,21 +2642,15 @@ class ApiController extends Controller
                                         ];
                                     }
                                     // Helper::pr($fields);
-                                    // $mailData                   = [
-                                    //     'name'          => $name,
-                                    //     'email'         => $postemail,
-                                    //     'phone'         => $phone,
-                                    //     'message'       => $message,
-                                    //     'department'    => $senderName,
-                                    // ];
                                     /* send email */
                                         $memberName         = $member['name'];
                                         $memberCode         = $checkUser->user_code;
                                         $generalSettings    = GeneralSetting::find(1);
+                                        $senderEmail        = $generalSettings->account_email;
                                         $subject            = $generalSettings->site_name.' :: Profile Update Request From ' . $memberName . ' (' . $memberCode . ')';
                                         $message            = view('email-templates.profile-update-request',$fields);
-                                        echo $message;die;
-                                        $this->sendMail($senderEmail, $subject, $message);
+                                        // echo $message;die;
+                                        $this->sendMail('subhomoy@keylines.net', $subject, $message);
                                     /* send email */
                                     MemberProfileUpdateRequest::insert($fields);
 

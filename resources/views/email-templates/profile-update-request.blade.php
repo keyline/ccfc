@@ -71,7 +71,7 @@ $generalSetting    = GeneralSetting::find(1);
                 <tr>
                     <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Member DOB Proof :</a></td>
                     <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;">
-                        <a href="<?=url('uploads/userimg/' . $member_dob_proof)?>" style="color: #000000; text-decoration: none;">
+                        <a href="<?=url('uploads/userimg/' . $member_dob_proof)?>" style="color: #c23233; text-decoration: none;">
                             View File
                         </a>
                     </td> 
@@ -81,7 +81,7 @@ $generalSetting    = GeneralSetting::find(1);
                 <tr>
                     <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Member Address Proof :</a></td>
                     <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;">
-                        <a href="<?=url('uploads/userimg/' . $member_address_proof)?>" style="color: #000000; text-decoration: none;">
+                        <a href="<?=url('uploads/userimg/' . $member_address_proof)?>" style="color: #c23233; text-decoration: none;">
                             View File
                         </a>
                     </td> 
@@ -124,7 +124,7 @@ $generalSetting    = GeneralSetting::find(1);
                 <tr>
                     <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;"><a href="javascript:void(0);" style="color: #000000; text-decoration: none;">Spouse DOB Proof :</a></td>
                     <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;">
-                        <a href="<?=url('uploads/userimg/' . $spouse_dob_proof)?>" style="color: #000000; text-decoration: none;">
+                        <a href="<?=url('uploads/userimg/' . $spouse_dob_proof)?>" style="color: #c23233; text-decoration: none;">
                             View File
                         </a>
                     </td> 
