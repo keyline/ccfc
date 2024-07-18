@@ -1096,7 +1096,7 @@ class ApiController extends Controller
                                             }
                                             $item_complete_list[]        = [
                                                 // 'GROUPNAME' => $itemGroup->GROUPNAME,
-                                                'GROUPNAME' => '',
+                                                'GROUPNAME' => 'ITEMS',
                                                 'SUBGROUP'  => $SUBGROUPS
                                             ];
                                         }
