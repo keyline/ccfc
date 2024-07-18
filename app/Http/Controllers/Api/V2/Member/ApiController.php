@@ -2650,7 +2650,7 @@ class ApiController extends Controller
                                         $subject            = $generalSettings->site_name.' :: Profile Update Request From ' . $memberName . ' (' . $memberCode . ')';
                                         $message            = view('email-templates.profile-update-request',$fields);
                                         // echo $message;die;
-                                        $this->sendMail($senderEmail, $subject, $message);
+                                        // $this->sendMail($senderEmail, $subject, $message);
                                     /* send email */
                                     MemberProfileUpdateRequest::insert($fields);
 
