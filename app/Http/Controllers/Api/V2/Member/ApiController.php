@@ -2527,6 +2527,7 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
+                                Helper::pr($requestData);
                                 $getUserDetails     = UserDetail::where('user_code_id', '=', $uId)->first();
                                 if($getUserDetails){
                                     $member_db_address          = $getUserDetails->address_1.' '.$getUserDetails->address_2.' '.$getUserDetails->address_3;
