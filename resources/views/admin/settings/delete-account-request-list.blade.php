@@ -3,7 +3,7 @@
 @can('content_block_create')
 <div style="margin-bottom: 10px;" class="row">
     <div class="col-lg-12">
-        <h3>Deleet Account Requests</h3>
+        <h3>Delete Account Requests</h3>
     </div>
 </div>
 @endcan
