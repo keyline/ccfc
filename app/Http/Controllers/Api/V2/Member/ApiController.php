@@ -2235,6 +2235,9 @@ class ApiController extends Controller
                                     // Helper::pr($resp);
                                     $bills = json_decode($resp, true)['data'];
 
+                                    $key = array_column($bills, 'BILLDATE');
+                                    array_multisort($key, SORT_DESC, $bills);
+
                                     if($bills){
                                         foreach($bills as $bill){
                                             $BILLDATE           = $bill['BILLDATE'];
