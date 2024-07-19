@@ -2647,25 +2647,26 @@ class ApiController extends Controller
                                             'children3_dob'     => $children3['dob'],
                                             'children3_sex'     => $children3['sex'],
                                         ];
-                                    }
-                                    Helper::pr($fields);
-                                    /* send email */
-                                        $memberName         = $member['name'];
-                                        $memberCode         = $checkUser->user_code;
-                                        $generalSettings    = GeneralSetting::find(1);
-                                        $senderEmail        = $generalSettings->account_email;
-                                        $subject            = $generalSettings->site_name.' :: Profile Update Request From ' . $memberName . ' (' . $memberCode . ')';
-                                        $message            = view('email-templates.profile-update-request',$fields);
-                                        // echo $message;die;
-                                        // $this->sendMail($senderEmail, $subject, $message);
-                                    /* send email */
-                                    MemberProfileUpdateRequest::insert($fields);
+                                    
+                                        Helper::pr($fields);
+                                        /* send email */
+                                            $memberName         = $member['name'];
+                                            $memberCode         = $checkUser->user_code;
+                                            $generalSettings    = GeneralSetting::find(1);
+                                            $senderEmail        = $generalSettings->account_email;
+                                            $subject            = $generalSettings->site_name.' :: Profile Update Request From ' . $memberName . ' (' . $memberCode . ')';
+                                            $message            = view('email-templates.profile-update-request',$fields);
+                                            // echo $message;die;
+                                            // $this->sendMail($senderEmail, $subject, $message);
+                                        /* send email */
+                                        MemberProfileUpdateRequest::insert($fields);
 
-                                    $apiStatus          = TRUE;
-                                    http_response_code(200);
-                                    $apiMessage         = 'Profile Update Request Successfully Submitted !!!';
-                                    $apiExtraField      = 'response_code';
-                                    $apiExtraData       = http_response_code();
+                                        $apiStatus          = TRUE;
+                                        http_response_code(200);
+                                        $apiMessage         = 'Profile Update Request Successfully Submitted !!!';
+                                        $apiExtraField      = 'response_code';
+                                        $apiExtraData       = http_response_code();
+                                    }
                                 } else {
                                     $apiStatus                              = FALSE;
                                     $apiMessage                             = 'User Details Not Available !!!';
