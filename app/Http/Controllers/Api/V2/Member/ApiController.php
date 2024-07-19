@@ -2135,6 +2135,10 @@ class ApiController extends Controller
                                     // Helper::pr($resp);
                                     $bills = json_decode($resp, true)['data'];
 
+                                    $key = array_column($bills, 'BILLDATE');
+                                    array_multisort($key, SORT_DESC, $bills);
+                                    // Helper::pr($bills);
+
                                     if($bills){
                                         foreach($bills as $bill){
                                             $bill_list[] = [
@@ -2234,10 +2238,6 @@ class ApiController extends Controller
                                     $resp = curl_exec($curl);
                                     // Helper::pr($resp);
                                     $bills = json_decode($resp, true)['data'];
-
-                                    $key = array_column($bills, 'BILLDATE');
-                                    array_multisort($key, SORT_DESC, $bills);
-                                    Helper::pr($bills);
 
                                     if($bills){
                                         foreach($bills as $bill){
