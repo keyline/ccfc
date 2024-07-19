@@ -816,7 +816,7 @@ class ApiController extends Controller
                                 $resp = curl_exec($curl);
                                 // curl_close($curl);
                                 // Helper::pr(json_decode($resp));
-                                $qrcodes = (array)json_decode($resp)->data;
+                                $qrcodes = json_decode($resp, true)['data'];
 
                                 $SIXTEEN_DIGIT_CODE = '';
                                 if($qrcodes){
