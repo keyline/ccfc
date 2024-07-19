@@ -814,8 +814,6 @@ class ApiController extends Controller
                                 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
                                 $resp = curl_exec($curl);
-                                // curl_close($curl);
-                                // Helper::pr(json_decode($resp));
                                 $qrcodes = json_decode($resp, true)['data'];
 
                                 $SIXTEEN_DIGIT_CODE = '';
@@ -1940,25 +1938,44 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                // $token = "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
-                                $token = "5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn";
-                                // $fields = [
-                                //     'MCODE' => $checkUser->user_code
+                                // // $token = "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
+                                // $token = "5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn";
+                                // // $fields = [
+                                // //     'MCODE' => $checkUser->user_code
+                                // // ];
+                                // // $url = "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
+                                // $transactionFields = [
+                                //     'MCODE'     => $checkUser->user_code,
+                                //     'FromDate'  => '01-apr-2020',
+                                //     'ToDate'    => '01-jun-2021',
                                 // ];
-                                // $url = "https://ccfcmemberdata.in/Api/MemberProfile/?".http_build_query($fields);
-                                $transactionFields = [
-                                    'MCODE'     => $checkUser->user_code,
-                                    'FromDate'  => '01-apr-2020',
-                                    'ToDate'    => '01-jun-2021',
-                                ];
 
-                                $tansactionUrl = 'https://ccfcmemberdata.in/api/MemberMonthlyBalance/?' . http_build_query($transactionFields);
-                                $transactions = Http::withoutVerifying()
-                                            ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                                                            'Content-Type' => 'application/json',])
-                                            ->withOptions(["verify" => false])
-                                            ->post($tansactionUrl)->json()['data'];
-                                // Helper::pr($transactions);
+                                // $tansactionUrl = 'https://ccfcmemberdata.in/api/MemberMonthlyBalance/?' . http_build_query($transactionFields);
+                                // $transactions = Http::withoutVerifying()
+                                //             ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                                //                             'Content-Type' => 'application/json',])
+                                //             ->withOptions(["verify" => false])
+                                //             ->post($tansactionUrl)->json()['data'];
+                                // // Helper::pr($transactions);
+
+                                $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/?MCODE=" . $checkUser->user_code . "&FromDate=01-apr-2020&ToDate=01-jun-2021";
+                                $curl = curl_init($url);
+                                curl_setopt($curl, CURLOPT_URL, $url);
+                                curl_setopt($curl, CURLOPT_POST, true);
+                                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                                $headers = array(
+                                   "Authorization: Bearer 5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn",
+                                   "Content-Type: application/json",
+                                   "Content-Length: 0",
+                                );
+                                curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                                //for debug only!
+                                curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+                                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+                                $resp = curl_exec($curl);
+                                Helper::pr($resp);
+                                $transactions = json_decode($resp, true)['data'];
 
                                 $monthly_billing                = [];
                                 $daily_billing                  = [];
