@@ -2237,6 +2237,7 @@ class ApiController extends Controller
 
                                     $key = array_column($bills, 'BILLDATE');
                                     array_multisort($key, SORT_DESC, $bills);
+                                    Helper::pr($bills);
 
                                     if($bills){
                                         foreach($bills as $bill){
