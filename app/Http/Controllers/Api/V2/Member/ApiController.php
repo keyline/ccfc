@@ -2527,7 +2527,7 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                Helper::pr($requestData);
+                                // Helper::pr($requestData);
                                 $getUserDetails     = UserDetail::where('user_code_id', '=', $uId)->first();
                                 if($getUserDetails){
                                     $member_db_address          = $getUserDetails->address_1.' '.$getUserDetails->address_2.' '.$getUserDetails->address_3;
@@ -2539,24 +2539,27 @@ class ApiController extends Controller
                                     $member_pin                 = $member['pin'];
                                     $member_dob_proof           = $member['dob_proof'];
                                     $member_address_proof       = $member['address_proof'];
+                                    $member_is_dob_change       = $member['is_dob_change'];
+                                    $member_is_address_change   = $member['is_address_change'];
 
                                     $spouse_dob                 = $spouse['dob'];
                                     $spouse_dob_proof           = $spouse['dob_proof'];
+                                    $spouse_is_dob_change       = $spouse['is_dob_change'];
 
                                     $member_dob_proof_file      = ''; 
                                     $member_address_proof_file  = ''; 
                                     $spouse_dob_proof_file      = ''; 
-                                    if(($getUserDetails->date_of_birth != $member_dob) && (empty($member_dob_proof))){
+                                    if(($member_is_dob_change == 1) && (empty($member_dob_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Member DOB Proof !!!';
-                                    } elseif((($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin)) && (empty($member_address_proof))){
+                                    } elseif(($member_is_address_change == 1) && (empty($member_address_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Member Address Proof !!!';
-                                    } elseif(($getUserDetails->spouse_dob != $spouse_dob) && (empty($spouse_dob_proof))){
+                                    } elseif(($spouse_is_dob_change == 1) && (empty($spouse_dob_proof))){
                                         $apiStatus                              = FALSE;
                                         $apiMessage                             = 'Please Upload Spouse DOB Proof !!!';
                                     } else {
-                                        if(($getUserDetails->date_of_birth != $member_dob) && (!empty($member_dob_proof))){
+                                        if(($member_is_dob_change == 1) && (!empty($member_dob_proof))){
                                             $proof_type             = $member['dob_proof']['type'];
                                             if($proof_type == 'image/png'){
                                                 $extn = 'png';
@@ -2572,7 +2575,7 @@ class ApiController extends Controller
                                             file_put_contents($file, $data);
                                             // $fields['member_dob_proof']     = $member_dob_proof_file;
                                         }
-                                        if((($getUserDetails->city != $member_city) && ($getUserDetails->state != $member_state) && ($getUserDetails->pin != $member_pin)) && (!empty($member_address_proof))){
+                                        if(($member_is_address_change == 1) && (!empty($member_address_proof))){
                                             $proof_type             = $member['address_proof']['type'];
                                             if($proof_type == 'image/png'){
                                                 $extn = 'png';
@@ -2588,7 +2591,7 @@ class ApiController extends Controller
                                             file_put_contents($file, $data);
                                             // $fields['member_address_proof'] = '';
                                         }
-                                        if(($getUserDetails->spouse_dob != $spouse_dob) && (!empty($spouse_dob_proof))){
+                                        if(($spouse_is_dob_change == 1) && (!empty($spouse_dob_proof))){
                                             $proof_type             = $spouse['dob_proof']['type'];
                                             if($proof_type == 'image/png'){
                                                 $extn = 'png';
@@ -2645,7 +2648,7 @@ class ApiController extends Controller
                                             'children3_sex'     => $children3['sex'],
                                         ];
                                     }
-                                    // Helper::pr($fields);
+                                    Helper::pr($fields);
                                     /* send email */
                                         $memberName         = $member['name'];
                                         $memberCode         = $checkUser->user_code;
