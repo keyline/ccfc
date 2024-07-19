@@ -1974,7 +1974,7 @@ class ApiController extends Controller
                                 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
                                 $resp = curl_exec($curl);
-                                Helper::pr($resp);
+                                // Helper::pr($resp);
                                 $transactions = json_decode($resp, true)['data'];
 
                                 $monthly_billing                = [];
