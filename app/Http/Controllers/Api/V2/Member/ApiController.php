@@ -814,8 +814,8 @@ class ApiController extends Controller
                                 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
                                 $resp = curl_exec($curl);
-                                // curl_close($curl);
-                                // Helper::pr($resp);
+                                curl_close($curl);
+                                Helper::pr(json_decode($resp));
                                 $qrcodes = json_decode($resp)['data'];
 
                                 $SIXTEEN_DIGIT_CODE = '';
