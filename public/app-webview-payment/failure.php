@@ -7,8 +7,8 @@ date_default_timezone_set("Asia/Kolkata");
 $postdata = $_POST;
 $msg = '';
 // $salt="4R38IvwiV57FwVpsgOvTXBdLE4tHUXFW";
-$salt="R6iCHXRS";
-// echo '<pre>';print_r($postdata);
+$salt="uY91j8i2QiLpb000ug9zdRnUsKXR2QqV";
+echo '<pre>';print_r($postdata);die;
 // echo $salt;die;
 /* Response received from Payment Gateway at this page.
 
@@ -26,15 +26,15 @@ hash = sha512(additionalCharges|SALT|status||||||udf5|||||email|firstname|produc
 
 */
 if (isset($postdata ['key'])) {
-	$key							=   $postdata['key'];
-	$txnid 						= 	$postdata['txnid'];
-  $amount      			= 	$postdata['amount'];
+	$key				=   $postdata['key'];
+	$txnid 				= 	$postdata['txnid'];
+  	$amount      		= 	$postdata['amount'];
 	$productInfo  		= 	$postdata['productinfo'];
 	$firstname    		= 	$postdata['firstname'];
-	$email        		=		$postdata['email'];
-	$udf5							=   $postdata['udf5'];	
-	$status						= 	$postdata['status'];
-	$resphash					= 	$postdata['hash'];
+	$email        		=	$postdata['email'];
+	$udf5				=   $postdata['udf5'];	
+	$status				= 	$postdata['status'];
+	$resphash			= 	$postdata['hash'];
 	//Calculate response hash to verify	
 	$keyString 	  		=  	$key.'|'.$txnid.'|'.$amount.'|'.$productInfo.'|'.$firstname.'|'.$email.'|||||'.$udf5.'|||||';
 	$keyArray 	  		= 	explode("|",$keyString);
@@ -56,7 +56,7 @@ if (isset($postdata ['key'])) {
 		//Do success order processing here...
 			if($status == 'success'){
 
-				$payment = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `payment` WHERE `id` = '$productInfo'"));
+				$payment = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `payment_details` WHERE `id` = '$productInfo'"));
 				if($payment['amount'] == $amount){
 					$amount=$postdata['amount'];
 					$bill_trans_ref_no=@$_POST['txnid'];
@@ -66,35 +66,13 @@ if (isset($postdata ['key'])) {
 					$serialyze_field=  serialize($postdata);
 					$return_time=date("Y-m-d H:i:s");
 					$status='success';
-					$sql= "UPDATE payment SET amount = '$amount', bill_trans_ref_no = '$bill_trans_ref_no', decision = '$decision', message = '$message', serialyze_field = '$serialyze_field', return_time = '$return_time', status = '$status' WHERE id = $productInfo";
+					$sql= "UPDATE payment_details SET amount = '$amount', bill_trans_ref_no = '$bill_trans_ref_no', decision = '$decision', message = '$message', serialyze_field = '$serialyze_field', return_time = '$return_time', status = '$status' WHERE id = $productInfo";
 					mysqli_query($conn, $sql);
 
 					
-					$sql2= "UPDATE payment_bill SET amount = '$amount', status = '$status' WHERE id = $udf5";
+					$sql2= "UPDATE payment_bills SET amount = '$amount', status = '$status' WHERE id = $udf5";
 					mysqli_query($conn, $sql2);
 					
-					/* insert into clubman */
-						$club_account='A0146';
-						$ch = curl_init();
-				    $url = "https://bengalrowingclub.com/Hdfc_payment/insert_clubman/".$productInfo."/".$club_account;
-				    // $dataArray = ['payment_id' => $productInfo, 'club_account' => $club_account];
-				    $dataArray = ['payment_id' => $productInfo, 'club_account' => $club_account];
-				    $data = http_build_query($dataArray);
-				    // $getUrl = $url."?".$data;
-				    $getUrl = $url;
-				    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-				    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-				    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-				    curl_setopt($ch, CURLOPT_URL, $getUrl);
-				    curl_setopt($ch, CURLOPT_TIMEOUT, 80);
-				    $response = curl_exec($ch);
-				    if(curl_error($ch)){
-			        echo 'Request Error:' . curl_error($ch);
-				    }else{
-			        echo $response;
-				    }			       
-				    curl_close($ch);
-			    /* insert into clubman */
 			    /* email sms sent */
 			    	$ch = curl_init();
 				    $url = "https://bengalrowingclub.com/Hdfc_payment/send_email_sms/".$productInfo;
@@ -125,7 +103,7 @@ if (isset($postdata ['key'])) {
 					$serialyze_field=  serialize($postdata);
 					$return_time=date("Y-m-d H:i:s");
 					$status='failure';
-					$sql= "UPDATE payment SET amount = '$amount', bill_trans_ref_no = '$bill_trans_ref_no', decision = '$decision', message = '$message', serialyze_field = '$serialyze_field', return_time = '$return_time', status = '$status' WHERE id = $productInfo";
+					$sql= "UPDATE payment_details SET amount = '$amount', bill_trans_ref_no = '$bill_trans_ref_no', decision = '$decision', message = '$message', serialyze_field = '$serialyze_field', return_time = '$return_time', status = '$status' WHERE id = $productInfo";
 					mysqli_query($conn, $sql);
 				}
 			} else {
@@ -137,7 +115,7 @@ if (isset($postdata ['key'])) {
 				$serialyze_field=  serialize($postdata);
 				$return_time=date("Y-m-d H:i:s");
 				$status='failure';
-				$sql= "UPDATE payment SET amount = '$amount', bill_trans_ref_no = '$bill_trans_ref_no', decision = '$decision', message = '$message', serialyze_field = '$serialyze_field', return_time = '$return_time', status = '$status' WHERE id = $productInfo";
+				$sql= "UPDATE payment_details SET amount = '$amount', bill_trans_ref_no = '$bill_trans_ref_no', decision = '$decision', message = '$message', serialyze_field = '$serialyze_field', return_time = '$return_time', status = '$status' WHERE id = $productInfo";
 				mysqli_query($conn, $sql);
 			}
 		//Do success order processing here...
