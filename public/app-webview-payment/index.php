@@ -8,9 +8,9 @@ $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 $membership_no = $result['membership_no'];
 
 $member = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_code` = '$membership_no'"));
-echo '<pre>';
-print_r($result);
-die;
+// echo '<pre>';
+// print_r($result);
+// die;
 /*
 Note : It is recommended to fetch all the parameters from your Database rather than posting static values or entering them on the UI.
 
@@ -26,13 +26,13 @@ POST URL: https://secure.payu.in/_payment
 //Unique merchant key provided by PayU along with salt. Salt is used for Hash signature 
 //calculation within application and must not be posted or transfered over internet. //-->
 // $key="gtKFFx";
-$key="ZPZx80";
+$key="p6MMWI";
 // $salt="eCwWELxi";
 // $salt="4R38IvwiV57FwVpsgOvTXBdLE4tHUXFW";
-$salt="R6iCHXRS";
+$salt="uY91j8i2QiLpb000ug9zdRnUsKXR2QqV";
 
-// $action = 'https://test.payu.in/_payment';
-$action = 'https://secure.payu.in/_payment';
+$action = 'https://test.payu.in/_payment';
+// $action = 'https://secure.payu.in/_payment';
 
 $html='';
 
@@ -230,26 +230,26 @@ function getFailureUrl()
 			<div class="col-xs-12 col-sm-12">
 				<form action="" id="payment_form" method="post" style="text-align: center;">
 					<!-- Contains information of integration type. Consult to PayU for more details.//-->
-					<input type="hidden" id="udf1" name="udf1" value="<?=$membership_no?>" />
-					<input type="hidden" id="udf5" name="udf5" value="<?=$result['pay_type_id']?>" />
-					<input type="hidden" id="surl" name="surl" value="<?=getSuccessUrl()?>" />
-					<input type="hidden" id="furl" name="furl" value="<?=getFailureUrl()?>" />
-					<input type="hidden" id="curl" name="curl" value="<?=getSuccessUrl()?>" />
+					<input type="text" id="udf1" name="udf1" value="<?=$membership_no?>" />
+					<input type="text" id="udf5" name="udf5" value="<?=$result['pay_type_id']?>" />
+					<input type="text" id="surl" name="surl" value="<?=getSuccessUrl()?>" />
+					<input type="text" id="furl" name="furl" value="<?=getFailureUrl()?>" />
+					<input type="text" id="curl" name="curl" value="<?=getSuccessUrl()?>" />
 		    		
-		    		<input type="hidden" id="txnid" name="txnid" placeholder="Transaction ID" value="<?=$result['payu_txnid']?>" />
-		    		<input type="hidden" id="amount" name="amount" placeholder="Amount" value="<?=$result['amount']?>" />
-		    		<input type="hidden" id="productinfo" name="productinfo" placeholder="Product Info" value="<?=$result['id']?>" />
-		    		<input type="hidden" id="firstname" name="firstname" placeholder="First Name" value="<?=$member['Name']?>" />
-		    		<input type="hidden" id="Lastname" name="Lastname" placeholder="Last Name" value="<?=$member['Name']?>" />
-		    		<input type="hidden" id="Zipcode" name="Zipcode" placeholder="Zip Code" value="" />
-		    		<input type="hidden" id="email" name="email" placeholder="Email ID" value="<?=$member['Email']?>" />
-					<input type="hidden" id="phone" name="phone" placeholder="Mobile/Cell Number" value="<?=$member['mobile']?>" />
-					<input type="hidden" id="address1" name="address1" placeholder="Address1" value="<?=$member['office_address']?>" />
-		    		<input type="hidden" id="address2" name="address2" placeholder="Address2" value="" />
-					<input type="hidden" id="city" name="city" placeholder="City" value="Kolkata" />
-					<input type="hidden" id="state" name="state" placeholder="State" value="West Bengal" />
-					<input type="hidden" id="country" name="country" placeholder="Country" value="India" />
-		    		<input type="hidden" id="Pg" name="Pg" placeholder="PG" value="" />
+		    		<input type="text" id="txnid" name="txnid" placeholder="Transaction ID" value="<?=$result['payu_txnid']?>" />
+		    		<input type="text" id="amount" name="amount" placeholder="Amount" value="<?=$result['amount']?>" />
+		    		<input type="text" id="productinfo" name="productinfo" placeholder="Product Info" value="<?=$result['id']?>" />
+		    		<input type="text" id="firstname" name="firstname" placeholder="First Name" value="<?=$member['name']?>" />
+		    		<input type="text" id="Lastname" name="Lastname" placeholder="Last Name" value="<?=$member['name']?>" />
+		    		<input type="text" id="Zipcode" name="Zipcode" placeholder="Zip Code" value="" />
+		    		<input type="text" id="email" name="email" placeholder="Email ID" value="<?=$member['email']?>" />
+					<input type="text" id="phone" name="phone" placeholder="Mobile/Cell Number" value="<?=$member['phone_number_1']?>" />
+					<input type="text" id="address1" name="address1" placeholder="Address1" value="<?=$member['user_code']?>" />
+		    		<input type="text" id="address2" name="address2" placeholder="Address2" value="" />
+					<input type="text" id="city" name="city" placeholder="City" value="Kolkata" />
+					<input type="text" id="state" name="state" placeholder="State" value="West Bengal" />
+					<input type="text" id="country" name="country" placeholder="Country" value="India" />
+		    		<input type="text" id="Pg" name="Pg" placeholder="PG" value="" />
 					<div><input type="button" id="btnsubmit" name="btnsubmit" value="Pay Now" class="btn btn-success btn-sm" onclick="frmsubmit(); return true;" /></div>
 				</form>
 			</div>
