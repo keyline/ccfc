@@ -1,17 +1,16 @@
 <?php
-echo 'subhomoy';die;
 error_reporting(E_ALL);
 session_start();
 include "conn.php";
 $param 	= base64_decode(urldecode($_GET['param']));
-$sql 	= "SELECT * FROM payment WHERE id=$param";
+$sql 	= "SELECT * FROM payment_details WHERE id=$param";
 $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 $membership_no = $result['membership_no'];
 
-$member = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `members` WHERE `membership_no` = '$membership_no'"));
-// echo '<pre>';
-// print_r($result);
-// die;
+$member = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `user_code` = '$membership_no'"));
+echo '<pre>';
+print_r($result);
+die;
 /*
 Note : It is recommended to fetch all the parameters from your Database rather than posting static values or entering them on the UI.
 
