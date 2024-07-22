@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 session_start();
 include "conn.php";
 $param 	= base64_decode(urldecode($_GET['param']));
