@@ -2455,7 +2455,7 @@ class ApiController extends Controller
                                     'name'              => $checkUser->name,
                                     'email'             => $checkUser->email,
                                     'phone'             => $checkUser->phone_number_1,
-                                    'payment_link'      => url('app-webview-payment/index.php?param='.urlencode(base64_encode($i_inserted_payment_id))),
+                                    'payment_link'      => url('app-webview-payment/index.php?param='.Helper::encoded($i_inserted_payment_id)),
                                 ];
 
                                 $apiStatus          = TRUE;
