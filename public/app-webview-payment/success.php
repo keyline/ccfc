@@ -8,7 +8,7 @@ $postdata = $_POST;
 $msg = '';
 // $salt="4R38IvwiV57FwVpsgOvTXBdLE4tHUXFW";
 $salt="uY91j8i2QiLpb000ug9zdRnUsKXR2QqV";
-echo '<pre>';print_r($postdata);die;
+// echo '<pre>';print_r($postdata);die;
 // echo $salt;die;
 /* Response received from Payment Gateway at this page.
 
