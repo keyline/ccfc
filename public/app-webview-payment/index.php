@@ -147,7 +147,7 @@ function getFailureUrl()
 		margin-bottom:5px;		
 	}
 	body {
-    background: #d2a240;
+    background: #be1f24;
 }
 	.box_payment {
     background: #fff;
@@ -174,7 +174,7 @@ function getFailureUrl()
     border: none !important;
 }
 .box_payment tr td {
-    border: 1px solid #e18345 !important;
+    border: 1px solid #be1f24 !important;
     border-radius: 20px;
     padding: 10px 20px !important;
 }
@@ -203,7 +203,7 @@ function getFailureUrl()
 		<div class="box_payment">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 text-center">
-				<img src="images/brc-logo.png" />
+				<img src="https://ccfc1792.com/img/logo.png" />
 			</div>
 		</div>
 		<div class="row">
