@@ -270,10 +270,10 @@ function verifyPayment($key,$salt,$txnid,$status)
 		margin-bottom:5px;
 	}
 	.info{
-		color:#536152;	
+		color:#be1f24;	
 	}
 body {
-    background: #d2a240;
+    background: #be1f24;
 }
 	.box_payment {
     background: #fff;
@@ -300,12 +300,12 @@ body {
     border: none !important;
 }
 .box_payment tr td {
-    border: 1px solid #e18345 !important;
+    border: 1px solid #be1f24 !important;
     border-radius: 20px;
     padding: 10px 20px !important;
 }
 .box_payment input#btnsubmit {
-    background: #e86b0f;
+    background: #be1f24;
     border: none;
     border-radius: 30px;
     width: 100%;
@@ -329,7 +329,7 @@ body {
 		<div class="box_payment">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 text-center">
-					<img src="images/brc-logo.png" />
+					<img src="https://ccfc1792.com/img/logo.png" />
 				</div>
 			</div>
 		<div class="row">
