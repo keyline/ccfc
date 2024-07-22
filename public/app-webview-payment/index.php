@@ -211,15 +211,15 @@ function getFailureUrl()
 				<table class="table table-striped">
 					<tr>
 						<th>Name</th>
-						<td><?=$member['Name']?></td>
+						<td><?=$member['name']?></td>
 					</tr>
 					<tr>
 						<th>Email</th>
-						<td><?=$member['Email']?></td>
+						<td><?=$member['email']?></td>
 					</tr>
 					<tr>
 						<th>Phone</th>
-						<td><?=$member['mobile']?></td>
+						<td><?=$member['phone_number_1']?></td>
 					</tr>
 					<tr>
 						<th>Amount</th>
