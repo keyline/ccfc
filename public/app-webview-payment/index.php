@@ -1,4 +1,5 @@
 <?php
+echo 'subhomoy';die;
 error_reporting(E_ALL);
 session_start();
 include "conn.php";
