@@ -2440,7 +2440,7 @@ class ApiController extends Controller
                                 $m_send_data['serialyze_field']         = '';
                                 $m_send_data['submit_time']             = date("Y-m-d H:i:s");
                                 $m_send_data['return_time']             = date("Y-m-d H:i:s");
-                                $m_send_data['ip_address']              = $this->input->ip_address();
+                                $m_send_data['ip_address']              = $_SERVER['REMOTE_ADDR'];
                                 $m_send_data['source']                  = 'mobile';
                                 $m_send_data['booked_by']               = 'member';      
     
