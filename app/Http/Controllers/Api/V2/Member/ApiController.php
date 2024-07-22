@@ -39,6 +39,8 @@ use App\Models\UserDevice;
 use App\Models\Gallery;
 use App\Models\OtherFoodItem;
 use App\Models\MemberProfileUpdateRequest;
+use App\Models\PaymentBill;
+use App\Models\PaymentDetail;
 
 use Tzsk\Payu\Concerns\Attributes;
 use Tzsk\Payu\Concerns\Customer;
@@ -2387,6 +2389,102 @@ class ApiController extends Controller
                 $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
             }
         /* billing */
+        /* make payment */
+            public function makePayment(Request $request){
+                $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
+                $apiStatus          = TRUE;
+                $apiMessage         = '';
+                $apiResponse        = [];
+                $apiExtraField      = '';
+                $apiExtraData       = '';
+                $this->isJSON(file_get_contents('php://input'));
+                $requestData        = $this->extract_json(file_get_contents('php://input'));
+                $requiredFields     = ['amount'];
+                $headerData         = $request->header();
+                if (!$this->validateArray($requiredFields, $requestData)){
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'All Data Are Not Present !!!';
+                }
+                
+                if($headerData['key'][0] == $project_key){
+                    $app_access_token           = $headerData['authorization'][0];
+                    $getTokenValue              = $this->tokenAuth($app_access_token);
+                    $amount                     = $requestData['amount'];
+
+                    if($getTokenValue['status']){
+                        $uId                        = $getTokenValue['data'][1];
+                        $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
+                        $checkUser                  = User::where('id', '=', $uId)->first();
+                        if($checkUser){
+                            if($checkUser->status == 'ACTIVE'){
+                            /******************* Insert into payment bill table  ********************/
+                                $m_bill_data['membership_no']   = $checkUser->user_code;  
+                                $m_bill_data['amount']          = $amount; 
+                                $m_bill_data['submit_time']     = date("Y-m-d H:i:s");
+                                $i_inserted_bill_id             = PaymentBill::insertGetId($m_bill_data);
+                            /******************* Insert into payment bill table  ********************/
+
+                            /******************* Insert into payment master with payment bill id table  ********************/
+                                $m_send_data['membership_no']           = $checkUser->user_code; 
+                                $m_send_data['pg_name']                 = 'payu';
+                                $m_send_data['vpc_MerchTxnRef']         = '';
+                                $m_send_data['pay_type']                = 'bill';
+                                $m_send_data['pay_type_id']             = @$i_inserted_bill_id;
+                                $m_send_data['reason_code']             = '';
+                                $m_send_data['amount']                  = $amount;
+                                $m_send_data['payu_txnid']              = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+                                $m_send_data['bill_trans_ref_no']       = '';
+                                $m_send_data['decision']                = '';
+                                $m_send_data['auth_code']               = '';
+                                $m_send_data['message']                 = '';
+                                $m_send_data['serialyze_field']         = '';
+                                $m_send_data['submit_time']             = date("Y-m-d H:i:s");
+                                $m_send_data['return_time']             = date("Y-m-d H:i:s");
+                                $m_send_data['ip_address']              = $this->input->ip_address();
+                                $m_send_data['source']                  = 'mobile';
+                                $m_send_data['booked_by']               = 'member';      
+    
+                                $i_inserted_payment_id = PaymentDetail::insertGetId($m_send_data);
+                            /******************* Insert into payment master with payment bill id table  ********************/
+
+                                $apiResponse = [
+                                    'pay_type_id'       => $i_inserted_bill_id,
+                                    'payment_id'        => $i_inserted_payment_id,
+                                    'payment_amount'    => $amount,
+                                    'txnid'             => $m_send_data['payu_txnid'],
+                                    'name'              => $checkUser->name,
+                                    'email'             => $checkUser->email,
+                                    'phone'             => $checkUser->phone_number_1,
+                                    'payment_link'      => url('app-webview-payment/index.php?param='.urlencode(base64_encode($i_inserted_payment_id))),
+                                ];
+
+                                $apiStatus          = TRUE;
+                                http_response_code(200);
+                                $apiMessage         = 'Payment Preview Available !!!';
+                                $apiExtraField      = 'response_code';
+                                $apiExtraData       = http_response_code();
+                            } else {
+                                $apiStatus                              = FALSE;
+                                $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            }
+                        } else {
+                            $apiStatus                              = FALSE;
+                            $apiMessage                             = 'We Don\'t Recognize You !!!';
+                        }
+                    } else {
+                        http_response_code($getTokenValue['data'][2]);
+                        $apiStatus                      = FALSE;
+                        $apiMessage                     = $this->getResponseCode(http_response_code());
+                        $apiExtraField                  = 'response_code';
+                        $apiExtraData                   = http_response_code();
+                    }
+                } else {
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'Unauthenticate Request !!!';
+                }
+                $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
+        /* make payment */
         /* payu reponse */
             public function payuResponse(Request $request){
                 $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
