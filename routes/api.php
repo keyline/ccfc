@@ -84,6 +84,6 @@ Route::prefix('v2')->group(function () {
         Route::post('member/testpush', [ApiController::class,'testPush'])->name('api.v2.member.testpush.testPush');
         Route::post('member/profileupdaterequest', [ApiController::class,'profileUpdateRequest'])->name('api.v2.member.profileupdaterequest.profileUpdateRequest');
         Route::get('member/testclubmanapi', [ApiController::class,'testClubmanApi'])->name('api.v2.member.testclubmanapi.testClubmanApi');
-        Route::get('member/makepayment', [ApiController::class,'makePayment'])->name('api.v2.member.makepayment.makePayment');
+        Route::post('member/makepayment', [ApiController::class,'makePayment'])->name('api.v2.member.makepayment.makePayment');
     /* after login */
 });
