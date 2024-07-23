@@ -1960,6 +1960,12 @@ class ApiController extends Controller
                                 //             ->post($tansactionUrl)->json()['data'];
                                 // Helper::pr($transactions);die;
 
+                                // Example usage
+                                $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/";
+                                $postData = ['MCODE' => $checkUser->user_code];
+                                $response = $this->makeCurlRequest($url, $postData);
+                                echo $response;die;
+
                                 
 
                                 $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/?MCODE=" . $checkUser->user_code . "&FromDate=01-apr-2020&ToDate=01-jun-2021";
@@ -2004,29 +2010,7 @@ class ApiController extends Controller
                                                 $detailed_bill_link = SearchInvoicePdf::getDetailBillLinkApp($checkUser->user_code,  $transaction['Month']);
                                             }
                                         /* detailed bill */
-                                        /* bill list */
-                                            $bill_list = [];
-                                            // $Month      = str_replace(" ", "-", $transaction['Month']);
-                                            // $billFields = [
-                                            //     'mcode'     => $checkUser->user_code,
-                                            //     'month'     => $Month
-                                            // ];
-                                            // $billUrl    = 'https://ccfcmemberdata.in/Api/MemberTransactionMonthly/POST?' . http_build_query($billFields);
-                                            // $bills      = Http::withoutVerifying()
-                                            //             ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
-                                            //                             'Content-Type' => 'application/json',])
-                                            //             ->withOptions(["verify" => false])
-                                            //             ->post($billUrl)->json()['data'];
-                                            // if($bills){
-                                            //     foreach($bills as $bill){
-                                            //         $bill_list[] = [
-                                            //             'BILLDETAILS'   => $bill['BILLDETAILS'],
-                                            //             'AMOUNT'        => number_format($bill['AMOUNT'],2),
-                                            //             'BILLDATE'      => date_format(date_create($bill['BILLDATE']), "d-M-Y")
-                                            //         ];
-                                            //     }
-                                            // }
-                                        /* bill list */
+                                        $bill_list = [];
                                         $monthly_billing[] = [
                                             'month'                 => $transaction['Month'],
                                             'opening_balance'       => $transaction['LastBalance'],
@@ -2389,6 +2373,39 @@ class ApiController extends Controller
                     $apiMessage         = 'Unauthenticate Request !!!';
                 }
                 $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
+            public function makeCurlRequest($url, $postData = []) {
+                $ch = curl_init();
+
+                // Set cURL options
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Set a timeout
+
+                // If POST data is provided, make a POST request
+                if (!empty($postData)) {
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
+                }
+                $headers = array(
+                   "Authorization: Bearer 5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn",
+                   "Content-Type: application/json",
+                   "Content-Length: 0",
+                );
+                curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+                // Execute cURL request and get response
+                $response = curl_exec($ch);
+
+                // Check for errors
+                if (curl_errno($ch)) {
+                    echo 'cURL error: ' . curl_error($ch);
+                }
+
+                // Close cURL handle
+                curl_close($ch);
+
+                return $response;
             }
         /* billing */
         /* make payment */
