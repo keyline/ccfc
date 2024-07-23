@@ -129,14 +129,23 @@ class Controller extends BaseController
                         'token' => $token, // Replace with the recipient device token
                         'data' => [
                             'type' => $type,
-                            'picture' => $image
+                            // 'picture' => $image
                         ],
                         'notification' => [
                             'title' => $title,
                             'body'  => $body,
                             'image' => $image
                         ]
-                    ]
+                    ],
+                    'aps' => [
+                        'alert' => [
+                            'title' => $title,
+                            'body' => $body,
+                        ],
+                        'sound' => 'default',
+                        'mutable-content' => 1,
+                    ],
+                    'media-url' => $image
                 ];
             } else {
                 $message = [
