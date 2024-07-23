@@ -1964,27 +1964,27 @@ class ApiController extends Controller
                                 $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/?MCODE=" . $checkUser->user_code . "&FromDate=01-apr-2020&ToDate=01-jun-2021";
                                 $postData = ['MCODE' => $checkUser->user_code, 'FromDate' => '01-apr-2020', 'ToDate' => '01-jun-2021'];
                                 $response = $this->makeCurlRequest($url, $postData);
-                                echo $response;die;
-
+                                // echo $response;die;
+                                $transactions = json_decode($response, true)['data'];
                                 
 
-                                $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/?MCODE=" . $checkUser->user_code . "&FromDate=01-apr-2020&ToDate=01-jun-2021";
-                                $curl = curl_init($url);
-                                curl_setopt($curl, CURLOPT_URL, $url);
-                                curl_setopt($curl, CURLOPT_POST, true);
-                                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                                $headers = array(
-                                   "Authorization: Bearer 5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn",
-                                   "Content-Type: application/json",
-                                   "Content-Length: 0",
-                                );
-                                curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-                                //for debug only!
-                                curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-                                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                                // $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/?MCODE=" . $checkUser->user_code . "&FromDate=01-apr-2020&ToDate=01-jun-2021";
+                                // $curl = curl_init($url);
+                                // curl_setopt($curl, CURLOPT_URL, $url);
+                                // curl_setopt($curl, CURLOPT_POST, true);
+                                // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                                // $headers = array(
+                                //    "Authorization: Bearer 5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn",
+                                //    "Content-Type: application/json",
+                                //    "Content-Length: 0",
+                                // );
+                                // curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                                // //for debug only!
+                                // curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+                                // curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-                                $resp = curl_exec($curl);
-                                $transactions = json_decode($resp, true)['data'];
+                                // $resp = curl_exec($curl);
+                                // $transactions = json_decode($resp, true)['data'];
                                 // Helper::pr($transactions);
 
                                 $monthly_billing                = [];
