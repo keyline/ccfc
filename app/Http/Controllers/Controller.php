@@ -133,7 +133,8 @@ class Controller extends BaseController
                         'notification' => [
                             'title' => $title,
                             'body'  => $body,
-                            'image' => $image
+                            'image' => $image,
+                            'picture' => $image,
                         ]
                     ]
                 ];
