@@ -128,13 +128,13 @@ class Controller extends BaseController
                     'message' => [
                         'token' => $token, // Replace with the recipient device token
                         'data' => [
-                            'type' => $type
+                            'type' => $type,
+                            'picture' => $image
                         ],
                         'notification' => [
                             'title' => $title,
                             'body'  => $body,
-                            'image' => $image,
-                            'picture' => $image,
+                            'image' => $image
                         ]
                     ]
                 ];
