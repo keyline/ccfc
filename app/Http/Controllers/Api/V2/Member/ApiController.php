@@ -1961,8 +1961,8 @@ class ApiController extends Controller
                                 // Helper::pr($transactions);die;
 
                                 // Example usage
-                                $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/";
-                                $postData = ['MCODE' => $checkUser->user_code];
+                                $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/?MCODE=" . $checkUser->user_code . "&FromDate=01-apr-2020&ToDate=01-jun-2021";
+                                $postData = [];
                                 $response = $this->makeCurlRequest($url, $postData);
                                 echo $response;die;
 
