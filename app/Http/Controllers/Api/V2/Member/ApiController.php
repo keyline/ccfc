@@ -1960,6 +1960,33 @@ class ApiController extends Controller
                                 //             ->post($tansactionUrl)->json()['data'];
                                 // // Helper::pr($transactions);
 
+                                $curl = curl_init();
+
+                                curl_setopt_array($curl, array(
+                                  CURLOPT_URL => 'https://ccfc.keylines.in/api/v2/member/billing',
+                                  CURLOPT_RETURNTRANSFER => true,
+                                  CURLOPT_ENCODING => '',
+                                  CURLOPT_MAXREDIRS => 10,
+                                  CURLOPT_TIMEOUT => 0,
+                                  CURLOPT_FOLLOWLOCATION => true,
+                                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                  CURLOPT_CUSTOMREQUEST => 'GET',
+                                  CURLOPT_HTTPHEADER => array(
+                                    'Key: facb6e0a6fcbe200dca2fb60dec75be7',
+                                    'source: ANDROID',
+                                    'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NDM3MywiZW1haWwiOiJkZWJ0ZWpAZ21haWwuY29tIiwicGhvbmUiOiI5ODMxMDU1NDAwIiwiZXhwIjoxNzI0MzAxNzA4fQ.WhAAbfPxsSOMPqmAEDjbKfKC5WVNMkcz7O1c1lKggpg',
+                                    'Cache-Control: no-cache',
+                                    'Pragma: no-cache',
+                                    'Content-Type: application/json; charset=utf-8',
+                                    'Expires: -1'
+                                  ),
+                                ));
+
+                                $response = curl_exec($curl);
+
+                                curl_close($curl);
+                                Helper::pr($response);die;
+
                                 $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/?MCODE=" . $checkUser->user_code . "&FromDate=01-apr-2020&ToDate=01-jun-2021";
                                 $curl = curl_init($url);
                                 curl_setopt($curl, CURLOPT_URL, $url);
