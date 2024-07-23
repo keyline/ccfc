@@ -2392,7 +2392,7 @@ class ApiController extends Controller
                    "Content-Type: application/json",
                    "Content-Length: 0",
                 );
-                curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
                 // Execute cURL request and get response
                 $response = curl_exec($ch);
