@@ -136,7 +136,9 @@ class Controller extends BaseController
                             'body'  => $body,
                             'image' => $image
                         ]
-                    ],
+                    ]
+                ];
+                $iosPayload = [
                     'aps' => [
                         'alert' => [
                             'title' => $title,
@@ -160,10 +162,21 @@ class Controller extends BaseController
                         ]
                     ]
                 ];
+                $iosPayload = [
+                    'aps' => [
+                        'alert' => [
+                            'title' => $title,
+                            'body' => $body,
+                        ],
+                        'sound' => 'default',
+                        'mutable-content' => 1,
+                    ]
+                ];
             }
 
             // Send FCM message
             $response = $this->sendFCMMessage($accessToken, $projectId, $message);
+            $response = $this->sendFCMMessage($accessToken, $projectId, $iosPayload);
             return true;
             // return "Response: " . $response;
             // return redirect()->to('admin/create/settinglist')->with('status', "Response: " . $response);
