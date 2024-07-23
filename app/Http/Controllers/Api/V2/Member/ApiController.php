@@ -793,7 +793,7 @@ class ApiController extends Controller
                                 $url            = "https://ccfcmemberdata.in/Api/CardInfo/POST?mcode=" . $checkUser->user_code;;
                                 $postData       = ['mcode' => $checkUser->user_code];
                                 $response       = $this->makeCurlRequest($url, $postData);
-                                $qrcodes        = json_decode($resp, true)['data'];
+                                $qrcodes        = json_decode($response, true)['data'];
 
                                 // $url = "https://ccfcmemberdata.in/Api/CardInfo/POST?mcode=" . $checkUser->user_code;
                                 // $curl = curl_init($url);
