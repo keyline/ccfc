@@ -1979,7 +1979,7 @@ class ApiController extends Controller
 
                                 $resp = curl_exec($curl);
                                 $transactions = json_decode($resp, true)['data'];
-                                Helper::pr($transactions);
+                                // Helper::pr($transactions);
 
                                 $monthly_billing                = [];
                                 $daily_billing                  = [];
