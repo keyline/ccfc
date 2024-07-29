@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Events;
 use App\Models\UserDevice;
+use App\Models\Notification;
+use App\Models\UserNotification;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
@@ -83,10 +86,27 @@ class EventsController extends Controller
         }
 
         $event->save();
-
+        /* insert notification */
+            $fields = [
+                'type'          => 'event',
+                'title'         => $request->input('event_name'),
+                'description'   => $request->input('event_details1'),
+            ];
+            $notification_id = Notification::insertGetId($fields);
+            $users = User::select('id')->orderBy('id', 'ASC')->get();
+            if($users){
+                foreach($users as $user){
+                    $fields2 = [
+                        'user_id'                   => $user->id,
+                        'notification_id'           => $notification_id
+                    ];
+                    UserNotification::insert($fields2);
+                }
+            }
+        /* insert notification */
         /* push notification */
-            $title              = 'A new event has been uploaded';
-            $body               = $request->input('event_name');
+            $title              = $request->input('event_name');
+            $body               = $request->input('event_details1');
             $type               = 'event';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
             $tokens             = [];

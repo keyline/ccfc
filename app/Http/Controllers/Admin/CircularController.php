@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\circular;
 use App\Models\UserDevice;
+use App\Models\Notification;
+use App\Models\UserNotification;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
@@ -87,9 +90,27 @@ class CircularController extends Controller
         }
 
         $circular->save();
+        /* insert notification */
+            $fields = [
+                'type'          => 'circular',
+                'title'         => $request->input('circular_details1'),
+                'description'   => $request->input('circular_details2'),
+            ];
+            $notification_id = Notification::insertGetId($fields);
+            $users = User::select('id')->orderBy('id', 'ASC')->get();
+            if($users){
+                foreach($users as $user){
+                    $fields2 = [
+                        'user_id'                   => $user->id,
+                        'notification_id'           => $notification_id
+                    ];
+                    UserNotification::insert($fields2);
+                }
+            }
+        /* insert notification */
         /* push notification */
-            $title              = 'A new circular has been uploaded';
-            $body               = $request->input('circular_details1');
+            $title              = $request->input('circular_details1');
+            $body               = $request->input('circular_details2');
             $type               = 'circular';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
             $tokens             = [];

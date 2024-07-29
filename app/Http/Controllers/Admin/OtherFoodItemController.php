@@ -2,6 +2,10 @@
 namespace App\Http\Controllers\Admin;
 use App\Models\GeneralSetting;
 use App\Models\OtherFoodItem;
+use App\Models\UserDevice;
+use App\Models\Notification;
+use App\Models\UserNotification;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -58,6 +62,37 @@ class OtherFoodItemController extends Controller
                 ];
                 // Helper::pr($fields);
                 OtherFoodItem::insert($fields);
+                /* insert notification */
+                    $fields = [
+                        'type'          => 'outsideitem',
+                        'title'         => $postData['name'],
+                        'description'   => '',
+                    ];
+                    $notification_id = Notification::insertGetId($fields);
+                    $users = User::select('id')->orderBy('id', 'ASC')->get();
+                    if($users){
+                        foreach($users as $user){
+                            $fields2 = [
+                                'user_id'                   => $user->id,
+                                'notification_id'           => $notification_id
+                            ];
+                            UserNotification::insert($fields2);
+                        }
+                    }
+                /* insert notification */
+                /* push notification */
+                    $title              = 'A New Outside Food Menu Has Been Uploaded';
+                    $body               = $postData['name'];
+                    $image              = env('UPLOADS_URL').$food_image;
+                    $type               = 'outsideitem';
+                    $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+                    $tokens             = [];
+                    if($getUserFCMTokens){
+                        foreach($getUserFCMTokens as $getUserFCMToken){
+                            $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type, $image);
+                        }
+                    }
+                /* push notification */
                 return redirect("admin/create/otherfooditemlist")->with('success_message', 'Other Food Item Inserted Successfully !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');

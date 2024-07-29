@@ -4,6 +4,9 @@ use App\Models\GeneralSetting;
 use App\Models\CookingDaySpecial;
 use App\Models\CookingDaySpecialImage;
 use App\Models\UserDevice;
+use App\Models\Notification;
+use App\Models\UserNotification;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -60,11 +63,29 @@ class CookingDaySpecialController extends Controller
                 // Helper::pr($fields);
                 CookingDaySpecial::insert($fields);
                 $menu_date = $postData['menu_date'];
+                /* insert notification */
+                    $fields = [
+                        'type'          => 'dayspecial',
+                        'title'         => $postData['title'],
+                        'description'   => $postData['description'],
+                    ];
+                    $notification_id = Notification::insertGetId($fields);
+                    $users = User::select('id')->orderBy('id', 'ASC')->get();
+                    if($users){
+                        foreach($users as $user){
+                            $fields2 = [
+                                'user_id'                   => $user->id,
+                                'notification_id'           => $notification_id
+                            ];
+                            UserNotification::insert($fields2);
+                        }
+                    }
+                /* insert notification */
                 /* push notification */
                     $title              = 'A New Day Special Menu Has Been Uploaded Of ' . $postData['menu_date'];
                     $body               = $postData['title'];
                     $image              = env('UPLOADS_URL').$image_name;
-                    $type               = 'day_special';
+                    $type               = 'dayspecial';
                     $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
                     $tokens             = [];
                     if($getUserFCMTokens){

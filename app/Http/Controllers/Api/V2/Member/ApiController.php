@@ -41,6 +41,8 @@ use App\Models\OtherFoodItem;
 use App\Models\MemberProfileUpdateRequest;
 use App\Models\PaymentBill;
 use App\Models\PaymentDetail;
+use App\Models\Notification;
+use App\Models\UserNotification;
 
 use Tzsk\Payu\Concerns\Attributes;
 use Tzsk\Payu\Concerns\Customer;
@@ -672,7 +674,9 @@ class ApiController extends Controller
                                         $profileImage       = 'data:image/png;base64,'.$getUserDetail->member_image;
                                     }
                                 }
+                                $notification_unread_count = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->count();
                                 $apiResponse        = [
+                                    'notification_unread_count'                 => $notification_unread_count
                                     'member'        => [
                                         'user_code'                             => $checkUser->user_code,
                                         'name'                                  => $checkUser->name,
@@ -2538,6 +2542,24 @@ class ApiController extends Controller
                                             $message            = view('email-templates.payment-success',$mailData);
                                             $this->sendMail($checkUser->email, $subject, $message);
                                         /* send email */
+                                        /* insert notification */
+                                            $fields = [
+                                                'type'          => 'payment',
+                                                'title'         => $generalSettings->site_name.' :: Payment Success',
+                                                'description'   => $generalSettings->site_name.' :: Payment Success Of Rs. ' . $amount,
+                                            ];
+                                            $notification_id = Notification::insertGetId($fields);
+                                            $users = User::where('id', '=', $uId)->select('id')->orderBy('id', 'ASC')->get();
+                                            if($users){
+                                                foreach($users as $user){
+                                                    $fields2 = [
+                                                        'user_id'                   => $user->id,
+                                                        'notification_id'           => $notification_id
+                                                    ];
+                                                    UserNotification::insert($fields2);
+                                                }
+                                            }
+                                        /* insert notification */
                                         /* push notification */
                                             $title              = 'Payment has been completed successfully';
                                             $body               = "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours.";
@@ -2595,14 +2617,7 @@ class ApiController extends Controller
                 $apiResponse        = [];
                 $apiExtraField      = '';
                 $apiExtraData       = '';
-                // $this->isJSON(file_get_contents('php://input'));
-                // $requestData        = $this->extract_json(file_get_contents('php://input'));
-                // $requiredFields     = ['menu_date'];
                 $headerData         = $request->header();
-                // if (!$this->validateArray($requiredFields, $requestData)){
-                //     $apiStatus          = FALSE;
-                //     $apiMessage         = 'All Data Are Not Present !!!';
-                // }
                 if($headerData['key'][0] == $project_key){
                     $app_access_token           = $headerData['authorization'][0];
                     $getTokenValue              = $this->tokenAuth($app_access_token);
@@ -2612,21 +2627,27 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $currentDate = date('Y-m-d');
-                                $mustReads          = MustRead::select('title', 'description', 'is_popup', 'popup_validity_date', 'popup_validity_time', 'created_at')->where('status', '=', 1)->where('popup_validity_date', '>=', $currentDate)->orderBy('id', 'DESC')->get();
-                                if($mustReads){
-                                    foreach($mustReads as $mustRead){
+                                $notifications          = Notification::orderBy('id', 'DESC')->get();
+                                if($notifications){
+                                    foreach($notifications as $noti){
                                         $apiResponse[] = [
-                                            'title'                 => $mustRead->title,
-                                            'description'           => $mustRead->description,
-                                            'is_popup'              => $mustRead->is_popup,
-                                            'popup_validity_date'   => $mustRead->popup_validity_date,
-                                            'popup_validity_time'   => $mustRead->popup_validity_time,
-                                            'popup_validity'        => $mustRead->popup_validity_date.' '.$mustRead->popup_validity_time,
-                                            'created_at'            => Helper::time_ago($mustRead->created_at),
+                                            'title'                 => $noti->title,
+                                            'description'           => $noti->description,
+                                            'type'                  => $noti->type,
+                                            // 'is_popup'              => $noti->is_popup,
+                                            // 'popup_validity_date'   => $noti->popup_validity_date,
+                                            // 'popup_validity_time'   => $noti->popup_validity_time,
+                                            // 'popup_validity'        => $noti->popup_validity_date.' '.$noti->popup_validity_time,
+                                            'created_at'            => Helper::time_ago($noti->created_at),
                                         ];
                                     }
                                 }
+                                /* read notification from user account */
+                                    UserNotification::where('user_id', '=', $uId)->update(['status' => 1]);
+                                /* read notification from user account */
+                                $apiResponse        = [
+                                    'notification_unread_count' => 0
+                                ];
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';

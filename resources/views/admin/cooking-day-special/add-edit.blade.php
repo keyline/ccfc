@@ -47,7 +47,7 @@
         <div class="row mb-3">
           <label for="description" class="col-md-4 col-lg-3 col-form-label">Description</label>
           <div class="col-md-8 col-lg-9">
-            <textarea name="description" class="form-control ckeditor" id="description"><?=$description?></textarea>
+            <textarea name="description" class="form-control ckeditor" id="description" required><?=$description?></textarea>
           </div>
         </div>
         <div class="row mb-3">
