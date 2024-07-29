@@ -2645,9 +2645,9 @@ class ApiController extends Controller
                                 /* read notification from user account */
                                     UserNotification::where('user_id', '=', $uId)->update(['status' => 1]);
                                 /* read notification from user account */
-                                $apiResponse        = [
-                                    'notification_unread_count' => 0
-                                ];
+                                // $apiResponse        = [
+                                //     'notification_unread_count' => 0
+                                // ];
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
