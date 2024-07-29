@@ -612,14 +612,14 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?=url('admin/create/mustreadlist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Must Reads
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <!-- End mobile app -->
