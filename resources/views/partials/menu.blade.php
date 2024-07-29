@@ -568,7 +568,7 @@
                             <a href="<?=url('admin/create/circulars')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
-                                    Circulars
+                                    Circulars <small>(Must read)</small>
                                 </p>
                             </a>
                         </li>
@@ -576,7 +576,7 @@
                             <a href="<?=url('admin/create/event')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
-                                    Events
+                                    Events <small>(Club updates)</small>
                                 </p>
                             </a>
                         </li>
@@ -584,7 +584,7 @@
                             <a href="<?=url('admin/create/dayspeciallist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
-                                    Day Specials
+                                    Day Specials <small>(Day special)</small>
                                 </p>
                             </a>
                         </li>
@@ -592,7 +592,7 @@
                             <a href="<?=url('admin/create/otherfooditemlist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
-                                    Other Food Items
+                                    Outside Items <small>(Outside Items)</small>
                                 </p>
                             </a>
                         </li>
