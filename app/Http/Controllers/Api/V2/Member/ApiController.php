@@ -2493,7 +2493,7 @@ class ApiController extends Controller
 
                     $amount                     = $requestData['amount'];
                     $hash                       = $requestData['hash'];
-                    $image_link                     = $requestData['id'];
+                    $txn_id                     = $requestData['id'];
                     $status                     = $requestData['status'];
                     $payuResponse               = $requestData['payuResponse'];
 
