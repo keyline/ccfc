@@ -676,7 +676,7 @@ class ApiController extends Controller
                                 }
                                 $notification_unread_count = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->count();
                                 $apiResponse        = [
-                                    'notification_unread_count'                 => $notification_unread_count
+                                    'notification_unread_count'                 => $notification_unread_count,
                                     'member'        => [
                                         'user_code'                             => $checkUser->user_code,
                                         'name'                                  => $checkUser->name,
