@@ -565,10 +565,18 @@
                             </a>
                         </li> -->
                         <li class="nav-item">
-                            <a href="<?=url('admin/create/cookingitemreportlist')?>" class="nav-link">
+                            <a href="<?=url('admin/create/mustreadlist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
-                                    Whats Cooking Reports
+                                    Circulars
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=url('admin/create/mustreadlist')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Events
                                 </p>
                             </a>
                         </li>
@@ -589,13 +597,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?=url('admin/create/cookingitemreportlist')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Whats Cooking Reports
+                                </p>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
                             <a href="<?=url('admin/create/spabookingtrackinglist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Spa Booking Trackings
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?=url('admin/create/profileupdaterequests')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
@@ -612,14 +628,6 @@
                                 </p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="<?=url('admin/create/mustreadlist')?>" class="nav-link">
-                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
-                                <p>
-                                    Must Reads
-                                </p>
-                            </a>
-                        </li> -->
                     </ul>
                 </li>
                 <!-- End mobile app -->
