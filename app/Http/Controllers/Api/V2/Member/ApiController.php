@@ -1789,6 +1789,9 @@ class ApiController extends Controller
                             if($checkUser->status == 'ACTIVE'){
                                 $currentDate        = date('Y-m-d');
                                 $events             = Events::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
+                                /* notification read & count */
+                                    UserNotification::where('user_id', '=', $uId)->where('type', '=', 'circular')->update(['status' => 1]);
+                                /* notification read & count */
                                 if($events){
                                     foreach($events as $event){
                                         $apiResponse[] = [
@@ -1802,7 +1805,10 @@ class ApiController extends Controller
                                             'posted_by'             => 'CCFC',
                                         ];
                                     }
+                                    $notification_unread_count = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->count();
+                                    $apiResponse[]['notification_unread_count'] = $notification_unread_count;
                                 }
+                                
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
                                 $apiMessage         = 'Data Available !!!';
