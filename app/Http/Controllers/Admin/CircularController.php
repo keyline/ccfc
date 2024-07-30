@@ -111,7 +111,7 @@ class CircularController extends Controller
         /* push notification */
             $title              = $request->input('circular_details1');
             $body               = strip_tags($request->input('circular_details2'), "<p>");
-            echo $body;die;
+
             $type               = 'circular';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
             $tokens             = [];
@@ -120,6 +120,7 @@ class CircularController extends Controller
                     $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
                 }
             }
+            echo $body;die;
         /* push notification */
         return redirect()->back()->with('status','Save successfully');
         // $circular->circular_image = $request->input('circularimage');
