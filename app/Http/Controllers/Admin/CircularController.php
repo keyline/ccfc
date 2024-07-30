@@ -120,7 +120,7 @@ class CircularController extends Controller
                     $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
                 }
             }
-            echo $body;die;
+            // echo $body;die;
         /* push notification */
         return redirect()->back()->with('status','Save successfully');
         // $circular->circular_image = $request->input('circularimage');
