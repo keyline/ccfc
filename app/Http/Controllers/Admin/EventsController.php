@@ -106,8 +106,7 @@ class EventsController extends Controller
         /* insert notification */
         /* push notification */
             $title              = $request->input('event_name');
-            $body               = strip_tags($request->input('event_details1'), "<p>");
-            // echo $body;die;
+            $body               = $request->input('event_details1');
             $type               = 'event';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
             $tokens             = [];

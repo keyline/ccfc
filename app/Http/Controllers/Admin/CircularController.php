@@ -98,19 +98,20 @@ class CircularController extends Controller
             ];
             $notification_id = Notification::insertGetId($fields);
             $users = User::select('id')->orderBy('id', 'ASC')->get();
-            if($users){
-                foreach($users as $user){
-                    $fields2 = [
-                        'user_id'                   => $user->id,
-                        'notification_id'           => $notification_id
-                    ];
-                    UserNotification::insert($fields2);
-                }
-            }
+            // if($users){
+            //     foreach($users as $user){
+            //         $fields2 = [
+            //             'user_id'                   => $user->id,
+            //             'notification_id'           => $notification_id
+            //         ];
+            //         UserNotification::insert($fields2);
+            //     }
+            // }
         /* insert notification */
         /* push notification */
             $title              = $request->input('circular_details1');
             $body               = strip_tags($request->input('circular_details2'), "<p>");
+            echo $body;die;
             $type               = 'circular';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
             $tokens             = [];
