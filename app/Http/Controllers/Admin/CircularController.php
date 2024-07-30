@@ -110,7 +110,7 @@ class CircularController extends Controller
         /* insert notification */
         /* push notification */
             $title              = $request->input('circular_details1');
-            $body               = strip_tags($request->input('circular_details2'), "<p>");
+            $body               = strip_tags($request->input('circular_details2'));
 
             $type               = 'circular';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
