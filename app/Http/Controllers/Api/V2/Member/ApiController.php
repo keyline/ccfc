@@ -1790,7 +1790,12 @@ class ApiController extends Controller
                                 $currentDate        = date('Y-m-d');
                                 $events             = Events::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
                                 /* notification read & count */
-                                    UserNotification::where('user_id', '=', $uId)->where('type', '=', 'event')->update(['status' => 1]);
+                                    $notificationIds = Notification::select('id')->where('type', '=', 'event')->get();
+                                    if($notificationIds){
+                                        foreach($notificationIds as $notificationId){
+                                            UserNotification::where('user_id', '=', $uId)->where('notification_id', '=', $notificationId->id)->update(['status' => 1]);
+                                        }
+                                    }
                                 /* notification read & count */
                                 if($events){
                                     foreach($events as $event){
