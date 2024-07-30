@@ -85,5 +85,6 @@ Route::prefix('v2')->group(function () {
         Route::post('member/profileupdaterequest', [ApiController::class,'profileUpdateRequest'])->name('api.v2.member.profileupdaterequest.profileUpdateRequest');
         Route::get('member/testclubmanapi', [ApiController::class,'testClubmanApi'])->name('api.v2.member.testclubmanapi.testClubmanApi');
         Route::post('member/makepayment', [ApiController::class,'makePayment'])->name('api.v2.member.makepayment.makePayment');
+        Route::get('member/getunreadnotificationcount', [ApiController::class,'getUnreadNotificationCount'])->name('api.v2.member.getunreadnotificationcount.getUnreadNotificationCount');
     /* after login */
 });

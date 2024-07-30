@@ -1156,6 +1156,14 @@ class ApiController extends Controller
                                 } elseif($for_cat == 'OTHER FOOD'){
                                     $currentDate        = date('Y-m-d');
                                     $otherFoodItems         = OtherFoodItem::select('name', 'food_image')->where('status', '=', 1)->where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
+                                    /* notification read & count */
+                                        $notificationIds = Notification::select('id')->where('type', '=', 'outsideitem')->get();
+                                        if($notificationIds){
+                                            foreach($notificationIds as $notificationId){
+                                                UserNotification::where('user_id', '=', $uId)->where('notification_id', '=', $notificationId->id)->update(['status' => 1]);
+                                            }
+                                        }
+                                    /* notification read & count */
                                     if($otherFoodItems){
                                         foreach($otherFoodItems as $otherFoodItem){
                                             $item_complete_list[]        = [
@@ -1730,6 +1738,14 @@ class ApiController extends Controller
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
                                 $getCookingDaySpecialMenus = CookingDaySpecial::where('status', '=', 1)->where('menu_date', '=', $menu_date)->get();
+                                /* notification read & count */
+                                    $notificationIds = Notification::select('id')->where('type', '=', 'dayspecial')->get();
+                                    if($notificationIds){
+                                        foreach($notificationIds as $notificationId){
+                                            UserNotification::where('user_id', '=', $uId)->where('notification_id', '=', $notificationId->id)->update(['status' => 1]);
+                                        }
+                                    }
+                                /* notification read & count */
                                 if($getCookingDaySpecialMenus){
                                     foreach($getCookingDaySpecialMenus as $getCookingDaySpecialMenu){
                                         $apiResponse[] = env('UPLOADS_URL').$getCookingDaySpecialMenu->image_name;
@@ -1810,8 +1826,8 @@ class ApiController extends Controller
                                             'posted_by'             => 'CCFC',
                                         ];
                                     }
-                                    $notification_unread_count = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->count();
-                                    $apiResponse[]['notification_unread_count'] = $notification_unread_count;
+                                    // $notification_unread_count = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->count();
+                                    // $apiResponse[]['notification_unread_count'] = $notification_unread_count;
                                 }
                                 
                                 $apiStatus          = TRUE;
@@ -1871,6 +1887,14 @@ class ApiController extends Controller
                                 /* circulars */
                                     $currentDate        = date('Y-m-d');
                                     $notices            = circular::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
+                                    /* notification read & count */
+                                        $notificationIds = Notification::select('id')->where('type', '=', 'circular')->get();
+                                        if($notificationIds){
+                                            foreach($notificationIds as $notificationId){
+                                                UserNotification::where('user_id', '=', $uId)->where('notification_id', '=', $notificationId->id)->update(['status' => 1]);
+                                            }
+                                        }
+                                    /* notification read & count */
                                     if($notices){
                                         foreach($notices as $notice){
                                             $circulars[] = [
@@ -2885,6 +2909,55 @@ class ApiController extends Controller
                 $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
             }
         /* profile update request */
+        /* get unread notification count */
+            public function getUnreadNotificationCount(Request $request){
+                $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
+                $apiStatus          = TRUE;
+                $apiMessage         = '';
+                $apiResponse        = [];
+                $apiExtraField      = '';
+                $apiExtraData       = '';
+                $headerData         = $request->header();
+                if($headerData['key'][0] == $project_key){
+                    $app_access_token           = $headerData['authorization'][0];
+                    $getTokenValue              = $this->tokenAuth($app_access_token);
+                    if($getTokenValue['status']){
+                        $uId                        = $getTokenValue['data'][1];
+                        $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
+                        $checkUser                  = User::where('id', '=', $uId)->first();
+                        if($checkUser){
+                            if($checkUser->status == 'ACTIVE'){
+                                $notification_unread_count = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->count();
+                                $apiResponse        = [
+                                    'notification_unread_count' => $notification_unread_count
+                                ];
+                                $apiStatus          = TRUE;
+                                http_response_code(200);
+                                $apiMessage         = 'Data Available !!!';
+                                $apiExtraField      = 'response_code';
+                                $apiExtraData       = http_response_code();
+                            } else {
+                                $apiStatus                              = FALSE;
+                                $apiMessage                             = 'You Account Is Not Active Yet !!!';
+                            }
+                        } else {
+                            $apiStatus                              = FALSE;
+                            $apiMessage                             = 'We Don\'t Recognize You !!!';
+                        }
+                    } else {
+                        http_response_code($getTokenValue['data'][2]);
+                        $apiStatus                      = FALSE;
+                        $apiMessage                     = $this->getResponseCode(http_response_code());
+                        $apiExtraField                  = 'response_code';
+                        $apiExtraData                   = http_response_code();
+                    }
+                } else {
+                    $apiStatus          = FALSE;
+                    $apiMessage         = 'Unauthenticate Request !!!';
+                }
+                $this->response_to_json($apiStatus, $apiMessage, $apiResponse);
+            }
+        /* get unread notification count */
     /* after login */
     /* test push notification */
         public function testPush(Request $request){
