@@ -43,8 +43,8 @@
         <div class="row mb-3">
           <label for="imageInput" class="col-md-4 col-lg-3 col-form-label">Images</label>
           <div class="col-md-8 col-lg-9">
-            <input type="file" name="food_image" class="form-control" id="imageInput" accept="image/*" <?=((empty($row))?'required':'')?>>
-            <p><small class="text-primary">(Width : 827px & height : 1169px)</small></p>
+            <input type="file" name="food_image" class="form-control" id="imageInput2" accept="image/*" <?=((empty($row))?'required':'')?>>
+            <!-- <p><small class="text-primary">(Width : 827px & height : 1169px)</small></p> -->
             <p id="result1" class="text-success"></p>
             <p id="result2" class="text-danger"></p>
             <?php if($food_image != ''){?>
