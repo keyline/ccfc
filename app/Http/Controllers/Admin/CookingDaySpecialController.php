@@ -84,8 +84,8 @@ class CookingDaySpecialController extends Controller
                     }
                 /* insert notification */
                 /* push notification */
-                    $title              = 'A New Day Special Menu Has Been Uploaded Of ' . $postData['menu_date'];
-                    $body               = $postData['title'];
+                    $title              = $postData['title'];
+                    $body               = '';
                     $image              = env('UPLOADS_URL').$image_name;
                     $type               = 'dayspecial';
                     $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();

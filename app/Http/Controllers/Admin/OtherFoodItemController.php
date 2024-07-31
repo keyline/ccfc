@@ -86,7 +86,7 @@ class OtherFoodItemController extends Controller
                 /* insert notification */
                 /* push notification */
                     $title              = $postData['name'];
-                    $body               = $postData['description'];
+                    $body               = '';
                     $image              = env('UPLOADS_URL').$food_image;
                     $type               = 'outsideitem';
                     $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
