@@ -156,7 +156,7 @@ class CookingDaySpecialController extends Controller
         $fields = [
             'status'               => 0
         ];
-        OtherFoodItem::where('id', '=', $id)->update($fields);
+        CookingDaySpecial::where('id', '=', $id)->update($fields);
         /* notification delete */
             $getNotification = Notification::where('ref_id', '=', $id)->where('type', '=', 'dayspecial')->first();
             if($getNotification){
