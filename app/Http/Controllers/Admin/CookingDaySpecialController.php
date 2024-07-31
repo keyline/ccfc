@@ -157,8 +157,14 @@ class CookingDaySpecialController extends Controller
             'status'               => 0
         ];
         OtherFoodItem::where('id', '=', $id)->update($fields);
-        UserNotification::where('ref_id', '=', $id)->delete();
-        Notification::where('ref_id', '=', $id)->delete();
+        /* notification delete */
+            $getNotification = Notification::where('ref_id', '=', $id)->where('type', '=', 'dayspecial')->first();
+            if($getNotification){
+                $noti_id = $getNotification->id;
+                UserNotification::where('ref_id', '=', $id)->where('notification_id', '=', $noti_id)->delete();
+                Notification::where('ref_id', '=', $id)->where('type', '=', 'dayspecial')->delete();
+            }
+        /* notification delete */
         return redirect("admin/create/dayspeciallist")->with('success_message', 'Cooking Day Special Deactivated Successfully !!!');
     }
 }

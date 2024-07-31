@@ -240,8 +240,14 @@ class EventsController extends Controller
             'status'               => 0
         ];
         Events::where('id', '=', $id)->update($fields);
-        UserNotification::where('ref_id', '=', $id)->delete();
-        Notification::where('ref_id', '=', $id)->delete();
+        /* notification delete */
+            $getNotification = Notification::where('ref_id', '=', $id)->where('type', '=', 'event')->first();
+            if($getNotification){
+                $noti_id = $getNotification->id;
+                UserNotification::where('ref_id', '=', $id)->where('notification_id', '=', $noti_id)->delete();
+                Notification::where('ref_id', '=', $id)->where('type', '=', 'event')->delete();
+            }
+        /* notification delete */
         return redirect("admin/create/event")->with('success_message', 'Event Deactivated Successfully !!!');
     }
 }

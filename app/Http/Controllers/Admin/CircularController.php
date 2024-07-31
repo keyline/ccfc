@@ -247,8 +247,14 @@ class CircularController extends Controller
             'status'               => 0
         ];
         circular::where('id', '=', $id)->update($fields);
-        UserNotification::where('ref_id', '=', $id)->delete();
-        Notification::where('ref_id', '=', $id)->delete();
+        /* notification delete */
+            $getNotification = Notification::where('ref_id', '=', $id)->where('type', '=', 'circular')->first();
+            if($getNotification){
+                $noti_id = $getNotification->id;
+                UserNotification::where('ref_id', '=', $id)->where('notification_id', '=', $noti_id)->delete();
+                Notification::where('ref_id', '=', $id)->where('type', '=', 'circular')->delete();
+            }
+        /* notification delete */
         return redirect("admin/create/circulars")->with('success_message', 'Circular Deactivated Successfully !!!');
     }
 }
