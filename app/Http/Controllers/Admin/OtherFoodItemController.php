@@ -36,6 +36,7 @@ class OtherFoodItemController extends Controller
             $postData = $request->all();
             $rules = [
                 'name'                         => 'required',
+                'description'                  => 'required',
                 'validity'                     => 'required',
             ];
             if($this->validate($request, $rules)){
@@ -55,6 +56,7 @@ class OtherFoodItemController extends Controller
                 /* image */
                 $fields = [
                     'name'                          => $postData['name'],
+                    'description'                   => $postData['description'],
                     'validity'                      => date_format(date_create($postData['validity']), "Y-m-d"),
                     'food_image'                    => $food_image,
                     'created_at'                    => date('Y-m-d H:i:s'),
@@ -66,7 +68,7 @@ class OtherFoodItemController extends Controller
                     $fields = [
                         'type'          => 'outsideitem',
                         'title'         => $postData['name'],
-                        'description'   => '',
+                        'description'   => $postData['description'],
                         'ref_id'        => $ref_id,
                     ];
                     $notification_id = Notification::insertGetId($fields);
@@ -83,8 +85,8 @@ class OtherFoodItemController extends Controller
                     }
                 /* insert notification */
                 /* push notification */
-                    $title              = 'A New Outside Food Menu Has Been Uploaded';
-                    $body               = $postData['name'];
+                    $title              = $postData['name'];
+                    $body               = $postData['description'];
                     $image              = env('UPLOADS_URL').$food_image;
                     $type               = 'outsideitem';
                     $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
@@ -110,6 +112,7 @@ class OtherFoodItemController extends Controller
             $postData = $request->all();
             $rules = [
                 'name'                         => 'required',
+                'description'                  => 'required',
                 'validity'                     => 'required',
             ];
             if($this->validate($request, $rules)){
@@ -129,6 +132,7 @@ class OtherFoodItemController extends Controller
                 /* image */
                 $fields = [
                     'name'                          => $postData['name'],
+                    'description'                   => $postData['description'],
                     'validity'                      => date_format(date_create($postData['validity']), "Y-m-d"),
                     'food_image'                    => $food_image,
                     'created_at'                    => date('Y-m-d H:i:s'),

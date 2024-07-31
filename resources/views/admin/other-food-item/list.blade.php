@@ -25,6 +25,7 @@
         <tr>
           <th>#</th>
           <th>Name</th>
+          <th>Description</th>
           <th>Validity</th>
           <th>Image</th>
           <th>Action</th>
@@ -35,6 +36,7 @@
           <tr>
             <td><?=$sl++?></td>
             <td><?=$row->name?></td>
+            <td><?=$row->description?></td>
             <td><?=date_format(date_create($row->validity), "d-m-Y")?></td>
             <td>
               <?php if($row->food_image != ''){?>

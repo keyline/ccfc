@@ -18,10 +18,12 @@
     <?php
     if($row){
       $name             = $row->name;
+      $description      = $row->description;
       $validity         = $row->validity;
       $food_image       = $row->food_image;
     } else {
       $name             = '';
+      $description      = '';
       $validity         = '';
       $food_image       = '';
     }
@@ -32,6 +34,12 @@
           <label for="name" class="col-md-4 col-lg-3 col-form-label">Name</label>
           <div class="col-md-8 col-lg-9">
             <input type="text" name="name" class="form-control" id="name" value="<?=$name?>" required>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="description" class="col-md-4 col-lg-3 col-form-label">Description</label>
+          <div class="col-md-8 col-lg-9">
+            <textarea name="description" class="form-control" id="description" rows="5" required><?=$description?></textarea>
           </div>
         </div>
         <div class="row mb-3">
