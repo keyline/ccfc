@@ -446,6 +446,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
     Route::post('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
     Route::get('create/delete-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'destroy']);
+    Route::get('create/deactive-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'deactive']);
 
     Route::get('create/otherfooditemlist', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'index'])->name('otherfooditemlist');
     Route::get('create/add-otherfooditemlist', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'add']);
@@ -453,6 +454,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/edit-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'edit']);
     Route::post('create/edit-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'edit']);
     Route::get('create/delete-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'destroy']);
+    Route::get('create/deactive-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'deactive']);
     
     Route::get('create/deleteaccountrequests', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequests'])->name('deleteaccountrequests');
     Route::get('create/action-deleteaccountrequests/{id}/{id2}', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequestsAction']);
@@ -523,7 +525,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('create/update-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'update']);
 
     Route::get('create/delete-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'destroy']);
-
+    Route::get('create/deactive-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'deactive']);
 
     // Route::delete("delete", [App\Http\Controllers\Admin\CircularController::class, "deleteImage"])->name("delete");
 
@@ -540,7 +542,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('create/update-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'update']);
 
     Route::get('create/delete-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'destroy']);
-
+    Route::get('create/deactive-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'deactive']);
 
 
 

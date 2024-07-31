@@ -56,7 +56,7 @@
                         </th>
 
                         <th>
-                            Delete
+                            Deactive
                         </th>
                     </tr>
                 </thead>
@@ -107,9 +107,13 @@
 
 
                         <td>
-                            <a href="{{ url('admin/create/delete-event/'.$value->id)}}"
-                                class="btn btn-danger btn-sm">Delete</a>
-
+                            <!-- <a href="{{ url('admin/create/delete-event/'.$value->id)}}"
+                                class="btn btn-danger btn-sm">Delete</a> -->
+                            <?php if($value->status){?>
+                                <a href="<?=url('admin/create/deactive-event/' . $value->id)?>" class="btn btn-danger btn-sm" onclick="retunn confirm('Do you want to deactive this event ?');"><i class="fa fa-times"></i> Deactive</a>
+                            <?php } else {?>
+                                <span class="badge badge-danger">Already Deactivated</span>
+                            <?php } ?>
                         </td>
 
                     </tr>

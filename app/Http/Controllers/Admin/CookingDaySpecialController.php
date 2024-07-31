@@ -61,13 +61,14 @@ class CookingDaySpecialController extends Controller
                     'image_name'                    => $image_name,
                 ];
                 // Helper::pr($fields);
-                CookingDaySpecial::insert($fields);
+                $ref_id = CookingDaySpecial::insertGetId($fields);
                 $menu_date = $postData['menu_date'];
                 /* insert notification */
                     $fields = [
                         'type'          => 'dayspecial',
                         'title'         => $postData['title'],
                         'description'   => $postData['description'],
+                        'ref_id'        => $ref_id,
                     ];
                     $notification_id = Notification::insertGetId($fields);
                     $users = User::select('id')->orderBy('id', 'ASC')->get();
@@ -75,7 +76,8 @@ class CookingDaySpecialController extends Controller
                         foreach($users as $user){
                             $fields2 = [
                                 'user_id'                   => $user->id,
-                                'notification_id'           => $notification_id
+                                'notification_id'           => $notification_id,
+                                'ref_id'                    => $ref_id,
                             ];
                             UserNotification::insert($fields2);
                         }
@@ -148,5 +150,15 @@ class CookingDaySpecialController extends Controller
         ];
         CookingDaySpecial::where('id', '=', $id)->update($fields);
         return redirect("admin/create/dayspeciallist")->with('success_message', 'Cooking Day Special Deleted Successfully !!!');
+    }
+    public function deactive($id)
+    {
+        $fields = [
+            'status'               => 0
+        ];
+        OtherFoodItem::where('id', '=', $id)->update($fields);
+        UserNotification::where('ref_id', '=', $id)->delete();
+        Notification::where('ref_id', '=', $id)->delete();
+        return redirect("admin/create/dayspeciallist")->with('success_message', 'Cooking Day Special Deactivated Successfully !!!');
     }
 }

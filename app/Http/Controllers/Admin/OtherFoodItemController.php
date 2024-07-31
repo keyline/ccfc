@@ -61,12 +61,13 @@ class OtherFoodItemController extends Controller
                     'updated_at'                    => date('Y-m-d H:i:s'),
                 ];
                 // Helper::pr($fields);
-                OtherFoodItem::insert($fields);
+                $ref_id = OtherFoodItem::insertGetId($fields);
                 /* insert notification */
                     $fields = [
                         'type'          => 'outsideitem',
                         'title'         => $postData['name'],
                         'description'   => '',
+                        'ref_id'        => $ref_id,
                     ];
                     $notification_id = Notification::insertGetId($fields);
                     $users = User::select('id')->orderBy('id', 'ASC')->get();
@@ -74,7 +75,8 @@ class OtherFoodItemController extends Controller
                         foreach($users as $user){
                             $fields2 = [
                                 'user_id'                   => $user->id,
-                                'notification_id'           => $notification_id
+                                'notification_id'           => $notification_id,
+                                'ref_id'                    => $ref_id,
                             ];
                             UserNotification::insert($fields2);
                         }
@@ -146,6 +148,16 @@ class OtherFoodItemController extends Controller
             'status'               => 3
         ];
         OtherFoodItem::where('id', '=', $id)->update($fields);
-        return redirect("admin/create/otherfooditemlist")->with('success_message', 'Cooking Day Special Deleted Successfully !!!');
+        return redirect("admin/create/otherfooditemlist")->with('success_message', 'Other Food Item Deleted Successfully !!!');
+    }
+    public function deactive($id)
+    {
+        $fields = [
+            'status'               => 0
+        ];
+        OtherFoodItem::where('id', '=', $id)->update($fields);
+        UserNotification::where('ref_id', '=', $id)->delete();
+        Notification::where('ref_id', '=', $id)->delete();
+        return redirect("admin/create/otherfooditemlist")->with('success_message', 'Other Food Item Deactivated Successfully !!!');
     }
 }

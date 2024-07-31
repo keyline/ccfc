@@ -22,7 +22,7 @@
                         <th>Notice Image</th>
                         <th>Notice Validity</th>
                         <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Deactive</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,7 +101,12 @@
                             <a href="{{ url('admin/create/edit-circular/'.$value->id)}}" class="btn btn-primary btn-sm">Edit</a>
                         </td>
                         <td>
-                            <a href="{{ url('admin/create/delete-circular/'.$value->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                            <!-- <a href="{{ url('admin/create/delete-circular/'.$value->id)}}" class="btn btn-danger btn-sm">Delete</a> -->
+                            <?php if($value->status){?>
+                                <a href="<?=url('admin/create/deactive-circular/' . $value->id)?>" class="btn btn-danger btn-sm" onclick="retunn confirm('Do you want to deactive this circular ?');"><i class="fa fa-times"></i> Deactive</a>
+                            <?php } else {?>
+                                <span class="badge badge-danger">Already Deactivated</span>
+                            <?php } ?>
                         </td>
                     </tr>
                     @endforeach

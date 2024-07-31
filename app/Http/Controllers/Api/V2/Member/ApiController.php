@@ -1804,7 +1804,7 @@ class ApiController extends Controller
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
                                 $currentDate        = date('Y-m-d');
-                                $events             = Events::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
+                                $events             = Events::where('validity', '>=', $currentDate)->where('status', '=', 1)->orderBy('id', 'DESC')->get();
                                 /* notification read & count */
                                     $notificationIds = Notification::select('id')->where('type', '=', 'event')->get();
                                     if($notificationIds){
@@ -1886,7 +1886,7 @@ class ApiController extends Controller
                                 $ruleRegulation     = [];
                                 /* circulars */
                                     $currentDate        = date('Y-m-d');
-                                    $notices            = circular::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
+                                    $notices            = circular::where('validity', '>=', $currentDate)->where('status', '=', 1)->orderBy('id', 'DESC')->get();
                                     /* notification read & count */
                                         $notificationIds = Notification::select('id')->where('type', '=', 'circular')->get();
                                         if($notificationIds){

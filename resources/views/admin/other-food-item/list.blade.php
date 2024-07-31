@@ -43,6 +43,11 @@
             </td>
             <td>
               <a href="<?=url('admin/create/edit-otherfooditemlist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+              <?php if($row->status){?>
+                <a href="<?=url('admin/create/deactive-otherfooditemlist/' . $row->id)?>" class="btn btn-danger btn-sm" onclick="retunn confirm('Do you want to deactive this outside food item ?');"><i class="fa fa-times"></i> Deactive</a>
+              <?php } else {?>
+                <span class="badge badge-danger">Already Deactivated</span>
+              <?php } ?>
             </td>
           </tr>
         <?php } } ?>

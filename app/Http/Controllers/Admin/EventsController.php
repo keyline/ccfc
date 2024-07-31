@@ -86,11 +86,13 @@ class EventsController extends Controller
         }
 
         $event->save();
+        $ref_id = $event->id;
         /* insert notification */
             $fields = [
                 'type'          => 'event',
                 'title'         => $request->input('event_name'),
                 'description'   => $request->input('event_details1'),
+                'ref_id'        => $ref_id,
             ];
             $notification_id = Notification::insertGetId($fields);
             $users = User::select('id')->orderBy('id', 'ASC')->get();
@@ -98,7 +100,8 @@ class EventsController extends Controller
                 foreach($users as $user){
                     $fields2 = [
                         'user_id'                   => $user->id,
-                        'notification_id'           => $notification_id
+                        'notification_id'           => $notification_id,
+                        'ref_id'                    => $ref_id,
                     ];
                     UserNotification::insert($fields2);
                 }
@@ -230,5 +233,15 @@ class EventsController extends Controller
         $event->delete();
 
         return redirect()->back()->with('status','Delete successfully');
+    }
+    public function deactive($id)
+    {
+        $fields = [
+            'status'               => 0
+        ];
+        Events::where('id', '=', $id)->update($fields);
+        UserNotification::where('ref_id', '=', $id)->delete();
+        Notification::where('ref_id', '=', $id)->delete();
+        return redirect("admin/create/event")->with('success_message', 'Event Deactivated Successfully !!!');
     }
 }

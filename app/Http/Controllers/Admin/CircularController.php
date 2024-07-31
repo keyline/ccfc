@@ -90,11 +90,13 @@ class CircularController extends Controller
         }
 
         $circular->save();
+        $ref_id = $circular->id;
         /* insert notification */
             $fields = [
                 'type'          => 'circular',
                 'title'         => $request->input('circular_details1'),
                 'description'   => $request->input('circular_details2'),
+                'ref_id'        => $ref_id,
             ];
             $notification_id = Notification::insertGetId($fields);
             $users = User::select('id')->orderBy('id', 'ASC')->get();
@@ -102,7 +104,8 @@ class CircularController extends Controller
                 foreach($users as $user){
                     $fields2 = [
                         'user_id'                   => $user->id,
-                        'notification_id'           => $notification_id
+                        'notification_id'           => $notification_id,
+                        'ref_id'                    => $ref_id,
                     ];
                     UserNotification::insert($fields2);
                 }
@@ -238,8 +241,14 @@ class CircularController extends Controller
 
         return redirect()->back()->with('status','Delete successfully');
     }
-
-
-
-    
+    public function deactive($id)
+    {
+        $fields = [
+            'status'               => 0
+        ];
+        circular::where('id', '=', $id)->update($fields);
+        UserNotification::where('ref_id', '=', $id)->delete();
+        Notification::where('ref_id', '=', $id)->delete();
+        return redirect("admin/create/circulars")->with('success_message', 'Circular Deactivated Successfully !!!');
+    }
 }
