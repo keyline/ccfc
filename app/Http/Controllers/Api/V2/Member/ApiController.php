@@ -1898,11 +1898,11 @@ class ApiController extends Controller
                                     if($notices){
                                         foreach($notices as $notice){
                                             $circulars[] = [
-                                                'title'                 => 'CIRCULAR',
-                                                'details_1'             => $notice->details_1,
+                                                'title'                 => $notice->details_1,
+                                                'details_1'             => $notice->details_2,
                                                 'day'                   => $notice->day,
                                                 'month'                 => $notice->month,
-                                                'circular_image'        => env('UPLOADS_URL').'circularimg/'.$notice->circular_image,
+                                                'circular_image'        => (($notice->circular_image != '')?env('UPLOADS_URL').'circularimg/'.$notice->circular_image:env('UPLOADS_URL').'circularimg/'.$notice->circular_image2),
                                                 'posted_by'             => 'CCFC',
                                             ];
                                         }
