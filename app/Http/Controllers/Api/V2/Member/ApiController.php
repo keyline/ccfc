@@ -1818,7 +1818,7 @@ class ApiController extends Controller
                                         $apiResponse[] = [
                                             'title'                 => $event->event_name,
                                             'details_1'             => $event->details_1,
-                                            'details_2'             => strip_tags($event->details_2),
+                                            'details_2'             => $event->details_2,
                                             'day'                   => $event->day,
                                             'month'                 => $event->month,
                                             'event_image'           => env('UPLOADS_URL').'enentimg/'.$event->event_image,
@@ -1899,7 +1899,7 @@ class ApiController extends Controller
                                         foreach($notices as $notice){
                                             $circulars[] = [
                                                 'title'                 => $notice->details_1,
-                                                'details_1'             => strip_tags($notice->details_2),
+                                                'details_1'             => $notice->details_2,
                                                 'day'                   => $notice->day,
                                                 'month'                 => $notice->month,
                                                 'circular_image'        => (($notice->circular_image != '')?env('UPLOADS_URL').'circularimg/'.$notice->circular_image:env('UPLOADS_URL').'circularimg/'.$notice->circular_image2),
