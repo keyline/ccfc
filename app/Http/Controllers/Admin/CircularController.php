@@ -58,6 +58,7 @@ class CircularController extends Controller
         $circular->details_1    = $request->input('circular_details1');
         $circular->details_2    = $request->input('circular_details2');
         $circular->validity     = $request->input('validity');
+        $circular->status       = 1;
 
         if($request->hasfile('circularimage')){
 

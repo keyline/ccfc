@@ -55,6 +55,7 @@ class EventsController extends Controller
         $event->details_1   = $request->input('event_details1');
         $event->details_2   = $request->input('event_details2');
         $event->validity    = $request->input('validity');
+        $event->status      = 1;
 
         if($request->hasfile('enentimage')){
 
