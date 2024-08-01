@@ -84,6 +84,7 @@ class EventsController extends Controller
             $file2->move('uploads/enentimg/',$filename1);
 
             $event->event_image_2 = $filename1;
+            $event_image = $filename1;
         }
 
         $event->save();
@@ -110,7 +111,9 @@ class EventsController extends Controller
         /* insert notification */
         /* push notification */
             $title              = $request->input('event_name');
-            $body               = $request->input('event_details1');
+            $body               = '';
+            // $body               = $request->input('event_details1');
+            echo $image              = env('UPLOADS_URL').'enentimg/'.$event_image;die;
             $type               = 'event';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
             $tokens             = [];

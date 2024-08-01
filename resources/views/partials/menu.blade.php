@@ -596,14 +596,14 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?=url('admin/create/cookingitemreportlist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Whats Cooking Reports
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                         <!-- <li class="nav-item">
                             <a href="<?=url('admin/create/spabookingtrackinglist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
@@ -612,14 +612,14 @@
                                 </p>
                             </a>
                         </li> -->
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?=url('admin/create/profileupdaterequests')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Profile Update Requests
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?=url('admin/create/deleteaccountrequests')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
