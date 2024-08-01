@@ -88,6 +88,7 @@ class CircularController extends Controller
             $file->move('uploads/circularimg/',$filename);
 
             $circular->circular_image2 = $filename;
+            $notice_image = $filename;
         }
 
         $circular->save();
@@ -114,14 +115,20 @@ class CircularController extends Controller
         /* insert notification */
         /* push notification */
             $title              = $request->input('circular_details1');
-            $body               = strip_tags($request->input('circular_details2'));
-
+            $body               = '';
+            // $body               = strip_tags($request->input('circular_details2'));
+            $ext                = pathinfo($notice_image, PATHINFO_EXTENSION);
+            if($ext!= 'pdf' && $ext!= 'PDF'){
+                $image              = env('UPLOADS_URL').'circularimg/'.$notice_image;
+            } else {
+                $image = '';
+            }
             $type               = 'circular';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
             $tokens             = [];
             if($getUserFCMTokens){
                 foreach($getUserFCMTokens as $getUserFCMToken){
-                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
+                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type, $image);
                 }
             }
             // echo $body;die;

@@ -71,7 +71,6 @@ Use DateTime;
 
 class ApiController extends Controller
 {
-
     /* signin */
         public function signinWithMobile(Request $request){
             $project_key        = 'facb6e0a6fcbe200dca2fb60dec75be7';
@@ -691,9 +690,9 @@ class ApiController extends Controller
                                         'phone_2'                               => (($getUserDetail)?$getUserDetail->phone_2:''),
                                         'phone_3'                               => (($getUserDetail)?$getUserDetail->mobile_no:''),
                                         'address'                               => (($getUserDetail)?$getUserDetail->address_1.' '.$getUserDetail->address_2.' '.$getUserDetail->address_3:''),
-                                        'city'                                  => (($getUserDetail)?$getUserDetail->city:''),
-                                        'state'                                 => (($getUserDetail)?$getUserDetail->state:''),
-                                        'pin'                                   => (($getUserDetail)?$getUserDetail->pin:''),
+                                        'city'                                  => (($getUserDetail)?(($getUserDetail->city != '')?$getUserDetail->city:''):''),
+                                        'state'                                 => (($getUserDetail)?(($getUserDetail->state != '')?$getUserDetail->state:''):''),
+                                        'pin'                                   => (($getUserDetail)?(($getUserDetail->pin != '')?$getUserDetail->pin:''):''),
                                         'status'                                => $checkUser->status,
                                     ],
                                     'spouse'        => [

@@ -113,13 +113,19 @@ class EventsController extends Controller
             $title              = $request->input('event_name');
             $body               = '';
             // $body               = $request->input('event_details1');
-            echo $image              = env('UPLOADS_URL').'enentimg/'.$event_image;die;
+            $ext                = pathinfo($event_image, PATHINFO_EXTENSION);
+            if($ext!= 'pdf' && $ext!= 'PDF'){
+                $image              = env('UPLOADS_URL').'enentimg/'.$event_image;
+            } else {
+                $image = '';
+            }
+
             $type               = 'event';
             $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
             $tokens             = [];
             if($getUserFCMTokens){
                 foreach($getUserFCMTokens as $getUserFCMToken){
-                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
+                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type, $image);
                 }
             }
         /* push notification */
