@@ -57,7 +57,7 @@ class Controller extends BaseController
 
             // $mailLibrary->addCC('');
             // $mailLibrary->addCC('');
-            $mailLibrary->addCC('subhomoy@keylines.net');
+            // $mailLibrary->addCC('subhomoy@keylines.net');
             // Helper::pr($mailLibrary);
             // return (!$mailLibrary->send()) ? false : true;
             $mailLibrary->send();
