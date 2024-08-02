@@ -54,6 +54,10 @@ class Controller extends BaseController
             if (!empty($file)) :
                 $mailLibrary->AddAttachment($file);
             endif;
+
+            // $mailLibrary->addCC('');
+            // $mailLibrary->addCC('');
+            $mailLibrary->addCC('subhomoy@keylines.net');
             // Helper::pr($mailLibrary);
             // return (!$mailLibrary->send()) ? false : true;
             $mailLibrary->send();

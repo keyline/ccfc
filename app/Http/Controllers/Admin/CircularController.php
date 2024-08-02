@@ -59,6 +59,7 @@ class CircularController extends Controller
         $circular->details_2    = $request->input('circular_details2');
         $circular->validity     = $request->input('validity');
         $circular->status       = 1;
+        $circular_image         = '';
 
         if($request->hasfile('circularimage')){
 
@@ -75,6 +76,7 @@ class CircularController extends Controller
             $file1->move('uploads/circularimg/',$filename);
 
             $circular->circular_image = $filename;
+            $circular_image = $filename;
         }
 
         if($request->hasfile('circular_image2')){
@@ -88,7 +90,7 @@ class CircularController extends Controller
             $file->move('uploads/circularimg/',$filename);
 
             $circular->circular_image2 = $filename;
-            $notice_image = $filename;
+            
         }
 
         $circular->save();
@@ -117,9 +119,13 @@ class CircularController extends Controller
             $title              = $request->input('circular_details1');
             $body               = '';
             // $body               = strip_tags($request->input('circular_details2'));
-            $ext                = pathinfo($notice_image, PATHINFO_EXTENSION);
-            if($ext!= 'pdf' && $ext!= 'PDF'){
-                $image              = env('UPLOADS_URL').'circularimg/'.$notice_image;
+            if($circular_image != ''){
+                $ext                = pathinfo($circular_image, PATHINFO_EXTENSION);
+                if($ext!= 'pdf' && $ext!= 'PDF'){
+                    $image              = env('UPLOADS_URL').'circularimg/'.$circular_image;
+                } else {
+                    $image = '';
+                }
             } else {
                 $image = '';
             }

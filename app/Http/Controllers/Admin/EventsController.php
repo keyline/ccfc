@@ -56,7 +56,7 @@ class EventsController extends Controller
         $event->details_2   = $request->input('event_details2');
         $event->validity    = $request->input('validity');
         $event->status      = 1;
-
+        $event_image        = '';
         if($request->hasfile('enentimage')){
 
             $file1 = $request->file('enentimage');
@@ -110,12 +110,16 @@ class EventsController extends Controller
             }
         /* insert notification */
         /* push notification */
-            $title              = $request->input('event_name');
-            $body               = '';
-            // $body               = $request->input('event_details1');
-            $ext                = pathinfo($event_image, PATHINFO_EXTENSION);
-            if($ext!= 'pdf' && $ext!= 'PDF'){
-                $image              = env('UPLOADS_URL').'enentimg/'.$event_image;
+            if($event_image != ''){
+                $title              = $request->input('event_name');
+                $body               = '';
+                // $body               = $request->input('event_details1');
+                $ext                = pathinfo($event_image, PATHINFO_EXTENSION);
+                if($ext!= 'pdf' && $ext!= 'PDF'){
+                    $image              = env('UPLOADS_URL').'enentimg/'.$event_image;
+                } else {
+                    $image = '';
+                }
             } else {
                 $image = '';
             }
