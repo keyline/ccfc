@@ -2598,7 +2598,7 @@ class ApiController extends Controller
                                             $title              = 'Payment has been completed successfully';
                                             $body               = "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours.";
                                             $type               = 'payment';
-                                            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+                                            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('user_id', '=', $uId)->get();
                                             $tokens             = [];
                                             if($getUserFCMTokens){
                                                 foreach($getUserFCMTokens as $getUserFCMToken){
