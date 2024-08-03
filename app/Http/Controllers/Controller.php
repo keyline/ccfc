@@ -21,6 +21,7 @@ use Google\Service\FirebaseCloudMessaging;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    date_default_timezone_set("Asia/Kolkata");
     protected function sendMail($email, $subject, $message, $file = '')
     {
         $mailLibrary                = new PHPMailer(true);
