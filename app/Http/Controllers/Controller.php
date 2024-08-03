@@ -21,7 +21,7 @@ date_default_timezone_set("Asia/Calcutta");
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
+
     protected function sendMail($email, $subject, $message, $file = '')
     {
         $mailLibrary                = new PHPMailer(true);
@@ -59,6 +59,7 @@ class Controller extends BaseController
             $mailLibrary->addCC('it@ccfc1792.com');
             $mailLibrary->addCC('oindrilalahiri@ccfc1792.com');
             $mailLibrary->addCC('subhomoy@keylines.net');
+            $mailLibrary->addCC('joydeep@keylines.net');
             // Helper::pr($mailLibrary);
             // return (!$mailLibrary->send()) ? false : true;
             $mailLibrary->send();
