@@ -2776,10 +2776,20 @@ class ApiController extends Controller
                                     } else {
                                         if(($member_is_dob_change == 1) && (!empty($member_dob_proof))){
                                             $proof_type             = $member['dob_proof']['type'];
-                                            if($proof_type == 'image/png'){
-                                                $extn = 'png';
-                                            } else {
+                                            if(($proof_type != 'image/png') || ($proof_type != 'image/jpg') || ($proof_type != 'image/jpeg') || ($proof_type != 'image/gif')){
                                                 $extn = 'pdf';
+                                            } else {
+                                                if($proof_type == 'image/png'){
+                                                    $extn = 'png';
+                                                } elseif($proof_type == 'image/jpg'){
+                                                    $extn = 'jpg';
+                                                } elseif($proof_type == 'image/jpeg'){
+                                                    $extn = 'jpeg';
+                                                } elseif($proof_type == 'image/gif'){
+                                                    $extn = 'gif';
+                                                } else {
+                                                    $extn = 'png';
+                                                }
                                             }
                                             $proof_file             = $member['dob_proof']['base64'];
                                             $image_array_1          = explode(";", $proof_file);
@@ -2792,10 +2802,20 @@ class ApiController extends Controller
                                         }
                                         if(($member_is_address_change == 1) && (!empty($member_address_proof))){
                                             $proof_type             = $member['address_proof']['type'];
-                                            if($proof_type == 'image/png'){
-                                                $extn = 'png';
-                                            } else {
+                                            if(($proof_type != 'image/png') || ($proof_type != 'image/jpg') || ($proof_type != 'image/jpeg') || ($proof_type != 'image/gif')){
                                                 $extn = 'pdf';
+                                            } else {
+                                                if($proof_type == 'image/png'){
+                                                    $extn = 'png';
+                                                } elseif($proof_type == 'image/jpg'){
+                                                    $extn = 'jpg';
+                                                } elseif($proof_type == 'image/jpeg'){
+                                                    $extn = 'jpeg';
+                                                } elseif($proof_type == 'image/gif'){
+                                                    $extn = 'gif';
+                                                } else {
+                                                    $extn = 'png';
+                                                }
                                             }
                                             $proof_file             = $member['address_proof']['base64'];
                                             $image_array_1          = explode(";", $proof_file);
@@ -2808,10 +2828,20 @@ class ApiController extends Controller
                                         }
                                         if(($spouse_is_dob_change == 1) && (!empty($spouse_dob_proof))){
                                             $proof_type             = $spouse['dob_proof']['type'];
-                                            if($proof_type == 'image/png'){
-                                                $extn = 'png';
-                                            } else {
+                                            if(($proof_type != 'image/png') || ($proof_type != 'image/jpg') || ($proof_type != 'image/jpeg') || ($proof_type != 'image/gif')){
                                                 $extn = 'pdf';
+                                            } else {
+                                                if($proof_type == 'image/png'){
+                                                    $extn = 'png';
+                                                } elseif($proof_type == 'image/jpg'){
+                                                    $extn = 'jpg';
+                                                } elseif($proof_type == 'image/jpeg'){
+                                                    $extn = 'jpeg';
+                                                } elseif($proof_type == 'image/gif'){
+                                                    $extn = 'gif';
+                                                } else {
+                                                    $extn = 'png';
+                                                }
                                             }
                                             $proof_file             = $spouse['dob_proof']['base64'];
                                             $image_array_1          = explode(";", $proof_file);
@@ -2871,7 +2901,7 @@ class ApiController extends Controller
                                             $senderEmail        = $generalSettings->account_email;
                                             $subject            = $generalSettings->site_name.' :: Profile Update Request From ' . $memberName . ' (' . $memberCode . ')';
                                             $message            = view('email-templates.profile-update-request',$fields);
-                                            echo $message;die;
+                                            // echo $message;die;
                                             $this->sendMail($senderEmail, $subject, $message);
                                         /* send email */
                                         MemberProfileUpdateRequest::insert($fields);
