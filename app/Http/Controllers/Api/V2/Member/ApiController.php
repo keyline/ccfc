@@ -2776,7 +2776,7 @@ class ApiController extends Controller
                                     } else {
                                         if(($member_is_dob_change == 1) && (!empty($member_dob_proof))){
                                             $proof_type             = $member['dob_proof']['type'];
-                                            if(($proof_type != 'image/png') || ($proof_type != 'image/jpg') || ($proof_type != 'image/jpeg') || ($proof_type != 'image/gif')){
+                                            if(($proof_type != 'image/png') && ($proof_type != 'image/jpg') && ($proof_type != 'image/jpeg') && ($proof_type != 'image/gif')){
                                                 $extn = 'pdf';
                                             } else {
                                                 if($proof_type == 'image/png'){
@@ -2802,7 +2802,7 @@ class ApiController extends Controller
                                         }
                                         if(($member_is_address_change == 1) && (!empty($member_address_proof))){
                                             $proof_type             = $member['address_proof']['type'];
-                                            if(($proof_type != 'image/png') || ($proof_type != 'image/jpg') || ($proof_type != 'image/jpeg') || ($proof_type != 'image/gif')){
+                                            if(($proof_type != 'image/png') && ($proof_type != 'image/jpg') && ($proof_type != 'image/jpeg') && ($proof_type != 'image/gif')){
                                                 $extn = 'pdf';
                                             } else {
                                                 if($proof_type == 'image/png'){
@@ -2828,7 +2828,7 @@ class ApiController extends Controller
                                         }
                                         if(($spouse_is_dob_change == 1) && (!empty($spouse_dob_proof))){
                                             $proof_type             = $spouse['dob_proof']['type'];
-                                            if(($proof_type != 'image/png') || ($proof_type != 'image/jpg') || ($proof_type != 'image/jpeg') || ($proof_type != 'image/gif')){
+                                            if(($proof_type != 'image/png') && ($proof_type != 'image/jpg') && ($proof_type != 'image/jpeg') && ($proof_type != 'image/gif')){
                                                 $extn = 'pdf';
                                             } else {
                                                 if($proof_type == 'image/png'){
@@ -2856,7 +2856,7 @@ class ApiController extends Controller
                                         $fields = [
                                             'member_id'         => $uId,
                                             'member_code'       => $checkUser->user_code,
-                                            'member_name'       => (($checkUser->name != $member['name'])?$member['name']:''),
+                                            'member_name'       => $member['name'],
                                             'member_email'      => (($checkUser->email != $member['email'])?$member['email']:''),
                                             'member_phone1'     => (($getUserDetails->phone_1 != $member['phone_1'])?$member['phone_1']:''),
                                             'member_phone2'     => (($getUserDetails->phone_2 != $member['phone_2'])?$member['phone_2']:''),
@@ -2899,7 +2899,7 @@ class ApiController extends Controller
                                             $memberCode         = $checkUser->user_code;
                                             $generalSettings    = GeneralSetting::find(1);
                                             $senderEmail        = $generalSettings->account_email;
-                                            $subject            = $generalSettings->site_name.' :: Profile Update Request From ' . $memberName . ' (' . $memberCode . ')';
+                                            $subject            = $generalSettings->site_name.' :: Profile Update Request From ' . $memberName . ' (' . $memberCode . ') On ' . date("M d, Y h:i A");
                                             $message            = view('email-templates.profile-update-request',$fields);
                                             // echo $message;die;
                                             $this->sendMail($senderEmail, $subject, $message);
