@@ -2595,16 +2595,16 @@ class ApiController extends Controller
                                             }
                                         /* insert notification */
                                         /* push notification */
-                                            $title              = 'Payment has been completed successfully';
-                                            $body               = "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours.";
-                                            $type               = 'payment';
-                                            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('user_id', '=', $uId)->get();
-                                            $tokens             = [];
-                                            if($getUserFCMTokens){
-                                                foreach($getUserFCMTokens as $getUserFCMToken){
-                                                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
-                                                }
-                                            }
+                                            // $title              = 'Payment has been completed successfully';
+                                            // $body               = "Thank you for making payment of Rs.".$amount.". Please note that payment is subject to realization and will reflect in your account in the next 24 working hours.";
+                                            // $type               = 'payment';
+                                            // $getUserFCMTokens   = UserDevice::select('fcm_token')->where('user_id', '=', $uId)->get();
+                                            // $tokens             = [];
+                                            // if($getUserFCMTokens){
+                                            //     foreach($getUserFCMTokens as $getUserFCMToken){
+                                            //         $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
+                                            //     }
+                                            // }
                                         /* push notification */
                                     }
                                 }
@@ -2664,16 +2664,31 @@ class ApiController extends Controller
                                 $notifications          = Notification::orderBy('id', 'DESC')->get();
                                 if($notifications){
                                     foreach($notifications as $noti){
-                                        $apiResponse[] = [
-                                            'title'                 => $noti->title,
-                                            'description'           => $noti->description,
-                                            'type'                  => $noti->type,
-                                            // 'is_popup'              => $noti->is_popup,
-                                            // 'popup_validity_date'   => $noti->popup_validity_date,
-                                            // 'popup_validity_time'   => $noti->popup_validity_time,
-                                            // 'popup_validity'        => $noti->popup_validity_date.' '.$noti->popup_validity_time,
-                                            'created_at'            => Helper::time_ago($noti->created_at),
-                                        ];
+                                        $type           = $noti->type;
+                                        if($type == 'circular'){
+                                            $getCircular = circular::where('id', '=', $noti->ref_id)->first();
+                                            $validity = (($getCircular)?$getCircular->validity:'');
+                                        } elseif($type == 'event'){
+                                            $getCircular = Events::where('id', '=', $noti->ref_id)->first();
+                                            $validity = (($getCircular)?$getCircular->validity:'');
+                                        } elseif($type == 'dayspecial'){
+                                            $getCookingDaySpecial = CookingDaySpecial::where('id', '=', $noti->ref_id)->get();
+                                            $validity = (($getCircular)?$getCircular->menu_date:'');
+                                        }
+                                        if($validity != ''){
+                                            if($validity >= date('Y-m-d')){
+                                                $apiResponse[]  = [
+                                                    'title'                 => $noti->title,
+                                                    'description'           => $noti->description,
+                                                    'type'                  => $noti->type,
+                                                    // 'is_popup'              => $noti->is_popup,
+                                                    // 'popup_validity_date'   => $noti->popup_validity_date,
+                                                    // 'popup_validity_time'   => $noti->popup_validity_time,
+                                                    // 'popup_validity'        => $noti->popup_validity_date.' '.$noti->popup_validity_time,
+                                                    'created_at'            => Helper::time_ago($noti->created_at),
+                                                ];
+                                            }
+                                        }
                                     }
                                 }
                                 /* read notification from user account */
