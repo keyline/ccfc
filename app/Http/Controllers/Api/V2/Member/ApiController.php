@@ -2976,9 +2976,39 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $notification_unread_count = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->count();
+                                $unreadNotificationCount = 0;
+                                $notification_unreads = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->get();
+                                if($notification_unreads){
+                                    foreach($notification_unreads as $notification_unread){
+                                        $noti          = Notification::where('id', '=', $notification_unread->notification_id)->first();
+                                        if($noti){
+                                            $type           = $noti->type;
+                                            if($type == 'circular'){
+                                                $getCircular = circular::where('id', '=', $noti->ref_id)->first();
+                                                $validity = (($getCircular)?$getCircular->validity:'');
+                                            } elseif($type == 'event'){
+                                                $getEvent = Events::where('id', '=', $noti->ref_id)->first();
+                                                $validity = (($getEvent)?$getEvent->validity:'');
+                                            } elseif($type == 'dayspecial'){
+                                                $getCookingDaySpecial = CookingDaySpecial::where('id', '=', $noti->ref_id)->first();
+                                                $validity = (($getCookingDaySpecial)?$getCookingDaySpecial->menu_date:'');
+                                            } elseif($type == 'outsideitem'){
+                                                $getOutsideFood = OtherFoodItem::where('id', '=', $noti->ref_id)->first();
+                                                $validity = (($getOutsideFood)?$getOutsideFood->validity:'');
+                                            } else {
+                                                $validity = $noti->created_at;
+                                            }
+                                            if($validity != ''){
+                                                if($validity >= date('Y-m-d')){
+                                                    $unreadNotificationCount++;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                // $notification_unread_count = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->count();
                                 $apiResponse        = [
-                                    'notification_unread_count' => $notification_unread_count
+                                    'notification_unread_count' => $unreadNotificationCount
                                 ];
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
