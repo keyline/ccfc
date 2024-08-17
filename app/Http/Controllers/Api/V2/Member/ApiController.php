@@ -2669,14 +2669,14 @@ class ApiController extends Controller
                                             $getCircular = circular::where('id', '=', $noti->ref_id)->first();
                                             $validity = (($getCircular)?$getCircular->validity:'');
                                         } elseif($type == 'event'){
-                                            $getCircular = Events::where('id', '=', $noti->ref_id)->first();
-                                            $validity = (($getCircular)?$getCircular->validity:'');
+                                            $getEvent = Events::where('id', '=', $noti->ref_id)->first();
+                                            $validity = (($getEvent)?$getEvent->validity:'');
                                         } elseif($type == 'dayspecial'){
                                             $getCookingDaySpecial = CookingDaySpecial::where('id', '=', $noti->ref_id)->get();
-                                            $validity = (($getCircular)?$getCircular->menu_date:'');
+                                            $validity = (($getCookingDaySpecial)?$getCookingDaySpecial->menu_date:'');
                                         } elseif($type == 'outsideitem'){
-                                            $getCookingDaySpecial = OtherFoodItem::where('id', '=', $noti->ref_id)->get();
-                                            $validity = (($getCircular)?$getCircular->validity:'');
+                                            $getOutsideFood = OtherFoodItem::where('id', '=', $noti->ref_id)->get();
+                                            $validity = (($getOutsideFood)?$getOutsideFood->validity:'');
                                         } else {
                                             $validity = date_format(date_create($noti->created_at), "Y-m-d");
                                         }
