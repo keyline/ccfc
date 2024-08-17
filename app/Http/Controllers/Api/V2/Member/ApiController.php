@@ -2674,6 +2674,11 @@ class ApiController extends Controller
                                         } elseif($type == 'dayspecial'){
                                             $getCookingDaySpecial = CookingDaySpecial::where('id', '=', $noti->ref_id)->get();
                                             $validity = (($getCircular)?$getCircular->menu_date:'');
+                                        } elseif($type == 'outsideitem'){
+                                            $getCookingDaySpecial = OtherFoodItem::where('id', '=', $noti->ref_id)->get();
+                                            $validity = (($getCircular)?$getCircular->validity:'');
+                                        } else {
+                                            $validity = date_format(date_create($noti->created_at), "Y-m-d");
                                         }
                                         if($validity != ''){
                                             if($validity >= date('Y-m-d')){
