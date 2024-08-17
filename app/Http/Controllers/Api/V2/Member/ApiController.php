@@ -2672,10 +2672,10 @@ class ApiController extends Controller
                                             $getEvent = Events::where('id', '=', $noti->ref_id)->first();
                                             $validity = (($getEvent)?$getEvent->validity:'');
                                         } elseif($type == 'dayspecial'){
-                                            $getCookingDaySpecial = CookingDaySpecial::where('id', '=', $noti->ref_id)->get();
+                                            $getCookingDaySpecial = CookingDaySpecial::where('id', '=', $noti->ref_id)->first();
                                             $validity = (($getCookingDaySpecial)?$getCookingDaySpecial->menu_date:'');
                                         } elseif($type == 'outsideitem'){
-                                            $getOutsideFood = OtherFoodItem::where('id', '=', $noti->ref_id)->get();
+                                            $getOutsideFood = OtherFoodItem::where('id', '=', $noti->ref_id)->first();
                                             $validity = (($getOutsideFood)?$getOutsideFood->validity:'');
                                         } else {
                                             $validity = date_format(date_create($noti->created_at), "Y-m-d");
