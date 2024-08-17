@@ -2678,7 +2678,7 @@ class ApiController extends Controller
                                             $getOutsideFood = OtherFoodItem::where('id', '=', $noti->ref_id)->first();
                                             $validity = (($getOutsideFood)?$getOutsideFood->validity:'');
                                         } else {
-                                            $validity = date_format(date_create($noti->created_at), "Y-m-d");
+                                            $validity = $noti->created_at;
                                         }
                                         if($validity != ''){
                                             if($validity >= date('Y-m-d')){
