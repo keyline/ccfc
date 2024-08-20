@@ -89,7 +89,7 @@ class OtherFoodItemController extends Controller
                     $body               = '';
                     $image              = env('UPLOADS_URL').$food_image;
                     $type               = 'outsideitem';
-                    $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+                    $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->groupBy('fcm_token')->get();
                     $tokens             = [];
                     if($getUserFCMTokens){
                         foreach($getUserFCMTokens as $getUserFCMToken){

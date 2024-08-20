@@ -130,7 +130,7 @@ class CircularController extends Controller
                 $image = '';
             }
             $type               = 'circular';
-            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->groupBy('fcm_token')->get();
             $tokens             = [];
             if($getUserFCMTokens){
                 foreach($getUserFCMTokens as $getUserFCMToken){

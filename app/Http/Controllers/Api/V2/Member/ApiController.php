@@ -2577,22 +2577,22 @@ class ApiController extends Controller
                                             $this->sendMail($checkUser->email, $subject, $message);
                                         /* send email */
                                         /* insert notification */
-                                            $fields = [
-                                                'type'          => 'payment',
-                                                'title'         => $generalSettings->site_name.' :: Payment Success',
-                                                'description'   => $generalSettings->site_name.' :: Payment Success Of Rs. ' . $amount,
-                                            ];
-                                            $notification_id = Notification::insertGetId($fields);
-                                            $users = User::where('id', '=', $uId)->select('id')->orderBy('id', 'ASC')->get();
-                                            if($users){
-                                                foreach($users as $user){
-                                                    $fields2 = [
-                                                        'user_id'                   => $user->id,
-                                                        'notification_id'           => $notification_id
-                                                    ];
-                                                    UserNotification::insert($fields2);
-                                                }
-                                            }
+                                            // $fields = [
+                                            //     'type'          => 'payment',
+                                            //     'title'         => $generalSettings->site_name.' :: Payment Success',
+                                            //     'description'   => $generalSettings->site_name.' :: Payment Success Of Rs. ' . $amount,
+                                            // ];
+                                            // $notification_id = Notification::insertGetId($fields);
+                                            // $users = User::where('id', '=', $uId)->select('id')->orderBy('id', 'ASC')->get();
+                                            // if($users){
+                                            //     foreach($users as $user){
+                                            //         $fields2 = [
+                                            //             'user_id'                   => $user->id,
+                                            //             'notification_id'           => $notification_id
+                                            //         ];
+                                            //         UserNotification::insert($fields2);
+                                            //     }
+                                            // }
                                         /* insert notification */
                                         /* push notification */
                                             // $title              = 'Payment has been completed successfully';
