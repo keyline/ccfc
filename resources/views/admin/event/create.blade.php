@@ -24,19 +24,19 @@
 
             <div class="form-group">
                 <label for="name_of_the_block">Date</label>
-                <input type="text" name="day" class="form-control">
+                <input type="text" name="day" class="form-control" required>
 
             </div>
 
             <div class="form-group">
                 <label for="name_of_the_block">Month</label>
-                <input type="text" name="month" class="form-control">
+                <input type="text" name="month" class="form-control" required>
 
             </div>
 
             <div class="form-group">
                 <label for="name_of_the_block">Event name</label>
-                <input type="text" name="event_name" class="form-control">
+                <input type="text" name="event_name" class="form-control" required>
 
             </div>
 
