@@ -1602,7 +1602,7 @@ class ApiController extends Controller
                                                     ->first();
                                     $contentBlock    = ContentBlock::find(8);
                                     if($staticPage){
-                                        $gallery        = Gallery::find(12);
+                                        $gallery        = Gallery::find(40);
                                         $sideImages     = [];
                                         if($gallery){
                                             $model_id = $gallery->id;
