@@ -39,7 +39,7 @@
             <td><?=$row->title?></td>
             <td><?=$row->description?></td>
             <td><?=(($row->is_popup)?'<span class="badge badge-success">YES</span>':'<span class="badge badge-danger">NO</span>')?></td>
-            <td><?=(($row->is_popup)?date_format(date_create($row->popup_validity_date), "d-m-Y") . ' ' . date_format(date_create($row->popup_validity_time), "h:i A"):'')?></td>
+            <td><?=(($row->popup_validity_date != '')?date_format(date_create($row->popup_validity_date), "d-m-Y") . ' ' . date_format(date_create($row->popup_validity_time), "h:i A"):'')?></td>
             <td><?=(($row->created_at != '')?date_format(date_create($row->created_at), "d-m-Y h:i A"):'')?></td>
             <td>
               <a href="<?=url('admin/create/edit-mustreadlist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>

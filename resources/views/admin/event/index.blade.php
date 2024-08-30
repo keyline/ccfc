@@ -48,13 +48,15 @@
                         <th>
                             Event Image
                         </th>
-
+                        <th>
+                            Event Validity
+                        </th>
                         <th>
                             Edit
                         </th>
 
                         <th>
-                            Delete
+                            Deactive
                         </th>
                     </tr>
                 </thead>
@@ -84,7 +86,7 @@
                         <td>
                             {!! $value->details_2 !!}
                         </td>
-
+                        
                         <td>
                             <img src="{{ asset('uploads/enentimg/'.$value->event_image)}}" width="100px" height="100px"
                                 alt="">
@@ -95,7 +97,9 @@
                             <img src="{{ asset('uploads/enentimg/'.$value->event_image_2)}}" width="100px"
                                 height="100px" alt="">
                         </td>
-
+                        <td>
+                            <?=(($value->validity != '')?date_format(date_create($value->validity), "d-M-Y"):'')?>
+                        </td>
                         <td>
                             <a href="{{ url('admin/create/edit-event/'.$value->id)}}"
                                 class="btn btn-primary btn-sm">Edit</a>
@@ -103,9 +107,13 @@
 
 
                         <td>
-                            <a href="{{ url('admin/create/delete-event/'.$value->id)}}"
-                                class="btn btn-danger btn-sm">Delete</a>
-
+                            <!-- <a href="{{ url('admin/create/delete-event/'.$value->id)}}"
+                                class="btn btn-danger btn-sm">Delete</a> -->
+                            <?php if($value->status){?>
+                                <a href="<?=url('admin/create/deactive-event/' . $value->id)?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to deactive this event ?');"><i class="fa fa-times"></i> Deactive</a>
+                            <?php } else {?>
+                                <span class="badge badge-danger">Already Deactivated</span>
+                            <?php } ?>
                         </td>
 
                     </tr>

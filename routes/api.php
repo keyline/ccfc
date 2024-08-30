@@ -71,10 +71,20 @@ Route::prefix('v2')->group(function () {
         Route::post('member/changepassword', [ApiController::class,'changePassword'])->name('api.v2.member.changepassword.changePassword');
         Route::get('member/deleteaccount', [ApiController::class,'deleteAccount'])->name('api.v2.member.deleteaccount.deleteAccount');
         Route::get('member/spabooking', [ApiController::class,'spaBooking'])->name('api.v2.member.spabooking.spaBooking');
+        Route::post('member/facility', [ApiController::class,'facility'])->name('api.v2.member.facility.facility');
         Route::get('member/spabooking-tracking', [ApiController::class,'spaBookingTracking'])->name('api.v2.member.spabooking-tracking.spaBookingTracking');
         Route::get('member/clubupdates', [ApiController::class,'clubUpdates'])->name('api.v2.member.clubupdates.clubUpdates');
         Route::get('member/mustread', [ApiController::class,'mustRead'])->name('api.v2.member.mustread.mustRead');
         Route::get('member/billing', [ApiController::class,'billing'])->name('api.v2.member.billing.billing');
+        Route::post('member/billinglist', [ApiController::class,'billingList'])->name('api.v2.member.billinglist.billingList');
+        Route::post('member/billingdetail', [ApiController::class,'billingDetail'])->name('api.v2.member.billingdetail.billingDetail');
+        Route::post('member/billingreport', [ApiController::class,'billingReport'])->name('api.v2.member.billingreport.billingReport');
         Route::post('member/payuresponse', [ApiController::class,'payuResponse'])->name('api.v2.member.payuresponse.payuResponse');
+        Route::get('member/notification', [ApiController::class,'notification'])->name('api.v2.member.notification.notification');
+        Route::post('member/testpush', [ApiController::class,'testPush'])->name('api.v2.member.testpush.testPush');
+        Route::post('member/profileupdaterequest', [ApiController::class,'profileUpdateRequest'])->name('api.v2.member.profileupdaterequest.profileUpdateRequest');
+        Route::get('member/testclubmanapi', [ApiController::class,'testClubmanApi'])->name('api.v2.member.testclubmanapi.testClubmanApi');
+        Route::post('member/makepayment', [ApiController::class,'makePayment'])->name('api.v2.member.makepayment.makePayment');
+        Route::get('member/getunreadnotificationcount', [ApiController::class,'getUnreadNotificationCount'])->name('api.v2.member.getunreadnotificationcount.getUnreadNotificationCount');
     /* after login */
 });

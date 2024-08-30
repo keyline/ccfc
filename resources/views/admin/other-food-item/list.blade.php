@@ -3,7 +3,7 @@
 @can('content_block_create')
 <div style="margin-bottom: 10px;" class="row">
     <div class="col-lg-12">
-        <h3>Cooking Day Special</h3>
+        <h3>Other Food Items</h3>
     </div>
 </div>
 @endcan
@@ -16,7 +16,7 @@
 <div class="card">
   <div class="card-header">
     <h5>
-      <a href="<?=url('admin/create/add-dayspeciallist/')?>" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> Add New</a>
+      <a href="<?=url('admin/create/add-otherfooditemlist/')?>" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> Add New</a>
     </h5>
   </div>
   <div class="card-body">
@@ -24,9 +24,9 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Menu Date</th>
-          <!-- <th>Title</th>
-          <th>Description</th> -->
+          <th>Name</th>
+          <th>Description</th>
+          <th>Validity</th>
           <th>Image</th>
           <th>Action</th>
         </tr>
@@ -35,18 +35,18 @@
         <?php if($rows){ $sl=1; foreach($rows as $row){?>
           <tr>
             <td><?=$sl++?></td>
-            <td><?=date_format(date_create($row->menu_date), "d-m-Y")?></td>
-            <!-- <td><?=$row->title?></td>
-            <td><?=$row->description?></td> -->
+            <td><?=$row->name?></td>
+            <td><?=$row->description?></td>
+            <td><?=date_format(date_create($row->validity), "d-m-Y")?></td>
             <td>
-              <?php if($row->image_name != ''){?>
-                <img src="<?=env('UPLOADS_URL').$row->image_name?>" alt="<?=$row->title?>" style="width: 75px; height: 75px;" class="img-thumbnail">
+              <?php if($row->food_image != ''){?>
+                <img src="<?=env('UPLOADS_URL').$row->food_image?>" alt="<?=$row->name?>" style="width: 75px; height: 75px;" class="img-thumbnail">
               <?php }?>
             </td>
             <td>
-              <a href="<?=url('admin/create/edit-dayspeciallist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+              <a href="<?=url('admin/create/edit-otherfooditemlist/' . $row->id)?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
               <?php if($row->status){?>
-                <a href="<?=url('admin/create/deactive-dayspeciallist/' . $row->id)?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to deactive this day special menu ?');"><i class="fa fa-times"></i> Deactive</a>
+                <a href="<?=url('admin/create/deactive-otherfooditemlist/' . $row->id)?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to deactive this outside food item ?');"><i class="fa fa-times"></i> Deactive</a>
               <?php } else {?>
                 <span class="badge badge-danger">Already Deactivated</span>
               <?php } ?>

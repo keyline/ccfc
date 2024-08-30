@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Models\GeneralSetting;
 use App\Models\MustRead;
+use App\Models\UserDevice;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -48,11 +49,23 @@ class MustReadController extends Controller
                 if($postData['is_popup']){
                     $fields = [
                         'is_popup'                              => 0,
-                        'popup_validity_date'                   => '',
-                        'popup_validity_time'                   => '',
+                        // 'popup_validity_date'                   => date_format(date_create($postData['popup_validity_date']), "Y-m-d"),
+                        // 'popup_validity_time'                   => date_format(date_create($postData['popup_validity_time']), "H:i:s"),
                     ];
                     MustRead::where('id', '!=', $id)->update($fields);
                 }
+                /* push notification */
+                    $title              = 'A new must read content has been uploaded';
+                    $body               = $postData['title'];
+                    $type               = 'must_read';
+                    $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+                    $tokens             = [];
+                    if($getUserFCMTokens){
+                        foreach($getUserFCMTokens as $getUserFCMToken){
+                            $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type);
+                        }
+                    }
+                /* push notification */
                 return redirect("admin/create/mustreadlist")->with('success_message', 'Must Read Content Inserted Successfully !!!');
             } else {
                 return redirect()->back()->with('error_message', 'All Fields Required !!!');
@@ -83,8 +96,8 @@ class MustReadController extends Controller
                 if($postData['is_popup']){
                     $fields = [
                         'is_popup'                              => 0,
-                        'popup_validity_date'                   => '',
-                        'popup_validity_time'                   => '',
+                        // 'popup_validity_date'                   => date_format(date_create($postData['popup_validity_date']), "Y-m-d"),
+                        // 'popup_validity_time'                   => date_format(date_create($postData['popup_validity_time']), "H:i:s"),
                     ];
                     MustRead::where('id', '!=', $id)->update($fields);
                 }

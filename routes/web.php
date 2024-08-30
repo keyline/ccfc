@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\CookingCategoryController;
 use App\Http\Controllers\Admin\CookingItemController;
 use App\Http\Controllers\Admin\CookingDaySpecialController;
 use App\Http\Controllers\Admin\MustReadController;
+use App\Http\Controllers\Admin\OtherFoodItemController;
 // use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
@@ -278,6 +279,8 @@ Route::post('/contact-us', [App\Http\Controllers\ContactController::class, 'stor
 Route::get('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks']);
 Route::post('/deleteaccountlinks', [App\Http\Controllers\FrontendHome::class, 'deleteAccountLinks']);
 
+Route::get('/clubmanitemsinsertcron', [App\Http\Controllers\FrontendHome::class, 'clubmanitemsinsertcron']);
+
 // Route::redirect('/', '/login');
 
 // Route::get('/home', function () {
@@ -419,6 +422,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('create/email-settings', [App\Http\Controllers\Admin\SettingsController::class, 'emailSetting']);
     Route::post('create/sms-settings', [App\Http\Controllers\Admin\SettingsController::class, 'smsSetting']);
     Route::post('create/seo-settings', [App\Http\Controllers\Admin\SettingsController::class, 'seoSetting']);
+    Route::get('create/sendtestemail', [App\Http\Controllers\Admin\SettingsController::class, 'sendTestEmail']);
+    Route::get('create/sendtestpushnotification', [App\Http\Controllers\Admin\SettingsController::class, 'sendTestPushNotification']);
 
     Route::get('create/cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'index'])->name('cookingcategorylist');
     Route::get('create/add-cookingcategorylist', [App\Http\Controllers\Admin\CookingCategoryController::class, 'add']);
@@ -433,6 +438,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/edit-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'edit']);
     Route::post('create/edit-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'edit']);
     Route::get('create/delete-cookingitemlist/{id}', [App\Http\Controllers\Admin\CookingItemController::class, 'destroy']);
+    Route::get('create/cookingitemreportlist', [App\Http\Controllers\Admin\CookingItemController::class, 'reportList'])->name('cookingitemreportlist');
 
     Route::get('create/dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'index'])->name('dayspeciallist');
     Route::get('create/add-dayspeciallist', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'add']);
@@ -440,10 +446,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
     Route::post('create/edit-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'edit']);
     Route::get('create/delete-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'destroy']);
+    Route::get('create/deactive-dayspeciallist/{id}', [App\Http\Controllers\Admin\CookingDaySpecialController::class, 'deactive']);
+
+    Route::get('create/otherfooditemlist', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'index'])->name('otherfooditemlist');
+    Route::get('create/add-otherfooditemlist', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'add']);
+    Route::post('create/add-otherfooditemlist', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'add']);
+    Route::get('create/edit-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'edit']);
+    Route::post('create/edit-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'edit']);
+    Route::get('create/delete-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'destroy']);
+    Route::get('create/deactive-otherfooditemlist/{id}', [App\Http\Controllers\Admin\OtherFoodItemController::class, 'deactive']);
     
     Route::get('create/deleteaccountrequests', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequests'])->name('deleteaccountrequests');
     Route::get('create/action-deleteaccountrequests/{id}/{id2}', [App\Http\Controllers\Admin\SettingsController::class, 'deleteAccountRequestsAction']);
     Route::get('create/spabookingtrackinglist', [App\Http\Controllers\Admin\SettingsController::class, 'spaBookingTrackingList'])->name('spabookingtrackinglist');
+
+    Route::get('create/profileupdaterequests', [App\Http\Controllers\Admin\SettingsController::class, 'profileUpdateRequests'])->name('profileupdaterequests');
+    Route::get('create/detail-profileupdaterequests/{id}', [App\Http\Controllers\Admin\SettingsController::class, 'profileUpdateRequestsDetail']);
 
     Route::get('create/mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'index'])->name('mustreadlist');
     Route::get('create/add-mustreadlist', [App\Http\Controllers\Admin\MustReadController::class, 'add']);
@@ -507,7 +525,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('create/update-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'update']);
 
     Route::get('create/delete-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'destroy']);
-
+    Route::get('create/deactive-circular/{id}', [App\Http\Controllers\Admin\CircularController::class, 'deactive']);
 
     // Route::delete("delete", [App\Http\Controllers\Admin\CircularController::class, "deleteImage"])->name("delete");
 
@@ -524,7 +542,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::put('create/update-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'update']);
 
     Route::get('create/delete-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'destroy']);
-
+    Route::get('create/deactive-event/{id}', [App\Http\Controllers\Admin\EventsController::class, 'deactive']);
 
 
 
@@ -637,19 +655,12 @@ Route::group([
 
 
     Route::get('/events_members_only', function () {
-        $galleries = Gallery::with(['media'])->get();
-
-        $contentPages = ContentPage::all();
-
-        $event = Events::orderBy('id', 'DESC')->get();
-
+        $galleries          = Gallery::with(['media'])->get();
+        $contentPages       = ContentPage::all();
+        $currentDate        = date('Y-m-d');
+        $event              = Events::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
         return view('events_members_only', compact(['galleries','contentPages','event']));
     })->name('events_members_only');
-
-
-
-
-
 
     Route::get('/1792-newsletter', function () {
         $galleries = Gallery::with(['media'])->get();
@@ -664,14 +675,10 @@ Route::group([
     })->name('1792-newsletter');
 
     Route::get('/notice-circulars', function () {
-        $galleries = Gallery::with(['media'])->get();
-
-        $contentPages = ContentPage::all();
-
-        // $circular = circular::all();
-
-        $circular = circular::orderBy('id', 'DESC')->get();
-
+        $galleries          = Gallery::with(['media'])->get();
+        $contentPages       = ContentPage::all(); 
+        $currentDate        = date('Y-m-d');
+        $circular           = circular::where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
         return view('notice-circulars', compact(['galleries','contentPages','circular']));
     })->name('notice-circulars');
 

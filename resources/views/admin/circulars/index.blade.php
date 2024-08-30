@@ -20,8 +20,9 @@
                         <th>Details 2</th>
                         <th>Image</th>
                         <th>Notice Image</th>
+                        <th>Notice Validity</th>
                         <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Deactive</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -94,12 +95,18 @@
                             </form> -->
                         </td>
                         <td>
-                            <a href="{{ url('admin/create/edit-circular/'.$value->id)}}"
-                                class="btn btn-primary btn-sm">Edit</a>
+                            <?=(($value->validity != '')?date_format(date_create($value->validity), "d-M-Y"):'')?>
                         </td>
                         <td>
-                            <a href="{{ url('admin/create/delete-circular/'.$value->id)}}"
-                                class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ url('admin/create/edit-circular/'.$value->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                        </td>
+                        <td>
+                            <!-- <a href="{{ url('admin/create/delete-circular/'.$value->id)}}" class="btn btn-danger btn-sm">Delete</a> -->
+                            <?php if($value->status){?>
+                                <a href="<?=url('admin/create/deactive-circular/' . $value->id)?>" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to deactive this circular ?');"><i class="fa fa-times"></i> Deactive</a>
+                            <?php } else {?>
+                                <span class="badge badge-danger">Already Deactivated</span>
+                            <?php } ?>
                         </td>
                     </tr>
                     @endforeach

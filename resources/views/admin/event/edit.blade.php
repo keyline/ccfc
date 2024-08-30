@@ -75,7 +75,10 @@
                 <img src="{{ asset('uploads/enentimg/'.$event->event_image_2)}}" width="100px" height="100px" alt="">
 
             </div><br><br>
-
+            <div class="form-group">
+                <label for="validity">Event Validity</label>
+                <input type="date" name="validity" class="form-control" id="validity" value="<?=$event->validity?>" required>
+            </div><br><br>
 
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

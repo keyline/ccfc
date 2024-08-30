@@ -52,13 +52,13 @@
           </div>
         </div>
 
-        <div class="row mb-3 is-popup-yes" style="display: none;">
+        <div class="row mb-3 is-popup-yes">
           <label for="popup_validity_date" class="col-md-4 col-lg-3 col-form-label">Validity Date</label>
           <div class="col-md-8 col-lg-9">
             <input type="date" name="popup_validity_date" class="form-control" id="popup_validity_date" value="<?=$popup_validity_date?>" min="<?=date('Y-m-d')?>">
           </div>
         </div>
-        <div class="row mb-3 is-popup-yes" style="display: none;">
+        <div class="row mb-3 is-popup-yes">
           <label for="popup_validity_time" class="col-md-4 col-lg-3 col-form-label">Validity Time</label>
           <div class="col-md-8 col-lg-9">
             <input type="time" name="popup_validity_time" class="form-control" id="popup_validity_time" value="<?=$popup_validity_time?>">
@@ -76,29 +76,29 @@
 @section('scripts')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-  $(function(){
-    var is_popup = '<?=$is_popup?>';
-    if(is_popup == 1) {
-      $('.is-popup-yes').show();
-      $('#popup_validity_date').attr('required', true);
-      $('#popup_validity_time').attr('required', true);
-    } else {
-      $('.is-popup-yes').hide();
-      $('#popup_validity_date').attr('required', false);
-      $('#popup_validity_time').attr('required', false);
-    }
+  // $(function(){
+  //   var is_popup = '<?=$is_popup?>';
+  //   if(is_popup == 1) {
+  //     $('.is-popup-yes').show();
+  //     $('#popup_validity_date').attr('required', true);
+  //     $('#popup_validity_time').attr('required', true);
+  //   } else {
+  //     $('.is-popup-yes').hide();
+  //     $('#popup_validity_date').attr('required', false);
+  //     $('#popup_validity_time').attr('required', false);
+  //   }
 
-    $('input[name="is_popup"]').click(function() {
-       if($(this).val() == 1) {
-          $('.is-popup-yes').show();
-          $('#popup_validity_date').attr('required', true);
-          $('#popup_validity_time').attr('required', true);
-       } else {
-          $('.is-popup-yes').hide();
-          $('#popup_validity_date').attr('required', false);
-          $('#popup_validity_time').attr('required', false);
-       }
-     });
-  })
+  //   $('input[name="is_popup"]').click(function() {
+  //      if($(this).val() == 1) {
+  //         $('.is-popup-yes').show();
+  //         $('#popup_validity_date').attr('required', true);
+  //         $('#popup_validity_time').attr('required', true);
+  //      } else {
+  //         $('.is-popup-yes').hide();
+  //         $('#popup_validity_date').attr('required', false);
+  //         $('#popup_validity_time').attr('required', false);
+  //      }
+  //    });
+  // })
 </script>
 @endsection

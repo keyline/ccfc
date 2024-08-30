@@ -15,41 +15,182 @@ use App\Models\UserDetail;
 use App\Models\UserDevice;
 use App\Helpers\Helper;
 
+use Google\Client;
+use Google\Service\FirebaseCloudMessaging;
+date_default_timezone_set("Asia/Calcutta");
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    protected function sendMail($email, $fromEmail = '', $fromName = '', $subject, $message, $file = '')
-    {
-        $generalSetting             = GeneralSetting::find('1');
-        $mailLibrary                = new PHPMailer(true);
-        $mailLibrary->CharSet       = 'UTF-8';
-        $mailLibrary->SMTPDebug     = 0;
-        //$mailLibrary->IsSMTP();
-        $mailLibrary->Host          = $generalSetting->smtp_host;
-        $mailLibrary->SMTPAuth      = true;
-        $mailLibrary->Port          = $generalSetting->smtp_port;
-        $mailLibrary->Username      = $generalSetting->smtp_username;
-        $mailLibrary->Password      = $generalSetting->smtp_password;
-        $mailLibrary->SMTPSecure    = 'ssl';
-        $mailLibrary->From          = (($fromEmail == '')?$generalSetting->from_email:$fromEmail);
-        $mailLibrary->FromName      = (($fromName == '')?$generalSetting->from_name:$fromName);
-        $mailLibrary->AddReplyTo($generalSetting->from_email, $generalSetting->from_name);
-        if (is_array($email)) :
-            foreach ($email as $eml) :
-                $mailLibrary->addAddress($eml);
-            endforeach;
-        else :
-            $mailLibrary->addAddress($email);
-        endif;
-        $mailLibrary->WordWrap      = 5000;
-        $mailLibrary->Subject       = $subject;
-        $mailLibrary->Body          = $message;
-        $mailLibrary->isHTML(true);
-        if (!empty($file)) :
-            $mailLibrary->AddAttachment($file);
-        endif;
 
-        return (!$mailLibrary->send()) ? false : true;
+    protected function sendMail($email, $subject, $message, $file = '')
+    {
+        $mailLibrary                = new PHPMailer(true);
+        try {
+            $generalSetting             = GeneralSetting::find('1');
+            
+            $mailLibrary->CharSet       = 'UTF-8';
+            $mailLibrary->SMTPDebug     = 0;
+            $mailLibrary->IsSMTP();
+            $mailLibrary->Host          = $generalSetting->smtp_host;
+            $mailLibrary->SMTPAuth      = true;
+            $mailLibrary->Port          = $generalSetting->smtp_port;
+            $mailLibrary->Username      = $generalSetting->smtp_username;
+            $mailLibrary->Password      = $generalSetting->smtp_password;
+            $mailLibrary->SMTPSecure    = 'tls';
+            $mailLibrary->From          = $generalSetting->from_email;
+            $mailLibrary->FromName      = $generalSetting->from_name;
+            $mailLibrary->AddReplyTo($generalSetting->from_email, $generalSetting->from_name);
+            if (is_array($email)) :
+                foreach ($email as $eml) :
+                    $mailLibrary->addAddress($eml);
+                endforeach;
+            else :
+                $mailLibrary->addAddress($email);
+            endif;
+            // $mailLibrary->addAddress('subhomoy@keylines.net', 'Subhomoy Samanta');     // Add a recipient
+            $mailLibrary->WordWrap      = 5000;
+            $mailLibrary->Subject       = $subject;
+            $mailLibrary->Body          = $message;
+            $mailLibrary->isHTML(true);
+            if (!empty($file)) :
+                $mailLibrary->AddAttachment($file);
+            endif;
+
+            // $mailLibrary->addCC('it@ccfc1792.com');
+            // $mailLibrary->addCC('oindrilalahiri@ccfc1792.com');
+            // $mailLibrary->addCC('subhomoy@keylines.net');
+            // $mailLibrary->addCC('joydeep@keylines.net');
+            // Helper::pr($mailLibrary);
+            // return (!$mailLibrary->send()) ? false : true;
+            $mailLibrary->send();
+            return true;
+        } catch (Exception $e) {
+            // Log the error message
+            // error_log("Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}");
+
+            // Print the error message for debugging
+            // echo "Message could not be sent. Mailer Error: {$mailLibrary->ErrorInfo}";
+            return false;
+        }
+    }
+    public function getAccessToken($credentialsJson) {
+        $client = new Client();
+        $client->setAuthConfig($credentialsJson);
+        $client->addScope('https://www.googleapis.com/auth/cloud-platform');
+        $client->setAccessType('offline');
+
+        $client->fetchAccessTokenWithAssertion();
+
+        return $client->getAccessToken();
+    }
+    public function sendFCMMessage($accessToken, $projectId, $message) {
+        $url = "https://fcm.googleapis.com/v1/projects/{$projectId}/messages:send";
+
+        $headers = [
+            'Authorization: Bearer ' . $accessToken['access_token'],
+            'Content-Type: application/json',
+        ];
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($message));
+
+        $response = curl_exec($ch);
+
+        if ($response === false) {
+            throw new Exception(curl_error($ch));
+        }
+
+        curl_close($ch);
+
+        return $response;
+    }
+    public function sendCommonPushNotification($token, $title, $body, $type = '', $image = ''){
+        try {
+            // $credentialsPath = public_path('uploads/ccfc-83373-firebase-adminsdk-qauj0-66a7cd8a2f.json'); // Replace with the path to your service account JSON file
+            // echo $credentialsPath;die;
+
+            // Get the Firebase credentials from environment variable
+            $jsonCredentials = getenv('FIREBASE_CREDENTIALS');
+            if (!$jsonCredentials) {
+                throw new Exception("Firebase credentials not found in environment variables.");
+            }
+
+            $credentialsArray = json_decode($jsonCredentials, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new Exception('Invalid JSON format in environment variable.');
+            }
+
+            $projectId = 'ccfc-83373'; // Replace with your Firebase project ID
+
+            // Get access token
+            $accessToken = $this->getAccessToken($credentialsArray);
+
+            // Define your message payload
+            if($image != ''){
+                $message = [
+                    'message' => [
+                        'token' => $token, // Replace with the recipient device token
+                        'data' => [
+                            'type' => $type,
+                            // 'picture' => $image
+                        ],
+                        'notification' => [
+                            'title' => $title,
+                            'body'  => $body,
+                            'image' => $image
+                        ]
+                    ]
+                ];
+                $iosPayload = [
+                    'aps' => [
+                        'alert' => [
+                            'title' => $title,
+                            'body' => $body,
+                        ],
+                        'sound' => 'default',
+                        'mutable-content' => 1,
+                    ],
+                    'media-url' => $image
+                ];
+            } else {
+                $message = [
+                    'message' => [
+                        'token' => $token, // Replace with the recipient device token
+                        'data' => [
+                            'type' => $type
+                        ],
+                        'notification' => [
+                            'title' => $title,
+                            'body'  => $body
+                        ]
+                    ]
+                ];
+                $iosPayload = [
+                    'aps' => [
+                        'alert' => [
+                            'title' => $title,
+                            'body' => $body,
+                        ],
+                        'sound' => 'default',
+                        'mutable-content' => 1,
+                    ]
+                ];
+            }
+
+            // Send FCM message
+            $response = $this->sendFCMMessage($accessToken, $projectId, $message);
+            $response = $this->sendFCMMessage($accessToken, $projectId, $iosPayload);
+            return true;
+            // return "Response: " . $response;
+            // return redirect()->to('admin/create/settinglist')->with('status', "Response: " . $response);
+        } catch (Exception $e) {
+            return false;
+            // return "Error: " . $e->getMessage();
+            // return redirect()->to('admin/create/settinglist')->with('error_message', "Error: " . $e->getMessage());
+        }
     }
     // send sms
         public function sendSMS($mobileNo,$messageBody){

@@ -548,7 +548,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?=url('admin/create/cookingcategorylist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
@@ -563,36 +563,68 @@
                                     Whats Cooking Items
                                 </p>
                             </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a href="<?=url('admin/create/circulars')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Circulars <small>(Must read)</small>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?=url('admin/create/event')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Events <small>(Club updates)</small>
+                                </p>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?=url('admin/create/dayspeciallist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
-                                    Day Specials
+                                    Day Specials <small>(Day special)</small>
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?=url('admin/create/otherfooditemlist')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Outside Items <small>(Outside Items)</small>
+                                </p>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="<?=url('admin/create/cookingitemreportlist')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Whats Cooking Reports
+                                </p>
+                            </a>
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a href="<?=url('admin/create/spabookingtrackinglist')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Spa Booking Trackings
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
+                        <!-- <li class="nav-item">
+                            <a href="<?=url('admin/create/profileupdaterequests')?>" class="nav-link">
+                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
+                                <p>
+                                    Profile Update Requests
+                                </p>
+                            </a>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?=url('admin/create/deleteaccountrequests')?>" class="nav-link">
                                 <i class="fa-fw nav-icon fas fa-arrow-right"></i>
                                 <p>
                                     Delete Account Requests
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?=url('admin/create/mustreadlist')?>" class="nav-link">
-                                <i class="fa-fw nav-icon fas fa-arrow-right"></i>
-                                <p>
-                                    Must Reads
                                 </p>
                             </a>
                         </li>

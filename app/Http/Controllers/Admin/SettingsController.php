@@ -4,11 +4,19 @@ use App\Models\GeneralSetting;
 use App\Models\DeleteAccountRequest;
 use App\Models\SpaBookingTracking;
 use App\Models\User;
+use App\Models\UserDetail;
+use App\Models\UserDevice;
+use App\Models\MemberProfileUpdateRequest;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Helpers\Helper;
+
+// require 'vendor/autoload.php';
+
+use Google\Client;
+use Google\Service\FirebaseCloudMessaging;
 
 class SettingsController extends Controller
 {
@@ -72,12 +80,17 @@ class SettingsController extends Controller
             'site_phone'                    => $request->site_phone,
             'site_mail'                     => $request->site_mail,
             'system_email'                  => $request->system_email,
+            'account_email'                 => $request->account_email,
             'site_url'                      => $request->site_url,
             'site_address'                  => $request->site_address,
+            'clubman_api_token'             => $request->clubman_api_token,
+            'item_reporting_time_in_hrs'    => $request->item_reporting_time_in_hrs,
             'site_timings'                  => $request->site_timings,
             'spa_booking_days'              => $request->spa_booking_days,
             'spa_booking_timings'           => $request->spa_booking_timings,
             'spa_booking_phone'             => $request->spa_booking_phone,
+            'gym_booking_phone1'            => $request->gym_booking_phone1,
+            'gym_booking_phone2'            => $request->gym_booking_phone2,
             'theme_color'                   => $request->theme_color,
             'font_color'                    => $request->font_color,
             'twitter_profile'               => $request->twitter_profile,
@@ -152,4 +165,43 @@ class SettingsController extends Controller
         DeleteAccountRequest::where('id', '=', $id)->update($fields);
         return redirect("admin/create/deleteaccountrequests")->with('success_message', 'Delete Account Request ' . $msg . ' Successfully !!!');
     }
+    public function sendTestEmail(){
+        /* send email */
+            $generalSettings    = GeneralSetting::find(1);
+            $subject            = $generalSettings->site_name.' :: test Email '.date('Y-m-d H:i:s');
+            $message            = "This is for testing email using smtp.";
+            // echo $message;die;
+            if($this->sendMail($generalSettings->system_email, $subject, $message)){
+                return redirect()->to('admin/create/settinglist')->with('status','Test Email Send Successfully');
+            } else {
+                return redirect()->to('admin/create/settinglist')->with('error_message','Test Email Not Send Successfully');
+            }
+        /* send email */
+    }
+    /* send push notification */
+        public function sendTestPushNotification(){
+            $title              = 'Hi push notification';
+            $body               = 'World subhomoy joydeep ccfc ' . date('Y-m-d H:i:s');
+            
+            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
+            $tokens             = [];
+            if($getUserFCMTokens){
+                foreach($getUserFCMTokens as $getUserFCMToken){
+                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body);
+                }
+            }
+            return redirect()->to('admin/create/settinglist')->with('status', "Response: " . $response);
+        }
+    /* send push notification */
+    public function profileUpdateRequests()
+    {
+        $rows = MemberProfileUpdateRequest::orderBy('id', 'DESC')->get();
+        return view('admin.settings.profile-update-request-list',compact('rows'));
+    }
+    public function profileUpdateRequestsDetail($id)
+    {
+        $profileRequestInfo = MemberProfileUpdateRequest::where('id', '=', $id)->first();
+        return view('admin.settings.profile-update-request-detail',compact('profileRequestInfo'));
+    }
+    
 }

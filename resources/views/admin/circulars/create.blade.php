@@ -23,18 +23,18 @@
 
             <div class="form-group">
                 <label for="name_of_the_block">Date</label>
-                <input type="text" name="day" class="form-control">
+                <input type="text" name="day" class="form-control" required>
 
             </div>
 
             <div class="form-group">
                 <label for="name_of_the_block">Month</label>
-                <input type="text" name="month" class="form-control">
+                <input type="text" name="month" class="form-control" required>
 
             </div>
             <div class="form-group">
                 <label for="name_of_the_block">Circular Details 1</label>
-                <input type="text" name="circular_details1" class="form-control">
+                <input type="text" name="circular_details1" class="form-control" required>
 
             </div>
             <div class="form-group">
@@ -61,7 +61,10 @@
                 <input type="file" name="circular_image2" class="form-control">
 
             </div>
-
+            <div class="form-group">
+                <label for="validity">Notice Validity</label>
+                <input type="date" name="validity" class="form-control" id="validity" required>
+            </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     Save

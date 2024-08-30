@@ -3,7 +3,7 @@
 @can('content_block_create')
 <div style="margin-bottom: 10px;" class="row">
     <div class="col-lg-12">
-        <h3><?=((empty($row))?'Add':'Edit')?> Cooking Day Special</h3>
+        <h3><?=((empty($row))?'Add':'Edit')?> Other Food Items</h3>
     </div>
 </div>
 @endcan
@@ -17,31 +17,23 @@
   <div class="card-body">
     <?php
     if($row){
-      $menu_date        = $row->menu_date;
-      $title            = $row->title;
+      $name             = $row->name;
       $description      = $row->description;
-      $image_name       = $row->image_name;
-      $image_link       = $row->image_link;
+      $validity         = $row->validity;
+      $food_image       = $row->food_image;
     } else {
-      $menu_date        = '';
-      $title            = '';
+      $name             = '';
       $description      = '';
-      $image_name       = '';
-      $image_link       = '';
+      $validity         = '';
+      $food_image       = '';
     }
     ?>
     <form method="POST" action="" id="imageForm" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
-          <label for="menu_date" class="col-md-4 col-lg-3 col-form-label">Menu Date</label>
+          <label for="name" class="col-md-4 col-lg-3 col-form-label">Name</label>
           <div class="col-md-8 col-lg-9">
-            <input type="date" name="menu_date" class="form-control" id="menu_date" value="<?=$menu_date?>" required>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label for="title" class="col-md-4 col-lg-3 col-form-label">Title</label>
-          <div class="col-md-8 col-lg-9">
-            <input type="text" name="title" class="form-control" id="title" value="<?=$title?>" required>
+            <input type="text" name="name" class="form-control" id="name" value="<?=$name?>" required>
           </div>
         </div>
         <div class="row mb-3">
@@ -51,14 +43,20 @@
           </div>
         </div>
         <div class="row mb-3">
+          <label for="validity" class="col-md-4 col-lg-3 col-form-label">Validity</label>
+          <div class="col-md-8 col-lg-9">
+            <input type="date" name="validity" class="form-control" id="validity" value="<?=$validity?>" min="<?=date('Y-m-d')?>" required>
+          </div>
+        </div>
+        <div class="row mb-3">
           <label for="imageInput" class="col-md-4 col-lg-3 col-form-label">Images</label>
           <div class="col-md-8 col-lg-9">
-            <input type="file" name="image_name" class="form-control" id="imageInput2" accept="image/*" <?=((empty($row))?'required':'')?>>
+            <input type="file" name="food_image" class="form-control" id="imageInput2" accept="image/*" <?=((empty($row))?'required':'')?>>
             <!-- <p><small class="text-primary">(Width : 827px & height : 1169px)</small></p> -->
             <p id="result1" class="text-success"></p>
             <p id="result2" class="text-danger"></p>
-            <?php if($image_name != ''){?>
-              <img src="<?=env('UPLOADS_URL').$image_name?>" alt="<?=$title?>" style="width: 100px; height: 100px;" class="img-thumbnail">
+            <?php if($food_image != ''){?>
+              <img src="<?=env('UPLOADS_URL').$food_image?>" alt="<?=$name?>" style="width: 100px; height: 100px;" class="img-thumbnail">
             <?php }?>
           </div>
         </div>

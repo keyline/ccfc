@@ -77,6 +77,10 @@
                 ?>
             </div><br><br>
             <div class="form-group">
+                <label for="validity">Notice Validity</label>
+                <input type="date" name="validity" class="form-control" id="validity" value="<?=$circular->validity?>" required>
+            </div><br><br>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     Update
                 </button>

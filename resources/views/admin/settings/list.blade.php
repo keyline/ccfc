@@ -25,9 +25,9 @@
             <li class="nav-item">
                 <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Email</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" id="pills-seo-tab" data-toggle="pill" href="#pills-seo" role="tab" aria-controls="pills-seo" aria-selected="false">SEO</a>
-            </li>
+            </li> -->
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -59,6 +59,12 @@
                       </div>
                     </div>
                     <div class="row mb-3">
+                      <label for="account_email" class="col-md-4 col-lg-3 col-form-label">Accounts Email</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="account_email" type="email" class="form-control" id="account_email" value="<?=$setting->account_email?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
                       <label for="site_url" class="col-md-4 col-lg-3 col-form-label">Site URL</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="site_url" type="url" class="form-control" id="site_url" value="<?=$setting->site_url?>">
@@ -67,13 +73,25 @@
                     <div class="row mb-3">
                       <label for="site_address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="site_address" class="form-control ckeditor" id="site_address" rows="5"><?=$setting->site_address?></textarea>
+                        <textarea name="site_address" class="form-control" id="site_address" rows="5"><?=$setting->site_address?></textarea>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="clubman_api_token" class="col-md-4 col-lg-3 col-form-label">Clubman Api Token</label>
+                      <div class="col-md-8 col-lg-9">
+                        <textarea name="clubman_api_token" class="form-control" id="clubman_api_token" rows="5"><?=$setting->clubman_api_token?></textarea>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="item_reporting_time_in_hrs" class="col-md-4 col-lg-3 col-form-label">Item Reporting Time (In Hours)</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="item_reporting_time_in_hrs" type="text" class="form-control" id="item_reporting_time_in_hrs" value="<?=$setting->item_reporting_time_in_hrs?>">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="site_timings" class="col-md-4 col-lg-3 col-form-label">Club Timings</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="site_timings" class="form-control ckeditor" id="site_timings" rows="5"><?=$setting->site_timings?></textarea>
+                        <textarea name="site_timings" class="form-control" id="site_timings" rows="5"><?=$setting->site_timings?></textarea>
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -92,6 +110,18 @@
                       <label for="spa_booking_phone" class="col-md-4 col-lg-3 col-form-label">Spa Booking Phone</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="spa_booking_phone" type="text" class="form-control" id="spa_booking_phone" value="<?=$setting->spa_booking_phone?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="gym_booking_phone1" class="col-md-4 col-lg-3 col-form-label">Gym Booking Phone 1</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="gym_booking_phone1" type="text" class="form-control" id="gym_booking_phone1" value="<?=$setting->gym_booking_phone1?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="gym_booking_phone2" class="col-md-4 col-lg-3 col-form-label">Gym Booking Phone 2</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="gym_booking_phone2" type="text" class="form-control" id="gym_booking_phone2" value="<?=$setting->gym_booking_phone2?>">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -266,6 +296,8 @@
                     </div>
                 </form>
               <!-- End email settings Form -->
+              <a class="btn btn-success btn-sm" href="<?=url('admin/create/sendtestemail')?>">Test Email</a>
+              <a class="btn btn-success btn-sm" href="<?=url('admin/create/sendtestpushnotification')?>">Test Push Notification</a>
             </div>
             <div class="tab-pane fade" id="pills-seo" role="tabpanel" aria-labelledby="pills-seo-tab">
                 <!-- seo settings Form -->

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Events;
+use App\Models\UserDevice;
+use App\Models\Notification;
+use App\Models\UserNotification;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
@@ -44,13 +48,15 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        $event = new Events;
-        $event->day = $request->input('day');        
-        $event->month = $request->input('month');
-        $event->event_name = $request->input('event_name');
-        $event->details_1 = $request->input('event_details1');
-        $event->details_2 = $request->input('event_details2');
-
+        $event              = new Events;
+        $event->day         = $request->input('day');        
+        $event->month       = $request->input('month');
+        $event->event_name  = $request->input('event_name');
+        $event->details_1   = $request->input('event_details1');
+        $event->details_2   = $request->input('event_details2');
+        $event->validity    = $request->input('validity');
+        $event->status      = 1;
+        $event_image        = '';
         if($request->hasfile('enentimage')){
 
             $file1 = $request->file('enentimage');
@@ -78,12 +84,55 @@ class EventsController extends Controller
             $file2->move('uploads/enentimg/',$filename1);
 
             $event->event_image_2 = $filename1;
+            $event_image = $filename1;
         }
 
         $event->save();
+        $ref_id = $event->id;
+        /* insert notification */
+            $fields = [
+                'type'          => 'event',
+                'title'         => $request->input('event_name'),
+                'description'   => $request->input('event_details1'),
+                'ref_id'        => $ref_id,
+            ];
+            $notification_id = Notification::insertGetId($fields);
+            $users = User::select('id')->orderBy('id', 'ASC')->get();
+            if($users){
+                foreach($users as $user){
+                    $fields2 = [
+                        'user_id'                   => $user->id,
+                        'notification_id'           => $notification_id,
+                        'ref_id'                    => $ref_id,
+                    ];
+                    UserNotification::insert($fields2);
+                }
+            }
+        /* insert notification */
+        /* push notification */
+            if($event_image != ''){
+                $title              = $request->input('event_name');
+                $body               = '';
+                // $body               = $request->input('event_details1');
+                $ext                = pathinfo($event_image, PATHINFO_EXTENSION);
+                if($ext!= 'pdf' && $ext!= 'PDF'){
+                    $image              = env('UPLOADS_URL').'enentimg/'.$event_image;
+                } else {
+                    $image = '';
+                }
+            } else {
+                $image = '';
+            }
 
-        
-
+            $type               = 'event';
+            $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->groupBy('fcm_token')->get();
+            $tokens             = [];
+            if($getUserFCMTokens){
+                foreach($getUserFCMTokens as $getUserFCMToken){
+                    $response           = $this->sendCommonPushNotification($getUserFCMToken->fcm_token, $title, $body, $type, $image);
+                }
+            }
+        /* push notification */
         return redirect()->back()->with('status','Save successfully');
     }
 
@@ -119,13 +168,14 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $event = Events::find($id);
+        $event              = Events::find($id);
         
-        $event->day = $request->input('day');
-        $event->month = $request->input('month');
-        $event->event_name = $request->input('event_name');
-        $event->details_1 = $request->input('event_details1');
-        $event->details_2 = $request->input('event_details2');
+        $event->day         = $request->input('day');
+        $event->month       = $request->input('month');
+        $event->event_name  = $request->input('event_name');
+        $event->details_1   = $request->input('event_details1');
+        $event->details_2   = $request->input('event_details2');
+        $event->validity    = $request->input('validity');
 
         if($request->hasfile('eventimage')){
 
@@ -197,5 +247,21 @@ class EventsController extends Controller
         $event->delete();
 
         return redirect()->back()->with('status','Delete successfully');
+    }
+    public function deactive($id)
+    {
+        $fields = [
+            'status'               => 0
+        ];
+        Events::where('id', '=', $id)->update($fields);
+        /* notification delete */
+            $getNotification = Notification::where('ref_id', '=', $id)->where('type', '=', 'event')->first();
+            if($getNotification){
+                $noti_id = $getNotification->id;
+                UserNotification::where('ref_id', '=', $id)->where('notification_id', '=', $noti_id)->delete();
+                Notification::where('ref_id', '=', $id)->where('type', '=', 'event')->delete();
+            }
+        /* notification delete */
+        return redirect("admin/create/event")->with('success_message', 'Event Deactivated Successfully !!!');
     }
 }

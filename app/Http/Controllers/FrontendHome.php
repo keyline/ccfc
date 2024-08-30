@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use App\Models\ClubmanItem;
 use App\Models\DeleteAccountRequest;
 use App\Models\ReciprocalClub;
 use App\Helpers\Helper;
@@ -42,6 +44,33 @@ class FrontendHome extends Controller
             }
         }
         return view('delete-account');
+    }
+    public function clubmanitemsinsertcron(Request $request)
+    {
+        ClubmanItem::truncate();
+        $token          = "5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn";
+        $item_details   = [];
+        $billUrl        = 'https://ccfcmemberdata.in/Api/POSItemDet/POST';
+        $items          = Http::withoutVerifying()
+                    ->withHeaders(['Authorization' => 'Bearer ' . $token, 'Cache-Control' => 'no-cache', 'Accept' => '/',
+                                    'Content-Type' => 'application/json',])
+                    ->withOptions(["verify" => false])
+                    ->post($billUrl)->json()['data'];
+        if($items){
+            foreach($items as $item){
+                $postData = [
+                    'CATEGORY'      => $item['CATEGORY'],
+                    'GROUPNAME'     => $item['GROUPNAME'],
+                    'SUBGROUP'      => $item['SUBGROUP'],
+                    'ITEMNAME'      => $item['ITEMNAME'],
+                    'RATE'          => $item['RATE'],
+                    'TAX'           => $item['TAX'],
+                    'AMOUNT'        => $item['AMOUNT']
+                ];
+                ClubmanItem::insert($postData);
+            }
+        }
+        echo "All items inserted successfully";
     }
 }
 

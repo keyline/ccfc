@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\GeneralSetting;
 use App\Models\CookingCategory;
 use App\Models\CookingItem;
+use App\Models\BillReport;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -96,5 +97,14 @@ class CookingItemController extends Controller
         ];
         CookingItem::where('id', '=', $id)->update($fields);
         return redirect("admin/create/cookingitemlist")->with('success_message', 'Cooking Item Deleted Successfully !!!');
+    }
+    public function reportList()
+    {
+        $rows       = DB::table('bill_reports')
+                        ->select('bill_reports.*', 'users.name as name')
+                        ->join('users','users.id','=','bill_reports.user_id')
+                        ->orderBy('bill_reports.id', 'DESC')
+                        ->get();
+        return view('admin.cooking-item.report-list',compact('rows'));
     }
 }
