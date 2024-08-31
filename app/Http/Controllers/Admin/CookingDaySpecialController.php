@@ -15,7 +15,7 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Helpers\Helper;
-
+date_default_timezone_set("Asia/Kolkata");
 class CookingDaySpecialController extends Controller
 {
     /**

@@ -17,7 +17,7 @@ use App\Helpers\Helper;
 
 use Google\Client;
 use Google\Service\FirebaseCloudMessaging;
-date_default_timezone_set("Asia/Calcutta");
+date_default_timezone_set("Asia/Kolkata");
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

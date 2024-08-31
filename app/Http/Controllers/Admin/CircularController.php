@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\File;
-
+date_default_timezone_set("Asia/Kolkata");
 class CircularController extends Controller
 {
     /**
