@@ -1600,7 +1600,7 @@ class ApiController extends Controller
                                                     ->join('content_pages','content_pages.id','=','content_category_content_page.content_page_id')
                                                     ->where(['content_categories.slug' => 'tennis'])
                                                     ->first();
-                                    $contentBlock    = ContentBlock::find(8);
+                                    $contentBlock    = ContentBlock::find(22);
                                     if($staticPage){
                                         $gallery        = Gallery::find(40);
                                         $sideImages     = [];
