@@ -161,7 +161,7 @@ class ApiController extends Controller
                 $device_token               = $requestData['device_token'];
                 $fcm_token                  = $requestData['fcm_token'];
                 $device_type                = $headerData['source'][0];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->where('status', '=', 'ACTIVE')->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
                         if($otp == $checkUser->remember_token){
@@ -234,7 +234,7 @@ class ApiController extends Controller
                 $device_token               = $requestData['device_token'];
                 $fcm_token                  = $requestData['fcm_token'];
                 $device_type                = $headerData['source'][0];
-                $checkUser                  = User::where('email', '=', $email)->orWhere('user_code', '=', $email)->first();
+                $checkUser                  = User::where('status', '=', 'ACTIVE')->where('email', '=', $email)->orWhere('user_code', '=', $email)->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
                         if(Hash::check($password, $checkUser->password)){
