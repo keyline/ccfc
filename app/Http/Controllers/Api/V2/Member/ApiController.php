@@ -95,7 +95,7 @@ class ApiController extends Controller
             if($headerData['key'][0] == $project_key){
                 $phone                      = $requestData['phone'];
                 $device_token               = $requestData['device_token'];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->first();
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->status('status', '=', 'ACTIVE')->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE'){
                         $mobile_otp = rand(100000,999999);
