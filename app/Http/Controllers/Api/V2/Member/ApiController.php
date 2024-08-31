@@ -2339,10 +2339,11 @@ class ApiController extends Controller
                                     'bill_date'         => $bill_date,
                                     'name'              => $checkUser->name,
                                     'email'             => $checkUser->email,
+                                    'user_code'         => $checkUser->user_code,
                                 ];
                                 /* send email */
                                     $generalSettings    = GeneralSetting::find(1);
-                                    $subject            = $generalSettings->site_name.' :: Payment Success';
+                                    $subject            = $generalSettings->site_name.' :: Bill Item Report';
                                     $message            = view('email-templates.bill-details',$mailData);
                                     // echo $message;die;
                                     $this->sendMail($generalSettings->account_email, $subject, $message);
