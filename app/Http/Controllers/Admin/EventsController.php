@@ -95,6 +95,8 @@ class EventsController extends Controller
                 'title'         => $request->input('event_name'),
                 'description'   => $request->input('event_details1'),
                 'ref_id'        => $ref_id,
+                'created_at'    => date('Y-m-d H:i:s'),
+                'updated_at'    => date('Y-m-d H:i:s'),
             ];
             $notification_id = Notification::insertGetId($fields);
             $users = User::select('id')->orderBy('id', 'ASC')->get();
@@ -104,6 +106,8 @@ class EventsController extends Controller
                         'user_id'                   => $user->id,
                         'notification_id'           => $notification_id,
                         'ref_id'                    => $ref_id,
+                        'created_at'                => date('Y-m-d H:i:s'),
+                        'updated_at'                => date('Y-m-d H:i:s'),
                     ];
                     UserNotification::insert($fields2);
                 }

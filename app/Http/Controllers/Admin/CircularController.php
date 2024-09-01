@@ -101,6 +101,8 @@ class CircularController extends Controller
                 'title'         => $request->input('circular_details1'),
                 'description'   => $request->input('circular_details2'),
                 'ref_id'        => $ref_id,
+                'created_at'    => date('Y-m-d H:i:s'),
+                'updated_at'    => date('Y-m-d H:i:s'),
             ];
             $notification_id = Notification::insertGetId($fields);
             $users = User::select('id')->orderBy('id', 'ASC')->get();
@@ -110,6 +112,8 @@ class CircularController extends Controller
                         'user_id'                   => $user->id,
                         'notification_id'           => $notification_id,
                         'ref_id'                    => $ref_id,
+                        'created_at'                => date('Y-m-d H:i:s'),
+                        'updated_at'                => date('Y-m-d H:i:s'),
                     ];
                     UserNotification::insert($fields2);
                 }

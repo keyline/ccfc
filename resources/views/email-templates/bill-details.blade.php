@@ -23,8 +23,8 @@ $generalSetting    = GeneralSetting::find(1);
 
             <p><strong>Invoice #<?=$billdetails?></strong></p>
 
-            <p style="margin:0; line-height: 1.25;">Customer:</p>
-            <p style="margin:0;"><strong><?=$name?></strong> (<?=$email?>)</p>
+            <p style="margin:0; line-height: 1.25;">User:</p>
+            <p style="margin:0;"><strong><?=$name?></strong> (<?=$email?>) (<?=$user_code?>)</p>
 
             <p style="margin-bottom:0; line-height: 1.25;">Bill Date:</p>
             <p style="margin:0;"><strong><?=date_format(date_create($bill_date), "d M Y")?></strong></p>

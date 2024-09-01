@@ -68,7 +68,7 @@ use Hash;
 use Mail;
 Use DB;
 Use DateTime;
-
+date_default_timezone_set("Asia/Kolkata");
 class ApiController extends Controller
 {
     /* signin */
@@ -1736,7 +1736,8 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $getCookingDaySpecialMenus = CookingDaySpecial::where('status', '=', 1)->where('menu_date', '=', $menu_date)->get();
+                                $currentDate = date('Y-m-d');
+                                $getCookingDaySpecialMenus = CookingDaySpecial::where('status', '=', 1)->where('menu_date', '>=', $currentDate)->get();
                                 /* notification read & count */
                                     $notificationIds = Notification::select('id')->where('type', '=', 'dayspecial')->get();
                                     if($notificationIds){
@@ -2339,10 +2340,11 @@ class ApiController extends Controller
                                     'bill_date'         => $bill_date,
                                     'name'              => $checkUser->name,
                                     'email'             => $checkUser->email,
+                                    'user_code'         => $checkUser->user_code,
                                 ];
                                 /* send email */
                                     $generalSettings    = GeneralSetting::find(1);
-                                    $subject            = $generalSettings->site_name.' :: Payment Success';
+                                    $subject            = $generalSettings->site_name.' :: Bill Item Report';
                                     $message            = view('email-templates.bill-details',$mailData);
                                     // echo $message;die;
                                     $this->sendMail($generalSettings->account_email, $subject, $message);
