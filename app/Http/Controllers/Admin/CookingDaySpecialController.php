@@ -59,6 +59,8 @@ class CookingDaySpecialController extends Controller
                     'title'                         => $postData['title'],
                     'description'                   => $postData['description'],
                     'image_name'                    => $image_name,
+                    'created_at'                    => date('Y-m-d H:i:s'),
+                    'updated_at'                    => date('Y-m-d H:i:s'),
                 ];
                 // Helper::pr($fields);
                 $ref_id = CookingDaySpecial::insertGetId($fields);
@@ -69,6 +71,8 @@ class CookingDaySpecialController extends Controller
                         'title'         => $postData['title'],
                         'description'   => $postData['description'],
                         'ref_id'        => $ref_id,
+                        'created_at'    => date('Y-m-d H:i:s'),
+                        'updated_at'    => date('Y-m-d H:i:s'),
                     ];
                     $notification_id = Notification::insertGetId($fields);
                     $users = User::select('id')->orderBy('id', 'ASC')->get();
@@ -78,6 +82,8 @@ class CookingDaySpecialController extends Controller
                                 'user_id'                   => $user->id,
                                 'notification_id'           => $notification_id,
                                 'ref_id'                    => $ref_id,
+                                'created_at'                => date('Y-m-d H:i:s'),
+                                'updated_at'                => date('Y-m-d H:i:s'),
                             ];
                             UserNotification::insert($fields2);
                         }

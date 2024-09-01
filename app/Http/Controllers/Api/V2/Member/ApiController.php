@@ -68,7 +68,7 @@ use Hash;
 use Mail;
 Use DB;
 Use DateTime;
-
+date_default_timezone_set("Asia/Kolkata");
 class ApiController extends Controller
 {
     /* signin */
