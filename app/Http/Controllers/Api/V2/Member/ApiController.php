@@ -1154,7 +1154,7 @@ class ApiController extends Controller
                                     }
                                 } elseif($for_cat == 'OTHER FOOD'){
                                     $currentDate        = date('Y-m-d');
-                                    $otherFoodItems         = OtherFoodItem::select('name', 'food_image')->where('status', '=', 1)->where('validity', '<=', $currentDate)->orderBy('id', 'DESC')->get();
+                                    $otherFoodItems         = OtherFoodItem::select('name', 'food_image')->where('status', '=', 1)->where('validity', '>=', $currentDate)->orderBy('id', 'DESC')->get();
                                     /* notification read & count */
                                         $notificationIds = Notification::select('id')->where('type', '=', 'outsideitem')->get();
                                         if($notificationIds){
@@ -1736,7 +1736,8 @@ class ApiController extends Controller
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
                             if($checkUser->status == 'ACTIVE'){
-                                $getCookingDaySpecialMenus = CookingDaySpecial::where('status', '=', 1)->where('menu_date', '<=', $menu_date)->get();
+                                $currentDate = date('Y-m-d');
+                                $getCookingDaySpecialMenus = CookingDaySpecial::where('status', '=', 1)->where('menu_date', '>=', $currentDate)->get();
                                 /* notification read & count */
                                     $notificationIds = Notification::select('id')->where('type', '=', 'dayspecial')->get();
                                     if($notificationIds){
