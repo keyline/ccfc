@@ -105,7 +105,6 @@ class CircularController extends Controller
                 'updated_at'    => date('Y-m-d H:i:s'),
             ];
             $notification_id = Notification::insertGetId($fields);
-            die;
             $users = User::select('id')->orderBy('id', 'ASC')->get();
             if($users){
                 foreach($users as $user){
