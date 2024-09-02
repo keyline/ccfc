@@ -190,90 +190,81 @@ $generalSetting    = GeneralSetting::find(1);
                 </tr>
             <?php }?>
 
-            <?php if($children1_name != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 1 Name :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children1_name?></td> 
-            </tr>
+            <?php if(($children1_name != '') && ($children1_phone1 != '' || $children1_dob != '' && $children1_sex != '')){?>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 1 Name :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children1_name?></td> 
+                </tr>
             <?php }?>
-
             <?php if($children1_phone1 != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 1 Phone :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children1_phone1?></td> 
-            </tr>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 1 Phone :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children1_phone1?></td> 
+                </tr>
             <?php }?>
-
             <?php if($children1_dob != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 1 DOB :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children1_dob?></td> 
-            </tr>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 1 DOB :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children1_dob?></td>
+                </tr>
             <?php }?>
-
             <?php if($children1_sex != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 1 Sex :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children1_sex?></td> 
-            </tr>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 1 Sex :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children1_sex?></td> 
+                </tr>
             <?php }?>
 
-            <?php if($children2_name != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 2 Name :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children2_name?></td> 
-            </tr>
+            <?php if(($children2_name != '') && ($children2_phone1 != '' || $children2_dob != '' && $children2_sex != '')){?>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 2 Name :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children2_name?></td> 
+                </tr>
             <?php }?>
-
             <?php if($children2_phone1 != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 2 Phone :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children2_phone1?></td> 
-            </tr>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 2 Phone :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children2_phone1?></td> 
+                </tr>
             <?php }?>
-
             <?php if($children2_dob != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 2 DOB :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children2_dob?></td> 
-            </tr>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 2 DOB :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children2_dob?></td> 
+                </tr>
             <?php }?>
-
             <?php if($children2_sex != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 2 Sex :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children2_sex?></td> 
-            </tr>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 2 Sex :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children2_sex?></td> 
+                </tr>
             <?php }?>
 
-            <?php if($children3_name != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 3 Name :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children3_name?></td> 
-            </tr>
+            <?php if(($children3_name != '') && ($children3_phone1 != '' || $children3_dob != '' && $children3_sex != '')){?>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 3 Name :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children3_name?></td> 
+                </tr>
             <?php }?>
 
             <?php if($children3_phone1 != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 3 Phone :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children3_phone1?></td> 
-            </tr>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 3 Phone :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children3_phone1?></td> 
+                </tr>
             <?php }?>
-
             <?php if($children3_dob != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 3 DOB :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children3_dob?></td> 
-            </tr>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 3 DOB :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children3_dob?></td>
+                </tr>
             <?php }?>
-
             <?php if($children3_sex != ''){?>
-            <tr>
-                <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 3 Sex :</td>
-                <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children3_sex?></td> 
-            </tr>
+                <tr>
+                    <td  valign="middle" width="16%" style="border: 1px solid #828282; color: #000000; font-weight: 400; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px;">Children 3 Sex :</td>
+                    <td  valign="middle" width="28%" style="border: 1px solid #828282; color: #000000; font-weight: 600; font-size: 14px; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.5em; margin: 0; padding: 10px; text-align: left;"><?=$children3_sex?></td>
+                </tr>
             <?php }?>
-
         </table>
         <p style="font-size:0.9em;">Regards,<br />Thanks</p>
         <hr style="border:none;border-top:1px solid #eee" />
