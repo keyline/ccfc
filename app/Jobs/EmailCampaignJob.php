@@ -13,6 +13,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Redis;
 use Mail;
 use Log;
+use Illuminate\Support\Facades\App;
 
 class EmailCampaignJob implements ShouldQueue
 {
@@ -64,8 +65,12 @@ class EmailCampaignJob implements ShouldQueue
         try {
             //code...
 
+            if (App::environment('production')) {
 
-            //Mail::to($this->user->email, $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
+                Mail::to($this->user->email, $this->user->name)->send(new SendInBlueNotification($this->campaignid, $this->user));
+
+            }
+
 
 
 
