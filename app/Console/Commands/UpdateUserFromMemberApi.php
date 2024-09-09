@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
 use GuzzleHttp\Client;
 use App\Models\User;
 use App\Models\UserDetail;
@@ -55,16 +54,16 @@ class UpdateUserFromMemberApi extends Command
             $userCount = count($users);
             foreach ($users as $user) {
 
-                \App\Jobs\MemberProfileUpdate::dispatch($user->user_code)->onQueue('memberprofile');
+                //\App\Jobs\MemberProfileUpdate::dispatch($user->user_code)->onQueue('memberprofile');
 
-                /*$response = $client->request('POST', 'https://ccfcmemberdata.in/Api/MemberProfile', [
+                $response = $client->request('POST', 'https://ccfcmemberdata.in/Api/MemberProfile', [
                     'headers' => ['Authorization' => 'Bearer '. $this->token,'Accept'     => 'application/json'],
                         'query' => [
                             'MCODE' => $user->user_code,
 
                         ]
                     ]);
-                if($response->ok()) {
+                if ($response->ok()) {
                     $apiData = $response->getBody()->getContents();
                     $teststr = <<< JSON
                                 {$apiData}
@@ -301,7 +300,7 @@ class UpdateUserFromMemberApi extends Command
                     $this->error('Failed to fetch data from API with user code: ' . $user->user_code);
                     throw new Exception("Not getting response from API", 1);
 
-                }*/
+                }
             }
         } catch (\Exception $e) {
             //throw $th;
