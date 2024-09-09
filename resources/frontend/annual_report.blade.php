@@ -101,9 +101,9 @@
                                                 <img class="img-fluid" src="{{ asset('img//pdf_downloadicon.png') }}" alt="" />
                                             </div>
                                             <div class="newsletter_right">
-                                                <h3>Annual Report 2020-2021</h3>
+                                                <h3>Annual Report 2024-2025</h3>
                                             </div>
-                                            <a class="wholenewdivlink" href="{{ asset('pdf/CCFC-Annual-Report-2021.pdf') }}" target="_blank"></a>
+                                            <a class="wholenewdivlink" href="{{ asset('pdf/CCFC-Annual-Report-2024.pdf') }}" target="_blank"></a>
                                         </div>
                                     
                             </div>
