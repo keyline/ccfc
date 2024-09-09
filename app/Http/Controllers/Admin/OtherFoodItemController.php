@@ -70,6 +70,8 @@ class OtherFoodItemController extends Controller
                         'title'         => $postData['name'],
                         'description'   => $postData['description'],
                         'ref_id'        => $ref_id,
+                        'created_at'    => date('Y-m-d H:i:s'),
+                        'updated_at'    => date('Y-m-d H:i:s'),
                     ];
                     $notification_id = Notification::insertGetId($fields);
                     $users = User::select('id')->orderBy('id', 'ASC')->get();
@@ -79,6 +81,8 @@ class OtherFoodItemController extends Controller
                                 'user_id'                   => $user->id,
                                 'notification_id'           => $notification_id,
                                 'ref_id'                    => $ref_id,
+                                'created_at'                => date('Y-m-d H:i:s'),
+                                'updated_at'                => date('Y-m-d H:i:s'),
                             ];
                             UserNotification::insert($fields2);
                         }
