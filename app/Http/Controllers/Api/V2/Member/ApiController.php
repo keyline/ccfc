@@ -2768,172 +2768,179 @@ class ApiController extends Controller
                                 // Helper::pr($requestData);
                                 $getUserDetails     = UserDetail::where('user_code_id', '=', $uId)->first();
                                 if($getUserDetails){
-                                    $member_db_address          = $getUserDetails->address_1.' '.$getUserDetails->address_2.' '.$getUserDetails->address_3;
+                                    $generalSetting = GeneralSetting::first();
+                                    if($generalSetting->is_update_profile_request){
 
-                                    $member_dob                 = date_format(date_create($member['date_of_birth']), "Y-m-d");
-                                    $member_address             = $member['address'];
-                                    $member_city                = $member['city'];
-                                    $member_state               = $member['state'];
-                                    $member_pin                 = $member['pin'];
-                                    $member_dob_proof           = $member['dob_proof'];
-                                    $member_address_proof       = $member['address_proof'];
-                                    $member_is_dob_change       = $member['is_dob_change'];
-                                    $member_is_address_change   = $member['is_address_change'];
+                                        $member_db_address          = $getUserDetails->address_1.' '.$getUserDetails->address_2.' '.$getUserDetails->address_3;
 
-                                    $spouse_dob                 = $spouse['dob'];
-                                    $spouse_dob_proof           = $spouse['dob_proof'];
-                                    $spouse_is_dob_change       = $spouse['is_dob_change'];
+                                        $member_dob                 = date_format(date_create($member['date_of_birth']), "Y-m-d");
+                                        $member_address             = $member['address'];
+                                        $member_city                = $member['city'];
+                                        $member_state               = $member['state'];
+                                        $member_pin                 = $member['pin'];
+                                        $member_dob_proof           = $member['dob_proof'];
+                                        $member_address_proof       = $member['address_proof'];
+                                        $member_is_dob_change       = $member['is_dob_change'];
+                                        $member_is_address_change   = $member['is_address_change'];
 
-                                    $member_dob_proof_file      = ''; 
-                                    $member_address_proof_file  = ''; 
-                                    $spouse_dob_proof_file      = ''; 
-                                    if(($member_is_dob_change == 1) && (empty($member_dob_proof))){
-                                        $apiStatus                              = FALSE;
-                                        $apiMessage                             = 'Please Upload Member DOB Proof !!!';
-                                    } elseif(($member_is_address_change == 1) && (empty($member_address_proof))){
-                                        $apiStatus                              = FALSE;
-                                        $apiMessage                             = 'Please Upload Member Address Proof !!!';
-                                    } elseif(($spouse_is_dob_change == 1) && (empty($spouse_dob_proof))){
-                                        $apiStatus                              = FALSE;
-                                        $apiMessage                             = 'Please Upload Spouse DOB Proof !!!';
+                                        $spouse_dob                 = $spouse['dob'];
+                                        $spouse_dob_proof           = $spouse['dob_proof'];
+                                        $spouse_is_dob_change       = $spouse['is_dob_change'];
+
+                                        $member_dob_proof_file      = ''; 
+                                        $member_address_proof_file  = ''; 
+                                        $spouse_dob_proof_file      = ''; 
+                                        if(($member_is_dob_change == 1) && (empty($member_dob_proof))){
+                                            $apiStatus                              = FALSE;
+                                            $apiMessage                             = 'Please Upload Member DOB Proof !!!';
+                                        } elseif(($member_is_address_change == 1) && (empty($member_address_proof))){
+                                            $apiStatus                              = FALSE;
+                                            $apiMessage                             = 'Please Upload Member Address Proof !!!';
+                                        } elseif(($spouse_is_dob_change == 1) && (empty($spouse_dob_proof))){
+                                            $apiStatus                              = FALSE;
+                                            $apiMessage                             = 'Please Upload Spouse DOB Proof !!!';
+                                        } else {
+                                            if(($member_is_dob_change == 1) && (!empty($member_dob_proof))){
+                                                $proof_type             = $member['dob_proof']['type'];
+                                                if(($proof_type != 'image/png') && ($proof_type != 'image/jpg') && ($proof_type != 'image/jpeg') && ($proof_type != 'image/gif')){
+                                                    $extn = 'pdf';
+                                                } else {
+                                                    if($proof_type == 'image/png'){
+                                                        $extn = 'png';
+                                                    } elseif($proof_type == 'image/jpg'){
+                                                        $extn = 'jpg';
+                                                    } elseif($proof_type == 'image/jpeg'){
+                                                        $extn = 'jpeg';
+                                                    } elseif($proof_type == 'image/gif'){
+                                                        $extn = 'gif';
+                                                    } else {
+                                                        $extn = 'png';
+                                                    }
+                                                }
+                                                $proof_file             = $member['dob_proof']['base64'];
+                                                $image_array_1          = explode(";", $proof_file);
+                                                $image_array_2          = explode(",", $image_array_1[0]);
+                                                $data                   = base64_decode($image_array_2[0]);
+                                                $member_dob_proof_file       = $checkUser->user_code . '-member-dob-' . time() . '.' . $extn;
+                                                $file                   = public_path('/uploads/userimg/') . $member_dob_proof_file;
+                                                file_put_contents($file, $data);
+                                                // $fields['member_dob_proof']     = $member_dob_proof_file;
+                                            }
+                                            if(($member_is_address_change == 1) && (!empty($member_address_proof))){
+                                                $proof_type             = $member['address_proof']['type'];
+                                                if(($proof_type != 'image/png') && ($proof_type != 'image/jpg') && ($proof_type != 'image/jpeg') && ($proof_type != 'image/gif')){
+                                                    $extn = 'pdf';
+                                                } else {
+                                                    if($proof_type == 'image/png'){
+                                                        $extn = 'png';
+                                                    } elseif($proof_type == 'image/jpg'){
+                                                        $extn = 'jpg';
+                                                    } elseif($proof_type == 'image/jpeg'){
+                                                        $extn = 'jpeg';
+                                                    } elseif($proof_type == 'image/gif'){
+                                                        $extn = 'gif';
+                                                    } else {
+                                                        $extn = 'png';
+                                                    }
+                                                }
+                                                $proof_file             = $member['address_proof']['base64'];
+                                                $image_array_1          = explode(";", $proof_file);
+                                                $image_array_2          = explode(",", $image_array_1[0]);
+                                                $data                   = base64_decode($image_array_2[0]);
+                                                $member_address_proof_file       = $checkUser->user_code . '-member-address-' . time() . '.' . $extn;
+                                                $file                   = public_path('/uploads/userimg/') . $member_address_proof_file;
+                                                file_put_contents($file, $data);
+                                                // $fields['member_address_proof'] = '';
+                                            }
+                                            if(($spouse_is_dob_change == 1) && (!empty($spouse_dob_proof))){
+                                                $proof_type             = $spouse['dob_proof']['type'];
+                                                if(($proof_type != 'image/png') && ($proof_type != 'image/jpg') && ($proof_type != 'image/jpeg') && ($proof_type != 'image/gif')){
+                                                    $extn = 'pdf';
+                                                } else {
+                                                    if($proof_type == 'image/png'){
+                                                        $extn = 'png';
+                                                    } elseif($proof_type == 'image/jpg'){
+                                                        $extn = 'jpg';
+                                                    } elseif($proof_type == 'image/jpeg'){
+                                                        $extn = 'jpeg';
+                                                    } elseif($proof_type == 'image/gif'){
+                                                        $extn = 'gif';
+                                                    } else {
+                                                        $extn = 'png';
+                                                    }
+                                                }
+                                                $proof_file             = $spouse['dob_proof']['base64'];
+                                                $image_array_1          = explode(";", $proof_file);
+                                                $image_array_2          = explode(",", $image_array_1[0]);
+                                                $data                   = base64_decode($image_array_2[0]);
+                                                $spouse_dob_proof_file       = $checkUser->user_code . '-spouse-dob-' . time() . '.' . $extn;
+                                                $file                   = public_path('/uploads/userimg/') . $spouse_dob_proof_file;
+                                                file_put_contents($file, $data);
+                                                // $fields['spouse_dob_proof']     = '';
+                                            }
+
+                                            $fields = [
+                                                'member_id'         => $uId,
+                                                'member_code'       => $checkUser->user_code,
+                                                'member_name'       => $member['name'],
+                                                'member_email'      => (($checkUser->email != $member['email'])?$member['email']:''),
+                                                'member_phone1'     => (($getUserDetails->phone_1 != $member['phone_1'])?$member['phone_1']:''),
+                                                'member_phone2'     => (($getUserDetails->phone_2 != $member['phone_2'])?$member['phone_2']:''),
+                                                'member_phone3'     => (($getUserDetails->mobile_no != $member['phone_3'])?$member['phone_3']:''),
+                                                'member_dob'        => (($getUserDetails->date_of_birth != $member['date_of_birth'])?$member['date_of_birth']:''),
+                                                'member_since'      => (($getUserDetails->member_since != $member['member_since'])?$member['member_since']:''),
+                                                'member_sex'        => (($getUserDetails->sex != $member['sex'])?$member['sex']:''),
+                                                'member_address'    => (($member_db_address != $member['address'])?$member['address']:''),
+                                                'member_city'       => (($getUserDetails->city != $member['city'])?$member['city']:''),
+                                                'member_state'      => (($getUserDetails->state != $member['state'])?$member['state']:''),
+                                                'member_pin'        => (($getUserDetails->pin != $member['pin'])?$member['pin']:''),
+                                                'member_dob_proof'        => $member_dob_proof_file,
+                                                'member_address_proof'    => $member_address_proof_file,
+                                                'spouse_name'       => (($getUserDetails->spouse_name != $spouse['name'])?$spouse['name']:''),
+                                                'spouse_email'      => (($getUserDetails->spouse_email != $spouse['email'])?$spouse['email']:''),
+                                                'spouse_phone1'     => (($getUserDetails->spouse_phone_1 != $spouse['phone_1'])?$spouse['phone_1']:''),
+                                                'spouse_phone2'     => (($getUserDetails->spouse_phone_2 != $spouse['phone_2'])?$spouse['phone_2']:''),
+                                                'spouse_phone3'     => (($getUserDetails->spouse_mobile_no != $spouse['phone_3'])?$spouse['phone_3']:''),
+                                                'spouse_dob'        => (($getUserDetails->spouse_dob != $spouse['dob'])?$spouse['dob']:''),
+                                                'spouse_sex'        => (($getUserDetails->spouse_sex != $spouse['sex'])?$spouse['sex']:''),
+                                                'spouse_profession' => (($getUserDetails->spouse_business_profession != $spouse['profession'])?$spouse['profession']:''),
+                                                'spouse_dob_proof'  => $spouse_dob_proof_file,
+                                                'children1_name'    => (($getUserDetails->children1_name != $children1['name'])?$children1['name']:''),
+                                                'children1_phone1'  => (($getUserDetails->children1_phone1 != $children1['phone_1'])?$children1['phone_1']:''),
+                                                'children1_dob'     => (($getUserDetails->children1_dob != $children1['dob'])?$children1['dob']:''),
+                                                'children1_sex'     => (($getUserDetails->children1_sex != $children1['sex'])?$children1['sex']:''),
+                                                'children2_name'    => (($getUserDetails->children2_name != $children2['name'])?$children2['name']:''),
+                                                'children2_phone1'  => (($getUserDetails->children2_phone1 != $children2['phone_1'])?$children2['phone_1']:''),
+                                                'children2_dob'     => (($getUserDetails->children2_dob != $children2['dob'])?$children2['dob']:''),
+                                                'children2_sex'     => (($getUserDetails->children2_sex != $children2['sex'])?$children2['sex']:''),
+                                                'children3_name'    => (($getUserDetails->children3_name != $children3['name'])?$children3['name']:''),
+                                                'children3_phone1'  => (($getUserDetails->children3_phone1 != $children3['phone_1'])?$children3['phone_1']:''),
+                                                'children3_dob'     => (($getUserDetails->children3_dob != $children3['dob'])?$children3['dob']:''),
+                                                'children3_sex'     => (($getUserDetails->children3_sex != $children3['sex'])?$children3['sex']:''),
+                                            ];
+                                        
+                                            // Helper::pr($fields);
+                                            /* send email */
+                                                $memberName         = $member['name'];
+                                                $memberCode         = $checkUser->user_code;
+                                                $generalSettings    = GeneralSetting::find(1);
+                                                $senderEmail        = $generalSettings->account_email;
+                                                $subject            = $generalSettings->site_name.' :: Profile Update Request From ' . $memberName . ' (' . $memberCode . ') On ' . date("M d, Y h:i A");
+                                                $message            = view('email-templates.profile-update-request',$fields);
+                                                // echo $message;die;
+                                                $this->sendMail($senderEmail, $subject, $message);
+                                            /* send email */
+                                            MemberProfileUpdateRequest::insert($fields);
+
+                                            $apiStatus          = TRUE;
+                                            http_response_code(200);
+                                            $apiMessage         = 'Profile Update Request Successfully Submitted !!!';
+                                            $apiExtraField      = 'response_code';
+                                            $apiExtraData       = http_response_code();
+                                        }
                                     } else {
-                                        if(($member_is_dob_change == 1) && (!empty($member_dob_proof))){
-                                            $proof_type             = $member['dob_proof']['type'];
-                                            if(($proof_type != 'image/png') && ($proof_type != 'image/jpg') && ($proof_type != 'image/jpeg') && ($proof_type != 'image/gif')){
-                                                $extn = 'pdf';
-                                            } else {
-                                                if($proof_type == 'image/png'){
-                                                    $extn = 'png';
-                                                } elseif($proof_type == 'image/jpg'){
-                                                    $extn = 'jpg';
-                                                } elseif($proof_type == 'image/jpeg'){
-                                                    $extn = 'jpeg';
-                                                } elseif($proof_type == 'image/gif'){
-                                                    $extn = 'gif';
-                                                } else {
-                                                    $extn = 'png';
-                                                }
-                                            }
-                                            $proof_file             = $member['dob_proof']['base64'];
-                                            $image_array_1          = explode(";", $proof_file);
-                                            $image_array_2          = explode(",", $image_array_1[0]);
-                                            $data                   = base64_decode($image_array_2[0]);
-                                            $member_dob_proof_file       = $checkUser->user_code . '-member-dob-' . time() . '.' . $extn;
-                                            $file                   = public_path('/uploads/userimg/') . $member_dob_proof_file;
-                                            file_put_contents($file, $data);
-                                            // $fields['member_dob_proof']     = $member_dob_proof_file;
-                                        }
-                                        if(($member_is_address_change == 1) && (!empty($member_address_proof))){
-                                            $proof_type             = $member['address_proof']['type'];
-                                            if(($proof_type != 'image/png') && ($proof_type != 'image/jpg') && ($proof_type != 'image/jpeg') && ($proof_type != 'image/gif')){
-                                                $extn = 'pdf';
-                                            } else {
-                                                if($proof_type == 'image/png'){
-                                                    $extn = 'png';
-                                                } elseif($proof_type == 'image/jpg'){
-                                                    $extn = 'jpg';
-                                                } elseif($proof_type == 'image/jpeg'){
-                                                    $extn = 'jpeg';
-                                                } elseif($proof_type == 'image/gif'){
-                                                    $extn = 'gif';
-                                                } else {
-                                                    $extn = 'png';
-                                                }
-                                            }
-                                            $proof_file             = $member['address_proof']['base64'];
-                                            $image_array_1          = explode(";", $proof_file);
-                                            $image_array_2          = explode(",", $image_array_1[0]);
-                                            $data                   = base64_decode($image_array_2[0]);
-                                            $member_address_proof_file       = $checkUser->user_code . '-member-address-' . time() . '.' . $extn;
-                                            $file                   = public_path('/uploads/userimg/') . $member_address_proof_file;
-                                            file_put_contents($file, $data);
-                                            // $fields['member_address_proof'] = '';
-                                        }
-                                        if(($spouse_is_dob_change == 1) && (!empty($spouse_dob_proof))){
-                                            $proof_type             = $spouse['dob_proof']['type'];
-                                            if(($proof_type != 'image/png') && ($proof_type != 'image/jpg') && ($proof_type != 'image/jpeg') && ($proof_type != 'image/gif')){
-                                                $extn = 'pdf';
-                                            } else {
-                                                if($proof_type == 'image/png'){
-                                                    $extn = 'png';
-                                                } elseif($proof_type == 'image/jpg'){
-                                                    $extn = 'jpg';
-                                                } elseif($proof_type == 'image/jpeg'){
-                                                    $extn = 'jpeg';
-                                                } elseif($proof_type == 'image/gif'){
-                                                    $extn = 'gif';
-                                                } else {
-                                                    $extn = 'png';
-                                                }
-                                            }
-                                            $proof_file             = $spouse['dob_proof']['base64'];
-                                            $image_array_1          = explode(";", $proof_file);
-                                            $image_array_2          = explode(",", $image_array_1[0]);
-                                            $data                   = base64_decode($image_array_2[0]);
-                                            $spouse_dob_proof_file       = $checkUser->user_code . '-spouse-dob-' . time() . '.' . $extn;
-                                            $file                   = public_path('/uploads/userimg/') . $spouse_dob_proof_file;
-                                            file_put_contents($file, $data);
-                                            // $fields['spouse_dob_proof']     = '';
-                                        }
-
-                                        $fields = [
-                                            'member_id'         => $uId,
-                                            'member_code'       => $checkUser->user_code,
-                                            'member_name'       => $member['name'],
-                                            'member_email'      => (($checkUser->email != $member['email'])?$member['email']:''),
-                                            'member_phone1'     => (($getUserDetails->phone_1 != $member['phone_1'])?$member['phone_1']:''),
-                                            'member_phone2'     => (($getUserDetails->phone_2 != $member['phone_2'])?$member['phone_2']:''),
-                                            'member_phone3'     => (($getUserDetails->mobile_no != $member['phone_3'])?$member['phone_3']:''),
-                                            'member_dob'        => (($getUserDetails->date_of_birth != $member['date_of_birth'])?$member['date_of_birth']:''),
-                                            'member_since'      => (($getUserDetails->member_since != $member['member_since'])?$member['member_since']:''),
-                                            'member_sex'        => (($getUserDetails->sex != $member['sex'])?$member['sex']:''),
-                                            'member_address'    => (($member_db_address != $member['address'])?$member['address']:''),
-                                            'member_city'       => (($getUserDetails->city != $member['city'])?$member['city']:''),
-                                            'member_state'      => (($getUserDetails->state != $member['state'])?$member['state']:''),
-                                            'member_pin'        => (($getUserDetails->pin != $member['pin'])?$member['pin']:''),
-                                            'member_dob_proof'        => $member_dob_proof_file,
-                                            'member_address_proof'    => $member_address_proof_file,
-                                            'spouse_name'       => (($getUserDetails->spouse_name != $spouse['name'])?$spouse['name']:''),
-                                            'spouse_email'      => (($getUserDetails->spouse_email != $spouse['email'])?$spouse['email']:''),
-                                            'spouse_phone1'     => (($getUserDetails->spouse_phone_1 != $spouse['phone_1'])?$spouse['phone_1']:''),
-                                            'spouse_phone2'     => (($getUserDetails->spouse_phone_2 != $spouse['phone_2'])?$spouse['phone_2']:''),
-                                            'spouse_phone3'     => (($getUserDetails->spouse_mobile_no != $spouse['phone_3'])?$spouse['phone_3']:''),
-                                            'spouse_dob'        => (($getUserDetails->spouse_dob != $spouse['dob'])?$spouse['dob']:''),
-                                            'spouse_sex'        => (($getUserDetails->spouse_sex != $spouse['sex'])?$spouse['sex']:''),
-                                            'spouse_profession' => (($getUserDetails->spouse_business_profession != $spouse['profession'])?$spouse['profession']:''),
-                                            'spouse_dob_proof'  => $spouse_dob_proof_file,
-                                            'children1_name'    => (($getUserDetails->children1_name != $children1['name'])?$children1['name']:''),
-                                            'children1_phone1'  => (($getUserDetails->children1_phone1 != $children1['phone_1'])?$children1['phone_1']:''),
-                                            'children1_dob'     => (($getUserDetails->children1_dob != $children1['dob'])?$children1['dob']:''),
-                                            'children1_sex'     => (($getUserDetails->children1_sex != $children1['sex'])?$children1['sex']:''),
-                                            'children2_name'    => (($getUserDetails->children2_name != $children2['name'])?$children2['name']:''),
-                                            'children2_phone1'  => (($getUserDetails->children2_phone1 != $children2['phone_1'])?$children2['phone_1']:''),
-                                            'children2_dob'     => (($getUserDetails->children2_dob != $children2['dob'])?$children2['dob']:''),
-                                            'children2_sex'     => (($getUserDetails->children2_sex != $children2['sex'])?$children2['sex']:''),
-                                            'children3_name'    => (($getUserDetails->children3_name != $children3['name'])?$children3['name']:''),
-                                            'children3_phone1'  => (($getUserDetails->children3_phone1 != $children3['phone_1'])?$children3['phone_1']:''),
-                                            'children3_dob'     => (($getUserDetails->children3_dob != $children3['dob'])?$children3['dob']:''),
-                                            'children3_sex'     => (($getUserDetails->children3_sex != $children3['sex'])?$children3['sex']:''),
-                                        ];
-                                    
-                                        // Helper::pr($fields);
-                                        /* send email */
-                                            $memberName         = $member['name'];
-                                            $memberCode         = $checkUser->user_code;
-                                            $generalSettings    = GeneralSetting::find(1);
-                                            $senderEmail        = $generalSettings->account_email;
-                                            $subject            = $generalSettings->site_name.' :: Profile Update Request From ' . $memberName . ' (' . $memberCode . ') On ' . date("M d, Y h:i A");
-                                            $message            = view('email-templates.profile-update-request',$fields);
-                                            // echo $message;die;
-                                            $this->sendMail($senderEmail, $subject, $message);
-                                        /* send email */
-                                        MemberProfileUpdateRequest::insert($fields);
-
-                                        $apiStatus          = TRUE;
-                                        http_response_code(200);
-                                        $apiMessage         = 'Profile Update Request Successfully Submitted !!!';
-                                        $apiExtraField      = 'response_code';
-                                        $apiExtraData       = http_response_code();
+                                        $apiStatus                              = FALSE;
+                                        $apiMessage                             = 'Profile Update Request Is Currently Not Available !!!';
                                     }
                                 } else {
                                     $apiStatus                              = FALSE;
