@@ -98,6 +98,7 @@ class SettingsController extends Controller
             'instagram_profile'             => $request->instagram_profile,
             'linkedin_profile'              => $request->linkedin_profile,
             'youtube_profile'               => $request->youtube_profile,
+            'is_update_profile_request'     => $request->is_update_profile_request,
             // 'site_logo'                     => $site_logo,
             // 'site_footer_logo'              => $site_footer_logo,
             // 'site_favicon'                  => $site_favicon

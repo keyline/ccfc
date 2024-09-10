@@ -167,6 +167,17 @@
                       </div>
                     </div>
 
+                    <div class="row mb-3">
+                      <label for="is_update_profile_request" class="col-md-4 col-lg-3 col-form-label">Update Profile Request</label>
+                      <div class="col-md-8 col-lg-9">
+                        <select name="is_update_profile_request" class="form-control" id="is_update_profile_request" required>
+                          <option value="" selected>Select Update Profile Request</option>
+                          <option value="1" <?=(($setting->is_update_profile_request == 1)?'selected':'')?>>OPEN</option>
+                          <option value="0" <?=(($setting->is_update_profile_request == 0)?'selected':'')?>>CLOSE</option>
+                        </select>
+                      </div>
+                    </div>
+
                     <!-- <div class="row mb-3">
                       <label for="site_logo" class="col-md-4 col-lg-3 col-form-label">Logo</label>
                       <div class="col-md-8 col-lg-9">

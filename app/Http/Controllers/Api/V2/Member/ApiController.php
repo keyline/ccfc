@@ -673,7 +673,7 @@ class ApiController extends Controller
                                         $profileImage       = 'data:image/png;base64,'.$getUserDetail->member_image;
                                     }
                                 }
-                                // $notification_unread_count = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->count();
+                                $generalSetting = GeneralSetting::first();
                                 $apiResponse        = [
                                     // 'notification_unread_count'                 => $notification_unread_count,
                                     'member'        => [
@@ -729,7 +729,8 @@ class ApiController extends Controller
                                         'phone_1'                               => (($getUserDetail)?$getUserDetail->children3_phone1:''),
                                         'phone_2'                               => (($getUserDetail)?$getUserDetail->children3_phone2:''),
                                         'phone_3'                               => (($getUserDetail)?$getUserDetail->children3_mobileno:''),
-                                    ]
+                                    ],
+                                    'is_update_profile_request' => $generalSetting->is_update_profile_request
                                 ];
                                 $apiStatus          = TRUE;
                                 http_response_code(200);
