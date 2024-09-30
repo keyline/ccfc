@@ -1058,7 +1058,7 @@ class ApiController extends Controller
                                 $item_complete_list  = [];
                                 if($for_cat == 'CLUB KITCHEN'){
                                     $itemGroups      = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '!=', 'DON GIOVANNIE')->where('SUBGROUP', '!=', 'RESTURANT')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
-                                    Helper::pr($itemGroups);
+                                    // Helper::pr($itemGroups);
                                     if($itemGroups){
                                         foreach($itemGroups as $itemGroup){
                                             $SUBGROUPS          = [];
