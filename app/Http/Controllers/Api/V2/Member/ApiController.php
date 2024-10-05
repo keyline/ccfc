@@ -239,12 +239,12 @@ class ApiController extends Controller
                                 $query->where('status', 'ACTIVE')
                                       ->orWhere('status', 'INACTIVE');
                              })
-                             ->where(function($query) {
+                             ->where(function($query) use ($email) {
                                 $query->where('email', $email)
                                       ->orWhere('user_code', $email);
                              })
                              ->first();
-                
+
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         if(Hash::check($password, $checkUser->password)){
