@@ -235,7 +235,7 @@ class ApiController extends Controller
                 $fcm_token                  = $requestData['fcm_token'];
                 $device_type                = $headerData['source'][0];
                 // $checkUser                  = User::where('status', '=', 'ACTIVE')->orWhere('status', '=', 'INACTIVE')->where('email', '=', $email)->orWhere('user_code', '=', $email)->first();
-                $results = User::where(function($query) {
+                $checkUser = User::where(function($query) {
                                 $query->where('status', 'ACTIVE')
                                       ->orWhere('status', 'INACTIVE');
                              })
