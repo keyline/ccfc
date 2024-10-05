@@ -100,7 +100,7 @@ class ApiController extends Controller
                                 $query->where('status', 'ACTIVE')
                                       ->orWhere('status', 'INACTIVE');
                              })
-                             ->where(function($query) use ($email) {
+                             ->where(function($query) use ($phone) {
                                 $query->where('phone_number_1', $phone);
                              })
                              ->first();
@@ -174,7 +174,7 @@ class ApiController extends Controller
                                 $query->where('status', 'ACTIVE')
                                       ->orWhere('status', 'INACTIVE');
                              })
-                             ->where(function($query) use ($email) {
+                             ->where(function($query) use ($phone) {
                                 $query->where('phone_number_1', $phone);
                              })
                              ->first();
