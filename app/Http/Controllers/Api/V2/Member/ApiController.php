@@ -95,9 +95,9 @@ class ApiController extends Controller
             if($headerData['key'][0] == $project_key){
                 $phone                      = $requestData['phone'];
                 $device_token               = $requestData['device_token'];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->where('status', '=', 'ACTIVE')->first();
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->where('status', '=', 'ACTIVE')->orWhere('status', '=', 'INACTIVE')->first();
                 if($checkUser){
-                    if($checkUser->status == 'ACTIVE'){
+                    if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         $mobile_otp = rand(100000,999999);
                         $postData = [
                             'remember_token'        => $mobile_otp
@@ -161,9 +161,9 @@ class ApiController extends Controller
                 $device_token               = $requestData['device_token'];
                 $fcm_token                  = $requestData['fcm_token'];
                 $device_type                = $headerData['source'][0];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->where('status', '=', 'ACTIVE')->first();
+                $checkUser                  = User::where('phone_number_1', '=', $phone)->where('status', '=', 'ACTIVE')->orWhere('status', '=', 'INACTIVE')->first();
                 if($checkUser){
-                    if($checkUser->status == 'ACTIVE'){
+                    if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         if($otp == $checkUser->remember_token){
                             $objOfJwt           = new CreatorJwt();
                             $app_access_token   = $objOfJwt->GenerateToken($checkUser->id, $checkUser->email, $checkUser->phone_number_1);
@@ -234,9 +234,9 @@ class ApiController extends Controller
                 $device_token               = $requestData['device_token'];
                 $fcm_token                  = $requestData['fcm_token'];
                 $device_type                = $headerData['source'][0];
-                $checkUser                  = User::where('status', '=', 'ACTIVE')->where('email', '=', $email)->orWhere('user_code', '=', $email)->first();
+                $checkUser                  = User::where('status', '=', 'ACTIVE')->orWhere('status', '=', 'INACTIVE')->where('email', '=', $email)->orWhere('user_code', '=', $email)->first();
                 if($checkUser){
-                    if($checkUser->status == 'ACTIVE'){
+                    if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         if(Hash::check($password, $checkUser->password)){
                             $objOfJwt           = new CreatorJwt();
                             $app_access_token   = $objOfJwt->GenerateToken($checkUser->id, $checkUser->email, $checkUser->phone_number_1);
@@ -307,7 +307,7 @@ class ApiController extends Controller
                 $member_code                = $requestData['member_code'];
                 $checkUser                  = User::where('email', '=', $email)->where('user_code', '=', $member_code)->first();
                 if($checkUser){
-                    if($checkUser->status == 'ACTIVE'){
+                    if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         // $otp        = rand(100000,999999);
                         $otp        = 123456;
                         $postData   = [
@@ -374,7 +374,7 @@ class ApiController extends Controller
                 $otp                        = $requestData['otp'];
                 $checkUser                  = User::where('id', '=', $id)->first();
                 if($checkUser){
-                    if($checkUser->status == 'ACTIVE'){
+                    if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         if($otp == $checkUser->remember_token){
                             $apiResponse = [
                                 'id'                    => $id,
@@ -422,7 +422,7 @@ class ApiController extends Controller
                 $id                         = $requestData['id'];
                 $checkUser                  = User::where('id', '=', $id)->first();
                 if($checkUser){
-                    if($checkUser->status == 'ACTIVE'){
+                    if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         // $otp        = rand(100000,999999);
                         $otp        = 123456;
                         $postData   = [
@@ -490,7 +490,7 @@ class ApiController extends Controller
                 $confirm_password           = $requestData['confirm_password'];
                 $checkUser                  = User::where('id', '=', $id)->first();
                 if($checkUser){
-                    if($checkUser->status == 'ACTIVE'){
+                    if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         if($requestData['password'] == $requestData['confirm_password']){
                             if(Hash::check($password, $checkUser->password)){
                                 $apiStatus          = FALSE;
@@ -559,7 +559,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 UserDevice::where('app_access_token', '=', $app_access_token)->delete();
 
                                 $apiStatus          = TRUE;
@@ -606,7 +606,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $getUserDetail                  = UserDetail::select('member_image')->where('user_code_id', '=', $uId)->first();
                                 $profileImage       = '';
                                 if($getUserDetail){
@@ -665,7 +665,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $getUserDetail                  = UserDetail::where('user_code_id', '=', $uId)->first();
                                 $profileImage       = '';
                                 if($getUserDetail){
@@ -776,7 +776,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $getUserDetail                  = UserDetail::select('member_image')->where('user_code_id', '=', $uId)->first();
                                 $profileImage       = '';
                                 if($getUserDetail){
@@ -876,7 +876,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $generalSettings    = GeneralSetting::find(1);
                                 $depatments         = [];
                                 $contactlists       = Contactlist::all();
@@ -954,7 +954,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $postData           = [
                                     'name'          => $name,
                                     'email'         => $postemail,
@@ -1054,7 +1054,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $item_complete_list  = [];
                                 if($for_cat == 'CLUB KITCHEN'){
                                     $itemGroups      = DB::table('clubman_items')->select('GROUPNAME')->where('CATEGORY', '=', 'FOOD')->where('GROUPNAME', '!=', 'DON GIOVANNIE')->where('SUBGROUP', '!=', 'RESTURANT')->distinct('GROUPNAME')->orderBy('GROUPNAME', 'ASC')->get();
@@ -1228,7 +1228,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
 
                                 $staticPage       = DB::table('content_category_content_page')
                                                 ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
@@ -1299,7 +1299,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 if($new_password == $confirm_password){
                                     if(Hash::check($old_password, $checkUser->password)){
                                         if($old_password != $new_password){
@@ -1364,7 +1364,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $postData = [
                                     'user_type'             => 'user',
                                     'entity_name'           => $checkUser->name,
@@ -1420,7 +1420,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $generalSettings    = GeneralSetting::find(1);
                                 $staticPage         = DB::table('content_category_content_page')
                                                 ->select('content_categories.name as category_name', 'content_pages.title', 'content_pages.page_text')
@@ -1492,7 +1492,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $generalSettings    = GeneralSetting::find(1);
 
                                 if($facility_type == 'SPA'){
@@ -1674,7 +1674,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $postData = [
                                     'user_id'       => $checkUser->id,
                                     'member_code'   => $checkUser->user_code,
@@ -1737,7 +1737,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $currentDate = date('Y-m-d');
                                 $getCookingDaySpecialMenus = CookingDaySpecial::where('status', '=', 1)->where('menu_date', '>=', $currentDate)->get();
                                 /* notification read & count */
@@ -1804,7 +1804,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $currentDate        = date('Y-m-d');
                                 $events             = Events::where('validity', '>=', $currentDate)->where('status', '=', 1)->orderBy('id', 'DESC')->get();
                                 /* notification read & count */
@@ -1883,7 +1883,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $circulars          = [];
                                 $ruleRegulation     = [];
                                 /* circulars */
@@ -1975,7 +1975,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 // // $token = "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
 
                                 $url = "https://ccfcmemberdata.in/api/MemberMonthlyBalance/?MCODE=" . $checkUser->user_code . "&FromDate=01-apr-2020&ToDate=01-jun-2021";
@@ -2105,7 +2105,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 // $token = "N3bwPrgB4wzHytcBkrvd6duSAX46ksfh9zOGPGnzwL8YladUpD-XH0DD_ZVBfdktfuPvgMbHg4uvBNBzibf2qEvPWh-HlzMFwnWJCfI8uW7-RBbpBj5oPlL9KPj7jxL8kaHDB6Fvl1fc8KZfYpZlRKRRTXIqsOkWt4Wenzz8I-D42AQzY5u-4FF1lDN3pepkwSL6xxXEb6wHExSHYlqT_9mKOB-6P-h6uWeqLETbFnft0CBvzwo9rJ14Gvu1YesR_Yte88Xg9R1K4_2mlY93YxYJGI7I3LkPSsVBfPW1SkzmdWo3HRJci6nRl36U_Llc";
                                 /* bill list */
                                     $bill_list  = [];
@@ -2200,7 +2200,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $generalSettings    = GeneralSetting::find(1);
                                 $item_reporting_time_in_hrs = $generalSettings->item_reporting_time_in_hrs;
                                 // $token = "5tdpn6yeoycRKbWd0311m1B5S-ZKMfU2syAD50kiquOX20GbmXF89Z1-vvsN01WTAIRWHdRESd8nRWZJrC7xuHkClh63BPg1PCpZHKpDOjmtvgJL8ErYrup7PLG2LZHkbjDh6bFb54VyUsvZm4OzzIPI9QVKhTf2ui5Pmd8CzHJZUK-4Jd-aOmQFfhuertA5KuIRrNdHTzA7w1hEYHO9Hq9J_pkME7BhNpjWp44Z3R2YeLuQbskl_rMypzLj5icdoPWgCsxA1bU9iGo5x3heaP8lHliiSx3SeeYpBMe22DRaarXJYc5pxFJ1tuEKDoxn";
@@ -2321,7 +2321,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $postdata = [
                                     'user_id'       => $uId,
                                     'user_code'     => $checkUser->user_code,
@@ -2439,7 +2439,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                             /******************* Insert into payment bill table  ********************/
                                 $m_bill_data['membership_no']   = $checkUser->user_code;  
                                 $m_bill_data['amount']          = $amount; 
@@ -2540,7 +2540,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $checkPayuTransaction = DB::table('payu_transactions')->where('transaction_id','=','$txn_id')->count();
                                 if($checkPayuTransaction <= 0){
                                     $postData = [
@@ -2664,7 +2664,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $notifications          = Notification::orderBy('id', 'DESC')->get();
                                 if($notifications){
                                     foreach($notifications as $noti){
@@ -2765,7 +2765,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 // Helper::pr($requestData);
                                 $getUserDetails     = UserDetail::where('user_code_id', '=', $uId)->first();
                                 if($getUserDetails){
@@ -2986,7 +2986,7 @@ class ApiController extends Controller
                         $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                         $checkUser                  = User::where('id', '=', $uId)->first();
                         if($checkUser){
-                            if($checkUser->status == 'ACTIVE'){
+                            if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                                 $unreadNotificationCount = 0;
                                 $notification_unreads = UserNotification::where('user_id', '=', $uId)->where('status', '=', 0)->get();
                                 if($notification_unreads){
@@ -3078,7 +3078,7 @@ class ApiController extends Controller
                     $expiry                     = date('d/m/Y H:i:s', $getTokenValue['data'][4]);
                     $checkUser                  = User::where('id', '=', $uId)->first();
                     if($checkUser){
-                        if($checkUser->status == 'ACTIVE'){
+                        if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                             /* push notification */
                                 $getUserFCMTokens   = UserDevice::select('fcm_token')->where('fcm_token', '!=', '')->get();
                                 $tokens             = [];
