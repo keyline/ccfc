@@ -95,7 +95,15 @@ class ApiController extends Controller
             if($headerData['key'][0] == $project_key){
                 $phone                      = $requestData['phone'];
                 $device_token               = $requestData['device_token'];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->where('status', '=', 'ACTIVE')->orWhere('status', '=', 'INACTIVE')->first();
+                // $checkUser                  = User::where('phone_number_1', '=', $phone)->where('status', '=', 'ACTIVE')->orWhere('status', '=', 'INACTIVE')->first();
+                $checkUser = User::where(function($query) {
+                                $query->where('status', 'ACTIVE')
+                                      ->orWhere('status', 'INACTIVE');
+                             })
+                             ->where(function($query) use ($email) {
+                                $query->where('phone_number_1', $phone);
+                             })
+                             ->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         $mobile_otp = rand(100000,999999);
@@ -161,7 +169,15 @@ class ApiController extends Controller
                 $device_token               = $requestData['device_token'];
                 $fcm_token                  = $requestData['fcm_token'];
                 $device_type                = $headerData['source'][0];
-                $checkUser                  = User::where('phone_number_1', '=', $phone)->where('status', '=', 'ACTIVE')->orWhere('status', '=', 'INACTIVE')->first();
+                // $checkUser                  = User::where('phone_number_1', '=', $phone)->where('status', '=', 'ACTIVE')->orWhere('status', '=', 'INACTIVE')->first();
+                $checkUser = User::where(function($query) {
+                                $query->where('status', 'ACTIVE')
+                                      ->orWhere('status', 'INACTIVE');
+                             })
+                             ->where(function($query) use ($email) {
+                                $query->where('phone_number_1', $phone);
+                             })
+                             ->first();
                 if($checkUser){
                     if($checkUser->status == 'ACTIVE' || $checkUser->status == 'INACTIVE'){
                         if($otp == $checkUser->remember_token){
