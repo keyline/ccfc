@@ -12,6 +12,8 @@ use GuzzleHttp\Client;
 use pcrov\JsonReader\JsonReader;
 use App\Models\User;
 use App\Models\UserDetail;
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Redis;
 use Log;
 
@@ -52,18 +54,36 @@ class MemberProfileUpdate implements ShouldQueue
             $user = User::where('user_code', '=', $this->user_code)->first();
 
             $client = new Client(['verify' => false]);
-            $res = $client->request('POST', 'https://ccfcmemberdata.in/Api/MemberProfile', [
-        'headers' => ['Authorization' => 'Bearer '. $this->token,'Accept'     => 'application/json'],
-            'query' => [
-                'MCODE' => $user->user_code,
+            try {
 
-            ]
-        ]);
+                $res = $client->request('POST', 'https://ccfcmemberdata.in/Api/MemberProfile', [
+                        'headers' => ['Authorization' => 'Bearer '. $this->token,'Accept'     => 'application/json'],
+                            'query' => [
+                                'MCODE' => $user->user_code,
+
+                            ]
+                        ]);
+
+                $respones = $res->getBody()->getContents();
+
+
+            } catch (GuzzleException $e) {
+
+                // Handle network or HTTP errors
+                $this->recordFailure($e);  // See function below
+                return; // Or retry based on your strategy (see below)
+
+            } catch (Exception $e) {
+                // Handle other exceptions (e.g., JSON decoding errors)
+                $this->recordFailure($e);
+                return;
+            }
+
             // echo $res->getStatusCode();
             // 200
             // echo $res->getHeader('content-type');
             // 'application/json; charset=utf8'
-            $respones = $res->getBody()->getContents();
+
 
             $teststr = <<< JSON
 
@@ -128,20 +148,32 @@ JSON;
 
             $user->status = $profile['CURENTSTATUS']; //saving member status
 
+            $user->save();
 
-            if ($user->save()) {
-                $userInformation = UserDetail::where('user_code_id', $user->id)->first();
+
+            $userInformation = UserDetail::where('user_code_id', $user->id)->first();
+
+            $memberbase64 = $profile['MemberImage'];
+
+            $spousebase64 = $profile['SpouseImage'];
+
+
+
+
+
+            if (!empty($userInformation)) {
+
 
                 // $memberbase64 = "data:image/png". ";base64," . base64_encode($profile['MemberImage']);
 
-                $memberbase64 = $profile['MemberImage'];
+
 
 
                 // dd($memberbase64);
 
                 // $spousebase64 = "data:image/png". ";base64," . base64_encode($profile['SpouseImage']);
 
-                $spousebase64 = $profile['SpouseImage'];
+
 
                 // dd($profile['children']);
 
@@ -188,177 +220,190 @@ JSON;
                     }
                 }
 
-                if (!$userInformation) {
-                    $user->userCodeUserDetails()->create([
-                    'member_type_code' => $profile['MEMBERTYPECODE'],
-                    'member_type' => $profile['MEMBERTYPE'],
-                    'date_of_birth' => date("d-m-Y", strtotime($profile["DOB"])),
-                    'member_since' => date("d-m-Y", strtotime($profile['MEMBER_SINCE'])),
-                    'sex' => $profile['SEX'],
-                    'address_1' => $profile['ADDRESS1'],
-                    'address_2' => $profile['ADDRESS2'],
-                    'address_3' => $profile['ADDRESS3'],
-                    'state' => $profile['STATE'],
-                    'pin' => $profile['PIN'],
-                    'phone_1' => $profile['PHONE1'],
-                    'phone_2' => $profile['PHONE2'],
-                    'mobile_no' => $profile['MOBILENO'],
-                    'email' => $profile['EMAIL'],
-                    'current_status' => $profile['CURENTSTATUS'],
-                    'represented_club_in' => $profile['REPRESENTED_CLUB_IN'],
-                    'hobbies_interest' => $profile['HOBBIES/ INTERESTS'],
-                    'business_profession' => $profile['BUSINESS/ PROFESSION'],
-                    'category' => $profile['CATEGORY'],
-                    'business_address_1' => $profile['ADDRESS1'],
-                    'business_address_2' => $profile['ADDRESS2'],
-                    'business_address_3' => $profile['ADDRESS3'],
-                    'business_city' => $profile['CITY'],
-                    'business_state' => $profile['STATE'],
-                    'business_pin' => $profile['PIN'],
-                    'business_phone_1' => $profile['PHONE1'],
-                    'business_phone_2' => $profile['PHONE2'],
-                    'business_email' => $profile['BUSINESS_EMAIL'],
-                    'spouse_name' => $profile['SPOUSE_NAME'],
-                    'spouse_dob' => date("d-m-Y", strtotime($profile['SPOUSE_DOB'])),
-                    'spouse_sex' => $profile['SEX'],
-                    'spouse_phone_1' => $profile['PHONE1'],
-                    'spouse_phone_2' => $profile['PHONE2'],
-                    'spouse_mobile_no' => $profile['SPOUSEMOBILENO'],
-                    'spouse_email' => $profile['EMAIL'],
-                    'spouse_business_profession' => $profile['SPOUSE_BUSINESS/ PROFESSION'],
-                    'spouse_business_category' => $profile['CATEGORY'],
-                    'spouse_business_address_1' => $profile['ADDRESS1'],
-                    'spouse_business_address_2' => $profile['ADDRESS2'],
-                    'spouse_business_address_3' => $profile['ADDRESS3'],
-                    'spouse_business_city' => $profile['CITY'],
-                    'spouse_business_state' => $profile['STATE'],
-                    'spouse_business_pin' => $profile['PIN'],
-                    'spouse_business_phone_1' => $profile['PHONE1'],
-                    'spouse_business_phone_2' => $profile['PHONE2'],
-                    'spouse_business_email' => $profile['EMAIL'],
+                $userInformation->member_type_code = $profile['MEMBERTYPECODE'];
+                $userInformation->member_type = $profile['MEMBERTYPE'];
+                $userInformation->date_of_birth = date("d-m-Y", strtotime($profile["DOB"]));
+                $userInformation->member_since = date("d-m-Y", strtotime($profile['MEMBER_SINCE']));
+                $userInformation->sex = $profile['SEX'];
 
-                    'member_image' => $memberbase64,
+                $userInformation->address_1 = $profile['ADDRESS1'];
 
-                    'spouse_image' => $spousebase64,
+                $userInformation->address_2 = $profile['ADDRESS2'];
 
-                    'children1_name' => isset($child1_name) ? $child1_name : '',
-                    'children1_dob' => isset($child1_dob) ? $child1_dob : '',
-                    'children1_sex' => isset($child1_sex) ? $child1_sex : '',
-                    'children1_phone1' => isset($child1_phone1) ? $child1_phone1 : '',
-                    'children1_phone2' => isset($child1_phone2) ? $child1_phone2 : '',
-                    'children1_mobileno' => isset($child1_mobile) ? $child1_mobile : '',
+                $userInformation->address_3 = $profile['ADDRESS3'];
+                $userInformation->state = $profile['STATE'];
+                $userInformation->pin = $profile['PIN'];
+                $userInformation->phone_1 = $profile['PHONE1'];
+                $userInformation->phone_2 = $profile['PHONE2'];
+                $userInformation->mobile_no = $profile['MOBILENO'];
+                $userInformation->email = $profile['EMAIL'];
+                $userInformation->current_status = $profile['CURENTSTATUS'];
+                $userInformation->represented_club_in = $profile['REPRESENTED_CLUB_IN'];
+                $userInformation->hobbies_interest = $profile['HOBBIES/ INTERESTS'];
+                $userInformation->business_profession = $profile['BUSINESS/ PROFESSION'];
+                $userInformation->category = $profile['CATEGORY'];
 
-                    'children2_name' => isset($child2_name) ? $child2_name : '',
-                    'children2_dob' => isset($child2_dob) ? $child2_dob : '',
-                    'children2_sex' => isset($child2_sex) ? $child2_sex : '',
-                    'children2_phone1' => isset($child2_phone1) ? $child2_phone1 : '',
-                    'children2_phone2' => isset($child2_phone2) ? $child2_phone2 : '',
-                    'children2_mobileno' => isset($child2_mobile) ? $child2_mobile : '',
+                $userInformation->business_address_1 = $profile['ADDRESS1'];
+                $userInformation->business_address_2 = $profile['ADDRESS2'];
+                $userInformation->business_address_3 = $profile['ADDRESS3'];
+                $userInformation->business_city = $profile['CITY'];
+                $userInformation->business_state = $profile['STATE'];
+                $userInformation->business_pin = $profile['PIN'];
+                $userInformation->business_phone_1 = $profile['PHONE1'];
+                $userInformation->business_phone_2 = $profile['PHONE2'];
+                $userInformation->business_email = $profile['BUSINESS_EMAIL'];
+                $userInformation->spouse_name = $profile['SPOUSE_NAME'];
+
+                $userInformation->spouse_dob = date("d-m-Y", strtotime($profile['SPOUSE_DOB']));
+
+                $userInformation->spouse_sex = $profile['SEX'];
+
+                $userInformation->spouse_phone_1 = $profile['PHONE1'];
+                $userInformation->spouse_phone_2 = $profile['PHONE2'];
+                $userInformation->spouse_mobile_no = $profile['SPOUSEMOBILENO'];
+                $userInformation->spouse_email = $profile['EMAIL'];
+                $userInformation->spouse_business_profession = $profile['SPOUSE_BUSINESS/ PROFESSION'];
+                $userInformation->spouse_business_category = $profile['CATEGORY'];
+                $userInformation->spouse_business_address_1 = $profile['ADDRESS1'];
+                $userInformation->spouse_business_address_2 = $profile['ADDRESS2'];
+                $userInformation->spouse_business_address_3 = $profile['ADDRESS3'];
+                $userInformation->spouse_business_city = $profile['CITY'];
+                $userInformation->spouse_business_state = $profile['STATE'];
+                $userInformation->spouse_business_pin = $profile['PIN'];
+                $userInformation->spouse_business_phone_1 = $profile['PHONE1'];
+                $userInformation->spouse_business_phone_2 = $profile['PHONE2'];
+                $userInformation->spouse_business_email = $profile['EMAIL'];
 
 
-                    'children3_name' => isset($child3_name) ? $child3_name : '',
-                    'children3_dob' => isset($child3_dob) ? $child3_dob : '',
-                    'children3_sex' => isset($child3_sex) ? $child3_sex : '',
-                    'children3_phone1' => isset($child3_phone1) ? $child3_phone1 : '',
-                    'children3_phone2' => isset($child3_phone2) ? $child3_phone2 : '',
-                    'children3_mobileno' => isset($child3_mobile) ? $child3_mobile : '',
+                $userInformation->spouse_business_email = $profile['EMAIL'];
 
-                    ])->id;
-                    //Log::info("User Created for : " . $user->user_code);
-                } else {
-                    $userInformation->member_type_code = $profile['MEMBERTYPECODE'];
-                    $userInformation->member_type = $profile['MEMBERTYPE'];
-                    $userInformation->date_of_birth = date("d-m-Y", strtotime($profile["DOB"]));
-                    $userInformation->member_since = date("d-m-Y", strtotime($profile['MEMBER_SINCE']));
-                    $userInformation->sex = $profile['SEX'];
+                $userInformation->member_image = $memberbase64;
 
-                    $userInformation->address_1 = $profile['ADDRESS1'];
-
-                    $userInformation->address_2 = $profile['ADDRESS2'];
-
-                    $userInformation->address_3 = $profile['ADDRESS3'];
-                    $userInformation->state = $profile['STATE'];
-                    $userInformation->pin = $profile['PIN'];
-                    $userInformation->phone_1 = $profile['PHONE1'];
-                    $userInformation->phone_2 = $profile['PHONE2'];
-                    $userInformation->mobile_no = $profile['MOBILENO'];
-                    $userInformation->email = $profile['EMAIL'];
-                    $userInformation->current_status = $profile['CURENTSTATUS'];
-                    $userInformation->represented_club_in = $profile['REPRESENTED_CLUB_IN'];
-                    $userInformation->hobbies_interest = $profile['HOBBIES/ INTERESTS'];
-                    $userInformation->business_profession = $profile['BUSINESS/ PROFESSION'];
-                    $userInformation->category = $profile['CATEGORY'];
-
-                    $userInformation->business_address_1 = $profile['ADDRESS1'];
-                    $userInformation->business_address_2 = $profile['ADDRESS2'];
-                    $userInformation->business_address_3 = $profile['ADDRESS3'];
-                    $userInformation->business_city = $profile['CITY'];
-                    $userInformation->business_state = $profile['STATE'];
-                    $userInformation->business_pin = $profile['PIN'];
-                    $userInformation->business_phone_1 = $profile['PHONE1'];
-                    $userInformation->business_phone_2 = $profile['PHONE2'];
-                    $userInformation->business_email = $profile['BUSINESS_EMAIL'];
-                    $userInformation->spouse_name = $profile['SPOUSE_NAME'];
-
-                    $userInformation->spouse_dob = date("d-m-Y", strtotime($profile['SPOUSE_DOB']));
-
-                    $userInformation->spouse_sex = $profile['SEX'];
-
-                    $userInformation->spouse_phone_1 = $profile['PHONE1'];
-                    $userInformation->spouse_phone_2 = $profile['PHONE2'];
-                    $userInformation->spouse_mobile_no = $profile['SPOUSEMOBILENO'];
-                    $userInformation->spouse_email = $profile['EMAIL'];
-                    $userInformation->spouse_business_profession = $profile['SPOUSE_BUSINESS/ PROFESSION'];
-                    $userInformation->spouse_business_category = $profile['CATEGORY'];
-                    $userInformation->spouse_business_address_1 = $profile['ADDRESS1'];
-                    $userInformation->spouse_business_address_2 = $profile['ADDRESS2'];
-                    $userInformation->spouse_business_address_3 = $profile['ADDRESS3'];
-                    $userInformation->spouse_business_city = $profile['CITY'];
-                    $userInformation->spouse_business_state = $profile['STATE'];
-                    $userInformation->spouse_business_pin = $profile['PIN'];
-                    $userInformation->spouse_business_phone_1 = $profile['PHONE1'];
-                    $userInformation->spouse_business_phone_2 = $profile['PHONE2'];
-                    $userInformation->spouse_business_email = $profile['EMAIL'];
-
-
-                    $userInformation->spouse_business_email = $profile['EMAIL'];
-
-                    $userInformation->member_image = $memberbase64;
-
-                    $userInformation->spouse_image = $spousebase64;
+                $userInformation->spouse_image = $spousebase64;
 
 
 
-                    $userInformation->children1_name = isset($child1_name) ? $child1_name : '';
-                    $userInformation->children1_dob = isset($child1_dob) ? $child1_dob : '';
-                    $userInformation->children1_sex = isset($child1_sex) ? $child1_sex : '';
-                    $userInformation->children1_phone1 = isset($child1_phone1) ? $child1_phone1 : '';
-                    $userInformation->children1_phone2 = isset($child1_phone2) ? $child1_phone2 : '';
-                    $userInformation->children1_mobileno = isset($child1_mobile) ? $child1_mobile : '';
+                $userInformation->children1_name = isset($child1_name) ? $child1_name : '';
+                $userInformation->children1_dob = isset($child1_dob) ? $child1_dob : '';
+                $userInformation->children1_sex = isset($child1_sex) ? $child1_sex : '';
+                $userInformation->children1_phone1 = isset($child1_phone1) ? $child1_phone1 : '';
+                $userInformation->children1_phone2 = isset($child1_phone2) ? $child1_phone2 : '';
+                $userInformation->children1_mobileno = isset($child1_mobile) ? $child1_mobile : '';
 
-                    $userInformation->children2_name = isset($child2_name) ? $child2_name : '';
-                    $userInformation->children2_dob = isset($child2_dob) ? $child2_dob : '';
-                    $userInformation->children2_sex = isset($child2_sex) ? $child2_sex : '';
-                    $userInformation->children2_phone1 = isset($child2_phone1) ? $child2_phone1 : '';
-                    $userInformation->children2_phone2 = isset($child2_phone2) ? $child2_phone2 : '';
-                    $userInformation->children2_mobileno = isset($child2_mobile) ? $child2_mobile : '';
+                $userInformation->children2_name = isset($child2_name) ? $child2_name : '';
+                $userInformation->children2_dob = isset($child2_dob) ? $child2_dob : '';
+                $userInformation->children2_sex = isset($child2_sex) ? $child2_sex : '';
+                $userInformation->children2_phone1 = isset($child2_phone1) ? $child2_phone1 : '';
+                $userInformation->children2_phone2 = isset($child2_phone2) ? $child2_phone2 : '';
+                $userInformation->children2_mobileno = isset($child2_mobile) ? $child2_mobile : '';
 
 
-                    $userInformation->children3_name = isset($child3_name) ? $child3_name : '';
-                    $userInformation->children3_dob = isset($child3_dob) ? $child3_dob : '';
-                    $userInformation->children3_sex = isset($child3_sex) ? $child3_sex : '';
-                    $userInformation->children3_phone1 = isset($child3_phone1) ? $child3_phone1 : '';
-                    $userInformation->children3_phone2 = isset($child3_phone2) ? $child3_phone2 : '';
-                    $userInformation->children3_mobileno = isset($child3_mobile) ? $child3_mobile : '';
+                $userInformation->children3_name = isset($child3_name) ? $child3_name : '';
+                $userInformation->children3_dob = isset($child3_dob) ? $child3_dob : '';
+                $userInformation->children3_sex = isset($child3_sex) ? $child3_sex : '';
+                $userInformation->children3_phone1 = isset($child3_phone1) ? $child3_phone1 : '';
+                $userInformation->children3_phone2 = isset($child3_phone2) ? $child3_phone2 : '';
+                $userInformation->children3_mobileno = isset($child3_mobile) ? $child3_mobile : '';
 
-                    //$userInformation->save();
+                //$userInformation->save();
 
-                    //Log::info("Updated saved for: ". $userInformation->user_code_id);
-                }
+                //Log::info("Updated saved for: ". $userInformation->user_code_id);
+
+            } else {
+                //adding newly added members with details from clubman API
+                $user->userCodeUserDetails()->create([
+                                    'member_type_code' => $profile['MEMBERTYPECODE'],
+                                    'member_type' => $profile['MEMBERTYPE'],
+                                    'date_of_birth' => date("d-m-Y", strtotime($profile["DOB"])),
+                                    'member_since' => date("d-m-Y", strtotime($profile['MEMBER_SINCE'])),
+                                    'sex' => $profile['SEX'],
+                                    'address_1' => $profile['ADDRESS1'],
+                                    'address_2' => $profile['ADDRESS2'],
+                                    'address_3' => $profile['ADDRESS3'],
+                                    'state' => $profile['STATE'],
+                                    'pin' => $profile['PIN'],
+                                    'phone_1' => $profile['PHONE1'],
+                                    'phone_2' => $profile['PHONE2'],
+                                    'mobile_no' => $profile['MOBILENO'],
+                                    'email' => $profile['EMAIL'],
+                                    'current_status' => $profile['CURENTSTATUS'],
+                                    'represented_club_in' => $profile['REPRESENTED_CLUB_IN'],
+                                    'hobbies_interest' => $profile['HOBBIES/ INTERESTS'],
+                                    'business_profession' => $profile['BUSINESS/ PROFESSION'],
+                                    'category' => $profile['CATEGORY'],
+                                    'business_address_1' => $profile['ADDRESS1'],
+                                    'business_address_2' => $profile['ADDRESS2'],
+                                    'business_address_3' => $profile['ADDRESS3'],
+                                    'business_city' => $profile['CITY'],
+                                    'business_state' => $profile['STATE'],
+                                    'business_pin' => $profile['PIN'],
+                                    'business_phone_1' => $profile['PHONE1'],
+                                    'business_phone_2' => $profile['PHONE2'],
+                                    'business_email' => $profile['BUSINESS_EMAIL'],
+                                    'spouse_name' => $profile['SPOUSE_NAME'],
+                                    'spouse_dob' => date("d-m-Y", strtotime($profile['SPOUSE_DOB'])),
+                                    'spouse_sex' => $profile['SEX'],
+                                    'spouse_phone_1' => $profile['PHONE1'],
+                                    'spouse_phone_2' => $profile['PHONE2'],
+                                    'spouse_mobile_no' => $profile['SPOUSEMOBILENO'],
+                                    'spouse_email' => $profile['EMAIL'],
+                                    'spouse_business_profession' => $profile['SPOUSE_BUSINESS/ PROFESSION'],
+                                    'spouse_business_category' => $profile['CATEGORY'],
+                                    'spouse_business_address_1' => $profile['ADDRESS1'],
+                                    'spouse_business_address_2' => $profile['ADDRESS2'],
+                                    'spouse_business_address_3' => $profile['ADDRESS3'],
+                                    'spouse_business_city' => $profile['CITY'],
+                                    'spouse_business_state' => $profile['STATE'],
+                                    'spouse_business_pin' => $profile['PIN'],
+                                    'spouse_business_phone_1' => $profile['PHONE1'],
+                                    'spouse_business_phone_2' => $profile['PHONE2'],
+                                    'spouse_business_email' => $profile['EMAIL'],
+
+                                    'member_image' => $memberbase64,
+
+                                    'spouse_image' => $spousebase64,
+
+                                    'children1_name' => isset($child1_name) ? $child1_name : '',
+                                    'children1_dob' => isset($child1_dob) ? $child1_dob : '',
+                                    'children1_sex' => isset($child1_sex) ? $child1_sex : '',
+                                    'children1_phone1' => isset($child1_phone1) ? $child1_phone1 : '',
+                                    'children1_phone2' => isset($child1_phone2) ? $child1_phone2 : '',
+                                    'children1_mobileno' => isset($child1_mobile) ? $child1_mobile : '',
+
+                                    'children2_name' => isset($child2_name) ? $child2_name : '',
+                                    'children2_dob' => isset($child2_dob) ? $child2_dob : '',
+                                    'children2_sex' => isset($child2_sex) ? $child2_sex : '',
+                                    'children2_phone1' => isset($child2_phone1) ? $child2_phone1 : '',
+                                    'children2_phone2' => isset($child2_phone2) ? $child2_phone2 : '',
+                                    'children2_mobileno' => isset($child2_mobile) ? $child2_mobile : '',
+
+
+                                    'children3_name' => isset($child3_name) ? $child3_name : '',
+                                    'children3_dob' => isset($child3_dob) ? $child3_dob : '',
+                                    'children3_sex' => isset($child3_sex) ? $child3_sex : '',
+                                    'children3_phone1' => isset($child3_phone1) ? $child3_phone1 : '',
+                                    'children3_phone2' => isset($child3_phone2) ? $child3_phone2 : '',
+                                    'children3_mobileno' => isset($child3_mobile) ? $child3_mobile : '',
+
+                                    ])->id;
+                Log::info("User Created for : " . $user->user_code);
+
             }
         }, function () {
             // Could not obtain lock; this job will be re-queued
             return $this->release(2);
         });
+    }
+
+    private function recordFailure(GuzzleException|Exception $e)
+    {
+        // Log the error with context (job ID, request details, response (if any), etc.)
+        Log::error('API Integration Error in job ' . $this->job->getJobId() . ': ' . $e->getMessage(), [
+            'exception' => $e,
+            'request' => $this->user_code, // Add your request data
+            'response' => isset($response) ? $response->getBody()->getContents() : null, //If available
+        ]);
+
+        // Optionally, send email alerts or use monitoring tools.
     }
 }
