@@ -66,6 +66,10 @@ class MemberProfileUpdate implements ShouldQueue
 
                 $respones = $res->getBody()->getContents();
 
+                $responseSize = strlen($respones);
+                Log::info($this->user_code . ' - Response size for : ' . $responseSize . ' bytes');
+                //Log::info("Updated saved for: ". $userInformation->user_code_id);
+                Log::info('Transferring of response completed at ' . now());
 
             } catch (GuzzleException $e) {
 
@@ -150,6 +154,8 @@ JSON;
 
             $user->save();
 
+
+            Log::info('Update on Users table completed at ' . now());
 
             $userInformation = UserDetail::where('user_code_id', $user->id)->first();
 
@@ -308,6 +314,7 @@ JSON;
                 //$userInformation->save();
 
                 //Log::info("Updated saved for: ". $userInformation->user_code_id);
+                Log::info('Update completed on User_details table at ' . now());
 
             } else {
                 //adding newly added members with details from clubman API
@@ -386,7 +393,8 @@ JSON;
                                     'children3_mobileno' => isset($child3_mobile) ? $child3_mobile : '',
 
                                     ])->id;
-                Log::info("User Created for : " . $user->user_code);
+                //Log::info("User Created for : " . $user->user_code);
+                Log::info('Created row against the user on user_details table at ' . now());
 
             }
         }, function () {
