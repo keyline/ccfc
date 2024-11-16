@@ -311,7 +311,7 @@ JSON;
                 $userInformation->children3_phone2 = isset($child3_phone2) ? $child3_phone2 : '';
                 $userInformation->children3_mobileno = isset($child3_mobile) ? $child3_mobile : '';
 
-                //$userInformation->save();
+                $userInformation->save();
 
                 //Log::info("Updated saved for: ". $userInformation->user_code_id);
                 Log::info('Update completed on User_details table at ' . now());
