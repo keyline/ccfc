@@ -45,7 +45,7 @@ class UpdateUserFromMemberApi extends Command
      *
      * @return int
      */
-    public function handle()
+    public function deprecate_handle()
     {
         //return 0;
         $client = new Client(['verify' => false]);
@@ -63,7 +63,7 @@ class UpdateUserFromMemberApi extends Command
 
                         ]
                     ]);
-                if ($response->ok()) {
+                if ($response->getStatusCode() == 200) {
                     $apiData = $response->getBody()->getContents();
                     $teststr = <<< JSON
                                 {$apiData}
@@ -306,5 +306,19 @@ class UpdateUserFromMemberApi extends Command
             //throw $th;
             $this->error('Error: ' . $e->getMessage());
         }
+    }
+
+    public function handle()
+    {
+        $users = User::where('id', '!=', '1')->get();
+
+        $userCount = count($users);
+        
+        $this->info('Cron: User details update!, count of users' . $userCount);
+        foreach ($users as $user) {
+
+            \App\Jobs\MemberProfileUpdate::dispatch($user->user_code)->onQueue('memberprofile');
+        }
+
     }
 }

@@ -27,7 +27,9 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         //$schedule->command('update:users')->dailyAt('4:00'); // 4 A.M
         // Define the scheduled command to run at 4 am IST (10:30 pm UTC)
-        $schedule->command('update:users')->dailyAt('22:30');
+        //$schedule->command('update:users')->dailyAt('22:30');
+        $schedule->command('update:users')->dailyAt('7:00');
+
 
     }
 
