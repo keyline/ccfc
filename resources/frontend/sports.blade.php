@@ -246,7 +246,7 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($members->where("select_sport_id","1")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","1") as $member)
 
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
@@ -306,7 +306,7 @@
                                 <div class="tab-pane fade" id="football" role="tabpanel" aria-labelledby="football-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","2")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","2") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
@@ -356,7 +356,7 @@
                                 <div class="tab-pane fade" id="hockey" role="tabpanel" aria-labelledby="hockey-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","3")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","3") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
@@ -408,7 +408,7 @@
                                 <div class="tab-pane fade" id="rugby" role="tabpanel" aria-labelledby="rugby-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","4")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","4") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
@@ -458,7 +458,7 @@
                                 <div class="tab-pane fade" id="tennis" role="tabpanel" aria-labelledby="tennis-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","5")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","5") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
@@ -508,7 +508,7 @@
                                     aria-labelledby="cyclepolo-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","6")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","6") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
@@ -558,7 +558,7 @@
                                 <div class="tab-pane fade" id="darts" role="tabpanel" aria-labelledby="darts-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","7")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","7") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
@@ -608,7 +608,7 @@
                                 <div class="tab-pane fade" id="golf" role="tabpanel" aria-labelledby="golf-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","8")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","8") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
@@ -659,7 +659,7 @@
                                     aria-labelledby="tablerennis-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","9")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","9") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
@@ -709,7 +709,7 @@
                                     aria-labelledby="badminton-tab">
                                     <div class="sport_tab_content_section">
                                         <div class="row">
-                                            @foreach($members->where("select_sport_id","10")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","10") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
                                             <div class="col-sm-6 col-md-6 col-lg-3 px-2">
@@ -759,7 +759,7 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($members->where("select_sport_id","11")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","11") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
 
@@ -814,7 +814,7 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($members->where("select_sport_id","12")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","12") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
 
@@ -869,7 +869,7 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($members->where("select_sport_id","13")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","13") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
 
@@ -924,7 +924,7 @@
                                     <div class="sport_tab_content_section">
                                         <div class="row">
 
-                                            @foreach($members->where("select_sport_id","14")->orderBy('select_title_id', 'asc') as $member)
+                                            @foreach($members->where("select_sport_id","14") as $member)
                                             @foreach($userDetails->where("user_code_id",$member->select_member->id) as
                                             $key =>$userDetail)
 
