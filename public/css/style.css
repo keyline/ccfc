@@ -2740,8 +2740,9 @@ section.sports-page {
 }
 
 .multiuse_tabcontent_inner:hover .multiuse_tab_ceibity-img img {
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1);
+    /* transform: scale(1.1);
+    -webkit-transform: scale(1.1); */
+    filter: grayscale(0);
 }
 
 .multiuse_tab_content_section .multiuse_bottom_info h3 {
