@@ -2730,6 +2730,14 @@ section.sports-page {
     object-fit: cover;
     height: 100%;
 }
+.reciprocal-tablist .multiuse_tab_content_section .multiuse_tab_ceibity-img a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.reciprocal-tablist .multiuse_tab_content_section .multiuse_tab_ceibity-img img {
+    height: auto;
+}
 
 .multiuse_tabcontent_inner:hover .multiuse_tab_ceibity-img img {
     transform: scale(1.1);
