@@ -74,11 +74,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="content_inner">
-                                @foreach($contentPages->where("id","19") as $details)
+                                <!-- @foreach($contentPages->where("id","19") as $details)
 
                                 {!! $details->page_text !!}
 
-                                @endforeach
+                                @endforeach -->
 
                                 <!-- <p>In the city of Calcutta, then just over a hundred years old and growing fast both in
                                     commercial and political significance, the British Raj was busy setting its roots.
