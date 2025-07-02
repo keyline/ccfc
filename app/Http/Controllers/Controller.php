@@ -14,20 +14,22 @@ use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserDevice;
 use App\Helpers\Helper;
-
 use Google\Client;
 use Google\Service\FirebaseCloudMessaging;
+
 date_default_timezone_set("Asia/Kolkata");
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     protected function sendMail($email, $subject, $message, $file = '')
     {
         $mailLibrary                = new PHPMailer(true);
         try {
             $generalSetting             = GeneralSetting::find('1');
-            
+
             $mailLibrary->CharSet       = 'UTF-8';
             $mailLibrary->SMTPDebug     = 0;
             $mailLibrary->IsSMTP();
@@ -73,7 +75,8 @@ class Controller extends BaseController
             return false;
         }
     }
-    public function getAccessToken($credentialsJson) {
+    public function getAccessToken($credentialsJson)
+    {
         $client = new Client();
         $client->setAuthConfig($credentialsJson);
         $client->addScope('https://www.googleapis.com/auth/cloud-platform');
@@ -83,7 +86,8 @@ class Controller extends BaseController
 
         return $client->getAccessToken();
     }
-    public function sendFCMMessage($accessToken, $projectId, $message) {
+    public function sendFCMMessage($accessToken, $projectId, $message)
+    {
         $url = "https://fcm.googleapis.com/v1/projects/{$projectId}/messages:send";
 
         $headers = [
@@ -107,7 +111,8 @@ class Controller extends BaseController
 
         return $response;
     }
-    public function sendCommonPushNotification($token, $title, $body, $type = '', $image = ''){
+    public function sendCommonPushNotification($token, $title, $body, $type = '', $image = '')
+    {
         try {
             // $credentialsPath = public_path('uploads/ccfc-83373-firebase-adminsdk-qauj0-66a7cd8a2f.json'); // Replace with the path to your service account JSON file
             // echo $credentialsPath;die;
@@ -129,7 +134,7 @@ class Controller extends BaseController
             $accessToken = $this->getAccessToken($credentialsArray);
 
             // Define your message payload
-            if($image != ''){
+            if($image != '') {
                 $message = [
                     'message' => [
                         'token' => $token, // Replace with the recipient device token
@@ -193,35 +198,36 @@ class Controller extends BaseController
         }
     }
     // send sms
-        public function sendSMS($mobileNo,$messageBody){
-            $generalSetting                     = GeneralSetting::find('1');
-            $sms_authentication_key             = $generalSetting->sms_authentication_key;
-            $sms_authentication_password        = $generalSetting->sms_authentication_password;
-            $sms_sender_id                      = $generalSetting->sms_sender_id;
-            $sms_base_url                       = $generalSetting->sms_base_url;
-            $schtm                              = date('Y-m-d H:i');
-            $curl                               = curl_init();
+    public function sendSMS($mobileNo, $messageBody)
+    {
+        $generalSetting                     = GeneralSetting::find('1');
+        $sms_authentication_key             = $generalSetting->sms_authentication_key;
+        $sms_authentication_password        = $generalSetting->sms_authentication_password;
+        $sms_sender_id                      = $generalSetting->sms_sender_id;
+        $sms_base_url                       = $generalSetting->sms_base_url;
+        $schtm                              = date('Y-m-d H:i');
+        $curl                               = curl_init();
 
-            // echo $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody . '&priority=1&schtm=' . $schtm;die;
-            curl_setopt_array($curl, array(
-              CURLOPT_URL => $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody . '&priority=1',
-              CURLOPT_RETURNTRANSFER => true,
-              CURLOPT_ENCODING => '',
-              CURLOPT_MAXREDIRS => 10,
-              CURLOPT_TIMEOUT => 0,
-              CURLOPT_FOLLOWLOCATION => true,
-              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-              CURLOPT_CUSTOMREQUEST => 'GET',
-              CURLOPT_HTTPHEADER => array(
-                'Cookie: ASP.NET_SessionId=k2tkpfvvk3zuebie42d1k5i5'
-              ),
-            ));
+        // echo $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody . '&priority=1&schtm=' . $schtm;die;
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => $sms_base_url . 'uname=' . $sms_authentication_key . '&pass=' . $sms_authentication_password . '&send=' . $sms_sender_id . '&dest=' . $mobileNo . '&msg=' . $messageBody . '&priority=1',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'GET',
+          CURLOPT_HTTPHEADER => array(
+            'Cookie: ASP.NET_SessionId=k2tkpfvvk3zuebie42d1k5i5'
+          ),
+        ));
 
-            $response = curl_exec($curl);
+        $response = curl_exec($curl);
 
-            curl_close($curl);
-            // echo $response;
-        }
+        curl_close($curl);
+        // echo $response;
+    }
     // send sms
     // single file upload
     public function upload_single_file($fieldName, $fileName, $uploadedpath, $uploadType)
@@ -470,41 +476,41 @@ class Controller extends BaseController
         return $response->data;
     }
     /* For API Development */
-        public function isJSON($string)
-        {
-            $valid = is_string($string) && is_array(json_decode($string, true)) ? true : false;
-            if (!$valid) {
-                $this->response_to_json(false, "Not JSON", 401);
-            }
+    public function isJSON($string)
+    {
+        $valid = is_string($string) && is_array(json_decode($string, true)) ? true : false;
+        if (!$valid) {
+            $this->response_to_json(false, "Not JSON", 401);
         }
-        /* Process json from request */
-        public function extract_json($key)
-        {
-            return json_decode($key, true);
+    }
+    /* Process json from request */
+    public function extract_json($key)
+    {
+        return json_decode($key, true);
+    }
+    /* Methods to check all necessary fields inside a requested post body */
+    public function validateArray($keys, $arr)
+    {
+        return !array_diff_key(array_flip($keys), $arr);
+    }
+    /* Set response message response_to_json = set_response */
+    public function response_to_json($success = true, $message = "success", $data = null, $extraField = null, $extraData = null)
+    {
+        $response = ["status" => $success, "message" => $message, "data" => $data];
+        if ($extraField != null && $extraData != null) {
+            $response[$extraField] = $extraData;
         }
-        /* Methods to check all necessary fields inside a requested post body */
-        public function validateArray($keys, $arr)
-        {
-            return !array_diff_key(array_flip($keys), $arr);
-        }
-        /* Set response message response_to_json = set_response */
-        public function response_to_json($success = true, $message = "success", $data = null, $extraField = null, $extraData = null)
-        {
-            $response = ["status" => $success, "message" => $message, "data" => $data];
-            if ($extraField != null && $extraData != null) {
-                $response[$extraField] = $extraData;
-            }
-            header('Content-Type: application/json; charset=utf-8');
-            header('Access-Control-Allow-Origin: *');
-            header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
-            header("Access-Control-Allow-Headers: Content-Type, X-Auth-Token, X-Requested-With, Origin, Authorization");
-            print json_encode($response);
-            die;
-        }
-        public function responseJSON($data)
-        {
-            print json_encode($data);
-            die;
-        }
+        header('Content-Type: application/json; charset=utf-8');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
+        header("Access-Control-Allow-Headers: Content-Type, X-Auth-Token, X-Requested-With, Origin, Authorization");
+        print json_encode($response);
+        die;
+    }
+    public function responseJSON($data)
+    {
+        print json_encode($data);
+        die;
+    }
     /* For API Development */
 }
