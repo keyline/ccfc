@@ -49,7 +49,7 @@
                                         <div class="brand">
                                             <div class="brand_logo">
                                                 <a href="{{ asset('/') }}" class="logo">
-                                                    <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt=""
+                                                    <img class="img-fluid" src="{{ asset('img/CCFC-Logo.png') }}" alt=""
                                                         title="Home">
                                                 </a>
                                             </div>
