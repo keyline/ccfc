@@ -136,6 +136,12 @@
 															 <img class="img-fluid" src="{{ asset('img/invoice_axis_logo.jpg') }}" alt="" />
 														</label>
 													</li>
+                                                    <li>
+														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" value="{{ route('member.razorpaycheckout')}}">
+														<label class="form-check-label" for="exampleRadios4">
+															 <img class="img-fluid" src="{{ asset('img/invoice_razorpay_logo.jpg') }}" alt="" />
+														</label>
+													</li>
 												</ul>
 											</div>
 											<div class="invoice_input_feild">
