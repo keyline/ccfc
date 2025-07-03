@@ -31,7 +31,7 @@ $contentPage = ContentPage::where('id', '=', 23)->first();
                         <div class="col-lg-12">
                             <div class="title-sec">
                                 <div class="title">
-                                    Cancel
+                                    <?=(($contentPage)?$contentPage->title:'')?>
                                 </div>
                             </div>
                         </div>
