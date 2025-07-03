@@ -82,28 +82,18 @@ class PaymentController extends Controller
 
     public function PayWithHdfc(PaymentGatewayInterface $hdfcPaymentService, Request $request)
     {
-            $user= User::find(session('LoggedMember'))->first();
+        $user= User::find(session('LoggedMember'))->first();
 
-            if($user)
-            {
-                $validated = $request->validate([
-        'amount' => 'required|numeric|min:1',
-        'paymentGatewayOptions' => 'required',
-    ]);
+        if($user)
+        {
+            $validated = $request->validate([
+                'amount' => 'required|numeric|min:1',
+                'paymentGatewayOptions' => 'required',
+            ]);
 
-    $data= $hdfcPaymentService->processPayment($request->amount, $user);
-    echo '<pre>';print_r($data);
-    echo json_encode($data);
-    die;
-    return view('member.hdfcredirectform', $data);
-
-            }
-
-            
-            
-            //dd($data);
-            
-            //dd($request);
+            $data= $hdfcPaymentService->processPayment($request->amount, $user);
+            return view('member.hdfcredirectform', $data);
+        }
     }
 
     public function statusForHdfc(PaymentGatewayInterface $hdfcPaymentService, Request $request)
