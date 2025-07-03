@@ -718,6 +718,9 @@ Route::group([
     ##Axis-Razor Pay checkout route
     Route::post('payment/axischeckout', [ 'as' => 'axischeckout', 'uses' => 'PaymentController@checkout']);
 
+     ##Razor Pay checkout route
+    Route::post('payment/razorpaycheckout', [ 'as' => 'razorpaycheckout', 'uses' => 'PaymentController@razorpaycheckout']);
+
 
 });
 
