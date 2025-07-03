@@ -80,6 +80,14 @@ Route::get('/privacy', function () {
     return view('privacy');
 });
 
+Route::get('/shipping', function () {    
+    return view('shipping');
+});
+
+Route::get('/cancel', function () {    
+    return view('cancel');
+});
+
 Route::get('/food_beverages', function () {
     $contentPages = ContentPage::all();
     $galleries = Gallery::with(['media'])->get();
