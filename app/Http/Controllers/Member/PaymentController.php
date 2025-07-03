@@ -92,7 +92,9 @@ class PaymentController extends Controller
     ]);
 
     $data= $hdfcPaymentService->processPayment($request->amount, $user);
-    echo '<pre>';print_r($data);die;
+    echo '<pre>';print_r($data);
+    echo json_encode($data);
+    die;
     return view('member.hdfcredirectform', $data);
 
             }
