@@ -267,49 +267,5 @@ class PaymentController extends Controller
         
     }
 
-    public function razorpayCheckout(Request $request)
-    {
-        $user= User::find(session('LoggedMember'))->first();
-        if($user)
-        {
-            $validated = $request->validate([
-            'amount' => 'required|numeric|min:1',
-            'paymentGatewayOptions' => 'required',
-            ]);
-
-            $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
-
-            $order = $api->order->create([
-                'receipt' => 'ord_razor_' . Str::random(10), // Replace with your own unique identifier for the order
-                'amount' => $request->amount * 100, // Replace with the actual amount from your form or request
-                'currency' => 'INR', // Replace with your desired currency
-                'payment_capture' => 1,
-                'notes' => [
-                'udf1' => $user->id, // User Defined Field 1
-                'udf2' => $user->user_code, // User Defined Field 2
-                'name' => $user->name,
-                'email'=> $user->email,
-                'contact'=> $user->phone_number_1,
-                // Add more UDFs as needed
-            ]
-            ]);
-            // Store the order ID or other necessary details in your database for future reference
-            DB::table('payu_transactions')->insert([
-                'paid_for_id' => $user->id,
-                'paid_for_type' => 'App\Models\User',
-                'transaction_id' => $order->id,
-                'gateway'		=> 'Razor Pay',
-                'body'			=> serialize($order),
-                'destination'	=> route('member.razorpaycallback'),
-                'hash'			=> '',
-                'response'		=> '',
-                'status'		=> 'pending',
-                'created_at'	=> Carbon::now('Asia/Kolkata'),
-                'updated_at'	=> Carbon::now('Asia/Kolkata'),
-            ]);
-            Session::put('razorpayTransactionId', $order->id);
-            return view('member.razorpayredirectform', ['order' => $order, 'user' => $user]);
-        }
-        return redirect()->back()->with('error', 'User not found.');
-    }
+    
 }

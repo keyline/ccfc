@@ -114,6 +114,23 @@
                                 
                                 <div class="invoice_outstading_payment">
 									<form action="" method="POST" id="payment-form">
+                                        <?php
+                                        pr($userData);
+                                            $productinfo         = $booking->id;
+                                            $txnid               = time();
+                                            $surl                = $surl;
+                                            $furl                = $furl;        
+                                            $key_id              = env('RAZOR_KEY_ID');
+                                            $currency_code       = env('CURRENCY_CODE');            
+                                            $total               = ($booking->payable_amt* 100);
+                                            $amount              = $booking->payable_amt;
+                                            $merchant_order_id   = $booking->id;
+                                            $card_holder_name    = (($studentUser)?$studentUser->name:'');
+                                            $email               = (($studentUser)?$studentUser->email:'');
+                                            $phone               = (($studentUser)?$studentUser->phone:'');
+                                            $name                = env('APP_NAME');
+                                            $return_url          = $return_url;
+                                        ?>
                                         @csrf
 										<div class="invoice_input_bank">
 											<div class="invocie_paymentlogo">
@@ -137,7 +154,7 @@
 														</label>
 													</li>
                                                     <li>
-														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" value="{{ route('member.razorpaycheckout')}}">
+														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" onclick="razorpaySubmit(this);">
 														<label class="form-check-label" for="exampleRadios4">
 															 <img class="img-fluid" src="{{ asset('img/invoice_razorpay_logo.jpg') }}" alt="" />
 														</label>
@@ -219,10 +236,7 @@ function checkAmount(amount) {
     const amountRegex =/^\d+(\.\d{1,2})?$/;
     return amountRegex.test(amount);
 }
-            </script>
-            
-            
-                 
+            </script>                                                 
             </div>
             </div>
         </section>
@@ -337,3 +351,52 @@ function checkAmount(amount) {
         </body>
 
 </html>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  var razorpay_options = {
+    key: "<?php echo $key_id; ?>",
+    amount: "<?php echo $total; ?>",
+    name: "<?php echo $name; ?>",
+    description: "<?php echo $merchant_order_id; ?>",
+    netbanking: true,
+    currency: "<?php echo $currency_code; ?>",
+    prefill: {
+      name:"<?php echo $card_holder_name; ?>",
+      email: "<?php echo $email; ?>",
+      contact: "<?php echo $phone; ?>"
+    },
+    notes: {
+      soolegal_order_id: "<?php echo $merchant_order_id; ?>",
+    },
+    handler: function (transaction) {
+        document.getElementById('razorpay_payment_id').value = transaction.razorpay_payment_id;
+        document.getElementById('razorpay-form').submit();
+    },
+    "modal": {
+        "ondismiss": function(){
+            location.reload()
+        }
+    }
+  };
+  var razorpay_submit_btn, razorpay_instance;
+
+  function razorpaySubmit(el){
+    if(typeof Razorpay == 'undefined'){
+      setTimeout(razorpaySubmit, 200);
+      if(!razorpay_submit_btn && el){
+        razorpay_submit_btn = el;
+        el.disabled = true;
+        el.value = 'Please wait...';  
+      }
+    } else {
+      if(!razorpay_instance){
+        razorpay_instance = new Razorpay(razorpay_options);
+        if(razorpay_submit_btn){
+          razorpay_submit_btn.disabled = false;
+          razorpay_submit_btn.value = "Pay Now";
+        }
+      }
+      razorpay_instance.open();
+    }
+  }  
+</script>
