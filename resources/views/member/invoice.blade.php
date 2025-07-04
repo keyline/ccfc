@@ -396,7 +396,7 @@ function razorpaySubmit(el) {
 			key: "{{ env('RAZORPAY_KEY') }}",
 			amount: amountInPaise,
 			currency: "INR",
-			name: "CCFC",
+			name: "{{ env('APP_NAME') }}",
 			description: "Invoice Payment",
 			order_id: data.order_id,
 			handler: function (response) {
