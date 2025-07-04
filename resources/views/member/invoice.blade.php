@@ -393,7 +393,7 @@ function razorpaySubmit(el) {
 		}
 
 		var options = {
-			key: "{{ env('RAZORPAY_KEY') }}",
+			key: "{{ env('RAZORPAY_KEY_NEW') }}",
 			amount: amountInPaise,
 			currency: "INR",
 			name: "{{ env('APP_NAME') }}",
