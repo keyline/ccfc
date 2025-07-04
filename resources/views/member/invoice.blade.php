@@ -115,7 +115,7 @@
                                 <div class="invoice_outstading_payment">
 									<form action="" method="POST" id="payment-form">
                                         <?php
-                                        dd($userData);
+                                        dd($userTransactions);
                                             $productinfo         = $booking->id;
                                             $txnid               = time();
                                             $surl                = $surl;
