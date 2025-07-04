@@ -35,6 +35,8 @@ use App\Http\Controllers\Admin\CookingItemController;
 use App\Http\Controllers\Admin\CookingDaySpecialController;
 use App\Http\Controllers\Admin\MustReadController;
 use App\Http\Controllers\Admin\OtherFoodItemController;
+use App\Http\Controllers\Member\PaymentController;
+
 // use App\Http\Controllers\Api\V2\Member\ApiController;
 
 // Route::get('/', 'FrontendHome@index')->name('index');
@@ -720,6 +722,8 @@ Route::group([
 
      ##Razor Pay checkout route
     // Route::post('payment/razorpaycheckout', 'PaymentController@razorpaycheckout')->name('razorpaycheckout');
+    Route::post('/razorpay/create-order', [PaymentController::class, 'createOrder'])->name('razorpay.createOrder');
+
 
 
 

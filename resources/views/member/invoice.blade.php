@@ -113,7 +113,11 @@
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
                                 
                                 <div class="invoice_outstading_payment">
-									<form action="" method="POST" id="payment-form">                                        
+									<form action="" method="POST" id="payment-form">  
+                                        <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+                                        <input type="hidden" name="razorpay_order_id" id="razorpay_order_id">
+                                        <input type="hidden" name="razorpay_signature" id="razorpay_signature">
+                                      
                                         @csrf
 										<div class="invoice_input_bank">
 											<div class="invocie_paymentlogo">
@@ -335,7 +339,7 @@ function checkAmount(amount) {
 
 </html>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
+<!-- <script>
   function razorpaySubmit(el){
     if(typeof Razorpay == 'undefined'){
       setTimeout(razorpaySubmit, 200);
@@ -355,4 +359,69 @@ function checkAmount(amount) {
       razorpay_instance.open();
     }
   }  
+</script> -->
+<script>
+function razorpaySubmit(el) {
+	if (!el.checked) return;
+
+	// Get amount from the input
+	let amountInput = document.querySelector('input[name="amount"]');
+	let amountValue = parseFloat(amountInput.value);
+
+	if (!amountValue || amountValue <= 0) {
+		alert("Please enter a valid amount before choosing Razorpay.");
+		el.checked = false;
+		return;
+	}
+
+	// Convert to paise (e.g., ₹100 -> 10000)
+	let amountInPaise = Math.round(amountValue * 100);
+
+	fetch("{{ route('razorpay.createOrder') }}", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			"X-CSRF-TOKEN": "{{ csrf_token() }}"
+		},
+		body: JSON.stringify({ amount: amountInPaise })
+	})
+	.then(res => res.json())
+	.then(data => {
+		if (!data.order_id) {
+			alert("Failed to initiate Razorpay order");
+			return;
+		}
+
+		var options = {
+			key: "{{ env('RAZORPAY_KEY') }}",
+			amount: amountInPaise,
+			currency: "INR",
+			name: "MENTROVERT",
+			description: "Invoice Payment",
+			order_id: data.order_id,
+			handler: function (response) {
+				// Fill hidden fields and submit form
+				document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
+				document.getElementById('razorpay_order_id').value = response.razorpay_order_id;
+				document.getElementById('razorpay_signature').value = response.razorpay_signature;
+				document.getElementById('payment-form').submit();
+			},
+			prefill: {
+				name: "{{ Auth::user()->name ?? 'Guest' }}",
+				email: "{{ Auth::user()->email ?? 'guest@example.com' }}",
+				contact: "{{ Auth::user()->phone ?? '' }}"
+			},
+			theme: {
+				color: "#528FF0"
+			}
+		};
+
+		let rzp = new Razorpay(options);
+		rzp.open();
+	})
+	.catch(err => {
+		console.error(err);
+		alert("Error connecting to Razorpay.");
+	});
+}
 </script>

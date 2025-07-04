@@ -267,5 +267,18 @@ class PaymentController extends Controller
         
     }
 
+    public function createOrder(Request $request)
+{
+    $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
+
+    $order = $api->order->create([
+        'receipt' => 'INV_' . rand(10000, 99999),
+        'amount' => $request->amount,
+        'currency' => 'INR',
+        'payment_capture' => 1
+    ]);
+
+    return response()->json(['order_id' => $order['id']]);
+}
     
 }
