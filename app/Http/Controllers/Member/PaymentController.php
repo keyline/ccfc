@@ -267,7 +267,7 @@ class PaymentController extends Controller
         
     }
 
-    public function createOrder(Request $request)
+    public function razorpay(Request $request)
 {
     $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
 

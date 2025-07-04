@@ -377,7 +377,7 @@ function razorpaySubmit(el) {
 	// Convert to paise (e.g., ₹100 -> 10000)
 	let amountInPaise = Math.round(amountValue * 100);
 
-	fetch("{{ route('razorpay.createOrder') }}", {
+	fetch("{{ route('member.razorpay') }}", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
