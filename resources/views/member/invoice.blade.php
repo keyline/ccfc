@@ -336,33 +336,6 @@ function checkAmount(amount) {
 </html>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-  var razorpay_options = {
-    key: "<?php echo $key_id; ?>",
-    amount: "<?php echo $total; ?>",
-    name: "<?php echo $name; ?>",
-    description: "<?php echo $merchant_order_id; ?>",
-    netbanking: true,
-    currency: "<?php echo $currency_code; ?>",
-    prefill: {
-      name:"<?php echo $card_holder_name; ?>",
-      email: "<?php echo $email; ?>",
-      contact: "<?php echo $phone; ?>"
-    },
-    notes: {
-      soolegal_order_id: "<?php echo $merchant_order_id; ?>",
-    },
-    handler: function (transaction) {
-        document.getElementById('razorpay_payment_id').value = transaction.razorpay_payment_id;
-        document.getElementById('razorpay-form').submit();
-    },
-    "modal": {
-        "ondismiss": function(){
-            location.reload()
-        }
-    }
-  };
-  var razorpay_submit_btn, razorpay_instance;
-
   function razorpaySubmit(el){
     if(typeof Razorpay == 'undefined'){
       setTimeout(razorpaySubmit, 200);
