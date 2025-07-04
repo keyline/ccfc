@@ -412,7 +412,7 @@ function razorpaySubmit(el) {
 				contact: "{{ Auth::user()->phone ?? '' }}"
 			},
 			theme: {
-				color: "#528FF0"
+				color: "#4c0c0e"
 			}
 		};
 
