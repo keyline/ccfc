@@ -113,24 +113,7 @@
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
                                 
                                 <div class="invoice_outstading_payment">
-									<form action="" method="POST" id="payment-form">
-                                        <?php
-                                        dd($userTransactions);
-                                            $productinfo         = $booking->id;
-                                            $txnid               = time();
-                                            $surl                = $surl;
-                                            $furl                = $furl;        
-                                            $key_id              = env('RAZOR_KEY_ID');
-                                            $currency_code       = env('CURRENCY_CODE');            
-                                            $total               = ($booking->payable_amt* 100);
-                                            $amount              = $booking->payable_amt;
-                                            $merchant_order_id   = $booking->id;
-                                            $card_holder_name    = (($studentUser)?$studentUser->name:'');
-                                            $email               = (($studentUser)?$studentUser->email:'');
-                                            $phone               = (($studentUser)?$studentUser->phone:'');
-                                            $name                = env('APP_NAME');
-                                            $return_url          = $return_url;
-                                        ?>
+									<form action="" method="POST" id="payment-form">                                        
                                         @csrf
 										<div class="invoice_input_bank">
 											<div class="invocie_paymentlogo">
