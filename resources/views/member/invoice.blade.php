@@ -141,7 +141,7 @@
 														</label>
 													</li>
                                                     <li>
-														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" onchange="selectedGateway = this.value;" value="razorpay">
+														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" onclick="razorpaySubmit(this);">
 														<label class="form-check-label" for="exampleRadios4">
 															 <img class="img-fluid" src="{{ asset('img/invoice_razorpay_logo.jpg') }}" alt="" />
 														</label>
@@ -360,10 +360,10 @@ function checkAmount(amount) {
     }
   }  
 </script>
-<!-- <script>
-    let selectedGateway = null;
-let orderData = null;
-let amountInPaise = 0;
+<script>
+//     let selectedGateway = null;
+// let orderData = null;
+// let amountInPaise = 0;
 function razorpaySubmit(el) {
 	if (!el.checked) return;
 
@@ -427,8 +427,8 @@ function razorpaySubmit(el) {
 		alert("Error connecting to Razorpay.");
 	});
 }
-</script> -->
-<script>
+</script>
+<!-- <script>
     let selectedGateway = null;
     let orderData = null;
     let amountInPaise = 0;
@@ -451,8 +451,7 @@ function razorpaySubmit(el) {
                     return;
                 }
 
-                amountInPaise = Math.round(amountValue * 100);
-                console.log("Calling Razorpay route:", "{{ route('member.razorpay') }}"); die;
+                amountInPaise = Math.round(amountValue * 100);                
                 // Create Razorpay order
                 fetch("{{ route('member.razorpay') }}", {
                     method: "POST",
@@ -505,5 +504,5 @@ function razorpaySubmit(el) {
             // else → other gateways (PayU/HDFC): form submits normally
         });
     });
-</script>
+</script> -->
 
