@@ -113,7 +113,7 @@
                                 <p>(As of last usage 24 hours ago as updated from club servers)</p>
                                 
                                 <div class="invoice_outstading_payment">
-									<form action="" method="POST" id="payment-form">  
+									<form method="POST" id="payment-form">  
                                         <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
                                         <input type="hidden" name="razorpay_order_id" id="razorpay_order_id">
                                         <input type="hidden" name="razorpay_signature" id="razorpay_signature">
