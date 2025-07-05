@@ -415,7 +415,7 @@ function razorpaySubmit(el) {
 				color: "#4c0c0e"
 			}
 		};
-
+        console.log("Order ID:", data.order_id);
 		let rzp = new Razorpay(options);
 		rzp.open();
 	})
