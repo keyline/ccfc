@@ -141,7 +141,7 @@
 														</label>
 													</li>
                                                     <li>
-														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4">
+														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" onclick="razorpaySubmit(this);">
 														<label class="form-check-label" for="exampleRadios4">
 															 <img class="img-fluid" src="{{ asset('img/invoice_razorpay_logo.jpg') }}" alt="" />
 														</label>
@@ -150,7 +150,7 @@
 											</div>
 											<div class="invoice_input_feild">
 												<input type="text" name="amount" placeholder="Enter amount being paid">
-												<button type="submit" onclick="razorpaySubmit(this);" class="btn btn-primary">Pay Now</button>
+												<button type="submit" class="btn btn-primary">Pay Now</button>
 											</div>
 <!--
 											<div class="invoice_btn_bank">
