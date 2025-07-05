@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', function () {
             amountInPaise = Math.round(amountValue * 100);
 
             // Create Razorpay order via Laravel backend
-            fetch("{{ route('member.razorpay') }}", {
+            fetch("/member/payment/razorpay", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -540,8 +540,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 body: JSON.stringify({ amount: amountInPaise })
             })
-            .then(res => res.json())
-            .then(data => {
+            .then(res => {
+    if (!res.ok) {
+        throw new Error("Network response was not OK");
+    }
+    return res.json();
+})
+.then(data => {
+    console.log("Response Data:", data); 
                 if (!data.order_id) {
                     alert("Razorpay order creation failed.");
                     return;
@@ -582,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 rzp.open();
             })
             .catch(err => {
-                console.error(err);
+                console.error("Fetch error:", err);
                 alert("Error connecting to Razorpay.");
             });
         } else {
