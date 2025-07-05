@@ -541,51 +541,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify({ amount: amountInPaise })
             })
             .then(res => {
-    if (!res.ok) {
-        throw new Error("Network response was not OK");
-    }
-    return res.json();
-})
-.then(data => {
-    console.log("Response Data:", data); 
-                if (!data.order_id) {
-                    alert("Razorpay order creation failed.");
-                    return;
+                if (!res.ok) {
+                    throw new Error("Network response was not OK");
                 }
+                return res.json();
+            })
+            .then(data => {
+                console.log("Response Data:", data); 
+                if (!data || !data.order_id) {
+        alert("Razorpay order creation failed.");
+        return;
+    }
 
                 // Configure Razorpay modal options
-                const options = {
-                    key: "{{ env('RAZORPAY_KEY_NEW') }}",
-                    amount: amountInPaise,
-                    currency: "INR",
-                    name: "{{ env('APP_NAME') }}",
-                    description: "Invoice Payment",
-                    image: "{{ asset('images/logo.png') }}", // Change if you have a logo
-                    order_id: data.order_id,
-                    handler: function (response) {
-                        // Fill hidden fields with Razorpay response
-                        document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
-                        document.getElementById('razorpay_order_id').value = response.razorpay_order_id;
-                        document.getElementById('razorpay_signature').value = response.razorpay_signature;
-
-                        // Submit form to your backend for verification
-                        form.submit();
-                    },
-                    prefill: {
-                        name: "{{ Auth::user()->name ?? 'Guest' }}",
-                        email: "{{ Auth::user()->email ?? 'guest@example.com' }}",
-                        contact: "{{ Auth::user()->phone ?? '' }}"
-                    },
-                    notes: {
-                        address: "User billing address if available"
-                    },
-                    theme: {
-                        color: "#4c0c0e"
-                    }
-                };
-
-                const rzp = new Razorpay(options);
-                rzp.open();
+                
             })
             .catch(err => {
                 console.error("Fetch error:", err);
