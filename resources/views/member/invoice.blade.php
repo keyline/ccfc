@@ -450,7 +450,7 @@ function razorpaySubmit(el) {
                 }
 
                 amountInPaise = Math.round(amountValue * 100);
-
+                console.log("Calling Razorpay route:", "{{ route('member.razorpay') }}");
                 // Create Razorpay order
                 fetch("{{ route('member.razorpay') }}", {
                     method: "POST",
