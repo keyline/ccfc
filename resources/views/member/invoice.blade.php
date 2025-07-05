@@ -339,7 +339,7 @@ function checkAmount(amount) {
 
 </html>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<!-- <script>
+<script>
   function razorpaySubmit(el){
     if(typeof Razorpay == 'undefined'){
       setTimeout(razorpaySubmit, 200);
@@ -359,7 +359,7 @@ function checkAmount(amount) {
       razorpay_instance.open();
     }
   }  
-</script> -->
+</script>
 <!-- <script>
     let selectedGateway = null;
 let orderData = null;
