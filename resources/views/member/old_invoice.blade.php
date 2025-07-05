@@ -141,7 +141,7 @@
 														</label>
 													</li>
                                                     <li>
-														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" onclick="razorpaySubmit(this);">
+														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" onchange="selectedGateway = this.value; console.log('Selected:', selectedGateway);" value="razorpay">
 														<label class="form-check-label" for="exampleRadios4">
 															 <img class="img-fluid" src="{{ asset('img/invoice_razorpay_logo.jpg') }}" alt="" />
 														</label>
@@ -150,7 +150,7 @@
 											</div>
 											<div class="invoice_input_feild">
 												<input type="text" name="amount" placeholder="Enter amount being paid">
-												<button type="submit" class="btn btn-primary">Pay Now</button>
+												<button type="submit"  class="btn btn-primary">Pay Now</button>
 											</div>
 <!--
 											<div class="invoice_btn_bank">
@@ -338,8 +338,8 @@ function checkAmount(amount) {
         </body>
 
 </html>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<!-- <script>
+<!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
   function razorpaySubmit(el){
     if(typeof Razorpay == 'undefined'){
       setTimeout(razorpaySubmit, 200);
@@ -360,7 +360,10 @@ function checkAmount(amount) {
     }
   }  
 </script> -->
-<script>
+<!-- <script>
+    let selectedGateway = null;
+let orderData = null;
+let amountInPaise = 0;
 function razorpaySubmit(el) {
 	if (!el.checked) return;
 
@@ -415,7 +418,7 @@ function razorpaySubmit(el) {
 				color: "#4c0c0e"
 			}
 		};
-
+        console.log("Order ID:", data.order_id);
 		let rzp = new Razorpay(options);
 		rzp.open();
 	})
@@ -424,4 +427,147 @@ function razorpaySubmit(el) {
 		alert("Error connecting to Razorpay.");
 	});
 }
+</script> -->
+<!-- <script>
+    let selectedGateway = null;
+    let orderData = null;
+    let amountInPaise = 0;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('payment-form');
+
+        form.addEventListener('submit', function (e) {
+            debugger;
+            e.preventDefault(); // Prevent default form submission
+            if (selectedGateway === 'razorpay') {
+                e.preventDefault(); // Stop normal form submit
+
+                // Get and validate amount
+                let amountInput = document.querySelector('input[name="amount"]');
+                let amountValue = parseFloat(amountInput.value);
+
+                if (!amountValue || amountValue <= 0) {
+                    alert("Please enter a valid amount.");
+                    return;
+                }
+
+                amountInPaise = Math.round(amountValue * 100);
+                
+                // Create Razorpay order
+                fetch("{{ route('member.razorpay') }}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                    },
+                    body: JSON.stringify({ amount: amountInPaise })
+                })
+                .then(res => res.json())                
+                .then(data => {
+                    if (!data.order_id) {
+                        alert("Razorpay order creation failed");
+                        return;
+                    }
+                    console.log("Razorpay order data:", data);
+                    return data; // Return data for Razorpay options
+                    const options = {
+                        key: "{{ env('RAZORPAY_KEY_NEW') }}",
+                        amount: amountInPaise,
+                        currency: "INR",
+                        name: "{{ env('APP_NAME') }}",
+                        description: "Invoice Payment",
+                        order_id: data.order_id,
+                        handler: function (response) {
+                            // Fill Razorpay values and submit form
+                            document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
+                            document.getElementById('razorpay_order_id').value = response.razorpay_order_id;
+                            document.getElementById('razorpay_signature').value = response.razorpay_signature;
+
+                            form.submit(); // Submit after Razorpay
+                        },
+                        prefill: {
+                            name: "{{ Auth::user()->name ?? 'Guest' }}",
+                            email: "{{ Auth::user()->email ?? 'guest@example.com' }}",
+                            contact: "{{ Auth::user()->phone ?? '' }}"
+                        },
+                        theme: {
+                            color: "#4c0c0e"
+                        }
+                    };
+                    console.log("Order ID:", data.order_id);
+                    const rzp = new Razorpay(options);
+                    rzp.open();
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("Error connecting to Razorpay.");
+                });
+            }
+            // else → other gateways (PayU/HDFC): form submits normally
+        });
+    });
+</script> -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+let selectedGateway = null; // You should set this value when a payment method is chosen (e.g., Razorpay, PayU, etc.)
+let amountInPaise = 0;
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('payment-form');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        if (selectedGateway === 'razorpay') {
+            console.log("Selected Gateway:", selectedGateway) ; // Debugging line
+            // die;
+            e.preventDefault(); // Stop normal form submit
+            // Get and validate amount
+            let amountInput = document.querySelector('input[name="amount"]');
+            let amountValue = parseFloat(amountInput.value);
+
+            if (!amountValue || amountValue <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+
+            amountInPaise = Math.round(amountValue * 100);
+
+            // Create Razorpay order via Laravel backend
+            fetch("/member/payment/razorpay", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: JSON.stringify({ amount: amountInPaise })
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Network response was not OK");
+                }
+                return res.json();
+            })
+            .then(data => {
+                console.log("Response Data:", data); 
+                if (!data || !data.order_id) {
+        alert("Razorpay order creation failed.");
+        return;
+    }
+
+                // Configure Razorpay modal options
+                
+            })
+            .catch(err => {
+                console.error("Fetch error:", err);
+                alert("Error connecting to Razorpay.");
+            });
+        } else {
+            // For PayU/HDFC: allow normal form submission
+            form.submit();
+        }
+    });
+});
 </script>
+
