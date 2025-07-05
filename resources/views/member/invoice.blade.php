@@ -150,7 +150,7 @@
 											</div>
 											<div class="invoice_input_feild">
 												<input type="text" name="amount" placeholder="Enter amount being paid">
-												<button type="submit" class="btn btn-primary">Pay Now</button>
+												<button  class="btn btn-primary">Pay Now</button>
 											</div>
 <!--
 											<div class="invoice_btn_bank">
@@ -462,13 +462,14 @@ function razorpaySubmit(el) {
                     },
                     body: JSON.stringify({ amount: amountInPaise })
                 })
-                .then(res => res.json())
+                .then(res => res.json())                
                 .then(data => {
                     if (!data.order_id) {
                         alert("Razorpay order creation failed");
                         return;
                     }
-
+                    console.log("Razorpay order data:", data);
+                    return data; // Return data for Razorpay options
                     const options = {
                         key: "{{ env('RAZORPAY_KEY_NEW') }}",
                         amount: amountInPaise,
