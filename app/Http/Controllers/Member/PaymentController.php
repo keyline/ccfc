@@ -269,16 +269,17 @@ class PaymentController extends Controller
 
     public function razorpay(Request $request)
     {
-        $api = new Api(env('RAZORPAY_KEY_NEW'), env('RAZORPAY_SECRET_NEW'));
+        // $api = new Api(env('RAZORPAY_KEY_NEW'), env('RAZORPAY_SECRET_NEW'));
 
-        $order = $api->order->create([
-            'receipt' => 'INV_' . rand(10000, 99999),
-            'amount' => $request->amount,
-            'currency' => 'INR',
-            'payment_capture' => 1
-        ]);
+        // $order = $api->order->create([
+        //     'receipt' => 'INV_' . rand(10000, 99999),
+        //     'amount' => $request->amount,
+        //     'currency' => 'INR',
+        //     'payment_capture' => 1
+        // ]);
 
-        return response()->json(['order_id' => $order['id']]);
+        // return response()->json(['order_id' => $order['id']]);
+        return response()->json(['order_id' => 56789]);
     }
     
 }
