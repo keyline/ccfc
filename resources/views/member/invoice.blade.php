@@ -520,6 +520,9 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault(); // Prevent default form submission
 
         if (selectedGateway === 'razorpay') {
+            console.log("Selected Gateway:", selectedGateway) ; // Debugging line
+            die;
+            // e.preventDefault(); // Stop normal form submit
             // Get and validate amount
             let amountInput = document.querySelector('input[name="amount"]');
             let amountValue = parseFloat(amountInput.value);
