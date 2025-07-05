@@ -437,6 +437,8 @@ function razorpaySubmit(el) {
         const form = document.getElementById('payment-form');
 
         form.addEventListener('submit', function (e) {
+            debugger;
+            e.preventDefault(); // Prevent default form submission
             if (selectedGateway === 'razorpay') {
                 e.preventDefault(); // Stop normal form submit
 
