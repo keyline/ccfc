@@ -494,8 +494,8 @@ function razorpaySubmit(el) {
                         }
                     };
                     console.log("Order ID:", data.order_id);
-                    const rzp = new Razorpay(options);
-                    rzp.open();
+                    // const rzp = new Razorpay(options);
+                    // rzp.open();
                 })
                 .catch(err => {
                     console.error(err);
