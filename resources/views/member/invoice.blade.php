@@ -141,7 +141,7 @@
 														</label>
 													</li>
                                                     <li>
-														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" onchange="selectedGateway = this.value;" value="razorpay">
+														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" onchange="selectedGateway = this.value; console.log('Selected:', selectedGateway);" value="razorpay">
 														<label class="form-check-label" for="exampleRadios4">
 															 <img class="img-fluid" src="{{ asset('img/invoice_razorpay_logo.jpg') }}" alt="" />
 														</label>
