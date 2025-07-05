@@ -122,7 +122,7 @@
 										<div class="invoice_input_bank">
 											<div class="invocie_paymentlogo">
 												<ul>
-													<li>
+													<!-- <li>
 														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios1" value="{{ route('member.payment')}}">
 														<label class="form-check-label" for="exampleRadios1">
 															 <img class="img-fluid" src="{{ asset('img/invoice_payu_logo.png') }}" alt="" />
@@ -139,7 +139,7 @@
 														<label class="form-check-label" for="exampleRadios3">
 															 <img class="img-fluid" src="{{ asset('img/invoice_axis_logo.jpg') }}" alt="" />
 														</label>
-													</li>
+													</li> -->
                                                     <li>
 														<input class="form-check-input" type="radio" name="paymentGatewayOptions" id="exampleRadios4" onchange="selectedGateway = this.value;" value="razorpay">
 														<label class="form-check-label" for="exampleRadios4">
