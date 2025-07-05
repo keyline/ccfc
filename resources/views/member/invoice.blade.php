@@ -172,7 +172,7 @@
     form.addEventListener(
         "submit",
         (event) => {
-            debugger;
+            // debugger;
             event.preventDefault();
             let errorMsg = new Array();
             let messageHtml = "";
