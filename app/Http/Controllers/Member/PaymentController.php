@@ -267,19 +267,52 @@ class PaymentController extends Controller
         
     }
 
+    // public function razorpay(Request $request)
+    // {
+    //     $api = new Api(env('RAZORPAY_KEY_NEW'), env('RAZORPAY_SECRET_NEW'));
+
+    //     $order = $api->order->create([
+    //         'receipt' => 'INV_' . rand(10000, 99999),
+    //         'amount' => $request->amount,
+    //         'currency' => 'INR',
+    //         'payment_capture' => 1
+    //     ]);
+
+    //     return response()->json(['order_id' => $order['id']]);
+    //     // return response()->json(['order_id' => 56789]);
+    // }
     public function razorpay(Request $request)
-    {
-        // $api = new Api(env('RAZORPAY_KEY_NEW'), env('RAZORPAY_SECRET_NEW'));
+{
+    try {
+        $amount = $request->amount;
 
-        // $order = $api->order->create([
-        //     'receipt' => 'INV_' . rand(10000, 99999),
-        //     'amount' => $request->amount,
-        //     'currency' => 'INR',
-        //     'payment_capture' => 1
-        // ]);
+        if (!$amount || $amount <= 0) {
+            return response()->json(['error' => 'Invalid amount.'], 400);
+        }
 
-        // return response()->json(['order_id' => $order['id']]);
-        return response()->json(['order_id' => 56789]);
+        $api = new Api(env('RAZORPAY_KEY_NEW'), env('RAZORPAY_SECRET_NEW'));
+
+        $orderData = [
+            'receipt'         => 'INV_' . rand(10000, 99999),
+            'amount'          => $amount, // amount in paise
+            'currency'        => 'INR',
+            'payment_capture' => 1 // auto capture
+        ];
+
+        $razorpayOrder = $api->order->create($orderData);
+
+        // You may log the order or store it in your DB if needed
+        // Log::info('Razorpay Order Created', $razorpayOrder->toArray());
+
+        return response()->json([
+            'order_id' => $razorpayOrder['id'],
+            'amount' => $razorpayOrder['amount'],
+            'currency' => $razorpayOrder['currency']
+        ]);
+    } catch (\Exception $e) {
+        Log::error('Razorpay Order Creation Failed: ' . $e->getMessage());
+        return response()->json(['error' => 'Order creation failed. Try again later.'], 500);
     }
-    
+}
+
 }
